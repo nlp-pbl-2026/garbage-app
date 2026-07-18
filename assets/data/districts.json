@@ -1,0 +1,16 @@
+[
+  {"id": "38201-01", "municipalityId": "38201", "name": "中央地区"},
+  {"id": "38201-02", "municipalityId": "38201", "name": "清水地区"},
+  {"id": "38201-03", "municipalityId": "38201", "name": "東地区"},
+  {"id": "38201-04", "municipalityId": "38201", "name": "南地区"},
+  {"id": "38201-05", "municipalityId": "38201", "name": "北地区"},
+  {"id": "38201-06", "municipalityId": "38201", "name": "西地区"},
+  {"id": "38202-01", "municipalityId": "38202", "name": "中央地区"},
+  {"id": "38202-02", "municipalityId": "38202", "name": "東地区"},
+  {"id": "38203-01", "municipalityId": "38203", "name": "中央地区"},
+  {"id": "38204-01", "municipalityId": "38204", "name": "中央地区"},
+  {"id": "38205-01", "municipalityId": "38205", "name": "中央地区"},
+  {"id": "38206-01", "municipalityId": "38206", "name": "中央地区"},
+  {"id": "38207-01", "municipalityId": "38207", "name": "中央地区"},
+  {"id": "38208-01", "municipalityId": "38208", "name": "中央地区"}
+]
