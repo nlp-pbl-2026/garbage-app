@@ -1,0 +1,182 @@
+[
+  {
+    "id": "item-001",
+    "name": "ペットボトル",
+    "primaryCategory": "petBottle",
+    "secondaryCategories": [],
+    "disposalMethod": "キャップとラベルを外し、中を軽くすすいでつぶして出す",
+    "caution": "汚れがひどいものは可燃ごみへ",
+    "keywords": ["ペットボトル", "PET", "飲料容器"]
+  },
+  {
+    "id": "item-002",
+    "name": "スプレー缶",
+    "primaryCategory": "hazardous",
+    "secondaryCategories": [],
+    "disposalMethod": "中身を使い切り、穴を開けずにそのまま出す",
+    "caution": "中身が残っている場合は火気のない屋外で出し切ること",
+    "keywords": ["スプレー缶", "エアゾール缶", "スプレー"]
+  },
+  {
+    "id": "item-003",
+    "name": "乾電池",
+    "primaryCategory": "hazardous",
+    "secondaryCategories": [],
+    "disposalMethod": "端子部分にテープを貼り絶縁して透明袋に入れて出す",
+    "caution": "充電式電池はリサイクル協力店へ持ち込むこと",
+    "keywords": ["乾電池", "電池", "バッテリー"]
+  },
+  {
+    "id": "item-004",
+    "name": "段ボール",
+    "primaryCategory": "recyclable",
+    "secondaryCategories": [],
+    "disposalMethod": "折りたたんでひもで十字に束ねて出す",
+    "caution": null,
+    "keywords": ["段ボール", "ダンボール", "箱"]
+  },
+  {
+    "id": "item-005",
+    "name": "生ごみ",
+    "primaryCategory": "burnable",
+    "secondaryCategories": [],
+    "disposalMethod": "水分を十分に切ってから指定ごみ袋に入れて出す",
+    "caution": null,
+    "keywords": ["生ごみ", "残飯", "食品くず", "野菜くず"]
+  },
+  {
+    "id": "item-006",
+    "name": "ペットボトルのキャップ",
+    "primaryCategory": "plastic",
+    "secondaryCategories": [],
+    "disposalMethod": "軽くすすいでプラスチック製容器包装として出す",
+    "caution": null,
+    "keywords": ["ペットボトルのキャップ", "キャップ", "ボトルキャップ"]
+  },
+  {
+    "id": "item-007",
+    "name": "ペットボトルのラベル",
+    "primaryCategory": "plastic",
+    "secondaryCategories": [],
+    "disposalMethod": "はがしてプラスチック製容器包装として出す",
+    "caution": null,
+    "keywords": ["ペットボトルのラベル", "ラベル", "フィルム"]
+  },
+  {
+    "id": "item-008",
+    "name": "ペット用品",
+    "primaryCategory": "burnable",
+    "secondaryCategories": [],
+    "disposalMethod": "汚物を取り除いてから指定ごみ袋に入れて出す",
+    "caution": "金属部分は取り外して危険ごみへ",
+    "keywords": ["ペット用品", "ペットシーツ", "猫砂", "ペットトイレ"]
+  },
+  {
+    "id": "item-009",
+    "name": "新聞紙",
+    "primaryCategory": "recyclable",
+    "secondaryCategories": [],
+    "disposalMethod": "折りたたんでひもで十字に束ねて出す",
+    "caution": null,
+    "keywords": ["新聞紙", "新聞", "古紙"]
+  },
+  {
+    "id": "item-010",
+    "name": "雑誌",
+    "primaryCategory": "recyclable",
+    "secondaryCategories": [],
+    "disposalMethod": "ひもで十字に束ねて出す",
+    "caution": null,
+    "keywords": ["雑誌", "本", "書籍", "カタログ"]
+  },
+  {
+    "id": "item-011",
+    "name": "缶詰",
+    "primaryCategory": "recyclable",
+    "secondaryCategories": [],
+    "disposalMethod": "中を軽くすすいで資源ごみとして出す",
+    "caution": null,
+    "keywords": ["缶詰", "空き缶", "缶"]
+  },
+  {
+    "id": "item-012",
+    "name": "ガラス瓶",
+    "primaryCategory": "recyclable",
+    "secondaryCategories": [],
+    "disposalMethod": "中を軽くすすいでキャップを外して出す",
+    "caution": "割れたガラスは紙に包んで「キケン」と記載して出す",
+    "keywords": ["ガラス瓶", "瓶", "びん", "ボトル"]
+  },
+  {
+    "id": "item-013",
+    "name": "蛍光灯",
+    "primaryCategory": "hazardous",
+    "secondaryCategories": [],
+    "disposalMethod": "購入時の箱に入れるか新聞紙で包んで出す",
+    "caution": "割れた場合は紙に包んで「キケン」と記載すること",
+    "keywords": ["蛍光灯", "蛍光管", "照明"]
+  },
+  {
+    "id": "item-014",
+    "name": "包丁",
+    "primaryCategory": "hazardous",
+    "secondaryCategories": [],
+    "disposalMethod": "刃の部分を厚紙や新聞紙で包み、テープで固定して「キケン」と記載して出す",
+    "caution": "必ず刃を保護してから出すこと",
+    "keywords": ["包丁", "ナイフ", "刃物"]
+  },
+  {
+    "id": "item-015",
+    "name": "傘",
+    "primaryCategory": "burnable",
+    "secondaryCategories": ["hazardous"],
+    "disposalMethod": "骨組みと布部分を分離できる場合は分けて出す。分離できない場合は可燃ごみとして出す",
+    "caution": "金属の骨組みは危険ごみへ",
+    "keywords": ["傘", "かさ", "アンブレラ"]
+  },
+  {
+    "id": "item-016",
+    "name": "衣類",
+    "primaryCategory": "recyclable",
+    "secondaryCategories": ["burnable"],
+    "disposalMethod": "洗濯してから透明袋に入れて資源ごみとして出す",
+    "caution": "汚れがひどいもの、破れがひどいものは可燃ごみへ",
+    "keywords": ["衣類", "服", "衣服", "古着", "布"]
+  },
+  {
+    "id": "item-017",
+    "name": "食用油",
+    "primaryCategory": "burnable",
+    "secondaryCategories": [],
+    "disposalMethod": "紙や布に染み込ませるか、凝固剤で固めて可燃ごみとして出す",
+    "caution": "液体のまま出さないこと",
+    "keywords": ["食用油", "てんぷら油", "サラダ油", "油"]
+  },
+  {
+    "id": "item-018",
+    "name": "プラスチック容器",
+    "primaryCategory": "plastic",
+    "secondaryCategories": [],
+    "disposalMethod": "中を軽くすすいでプラスチック製容器包装として出す",
+    "caution": "汚れが取れないものは可燃ごみへ",
+    "keywords": ["プラスチック容器", "プラ容器", "食品トレー", "トレイ"]
+  },
+  {
+    "id": "item-019",
+    "name": "発泡スチロール",
+    "primaryCategory": "plastic",
+    "secondaryCategories": [],
+    "disposalMethod": "汚れを落として小さく割ってプラスチック製容器包装として出す",
+    "caution": null,
+    "keywords": ["発泡スチロール", "スチロール", "緩衝材"]
+  },
+  {
+    "id": "item-020",
+    "name": "ティッシュペーパー",
+    "primaryCategory": "burnable",
+    "secondaryCategories": [],
+    "disposalMethod": "指定ごみ袋に入れて可燃ごみとして出す",
+    "caution": null,
+    "keywords": ["ティッシュペーパー", "ティッシュ", "紙くず"]
+  }
+]
