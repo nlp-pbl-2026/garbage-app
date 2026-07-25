@@ -4,7 +4,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../constants/colors.dart';
 import '../constants/strings.dart';
 import '../models/region.dart';
+import '../providers/location_provider.dart';
 import '../providers/region_provider.dart';
+import '../widgets/gps_button.dart';
 
 /// 地域選択画面
 ///
@@ -15,7 +17,14 @@ class RegionSelectionScreen extends ConsumerStatefulWidget {
   /// 地域選択完了時のコールバック
   final VoidCallback? onRegionSelected;
 
-  const RegionSelectionScreen({super.key, this.onRegionSelected});
+  /// trueの場合、画面表示時にGPS自動検出を開始する
+  final bool autoDetect;
+
+  const RegionSelectionScreen({
+    super.key,
+    this.onRegionSelected,
+    this.autoDetect = false,
+  });
 
   @override
   ConsumerState<RegionSelectionScreen> createState() =>
@@ -34,6 +43,24 @@ class _RegionSelectionScreenState
 
   // 保存中フラグ
   bool _isSaving = false;
+
+  @override
+  void initState() {
+    super.initState();
+    // autoDetect: true の場合、画面描画後にGPS検出を自動実行する
+    if (widget.autoDetect) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        ref.read(locationDetectionProvider.notifier).detectRegion();
+      });
+    }
+  }
+
+  @override
+  void dispose() {
+    // 画面離脱時にlocationDetectionProviderをリセットする
+    ref.read(locationDetectionProvider.notifier).reset();
+    super.dispose();
+  }
 
   /// 都道府県選択時の処理
   void _onPrefectureSelected(Prefecture prefecture) {
@@ -242,6 +269,20 @@ class _RegionSelectionScreenState
 
   @override
   Widget build(BuildContext context) {
+    // locationDetectionProviderの状態をlistenし、成功時に都道府県・市区町村を自動設定する
+    ref.listen<LocationDetectionState>(locationDetectionProvider,
+        (previous, next) {
+      if (next.phase == LocationDetectionPhase.success && next.result != null) {
+        setState(() {
+          _selectedPrefecture = next.result!.prefecture;
+          _selectedMunicipality = next.result!.municipality;
+          // 地区はリセット（手動選択が必要）
+          _selectedDistrict = null;
+          _validationResult = null;
+        });
+      }
+    });
+
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -254,6 +295,9 @@ class _RegionSelectionScreenState
               const SizedBox(height: 12),
               // 説明文
               _buildDescription(),
+              const SizedBox(height: 16),
+              // GPS位置情報による地域自動設定ボタン
+              const GpsButton(),
               const SizedBox(height: 32),
               // 3つの選択カード
               Expanded(

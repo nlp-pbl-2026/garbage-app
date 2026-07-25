@@ -153,6 +153,13 @@ class SettingsScreen extends ConsumerWidget {
             trailing: const Icon(Icons.chevron_right),
             onTap: () => _navigateToRegionSelection(context, ref),
           ),
+          const Divider(height: 1, indent: 56),
+          ListTile(
+            leading: const Icon(Icons.my_location, color: AppColors.primary),
+            title: const Text('現在地から再設定'),
+            trailing: const Icon(Icons.chevron_right),
+            onTap: () => _navigateToRegionSelectionWithAutoDetect(context, ref),
+          ),
         ],
       ),
     );
@@ -205,6 +212,32 @@ class SettingsScreen extends ConsumerWidget {
         ],
       ),
     );
+  }
+
+  /// GPS自動検出付きで地域選択画面へ遷移する
+  void _navigateToRegionSelectionWithAutoDetect(
+      BuildContext context, WidgetRef ref) {
+    Navigator.push<bool>(
+      context,
+      MaterialPageRoute(
+        builder: (_) => RegionSelectionScreen(
+          autoDetect: true,
+          onRegionSelected: () {
+            Navigator.of(context).pop(true);
+          },
+        ),
+      ),
+    ).then((result) {
+      if (result == true && context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('地域設定を更新しました'),
+            duration: Duration(seconds: 2),
+            behavior: SnackBarBehavior.floating,
+          ),
+        );
+      }
+    });
   }
 
   /// 地域選択画面へ遷移し、戻ってきた時にフィードバックを表示する
