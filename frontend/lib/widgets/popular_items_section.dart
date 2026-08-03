@@ -8,13 +8,9 @@ import '../providers/search_provider.dart';
 
 /// よく検索される品目セクションウィジェット
 ///
-/// 検索画面下部に表示し、事前定義されたよく検索される品目を
-/// タグ形式（5-10件）で表示する。
+/// 事前定義された「よく検索される品目」をタグ形式で表示する。
+/// 検索履歴とは独立して常に表示される。
 /// タグ選択時に該当品目名で検索を実行する。
-///
-/// 要件3.1: 事前定義されたよく検索される品目を5件以上10件以下のタグ形式で表示
-/// 要件3.2: タグ選択時に選択された品目名を検索語として検索を実行
-/// 要件3.3: データ取得失敗時はタグ表示領域を非表示にする
 class PopularItemsSection extends ConsumerWidget {
   const PopularItemsSection({super.key});
 
@@ -25,15 +21,11 @@ class PopularItemsSection extends ConsumerWidget {
 
     return popularItemsAsync.when(
       data: (items) {
-        // 品目が空の場合はセクション非表示
-        if (items.isEmpty) {
-          return const SizedBox.shrink();
-        }
+        if (items.isEmpty) return const SizedBox.shrink();
 
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // セクションタイトル
             const Padding(
               padding: EdgeInsets.only(bottom: 12.0),
               child: Text(
@@ -45,7 +37,6 @@ class PopularItemsSection extends ConsumerWidget {
                 ),
               ),
             ),
-            // タグをWrap（折り返し）レイアウトで配置
             Wrap(
               spacing: 8.0,
               runSpacing: 8.0,
@@ -55,7 +46,6 @@ class PopularItemsSection extends ConsumerWidget {
                   item: item,
                   isSelected: isSelected,
                   onTap: () {
-                    // タグ選択時: searchQueryProviderの値を更新 → 検索実行
                     ref.read(searchQueryProvider.notifier).state = item.name;
                   },
                 );
@@ -64,7 +54,6 @@ class PopularItemsSection extends ConsumerWidget {
           ],
         );
       },
-      // ローディング中は小さいインジケーター表示
       loading: () => const Padding(
         padding: EdgeInsets.symmetric(vertical: 16.0),
         child: Center(
@@ -75,15 +64,12 @@ class PopularItemsSection extends ConsumerWidget {
           ),
         ),
       ),
-      // データ取得失敗時はセクション全体を非表示
       error: (_, __) => const SizedBox.shrink(),
     );
   }
 }
 
 /// よく検索される品目の個別タグチップ
-///
-/// ボーダー付き角丸タグで表示し、選択中は緑色ハイライトにする。
 class _PopularItemChip extends StatelessWidget {
   final GarbageItem item;
   final bool isSelected;

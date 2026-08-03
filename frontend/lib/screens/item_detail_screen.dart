@@ -8,7 +8,6 @@ import '../models/garbage_item.dart';
 import '../providers/calendar_provider.dart';
 import '../providers/region_provider.dart';
 import '../widgets/category_tag.dart';
-import '../widgets/region_header.dart';
 
 /// 品目詳細画面
 ///
@@ -37,13 +36,24 @@ class ItemDetailScreen extends ConsumerWidget {
     final districtId = regionAsync.valueOrNull?.districtId;
 
     return Scaffold(
-      appBar: const RegionHeader(),
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 1,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.black87),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+        title: const Text(
+          '品目詳細',
+          style: TextStyle(color: Colors.black87, fontSize: 16),
+        ),
+      ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // 検索バー（readonly表示）
-            _buildReadonlySearchBar(),
+            // 検索バー（タップで検索画面に戻る）
+            _buildTappableSearchBar(context),
             // 「検索結果」ラベル
             _buildSearchResultLabel(),
             // 品目詳細カード
@@ -54,28 +64,34 @@ class ItemDetailScreen extends ConsumerWidget {
     );
   }
 
-  /// 読み取り専用の検索バー（品目名を表示）
-  Widget _buildReadonlySearchBar() {
+  /// タップ可能な検索バー（タップで検索画面に戻る）
+  Widget _buildTappableSearchBar(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16),
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-        decoration: BoxDecoration(
-          color: Colors.grey[100],
-          borderRadius: BorderRadius.circular(24),
-        ),
-        child: Row(
-          children: [
-            const Icon(Icons.search, color: Colors.grey),
-            const SizedBox(width: 8),
-            Text(
-              item.name,
-              style: const TextStyle(
-                fontSize: 16,
-                color: Colors.black87,
+      child: GestureDetector(
+        onTap: () => Navigator.of(context).pop(),
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+          decoration: BoxDecoration(
+            color: Colors.grey[100],
+            borderRadius: BorderRadius.circular(24),
+          ),
+          child: Row(
+            children: [
+              const Icon(Icons.search, color: Colors.grey),
+              const SizedBox(width: 8),
+              Expanded(
+                child: Text(
+                  item.name,
+                  style: const TextStyle(
+                    fontSize: 16,
+                    color: Colors.black87,
+                  ),
+                ),
               ),
-            ),
-          ],
+              Icon(Icons.close, color: Colors.grey[400], size: 20),
+            ],
+          ),
         ),
       ),
     );

@@ -2,19 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'constants/strings.dart';
+import 'providers/auth_provider.dart';
 import 'providers/region_provider.dart';
+import 'providers/theme_provider.dart';
+import 'screens/login_screen.dart';
 import 'screens/main_screen.dart';
 import 'screens/region_selection_screen.dart';
+import 'widgets/background_monitor_prompt.dart';
 
 /// 愛媛県ゴミ出しアプリケーションのルートウィジェット
-///
-/// 地域設定の有無を確認し、初回起動時は地域選択画面、
-/// 設定済みの場合はメイン画面を表示する。
 class GarbageApp extends ConsumerWidget {
   const GarbageApp({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final themeMode = ref.watch(themeModeProvider);
+
     return MaterialApp(
       title: AppStrings.appName,
       theme: ThemeData(
@@ -22,14 +25,62 @@ class GarbageApp extends ConsumerWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
         useMaterial3: true,
       ),
+      darkTheme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.green,
+          brightness: Brightness.dark,
+        ),
+        useMaterial3: true,
+      ),
+      themeMode: themeMode,
       home: const _AppHome(),
     );
   }
 }
 
-/// アプリのホーム画面を地域設定の有無で切り替えるウィジェット
+/// アプリのホーム画面をログイン→地域設定で切り替えるウィジェット
 class _AppHome extends ConsumerWidget {
   const _AppHome();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    // 利用規約の強制表示をスキップし、直接認証チェックへ
+    return const _AuthCheck();
+  }
+}
+
+/// 認証状態チェックウィジェット
+///
+/// 初回（トークン無し & スキップ未実行）はログイン画面を表示。
+/// ログイン済みまたはスキップ後は地域チェックへ。
+class _AuthCheck extends ConsumerWidget {
+  const _AuthCheck();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final authState = ref.watch(authStateProvider);
+
+    return authState.when(
+      data: (state) {
+        if (state.isLoggedIn || state.hasSkippedLogin) {
+          // ログイン済み or スキップ済み → 通常フローへ
+          return const _RegionCheck();
+        }
+        // 未ログイン & 未スキップ → ログイン画面を表示
+        return const LoginScreen();
+      },
+      // 初回ロード中（トークン確認中）
+      loading: () => const Scaffold(
+        body: Center(child: CircularProgressIndicator()),
+      ),
+      error: (_, __) => const _RegionCheck(),
+    );
+  }
+}
+
+/// 地域設定チェックウィジェット
+class _RegionCheck extends ConsumerWidget {
+  const _RegionCheck();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -38,16 +89,14 @@ class _AppHome extends ConsumerWidget {
     return regionSetting.when(
       data: (setting) {
         if (setting == null) {
-          // 地域未設定 → 地域選択画面へ
           return const RegionSelectionScreen();
         }
-        // 地域設定済み → メイン画面へ
-        return const MainScreen();
+        return const BackgroundMonitorPrompt(
+          child: MainScreen(),
+        );
       },
       loading: () => const Scaffold(
-        body: Center(
-          child: CircularProgressIndicator(),
-        ),
+        body: Center(child: CircularProgressIndicator()),
       ),
       error: (error, stack) => Scaffold(
         body: Center(

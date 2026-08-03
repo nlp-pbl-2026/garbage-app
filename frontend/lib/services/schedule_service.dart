@@ -14,6 +14,25 @@ class ScheduleService {
   /// 収集ルールデータのキャッシュ
   List<CollectionRule>? _rulesCache;
 
+  /// 当日の収集を「過去」として扱うカットオフ時刻（12:00）
+  ///
+  /// この時刻以降にアプリを開いた場合、当日の収集は既に完了とみなし
+  /// 「次の収集日」から除外する（翌日以降を表示する）。
+  static const int _cutoffHour = 12;
+
+  /// 「次の収集日」の起算日を取得する
+  ///
+  /// 現在時刻がカットオフ時刻（12:00）以降の場合は翌日を返す。
+  /// それより前の場合は今日を返す。
+  DateTime _getEffectiveStartDate() {
+    final now = DateTime.now();
+    if (now.hour >= _cutoffHour) {
+      // 12時以降は翌日から検索
+      return DateTime(now.year, now.month, now.day + 1);
+    }
+    return DateTime(now.year, now.month, now.day);
+  }
+
   /// 収集ルールデータを読み込み、キャッシュする
   ///
   /// キャッシュ済みの場合はキャッシュから返す。
@@ -103,7 +122,7 @@ class ScheduleService {
   /// 該当する予定がない場合はnullを返す。
   Future<ScheduleEntry?> getNextCollection(String districtId) async {
     final now = DateTime.now();
-    final today = DateTime(now.year, now.month, now.day);
+    final today = _getEffectiveStartDate();
 
     // 当月のスケジュールを取得
     final currentMonthSchedule = await getMonthlySchedule(
@@ -164,7 +183,7 @@ class ScheduleService {
     String categoryId,
   ) async {
     final now = DateTime.now();
-    final today = DateTime(now.year, now.month, now.day);
+    final today = _getEffectiveStartDate();
 
     // カテゴリ文字列をenumに変換
     final GarbageCategory category;
@@ -220,5 +239,60 @@ class ScheduleService {
     // 日付でソートして最も近いものを返す
     futureEntries.sort((a, b) => a.date.compareTo(b.date));
     return futureEntries.first.date;
+  }
+
+  /// 指定カテゴリの今後の収集日リストを取得する
+  ///
+  /// [districtId] 地区ID、[categoryId] カテゴリ文字列、[count] 取得件数を指定し、
+  /// 今日以降の該当カテゴリの収集日を最大[count]件返す。
+  /// 当月から最大3ヶ月先まで探索する。
+  Future<List<DateTime>> getUpcomingCollectionDates(
+    String districtId,
+    String categoryId, {
+    int count = 10,
+  }) async {
+    final now = DateTime.now();
+    final today = _getEffectiveStartDate();
+
+    final GarbageCategory category;
+    try {
+      category = GarbageCategoryExtension.fromString(categoryId);
+    } catch (_) {
+      return [];
+    }
+
+    final allEntries = <ScheduleEntry>[];
+
+    // 当月から3ヶ月分を探索
+    for (int i = 0; i < 3; i++) {
+      final targetMonth = DateTime(today.year, today.month + i, 1);
+      final monthSchedule = await getMonthlySchedule(
+        districtId,
+        targetMonth.year,
+        targetMonth.month,
+      );
+      for (final entries in monthSchedule.values) {
+        allEntries.addAll(entries);
+      }
+    }
+
+    // 指定カテゴリかつ今日以降のエントリのみに絞る
+    final futureEntries = allEntries.where((entry) {
+      final entryDate = DateTime(entry.date.year, entry.date.month, entry.date.day);
+      return entry.category == category && !entryDate.isBefore(today);
+    }).toList();
+
+    // 日付でソートして重複除去
+    futureEntries.sort((a, b) => a.date.compareTo(b.date));
+    final uniqueDates = <DateTime>[];
+    for (final entry in futureEntries) {
+      final dateKey = DateTime(entry.date.year, entry.date.month, entry.date.day);
+      if (!uniqueDates.any((d) => d.year == dateKey.year && d.month == dateKey.month && d.day == dateKey.day)) {
+        uniqueDates.add(dateKey);
+      }
+      if (uniqueDates.length >= count) break;
+    }
+
+    return uniqueDates;
   }
 }

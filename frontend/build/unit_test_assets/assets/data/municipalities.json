@@ -6,5 +6,17 @@
   {"id": "38205", "prefectureId": "38", "name": "新居浜市"},
   {"id": "38206", "prefectureId": "38", "name": "西条市"},
   {"id": "38207", "prefectureId": "38", "name": "大洲市"},
-  {"id": "38208", "prefectureId": "38", "name": "四国中央市"}
+  {"id": "38210", "prefectureId": "38", "name": "伊予市"},
+  {"id": "38213", "prefectureId": "38", "name": "四国中央市"},
+  {"id": "38214", "prefectureId": "38", "name": "西予市"},
+  {"id": "38215", "prefectureId": "38", "name": "東温市"},
+  {"id": "38356", "prefectureId": "38", "name": "上島町", "gun": "越智郡"},
+  {"id": "38386", "prefectureId": "38", "name": "久万高原町", "gun": "上浮穴郡"},
+  {"id": "38401", "prefectureId": "38", "name": "松前町", "gun": "伊予郡"},
+  {"id": "38402", "prefectureId": "38", "name": "砥部町", "gun": "伊予郡"},
+  {"id": "38422", "prefectureId": "38", "name": "内子町", "gun": "喜多郡"},
+  {"id": "38442", "prefectureId": "38", "name": "伊方町", "gun": "西宇和郡"},
+  {"id": "38484", "prefectureId": "38", "name": "松野町", "gun": "北宇和郡"},
+  {"id": "38488", "prefectureId": "38", "name": "鬼北町", "gun": "北宇和郡"},
+  {"id": "38506", "prefectureId": "38", "name": "愛南町", "gun": "南宇和郡"}
 ]

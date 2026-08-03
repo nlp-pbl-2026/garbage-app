@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:geolocator/geolocator.dart';
 
 import '../constants/colors.dart';
 import '../constants/strings.dart';
+import '../models/gps_detection.dart';
 import '../models/region.dart';
+import '../providers/gps_detection_provider.dart';
 import '../providers/region_provider.dart';
+import '../widgets/candidate_bottom_sheet.dart';
 
 /// 地域選択画面
 ///
-/// 3段階ステッパー形式（都道府県→市区町村→地区）で地域を選択する画面。
+/// 2段階ステッパー形式（市区町村→地区）で地域を選択する画面。
+/// 都道府県は愛媛県固定（このアプリは愛媛県専用）。
 /// 各ステップはカード形式で表示され、タップで選択ダイアログを表示する。
 /// すべて選択後に「この地域で始める」ボタンで完了処理を行う。
 class RegionSelectionScreen extends ConsumerStatefulWidget {
@@ -24,8 +29,10 @@ class RegionSelectionScreen extends ConsumerStatefulWidget {
 
 class _RegionSelectionScreenState
     extends ConsumerState<RegionSelectionScreen> {
+  // 愛媛県固定（このアプリは愛媛県専用）
+  final Prefecture _fixedPrefecture = Prefecture(id: '38', name: '愛媛県');
+
   // 選択状態
-  Prefecture? _selectedPrefecture;
   Municipality? _selectedMunicipality;
   District? _selectedDistrict;
 
@@ -34,17 +41,6 @@ class _RegionSelectionScreenState
 
   // 保存中フラグ
   bool _isSaving = false;
-
-  /// 都道府県選択時の処理
-  void _onPrefectureSelected(Prefecture prefecture) {
-    setState(() {
-      _selectedPrefecture = prefecture;
-      // 下位階層をリセット
-      _selectedMunicipality = null;
-      _selectedDistrict = null;
-      _validationResult = null;
-    });
-  }
 
   /// 市区町村選択時の処理
   void _onMunicipalitySelected(Municipality municipality) {
@@ -68,7 +64,7 @@ class _RegionSelectionScreenState
   Future<void> _onStartPressed() async {
     // バリデーション実行
     final result = ref.read(regionSettingProvider.notifier).validate(
-      prefectureId: _selectedPrefecture?.id,
+      prefectureId: _fixedPrefecture.id,
       municipalityId: _selectedMunicipality?.id,
       districtId: _selectedDistrict?.id,
     );
@@ -86,8 +82,8 @@ class _RegionSelectionScreenState
     });
 
     final setting = RegionSetting(
-      prefectureId: _selectedPrefecture!.id,
-      prefectureName: _selectedPrefecture!.name,
+      prefectureId: _fixedPrefecture.id,
+      prefectureName: _fixedPrefecture.name,
       municipalityId: _selectedMunicipality!.id,
       municipalityName: _selectedMunicipality!.name,
       districtId: _selectedDistrict!.id,
@@ -104,46 +100,125 @@ class _RegionSelectionScreenState
     widget.onRegionSelected?.call();
   }
 
-  /// 都道府県選択ダイアログを表示
-  void _showPrefectureSelector() {
-    final prefecturesAsync = ref.read(prefecturesProvider);
+  /// 市区町村選択ダイアログを表示
+  void _showMunicipalitySelector() {
+    final municipalitiesAsync =
+        ref.read(municipalitiesProvider('38'));
 
-    prefecturesAsync.when(
-      data: (prefectures) {
-        _showSelectionDialog<Prefecture>(
-          title: AppStrings.selectPrefecture,
-          items: prefectures,
-          getName: (p) => p.name,
-          onSelected: _onPrefectureSelected,
+    municipalitiesAsync.when(
+      data: (municipalities) {
+        _showMunicipalityGroupedDialog(municipalities);
+      },
+      loading: () {},
+      error: (_, __) {},
+    );
+  }
+
+  /// 市区町村をグループ分けして表示するダイアログ
+  void _showMunicipalityGroupedDialog(List<Municipality> municipalities) {
+    // 市と町村に分類
+    final cities = municipalities.where((m) => m.gun == null).toList();
+    final towns = municipalities.where((m) => m.gun != null).toList();
+
+    // 郡ごとにグループ化
+    final townsByGun = <String, List<Municipality>>{};
+    for (final town in towns) {
+      final gunName = town.gun!;
+      townsByGun.putIfAbsent(gunName, () => []).add(town);
+    }
+
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+      ),
+      builder: (context) {
+        return DraggableScrollableSheet(
+          initialChildSize: 0.6,
+          minChildSize: 0.3,
+          maxChildSize: 0.8,
+          expand: false,
+          builder: (context, scrollController) {
+            return Column(
+              children: [
+                // ハンドルバー
+                Container(
+                  margin: const EdgeInsets.only(top: 12, bottom: 8),
+                  width: 40,
+                  height: 4,
+                  decoration: BoxDecoration(
+                    color: Colors.grey[300],
+                    borderRadius: BorderRadius.circular(2),
+                  ),
+                ),
+                // タイトル
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 8,
+                  ),
+                  child: Text(
+                    AppStrings.selectMunicipality,
+                    style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                const Divider(),
+                // グループ分けリスト
+                Expanded(
+                  child: ListView(
+                    controller: scrollController,
+                    children: [
+                      // 市セクション
+                      if (cities.isNotEmpty) ...[
+                        _buildSectionHeader('市'),
+                        ...cities.map((city) => ListTile(
+                              title: Text(city.name),
+                              onTap: () {
+                                _onMunicipalitySelected(city);
+                                Navigator.of(context).pop();
+                              },
+                            )),
+                      ],
+                      // 郡・町セクション
+                      for (final entry in townsByGun.entries) ...[
+                        _buildSectionHeader(entry.key),
+                        ...entry.value.map((town) => ListTile(
+                              title: Text(town.name),
+                              onTap: () {
+                                _onMunicipalitySelected(town);
+                                Navigator.of(context).pop();
+                              },
+                            )),
+                      ],
+                    ],
+                  ),
+                ),
+              ],
+            );
+          },
         );
-      },
-      loading: () {
-        // ローディング中は何もしない
-      },
-      error: (_, __) {
-        // エラー時は何もしない（エラー表示はカード上で行う）
       },
     );
   }
 
-  /// 市区町村選択ダイアログを表示
-  void _showMunicipalitySelector() {
-    if (_selectedPrefecture == null) return;
-
-    final municipalitiesAsync =
-        ref.read(municipalitiesProvider(_selectedPrefecture!.id));
-
-    municipalitiesAsync.when(
-      data: (municipalities) {
-        _showSelectionDialog<Municipality>(
-          title: AppStrings.selectMunicipality,
-          items: municipalities,
-          getName: (m) => m.name,
-          onSelected: _onMunicipalitySelected,
-        );
-      },
-      loading: () {},
-      error: (_, __) {},
+  /// セクションヘッダーウィジェット
+  Widget _buildSectionHeader(String title) {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      color: Colors.grey[100],
+      child: Text(
+        title,
+        style: TextStyle(
+          fontSize: 13,
+          fontWeight: FontWeight.bold,
+          color: Colors.grey[700],
+        ),
+      ),
     );
   }
 
@@ -242,26 +317,78 @@ class _RegionSelectionScreenState
 
   @override
   Widget build(BuildContext context) {
+    // GPS判定結果をリッスンし、成功時に確認ダイアログ、複数候補時にボトムシート、エラー時にSnackBarを表示
+    ref.listen<GpsDetectionState>(gpsDetectionProvider, (previous, next) {
+      if (next is GpsDetectionSuccess) {
+        _showGpsConfirmationDialog(next.result);
+      } else if (next is GpsDetectionMultipleCandidates) {
+        _showCandidateSelection(next);
+      } else if (next is GpsDetectionError) {
+        if (next.errorType == GpsDetectionErrorType.permissionDenied ||
+            next.errorType == GpsDetectionErrorType.serviceDisabled) {
+          _showSettingsSnackBar(next.message);
+        } else if (next.errorType == GpsDetectionErrorType.timeout ||
+            next.errorType == GpsDetectionErrorType.inaccurate) {
+          _showRetrySnackBar(next.message);
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(next.message),
+              duration: const Duration(seconds: 3),
+            ),
+          );
+        }
+        // 状態を Idle にリセットしてボタンを再タップ可能にする
+        ref.read(gpsDetectionProvider.notifier).reset();
+      }
+    });
+
+    final canPop = Navigator.of(context).canPop();
     return Scaffold(
+      appBar: canPop
+          ? AppBar(
+              leading: IconButton(
+                icon: const Icon(Icons.arrow_back),
+                onPressed: () => Navigator.of(context).pop(),
+              ),
+              title: const Text(
+                '地域設定',
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+              ),
+              centerTitle: true,
+              backgroundColor: Colors.transparent,
+              elevation: 0,
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.of(context).pop(),
+                  child: Text(
+                    'キャンセル',
+                    style: TextStyle(color: Colors.grey[600]),
+                  ),
+                ),
+              ],
+            )
+          : null,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
           child: Column(
             children: [
-              const SizedBox(height: 32),
+              if (!canPop) const SizedBox(height: 32),
               // 位置アイコンとタイトル
               _buildHeader(),
               const SizedBox(height: 12),
               // 説明文
               _buildDescription(),
               const SizedBox(height: 32),
-              // 3つの選択カード
+              // 2つの選択カード
               Expanded(
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-                      _buildPrefectureCard(),
-                      const SizedBox(height: 12),
+                      // GPS「現在地から設定」ボタン
+                      _buildGpsDetectionButton(),
+                      const SizedBox(height: 20),
                       _buildMunicipalityCard(),
                       const SizedBox(height: 12),
                       _buildDistrictCard(),
@@ -281,6 +408,161 @@ class _RegionSelectionScreenState
         ),
       ),
     );
+  }
+
+  /// GPS「現在地から設定」ボタン
+  Widget _buildGpsDetectionButton() {
+    final gpsState = ref.watch(gpsDetectionProvider);
+    final isLoading = gpsState is GpsDetectionLoading;
+
+    return SizedBox(
+      width: double.infinity,
+      child: ElevatedButton.icon(
+        onPressed: isLoading
+            ? null
+            : () {
+                ref.read(gpsDetectionProvider.notifier).detectDistrict();
+              },
+        icon: isLoading
+            ? const SizedBox(
+                width: 18,
+                height: 18,
+                child: CircularProgressIndicator(strokeWidth: 2),
+              )
+            : const Icon(Icons.my_location),
+        label: const Text('現在地から設定'),
+        style: ElevatedButton.styleFrom(
+          padding: const EdgeInsets.symmetric(vertical: 14),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+        ),
+      ),
+    );
+  }
+
+  /// 設定アプリ誘導SnackBarを表示する。
+  ///
+  /// permissionDenied / serviceDisabled エラー時に、「設定を開く」アクションボタン付き
+  /// SnackBarを表示する。ユーザーがアクションをタップするか閉じるまで維持される。
+  /// タップ時は Geolocator.openAppSettings() を呼び出す。
+  /// 設定から戻った後は自動再試行せず、ボタン再タップ可能な状態を維持する。
+  void _showSettingsSnackBar(String message) {
+    ScaffoldMessenger.of(context).hideCurrentSnackBar();
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message),
+        duration: const Duration(days: 365),
+        action: SnackBarAction(
+          label: '設定を開く',
+          onPressed: () {
+            ScaffoldMessenger.of(context).hideCurrentSnackBar();
+            Geolocator.openAppSettings();
+          },
+        ),
+      ),
+    );
+  }
+
+  /// タイムアウト・精度不足エラー時の再試行SnackBarを表示
+  ///
+  /// 10秒後に自動で消えるか、ユーザーが「再試行」をタップすると消える。
+  /// 「再試行」タップ時: SnackBarを閉じてGPS判定フローを再実行する。
+  void _showRetrySnackBar(String message) {
+    ScaffoldMessenger.of(context).hideCurrentSnackBar();
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message),
+        duration: const Duration(seconds: 10),
+        action: SnackBarAction(
+          label: '再試行',
+          onPressed: () {
+            ScaffoldMessenger.of(context).hideCurrentSnackBar();
+            ref.read(gpsDetectionProvider.notifier).detectDistrict();
+          },
+        ),
+      ),
+    );
+  }
+
+  /// GPS判定成功時の確認ダイアログを表示
+  void _showGpsConfirmationDialog(DistrictMatchResult result) {
+    showDialog(
+      context: context,
+      builder: (dialogContext) {
+        return AlertDialog(
+          title: const Text('GPS判定結果'),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text('以下の地域が検出されました：'),
+              const SizedBox(height: 12),
+              Text('都道府県: 愛媛県'),
+              Text('市区町村: 松山市'),
+              Text('地区: ${result.districtName}'),
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(dialogContext).pop();
+                ref.read(gpsDetectionProvider.notifier).reset();
+              },
+              child: const Text('キャンセル'),
+            ),
+            ElevatedButton(
+              onPressed: () async {
+                final setting = RegionSetting(
+                  prefectureId: '38',
+                  prefectureName: '愛媛県',
+                  municipalityId: '38201',
+                  municipalityName: '松山市',
+                  districtId: '38201-${result.districtNumber}',
+                  districtName: result.districtName,
+                );
+                await ref
+                    .read(regionSettingProvider.notifier)
+                    .saveSetting(setting);
+                if (dialogContext.mounted) {
+                  Navigator.of(dialogContext).pop();
+                }
+                widget.onRegionSelected?.call();
+              },
+              child: const Text('この地域で設定'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  /// GPS判定で複数候補が見つかった場合のボトムシート表示と結果処理
+  Future<void> _showCandidateSelection(
+    GpsDetectionMultipleCandidates state,
+  ) async {
+    final selectedCandidate = await showCandidateBottomSheet(
+      context: context,
+      candidates: state.candidates,
+      overflowMessage: state.overflowMessage,
+    );
+
+    if (selectedCandidate != null) {
+      // ユーザーが候補を選択し確認した → 地区を適用
+      final setting = RegionSetting(
+        prefectureId: '38',
+        prefectureName: '愛媛県',
+        municipalityId: '38201',
+        municipalityName: '松山市',
+        districtId: '38201-${selectedCandidate.districtNumber}',
+        districtName: selectedCandidate.districtName,
+      );
+      await ref.read(regionSettingProvider.notifier).saveSetting(setting);
+      widget.onRegionSelected?.call();
+    }
+
+    // null の場合: ボトムシート外タップで閉じた → 手動選択モードに戻る
+    ref.read(gpsDetectionProvider.notifier).reset();
   }
 
   /// ヘッダー（位置アイコン + タイトル）
@@ -317,65 +599,23 @@ class _RegionSelectionScreenState
     );
   }
 
-  /// 都道府県選択カード
-  Widget _buildPrefectureCard() {
-    final prefecturesAsync = ref.watch(prefecturesProvider);
-
-    return prefecturesAsync.when(
-      data: (_) => _buildStepCard(
-        stepNumber: 1,
-        label: '都道府県',
-        selectedValue: _selectedPrefecture?.name,
-        isSelected: _selectedPrefecture != null,
-        isActive: true,
-        error: _validationResult?.prefectureError,
-        onTap: _showPrefectureSelector,
-      ),
-      loading: () => _buildStepCard(
-        stepNumber: 1,
-        label: '都道府県',
-        selectedValue: null,
-        isSelected: false,
-        isActive: false,
-        isLoading: true,
-        onTap: null,
-      ),
-      error: (error, _) => _buildErrorCard(
-        stepNumber: 1,
-        label: '都道府県',
-        onRetry: () => ref.invalidate(prefecturesProvider),
-      ),
-    );
-  }
-
   /// 市区町村選択カード
   Widget _buildMunicipalityCard() {
-    if (_selectedPrefecture == null) {
-      return _buildStepCard(
-        stepNumber: 2,
-        label: '市区町村',
-        selectedValue: null,
-        isSelected: false,
-        isActive: false,
-        onTap: null,
-      );
-    }
-
     final municipalitiesAsync =
-        ref.watch(municipalitiesProvider(_selectedPrefecture!.id));
+        ref.watch(municipalitiesProvider('38'));
 
     return municipalitiesAsync.when(
       data: (_) => _buildStepCard(
-        stepNumber: 2,
+        stepNumber: 1,
         label: '市区町村',
-        selectedValue: _selectedMunicipality?.name,
+        selectedValue: _selectedMunicipality?.displayName,
         isSelected: _selectedMunicipality != null,
         isActive: true,
         error: _validationResult?.municipalityError,
         onTap: _showMunicipalitySelector,
       ),
       loading: () => _buildStepCard(
-        stepNumber: 2,
+        stepNumber: 1,
         label: '市区町村',
         selectedValue: null,
         isSelected: false,
@@ -384,10 +624,10 @@ class _RegionSelectionScreenState
         onTap: null,
       ),
       error: (error, _) => _buildErrorCard(
-        stepNumber: 2,
+        stepNumber: 1,
         label: '市区町村',
         onRetry: () =>
-            ref.invalidate(municipalitiesProvider(_selectedPrefecture!.id)),
+            ref.invalidate(municipalitiesProvider('38')),
       ),
     );
   }
@@ -396,7 +636,7 @@ class _RegionSelectionScreenState
   Widget _buildDistrictCard() {
     if (_selectedMunicipality == null) {
       return _buildStepCard(
-        stepNumber: 3,
+        stepNumber: 2,
         label: '地区',
         selectedValue: null,
         isSelected: false,
@@ -410,7 +650,7 @@ class _RegionSelectionScreenState
 
     return districtsAsync.when(
       data: (_) => _buildStepCard(
-        stepNumber: 3,
+        stepNumber: 2,
         label: '地区',
         selectedValue: _selectedDistrict?.name,
         isSelected: _selectedDistrict != null,
@@ -419,7 +659,7 @@ class _RegionSelectionScreenState
         onTap: _showDistrictSelector,
       ),
       loading: () => _buildStepCard(
-        stepNumber: 3,
+        stepNumber: 2,
         label: '地区',
         selectedValue: null,
         isSelected: false,
@@ -428,7 +668,7 @@ class _RegionSelectionScreenState
         onTap: null,
       ),
       error: (error, _) => _buildErrorCard(
-        stepNumber: 3,
+        stepNumber: 2,
         label: '地区',
         onRetry: () =>
             ref.invalidate(districtsProvider(_selectedMunicipality!.id)),
@@ -644,8 +884,7 @@ class _RegionSelectionScreenState
 
   /// 「この地域で始める →」ボタン
   Widget _buildStartButton() {
-    final isAllSelected = _selectedPrefecture != null &&
-        _selectedMunicipality != null &&
+    final isAllSelected = _selectedMunicipality != null &&
         _selectedDistrict != null;
 
     return SizedBox(
@@ -702,9 +941,8 @@ class _RegionSelectionScreenState
 
   /// 現在アクティブなステップ番号を取得
   int get _currentActiveStep {
-    if (_selectedPrefecture == null) return 1;
-    if (_selectedMunicipality == null) return 2;
-    if (_selectedDistrict == null) return 3;
+    if (_selectedMunicipality == null) return 1;
+    if (_selectedDistrict == null) return 2;
     return 0; // すべて選択済み
   }
 }
