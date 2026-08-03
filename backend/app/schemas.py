@@ -59,3 +59,9 @@ class ImageUploadResponse(BaseModel):
 class ImageErrorResponse(BaseModel):
     """画像エラーレスポンス"""
     detail: str
+
+
+class ChangePassword(BaseModel):
+    """パスワード変更リクエスト"""
+    current_password: str
+    new_password: str = Field(min_length=6, max_length=100)

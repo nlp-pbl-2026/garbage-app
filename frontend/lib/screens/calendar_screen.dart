@@ -830,9 +830,9 @@ class CalendarScreen extends ConsumerWidget {
                 )
               else
                 ...entries.map((entry) => _buildScheduleEntryTile(entry)),
-              // メモボタン
+              // メモ内容表示 + ボタン
               const SizedBox(height: 12),
-              _buildMemoButton(context, ref, selectedDay),
+              _buildMemoSection(context, ref, selectedDay),
             ],
           ),
         );
@@ -848,6 +848,53 @@ class CalendarScreen extends ConsumerWidget {
           style: TextStyle(color: AppColors.error),
         ),
       ),
+    );
+  }
+
+  /// メモセクション（内容表示 + 編集ボタン）を構築する
+  Widget _buildMemoSection(
+    BuildContext context,
+    WidgetRef ref,
+    DateTime date,
+  ) {
+    final existingMemo = ref.watch(memoForDateProvider(date));
+    final hasExistingMemo = existingMemo != null && existingMemo.isNotEmpty;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        // メモ内容表示（存在する場合）
+        if (hasExistingMemo) ...[
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.all(12),
+            decoration: BoxDecoration(
+              color: Colors.orange.shade50,
+              borderRadius: BorderRadius.circular(8),
+              border: Border.all(color: Colors.orange.shade200),
+            ),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Icon(Icons.sticky_note_2, size: 16, color: Colors.orange.shade700),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Text(
+                    existingMemo,
+                    style: TextStyle(
+                      fontSize: 13,
+                      color: Colors.orange.shade900,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 8),
+        ],
+        // メモ追加/編集ボタン
+        _buildMemoButton(context, ref, date),
+      ],
     );
   }
 

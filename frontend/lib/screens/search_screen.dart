@@ -245,9 +245,14 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                   )),
               const SizedBox(height: 24),
               // よく検索されるものを常に表示
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16),
-                child: PopularItemsSection(),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: PopularItemsSection(
+                  onItemSelected: (name) {
+                    _searchController.text = name;
+                    setState(() {});
+                  },
+                ),
               ),
             ],
           ),
@@ -281,20 +286,143 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
   }
 
   /// 空の状態（検索前）を構築する
-  /// 検索履歴とよく検索される品目セクションを表示する
+  /// 検索ヒント、カテゴリクイック検索、検索履歴、よく検索される品目を表示する
   Widget _buildEmptyState() {
     return SingleChildScrollView(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(height: 8),
+          const SizedBox(height: 16),
+          // 検索ヒントセクション
+          _buildSearchHint(),
+          const SizedBox(height: 24),
+          // カテゴリ別クイック検索
+          _buildCategoryQuickSearch(),
+          const SizedBox(height: 24),
           // 検索履歴セクション
           if (_searchHistory.isNotEmpty) _buildHistorySection(),
           // よく検索される品目セクション
-          const PopularItemsSection(),
+          PopularItemsSection(
+            onItemSelected: (name) {
+              _searchController.text = name;
+              setState(() {});
+            },
+          ),
         ],
       ),
+    );
+  }
+
+  /// 検索ヒントカードを構築する
+  Widget _buildSearchHint() {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: [Colors.green.shade50, Colors.teal.shade50],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Row(
+        children: [
+          Icon(Icons.lightbulb_outline, color: Colors.green.shade700, size: 28),
+          const SizedBox(width: 12),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  '捨て方がわからないものを検索',
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.green.shade900,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  '品目名を入力すると分別方法がわかります',
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: Colors.green.shade700,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  /// カテゴリ別クイック検索を構築する
+  Widget _buildCategoryQuickSearch() {
+    final categories = [
+      ('可燃ごみ', Icons.local_fire_department, Colors.pink.shade400),
+      ('資源ごみ', Icons.recycling, Colors.green.shade600),
+      ('プラスチック', Icons.shopping_bag_outlined, Colors.orange.shade600),
+      ('ペットボトル', Icons.water_drop_outlined, Colors.blue.shade600),
+      ('危険ごみ', Icons.warning_amber, Colors.red.shade600),
+    ];
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Text(
+          'カテゴリから探す',
+          style: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w600,
+            color: Colors.black87,
+          ),
+        ),
+        const SizedBox(height: 12),
+        SizedBox(
+          height: 80,
+          child: ListView.separated(
+            scrollDirection: Axis.horizontal,
+            itemCount: categories.length,
+            separatorBuilder: (_, __) => const SizedBox(width: 12),
+            itemBuilder: (context, index) {
+              final (label, icon, color) = categories[index];
+              return GestureDetector(
+                onTap: () {
+                  _searchController.text = label;
+                  _onSearchChanged(label);
+                },
+                child: Container(
+                  width: 80,
+                  decoration: BoxDecoration(
+                    color: color.withOpacity(0.1),
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(color: color.withOpacity(0.3)),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(icon, color: color, size: 28),
+                      const SizedBox(height: 4),
+                      Text(
+                        label,
+                        style: TextStyle(
+                          fontSize: 10,
+                          fontWeight: FontWeight.w600,
+                          color: color,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            },
+          ),
+        ),
+      ],
     );
   }
 

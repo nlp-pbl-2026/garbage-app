@@ -84,6 +84,37 @@ class AuthService {
     await prefs.remove(_usernameKey);
   }
 
+  /// パスワードを変更する
+  ///
+  /// 成功時はtrueを返す。エラー時はエラーメッセージを含むExceptionをthrowする。
+  Future<void> changePassword(String currentPassword, String newPassword) async {
+    final token = await getToken();
+    if (token == null) {
+      throw Exception('ログインしていません');
+    }
+
+    final response = await http.put(
+      Uri.parse('$_baseUrl/api/auth/change-password'),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $token',
+      },
+      body: json.encode({
+        'current_password': currentPassword,
+        'new_password': newPassword,
+      }),
+    );
+
+    if (response.statusCode == 200) {
+      return;
+    } else if (response.statusCode == 400) {
+      final data = json.decode(response.body) as Map<String, dynamic>;
+      throw Exception(data['detail'] ?? '現在のパスワードが正しくありません');
+    } else {
+      throw Exception('パスワード変更に失敗しました');
+    }
+  }
+
   /// 保存済みトークンを取得する
   Future<String?> getToken() async {
     final prefs = await SharedPreferences.getInstance();

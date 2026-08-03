@@ -12,7 +12,10 @@ import '../providers/search_provider.dart';
 /// 検索履歴とは独立して常に表示される。
 /// タグ選択時に該当品目名で検索を実行する。
 class PopularItemsSection extends ConsumerWidget {
-  const PopularItemsSection({super.key});
+  /// 品目タップ時に呼ばれるコールバック（検索テキストフィールドの同期用）
+  final void Function(String)? onItemSelected;
+
+  const PopularItemsSection({super.key, this.onItemSelected});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -47,6 +50,7 @@ class PopularItemsSection extends ConsumerWidget {
                   isSelected: isSelected,
                   onTap: () {
                     ref.read(searchQueryProvider.notifier).state = item.name;
+                    onItemSelected?.call(item.name);
                   },
                 );
               }).toList(),
