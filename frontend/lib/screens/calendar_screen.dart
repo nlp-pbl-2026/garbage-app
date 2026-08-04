@@ -7,9 +7,16 @@ import '../constants/strings.dart';
 import '../models/collection_schedule.dart';
 import '../models/garbage_category.dart';
 import '../models/garbage_item.dart';
+import '../models/weather.dart';
 import '../providers/calendar_provider.dart';
+import '../providers/memo_provider.dart';
+import '../providers/region_provider.dart';
+import '../providers/weather_provider.dart';
+import '../services/ical_export_service.dart';
 import '../widgets/calendar_day_marker.dart';
+import '../widgets/memo_dialog.dart';
 import '../widgets/region_header.dart';
+import 'region_selection_screen.dart';
 
 /// カレンダー画面
 ///
@@ -28,9 +35,23 @@ class CalendarScreen extends ConsumerWidget {
       monthlyScheduleProvider(DateTime(focusedMonth.year, focusedMonth.month)),
     );
     final nextCollectionAsync = ref.watch(nextCollectionProvider);
+    final weatherAsync = ref.watch(weatherForecastProvider);
+    final memoDates = ref.watch(
+      monthlyMemosProvider(DateTime(focusedMonth.year, focusedMonth.month)),
+    );
 
     return Scaffold(
-      appBar: const RegionHeader(),
+      backgroundColor: Colors.grey[50],
+      appBar: RegionHeader(
+        onEditPressed: () => _navigateToRegionSelection(context, ref),
+        extraActions: [
+          IconButton(
+            icon: const Icon(Icons.ios_share, color: Colors.black87),
+            onPressed: () => _exportCalendar(context, ref),
+            tooltip: 'カレンダーをエクスポート',
+          ),
+        ],
+      ),
       body: Column(
         children: [
           // 次回収集予定バナー
@@ -48,6 +69,8 @@ class CalendarScreen extends ConsumerWidget {
                       focusedMonth,
                       selectedDay,
                       schedule,
+                      weatherAsync.valueOrNull ?? {},
+                      memoDates,
                     ),
                     loading: () => const Padding(
                       padding: EdgeInsets.all(32.0),
@@ -69,9 +92,15 @@ class CalendarScreen extends ConsumerWidget {
 
                   // 選択日の収集予定表示
                   _buildSelectedDaySchedule(
+                    context,
+                    ref,
                     selectedDay,
                     monthlyScheduleAsync,
+                    weatherAsync.valueOrNull ?? {},
                   ),
+
+                  // カテゴリ別次回収集日一覧
+                  _buildAllCategoriesNextCollection(ref),
                 ],
               ),
             ),
@@ -137,6 +166,315 @@ class CalendarScreen extends ConsumerWidget {
     );
   }
 
+  /// カテゴリ別次回収集日一覧を構築する
+  Widget _buildAllCategoriesNextCollection(WidgetRef ref) {
+    final regionAsync = ref.watch(regionSettingProvider);
+    final regionSetting = regionAsync.valueOrNull;
+
+    if (regionSetting == null) {
+      return const SizedBox.shrink();
+    }
+
+    final scheduleService = ref.watch(scheduleServiceProvider);
+    final districtId = regionSetting.districtId;
+
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        border: Border(bottom: BorderSide(color: Colors.grey.shade200)),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text(
+            '次回の収集日',
+            style: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.bold,
+              color: Colors.black87,
+            ),
+          ),
+          const SizedBox(height: 8),
+          ...GarbageCategory.values.map(
+            (category) => _buildCategoryNextDate(
+              scheduleService,
+              districtId,
+              category,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  /// カテゴリ1件分の次回収集日表示
+  Widget _buildCategoryNextDate(
+    dynamic scheduleService,
+    String districtId,
+    GarbageCategory category,
+  ) {
+    final color = CategoryColors.getColor(category);
+    final label = CategoryColors.getLabel(category);
+
+    return FutureBuilder<DateTime?>(
+      future: scheduleService.getNextCollectionDate(
+        districtId,
+        category.toJsonString(),
+      ),
+      builder: (context, snapshot) {
+        String dateText = '---';
+        String? daysText;
+
+        if (snapshot.connectionState == ConnectionState.done &&
+            snapshot.data != null) {
+          final nextDate = snapshot.data!;
+          final now = DateTime.now();
+          final today = DateTime(now.year, now.month, now.day);
+          final diff = nextDate.difference(today).inDays;
+
+          final weekDays = ['月', '火', '水', '木', '金', '土', '日'];
+          final weekDay = weekDays[nextDate.weekday - 1];
+          dateText = '${nextDate.month}/${nextDate.day}（$weekDay）';
+
+          if (diff == 0) {
+            daysText = '今日';
+          } else if (diff == 1) {
+            daysText = '明日';
+          } else {
+            daysText = 'あと${diff}日';
+          }
+        }
+
+        return InkWell(
+          onTap: () {
+            _showUpcomingScheduleSheet(
+              context,
+              scheduleService,
+              districtId,
+              category,
+              label,
+              color,
+            );
+          },
+          borderRadius: BorderRadius.circular(8),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 4),
+            child: Row(
+              children: [
+                Container(
+                  width: 8,
+                  height: 8,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: color,
+                  ),
+                ),
+                const SizedBox(width: 8),
+                SizedBox(
+                  width: 100,
+                  child: Text(
+                    label,
+                    style: TextStyle(
+                      fontSize: 13,
+                      color: color,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Text(
+                    dateText,
+                    style: const TextStyle(fontSize: 13),
+                  ),
+                ),
+                if (daysText != null)
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 8,
+                      vertical: 2,
+                    ),
+                    decoration: BoxDecoration(
+                      color: daysText == '今日' || daysText == '明日'
+                          ? Colors.red.shade50
+                          : Colors.grey.shade100,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Text(
+                      daysText,
+                      style: TextStyle(
+                        fontSize: 11,
+                        fontWeight: FontWeight.bold,
+                        color: daysText == '今日' || daysText == '明日'
+                            ? Colors.red.shade700
+                            : Colors.grey.shade700,
+                      ),
+                    ),
+                  ),
+                const SizedBox(width: 4),
+                Icon(
+                  Icons.chevron_right,
+                  size: 16,
+                  color: Colors.grey.shade400,
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  /// 指定カテゴリの今後の収集日一覧をBottomSheetで表示する
+  void _showUpcomingScheduleSheet(
+    BuildContext context,
+    dynamic scheduleService,
+    String districtId,
+    GarbageCategory category,
+    String label,
+    Color color,
+  ) {
+    showModalBottomSheet(
+      context: context,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+      ),
+      builder: (sheetContext) {
+        return FutureBuilder<List<DateTime>>(
+          future: scheduleService.getUpcomingCollectionDates(
+            districtId,
+            category.toJsonString(),
+          ),
+          builder: (context, snapshot) {
+            return Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // ハンドル
+                  Center(
+                    child: Container(
+                      width: 40,
+                      height: 4,
+                      margin: const EdgeInsets.only(bottom: 16),
+                      decoration: BoxDecoration(
+                        color: Colors.grey[300],
+                        borderRadius: BorderRadius.circular(2),
+                      ),
+                    ),
+                  ),
+                  // タイトル
+                  Row(
+                    children: [
+                      Container(
+                        width: 12,
+                        height: 12,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: color,
+                        ),
+                      ),
+                      const SizedBox(width: 8),
+                      Text(
+                        '$labelの収集日',
+                        style: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 16),
+                  // 日程リスト
+                  if (snapshot.connectionState == ConnectionState.waiting)
+                    const Center(
+                      child: Padding(
+                        padding: EdgeInsets.all(24),
+                        child: CircularProgressIndicator(),
+                      ),
+                    )
+                  else if (snapshot.hasData && snapshot.data!.isNotEmpty)
+                    ...snapshot.data!.map((date) {
+                      final now = DateTime.now();
+                      final today = DateTime(now.year, now.month, now.day);
+                      final diff = date.difference(today).inDays;
+                      final weekDays = ['月', '火', '水', '木', '金', '土', '日'];
+                      final weekDay = weekDays[date.weekday - 1];
+
+                      String relative = '';
+                      if (diff == 0) {
+                        relative = '今日';
+                      } else if (diff == 1) {
+                        relative = '明日';
+                      } else if (diff == 2) {
+                        relative = '明後日';
+                      }
+
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 6),
+                        child: Row(
+                          children: [
+                            SizedBox(
+                              width: 120,
+                              child: Text(
+                                '${date.month}/${date.day}（$weekDay）',
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: diff <= 1
+                                      ? FontWeight.bold
+                                      : FontWeight.normal,
+                                ),
+                              ),
+                            ),
+                            if (relative.isNotEmpty)
+                              Container(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 8,
+                                  vertical: 2,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: diff <= 1
+                                      ? Colors.red.shade50
+                                      : Colors.orange.shade50,
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: Text(
+                                  relative,
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.bold,
+                                    color: diff <= 1
+                                        ? Colors.red.shade700
+                                        : Colors.orange.shade700,
+                                  ),
+                                ),
+                              ),
+                          ],
+                        ),
+                      );
+                    }),
+                  if (snapshot.hasData && snapshot.data!.isEmpty)
+                    const Padding(
+                      padding: EdgeInsets.all(24),
+                      child: Center(
+                        child: Text(
+                          '今後の収集日が見つかりません',
+                          style: TextStyle(color: Colors.grey),
+                        ),
+                      ),
+                    ),
+                  const SizedBox(height: 16),
+                ],
+              ),
+            );
+          },
+        );
+      },
+    );
+  }
+
   /// 次回収集日のフォーマット（「明日」「明後日」「M/d」）
   String _formatNextCollectionDate(DateTime date) {
     final now = DateTime.now();
@@ -162,8 +500,26 @@ class CalendarScreen extends ConsumerWidget {
     DateTime focusedMonth,
     DateTime? selectedDay,
     Map<DateTime, List<ScheduleEntry>> schedule,
+    Map<DateTime, DailyWeather> weather,
+    Set<DateTime> memoDates,
   ) {
-    return TableCalendar<ScheduleEntry>(
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.06),
+            blurRadius: 8,
+            offset: const Offset(0, 2),
+          ),
+        ],
+        border: Border.all(color: Colors.grey.shade200),
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(16),
+        child: TableCalendar<ScheduleEntry>(
       firstDay: DateTime(2024, 1, 1),
       lastDay: DateTime(2026, 12, 31),
       focusedDay: focusedMonth,
@@ -180,18 +536,48 @@ class CalendarScreen extends ConsumerWidget {
       },
       locale: 'ja_JP',
       startingDayOfWeek: StartingDayOfWeek.sunday,
-      headerStyle: const HeaderStyle(
+      rowHeight: 64,
+      headerStyle: HeaderStyle(
         formatButtonVisible: false,
         titleCentered: true,
-        titleTextStyle: TextStyle(
-          fontSize: 16,
+        titleTextStyle: const TextStyle(
+          fontSize: 18,
           fontWeight: FontWeight.bold,
+          color: Colors.black87,
+        ),
+        leftChevronIcon: Icon(Icons.chevron_left, color: AppColors.primary),
+        rightChevronIcon: Icon(Icons.chevron_right, color: AppColors.primary),
+        headerPadding: const EdgeInsets.symmetric(vertical: 12),
+        decoration: BoxDecoration(
+          color: AppColors.primary.withOpacity(0.05),
+          border: Border(
+            bottom: BorderSide(color: Colors.grey.shade200),
+          ),
+        ),
+      ),
+      daysOfWeekStyle: DaysOfWeekStyle(
+        weekdayStyle: const TextStyle(
+          fontSize: 13,
+          fontWeight: FontWeight.w600,
+          color: Colors.black54,
+        ),
+        weekendStyle: TextStyle(
+          fontSize: 13,
+          fontWeight: FontWeight.w600,
+          color: Colors.red.shade400,
+        ),
+        decoration: BoxDecoration(
+          border: Border(
+            bottom: BorderSide(color: Colors.grey.shade200),
+          ),
         ),
       ),
       calendarStyle: CalendarStyle(
+        cellMargin: const EdgeInsets.all(4),
         todayDecoration: BoxDecoration(
-          color: AppColors.primary.withOpacity(0.3),
+          color: AppColors.primary.withOpacity(0.2),
           shape: BoxShape.circle,
+          border: Border.all(color: AppColors.primary, width: 2),
         ),
         todayTextStyle: const TextStyle(
           color: Colors.black87,
@@ -208,14 +594,36 @@ class CalendarScreen extends ConsumerWidget {
         outsideDaysVisible: false,
       ),
       calendarBuilders: CalendarBuilders<ScheduleEntry>(
+        defaultBuilder: (context, date, focusedDay) {
+          return _buildDayCell(context, ref, date, memoDates, isToday: false, isSelected: false);
+        },
+        todayBuilder: (context, date, focusedDay) {
+          return _buildDayCell(context, ref, date, memoDates, isToday: true, isSelected: false);
+        },
+        selectedBuilder: (context, date, focusedDay) {
+          return _buildDayCell(context, ref, date, memoDates, isToday: false, isSelected: true);
+        },
         markerBuilder: (context, date, events) {
           final dateKey = DateTime(date.year, date.month, date.day);
           final entries = schedule[dateKey] ?? [];
-          if (entries.isEmpty) return null;
+          final dailyWeather = weather[dateKey];
 
+          // 天気アイコン + ゴミカテゴリドット
           return Positioned(
             bottom: 1,
-            child: CalendarDayMarker(entries: entries),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                if (dailyWeather != null)
+                  Icon(
+                    weatherIcon(dailyWeather.condition),
+                    size: 12,
+                    color: weatherColor(dailyWeather.condition),
+                  ),
+                if (entries.isNotEmpty)
+                  CalendarDayMarker(entries: entries, dotSize: 5),
+              ],
+            ),
           );
         },
       ),
@@ -223,7 +631,98 @@ class CalendarScreen extends ConsumerWidget {
         final dateKey = DateTime(day.year, day.month, day.day);
         return schedule[dateKey] ?? [];
       },
+    ),
+      ),
     );
+  }
+
+  /// 日付セルを構築する（長押し対応 + メモインジケーター）
+  Widget _buildDayCell(
+    BuildContext context,
+    WidgetRef ref,
+    DateTime date,
+    Set<DateTime> memoDates, {
+    required bool isToday,
+    required bool isSelected,
+  }) {
+    final dateKey = DateTime(date.year, date.month, date.day);
+    final hasMemo = memoDates.contains(dateKey);
+
+    return GestureDetector(
+      onLongPress: () => _onDayLongPressed(context, ref, date),
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          // 日付の背景装飾 + テキスト
+          Container(
+            margin: const EdgeInsets.all(4),
+            decoration: isSelected
+                ? const BoxDecoration(
+                    color: AppColors.primary,
+                    shape: BoxShape.circle,
+                  )
+                : isToday
+                    ? BoxDecoration(
+                        color: AppColors.primary.withOpacity(0.2),
+                        shape: BoxShape.circle,
+                        border: Border.all(color: AppColors.primary, width: 2),
+                      )
+                    : null,
+            alignment: Alignment.center,
+            child: Text(
+              '${date.day}',
+              style: TextStyle(
+                color: isSelected
+                    ? Colors.white
+                    : isToday
+                        ? Colors.black87
+                        : date.weekday == DateTime.saturday
+                            ? Colors.blue.shade400
+                            : date.weekday == DateTime.sunday
+                                ? Colors.red.shade400
+                                : Colors.black87,
+                fontWeight: (isToday || isSelected) ? FontWeight.bold : FontWeight.normal,
+              ),
+            ),
+          ),
+          // メモインジケーター（右上隅の小さなドット）
+          if (hasMemo)
+            Positioned(
+              top: 4,
+              right: 4,
+              child: Container(
+                width: 4,
+                height: 4,
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Colors.orange,
+                ),
+              ),
+            ),
+        ],
+      ),
+    );
+  }
+
+  /// 日付長押し時にメモダイアログを表示する
+  Future<void> _onDayLongPressed(
+    BuildContext context,
+    WidgetRef ref,
+    DateTime date,
+  ) async {
+    final existingMemo = ref.read(memoForDateProvider(date));
+
+    final result = await showMemoDialog(
+      context: context,
+      ref: ref,
+      date: date,
+      existingMemo: existingMemo,
+    );
+
+    // メモ保存/削除後にインジケーター状態を更新
+    if (result != null) {
+      ref.invalidate(monthlyMemosProvider);
+    }
   }
 
   /// 色凡例を構築する
@@ -274,8 +773,11 @@ class CalendarScreen extends ConsumerWidget {
 
   /// 選択日の収集予定を表示する
   Widget _buildSelectedDaySchedule(
+    BuildContext context,
+    WidgetRef ref,
     DateTime? selectedDay,
     AsyncValue<Map<DateTime, List<ScheduleEntry>>> monthlyScheduleAsync,
+    Map<DateTime, DailyWeather> weather,
   ) {
     if (selectedDay == null) {
       return const Padding(
@@ -291,34 +793,16 @@ class CalendarScreen extends ConsumerWidget {
       );
     }
 
+    final dateKey = DateTime(
+      selectedDay.year,
+      selectedDay.month,
+      selectedDay.day,
+    );
+    final dailyWeather = weather[dateKey];
+
     return monthlyScheduleAsync.when(
       data: (schedule) {
-        final dateKey = DateTime(
-          selectedDay.year,
-          selectedDay.month,
-          selectedDay.day,
-        );
         final entries = schedule[dateKey] ?? [];
-
-        if (entries.isEmpty) {
-          return Padding(
-            padding: const EdgeInsets.all(24.0),
-            child: Column(
-              children: [
-                _buildDateHeader(selectedDay),
-                const SizedBox(height: 16),
-                const Text(
-                  AppStrings.noSchedule,
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: Colors.grey,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-              ],
-            ),
-          );
-        }
 
         return Padding(
           padding: const EdgeInsets.all(16.0),
@@ -326,8 +810,29 @@ class CalendarScreen extends ConsumerWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               _buildDateHeader(selectedDay),
+              // 天気情報
+              if (dailyWeather != null) ...[
+                const SizedBox(height: 12),
+                _buildWeatherInfo(dailyWeather),
+              ],
               const SizedBox(height: 12),
-              ...entries.map((entry) => _buildScheduleEntryTile(entry)),
+              if (entries.isEmpty)
+                const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 8.0),
+                  child: Text(
+                    AppStrings.noSchedule,
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.grey,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                )
+              else
+                ...entries.map((entry) => _buildScheduleEntryTile(entry)),
+              // メモ内容表示 + ボタン
+              const SizedBox(height: 12),
+              _buildMemoSection(context, ref, selectedDay),
             ],
           ),
         );
@@ -342,6 +847,133 @@ class CalendarScreen extends ConsumerWidget {
           AppStrings.dataLoadError,
           style: TextStyle(color: AppColors.error),
         ),
+      ),
+    );
+  }
+
+  /// メモセクション（内容表示 + 編集ボタン）を構築する
+  Widget _buildMemoSection(
+    BuildContext context,
+    WidgetRef ref,
+    DateTime date,
+  ) {
+    final existingMemo = ref.watch(memoForDateProvider(date));
+    final hasExistingMemo = existingMemo != null && existingMemo.isNotEmpty;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        // メモ内容表示（存在する場合）
+        if (hasExistingMemo) ...[
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.all(12),
+            decoration: BoxDecoration(
+              color: Colors.orange.shade50,
+              borderRadius: BorderRadius.circular(8),
+              border: Border.all(color: Colors.orange.shade200),
+            ),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Icon(Icons.sticky_note_2, size: 16, color: Colors.orange.shade700),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Text(
+                    existingMemo,
+                    style: TextStyle(
+                      fontSize: 13,
+                      color: Colors.orange.shade900,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 8),
+        ],
+        // メモ追加/編集ボタン
+        _buildMemoButton(context, ref, date),
+      ],
+    );
+  }
+
+  /// メモ追加/編集ボタンを構築する
+  Widget _buildMemoButton(
+    BuildContext context,
+    WidgetRef ref,
+    DateTime date,
+  ) {
+    final existingMemo = ref.watch(memoForDateProvider(date));
+    final hasExistingMemo = existingMemo != null && existingMemo.isNotEmpty;
+
+    return OutlinedButton.icon(
+      onPressed: () async {
+        final result = await showMemoDialog(
+          context: context,
+          ref: ref,
+          date: date,
+          existingMemo: existingMemo,
+        );
+        if (result != null) {
+          ref.invalidate(monthlyMemosProvider);
+        }
+      },
+      icon: Icon(
+        hasExistingMemo ? Icons.edit_note : Icons.note_add_outlined,
+        size: 18,
+      ),
+      label: Text(
+        hasExistingMemo ? 'メモを編集' : 'メモを追加',
+        style: const TextStyle(fontSize: 13),
+      ),
+      style: OutlinedButton.styleFrom(
+        minimumSize: const Size(double.infinity, 36),
+      ),
+    );
+  }
+
+  /// 天気情報ウィジェットを構築する
+  Widget _buildWeatherInfo(DailyWeather weather) {
+    return Container(
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: Colors.blue.withOpacity(0.05),
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(color: Colors.blue.withOpacity(0.15)),
+      ),
+      child: Row(
+        children: [
+          Icon(
+            weatherIcon(weather.condition),
+            color: weatherColor(weather.condition),
+            size: 28,
+          ),
+          const SizedBox(width: 12),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  weatherLabel(weather.condition),
+                  style: const TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                const SizedBox(height: 2),
+                Text(
+                  '${weather.temperatureMax.round()}° / ${weather.temperatureMin.round()}°  '
+                  '降水確率 ${weather.precipitationProbability.round()}%',
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: Colors.grey[600],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -417,5 +1049,72 @@ class CalendarScreen extends ConsumerWidget {
       case GarbageCategory.hazardous:
         return Icons.warning_amber;
     }
+  }
+
+  /// カレンダーをiCal形式でエクスポートし共有する
+  Future<void> _exportCalendar(BuildContext context, WidgetRef ref) async {
+    final regionAsync = ref.read(regionSettingProvider);
+    final regionSetting = regionAsync.valueOrNull;
+
+    if (regionSetting == null) {
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('地域が設定されていません')),
+        );
+      }
+      return;
+    }
+
+    // ローディング表示
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (_) => const Center(
+        child: Card(
+          child: Padding(
+            padding: EdgeInsets.all(24.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                CircularProgressIndicator(),
+                SizedBox(height: 16),
+                Text('エクスポート中...'),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+
+    try {
+      final scheduleService = ref.read(scheduleServiceProvider);
+      final exportService = IcalExportService(scheduleService);
+      await exportService.exportAndShare(regionSetting.districtId);
+    } catch (e) {
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('エクスポートに失敗しました: $e')),
+        );
+      }
+    } finally {
+      // ローディングダイアログを閉じる
+      if (context.mounted) {
+        Navigator.of(context).pop();
+      }
+    }
+  }
+
+  /// 地域選択画面へ遷移する
+  void _navigateToRegionSelection(BuildContext context, WidgetRef ref) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => RegionSelectionScreen(
+          onRegionSelected: () {
+            Navigator.of(context).pop();
+          },
+        ),
+      ),
+    );
   }
 }

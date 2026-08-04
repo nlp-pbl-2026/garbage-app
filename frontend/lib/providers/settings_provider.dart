@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../services/notification_service.dart';
+import 'region_provider.dart';
 
 /// NotificationServiceのプロバイダー
 ///
@@ -16,7 +17,8 @@ final notificationServiceProvider = Provider<NotificationService>((ref) {
 final reminderEnabledProvider =
     StateNotifierProvider<ReminderNotifier, AsyncValue<bool>>((ref) {
   final notificationService = ref.watch(notificationServiceProvider);
-  return ReminderNotifier(notificationService);
+  final regionSetting = ref.watch(regionSettingProvider).valueOrNull;
+  return ReminderNotifier(notificationService, regionSetting?.districtId);
 });
 
 /// リマインダー通知状態を管理するStateNotifier
@@ -26,8 +28,9 @@ final reminderEnabledProvider =
 /// 状態変更時にNotificationServiceを通じて永続化する。
 class ReminderNotifier extends StateNotifier<AsyncValue<bool>> {
   final NotificationService _notificationService;
+  final String? _districtId;
 
-  ReminderNotifier(this._notificationService)
+  ReminderNotifier(this._notificationService, this._districtId)
       : super(const AsyncValue.loading()) {
     loadState();
   }
@@ -43,8 +46,6 @@ class ReminderNotifier extends StateNotifier<AsyncValue<bool>> {
   }
 
   /// リマインダーの有効/無効を反転する
-  ///
-  /// 現在の状態がtrueならdisable、falseならenableを呼び出す。
   Future<void> toggle() async {
     final currentValue = state.valueOrNull ?? false;
     if (currentValue) {
@@ -56,11 +57,13 @@ class ReminderNotifier extends StateNotifier<AsyncValue<bool>> {
 
   /// リマインダーを有効化する
   ///
-  /// NotificationServiceのenableReminder()を呼び出し、
-  /// 状態をAsyncValue.data(true)に更新する。
+  /// 地区IDが設定されている場合に通知をスケジュールする。
   Future<void> enable() async {
     try {
-      await _notificationService.enableReminder();
+      final districtId = _districtId;
+      if (districtId != null) {
+        await _notificationService.enableReminder(districtId);
+      }
       state = const AsyncValue.data(true);
     } catch (e, st) {
       state = AsyncValue.error(e, st);
@@ -68,9 +71,6 @@ class ReminderNotifier extends StateNotifier<AsyncValue<bool>> {
   }
 
   /// リマインダーを無効化する
-  ///
-  /// NotificationServiceのdisableReminder()を呼び出し、
-  /// 状態をAsyncValue.data(false)に更新する。
   Future<void> disable() async {
     try {
       await _notificationService.disableReminder();

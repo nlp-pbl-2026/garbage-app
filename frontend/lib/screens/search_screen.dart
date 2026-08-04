@@ -1,13 +1,17 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../constants/strings.dart';
 import '../models/garbage_item.dart';
 import '../providers/search_provider.dart';
+import '../services/search_history_service.dart';
 import '../widgets/popular_items_section.dart';
 import '../widgets/region_header.dart';
 import '../widgets/search_result_tile.dart';
 import 'item_detail_screen.dart';
+import 'region_selection_screen.dart';
 
 /// ゴミ品目検索画面
 ///
@@ -32,15 +36,31 @@ class SearchScreen extends ConsumerStatefulWidget {
 class _SearchScreenState extends ConsumerState<SearchScreen> {
   /// 検索テキストフィールドのコントローラー
   late final TextEditingController _searchController;
+  final SearchHistoryService _historyService = SearchHistoryService();
+  List<String> _searchHistory = [];
+
+  /// 検索履歴保存用デバウンスタイマー
+  Timer? _historyDebounceTimer;
 
   @override
   void initState() {
     super.initState();
     _searchController = TextEditingController();
+    _loadHistory();
+  }
+
+  Future<void> _loadHistory() async {
+    final history = await _historyService.getHistory();
+    if (mounted) {
+      setState(() {
+        _searchHistory = history;
+      });
+    }
   }
 
   @override
   void dispose() {
+    _historyDebounceTimer?.cancel();
     _searchController.dispose();
     super.dispose();
   }
@@ -50,6 +70,15 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
     // 50文字制限を適用
     final trimmedValue = value.length > 50 ? value.substring(0, 50) : value;
     ref.read(searchQueryProvider.notifier).state = trimmedValue;
+
+    // デバウンス: 入力停止から1秒後に履歴保存（入力途中の文字列は保存しない）
+    _historyDebounceTimer?.cancel();
+    if (trimmedValue.trim().length >= 2) {
+      _historyDebounceTimer = Timer(const Duration(seconds: 1), () {
+        _historyService.addHistory(trimmedValue.trim()).then((_) => _loadHistory());
+      });
+    }
+
     // クリアボタンの表示/非表示を更新
     setState(() {});
   }
@@ -78,7 +107,20 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
     final searchResultsAsync = ref.watch(searchResultsProvider);
 
     return Scaffold(
-      appBar: const RegionHeader(),
+      appBar: RegionHeader(
+        onEditPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (_) => RegionSelectionScreen(
+                onRegionSelected: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ),
+          );
+        },
+      ),
       body: Column(
         children: [
           // 検索バー
@@ -192,18 +234,27 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
               ),
             ),
           ),
-        // 検索結果リスト
+        // 検索結果リスト + よく検索されるもの
         Expanded(
-          child: ListView.builder(
-            itemCount: results.length,
+          child: ListView(
             padding: const EdgeInsets.only(bottom: 16),
-            itemBuilder: (context, index) {
-              final item = results[index];
-              return SearchResultTile(
-                item: item,
-                onTap: () => _onItemTap(item),
-              );
-            },
+            children: [
+              ...results.map((item) => SearchResultTile(
+                    item: item,
+                    onTap: () => _onItemTap(item),
+                  )),
+              const SizedBox(height: 24),
+              // よく検索されるものを常に表示
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: PopularItemsSection(
+                  onItemSelected: (name) {
+                    _searchController.text = name;
+                    setState(() {});
+                  },
+                ),
+              ),
+            ],
           ),
         ),
       ],
@@ -235,18 +286,201 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
   }
 
   /// 空の状態（検索前）を構築する
-  /// よく検索される品目セクションを表示する
+  /// 検索ヒント、カテゴリクイック検索、検索履歴、よく検索される品目を表示する
   Widget _buildEmptyState() {
-    return const SingleChildScrollView(
-      padding: EdgeInsets.symmetric(horizontal: 16),
+    return SingleChildScrollView(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: 8),
+          const SizedBox(height: 16),
+          // 検索ヒントセクション
+          _buildSearchHint(),
+          const SizedBox(height: 24),
+          // カテゴリ別クイック検索
+          _buildCategoryQuickSearch(),
+          const SizedBox(height: 24),
+          // 検索履歴セクション
+          if (_searchHistory.isNotEmpty) _buildHistorySection(),
           // よく検索される品目セクション
-          PopularItemsSection(),
+          PopularItemsSection(
+            onItemSelected: (name) {
+              _searchController.text = name;
+              setState(() {});
+            },
+          ),
         ],
       ),
+    );
+  }
+
+  /// 検索ヒントカードを構築する
+  Widget _buildSearchHint() {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: [Colors.green.shade50, Colors.teal.shade50],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Row(
+        children: [
+          Icon(Icons.lightbulb_outline, color: Colors.green.shade700, size: 28),
+          const SizedBox(width: 12),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  '捨て方がわからないものを検索',
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.green.shade900,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  '品目名を入力すると分別方法がわかります',
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: Colors.green.shade700,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  /// カテゴリ別クイック検索を構築する
+  Widget _buildCategoryQuickSearch() {
+    final categories = [
+      ('可燃ごみ', Icons.local_fire_department, Colors.pink.shade400),
+      ('資源ごみ', Icons.recycling, Colors.green.shade600),
+      ('プラスチック', Icons.shopping_bag_outlined, Colors.orange.shade600),
+      ('ペットボトル', Icons.water_drop_outlined, Colors.blue.shade600),
+      ('危険ごみ', Icons.warning_amber, Colors.red.shade600),
+    ];
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Text(
+          'カテゴリから探す',
+          style: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w600,
+            color: Colors.black87,
+          ),
+        ),
+        const SizedBox(height: 12),
+        SizedBox(
+          height: 80,
+          child: ListView.separated(
+            scrollDirection: Axis.horizontal,
+            itemCount: categories.length,
+            separatorBuilder: (_, __) => const SizedBox(width: 12),
+            itemBuilder: (context, index) {
+              final (label, icon, color) = categories[index];
+              return GestureDetector(
+                onTap: () {
+                  _searchController.text = label;
+                  _onSearchChanged(label);
+                },
+                child: Container(
+                  width: 80,
+                  decoration: BoxDecoration(
+                    color: color.withOpacity(0.1),
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(color: color.withOpacity(0.3)),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(icon, color: color, size: 28),
+                      const SizedBox(height: 4),
+                      Text(
+                        label,
+                        style: TextStyle(
+                          fontSize: 10,
+                          fontWeight: FontWeight.w600,
+                          color: color,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            },
+          ),
+        ),
+      ],
+    );
+  }
+
+  /// 検索履歴セクションを構築する
+  Widget _buildHistorySection() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const Text(
+              '検索履歴',
+              style: TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
+                color: Colors.black87,
+              ),
+            ),
+            TextButton(
+              onPressed: () async {
+                await _historyService.clearHistory();
+                _loadHistory();
+              },
+              child: Text(
+                'すべて削除',
+                style: TextStyle(fontSize: 12, color: Colors.grey[600]),
+              ),
+            ),
+          ],
+        ),
+        Wrap(
+          spacing: 8,
+          runSpacing: 4,
+          children: _searchHistory.take(10).map((keyword) {
+            return GestureDetector(
+              onTap: () {
+                _searchController.text = keyword;
+                _onSearchChanged(keyword);
+              },
+              child: Chip(
+                label: Text(keyword, style: const TextStyle(fontSize: 13)),
+                deleteIcon: const Icon(Icons.close, size: 16),
+                onDeleted: () async {
+                  await _historyService.removeHistory(keyword);
+                  _loadHistory();
+                },
+                backgroundColor: Colors.grey[100],
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              ),
+            );
+          }).toList(),
+        ),
+        const SizedBox(height: 16),
+      ],
     );
   }
 }

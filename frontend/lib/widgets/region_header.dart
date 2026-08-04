@@ -3,7 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../constants/colors.dart';
 import '../constants/strings.dart';
+import '../providers/auth_provider.dart';
 import '../providers/region_provider.dart';
+import '../screens/login_screen.dart';
 
 /// 地域ヘッダーウィジェット
 ///
@@ -11,13 +13,18 @@ import '../providers/region_provider.dart';
 /// 位置アイコン + 市区町村名・地区名を表示し、
 /// 編集アイコン押下で設定画面への遷移を行う。
 /// 地域未設定時は未設定メッセージを表示する。
+/// 右端にログイン状態アイコンを表示する。
 class RegionHeader extends ConsumerWidget implements PreferredSizeWidget {
   /// 編集アイコン押下時のコールバック（設定画面へ遷移）
   final VoidCallback? onEditPressed;
 
+  /// AppBarに追加表示するアクションウィジェット
+  final List<Widget>? extraActions;
+
   const RegionHeader({
     super.key,
     this.onEditPressed,
+    this.extraActions,
   });
 
   @override
@@ -26,6 +33,7 @@ class RegionHeader extends ConsumerWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final regionAsync = ref.watch(regionSettingProvider);
+    final authAsync = ref.watch(authStateProvider);
 
     return AppBar(
       backgroundColor: Colors.white,
@@ -74,6 +82,9 @@ class RegionHeader extends ConsumerWidget implements PreferredSizeWidget {
         ),
       ),
       actions: [
+        // 追加アクション（各画面から指定可能）
+        if (extraActions != null) ...extraActions!,
+        // 地域変更ボタン
         IconButton(
           icon: const Icon(
             Icons.edit,
@@ -82,7 +93,81 @@ class RegionHeader extends ConsumerWidget implements PreferredSizeWidget {
           onPressed: onEditPressed,
           tooltip: AppStrings.changeRegion,
         ),
+        // ログイン状態アイコン（タップでログイン画面へ遷移）
+        _buildAuthStatusIcon(context, authAsync),
+        const SizedBox(width: 4),
       ],
+    );
+  }
+
+  /// ログイン状態を示すアイコンウィジェット（タップ可能）
+  Widget _buildAuthStatusIcon(BuildContext context, AsyncValue<AuthState> authAsync) {
+    return authAsync.when(
+      data: (authState) {
+        if (authState.isLoggedIn) {
+          return GestureDetector(
+            onTap: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text('${authState.username} でログイン中'),
+                  duration: const Duration(seconds: 2),
+                ),
+              );
+            },
+            child: Tooltip(
+              message: '${authState.username} でログイン中',
+              child: Container(
+                padding: const EdgeInsets.all(6),
+                decoration: BoxDecoration(
+                  color: AppColors.primary.withOpacity(0.1),
+                  shape: BoxShape.circle,
+                ),
+                child: const Icon(
+                  Icons.person,
+                  color: AppColors.primary,
+                  size: 20,
+                ),
+              ),
+            ),
+          );
+        } else {
+          return GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => const LoginScreen(),
+                ),
+              );
+            },
+            child: Tooltip(
+              message: 'ログイン / 新規登録',
+              child: Container(
+                padding: const EdgeInsets.all(6),
+                decoration: BoxDecoration(
+                  color: Colors.grey.withOpacity(0.1),
+                  shape: BoxShape.circle,
+                ),
+                child: const Icon(
+                  Icons.person_outline,
+                  color: Colors.grey,
+                  size: 20,
+                ),
+              ),
+            ),
+          );
+        }
+      },
+      loading: () => const SizedBox(
+        width: 32,
+        height: 32,
+        child: CircularProgressIndicator(strokeWidth: 2),
+      ),
+      error: (_, __) => const Icon(
+        Icons.person_off,
+        color: Colors.grey,
+        size: 20,
+      ),
     );
   }
 }

@@ -2,6 +2,7 @@
 ///
 /// 都道府県、市区町村、地区の3階層構造で地域データを管理する。
 /// RegionSettingは選択された地域設定を保持し、SharedPreferencesに保存される。
+/// SavedRegionは複数地区管理のための保存済み地区データを保持する。
 
 /// 都道府県
 class Prefecture {
@@ -45,10 +46,14 @@ class Municipality {
   final String prefectureId;
   final String name;
 
+  /// 郡名（町の場合のみ。市の場合はnull）
+  final String? gun;
+
   Municipality({
     required this.id,
     required this.prefectureId,
     required this.name,
+    this.gun,
   });
 
   factory Municipality.fromJson(Map<String, dynamic> json) {
@@ -56,16 +61,24 @@ class Municipality {
       id: json['id'] as String,
       prefectureId: json['prefectureId'] as String,
       name: json['name'] as String,
+      gun: json['gun'] as String?,
     );
   }
 
   Map<String, dynamic> toJson() {
-    return {
+    final map = <String, dynamic>{
       'id': id,
       'prefectureId': prefectureId,
       'name': name,
     };
+    if (gun != null) {
+      map['gun'] = gun;
+    }
+    return map;
   }
+
+  /// 表示用の名前（郡名付き: 「越智郡 上島町」）
+  String get displayName => gun != null ? '$gun $name' : name;
 
   @override
   bool operator ==(Object other) =>
@@ -81,7 +94,7 @@ class Municipality {
 
   @override
   String toString() =>
-      'Municipality(id: $id, prefectureId: $prefectureId, name: $name)';
+      'Municipality(id: $id, prefectureId: $prefectureId, name: $name, gun: $gun)';
 }
 
 /// 地区
@@ -211,4 +224,73 @@ class RegionSetting {
       'RegionSetting(prefectureId: $prefectureId, prefectureName: $prefectureName, '
       'municipalityId: $municipalityId, municipalityName: $municipalityName, '
       'districtId: $districtId, districtName: $districtName)';
+}
+
+/// 保存済み地区（複数地区管理用）
+///
+/// ユーザーが保存した地区設定を保持する。
+/// 「自宅」「職場」などのラベルを付けて複数保存でき、
+/// アクティブな地区を切り替えて使用する。最大5件まで保存可能。
+class SavedRegion {
+  final String id;
+  final String label;
+  final RegionSetting setting;
+  final bool isActive;
+
+  SavedRegion({
+    required this.id,
+    required this.label,
+    required this.setting,
+    this.isActive = false,
+  });
+
+  factory SavedRegion.fromJson(Map<String, dynamic> json) {
+    return SavedRegion(
+      id: json['id'] as String,
+      label: json['label'] as String,
+      setting: RegionSetting.fromJson(json['setting'] as Map<String, dynamic>),
+      isActive: json['isActive'] as bool? ?? false,
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'label': label,
+      'setting': setting.toJson(),
+      'isActive': isActive,
+    };
+  }
+
+  SavedRegion copyWith({
+    String? id,
+    String? label,
+    RegionSetting? setting,
+    bool? isActive,
+  }) {
+    return SavedRegion(
+      id: id ?? this.id,
+      label: label ?? this.label,
+      setting: setting ?? this.setting,
+      isActive: isActive ?? this.isActive,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is SavedRegion &&
+          runtimeType == other.runtimeType &&
+          id == other.id &&
+          label == other.label &&
+          setting == other.setting &&
+          isActive == other.isActive;
+
+  @override
+  int get hashCode =>
+      id.hashCode ^ label.hashCode ^ setting.hashCode ^ isActive.hashCode;
+
+  @override
+  String toString() =>
+      'SavedRegion(id: $id, label: $label, setting: $setting, isActive: $isActive)';
 }

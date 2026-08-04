@@ -3,7 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../constants/colors.dart';
 import '../constants/strings.dart';
+import '../widgets/ai_chat_widget.dart';
 import 'calendar_screen.dart';
+import 'image_input_screen.dart';
 import 'search_screen.dart';
 import 'settings_screen.dart';
 
@@ -20,21 +22,27 @@ class MainScreen extends ConsumerStatefulWidget {
 
 class _MainScreenState extends ConsumerState<MainScreen> {
   /// 現在選択中のタブインデックス
-  int _currentIndex = 0;
+  int _currentIndex = 1;
 
   /// 各タブに対応する画面ウィジェット
   final List<Widget> _screens = const [
     SearchScreen(),
     CalendarScreen(),
+    ImageInputScreen(),
     SettingsScreen(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: IndexedStack(
-        index: _currentIndex,
-        children: _screens,
+      body: Stack(
+        children: [
+          IndexedStack(
+            index: _currentIndex,
+            children: _screens,
+          ),
+          const AiChatWidget(),
+        ],
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
@@ -43,7 +51,7 @@ class _MainScreenState extends ConsumerState<MainScreen> {
             _currentIndex = index;
           });
         },
-        selectedItemColor: Colors.white,
+        selectedItemColor: AppColors.primary,
         unselectedItemColor: Colors.grey,
         backgroundColor: Colors.white,
         type: BottomNavigationBarType.fixed,
@@ -57,7 +65,11 @@ class _MainScreenState extends ConsumerState<MainScreen> {
             label: AppStrings.tabCalendar,
           ),
           BottomNavigationBarItem(
-            icon: _buildIcon(Icons.settings, 2),
+            icon: _buildIcon(Icons.camera_alt, 2),
+            label: AppStrings.tabImageInput,
+          ),
+          BottomNavigationBarItem(
+            icon: _buildIcon(Icons.settings, 3),
             label: AppStrings.tabSettings,
           ),
         ],

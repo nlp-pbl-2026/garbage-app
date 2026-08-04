@@ -36,6 +36,9 @@ class AppStrings {
   /// 設定タブラベル
   static const String tabSettings = '設定';
 
+  /// 画像入力タブラベル
+  static const String tabImageInput = '画像入力';
+
   // 地域選択画面
   /// 地域選択画面タイトル
   static const String regionSelectionTitle = '地域を選択';
