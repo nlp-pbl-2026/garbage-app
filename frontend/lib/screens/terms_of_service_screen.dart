@@ -105,7 +105,7 @@ class _TermsOfServiceScreenState extends State<TermsOfServiceScreen> {
   static const String _termsJa = '''
 利用規約
 
-最終更新日: 2024年1月1日
+最終更新日: 2026年7月1日
 
 本利用規約（以下「本規約」）は、愛媛ゴミ出しアプリ（以下「本アプリ」）の利用条件を定めるものです。本アプリをご利用いただく前に、本規約をよくお読みください。本アプリをダウンロードまたは使用することにより、本規約に同意したものとみなされます。
 
@@ -153,7 +153,7 @@ class _TermsOfServiceScreenState extends State<TermsOfServiceScreen> {
   static const String _termsEn = '''
 Terms of Service
 
-Last updated: January 1, 2024
+Last updated: July 1, 2026
 
 These Terms of Service ("Terms") govern your use of the Ehime Garbage Collection App ("the App"). Please read these Terms carefully before using the App. By downloading or using the App, you agree to be bound by these Terms.
 

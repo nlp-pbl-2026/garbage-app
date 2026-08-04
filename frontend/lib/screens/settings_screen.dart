@@ -677,14 +677,32 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
           '${region.setting.municipalityName} ${region.setting.districtName}',
           style: const TextStyle(fontSize: 12, color: Colors.grey),
         ),
-        trailing: region.isActive
-            ? const Chip(
+        trailing: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            if (region.isActive)
+              const Chip(
                 label: Text('使用中', style: TextStyle(fontSize: 11)),
                 backgroundColor: Color(0xFFE8F5E9),
                 padding: EdgeInsets.zero,
                 visualDensity: VisualDensity.compact,
-              )
-            : null,
+              ),
+            if (!region.isActive && totalCount > 1)
+              IconButton(
+                icon: const Icon(Icons.delete_outline, size: 20),
+                color: Colors.red[400],
+                onPressed: () async {
+                  final confirmed =
+                      await _showDeleteConfirmDialog(context, region.label);
+                  if (confirmed == true) {
+                    ref
+                        .read(multiRegionProvider.notifier)
+                        .removeRegion(region.id);
+                  }
+                },
+              ),
+          ],
+        ),
         onTap: region.isActive
             ? null
             : () {
