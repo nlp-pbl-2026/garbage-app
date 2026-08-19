@@ -20,7 +20,14 @@ class RegionSelectionScreen extends ConsumerStatefulWidget {
   /// 地域選択完了時のコールバック
   final VoidCallback? onRegionSelected;
 
-  const RegionSelectionScreen({super.key, this.onRegionSelected});
+  /// trueの場合、画面表示時にGPS自動検出を開始する
+  final bool autoDetect;
+
+  const RegionSelectionScreen({
+    super.key,
+    this.onRegionSelected,
+    this.autoDetect = false,
+  });
 
   @override
   ConsumerState<RegionSelectionScreen> createState() =>
@@ -41,6 +48,18 @@ class _RegionSelectionScreenState
 
   // 保存中フラグ
   bool _isSaving = false;
+
+<<<<<<< HEAD
+  @override
+  void initState() {
+    super.initState();
+    // autoDetect: true の場合、画面描画後にGPS検出を自動実行する
+    if (widget.autoDetect) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        ref.read(gpsDetectionProvider.notifier).detectDistrict();
+      });
+    }
+  }
 
   /// 市区町村選択時の処理
   void _onMunicipalitySelected(Municipality municipality) {
@@ -380,8 +399,10 @@ class _RegionSelectionScreenState
               const SizedBox(height: 12),
               // 説明文
               _buildDescription(),
-              const SizedBox(height: 32),
-              // 2つの選択カード
+              const SizedBox(height: 16),
+              // GPS「現在地から設定」ボタン
+              _buildGpsDetectionButton(),
+              const SizedBox(height: 32);
               Expanded(
                 child: SingleChildScrollView(
                   child: Column(
