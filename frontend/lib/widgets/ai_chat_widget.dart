@@ -229,7 +229,7 @@ class _AiChatWidgetState extends ConsumerState<AiChatWidget>
         child: Padding(
           padding: const EdgeInsets.all(24),
           child: Text(
-            'ゴミの分別やアプリの\n使い方を聞いてください！',
+            'ゴミの分別について\n聞いてください！',
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 14,
