@@ -22,11 +22,14 @@ class RegionSelectionScreen extends ConsumerStatefulWidget {
   /// 地域選択完了時のコールバック
   final VoidCallback? onRegionSelected;
 
-  /// GPS自動検出を開始するかどうか
+  /// trueの場合、画面表示時にGPS自動検出を開始する
   final bool autoDetect;
 
-  const RegionSelectionScreen(
-      {super.key, this.onRegionSelected, this.autoDetect = false});
+  const RegionSelectionScreen({
+    super.key,
+    this.onRegionSelected,
+    this.autoDetect = false,
+  });
 
   @override
   ConsumerState<RegionSelectionScreen> createState() =>
@@ -50,6 +53,7 @@ class _RegionSelectionScreenState extends ConsumerState<RegionSelectionScreen> {
   @override
   void initState() {
     super.initState();
+    // autoDetect: true の場合、画面描画後にGPS検出を自動実行する
     if (widget.autoDetect) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         ref.read(gpsDetectionProvider.notifier).detectDistrict();

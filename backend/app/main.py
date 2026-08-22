@@ -10,6 +10,7 @@ from .middleware.language_middleware import LanguageMiddleware
 from .routers.auth_router import router as auth_router
 from .routers.bulky_waste_router import router as bulky_waste_router
 from .routers.image_router import router as image_router
+from .routers.rag_router import router as rag_router
 
 
 @asynccontextmanager
@@ -41,6 +42,7 @@ app.add_middleware(LanguageMiddleware)
 app.include_router(auth_router)
 app.include_router(bulky_waste_router)
 app.include_router(image_router)
+app.include_router(rag_router)
 
 
 @app.get("/api/health")

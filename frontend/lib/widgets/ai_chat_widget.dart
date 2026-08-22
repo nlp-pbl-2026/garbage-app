@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../l10n/app_localizations.dart';
-import '../providers/locale_provider.dart';
-import '../services/gemini_service.dart';
+import '../models/region.dart';
+import '../providers/region_provider.dart';
+import '../services/rag_service.dart';
 
 /// チャットメッセージのモデル
 class ChatMessage {
@@ -17,7 +17,7 @@ class ChatMessage {
 ///
 /// 画面右端に縦書きバナーを表示し、タップでチャットパネルを展開する。
 /// ゴミ分別に関する質問に特化したAIチャットボット。
-/// ユーザーの選択言語でAI応答を生成する。
+/// Bedrock Knowledge Base RAG を利用して回答を取得する。
 class AiChatWidget extends ConsumerStatefulWidget {
   const AiChatWidget({super.key});
 
@@ -32,7 +32,7 @@ class _AiChatWidgetState extends ConsumerState<AiChatWidget>
   final List<ChatMessage> _messages = [];
   final TextEditingController _textController = TextEditingController();
   final ScrollController _scrollController = ScrollController();
-  final GeminiService _geminiService = GeminiService();
+  final RagService _ragService = RagService();
 
   static const double _panelWidth = 300.0;
   static const double _bannerWidth = 48.0;
@@ -68,12 +68,14 @@ class _AiChatWidgetState extends ConsumerState<AiChatWidget>
     });
     _scrollToBottom();
 
-    // 現在のロケールの言語コードを取得してsendMessageに渡す
-    final languageCode = ref.read(localeProvider).languageCode;
-    final response = await _geminiService.sendMessage(
-      text,
-      languageCode: languageCode,
-    );
+    // 現在選択中の地域設定を取得
+    RegionSetting? region;
+    final regionState = ref.read(regionSettingProvider);
+    regionState.whenData((setting) {
+      region = setting;
+    });
+
+    final response = await _ragService.sendMessage(text, region: region);
 
     setState(() {
       if (response != null) {
@@ -233,7 +235,7 @@ class _AiChatWidgetState extends ConsumerState<AiChatWidget>
         child: Padding(
           padding: const EdgeInsets.all(24),
           child: Text(
-            'ゴミの分別やアプリの\n使い方を聞いてください！',
+            'ゴミの分別について\n聞いてください！',
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 14,
@@ -275,7 +277,11 @@ class _AiChatWidgetState extends ConsumerState<AiChatWidget>
         ),
         child: Text(
           message.text,
-          style: const TextStyle(fontSize: 13, height: 1.4),
+          style: const TextStyle(
+            fontSize: 13,
+            height: 1.4,
+            color: Color(0xFF212121),
+          ),
         ),
       ),
     );
@@ -338,7 +344,7 @@ class _AiChatWidgetState extends ConsumerState<AiChatWidget>
                 ),
                 isDense: true,
               ),
-              style: const TextStyle(fontSize: 13),
+              style: const TextStyle(fontSize: 13, color: Color(0xFF212121)),
               onSubmitted: (_) => _sendMessage(),
               textInputAction: TextInputAction.send,
             ),
