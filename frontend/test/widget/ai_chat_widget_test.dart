@@ -7,18 +7,12 @@ import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
 
 import 'package:garbage_app/models/region.dart';
-import 'package:garbage_app/providers/region_provider.dart';
 import 'package:garbage_app/services/rag_service.dart';
 import 'package:garbage_app/widgets/ai_chat_widget.dart';
 
-/// テスト用: RegionSettingProvider の値を直接オーバーライドするプロバイダー
-final _testRegionProvider =
-    StateProvider<RegionSetting?>((ref) => null);
-
 void main() {
   group('AiChatWidget RAG integration', () {
-    testWidgets('RegionSettingが存在するとき、RagServiceに地域情報が渡される',
-        (tester) async {
+    testWidgets('RegionSettingが存在するとき、RagServiceに地域情報が渡される', (tester) async {
       Map<String, dynamic>? capturedBody;
       final mockClient = MockClient((request) async {
         capturedBody = jsonDecode(request.body) as Map<String, dynamic>;
@@ -178,11 +172,14 @@ class _TestableAiChatState extends State<_TestableAiChat> {
     });
 
     // 本番の AiChatWidget と同じパターン: regionを渡す
-    final response =
-        await _ragService.sendMessage(text, region: widget.region);
+    final result = await _ragService.sendMessage(text, region: widget.region);
 
     setState(() {
-      _messages.add(ChatMessage(role: 'assistant', text: response));
+      if (result.errorType == RagErrorType.none && result.answer != null) {
+        _messages.add(ChatMessage(role: 'assistant', text: result.answer!));
+      } else {
+        _messages.add(ChatMessage(role: 'assistant', text: 'エラー'));
+      }
       _isLoading = false;
     });
   }
