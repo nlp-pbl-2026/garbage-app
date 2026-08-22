@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../l10n/app_localizations.dart';
 import '../models/region.dart';
 import '../providers/region_provider.dart';
 import '../services/rag_service.dart';
@@ -75,19 +76,38 @@ class _AiChatWidgetState extends ConsumerState<AiChatWidget>
       region = setting;
     });
 
-    final response = await _ragService.sendMessage(text, region: region);
+    final result = await _ragService.sendMessage(text, region: region);
+    final l10n = AppLocalizations.of(context);
 
     setState(() {
-      if (response != null) {
-        _messages.add(ChatMessage(role: 'assistant', text: response));
+      if (result.errorType == RagErrorType.none && result.answer != null) {
+        _messages.add(ChatMessage(role: 'assistant', text: result.answer!));
       } else {
-        // APIエラー時はARBファイルのローカライズ済みエラーメッセージを表示
-        final errorMessage = AppLocalizations.of(context).aiErrorMessage;
+        final errorMessage = _getLocalizedError(l10n, result.errorType);
         _messages.add(ChatMessage(role: 'assistant', text: errorMessage));
       }
       _isLoading = false;
     });
     _scrollToBottom();
+  }
+
+  /// RagErrorType に基づいてローカライズ済みエラーメッセージを返す
+  String _getLocalizedError(AppLocalizations l10n, RagErrorType errorType) {
+    switch (errorType) {
+      case RagErrorType.noResponse:
+        return l10n.aiNoResponse;
+      case RagErrorType.validationError:
+        return l10n.aiValidationError;
+      case RagErrorType.timeout:
+        return l10n.aiTimeoutError;
+      case RagErrorType.serviceUnavailable:
+        return l10n.aiServiceUnavailable;
+      case RagErrorType.networkError:
+        return l10n.aiNetworkError;
+      case RagErrorType.genericError:
+      case RagErrorType.none:
+        return l10n.aiGenericError;
+    }
   }
 
   void _scrollToBottom() {
@@ -116,15 +136,11 @@ class _AiChatWidgetState extends ConsumerState<AiChatWidget>
           width: _panelWidth,
           child: Material(
             elevation: 8,
-            borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(12),
-            ),
+            borderRadius: const BorderRadius.only(topLeft: Radius.circular(12)),
             child: Container(
               decoration: const BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(12),
-                ),
+                borderRadius: BorderRadius.only(topLeft: Radius.circular(12)),
               ),
               child: Column(
                 children: [
@@ -178,7 +194,7 @@ class _AiChatWidgetState extends ConsumerState<AiChatWidget>
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8),
                   child: Text(
-                    'AIが質問にお答えします',
+                    AppLocalizations.of(context).aiBannerText,
                     style: TextStyle(
                       fontSize: 13,
                       fontWeight: FontWeight.w600,
@@ -201,18 +217,16 @@ class _AiChatWidgetState extends ConsumerState<AiChatWidget>
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
       decoration: BoxDecoration(
         color: const Color(0xFFB3D4FC),
-        border: Border(
-          bottom: BorderSide(color: Colors.grey[300]!),
-        ),
+        border: Border(bottom: BorderSide(color: Colors.grey[300]!)),
       ),
       child: Row(
         children: [
           const Icon(Icons.smart_toy, size: 20, color: Colors.blueGrey),
           const SizedBox(width: 8),
-          const Expanded(
+          Expanded(
             child: Text(
-              'AIアシスタント',
-              style: TextStyle(
+              AppLocalizations.of(context).aiAssistantTitle,
+              style: const TextStyle(
                 fontSize: 15,
                 fontWeight: FontWeight.bold,
                 color: Colors.blueGrey,
@@ -235,12 +249,9 @@ class _AiChatWidgetState extends ConsumerState<AiChatWidget>
         child: Padding(
           padding: const EdgeInsets.all(24),
           child: Text(
-            'ゴミの分別について\n聞いてください！',
+            AppLocalizations.of(context).aiEmptyStateText,
             textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 14,
-              color: Colors.grey[500],
-            ),
+            style: TextStyle(fontSize: 14, color: Colors.grey[500]),
           ),
         ),
       );
@@ -268,9 +279,7 @@ class _AiChatWidgetState extends ConsumerState<AiChatWidget>
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 4),
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-        constraints: BoxConstraints(
-          maxWidth: _panelWidth * 0.75,
-        ),
+        constraints: BoxConstraints(maxWidth: _panelWidth * 0.75),
         decoration: BoxDecoration(
           color: isUser ? const Color(0xFFDCF8C6) : Colors.grey[200],
           borderRadius: BorderRadius.circular(12),
@@ -316,9 +325,7 @@ class _AiChatWidgetState extends ConsumerState<AiChatWidget>
       padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(
         color: Colors.white,
-        border: Border(
-          top: BorderSide(color: Colors.grey[300]!),
-        ),
+        border: Border(top: BorderSide(color: Colors.grey[300]!)),
       ),
       child: Row(
         children: [
@@ -326,10 +333,12 @@ class _AiChatWidgetState extends ConsumerState<AiChatWidget>
             child: TextField(
               controller: _textController,
               decoration: InputDecoration(
-                hintText: '質問を入力...',
+                hintText: AppLocalizations.of(context).aiInputHint,
                 hintStyle: TextStyle(fontSize: 13, color: Colors.grey[400]),
-                contentPadding:
-                    const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                contentPadding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 8,
+                ),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(20),
                   borderSide: BorderSide(color: Colors.grey[300]!),
@@ -358,10 +367,7 @@ class _AiChatWidgetState extends ConsumerState<AiChatWidget>
               size: 22,
             ),
             padding: EdgeInsets.zero,
-            constraints: const BoxConstraints(
-              minWidth: 36,
-              minHeight: 36,
-            ),
+            constraints: const BoxConstraints(minWidth: 36, minHeight: 36),
           ),
         ],
       ),

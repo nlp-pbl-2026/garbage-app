@@ -266,6 +266,56 @@
     "description": "AI chat error message"
   },
 
+  "aiBannerText": "AI answers your questions",
+  "@aiBannerText": {
+    "description": "AI chat banner text"
+  },
+
+  "aiAssistantTitle": "AI Assistant",
+  "@aiAssistantTitle": {
+    "description": "AI chat header title"
+  },
+
+  "aiEmptyStateText": "Ask me about\ngarbage sorting!",
+  "@aiEmptyStateText": {
+    "description": "AI chat empty state text"
+  },
+
+  "aiInputHint": "Type your question...",
+  "@aiInputHint": {
+    "description": "AI chat input hint"
+  },
+
+  "aiNoResponse": "No response from AI.",
+  "@aiNoResponse": {
+    "description": "AI no response message"
+  },
+
+  "aiValidationError": "Please enter a question.",
+  "@aiValidationError": {
+    "description": "AI input validation error"
+  },
+
+  "aiTimeoutError": "Request timed out. Please try again later.",
+  "@aiTimeoutError": {
+    "description": "AI timeout error"
+  },
+
+  "aiServiceUnavailable": "AI service is unavailable. Please try again later.",
+  "@aiServiceUnavailable": {
+    "description": "AI service unavailable error"
+  },
+
+  "aiGenericError": "An error occurred. Please try again later.",
+  "@aiGenericError": {
+    "description": "AI generic error"
+  },
+
+  "aiNetworkError": "Network error. Please check your internet connection.",
+  "@aiNetworkError": {
+    "description": "AI network error"
+  },
+
   "notificationTomorrowTitle": "Tomorrow's Garbage",
   "@notificationTomorrowTitle": {
     "description": "Tomorrow collection reminder notification title"

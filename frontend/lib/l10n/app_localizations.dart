@@ -66,7 +66,7 @@ import 'app_localizations_zh.dart';
 /// property.
 abstract class AppLocalizations {
   AppLocalizations(String locale)
-      : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+    : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
@@ -89,11 +89,11 @@ abstract class AppLocalizations {
   /// of delegates is preferred or required.
   static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
       <LocalizationsDelegate<dynamic>>[
-    delegate,
-    GlobalMaterialLocalizations.delegate,
-    GlobalCupertinoLocalizations.delegate,
-    GlobalWidgetsLocalizations.delegate,
-  ];
+        delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ];
 
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
@@ -101,7 +101,7 @@ abstract class AppLocalizations {
     Locale('ja'),
     Locale('pt'),
     Locale('vi'),
-    Locale('zh')
+    Locale('zh'),
   ];
 
   /// アプリ名
@@ -421,6 +421,66 @@ abstract class AppLocalizations {
   /// In ja, this message translates to:
   /// **'リクエストを完了できませんでした。しばらくしてからお試しください。'**
   String get aiErrorMessage;
+
+  /// AIチャットバナーテキスト
+  ///
+  /// In ja, this message translates to:
+  /// **'AIが質問にお答えします'**
+  String get aiBannerText;
+
+  /// AIチャットヘッダータイトル
+  ///
+  /// In ja, this message translates to:
+  /// **'AIアシスタント'**
+  String get aiAssistantTitle;
+
+  /// AIチャット空状態テキスト
+  ///
+  /// In ja, this message translates to:
+  /// **'ゴミの分別について\n聞いてください！'**
+  String get aiEmptyStateText;
+
+  /// AIチャット入力ヒント
+  ///
+  /// In ja, this message translates to:
+  /// **'質問を入力...'**
+  String get aiInputHint;
+
+  /// AI無応答メッセージ
+  ///
+  /// In ja, this message translates to:
+  /// **'AIからの応答がありませんでした。'**
+  String get aiNoResponse;
+
+  /// AI入力バリデーションエラー
+  ///
+  /// In ja, this message translates to:
+  /// **'質問を入力してください。'**
+  String get aiValidationError;
+
+  /// AIタイムアウトエラー
+  ///
+  /// In ja, this message translates to:
+  /// **'リクエストがタイムアウトしました。しばらくしてからお試しください。'**
+  String get aiTimeoutError;
+
+  /// AIサービス利用不可エラー
+  ///
+  /// In ja, this message translates to:
+  /// **'AIサービスに接続できません。しばらくしてからお試しください。'**
+  String get aiServiceUnavailable;
+
+  /// AI一般エラー
+  ///
+  /// In ja, this message translates to:
+  /// **'エラーが発生しました。しばらくしてからお試しください。'**
+  String get aiGenericError;
+
+  /// AIネットワークエラー
+  ///
+  /// In ja, this message translates to:
+  /// **'通信エラーが発生しました。インターネット接続を確認してください。'**
+  String get aiNetworkError;
 
   /// 明日の収集リマインダー通知タイトル
   ///
@@ -972,8 +1032,9 @@ AppLocalizations lookupAppLocalizations(Locale locale) {
   }
 
   throw FlutterError(
-      'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
-      'an issue with the localizations generation tool. Please file an issue '
-      'on GitHub with a reproducible sample app and the gen-l10n configuration '
-      'that was used.');
+    'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
+    'an issue with the localizations generation tool. Please file an issue '
+    'on GitHub with a reproducible sample app and the gen-l10n configuration '
+    'that was used.',
+  );
 }

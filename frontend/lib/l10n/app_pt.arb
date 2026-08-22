@@ -266,6 +266,56 @@
     "description": "Mensagem de erro do chat IA"
   },
 
+  "aiBannerText": "IA responde suas perguntas",
+  "@aiBannerText": {
+    "description": "Texto do banner do chat IA"
+  },
+
+  "aiAssistantTitle": "Assistente IA",
+  "@aiAssistantTitle": {
+    "description": "Título do cabeçalho do chat IA"
+  },
+
+  "aiEmptyStateText": "Pergunte sobre\na separação de lixo!",
+  "@aiEmptyStateText": {
+    "description": "Texto do estado vazio do chat IA"
+  },
+
+  "aiInputHint": "Digite sua pergunta...",
+  "@aiInputHint": {
+    "description": "Dica de entrada do chat IA"
+  },
+
+  "aiNoResponse": "Sem resposta da IA.",
+  "@aiNoResponse": {
+    "description": "Mensagem de sem resposta da IA"
+  },
+
+  "aiValidationError": "Por favor, insira uma pergunta.",
+  "@aiValidationError": {
+    "description": "Erro de validação de entrada da IA"
+  },
+
+  "aiTimeoutError": "A solicitação expirou. Tente novamente mais tarde.",
+  "@aiTimeoutError": {
+    "description": "Erro de timeout da IA"
+  },
+
+  "aiServiceUnavailable": "Serviço de IA indisponível. Tente novamente mais tarde.",
+  "@aiServiceUnavailable": {
+    "description": "Erro de serviço de IA indisponível"
+  },
+
+  "aiGenericError": "Ocorreu um erro. Tente novamente mais tarde.",
+  "@aiGenericError": {
+    "description": "Erro genérico da IA"
+  },
+
+  "aiNetworkError": "Erro de rede. Verifique sua conexão com a internet.",
+  "@aiNetworkError": {
+    "description": "Erro de rede da IA"
+  },
+
   "notificationTomorrowTitle": "Lixo de Amanhã",
   "@notificationTomorrowTitle": {
     "description": "Título da notificação de lembrete de coleta de amanhã"

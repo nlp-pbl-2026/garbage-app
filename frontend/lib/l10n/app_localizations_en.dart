@@ -173,6 +173,38 @@ class AppLocalizationsEn extends AppLocalizations {
       'Unable to complete the request. Please try again later.';
 
   @override
+  String get aiBannerText => 'AI answers your questions';
+
+  @override
+  String get aiAssistantTitle => 'AI Assistant';
+
+  @override
+  String get aiEmptyStateText => 'Ask me about\ngarbage sorting!';
+
+  @override
+  String get aiInputHint => 'Type your question...';
+
+  @override
+  String get aiNoResponse => 'No response from AI.';
+
+  @override
+  String get aiValidationError => 'Please enter a question.';
+
+  @override
+  String get aiTimeoutError => 'Request timed out. Please try again later.';
+
+  @override
+  String get aiServiceUnavailable =>
+      'AI service is unavailable. Please try again later.';
+
+  @override
+  String get aiGenericError => 'An error occurred. Please try again later.';
+
+  @override
+  String get aiNetworkError =>
+      'Network error. Please check your internet connection.';
+
+  @override
   String get notificationTomorrowTitle => 'Tomorrow\'s Garbage';
 
   @override

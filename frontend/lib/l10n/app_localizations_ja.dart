@@ -169,6 +169,36 @@ class AppLocalizationsJa extends AppLocalizations {
   String get aiErrorMessage => 'リクエストを完了できませんでした。しばらくしてからお試しください。';
 
   @override
+  String get aiBannerText => 'AIが質問にお答えします';
+
+  @override
+  String get aiAssistantTitle => 'AIアシスタント';
+
+  @override
+  String get aiEmptyStateText => 'ゴミの分別について\n聞いてください！';
+
+  @override
+  String get aiInputHint => '質問を入力...';
+
+  @override
+  String get aiNoResponse => 'AIからの応答がありませんでした。';
+
+  @override
+  String get aiValidationError => '質問を入力してください。';
+
+  @override
+  String get aiTimeoutError => 'リクエストがタイムアウトしました。しばらくしてからお試しください。';
+
+  @override
+  String get aiServiceUnavailable => 'AIサービスに接続できません。しばらくしてからお試しください。';
+
+  @override
+  String get aiGenericError => 'エラーが発生しました。しばらくしてからお試しください。';
+
+  @override
+  String get aiNetworkError => '通信エラーが発生しました。インターネット接続を確認してください。';
+
+  @override
   String get notificationTomorrowTitle => '明日のゴミ出し';
 
   @override

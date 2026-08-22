@@ -173,6 +173,39 @@ class AppLocalizationsPt extends AppLocalizations {
       'Não foi possível concluir a solicitação. Tente novamente mais tarde.';
 
   @override
+  String get aiBannerText => 'IA responde suas perguntas';
+
+  @override
+  String get aiAssistantTitle => 'Assistente IA';
+
+  @override
+  String get aiEmptyStateText => 'Pergunte sobre\na separação de lixo!';
+
+  @override
+  String get aiInputHint => 'Digite sua pergunta...';
+
+  @override
+  String get aiNoResponse => 'Sem resposta da IA.';
+
+  @override
+  String get aiValidationError => 'Por favor, insira uma pergunta.';
+
+  @override
+  String get aiTimeoutError =>
+      'A solicitação expirou. Tente novamente mais tarde.';
+
+  @override
+  String get aiServiceUnavailable =>
+      'Serviço de IA indisponível. Tente novamente mais tarde.';
+
+  @override
+  String get aiGenericError => 'Ocorreu um erro. Tente novamente mais tarde.';
+
+  @override
+  String get aiNetworkError =>
+      'Erro de rede. Verifique sua conexão com a internet.';
+
+  @override
   String get notificationTomorrowTitle => 'Lixo de Amanhã';
 
   @override

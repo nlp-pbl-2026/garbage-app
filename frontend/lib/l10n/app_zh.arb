@@ -266,6 +266,56 @@
     "description": "AI聊天错误消息"
   },
 
+  "aiBannerText": "AI为您解答问题",
+  "@aiBannerText": {
+    "description": "AI聊天横幅文字"
+  },
+
+  "aiAssistantTitle": "AI助手",
+  "@aiAssistantTitle": {
+    "description": "AI聊天标题"
+  },
+
+  "aiEmptyStateText": "关于垃圾分类\n请随时提问！",
+  "@aiEmptyStateText": {
+    "description": "AI聊天空状态文字"
+  },
+
+  "aiInputHint": "输入问题...",
+  "@aiInputHint": {
+    "description": "AI聊天输入提示"
+  },
+
+  "aiNoResponse": "AI没有返回回答。",
+  "@aiNoResponse": {
+    "description": "AI无响应消息"
+  },
+
+  "aiValidationError": "请输入问题。",
+  "@aiValidationError": {
+    "description": "AI输入验证错误"
+  },
+
+  "aiTimeoutError": "请求超时。请稍后再试。",
+  "@aiTimeoutError": {
+    "description": "AI超时错误"
+  },
+
+  "aiServiceUnavailable": "AI服务不可用。请稍后再试。",
+  "@aiServiceUnavailable": {
+    "description": "AI服务不可用错误"
+  },
+
+  "aiGenericError": "发生错误。请稍后再试。",
+  "@aiGenericError": {
+    "description": "AI一般错误"
+  },
+
+  "aiNetworkError": "网络错误。请检查网络连接。",
+  "@aiNetworkError": {
+    "description": "AI网络错误"
+  },
+
   "notificationTomorrowTitle": "明天的垃圾",
   "@notificationTomorrowTitle": {
     "description": "明天收集提醒通知标题"

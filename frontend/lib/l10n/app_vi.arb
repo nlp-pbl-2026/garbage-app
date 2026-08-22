@@ -266,6 +266,56 @@
     "description": "Thông báo lỗi chat AI"
   },
 
+  "aiBannerText": "AI trả lời câu hỏi của bạn",
+  "@aiBannerText": {
+    "description": "Văn bản banner chat AI"
+  },
+
+  "aiAssistantTitle": "Trợ lý AI",
+  "@aiAssistantTitle": {
+    "description": "Tiêu đề đầu trang chat AI"
+  },
+
+  "aiEmptyStateText": "Hãy hỏi về\nphân loại rác!",
+  "@aiEmptyStateText": {
+    "description": "Văn bản trạng thái trống chat AI"
+  },
+
+  "aiInputHint": "Nhập câu hỏi...",
+  "@aiInputHint": {
+    "description": "Gợi ý nhập liệu chat AI"
+  },
+
+  "aiNoResponse": "Không có phản hồi từ AI.",
+  "@aiNoResponse": {
+    "description": "Thông báo không có phản hồi AI"
+  },
+
+  "aiValidationError": "Vui lòng nhập câu hỏi.",
+  "@aiValidationError": {
+    "description": "Lỗi xác thực đầu vào AI"
+  },
+
+  "aiTimeoutError": "Yêu cầu đã hết thời gian. Vui lòng thử lại sau.",
+  "@aiTimeoutError": {
+    "description": "Lỗi hết thời gian AI"
+  },
+
+  "aiServiceUnavailable": "Dịch vụ AI không khả dụng. Vui lòng thử lại sau.",
+  "@aiServiceUnavailable": {
+    "description": "Lỗi dịch vụ AI không khả dụng"
+  },
+
+  "aiGenericError": "Đã xảy ra lỗi. Vui lòng thử lại sau.",
+  "@aiGenericError": {
+    "description": "Lỗi chung AI"
+  },
+
+  "aiNetworkError": "Lỗi mạng. Vui lòng kiểm tra kết nối internet.",
+  "@aiNetworkError": {
+    "description": "Lỗi mạng AI"
+  },
+
   "notificationTomorrowTitle": "Rác Ngày mai",
   "@notificationTomorrowTitle": {
     "description": "Tiêu đề thông báo nhắc nhở thu gom ngày mai"

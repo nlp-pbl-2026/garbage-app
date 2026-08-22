@@ -172,6 +172,38 @@ class AppLocalizationsVi extends AppLocalizations {
       'Không thể hoàn thành yêu cầu. Vui lòng thử lại sau.';
 
   @override
+  String get aiBannerText => 'AI trả lời câu hỏi của bạn';
+
+  @override
+  String get aiAssistantTitle => 'Trợ lý AI';
+
+  @override
+  String get aiEmptyStateText => 'Hãy hỏi về\nphân loại rác!';
+
+  @override
+  String get aiInputHint => 'Nhập câu hỏi...';
+
+  @override
+  String get aiNoResponse => 'Không có phản hồi từ AI.';
+
+  @override
+  String get aiValidationError => 'Vui lòng nhập câu hỏi.';
+
+  @override
+  String get aiTimeoutError =>
+      'Yêu cầu đã hết thời gian. Vui lòng thử lại sau.';
+
+  @override
+  String get aiServiceUnavailable =>
+      'Dịch vụ AI không khả dụng. Vui lòng thử lại sau.';
+
+  @override
+  String get aiGenericError => 'Đã xảy ra lỗi. Vui lòng thử lại sau.';
+
+  @override
+  String get aiNetworkError => 'Lỗi mạng. Vui lòng kiểm tra kết nối internet.';
+
+  @override
   String get notificationTomorrowTitle => 'Rác Ngày mai';
 
   @override

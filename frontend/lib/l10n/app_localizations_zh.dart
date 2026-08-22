@@ -168,6 +168,36 @@ class AppLocalizationsZh extends AppLocalizations {
   String get aiErrorMessage => '无法完成请求。请稍后再试。';
 
   @override
+  String get aiBannerText => 'AI为您解答问题';
+
+  @override
+  String get aiAssistantTitle => 'AI助手';
+
+  @override
+  String get aiEmptyStateText => '关于垃圾分类\n请随时提问！';
+
+  @override
+  String get aiInputHint => '输入问题...';
+
+  @override
+  String get aiNoResponse => 'AI没有返回回答。';
+
+  @override
+  String get aiValidationError => '请输入问题。';
+
+  @override
+  String get aiTimeoutError => '请求超时。请稍后再试。';
+
+  @override
+  String get aiServiceUnavailable => 'AI服务不可用。请稍后再试。';
+
+  @override
+  String get aiGenericError => '发生错误。请稍后再试。';
+
+  @override
+  String get aiNetworkError => '网络错误。请检查网络连接。';
+
+  @override
   String get notificationTomorrowTitle => '明天的垃圾';
 
   @override

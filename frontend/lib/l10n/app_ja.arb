@@ -266,6 +266,56 @@
     "description": "AIチャットエラーメッセージ"
   },
 
+  "aiBannerText": "AIが質問にお答えします",
+  "@aiBannerText": {
+    "description": "AIチャットバナーテキスト"
+  },
+
+  "aiAssistantTitle": "AIアシスタント",
+  "@aiAssistantTitle": {
+    "description": "AIチャットヘッダータイトル"
+  },
+
+  "aiEmptyStateText": "ゴミの分別について\n聞いてください！",
+  "@aiEmptyStateText": {
+    "description": "AIチャット空状態テキスト"
+  },
+
+  "aiInputHint": "質問を入力...",
+  "@aiInputHint": {
+    "description": "AIチャット入力ヒント"
+  },
+
+  "aiNoResponse": "AIからの応答がありませんでした。",
+  "@aiNoResponse": {
+    "description": "AI無応答メッセージ"
+  },
+
+  "aiValidationError": "質問を入力してください。",
+  "@aiValidationError": {
+    "description": "AI入力バリデーションエラー"
+  },
+
+  "aiTimeoutError": "リクエストがタイムアウトしました。しばらくしてからお試しください。",
+  "@aiTimeoutError": {
+    "description": "AIタイムアウトエラー"
+  },
+
+  "aiServiceUnavailable": "AIサービスに接続できません。しばらくしてからお試しください。",
+  "@aiServiceUnavailable": {
+    "description": "AIサービス利用不可エラー"
+  },
+
+  "aiGenericError": "エラーが発生しました。しばらくしてからお試しください。",
+  "@aiGenericError": {
+    "description": "AI一般エラー"
+  },
+
+  "aiNetworkError": "通信エラーが発生しました。インターネット接続を確認してください。",
+  "@aiNetworkError": {
+    "description": "AIネットワークエラー"
+  },
+
   "notificationTomorrowTitle": "明日のゴミ出し",
   "@notificationTomorrowTitle": {
     "description": "明日の収集リマインダー通知タイトル"
