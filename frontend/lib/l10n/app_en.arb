@@ -1,0 +1,410 @@
+{
+  "@@locale": "en",
+
+  "appName": "Ehime Garbage App",
+  "@appName": {
+    "description": "App name"
+  },
+
+  "categoryBurnable": "Burnable",
+  "@categoryBurnable": {
+    "description": "Garbage category: Burnable waste"
+  },
+
+  "categoryRecyclable": "Recyclable",
+  "@categoryRecyclable": {
+    "description": "Garbage category: Recyclable waste"
+  },
+
+  "categoryPlastic": "Plastic Containers",
+  "@categoryPlastic": {
+    "description": "Garbage category: Plastic containers and packaging"
+  },
+
+  "categoryPetBottle": "PET Bottles",
+  "@categoryPetBottle": {
+    "description": "Garbage category: PET bottles"
+  },
+
+  "categoryHazardous": "Hazardous",
+  "@categoryHazardous": {
+    "description": "Garbage category: Hazardous waste"
+  },
+
+  "tabSearch": "Search",
+  "@tabSearch": {
+    "description": "Search tab label"
+  },
+
+  "tabCalendar": "Calendar",
+  "@tabCalendar": {
+    "description": "Calendar tab label"
+  },
+
+  "tabSettings": "Settings",
+  "@tabSettings": {
+    "description": "Settings tab label"
+  },
+
+  "tabImageInput": "Image",
+  "@tabImageInput": {
+    "description": "Image input tab label"
+  },
+
+  "regionSelectionTitle": "Select Region",
+  "@regionSelectionTitle": {
+    "description": "Region selection screen title"
+  },
+
+  "selectPrefecture": "Select Prefecture",
+  "@selectPrefecture": {
+    "description": "Prefecture selection step"
+  },
+
+  "selectMunicipality": "Select Municipality",
+  "@selectMunicipality": {
+    "description": "Municipality selection step"
+  },
+
+  "selectDistrict": "Select District",
+  "@selectDistrict": {
+    "description": "District selection step"
+  },
+
+  "startWithRegion": "Start with this region",
+  "@startWithRegion": {
+    "description": "Region setup complete button"
+  },
+
+  "searchTitle": "Search Garbage Items",
+  "@searchTitle": {
+    "description": "Search screen title"
+  },
+
+  "searchHint": "Enter item name (2+ characters)",
+  "@searchHint": {
+    "description": "Search hint"
+  },
+
+  "popularItems": "Frequently Searched Items",
+  "@popularItems": {
+    "description": "Popular items section title"
+  },
+
+  "multipleItemsFound": "Multiple similar items found",
+  "@multipleItemsFound": {
+    "description": "Multiple items match message"
+  },
+
+  "multipleCategoriesNote": "Or varies by item",
+  "@multipleCategoriesNote": {
+    "description": "Multiple categories note"
+  },
+
+  "itemDetailTitle": "Item Details",
+  "@itemDetailTitle": {
+    "description": "Item detail screen title"
+  },
+
+  "nextCollectionDate": "Next Collection Date",
+  "@nextCollectionDate": {
+    "description": "Next collection date label"
+  },
+
+  "disposalMethod": "How to Dispose",
+  "@disposalMethod": {
+    "description": "Disposal method label"
+  },
+
+  "caution": "Caution",
+  "@caution": {
+    "description": "Caution label"
+  },
+
+  "registerToCalendar": "Add to Calendar",
+  "@registerToCalendar": {
+    "description": "Add to calendar button"
+  },
+
+  "calendarTitle": "Collection Calendar",
+  "@calendarTitle": {
+    "description": "Calendar screen title"
+  },
+
+  "nextCollection": "Next Collection",
+  "@nextCollection": {
+    "description": "Next collection banner"
+  },
+
+  "noSchedule": "No collection scheduled for this day",
+  "@noSchedule": {
+    "description": "No schedule message"
+  },
+
+  "colorLegend": "Color Legend",
+  "@colorLegend": {
+    "description": "Color legend title"
+  },
+
+  "settingsTitle": "Settings",
+  "@settingsTitle": {
+    "description": "Settings screen title"
+  },
+
+  "regionSettings": "Region Settings",
+  "@regionSettings": {
+    "description": "Region settings section"
+  },
+
+  "changeRegion": "Change Region",
+  "@changeRegion": {
+    "description": "Change region button"
+  },
+
+  "notificationSettings": "Notification Settings",
+  "@notificationSettings": {
+    "description": "Notification settings section"
+  },
+
+  "languageSettings": "Language",
+  "@languageSettings": {
+    "description": "Language settings section"
+  },
+
+  "reminderToggle": "Day-before collection reminder",
+  "@reminderToggle": {
+    "description": "Reminder toggle label"
+  },
+
+  "reminderDescription": "Notifies you at 18:00 the day before collection",
+  "@reminderDescription": {
+    "description": "Reminder description"
+  },
+
+  "noSearchResults": "No matching items found",
+  "@noSearchResults": {
+    "description": "No search results message"
+  },
+
+  "dataLoadError": "Failed to load data",
+  "@dataLoadError": {
+    "description": "Data load error message"
+  },
+
+  "regionDataError": "Failed to load region data",
+  "@regionDataError": {
+    "description": "Region data load error message"
+  },
+
+  "saveError": "Failed to save",
+  "@saveError": {
+    "description": "Save error message"
+  },
+
+  "regionNotSet": "Region not set",
+  "@regionNotSet": {
+    "description": "Region not set message"
+  },
+
+  "dataOutdated": "Data may be outdated. Please connect to the internet to update.",
+  "@dataOutdated": {
+    "description": "Data outdated message"
+  },
+
+  "noOfflineData": "Data is unavailable. An internet connection is required.",
+  "@noOfflineData": {
+    "description": "No offline data message"
+  },
+
+  "prefectureNotSelected": "Please select a prefecture",
+  "@prefectureNotSelected": {
+    "description": "Prefecture not selected validation"
+  },
+
+  "municipalityNotSelected": "Please select a municipality",
+  "@municipalityNotSelected": {
+    "description": "Municipality not selected validation"
+  },
+
+  "districtNotSelected": "Please select a district",
+  "@districtNotSelected": {
+    "description": "District not selected validation"
+  },
+
+  "regionSaved": "Region settings saved",
+  "@regionSaved": {
+    "description": "Region saved confirmation"
+  },
+
+  "calendarRegistered": "Added to calendar",
+  "@calendarRegistered": {
+    "description": "Calendar registration confirmation"
+  },
+
+  "calendarPermissionDenied": "Calendar access permission is required. Please allow access in your device settings.",
+  "@calendarPermissionDenied": {
+    "description": "Calendar permission error message"
+  },
+
+  "retry": "Retry",
+  "@retry": {
+    "description": "Retry button label"
+  },
+
+  "back": "Back",
+  "@back": {
+    "description": "Back button label"
+  },
+
+  "openSettings": "Open Settings",
+  "@openSettings": {
+    "description": "Open settings button label"
+  },
+
+  "aiErrorMessage": "Unable to complete the request. Please try again later.",
+  "@aiErrorMessage": {
+    "description": "AI chat error message"
+  },
+
+  "notificationTomorrowTitle": "Tomorrow's Garbage",
+  "@notificationTomorrowTitle": {
+    "description": "Tomorrow collection reminder notification title"
+  },
+
+  "notificationTomorrowBody": "Tomorrow is {categories} day",
+  "@notificationTomorrowBody": {
+    "description": "Tomorrow collection reminder notification body",
+    "placeholders": {
+      "categories": {
+        "type": "String",
+        "description": "Collection category names (separated by /)"
+      }
+    }
+  },
+
+  "notificationTodayTitle": "Today's Garbage",
+  "@notificationTodayTitle": {
+    "description": "Today collection reminder notification title"
+  },
+
+  "notificationTodayBody": "Today is {categories} day",
+  "@notificationTodayBody": {
+    "description": "Today collection reminder notification body",
+    "placeholders": {
+      "categories": {
+        "type": "String",
+        "description": "Collection category names (separated by /)"
+      }
+    }
+  },
+
+  "municipalityRomanization": "{japaneseName} ({romanizedName})",
+  "@municipalityRomanization": {
+    "description": "Municipality name with romanization template",
+    "placeholders": {
+      "japaneseName": {
+        "type": "String",
+        "description": "Japanese municipality name"
+      },
+      "romanizedName": {
+        "type": "String",
+        "description": "Romanized municipality name"
+      }
+    }
+  },
+
+  "bulkyWaste": "Bulky Waste",
+  "regionRequired": "Region setup required",
+  "searchTip": "Search for items you don't know how to dispose of",
+  "searchTipDescription": "Enter an item name to find the disposal method",
+  "searchByCategory": "Search by Category",
+  "searchHistory": "Search History",
+  "deleteAll": "Delete All",
+  "searchResults": "Search Results",
+  "nextCollectionDates": "Next Collection Dates",
+  "today": "Today",
+  "tomorrow": "Tomorrow",
+  "dayAfterTomorrow": "Day after tomorrow",
+  "daysRemaining": "{days} days left",
+  "@daysRemaining": {
+    "placeholders": { "days": { "type": "int" } }
+  },
+  "collectionDaysFor": "{category} Collection Days",
+  "@collectionDaysFor": {
+    "placeholders": { "category": { "type": "String" } }
+  },
+  "noUpcomingCollections": "No upcoming collection dates found",
+  "selectDate": "Please select a date",
+  "exportCalendar": "Export Calendar",
+  "categoryShortBurnable": "Burn",
+  "categoryShortRecyclable": "Recy",
+  "categoryShortPlastic": "Plas",
+  "categoryShortPetBottle": "PET",
+  "categoryShortHazardous": "Haz",
+  "account": "Account",
+  "loggedIn": "Logged in",
+  "changePassword": "Change Password",
+  "logout": "Log Out",
+  "loginOrRegister": "Log In / Register",
+  "loginSyncMessage": "Log in to sync your settings",
+  "currentRegion": "Current Region",
+  "detectFromLocation": "Re-detect from current location",
+  "theme": "Theme",
+  "themeSystem": "System",
+  "themeLight": "Light",
+  "themeDark": "Dark",
+  "languageSettings": "Language",
+  "other": "Other",
+  "faq": "FAQ",
+  "termsOfService": "Terms of Service",
+  "reminderNotificationDescription": "Notifies you the day before and on the day of collection",
+  "reminderSettingFailed": "Failed to set reminder",
+  "regionSettingUpdated": "Region settings updated",
+  "cancel": "Cancel",
+  "detectFromGps": "Detect from current location",
+  "setRegionPrompt": "Please set your residential area",
+  "regionOptimizationDescription": "Optimize garbage collection days and sorting rules for your area.",
+  "pleaseSelect": "Please select",
+  "settingsCanChangeLater": "You can change settings later from the Settings screen",
+  "gpsResult": "GPS Detection Result",
+  "gpsRegionDetected": "The following region was detected:",
+  "setThisRegion": "Use this region",
+  "selectImage": "Please select an image",
+  "takePhoto": "Take Photo",
+  "chooseFromGallery": "Choose from Gallery",
+  "realtimeCamera": "Realtime Camera",
+  "noCameraAvailable": "No camera available on this device",
+  "send": "Send",
+  "redo": "Redo",
+  "uploading": "Uploading...",
+  "uploadComplete": "Upload complete",
+  "imageSentSuccess": "Image sent successfully",
+  "resend": "Resend",
+  "errorOccurred": "An error occurred",
+  "municipality": "Municipality",
+  "district": "District",
+  "city": "City",
+  "eveningNotification": "Evening notification",
+  "morningNotification": "Morning notification",
+  "addDistrict": "Add District",
+  "districtListLoadError": "Failed to load district list",
+  "inUse": "Active",
+  "deleteDistrict": "Delete District",
+  "deleteDistrictConfirm": "Delete \"{label}\"?",
+  "@deleteDistrictConfirm": {
+    "placeholders": { "label": { "type": "String" } }
+  },
+  "delete": "Delete",
+  "addDistrictDialogTitle": "Add District",
+  "addDistrictDescription": "Enter a label for the new district.\nThen select a municipality and district.",
+  "label": "Label",
+  "labelHint": "e.g., Work, Parents' home",
+  "labelRequired": "Please enter a label",
+  "next": "Next",
+  "reminderLoadError": "Failed to load reminder settings",
+  "regionSettingLabel": "Region Settings",
+  "districtCount": "{count}/5",
+  "@districtCount": {
+    "placeholders": { "count": { "type": "int" } }
+  }
+}

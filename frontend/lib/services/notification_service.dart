@@ -3,15 +3,16 @@
 /// flutter_local_notifications を使用して、
 /// ゴミ収集日の前日20:00と当日朝6:00にローカル通知を配信する。
 /// 地区のスケジュールに基づき、翌日/当日の収集カテゴリを通知内容に含める。
+/// 通知テキストはユーザーの言語設定に応じてローカライズされる。
 
-import 'package:flutter/foundation.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:timezone/timezone.dart' as tz;
 import 'package:timezone/data/latest_all.dart' as tz_data;
 
+import '../l10n/app_localizations.dart';
 import '../models/garbage_item.dart';
-import '../models/garbage_category.dart';
 import '../models/notification_timing_type.dart';
 import 'notification_customization_service.dart';
 import 'schedule_service.dart';
@@ -27,10 +28,17 @@ const String _morningMinuteKey = 'notification_morning_minute';
 /// 通知サービス
 ///
 /// 収集日前日の20:00と当日朝6:00にローカル通知をスケジュールする。
+/// 通知テキストはユーザーの言語設定に基づきローカライズされる。
 class NotificationService {
   static final FlutterLocalNotificationsPlugin _plugin =
       FlutterLocalNotificationsPlugin();
   static bool _initialized = false;
+
+  /// SharedPreferencesに保存された言語コードキー
+  static const String _languageCodeKey = 'language_code';
+
+  /// サポートする言語コード一覧
+  static const List<String> _supportedCodes = ['ja', 'en', 'pt', 'zh', 'vi'];
 
   /// 通知プラグインを初期化する
   Future<void> initialize() async {
@@ -86,8 +94,9 @@ class NotificationService {
   /// 今後7日分の通知をスケジュールする
   ///
   /// 各収集日について:
-  /// - 前日のカスタム時刻: 「明日は○○ごみの日です」
-  /// - 当日のカスタム時刻: 「今日は○○ごみの日です」
+  /// - 前日のカスタム時刻: ローカライズされた「明日は○○ごみの日です」
+  /// - 当日のカスタム時刻: ローカライズされた「今日は○○ごみの日です」
+  /// 通知テキストはSharedPreferencesの言語設定に基づく。
   Future<void> scheduleWeeklyNotifications(String districtId) async {
     await initialize();
     await _plugin.cancelAll();
@@ -103,12 +112,17 @@ class NotificationService {
     // カテゴリフィルタリング用にカスタマイズサービスを取得
     final prefs = await SharedPreferences.getInstance();
     final customizationService = NotificationCustomizationService(prefs);
-    final eveningEnabledCategories = await customizationService.getEnabledCategories(
+    final eveningEnabledCategories =
+        await customizationService.getEnabledCategories(
       NotificationTimingType.evening,
     );
-    final morningEnabledCategories = await customizationService.getEnabledCategories(
+    final morningEnabledCategories =
+        await customizationService.getEnabledCategories(
       NotificationTimingType.morning,
     );
+
+    // 現在の言語設定に基づくローカライズされた文字列を取得
+    final l10n = _getLocalizations(prefs);
 
     int notificationId = 0;
 
@@ -129,7 +143,7 @@ class NotificationService {
 
         if (eveningEntries.isNotEmpty) {
           final categoryNames = eveningEntries
-              .map((e) => CategoryColors.getLabel(e.category))
+              .map((e) => _getLocalizedCategoryLabel(l10n, e.category))
               .join('・');
 
           final eveningBefore = tz.TZDateTime(
@@ -144,8 +158,8 @@ class NotificationService {
           if (eveningBefore.isAfter(tz.TZDateTime.now(tz.local))) {
             await _scheduleNotification(
               id: notificationId++,
-              title: '明日のゴミ出し',
-              body: '明日は${categoryNames}の日です',
+              title: l10n.notificationTomorrowTitle,
+              body: l10n.notificationTomorrowBody(categoryNames),
               scheduledDate: eveningBefore,
             );
           }
@@ -159,7 +173,7 @@ class NotificationService {
 
       if (morningEntries.isNotEmpty) {
         final categoryNames = morningEntries
-            .map((e) => CategoryColors.getLabel(e.category))
+            .map((e) => _getLocalizedCategoryLabel(l10n, e.category))
             .join('・');
 
         final morningOf = tz.TZDateTime(
@@ -174,8 +188,8 @@ class NotificationService {
         if (morningOf.isAfter(tz.TZDateTime.now(tz.local))) {
           await _scheduleNotification(
             id: notificationId++,
-            title: '今日のゴミ出し',
-            body: '今日は${categoryNames}の日です',
+            title: l10n.notificationTodayTitle,
+            body: l10n.notificationTodayBody(categoryNames),
             scheduledDate: morningOf,
           );
         }
@@ -183,6 +197,38 @@ class NotificationService {
     }
 
     debugPrint('[NotificationService] ${notificationId}件の通知をスケジュールしました');
+  }
+
+  /// SharedPreferencesから言語コードを読み取り、対応するAppLocalizationsを返す
+  ///
+  /// BuildContextなしでローカライズ済みテキストにアクセスするため、
+  /// lookupAppLocalizations を使用して直接インスタンスを取得する。
+  AppLocalizations _getLocalizations(SharedPreferences prefs) {
+    final languageCode = prefs.getString(_languageCodeKey) ?? 'ja';
+    final validCode =
+        _supportedCodes.contains(languageCode) ? languageCode : 'ja';
+    return lookupAppLocalizations(Locale(validCode));
+  }
+
+  /// カテゴリのローカライズされたラベルを取得する
+  ///
+  /// AppLocalizationsのカテゴリ名ゲッターを使い、通知言語に合わせたカテゴリ名を返す。
+  String _getLocalizedCategoryLabel(
+    AppLocalizations l10n,
+    GarbageCategory category,
+  ) {
+    switch (category) {
+      case GarbageCategory.burnable:
+        return l10n.categoryBurnable;
+      case GarbageCategory.recyclable:
+        return l10n.categoryRecyclable;
+      case GarbageCategory.plastic:
+        return l10n.categoryPlastic;
+      case GarbageCategory.petBottle:
+        return l10n.categoryPetBottle;
+      case GarbageCategory.hazardous:
+        return l10n.categoryHazardous;
+    }
   }
 
   /// 個別の通知をスケジュールする
@@ -224,7 +270,9 @@ class NotificationService {
     );
   }
 
-  /// 通知のリスケジュール（地区変更時やアプリ起動時に呼ぶ）
+  /// 通知のリスケジュール（地区変更時、アプリ起動時、言語変更時に呼ぶ）
+  ///
+  /// 言語変更時にこのメソッドを呼ぶことで、新しい言語で通知が再スケジュールされる。
   Future<void> refreshNotifications() async {
     final enabled = await isReminderEnabled();
     if (!enabled) return;

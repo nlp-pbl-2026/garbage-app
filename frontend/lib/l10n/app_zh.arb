@@ -1,0 +1,410 @@
+{
+  "@@locale": "zh",
+
+  "appName": "爱媛垃圾分类应用",
+  "@appName": {
+    "description": "应用名称"
+  },
+
+  "categoryBurnable": "可燃垃圾",
+  "@categoryBurnable": {
+    "description": "垃圾类别：可燃垃圾"
+  },
+
+  "categoryRecyclable": "可回收垃圾",
+  "@categoryRecyclable": {
+    "description": "垃圾类别：可回收垃圾"
+  },
+
+  "categoryPlastic": "塑料容器包装",
+  "@categoryPlastic": {
+    "description": "垃圾类别：塑料容器包装"
+  },
+
+  "categoryPetBottle": "PET塑料瓶",
+  "@categoryPetBottle": {
+    "description": "垃圾类别：PET塑料瓶"
+  },
+
+  "categoryHazardous": "危险垃圾",
+  "@categoryHazardous": {
+    "description": "垃圾类别：危险垃圾"
+  },
+
+  "tabSearch": "搜索",
+  "@tabSearch": {
+    "description": "搜索标签页标签"
+  },
+
+  "tabCalendar": "日历",
+  "@tabCalendar": {
+    "description": "日历标签页标签"
+  },
+
+  "tabSettings": "设置",
+  "@tabSettings": {
+    "description": "设置标签页标签"
+  },
+
+  "tabImageInput": "图片输入",
+  "@tabImageInput": {
+    "description": "图片输入标签页标签"
+  },
+
+  "regionSelectionTitle": "选择地区",
+  "@regionSelectionTitle": {
+    "description": "地区选择页面标题"
+  },
+
+  "selectPrefecture": "选择都道府县",
+  "@selectPrefecture": {
+    "description": "都道府县选择步骤"
+  },
+
+  "selectMunicipality": "选择市区町村",
+  "@selectMunicipality": {
+    "description": "市区町村选择步骤"
+  },
+
+  "selectDistrict": "选择地区",
+  "@selectDistrict": {
+    "description": "地区选择步骤"
+  },
+
+  "startWithRegion": "使用此地区开始",
+  "@startWithRegion": {
+    "description": "地区设置完成按钮"
+  },
+
+  "searchTitle": "搜索垃圾物品",
+  "@searchTitle": {
+    "description": "搜索页面标题"
+  },
+
+  "searchHint": "输入物品名称（2个字符以上）",
+  "@searchHint": {
+    "description": "搜索提示"
+  },
+
+  "popularItems": "热门搜索物品",
+  "@popularItems": {
+    "description": "热门物品区域标题"
+  },
+
+  "multipleItemsFound": "找到多个相似物品",
+  "@multipleItemsFound": {
+    "description": "多个物品匹配消息"
+  },
+
+  "multipleCategoriesNote": "或因物品而异",
+  "@multipleCategoriesNote": {
+    "description": "多种类别备注"
+  },
+
+  "itemDetailTitle": "物品详情",
+  "@itemDetailTitle": {
+    "description": "物品详情页面标题"
+  },
+
+  "nextCollectionDate": "下次收集日期",
+  "@nextCollectionDate": {
+    "description": "下次收集日期标签"
+  },
+
+  "disposalMethod": "丢弃方法",
+  "@disposalMethod": {
+    "description": "丢弃方法标签"
+  },
+
+  "caution": "注意事项",
+  "@caution": {
+    "description": "注意事项标签"
+  },
+
+  "registerToCalendar": "添加到日历",
+  "@registerToCalendar": {
+    "description": "添加到日历按钮"
+  },
+
+  "calendarTitle": "收集日历",
+  "@calendarTitle": {
+    "description": "日历页面标题"
+  },
+
+  "nextCollection": "下次收集",
+  "@nextCollection": {
+    "description": "下次收集横幅"
+  },
+
+  "noSchedule": "当天没有收集安排",
+  "@noSchedule": {
+    "description": "无安排消息"
+  },
+
+  "colorLegend": "颜色图例",
+  "@colorLegend": {
+    "description": "颜色图例标题"
+  },
+
+  "settingsTitle": "设置",
+  "@settingsTitle": {
+    "description": "设置页面标题"
+  },
+
+  "regionSettings": "地区设置",
+  "@regionSettings": {
+    "description": "地区设置区域"
+  },
+
+  "changeRegion": "更改地区",
+  "@changeRegion": {
+    "description": "更改地区按钮"
+  },
+
+  "notificationSettings": "通知设置",
+  "@notificationSettings": {
+    "description": "通知设置区域"
+  },
+
+  "languageSettings": "语言设置",
+  "@languageSettings": {
+    "description": "语言设置区域"
+  },
+
+  "reminderToggle": "收集前一天提醒",
+  "@reminderToggle": {
+    "description": "提醒开关标签"
+  },
+
+  "reminderDescription": "在收集前一天18:00发送通知",
+  "@reminderDescription": {
+    "description": "提醒说明"
+  },
+
+  "noSearchResults": "未找到匹配的物品",
+  "@noSearchResults": {
+    "description": "无搜索结果消息"
+  },
+
+  "dataLoadError": "数据加载失败",
+  "@dataLoadError": {
+    "description": "数据加载错误消息"
+  },
+
+  "regionDataError": "地区数据加载失败",
+  "@regionDataError": {
+    "description": "地区数据加载错误消息"
+  },
+
+  "saveError": "保存失败",
+  "@saveError": {
+    "description": "保存错误消息"
+  },
+
+  "regionNotSet": "未设置地区",
+  "@regionNotSet": {
+    "description": "地区未设置消息"
+  },
+
+  "dataOutdated": "数据可能已过期。请连接网络进行更新。",
+  "@dataOutdated": {
+    "description": "数据过期消息"
+  },
+
+  "noOfflineData": "数据不可用。需要网络连接。",
+  "@noOfflineData": {
+    "description": "无离线数据消息"
+  },
+
+  "prefectureNotSelected": "请选择都道府县",
+  "@prefectureNotSelected": {
+    "description": "都道府县未选择验证"
+  },
+
+  "municipalityNotSelected": "请选择市区町村",
+  "@municipalityNotSelected": {
+    "description": "市区町村未选择验证"
+  },
+
+  "districtNotSelected": "请选择地区",
+  "@districtNotSelected": {
+    "description": "地区未选择验证"
+  },
+
+  "regionSaved": "地区设置已保存",
+  "@regionSaved": {
+    "description": "地区保存确认"
+  },
+
+  "calendarRegistered": "已添加到日历",
+  "@calendarRegistered": {
+    "description": "日历注册确认"
+  },
+
+  "calendarPermissionDenied": "需要日历访问权限。请在设备设置中允许访问。",
+  "@calendarPermissionDenied": {
+    "description": "日历权限错误消息"
+  },
+
+  "retry": "重试",
+  "@retry": {
+    "description": "重试按钮标签"
+  },
+
+  "back": "返回",
+  "@back": {
+    "description": "返回按钮标签"
+  },
+
+  "openSettings": "打开设置",
+  "@openSettings": {
+    "description": "打开设置按钮标签"
+  },
+
+  "aiErrorMessage": "无法完成请求。请稍后再试。",
+  "@aiErrorMessage": {
+    "description": "AI聊天错误消息"
+  },
+
+  "notificationTomorrowTitle": "明天的垃圾",
+  "@notificationTomorrowTitle": {
+    "description": "明天收集提醒通知标题"
+  },
+
+  "notificationTomorrowBody": "明天是{categories}的收集日",
+  "@notificationTomorrowBody": {
+    "description": "明天收集提醒通知正文",
+    "placeholders": {
+      "categories": {
+        "type": "String",
+        "description": "收集类别名称（以/分隔）"
+      }
+    }
+  },
+
+  "notificationTodayTitle": "今天的垃圾",
+  "@notificationTodayTitle": {
+    "description": "今天收集提醒通知标题"
+  },
+
+  "notificationTodayBody": "今天是{categories}的收集日",
+  "@notificationTodayBody": {
+    "description": "今天收集提醒通知正文",
+    "placeholders": {
+      "categories": {
+        "type": "String",
+        "description": "收集类别名称（以/分隔）"
+      }
+    }
+  },
+
+  "municipalityRomanization": "{japaneseName}（{romanizedName}）",
+  "@municipalityRomanization": {
+    "description": "市区町村名称及罗马字模板",
+    "placeholders": {
+      "japaneseName": {
+        "type": "String",
+        "description": "日文市区町村名称"
+      },
+      "romanizedName": {
+        "type": "String",
+        "description": "罗马字市区町村名称"
+      }
+    }
+  },
+
+  "bulkyWaste": "大件垃圾",
+  "regionRequired": "需要设置地区",
+  "searchTip": "搜索不知道如何丢弃的物品",
+  "searchTipDescription": "输入物品名称即可了解分类方法",
+  "searchByCategory": "按类别搜索",
+  "searchHistory": "搜索历史",
+  "deleteAll": "全部删除",
+  "searchResults": "搜索结果",
+  "nextCollectionDates": "下次收集日期",
+  "today": "今天",
+  "tomorrow": "明天",
+  "dayAfterTomorrow": "后天",
+  "daysRemaining": "还剩{days}天",
+  "@daysRemaining": {
+    "placeholders": { "days": { "type": "int" } }
+  },
+  "collectionDaysFor": "{category}收集日",
+  "@collectionDaysFor": {
+    "placeholders": { "category": { "type": "String" } }
+  },
+  "noUpcomingCollections": "未找到今后的收集日期",
+  "selectDate": "请选择日期",
+  "exportCalendar": "导出日历",
+  "categoryShortBurnable": "可燃",
+  "categoryShortRecyclable": "资源",
+  "categoryShortPlastic": "塑料",
+  "categoryShortPetBottle": "PET",
+  "categoryShortHazardous": "危险",
+  "account": "账户",
+  "loggedIn": "已登录",
+  "changePassword": "修改密码",
+  "logout": "退出登录",
+  "loginOrRegister": "登录 / 注册",
+  "loginSyncMessage": "登录以同步您的设置",
+  "currentRegion": "当前地区",
+  "detectFromLocation": "从当前位置重新检测",
+  "theme": "主题",
+  "themeSystem": "跟随系统",
+  "themeLight": "浅色",
+  "themeDark": "深色",
+  "languageSettings": "语言",
+  "other": "其他",
+  "faq": "常见问题",
+  "termsOfService": "服务条款",
+  "reminderNotificationDescription": "在收集前一天和当天发送通知",
+  "reminderSettingFailed": "提醒设置失败",
+  "regionSettingUpdated": "地区设置已更新",
+  "cancel": "取消",
+  "detectFromGps": "从当前位置检测",
+  "setRegionPrompt": "请设置您的居住区域",
+  "regionOptimizationDescription": "根据您的区域优化垃圾收集日期和分类规则。",
+  "pleaseSelect": "请选择",
+  "settingsCanChangeLater": "稍后可以在设置页面中更改设置",
+  "gpsResult": "GPS检测结果",
+  "gpsRegionDetected": "检测到以下地区：",
+  "setThisRegion": "使用此地区",
+  "selectImage": "请选择图片",
+  "takePhoto": "拍照",
+  "chooseFromGallery": "从相册选择",
+  "realtimeCamera": "实时相机",
+  "noCameraAvailable": "此设备没有可用的相机",
+  "send": "发送",
+  "redo": "重做",
+  "uploading": "上传中...",
+  "uploadComplete": "上传完成",
+  "imageSentSuccess": "图片发送成功",
+  "resend": "重新发送",
+  "errorOccurred": "发生错误",
+  "municipality": "市区町村",
+  "district": "地区",
+  "city": "市",
+  "eveningNotification": "前一天通知",
+  "morningNotification": "当天通知",
+  "addDistrict": "添加地区",
+  "districtListLoadError": "地区列表加载失败",
+  "inUse": "使用中",
+  "deleteDistrict": "删除地区",
+  "deleteDistrictConfirm": "删除「{label}」吗？",
+  "@deleteDistrictConfirm": {
+    "placeholders": { "label": { "type": "String" } }
+  },
+  "delete": "删除",
+  "addDistrictDialogTitle": "添加地区",
+  "addDistrictDescription": "请输入新地区的标签。\n然后选择市区町村和地区。",
+  "label": "标签",
+  "labelHint": "例：工作地点、老家",
+  "labelRequired": "请输入标签",
+  "next": "下一步",
+  "reminderLoadError": "提醒设置加载失败",
+  "regionSettingLabel": "地区设置",
+  "districtCount": "{count}/5个",
+  "@districtCount": {
+    "placeholders": { "count": { "type": "int" } }
+  }
+}

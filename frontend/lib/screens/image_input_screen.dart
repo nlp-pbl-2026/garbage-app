@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../constants/colors.dart';
+import '../l10n/app_localizations.dart';
 import '../providers/image_input_provider.dart';
 import '../widgets/region_header.dart';
 import 'realtime_camera_screen.dart';
@@ -106,7 +107,7 @@ class _ImageInputScreenState extends ConsumerState<ImageInputScreen> {
           ),
           const SizedBox(height: 24),
           Text(
-            '画像を選択してください',
+            AppLocalizations.of(context).selectImage,
             style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.w500,
@@ -120,11 +121,10 @@ class _ImageInputScreenState extends ConsumerState<ImageInputScreen> {
             height: 56,
             child: ElevatedButton.icon(
               onPressed: state.isCameraAvailable
-                  ? () =>
-                      ref.read(imageInputProvider.notifier).pickFromCamera()
+                  ? () => ref.read(imageInputProvider.notifier).pickFromCamera()
                   : null,
               icon: const Icon(Icons.camera_alt),
-              label: const Text('カメラで撮影'),
+              label: Text(AppLocalizations.of(context).takePhoto),
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.primary,
                 foregroundColor: Colors.white,
@@ -149,7 +149,7 @@ class _ImageInputScreenState extends ConsumerState<ImageInputScreen> {
               onPressed: () =>
                   ref.read(imageInputProvider.notifier).pickFromGallery(),
               icon: const Icon(Icons.photo_library),
-              label: const Text('ギャラリーから選択'),
+              label: Text(AppLocalizations.of(context).chooseFromGallery),
               style: OutlinedButton.styleFrom(
                 foregroundColor: AppColors.primary,
                 side: const BorderSide(color: AppColors.primary),
@@ -178,7 +178,7 @@ class _ImageInputScreenState extends ConsumerState<ImageInputScreen> {
                 );
               },
               icon: const Icon(Icons.videocam),
-              label: const Text('リアルタイムカメラ'),
+              label: Text(AppLocalizations.of(context).realtimeCamera),
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.deepOrange,
                 foregroundColor: Colors.white,
@@ -195,7 +195,7 @@ class _ImageInputScreenState extends ConsumerState<ImageInputScreen> {
           if (!state.isCameraAvailable) ...[
             const SizedBox(height: 12),
             Text(
-              'このデバイスにはカメラがありません',
+              AppLocalizations.of(context).noCameraAvailable,
               style: TextStyle(
                 fontSize: 12,
                 color: Colors.grey[500],
@@ -231,7 +231,7 @@ class _ImageInputScreenState extends ConsumerState<ImageInputScreen> {
             onPressed: () =>
                 ref.read(imageInputProvider.notifier).uploadImage(),
             icon: const Icon(Icons.upload),
-            label: const Text('送信'),
+            label: Text(AppLocalizations.of(context).send),
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.primary,
               foregroundColor: Colors.white,
@@ -253,7 +253,7 @@ class _ImageInputScreenState extends ConsumerState<ImageInputScreen> {
           child: OutlinedButton.icon(
             onPressed: () => ref.read(imageInputProvider.notifier).reset(),
             icon: const Icon(Icons.refresh),
-            label: const Text('やり直し'),
+            label: Text(AppLocalizations.of(context).redo),
             style: OutlinedButton.styleFrom(
               foregroundColor: Colors.grey[700],
               side: BorderSide(color: Colors.grey[400]!),
@@ -299,7 +299,7 @@ class _ImageInputScreenState extends ConsumerState<ImageInputScreen> {
         ),
         const SizedBox(height: 16),
         Text(
-          'アップロード中...',
+          AppLocalizations.of(context).uploading,
           style: TextStyle(
             fontSize: 14,
             color: Colors.grey[600],
@@ -313,7 +313,7 @@ class _ImageInputScreenState extends ConsumerState<ImageInputScreen> {
           child: ElevatedButton.icon(
             onPressed: null,
             icon: const Icon(Icons.upload),
-            label: const Text('送信'),
+            label: Text(AppLocalizations.of(context).send),
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.primary,
               foregroundColor: Colors.white,
@@ -345,9 +345,9 @@ class _ImageInputScreenState extends ConsumerState<ImageInputScreen> {
             color: AppColors.primary,
           ),
           const SizedBox(height: 24),
-          const Text(
-            'アップロードが完了しました',
-            style: TextStyle(
+          Text(
+            AppLocalizations.of(context).uploadComplete,
+            style: const TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.bold,
               color: AppColors.primary,
@@ -355,7 +355,7 @@ class _ImageInputScreenState extends ConsumerState<ImageInputScreen> {
           ),
           const SizedBox(height: 12),
           Text(
-            '画像が正常に送信されました',
+            AppLocalizations.of(context).imageSentSuccess,
             style: TextStyle(
               fontSize: 14,
               color: Colors.grey[600],
@@ -389,7 +389,7 @@ class _ImageInputScreenState extends ConsumerState<ImageInputScreen> {
               border: Border.all(color: AppColors.error.withValues(alpha: 0.3)),
             ),
             child: Text(
-              state.errorMessage ?? 'エラーが発生しました',
+              state.errorMessage ?? AppLocalizations.of(context).errorOccurred,
               textAlign: TextAlign.center,
               style: const TextStyle(
                 fontSize: 14,
@@ -407,7 +407,7 @@ class _ImageInputScreenState extends ConsumerState<ImageInputScreen> {
                 onPressed: () =>
                     ref.read(imageInputProvider.notifier).uploadImage(),
                 icon: const Icon(Icons.refresh),
-                label: const Text('再送信'),
+                label: Text(AppLocalizations.of(context).resend),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: AppColors.primary,
                   foregroundColor: Colors.white,
@@ -430,7 +430,7 @@ class _ImageInputScreenState extends ConsumerState<ImageInputScreen> {
             child: OutlinedButton.icon(
               onPressed: () => ref.read(imageInputProvider.notifier).reset(),
               icon: const Icon(Icons.arrow_back),
-              label: const Text('やり直し'),
+              label: Text(AppLocalizations.of(context).redo),
               style: OutlinedButton.styleFrom(
                 foregroundColor: Colors.grey[700],
                 side: BorderSide(color: Colors.grey[400]!),

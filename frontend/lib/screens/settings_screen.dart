@@ -3,16 +3,19 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:geolocator/geolocator.dart';
 
 import '../constants/colors.dart';
-import '../constants/strings.dart';
+import '../l10n/app_localizations.dart';
 import '../models/gps_detection.dart';
 import '../models/region.dart';
 import '../providers/auth_provider.dart';
 import '../providers/gps_detection_provider.dart';
+import '../providers/locale_provider.dart';
 import '../providers/multi_region_provider.dart';
 import '../providers/region_provider.dart';
 import '../providers/settings_provider.dart';
 import '../providers/theme_provider.dart';
 import '../services/notification_service.dart';
+import '../services/romanization_service.dart';
+import '../widgets/language_selector.dart';
 import '../widgets/notification_customization_widget.dart';
 import '../widgets/region_header.dart';
 import 'faq_screen.dart';
@@ -32,6 +35,15 @@ class SettingsScreen extends ConsumerStatefulWidget {
 }
 
 class _SettingsScreenState extends ConsumerState<SettingsScreen> {
+  /// 自治体名をロケールに応じてフォーマットする
+  String _formatSettingsMunicipalityName(String municipalityName) {
+    final locale = ref.read(localeProvider);
+    return RomanizationService.instance.formatMunicipalityName(
+      municipalityName,
+      isJapaneseLocale: locale.languageCode == 'ja',
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final regionAsync = ref.watch(regionSettingProvider);
@@ -71,34 +83,39 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
         padding: const EdgeInsets.all(16),
         children: [
           // 「アカウント」セクション
-          _buildSectionTitle('アカウント'),
+          _buildSectionTitle(AppLocalizations.of(context).account),
           const SizedBox(height: 8),
           _buildAccountCard(context, ref, authAsync),
           const SizedBox(height: 24),
           // 「現在の地域」セクション
-          _buildSectionTitle('現在の地域'),
+          _buildSectionTitle(AppLocalizations.of(context).currentRegion),
           const SizedBox(height: 8),
           _buildRegionCard(context, ref, regionAsync),
           const SizedBox(height: 8),
           _buildMultiRegionCard(context, ref, multiRegionAsync),
           const SizedBox(height: 24),
           // 「地域設定」セクション
-          _buildSectionTitle(AppStrings.regionSettings),
+          _buildSectionTitle(AppLocalizations.of(context).regionSettings),
           const SizedBox(height: 8),
           _buildRegionSettingCard(context, ref),
           const SizedBox(height: 24),
           // 「通知設定」セクション
-          _buildSectionTitle(AppStrings.notificationSettings),
+          _buildSectionTitle(AppLocalizations.of(context).notificationSettings),
           const SizedBox(height: 8),
           _buildReminderCard(context, ref, reminderAsync),
           const SizedBox(height: 24),
           // 「テーマ」セクション
-          _buildSectionTitle('テーマ'),
+          _buildSectionTitle(AppLocalizations.of(context).theme),
           const SizedBox(height: 8),
           _buildThemeCard(context, ref),
           const SizedBox(height: 24),
+          // 「言語設定」セクション
+          _buildSectionTitle(AppLocalizations.of(context).languageSettings),
+          const SizedBox(height: 8),
+          const LanguageSelector(),
+          const SizedBox(height: 24),
           // 「その他」セクション
-          _buildSectionTitle('その他'),
+          _buildSectionTitle(AppLocalizations.of(context).other),
           const SizedBox(height: 8),
           _buildFaqCard(context),
           const SizedBox(height: 8),
@@ -145,15 +162,16 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                 ),
                 const Divider(height: 1, indent: 56),
                 ListTile(
-                  leading: const Icon(Icons.lock_outline, color: AppColors.primary),
-                  title: const Text('パスワード変更'),
+                  leading:
+                      const Icon(Icons.lock_outline, color: AppColors.primary),
+                  title: Text(AppLocalizations.of(context).changePassword),
                   trailing: const Icon(Icons.chevron_right),
                   onTap: () => _showChangePasswordDialog(context, ref),
                 ),
                 const Divider(height: 1, indent: 56),
                 ListTile(
                   leading: const Icon(Icons.logout, color: Colors.red),
-                  title: const Text('ログアウト'),
+                  title: Text(AppLocalizations.of(context).logout),
                   onTap: () {
                     ref.read(authStateProvider.notifier).logout();
                   },
@@ -164,10 +182,10 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             // 未ログイン
             return ListTile(
               leading: const Icon(Icons.login, color: AppColors.primary),
-              title: const Text('ログイン / 新規登録'),
-              subtitle: const Text(
-                '設定を同期するにはログインしてください',
-                style: TextStyle(fontSize: 12, color: Colors.grey),
+              title: Text(AppLocalizations.of(context).loginOrRegister),
+              subtitle: Text(
+                AppLocalizations.of(context).loginSyncMessage,
+                style: const TextStyle(fontSize: 12, color: Colors.grey),
               ),
               trailing: const Icon(Icons.chevron_right),
               onTap: () {
@@ -191,7 +209,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
         ),
         error: (_, __) => ListTile(
           leading: const Icon(Icons.login, color: AppColors.primary),
-          title: const Text('ログイン / 新規登録'),
+          title: Text(AppLocalizations.of(context).loginOrRegister),
           trailing: const Icon(Icons.chevron_right),
           onTap: () {
             Navigator.push(
@@ -218,7 +236,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
           if (setting == null) {
             return ListTile(
               leading: const Icon(Icons.location_off, color: Colors.grey),
-              title: const Text(AppStrings.regionNotSet),
+              title: Text(AppLocalizations.of(context).regionNotSet),
               trailing: const Icon(Icons.chevron_right),
               onTap: () => _navigateToRegionSelection(context, ref),
             );
@@ -242,7 +260,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                       ),
                       const SizedBox(height: 4),
                       Text(
-                        '${setting.municipalityName} ${setting.districtName}',
+                        '${_formatSettingsMunicipalityName(setting.municipalityName)} ${setting.districtName}',
                         style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w600,
@@ -268,7 +286,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
         ),
         error: (_, __) => ListTile(
           leading: const Icon(Icons.error_outline, color: AppColors.error),
-          title: const Text(AppStrings.dataLoadError),
+          title: Text(AppLocalizations.of(context).dataLoadError),
           trailing: IconButton(
             icon: const Icon(Icons.refresh),
             onPressed: () =>
@@ -297,7 +315,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                     child: CircularProgressIndicator(strokeWidth: 2),
                   )
                 : const Icon(Icons.my_location, color: AppColors.primary),
-            title: const Text('現在地から再設定'),
+            title: Text(AppLocalizations.of(context).detectFromLocation),
             trailing: const Icon(Icons.chevron_right),
             onTap: isGpsLoading
                 ? null
@@ -307,15 +325,16 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
           ),
           const Divider(height: 1, indent: 56),
           ListTile(
-            leading: const Icon(Icons.edit_location_alt, color: AppColors.primary),
-            title: const Text('地域を変更'),
+            leading:
+                const Icon(Icons.edit_location_alt, color: AppColors.primary),
+            title: Text(AppLocalizations.of(context).changeRegion),
             trailing: const Icon(Icons.chevron_right),
             onTap: () => _navigateToRegionSelection(context, ref),
           ),
           const Divider(height: 1, indent: 56),
           ListTile(
             leading: const Icon(Icons.my_location, color: AppColors.primary),
-            title: const Text('現在地から再設定'),
+            title: Text(AppLocalizations.of(context).detectFromLocation),
             trailing: const Icon(Icons.chevron_right),
             onTap: () => _navigateToRegionSelectionWithAutoDetect(context, ref),
           ),
@@ -325,7 +344,8 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
   }
 
   /// リマインダー通知カード
-  Widget _buildReminderCard(BuildContext context, WidgetRef ref, AsyncValue<bool> reminderAsync) {
+  Widget _buildReminderCard(
+      BuildContext context, WidgetRef ref, AsyncValue<bool> reminderAsync) {
     final notificationService = ref.watch(notificationServiceProvider);
 
     return Card(
@@ -343,7 +363,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                         : Icons.notifications_off_outlined,
                     color: enabled ? AppColors.primary : Colors.grey,
                   ),
-                  title: const Text(AppStrings.reminderToggle),
+                  title: Text(AppLocalizations.of(context).reminderToggle),
                   subtitle: const Text(
                     '収集日の前日と当日に通知します',
                     style: TextStyle(fontSize: 12, color: Colors.grey),
@@ -357,12 +377,15 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                       if (context.mounted) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
-                            content: const Text('リマインダーの設定に失敗しました'),
+                            content: Text(AppLocalizations.of(context)
+                                .reminderSettingFailed),
                             duration: const Duration(seconds: 10),
                             action: SnackBarAction(
                               label: '再試行',
                               onPressed: () {
-                                ref.read(reminderEnabledProvider.notifier).toggle();
+                                ref
+                                    .read(reminderEnabledProvider.notifier)
+                                    .toggle();
                               },
                             ),
                           ),
@@ -393,18 +416,17 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                 ],
               ],
             ),
-            loading: () => const ListTile(
-              leading: SizedBox(
+            loading: () => ListTile(
+              leading: const SizedBox(
                 width: 24,
                 height: 24,
                 child: CircularProgressIndicator(strokeWidth: 2),
               ),
-              title: Text(AppStrings.reminderToggle),
+              title: Text(AppLocalizations.of(context).reminderToggle),
             ),
             error: (_, __) => ListTile(
-              leading:
-                  const Icon(Icons.error_outline, color: AppColors.error),
-              title: const Text(AppStrings.reminderToggle),
+              leading: const Icon(Icons.error_outline, color: AppColors.error),
+              title: Text(AppLocalizations.of(context).reminderToggle),
               subtitle: const Text(
                 'リマインダー設定の読み込みに失敗しました',
                 style: TextStyle(fontSize: 12, color: AppColors.error),
@@ -513,7 +535,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               context,
               ref,
               icon: Icons.settings_suggest,
-              label: 'システム設定',
+              label: AppLocalizations.of(context).themeSystem,
               mode: ThemeMode.system,
               currentMode: currentMode,
             ),
@@ -522,7 +544,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               context,
               ref,
               icon: Icons.light_mode,
-              label: 'ライト',
+              label: AppLocalizations.of(context).themeLight,
               mode: ThemeMode.light,
               currentMode: currentMode,
             ),
@@ -531,7 +553,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               context,
               ref,
               icon: Icons.dark_mode,
-              label: 'ダーク',
+              label: AppLocalizations.of(context).themeDark,
               mode: ThemeMode.dark,
               currentMode: currentMode,
             ),
@@ -558,9 +580,8 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
         color: isSelected ? AppColors.primary : Colors.grey,
       ),
       title: Text(label),
-      trailing: isSelected
-          ? const Icon(Icons.check, color: AppColors.primary)
-          : null,
+      trailing:
+          isSelected ? const Icon(Icons.check, color: AppColors.primary) : null,
       onTap: () {
         ref.read(themeModeProvider.notifier).setThemeMode(mode);
       },
@@ -574,7 +595,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: ListTile(
         leading: const Icon(Icons.help_outline, color: AppColors.primary),
-        title: const Text('よくある質問'),
+        title: Text(AppLocalizations.of(context).faq),
         trailing: const Icon(Icons.chevron_right),
         onTap: () {
           Navigator.push(
@@ -594,8 +615,9 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
       elevation: 1,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: ListTile(
-        leading: const Icon(Icons.description_outlined, color: AppColors.primary),
-        title: const Text('利用規約'),
+        leading:
+            const Icon(Icons.description_outlined, color: AppColors.primary),
+        title: Text(AppLocalizations.of(context).termsOfService),
         trailing: const Icon(Icons.chevron_right),
         onTap: () {
           Navigator.push(
@@ -627,13 +649,13 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             children: [
               if (regions.isNotEmpty) ...[
                 ...regions.map((region) => _buildSavedRegionTile(
-                      context, ref, region, regions.length)),
+                    context, ref, region, regions.length)),
               ],
               if (regions.length < 5)
                 ListTile(
                   leading: const Icon(Icons.add_location_alt,
                       color: AppColors.primary),
-                  title: const Text('地区を追加'),
+                  title: Text(AppLocalizations.of(context).addDistrict),
                   subtitle: Text(
                     '${regions.length}/5件',
                     style: const TextStyle(fontSize: 12, color: Colors.grey),
@@ -656,7 +678,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
         ),
         error: (_, __) => ListTile(
           leading: const Icon(Icons.error_outline, color: AppColors.error),
-          title: const Text('地区リストの読み込みに失敗しました'),
+          title: Text(AppLocalizations.of(context).districtListLoadError),
           trailing: TextButton.icon(
             onPressed: () {
               ref.read(multiRegionProvider.notifier).loadRegions();
@@ -707,7 +729,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
           ),
         ),
         subtitle: Text(
-          '${region.setting.municipalityName} ${region.setting.districtName}',
+          '${_formatSettingsMunicipalityName(region.setting.municipalityName)} ${region.setting.districtName}',
           style: const TextStyle(fontSize: 12, color: Colors.grey),
         ),
         trailing: Row(
@@ -927,9 +949,9 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                 // 成功フィードバック表示
                 if (context.mounted) {
                   ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text(AppStrings.regionSaved),
-                      duration: Duration(seconds: 2),
+                    SnackBar(
+                      content: Text(AppLocalizations.of(context).regionSaved),
+                      duration: const Duration(seconds: 2),
                       behavior: SnackBarBehavior.floating,
                     ),
                   );
@@ -964,9 +986,9 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
         final currentSetting = ref.read(regionSettingProvider).valueOrNull;
         if (currentSetting != null && currentSetting != previousSetting) {
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text(AppStrings.regionSaved),
-              duration: Duration(seconds: 2),
+            SnackBar(
+              content: Text(AppLocalizations.of(context).regionSaved),
+              duration: const Duration(seconds: 2),
               behavior: SnackBarBehavior.floating,
             ),
           );
@@ -976,13 +998,11 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
         final currentState = ref.read(regionSettingProvider);
         if (currentState.hasError && previousSetting != null) {
           // エラー状態の場合は変更前データを復元
-          ref
-              .read(regionSettingProvider.notifier)
-              .saveSetting(previousSetting);
+          ref.read(regionSettingProvider.notifier).saveSetting(previousSetting);
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text(AppStrings.saveError),
-              duration: Duration(seconds: 3),
+            SnackBar(
+              content: Text(AppLocalizations.of(context).saveError),
+              duration: const Duration(seconds: 3),
               behavior: SnackBarBehavior.floating,
               backgroundColor: AppColors.error,
             ),

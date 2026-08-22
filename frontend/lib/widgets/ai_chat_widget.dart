@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../l10n/app_localizations.dart';
+import '../providers/locale_provider.dart';
 import '../services/gemini_service.dart';
 
 /// チャットメッセージのモデル
@@ -14,14 +17,15 @@ class ChatMessage {
 ///
 /// 画面右端に縦書きバナーを表示し、タップでチャットパネルを展開する。
 /// ゴミ分別に関する質問に特化したAIチャットボット。
-class AiChatWidget extends StatefulWidget {
+/// ユーザーの選択言語でAI応答を生成する。
+class AiChatWidget extends ConsumerStatefulWidget {
   const AiChatWidget({super.key});
 
   @override
-  State<AiChatWidget> createState() => _AiChatWidgetState();
+  ConsumerState<AiChatWidget> createState() => _AiChatWidgetState();
 }
 
-class _AiChatWidgetState extends State<AiChatWidget>
+class _AiChatWidgetState extends ConsumerState<AiChatWidget>
     with SingleTickerProviderStateMixin {
   bool _isOpen = false;
   bool _isLoading = false;
@@ -64,10 +68,21 @@ class _AiChatWidgetState extends State<AiChatWidget>
     });
     _scrollToBottom();
 
-    final response = await _geminiService.sendMessage(text);
+    // 現在のロケールの言語コードを取得してsendMessageに渡す
+    final languageCode = ref.read(localeProvider).languageCode;
+    final response = await _geminiService.sendMessage(
+      text,
+      languageCode: languageCode,
+    );
 
     setState(() {
-      _messages.add(ChatMessage(role: 'assistant', text: response));
+      if (response != null) {
+        _messages.add(ChatMessage(role: 'assistant', text: response));
+      } else {
+        // APIエラー時はARBファイルのローカライズ済みエラーメッセージを表示
+        final errorMessage = AppLocalizations.of(context).aiErrorMessage;
+        _messages.add(ChatMessage(role: 'assistant', text: errorMessage));
+      }
       _isLoading = false;
     });
     _scrollToBottom();
@@ -146,7 +161,7 @@ class _AiChatWidgetState extends State<AiChatWidget>
           ),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.2),
+              color: Colors.black.withValues(alpha: 0.2),
               blurRadius: 4,
               offset: const Offset(-2, 0),
             ),

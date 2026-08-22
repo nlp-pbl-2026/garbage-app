@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intl/intl.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import '../constants/colors.dart';
-import '../constants/strings.dart';
+import '../l10n/app_localizations.dart';
 import '../models/collection_schedule.dart';
 import '../models/garbage_category.dart';
 import '../models/garbage_item.dart';
 import '../models/weather.dart';
 import '../providers/calendar_provider.dart';
+import '../providers/locale_provider.dart';
 import '../providers/memo_provider.dart';
 import '../providers/region_provider.dart';
 import '../providers/weather_provider.dart';
@@ -48,14 +50,15 @@ class CalendarScreen extends ConsumerWidget {
           IconButton(
             icon: const Icon(Icons.ios_share, color: Colors.black87),
             onPressed: () => _exportCalendar(context, ref),
-            tooltip: 'カレンダーをエクスポート',
+            tooltip: AppLocalizations.of(context).exportCalendar,
           ),
         ],
       ),
       body: Column(
         children: [
           // 次回収集予定バナー
-          _buildNextCollectionBanner(nextCollectionAsync),
+          _buildNextCollectionBanner(context, nextCollectionAsync,
+              ref.watch(localeProvider).languageCode),
 
           // カレンダー本体
           Expanded(
@@ -79,14 +82,14 @@ class CalendarScreen extends ConsumerWidget {
                     error: (_, __) => Padding(
                       padding: const EdgeInsets.all(16.0),
                       child: Text(
-                        AppStrings.dataLoadError,
+                        AppLocalizations.of(context).dataLoadError,
                         style: TextStyle(color: AppColors.error),
                       ),
                     ),
                   ),
 
                   // 色凡例
-                  _buildColorLegend(),
+                  _buildColorLegend(context),
 
                   const Divider(height: 1),
 
@@ -100,7 +103,7 @@ class CalendarScreen extends ConsumerWidget {
                   ),
 
                   // カテゴリ別次回収集日一覧
-                  _buildAllCategoriesNextCollection(ref),
+                  _buildAllCategoriesNextCollection(context, ref),
                 ],
               ),
             ),
@@ -112,7 +115,9 @@ class CalendarScreen extends ConsumerWidget {
 
   /// 次回収集予定バナーを構築する
   Widget _buildNextCollectionBanner(
+    BuildContext context,
     AsyncValue<ScheduleEntry?> nextCollectionAsync,
+    String locale,
   ) {
     return nextCollectionAsync.when(
       data: (entry) {
@@ -126,9 +131,9 @@ class CalendarScreen extends ConsumerWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                AppStrings.nextCollection,
-                style: TextStyle(
+              Text(
+                AppLocalizations.of(context).nextCollection,
+                style: const TextStyle(
                   color: Colors.white,
                   fontSize: 12,
                   fontWeight: FontWeight.w500,
@@ -136,7 +141,7 @@ class CalendarScreen extends ConsumerWidget {
               ),
               const SizedBox(height: 4),
               Text(
-                '${_formatNextCollectionDate(entry.date)} ${CategoryColors.getLabel(entry.category)}',
+                '${_formatNextCollectionDate(entry.date, locale)} ${CategoryColors.getLabel(entry.category)}',
                 style: const TextStyle(
                   color: Colors.white,
                   fontSize: 16,
@@ -167,7 +172,8 @@ class CalendarScreen extends ConsumerWidget {
   }
 
   /// カテゴリ別次回収集日一覧を構築する
-  Widget _buildAllCategoriesNextCollection(WidgetRef ref) {
+  Widget _buildAllCategoriesNextCollection(
+      BuildContext context, WidgetRef ref) {
     final regionAsync = ref.watch(regionSettingProvider);
     final regionSetting = regionAsync.valueOrNull;
 
@@ -188,9 +194,9 @@ class CalendarScreen extends ConsumerWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            '次回の収集日',
-            style: TextStyle(
+          Text(
+            AppLocalizations.of(context).nextCollectionDates,
+            style: const TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.bold,
               color: Colors.black87,
@@ -202,6 +208,7 @@ class CalendarScreen extends ConsumerWidget {
               scheduleService,
               districtId,
               category,
+              ref.watch(localeProvider).languageCode,
             ),
           ),
         ],
@@ -214,6 +221,7 @@ class CalendarScreen extends ConsumerWidget {
     dynamic scheduleService,
     String districtId,
     GarbageCategory category,
+    String locale,
   ) {
     final color = CategoryColors.getColor(category);
     final label = CategoryColors.getLabel(category);
@@ -234,16 +242,14 @@ class CalendarScreen extends ConsumerWidget {
           final today = DateTime(now.year, now.month, now.day);
           final diff = nextDate.difference(today).inDays;
 
-          final weekDays = ['月', '火', '水', '木', '金', '土', '日'];
-          final weekDay = weekDays[nextDate.weekday - 1];
-          dateText = '${nextDate.month}/${nextDate.day}（$weekDay）';
+          dateText = DateFormat.MMMEd(locale).format(nextDate);
 
           if (diff == 0) {
-            daysText = '今日';
+            daysText = AppLocalizations.of(context).today;
           } else if (diff == 1) {
-            daysText = '明日';
+            daysText = AppLocalizations.of(context).tomorrow;
           } else {
-            daysText = 'あと${diff}日';
+            daysText = AppLocalizations.of(context).daysRemaining(diff);
           }
         }
 
@@ -256,6 +262,7 @@ class CalendarScreen extends ConsumerWidget {
               category,
               label,
               color,
+              locale,
             );
           },
           borderRadius: BorderRadius.circular(8),
@@ -296,7 +303,8 @@ class CalendarScreen extends ConsumerWidget {
                       vertical: 2,
                     ),
                     decoration: BoxDecoration(
-                      color: daysText == '今日' || daysText == '明日'
+                      color: daysText == AppLocalizations.of(context).today ||
+                              daysText == AppLocalizations.of(context).tomorrow
                           ? Colors.red.shade50
                           : Colors.grey.shade100,
                       borderRadius: BorderRadius.circular(10),
@@ -306,7 +314,9 @@ class CalendarScreen extends ConsumerWidget {
                       style: TextStyle(
                         fontSize: 11,
                         fontWeight: FontWeight.bold,
-                        color: daysText == '今日' || daysText == '明日'
+                        color: daysText == AppLocalizations.of(context).today ||
+                                daysText ==
+                                    AppLocalizations.of(context).tomorrow
                             ? Colors.red.shade700
                             : Colors.grey.shade700,
                       ),
@@ -334,6 +344,7 @@ class CalendarScreen extends ConsumerWidget {
     GarbageCategory category,
     String label,
     Color color,
+    String locale,
   ) {
     showModalBottomSheet(
       context: context,
@@ -378,7 +389,7 @@ class CalendarScreen extends ConsumerWidget {
                       ),
                       const SizedBox(width: 8),
                       Text(
-                        '$labelの収集日',
+                        AppLocalizations.of(context).collectionDaysFor(label),
                         style: const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
@@ -400,16 +411,18 @@ class CalendarScreen extends ConsumerWidget {
                       final now = DateTime.now();
                       final today = DateTime(now.year, now.month, now.day);
                       final diff = date.difference(today).inDays;
-                      final weekDays = ['月', '火', '水', '木', '金', '土', '日'];
-                      final weekDay = weekDays[date.weekday - 1];
+
+                      final formattedDate =
+                          DateFormat.MMMEd(locale).format(date);
 
                       String relative = '';
                       if (diff == 0) {
-                        relative = '今日';
+                        relative = AppLocalizations.of(context).today;
                       } else if (diff == 1) {
-                        relative = '明日';
+                        relative = AppLocalizations.of(context).tomorrow;
                       } else if (diff == 2) {
-                        relative = '明後日';
+                        relative =
+                            AppLocalizations.of(context).dayAfterTomorrow;
                       }
 
                       return Padding(
@@ -419,7 +432,7 @@ class CalendarScreen extends ConsumerWidget {
                             SizedBox(
                               width: 120,
                               child: Text(
-                                '${date.month}/${date.day}（$weekDay）',
+                                formattedDate,
                                 style: TextStyle(
                                   fontSize: 15,
                                   fontWeight: diff <= 1
@@ -456,12 +469,12 @@ class CalendarScreen extends ConsumerWidget {
                       );
                     }),
                   if (snapshot.hasData && snapshot.data!.isEmpty)
-                    const Padding(
-                      padding: EdgeInsets.all(24),
+                    Padding(
+                      padding: const EdgeInsets.all(24),
                       child: Center(
                         child: Text(
-                          '今後の収集日が見つかりません',
-                          style: TextStyle(color: Colors.grey),
+                          AppLocalizations.of(context).noUpcomingCollections,
+                          style: const TextStyle(color: Colors.grey),
                         ),
                       ),
                     ),
@@ -475,22 +488,9 @@ class CalendarScreen extends ConsumerWidget {
     );
   }
 
-  /// 次回収集日のフォーマット（「明日」「明後日」「M/d」）
-  String _formatNextCollectionDate(DateTime date) {
-    final now = DateTime.now();
-    final today = DateTime(now.year, now.month, now.day);
-    final targetDate = DateTime(date.year, date.month, date.day);
-    final difference = targetDate.difference(today).inDays;
-
-    if (difference == 0) {
-      return '今日 ${date.month}/${date.day}';
-    } else if (difference == 1) {
-      return '明日 ${date.month}/${date.day}';
-    } else if (difference == 2) {
-      return '明後日 ${date.month}/${date.day}';
-    } else {
-      return '${date.month}/${date.day}';
-    }
+  /// 次回収集日のフォーマット（ロケールに応じた日付表示）
+  String _formatNextCollectionDate(DateTime date, String locale) {
+    return DateFormat.MMMd(locale).format(date);
   }
 
   /// カレンダーウィジェットを構築する
@@ -520,118 +520,122 @@ class CalendarScreen extends ConsumerWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(16),
         child: TableCalendar<ScheduleEntry>(
-      firstDay: DateTime(2024, 1, 1),
-      lastDay: DateTime(2026, 12, 31),
-      focusedDay: focusedMonth,
-      selectedDayPredicate: (day) {
-        if (selectedDay == null) return false;
-        return isSameDay(day, selectedDay);
-      },
-      onDaySelected: (selected, focused) {
-        ref.read(selectedDayProvider.notifier).state = selected;
-        ref.read(focusedMonthProvider.notifier).state = focused;
-      },
-      onPageChanged: (focusedDay) {
-        ref.read(focusedMonthProvider.notifier).state = focusedDay;
-      },
-      locale: 'ja_JP',
-      startingDayOfWeek: StartingDayOfWeek.sunday,
-      rowHeight: 64,
-      headerStyle: HeaderStyle(
-        formatButtonVisible: false,
-        titleCentered: true,
-        titleTextStyle: const TextStyle(
-          fontSize: 18,
-          fontWeight: FontWeight.bold,
-          color: Colors.black87,
-        ),
-        leftChevronIcon: Icon(Icons.chevron_left, color: AppColors.primary),
-        rightChevronIcon: Icon(Icons.chevron_right, color: AppColors.primary),
-        headerPadding: const EdgeInsets.symmetric(vertical: 12),
-        decoration: BoxDecoration(
-          color: AppColors.primary.withOpacity(0.05),
-          border: Border(
-            bottom: BorderSide(color: Colors.grey.shade200),
-          ),
-        ),
-      ),
-      daysOfWeekStyle: DaysOfWeekStyle(
-        weekdayStyle: const TextStyle(
-          fontSize: 13,
-          fontWeight: FontWeight.w600,
-          color: Colors.black54,
-        ),
-        weekendStyle: TextStyle(
-          fontSize: 13,
-          fontWeight: FontWeight.w600,
-          color: Colors.red.shade400,
-        ),
-        decoration: BoxDecoration(
-          border: Border(
-            bottom: BorderSide(color: Colors.grey.shade200),
-          ),
-        ),
-      ),
-      calendarStyle: CalendarStyle(
-        cellMargin: const EdgeInsets.all(4),
-        todayDecoration: BoxDecoration(
-          color: AppColors.primary.withOpacity(0.2),
-          shape: BoxShape.circle,
-          border: Border.all(color: AppColors.primary, width: 2),
-        ),
-        todayTextStyle: const TextStyle(
-          color: Colors.black87,
-          fontWeight: FontWeight.bold,
-        ),
-        selectedDecoration: const BoxDecoration(
-          color: AppColors.primary,
-          shape: BoxShape.circle,
-        ),
-        selectedTextStyle: const TextStyle(
-          color: Colors.white,
-          fontWeight: FontWeight.bold,
-        ),
-        outsideDaysVisible: false,
-      ),
-      calendarBuilders: CalendarBuilders<ScheduleEntry>(
-        defaultBuilder: (context, date, focusedDay) {
-          return _buildDayCell(context, ref, date, memoDates, isToday: false, isSelected: false);
-        },
-        todayBuilder: (context, date, focusedDay) {
-          return _buildDayCell(context, ref, date, memoDates, isToday: true, isSelected: false);
-        },
-        selectedBuilder: (context, date, focusedDay) {
-          return _buildDayCell(context, ref, date, memoDates, isToday: false, isSelected: true);
-        },
-        markerBuilder: (context, date, events) {
-          final dateKey = DateTime(date.year, date.month, date.day);
-          final entries = schedule[dateKey] ?? [];
-          final dailyWeather = weather[dateKey];
-
-          // 天気アイコン + ゴミカテゴリドット
-          return Positioned(
-            bottom: 1,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                if (dailyWeather != null)
-                  Icon(
-                    weatherIcon(dailyWeather.condition),
-                    size: 12,
-                    color: weatherColor(dailyWeather.condition),
-                  ),
-                if (entries.isNotEmpty)
-                  CalendarDayMarker(entries: entries, dotSize: 5),
-              ],
+          firstDay: DateTime(2024, 1, 1),
+          lastDay: DateTime(2026, 12, 31),
+          focusedDay: focusedMonth,
+          selectedDayPredicate: (day) {
+            if (selectedDay == null) return false;
+            return isSameDay(day, selectedDay);
+          },
+          onDaySelected: (selected, focused) {
+            ref.read(selectedDayProvider.notifier).state = selected;
+            ref.read(focusedMonthProvider.notifier).state = focused;
+          },
+          onPageChanged: (focusedDay) {
+            ref.read(focusedMonthProvider.notifier).state = focusedDay;
+          },
+          locale: ref.watch(localeProvider).languageCode,
+          startingDayOfWeek: StartingDayOfWeek.sunday,
+          rowHeight: 64,
+          headerStyle: HeaderStyle(
+            formatButtonVisible: false,
+            titleCentered: true,
+            titleTextStyle: const TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: Colors.black87,
             ),
-          );
-        },
-      ),
-      eventLoader: (day) {
-        final dateKey = DateTime(day.year, day.month, day.day);
-        return schedule[dateKey] ?? [];
-      },
-    ),
+            leftChevronIcon: Icon(Icons.chevron_left, color: AppColors.primary),
+            rightChevronIcon:
+                Icon(Icons.chevron_right, color: AppColors.primary),
+            headerPadding: const EdgeInsets.symmetric(vertical: 12),
+            decoration: BoxDecoration(
+              color: AppColors.primary.withOpacity(0.05),
+              border: Border(
+                bottom: BorderSide(color: Colors.grey.shade200),
+              ),
+            ),
+          ),
+          daysOfWeekStyle: DaysOfWeekStyle(
+            weekdayStyle: const TextStyle(
+              fontSize: 13,
+              fontWeight: FontWeight.w600,
+              color: Colors.black54,
+            ),
+            weekendStyle: TextStyle(
+              fontSize: 13,
+              fontWeight: FontWeight.w600,
+              color: Colors.red.shade400,
+            ),
+            decoration: BoxDecoration(
+              border: Border(
+                bottom: BorderSide(color: Colors.grey.shade200),
+              ),
+            ),
+          ),
+          calendarStyle: CalendarStyle(
+            cellMargin: const EdgeInsets.all(4),
+            todayDecoration: BoxDecoration(
+              color: AppColors.primary.withOpacity(0.2),
+              shape: BoxShape.circle,
+              border: Border.all(color: AppColors.primary, width: 2),
+            ),
+            todayTextStyle: const TextStyle(
+              color: Colors.black87,
+              fontWeight: FontWeight.bold,
+            ),
+            selectedDecoration: const BoxDecoration(
+              color: AppColors.primary,
+              shape: BoxShape.circle,
+            ),
+            selectedTextStyle: const TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
+            outsideDaysVisible: false,
+          ),
+          calendarBuilders: CalendarBuilders<ScheduleEntry>(
+            defaultBuilder: (context, date, focusedDay) {
+              return _buildDayCell(context, ref, date, memoDates,
+                  isToday: false, isSelected: false);
+            },
+            todayBuilder: (context, date, focusedDay) {
+              return _buildDayCell(context, ref, date, memoDates,
+                  isToday: true, isSelected: false);
+            },
+            selectedBuilder: (context, date, focusedDay) {
+              return _buildDayCell(context, ref, date, memoDates,
+                  isToday: false, isSelected: true);
+            },
+            markerBuilder: (context, date, events) {
+              final dateKey = DateTime(date.year, date.month, date.day);
+              final entries = schedule[dateKey] ?? [];
+              final dailyWeather = weather[dateKey];
+
+              // 天気アイコン + ゴミカテゴリドット
+              return Positioned(
+                bottom: 1,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    if (dailyWeather != null)
+                      Icon(
+                        weatherIcon(dailyWeather.condition),
+                        size: 12,
+                        color: weatherColor(dailyWeather.condition),
+                      ),
+                    if (entries.isNotEmpty)
+                      CalendarDayMarker(entries: entries, dotSize: 5),
+                  ],
+                ),
+              );
+            },
+          ),
+          eventLoader: (day) {
+            final dateKey = DateTime(day.year, day.month, day.day);
+            return schedule[dateKey] ?? [];
+          },
+        ),
       ),
     );
   }
@@ -681,7 +685,9 @@ class CalendarScreen extends ConsumerWidget {
                             : date.weekday == DateTime.sunday
                                 ? Colors.red.shade400
                                 : Colors.black87,
-                fontWeight: (isToday || isSelected) ? FontWeight.bold : FontWeight.normal,
+                fontWeight: (isToday || isSelected)
+                    ? FontWeight.bold
+                    : FontWeight.normal,
               ),
             ),
           ),
@@ -726,7 +732,8 @@ class CalendarScreen extends ConsumerWidget {
   }
 
   /// 色凡例を構築する
-  Widget _buildColorLegend() {
+  Widget _buildColorLegend(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       child: Row(
@@ -745,7 +752,7 @@ class CalendarScreen extends ConsumerWidget {
               ),
               const SizedBox(width: 4),
               Text(
-                _getShortLabel(category),
+                _getShortLabel(category, l10n),
                 style: const TextStyle(fontSize: 11),
               ),
             ],
@@ -756,18 +763,18 @@ class CalendarScreen extends ConsumerWidget {
   }
 
   /// カテゴリの短縮ラベルを取得する
-  String _getShortLabel(GarbageCategory category) {
+  String _getShortLabel(GarbageCategory category, AppLocalizations l10n) {
     switch (category) {
       case GarbageCategory.burnable:
-        return '可燃';
+        return l10n.categoryShortBurnable;
       case GarbageCategory.recyclable:
-        return '資源';
+        return l10n.categoryShortRecyclable;
       case GarbageCategory.plastic:
-        return 'プラ';
+        return l10n.categoryShortPlastic;
       case GarbageCategory.petBottle:
-        return 'ペット';
+        return l10n.categoryShortPetBottle;
       case GarbageCategory.hazardous:
-        return '危険';
+        return l10n.categoryShortHazardous;
     }
   }
 
@@ -780,11 +787,11 @@ class CalendarScreen extends ConsumerWidget {
     Map<DateTime, DailyWeather> weather,
   ) {
     if (selectedDay == null) {
-      return const Padding(
-        padding: EdgeInsets.all(24.0),
+      return Padding(
+        padding: const EdgeInsets.all(24.0),
         child: Text(
-          '日付を選択してください',
-          style: TextStyle(
+          AppLocalizations.of(context).selectDate,
+          style: const TextStyle(
             fontSize: 14,
             color: Colors.grey,
           ),
@@ -809,7 +816,8 @@ class CalendarScreen extends ConsumerWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _buildDateHeader(selectedDay),
+              _buildDateHeader(
+                  selectedDay, ref.watch(localeProvider).languageCode),
               // 天気情報
               if (dailyWeather != null) ...[
                 const SizedBox(height: 12),
@@ -817,11 +825,11 @@ class CalendarScreen extends ConsumerWidget {
               ],
               const SizedBox(height: 12),
               if (entries.isEmpty)
-                const Padding(
-                  padding: EdgeInsets.symmetric(vertical: 8.0),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8.0),
                   child: Text(
-                    AppStrings.noSchedule,
-                    style: TextStyle(
+                    AppLocalizations.of(context).noSchedule,
+                    style: const TextStyle(
                       fontSize: 14,
                       color: Colors.grey,
                     ),
@@ -841,10 +849,10 @@ class CalendarScreen extends ConsumerWidget {
         padding: EdgeInsets.all(24.0),
         child: Center(child: CircularProgressIndicator()),
       ),
-      error: (_, __) => const Padding(
-        padding: EdgeInsets.all(24.0),
+      error: (_, __) => Padding(
+        padding: const EdgeInsets.all(24.0),
         child: Text(
-          AppStrings.dataLoadError,
+          AppLocalizations.of(context).dataLoadError,
           style: TextStyle(color: AppColors.error),
         ),
       ),
@@ -876,7 +884,8 @@ class CalendarScreen extends ConsumerWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Icon(Icons.sticky_note_2, size: 16, color: Colors.orange.shade700),
+                Icon(Icons.sticky_note_2,
+                    size: 16, color: Colors.orange.shade700),
                 const SizedBox(width: 8),
                 Expanded(
                   child: Text(
@@ -979,12 +988,12 @@ class CalendarScreen extends ConsumerWidget {
   }
 
   /// 選択日の日付ヘッダーを構築する
-  Widget _buildDateHeader(DateTime date) {
-    final weekDays = ['月', '火', '水', '木', '金', '土', '日'];
-    final weekDay = weekDays[date.weekday - 1];
+  Widget _buildDateHeader(DateTime date, String locale) {
+    final formatter = DateFormat.MMMEd(locale);
+    final formattedDate = formatter.format(date);
 
     return Text(
-      '${date.month}月${date.day}日（$weekDay）の収集',
+      formattedDate,
       style: const TextStyle(
         fontSize: 16,
         fontWeight: FontWeight.bold,

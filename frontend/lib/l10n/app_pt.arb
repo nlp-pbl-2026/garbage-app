@@ -1,0 +1,410 @@
+{
+  "@@locale": "pt",
+
+  "appName": "Ehime App de Lixo",
+  "@appName": {
+    "description": "Nome do aplicativo"
+  },
+
+  "categoryBurnable": "Queimável",
+  "@categoryBurnable": {
+    "description": "Categoria de lixo: Lixo queimável"
+  },
+
+  "categoryRecyclable": "Reciclável",
+  "@categoryRecyclable": {
+    "description": "Categoria de lixo: Lixo reciclável"
+  },
+
+  "categoryPlastic": "Embalagens Plásticas",
+  "@categoryPlastic": {
+    "description": "Categoria de lixo: Embalagens e recipientes plásticos"
+  },
+
+  "categoryPetBottle": "Garrafas PET",
+  "@categoryPetBottle": {
+    "description": "Categoria de lixo: Garrafas PET"
+  },
+
+  "categoryHazardous": "Perigoso",
+  "@categoryHazardous": {
+    "description": "Categoria de lixo: Lixo perigoso"
+  },
+
+  "tabSearch": "Buscar",
+  "@tabSearch": {
+    "description": "Rótulo da aba de busca"
+  },
+
+  "tabCalendar": "Calendário",
+  "@tabCalendar": {
+    "description": "Rótulo da aba de calendário"
+  },
+
+  "tabSettings": "Configurações",
+  "@tabSettings": {
+    "description": "Rótulo da aba de configurações"
+  },
+
+  "tabImageInput": "Imagem",
+  "@tabImageInput": {
+    "description": "Rótulo da aba de entrada de imagem"
+  },
+
+  "regionSelectionTitle": "Selecionar Região",
+  "@regionSelectionTitle": {
+    "description": "Título da tela de seleção de região"
+  },
+
+  "selectPrefecture": "Selecionar Província",
+  "@selectPrefecture": {
+    "description": "Etapa de seleção de província"
+  },
+
+  "selectMunicipality": "Selecionar Município",
+  "@selectMunicipality": {
+    "description": "Etapa de seleção de município"
+  },
+
+  "selectDistrict": "Selecionar Distrito",
+  "@selectDistrict": {
+    "description": "Etapa de seleção de distrito"
+  },
+
+  "startWithRegion": "Iniciar com esta região",
+  "@startWithRegion": {
+    "description": "Botão de conclusão da configuração de região"
+  },
+
+  "searchTitle": "Buscar Itens de Lixo",
+  "@searchTitle": {
+    "description": "Título da tela de busca"
+  },
+
+  "searchHint": "Digite o nome do item (2+ caracteres)",
+  "@searchHint": {
+    "description": "Dica de busca"
+  },
+
+  "popularItems": "Itens Mais Buscados",
+  "@popularItems": {
+    "description": "Título da seção de itens populares"
+  },
+
+  "multipleItemsFound": "Vários itens semelhantes encontrados",
+  "@multipleItemsFound": {
+    "description": "Mensagem de múltiplos itens encontrados"
+  },
+
+  "multipleCategoriesNote": "Ou varia conforme o item",
+  "@multipleCategoriesNote": {
+    "description": "Nota de múltiplas categorias"
+  },
+
+  "itemDetailTitle": "Detalhes do Item",
+  "@itemDetailTitle": {
+    "description": "Título da tela de detalhes do item"
+  },
+
+  "nextCollectionDate": "Próxima Data de Coleta",
+  "@nextCollectionDate": {
+    "description": "Rótulo da próxima data de coleta"
+  },
+
+  "disposalMethod": "Como Descartar",
+  "@disposalMethod": {
+    "description": "Rótulo do método de descarte"
+  },
+
+  "caution": "Atenção",
+  "@caution": {
+    "description": "Rótulo de atenção"
+  },
+
+  "registerToCalendar": "Adicionar ao Calendário",
+  "@registerToCalendar": {
+    "description": "Botão de adicionar ao calendário"
+  },
+
+  "calendarTitle": "Calendário de Coleta",
+  "@calendarTitle": {
+    "description": "Título da tela de calendário"
+  },
+
+  "nextCollection": "Próxima Coleta",
+  "@nextCollection": {
+    "description": "Banner de próxima coleta"
+  },
+
+  "noSchedule": "Nenhuma coleta programada para este dia",
+  "@noSchedule": {
+    "description": "Mensagem de sem programação"
+  },
+
+  "colorLegend": "Legenda de Cores",
+  "@colorLegend": {
+    "description": "Título da legenda de cores"
+  },
+
+  "settingsTitle": "Configurações",
+  "@settingsTitle": {
+    "description": "Título da tela de configurações"
+  },
+
+  "regionSettings": "Configurações de Região",
+  "@regionSettings": {
+    "description": "Seção de configurações de região"
+  },
+
+  "changeRegion": "Alterar Região",
+  "@changeRegion": {
+    "description": "Botão de alterar região"
+  },
+
+  "notificationSettings": "Configurações de Notificação",
+  "@notificationSettings": {
+    "description": "Seção de configurações de notificação"
+  },
+
+  "languageSettings": "Idioma",
+  "@languageSettings": {
+    "description": "Seção de configurações de idioma"
+  },
+
+  "reminderToggle": "Lembrete na véspera da coleta",
+  "@reminderToggle": {
+    "description": "Rótulo do toggle de lembrete"
+  },
+
+  "reminderDescription": "Notifica às 18:00 do dia anterior à coleta",
+  "@reminderDescription": {
+    "description": "Descrição do lembrete"
+  },
+
+  "noSearchResults": "Nenhum item encontrado",
+  "@noSearchResults": {
+    "description": "Mensagem de nenhum resultado de busca"
+  },
+
+  "dataLoadError": "Falha ao carregar dados",
+  "@dataLoadError": {
+    "description": "Mensagem de erro ao carregar dados"
+  },
+
+  "regionDataError": "Falha ao carregar dados da região",
+  "@regionDataError": {
+    "description": "Mensagem de erro ao carregar dados da região"
+  },
+
+  "saveError": "Falha ao salvar",
+  "@saveError": {
+    "description": "Mensagem de erro ao salvar"
+  },
+
+  "regionNotSet": "Região não configurada",
+  "@regionNotSet": {
+    "description": "Mensagem de região não configurada"
+  },
+
+  "dataOutdated": "Os dados podem estar desatualizados. Conecte-se à internet para atualizar.",
+  "@dataOutdated": {
+    "description": "Mensagem de dados desatualizados"
+  },
+
+  "noOfflineData": "Dados indisponíveis. É necessária uma conexão com a internet.",
+  "@noOfflineData": {
+    "description": "Mensagem de sem dados offline"
+  },
+
+  "prefectureNotSelected": "Selecione uma província",
+  "@prefectureNotSelected": {
+    "description": "Validação de província não selecionada"
+  },
+
+  "municipalityNotSelected": "Selecione um município",
+  "@municipalityNotSelected": {
+    "description": "Validação de município não selecionado"
+  },
+
+  "districtNotSelected": "Selecione um distrito",
+  "@districtNotSelected": {
+    "description": "Validação de distrito não selecionado"
+  },
+
+  "regionSaved": "Configurações de região salvas",
+  "@regionSaved": {
+    "description": "Confirmação de região salva"
+  },
+
+  "calendarRegistered": "Adicionado ao calendário",
+  "@calendarRegistered": {
+    "description": "Confirmação de registro no calendário"
+  },
+
+  "calendarPermissionDenied": "É necessária permissão de acesso ao calendário. Permita o acesso nas configurações do dispositivo.",
+  "@calendarPermissionDenied": {
+    "description": "Mensagem de erro de permissão do calendário"
+  },
+
+  "retry": "Tentar Novamente",
+  "@retry": {
+    "description": "Rótulo do botão de tentar novamente"
+  },
+
+  "back": "Voltar",
+  "@back": {
+    "description": "Rótulo do botão voltar"
+  },
+
+  "openSettings": "Abrir Configurações",
+  "@openSettings": {
+    "description": "Rótulo do botão abrir configurações"
+  },
+
+  "aiErrorMessage": "Não foi possível concluir a solicitação. Tente novamente mais tarde.",
+  "@aiErrorMessage": {
+    "description": "Mensagem de erro do chat IA"
+  },
+
+  "notificationTomorrowTitle": "Lixo de Amanhã",
+  "@notificationTomorrowTitle": {
+    "description": "Título da notificação de lembrete de coleta de amanhã"
+  },
+
+  "notificationTomorrowBody": "Amanhã é dia de {categories}",
+  "@notificationTomorrowBody": {
+    "description": "Corpo da notificação de lembrete de coleta de amanhã",
+    "placeholders": {
+      "categories": {
+        "type": "String",
+        "description": "Nomes das categorias de coleta (separados por /)"
+      }
+    }
+  },
+
+  "notificationTodayTitle": "Lixo de Hoje",
+  "@notificationTodayTitle": {
+    "description": "Título da notificação de lembrete de coleta de hoje"
+  },
+
+  "notificationTodayBody": "Hoje é dia de {categories}",
+  "@notificationTodayBody": {
+    "description": "Corpo da notificação de lembrete de coleta de hoje",
+    "placeholders": {
+      "categories": {
+        "type": "String",
+        "description": "Nomes das categorias de coleta (separados por /)"
+      }
+    }
+  },
+
+  "municipalityRomanization": "{japaneseName} ({romanizedName})",
+  "@municipalityRomanization": {
+    "description": "Modelo de nome do município com romanização",
+    "placeholders": {
+      "japaneseName": {
+        "type": "String",
+        "description": "Nome do município em japonês"
+      },
+      "romanizedName": {
+        "type": "String",
+        "description": "Nome do município romanizado"
+      }
+    }
+  },
+
+  "bulkyWaste": "Lixo Volumoso",
+  "regionRequired": "Configuração de região necessária",
+  "searchTip": "Pesquise itens que não sabe como descartar",
+  "searchTipDescription": "Digite o nome do item para saber o método de descarte",
+  "searchByCategory": "Pesquisar por Categoria",
+  "searchHistory": "Histórico de Pesquisa",
+  "deleteAll": "Excluir Tudo",
+  "searchResults": "Resultados da Pesquisa",
+  "nextCollectionDates": "Próximas Datas de Coleta",
+  "today": "Hoje",
+  "tomorrow": "Amanhã",
+  "dayAfterTomorrow": "Depois de amanhã",
+  "daysRemaining": "Faltam {days} dias",
+  "@daysRemaining": {
+    "placeholders": { "days": { "type": "int" } }
+  },
+  "collectionDaysFor": "Dias de Coleta de {category}",
+  "@collectionDaysFor": {
+    "placeholders": { "category": { "type": "String" } }
+  },
+  "noUpcomingCollections": "Nenhuma data de coleta futura encontrada",
+  "selectDate": "Selecione uma data",
+  "exportCalendar": "Exportar Calendário",
+  "categoryShortBurnable": "Quei",
+  "categoryShortRecyclable": "Reci",
+  "categoryShortPlastic": "Plás",
+  "categoryShortPetBottle": "PET",
+  "categoryShortHazardous": "Peri",
+  "account": "Conta",
+  "loggedIn": "Conectado",
+  "changePassword": "Alterar Senha",
+  "logout": "Sair",
+  "loginOrRegister": "Entrar / Registrar",
+  "loginSyncMessage": "Faça login para sincronizar suas configurações",
+  "currentRegion": "Região Atual",
+  "detectFromLocation": "Redetectar pela localização atual",
+  "theme": "Tema",
+  "themeSystem": "Sistema",
+  "themeLight": "Claro",
+  "themeDark": "Escuro",
+  "languageSettings": "Idioma",
+  "other": "Outros",
+  "faq": "Perguntas Frequentes",
+  "termsOfService": "Termos de Serviço",
+  "reminderNotificationDescription": "Notifica no dia anterior e no dia da coleta",
+  "reminderSettingFailed": "Falha ao configurar lembrete",
+  "regionSettingUpdated": "Configurações de região atualizadas",
+  "cancel": "Cancelar",
+  "detectFromGps": "Detectar pela localização atual",
+  "setRegionPrompt": "Configure sua área residencial",
+  "regionOptimizationDescription": "Otimize os dias de coleta e regras de separação para sua área.",
+  "pleaseSelect": "Selecione",
+  "settingsCanChangeLater": "Você pode alterar as configurações posteriormente na tela de Configurações",
+  "gpsResult": "Resultado da Detecção GPS",
+  "gpsRegionDetected": "A seguinte região foi detectada:",
+  "setThisRegion": "Usar esta região",
+  "selectImage": "Selecione uma imagem",
+  "takePhoto": "Tirar Foto",
+  "chooseFromGallery": "Escolher da Galeria",
+  "realtimeCamera": "Câmera em Tempo Real",
+  "noCameraAvailable": "Nenhuma câmera disponível neste dispositivo",
+  "send": "Enviar",
+  "redo": "Refazer",
+  "uploading": "Enviando...",
+  "uploadComplete": "Upload concluído",
+  "imageSentSuccess": "Imagem enviada com sucesso",
+  "resend": "Reenviar",
+  "errorOccurred": "Ocorreu um erro",
+  "municipality": "Município",
+  "district": "Distrito",
+  "city": "Cidade",
+  "eveningNotification": "Notificação noturna",
+  "morningNotification": "Notificação matinal",
+  "addDistrict": "Adicionar Distrito",
+  "districtListLoadError": "Falha ao carregar lista de distritos",
+  "inUse": "Ativo",
+  "deleteDistrict": "Excluir Distrito",
+  "deleteDistrictConfirm": "Excluir \"{label}\"?",
+  "@deleteDistrictConfirm": {
+    "placeholders": { "label": { "type": "String" } }
+  },
+  "delete": "Excluir",
+  "addDistrictDialogTitle": "Adicionar Distrito",
+  "addDistrictDescription": "Digite um rótulo para o novo distrito.\nEm seguida, selecione um município e distrito.",
+  "label": "Rótulo",
+  "labelHint": "ex: Trabalho, Casa dos pais",
+  "labelRequired": "Digite um rótulo",
+  "next": "Próximo",
+  "reminderLoadError": "Falha ao carregar configurações de lembrete",
+  "regionSettingLabel": "Configurações de Região",
+  "districtCount": "{count}/5",
+  "@districtCount": {
+    "placeholders": { "count": { "type": "int" } }
+  }
+}

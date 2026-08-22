@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intl/intl.dart';
 
 import '../constants/colors.dart';
-import '../constants/strings.dart';
+import '../l10n/app_localizations.dart';
 import '../models/garbage_category.dart';
 import '../models/garbage_item.dart';
 import '../providers/calendar_provider.dart';
+import '../providers/locale_provider.dart';
 import '../providers/region_provider.dart';
 import '../widgets/category_tag.dart';
 
@@ -43,9 +45,9 @@ class ItemDetailScreen extends ConsumerWidget {
           icon: const Icon(Icons.arrow_back, color: Colors.black87),
           onPressed: () => Navigator.of(context).pop(),
         ),
-        title: const Text(
-          '品目詳細',
-          style: TextStyle(color: Colors.black87, fontSize: 16),
+        title: Text(
+          AppLocalizations.of(context).itemDetailTitle,
+          style: const TextStyle(color: Colors.black87, fontSize: 16),
         ),
       ),
       body: SingleChildScrollView(
@@ -55,7 +57,7 @@ class ItemDetailScreen extends ConsumerWidget {
             // 検索バー（タップで検索画面に戻る）
             _buildTappableSearchBar(context),
             // 「検索結果」ラベル
-            _buildSearchResultLabel(),
+            _buildSearchResultLabel(context),
             // 品目詳細カード
             _buildDetailCard(context, ref, districtId),
           ],
@@ -82,7 +84,7 @@ class ItemDetailScreen extends ConsumerWidget {
               const SizedBox(width: 8),
               Expanded(
                 child: Text(
-                  item.name,
+                  item.displayName,
                   style: const TextStyle(
                     fontSize: 16,
                     color: Colors.black87,
@@ -98,11 +100,11 @@ class ItemDetailScreen extends ConsumerWidget {
   }
 
   /// 「検索結果」ラベル
-  Widget _buildSearchResultLabel() {
+  Widget _buildSearchResultLabel(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Text(
-        '検索結果',
+        AppLocalizations.of(context).searchResults,
         style: TextStyle(
           fontSize: 14,
           color: Colors.grey[700],
@@ -145,15 +147,16 @@ class ItemDetailScreen extends ConsumerWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // 品目名 + 次回収集日
-              _buildHeaderRow(ref, districtId),
+              _buildHeaderRow(context, ref, districtId),
               const SizedBox(height: 8),
               // カテゴリタグ
               CategoryTag(category: item.primaryCategory),
               const SizedBox(height: 16),
               // 出し方セクション
-              _buildDisposalMethodSection(),
+              _buildDisposalMethodSection(context),
               // 注意事項セクション（cautionがある場合のみ）
-              if (item.caution != null && item.caution!.isNotEmpty) ...[
+              if (item.displayCaution != null &&
+                  item.displayCaution!.isNotEmpty) ...[
                 const SizedBox(height: 12),
                 _buildCautionSection(),
               ],
@@ -168,14 +171,15 @@ class ItemDetailScreen extends ConsumerWidget {
   }
 
   /// ヘッダー行（品目名 + 次回収集日）
-  Widget _buildHeaderRow(WidgetRef ref, String? districtId) {
+  Widget _buildHeaderRow(
+      BuildContext context, WidgetRef ref, String? districtId) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         // 品目名
         Expanded(
           child: Text(
-            item.name,
+            item.displayName,
             style: const TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
@@ -183,13 +187,15 @@ class ItemDetailScreen extends ConsumerWidget {
           ),
         ),
         // 次回収集日
-        if (districtId != null) _buildNextCollectionDate(ref, districtId),
+        if (districtId != null)
+          _buildNextCollectionDate(context, ref, districtId),
       ],
     );
   }
 
   /// 次回収集日の表示
-  Widget _buildNextCollectionDate(WidgetRef ref, String districtId) {
+  Widget _buildNextCollectionDate(
+      BuildContext context, WidgetRef ref, String districtId) {
     final scheduleService = ref.watch(scheduleServiceProvider);
     final categoryId = item.primaryCategory.toJsonString();
 
@@ -212,7 +218,7 @@ class ItemDetailScreen extends ConsumerWidget {
         return Container(
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
           child: Text(
-            '${AppStrings.nextCollectionDate} ${_formatDate(nextDate)}',
+            '${AppLocalizations.of(context).nextCollectionDate} ${_formatDate(nextDate, ref.watch(localeProvider).languageCode)}',
             style: TextStyle(
               fontSize: 12,
               color: Colors.grey[700],
@@ -224,7 +230,7 @@ class ItemDetailScreen extends ConsumerWidget {
   }
 
   /// 出し方セクション
-  Widget _buildDisposalMethodSection() {
+  Widget _buildDisposalMethodSection(BuildContext context) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -239,7 +245,7 @@ class ItemDetailScreen extends ConsumerWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                AppStrings.disposalMethod,
+                AppLocalizations.of(context).disposalMethod,
                 style: TextStyle(
                   fontSize: 13,
                   fontWeight: FontWeight.w600,
@@ -248,7 +254,7 @@ class ItemDetailScreen extends ConsumerWidget {
               ),
               const SizedBox(height: 4),
               Text(
-                item.disposalMethod,
+                item.displayDisposalMethod,
                 style: const TextStyle(
                   fontSize: 14,
                   color: Colors.black87,
@@ -285,7 +291,7 @@ class ItemDetailScreen extends ConsumerWidget {
           const SizedBox(width: 8),
           Expanded(
             child: Text(
-              item.caution!,
+              item.displayCaution!,
               style: const TextStyle(
                 fontSize: 13,
                 color: AppColors.error,
@@ -306,14 +312,14 @@ class ItemDetailScreen extends ConsumerWidget {
           // プロトタイプではSnackBarで登録完了を表示
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: const Text(AppStrings.calendarRegistered),
+              content: Text(AppLocalizations.of(context).calendarRegistered),
               duration: const Duration(seconds: 2),
               behavior: SnackBarBehavior.floating,
             ),
           );
         },
         icon: const Icon(Icons.calendar_today, size: 18),
-        label: const Text(AppStrings.registerToCalendar),
+        label: Text(AppLocalizations.of(context).registerToCalendar),
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.primary,
           foregroundColor: Colors.white,
@@ -326,11 +332,8 @@ class ItemDetailScreen extends ConsumerWidget {
     );
   }
 
-  /// 日付をフォーマットする（例: 6月18日（水））
-  String _formatDate(DateTime date) {
-    const weekdays = ['月', '火', '水', '木', '金', '土', '日'];
-    // DateTime.weekday: 1=月曜〜7=日曜
-    final weekday = weekdays[date.weekday - 1];
-    return '${date.month}月${date.day}日（$weekday）';
+  /// 日付をフォーマットする（ロケールに応じた表示）
+  String _formatDate(DateTime date, String locale) {
+    return DateFormat.MMMEd(locale).format(date);
   }
 }

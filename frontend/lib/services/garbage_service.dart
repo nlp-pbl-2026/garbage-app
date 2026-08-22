@@ -26,12 +26,11 @@ class GarbageService {
     final jsonString =
         await rootBundle.loadString('assets/data/garbage_items.json');
     final List<dynamic> jsonList = json.decode(jsonString) as List<dynamic>;
-    _itemsCache =
-        jsonList
-            .map(
-              (item) => GarbageItem.fromJson(item as Map<String, dynamic>),
-            )
-            .toList();
+    _itemsCache = jsonList
+        .map(
+          (item) => GarbageItem.fromJson(item as Map<String, dynamic>),
+        )
+        .toList();
     return _itemsCache!;
   }
 
@@ -53,9 +52,14 @@ class GarbageService {
   ///
   /// - [keyword]が2文字未満の場合は空リストを返す
   /// - [keyword]が50文字を超える場合は50文字に切り詰めてから検索する
-  /// - 品目のnameまたはkeywordsに対して部分一致で検索する
+  /// - [isDualLanguage]がtrueの場合、ローカライズされたフィールドと日本語フィールドの
+  ///   両方に対して検索し、重複なしの結合結果を返す（要件7.6, 7.7）
+  /// - [isDualLanguage]がfalseの場合、日本語のnameとkeywordsのみに対して検索する
   /// - 結果は最大50件まで返す
-  Future<List<GarbageItem>> searchItems(String keyword) async {
+  Future<List<GarbageItem>> searchItems(
+    String keyword, {
+    bool isDualLanguage = false,
+  }) async {
     // 2文字未満なら空リストを返す
     if (keyword.length < 2) {
       return [];
@@ -66,19 +70,42 @@ class GarbageService {
         keyword.length > 50 ? keyword.substring(0, 50) : keyword;
 
     final items = await _loadItems();
+    final queryLower = searchKeyword.toLowerCase();
 
-    // 品目のnameまたはkeywordsに対して部分一致で検索
-    final results =
-        items.where((item) {
-          // 品目名での部分一致
-          if (item.name.contains(searchKeyword)) {
-            return true;
-          }
-          // キーワードリストでの部分一致
-          return item.keywords.any(
-            (kw) => kw.contains(searchKeyword),
-          );
-        }).toList();
+    final Set<String> matchedIds = {};
+    final List<GarbageItem> results = [];
+
+    for (final item in items) {
+      if (matchedIds.contains(item.id)) continue;
+
+      bool matches = false;
+
+      if (isDualLanguage) {
+        // ローカライズされたフィールドでマッチング
+        if (item.localizedName?.toLowerCase().contains(queryLower) == true) {
+          matches = true;
+        }
+        if (!matches &&
+            item.localizedKeywords
+                .any((k) => k.toLowerCase().contains(queryLower))) {
+          matches = true;
+        }
+      }
+
+      // 日本語フィールドでマッチング（常に実行）
+      if (!matches && item.name.toLowerCase().contains(queryLower)) {
+        matches = true;
+      }
+      if (!matches &&
+          item.keywords.any((k) => k.toLowerCase().contains(queryLower))) {
+        matches = true;
+      }
+
+      if (matches) {
+        matchedIds.add(item.id);
+        results.add(item);
+      }
+    }
 
     // 最大50件まで返す
     if (results.length > 50) {

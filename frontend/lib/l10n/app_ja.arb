@@ -1,0 +1,749 @@
+{
+  "@@locale": "ja",
+
+  "appName": "愛媛ゴミ出しアプリ",
+  "@appName": {
+    "description": "アプリ名"
+  },
+
+  "categoryBurnable": "可燃ごみ",
+  "@categoryBurnable": {
+    "description": "ゴミカテゴリ：可燃ごみ"
+  },
+
+  "categoryRecyclable": "資源ごみ",
+  "@categoryRecyclable": {
+    "description": "ゴミカテゴリ：資源ごみ"
+  },
+
+  "categoryPlastic": "プラスチック製容器包装",
+  "@categoryPlastic": {
+    "description": "ゴミカテゴリ：プラスチック製容器包装"
+  },
+
+  "categoryPetBottle": "ペットボトル",
+  "@categoryPetBottle": {
+    "description": "ゴミカテゴリ：ペットボトル"
+  },
+
+  "categoryHazardous": "危険ごみ",
+  "@categoryHazardous": {
+    "description": "ゴミカテゴリ：危険ごみ"
+  },
+
+  "tabSearch": "検索",
+  "@tabSearch": {
+    "description": "検索タブラベル"
+  },
+
+  "tabCalendar": "カレンダー",
+  "@tabCalendar": {
+    "description": "カレンダータブラベル"
+  },
+
+  "tabSettings": "設定",
+  "@tabSettings": {
+    "description": "設定タブラベル"
+  },
+
+  "tabImageInput": "画像入力",
+  "@tabImageInput": {
+    "description": "画像入力タブラベル"
+  },
+
+  "regionSelectionTitle": "地域を選択",
+  "@regionSelectionTitle": {
+    "description": "地域選択画面タイトル"
+  },
+
+  "selectPrefecture": "都道府県を選択",
+  "@selectPrefecture": {
+    "description": "都道府県選択ステップ"
+  },
+
+  "selectMunicipality": "市区町村を選択",
+  "@selectMunicipality": {
+    "description": "市区町村選択ステップ"
+  },
+
+  "selectDistrict": "地区を選択",
+  "@selectDistrict": {
+    "description": "地区選択ステップ"
+  },
+
+  "startWithRegion": "この地域で始める",
+  "@startWithRegion": {
+    "description": "地域設定完了ボタン"
+  },
+
+  "searchTitle": "ゴミ品目検索",
+  "@searchTitle": {
+    "description": "検索画面タイトル"
+  },
+
+  "searchHint": "品目名を入力（2文字以上）",
+  "@searchHint": {
+    "description": "検索ヒント"
+  },
+
+  "popularItems": "よく検索される品目",
+  "@popularItems": {
+    "description": "よく検索される品目セクションタイトル"
+  },
+
+  "multipleItemsFound": "近い品目が複数見つかりました",
+  "@multipleItemsFound": {
+    "description": "複数品目該当メッセージ"
+  },
+
+  "multipleCategoriesNote": "または品目により異なる",
+  "@multipleCategoriesNote": {
+    "description": "複数カテゴリ該当補足"
+  },
+
+  "itemDetailTitle": "品目詳細",
+  "@itemDetailTitle": {
+    "description": "品目詳細画面タイトル"
+  },
+
+  "nextCollectionDate": "次回収集日",
+  "@nextCollectionDate": {
+    "description": "次回収集日ラベル"
+  },
+
+  "disposalMethod": "出し方",
+  "@disposalMethod": {
+    "description": "出し方ラベル"
+  },
+
+  "caution": "注意事項",
+  "@caution": {
+    "description": "注意事項ラベル"
+  },
+
+  "registerToCalendar": "カレンダーに登録",
+  "@registerToCalendar": {
+    "description": "カレンダーに登録ボタン"
+  },
+
+  "calendarTitle": "収集カレンダー",
+  "@calendarTitle": {
+    "description": "カレンダー画面タイトル"
+  },
+
+  "nextCollection": "次回の収集",
+  "@nextCollection": {
+    "description": "次回収集予定バナー"
+  },
+
+  "noSchedule": "この日の収集予定はありません",
+  "@noSchedule": {
+    "description": "収集予定なしメッセージ"
+  },
+
+  "colorLegend": "色凡例",
+  "@colorLegend": {
+    "description": "色凡例タイトル"
+  },
+
+  "settingsTitle": "設定",
+  "@settingsTitle": {
+    "description": "設定画面タイトル"
+  },
+
+  "regionSettings": "地域設定",
+  "@regionSettings": {
+    "description": "地域設定セクション"
+  },
+
+  "changeRegion": "地域を変更",
+  "@changeRegion": {
+    "description": "地域変更ボタン"
+  },
+
+  "notificationSettings": "通知設定",
+  "@notificationSettings": {
+    "description": "通知設定セクション"
+  },
+
+  "languageSettings": "言語設定",
+  "@languageSettings": {
+    "description": "言語設定セクション"
+  },
+
+  "reminderToggle": "収集日前日リマインダー",
+  "@reminderToggle": {
+    "description": "リマインダートグルラベル"
+  },
+
+  "reminderDescription": "収集日前日の18:00に通知します",
+  "@reminderDescription": {
+    "description": "リマインダー説明"
+  },
+
+  "noSearchResults": "該当する品目が見つかりませんでした",
+  "@noSearchResults": {
+    "description": "検索結果なしメッセージ"
+  },
+
+  "dataLoadError": "データの取得に失敗しました",
+  "@dataLoadError": {
+    "description": "データ取得失敗メッセージ"
+  },
+
+  "regionDataError": "地域データの取得に失敗しました",
+  "@regionDataError": {
+    "description": "地域データ取得失敗メッセージ"
+  },
+
+  "saveError": "保存に失敗しました",
+  "@saveError": {
+    "description": "保存失敗メッセージ"
+  },
+
+  "regionNotSet": "地域が設定されていません",
+  "@regionNotSet": {
+    "description": "地域未設定メッセージ"
+  },
+
+  "dataOutdated": "データが古い可能性があります。ネットワークに接続してデータを更新してください。",
+  "@dataOutdated": {
+    "description": "データ古い通知メッセージ"
+  },
+
+  "noOfflineData": "データが利用できません。ネットワーク接続が必要です。",
+  "@noOfflineData": {
+    "description": "オフラインデータなしメッセージ"
+  },
+
+  "prefectureNotSelected": "都道府県を選択してください",
+  "@prefectureNotSelected": {
+    "description": "都道府県未選択バリデーション"
+  },
+
+  "municipalityNotSelected": "市区町村を選択してください",
+  "@municipalityNotSelected": {
+    "description": "市区町村未選択バリデーション"
+  },
+
+  "districtNotSelected": "地区を選択してください",
+  "@districtNotSelected": {
+    "description": "地区未選択バリデーション"
+  },
+
+  "regionSaved": "地域設定を保存しました",
+  "@regionSaved": {
+    "description": "地域設定保存完了メッセージ"
+  },
+
+  "calendarRegistered": "カレンダーに登録しました",
+  "@calendarRegistered": {
+    "description": "カレンダー登録完了メッセージ"
+  },
+
+  "calendarPermissionDenied": "カレンダーへのアクセス権限が必要です。設定画面から権限を許可してください。",
+  "@calendarPermissionDenied": {
+    "description": "カレンダー権限エラーメッセージ"
+  },
+
+  "retry": "再試行",
+  "@retry": {
+    "description": "再試行ボタンラベル"
+  },
+
+  "back": "戻る",
+  "@back": {
+    "description": "戻るボタンラベル"
+  },
+
+  "openSettings": "設定を開く",
+  "@openSettings": {
+    "description": "設定を開くボタンラベル"
+  },
+
+  "aiErrorMessage": "リクエストを完了できませんでした。しばらくしてからお試しください。",
+  "@aiErrorMessage": {
+    "description": "AIチャットエラーメッセージ"
+  },
+
+  "notificationTomorrowTitle": "明日のゴミ出し",
+  "@notificationTomorrowTitle": {
+    "description": "明日の収集リマインダー通知タイトル"
+  },
+
+  "notificationTomorrowBody": "明日は{categories}の日です",
+  "@notificationTomorrowBody": {
+    "description": "明日の収集リマインダー通知本文",
+    "placeholders": {
+      "categories": {
+        "type": "String",
+        "description": "収集カテゴリ名（・区切り）"
+      }
+    }
+  },
+
+  "notificationTodayTitle": "今日のゴミ出し",
+  "@notificationTodayTitle": {
+    "description": "今日の収集リマインダー通知タイトル"
+  },
+
+  "notificationTodayBody": "今日は{categories}の日です",
+  "@notificationTodayBody": {
+    "description": "今日の収集リマインダー通知本文",
+    "placeholders": {
+      "categories": {
+        "type": "String",
+        "description": "収集カテゴリ名（・区切り）"
+      }
+    }
+  },
+
+  "municipalityRomanization": "{japaneseName}（{romanizedName}）",
+  "@municipalityRomanization": {
+    "description": "自治体名ローマ字表示テンプレート",
+    "placeholders": {
+      "japaneseName": {
+        "type": "String",
+        "description": "日本語の自治体名"
+      },
+      "romanizedName": {
+        "type": "String",
+        "description": "ローマ字の自治体名"
+      }
+    }
+  },
+
+  "bulkyWaste": "粗大ごみ",
+  "@bulkyWaste": {
+    "description": "粗大ごみFABラベル"
+  },
+
+  "regionRequired": "地域設定が必要です",
+  "@regionRequired": {
+    "description": "地域未設定時のスナックバーメッセージ"
+  },
+
+  "searchTip": "捨て方がわからないものを検索",
+  "@searchTip": {
+    "description": "検索ヒントカードタイトル"
+  },
+
+  "searchTipDescription": "品目名を入力すると分別方法がわかります",
+  "@searchTipDescription": {
+    "description": "検索ヒントカード説明"
+  },
+
+  "searchByCategory": "カテゴリから探す",
+  "@searchByCategory": {
+    "description": "カテゴリ別クイック検索セクションタイトル"
+  },
+
+  "searchHistory": "検索履歴",
+  "@searchHistory": {
+    "description": "検索履歴セクションタイトル"
+  },
+
+  "deleteAll": "すべて削除",
+  "@deleteAll": {
+    "description": "全件削除ボタン"
+  },
+
+  "searchResults": "検索結果",
+  "@searchResults": {
+    "description": "検索結果ラベル"
+  },
+
+  "nextCollectionDates": "次回の収集日",
+  "@nextCollectionDates": {
+    "description": "カテゴリ別次回収集日セクションタイトル"
+  },
+
+  "today": "今日",
+  "@today": {
+    "description": "今日ラベル"
+  },
+
+  "tomorrow": "明日",
+  "@tomorrow": {
+    "description": "明日ラベル"
+  },
+
+  "dayAfterTomorrow": "明後日",
+  "@dayAfterTomorrow": {
+    "description": "明後日ラベル"
+  },
+
+  "daysRemaining": "あと{days}日",
+  "@daysRemaining": {
+    "description": "残り日数表示",
+    "placeholders": {
+      "days": {
+        "type": "int",
+        "description": "残り日数"
+      }
+    }
+  },
+
+  "collectionDaysFor": "{category}の収集日",
+  "@collectionDaysFor": {
+    "description": "指定カテゴリの収集日シートタイトル",
+    "placeholders": {
+      "category": {
+        "type": "String",
+        "description": "カテゴリ名"
+      }
+    }
+  },
+
+  "noUpcomingCollections": "今後の収集日が見つかりません",
+  "@noUpcomingCollections": {
+    "description": "今後の収集日なしメッセージ"
+  },
+
+  "selectDate": "日付を選択してください",
+  "@selectDate": {
+    "description": "日付選択プロンプト"
+  },
+
+  "exportCalendar": "カレンダーをエクスポート",
+  "@exportCalendar": {
+    "description": "カレンダーエクスポートツールチップ"
+  },
+
+  "categoryShortBurnable": "可燃",
+  "@categoryShortBurnable": {
+    "description": "可燃ごみカテゴリ短縮名"
+  },
+
+  "categoryShortRecyclable": "資源",
+  "@categoryShortRecyclable": {
+    "description": "資源ごみカテゴリ短縮名"
+  },
+
+  "categoryShortPlastic": "プラ",
+  "@categoryShortPlastic": {
+    "description": "プラスチックカテゴリ短縮名"
+  },
+
+  "categoryShortPetBottle": "ペット",
+  "@categoryShortPetBottle": {
+    "description": "ペットボトルカテゴリ短縮名"
+  },
+
+  "categoryShortHazardous": "危険",
+  "@categoryShortHazardous": {
+    "description": "危険ごみカテゴリ短縮名"
+  },
+
+  "account": "アカウント",
+  "@account": {
+    "description": "アカウントセクションタイトル"
+  },
+
+  "loggedIn": "ログイン中",
+  "@loggedIn": {
+    "description": "ログイン状態ラベル"
+  },
+
+  "changePassword": "パスワード変更",
+  "@changePassword": {
+    "description": "パスワード変更ボタン"
+  },
+
+  "logout": "ログアウト",
+  "@logout": {
+    "description": "ログアウトボタン"
+  },
+
+  "loginOrRegister": "ログイン / 新規登録",
+  "@loginOrRegister": {
+    "description": "ログイン/登録ボタン"
+  },
+
+  "loginSyncMessage": "設定を同期するにはログインしてください",
+  "@loginSyncMessage": {
+    "description": "ログイン同期説明"
+  },
+
+  "currentRegion": "現在の地域",
+  "@currentRegion": {
+    "description": "現在の地域セクションタイトル"
+  },
+
+  "detectFromLocation": "現在地から再設定",
+  "@detectFromLocation": {
+    "description": "GPS位置情報から地域を再設定するボタン"
+  },
+
+  "theme": "テーマ",
+  "@theme": {
+    "description": "テーマセクションタイトル"
+  },
+
+  "themeSystem": "システム設定",
+  "@themeSystem": {
+    "description": "システムテーマオプション"
+  },
+
+  "themeLight": "ライト",
+  "@themeLight": {
+    "description": "ライトテーマオプション"
+  },
+
+  "themeDark": "ダーク",
+  "@themeDark": {
+    "description": "ダークテーマオプション"
+  },
+
+  "languageSettings": "言語設定",
+  "@languageSettings": {
+    "description": "言語設定セクションタイトル"
+  },
+
+  "other": "その他",
+  "@other": {
+    "description": "その他セクションタイトル"
+  },
+
+  "faq": "よくある質問",
+  "@faq": {
+    "description": "よくある質問リンク"
+  },
+
+  "termsOfService": "利用規約",
+  "@termsOfService": {
+    "description": "利用規約リンク"
+  },
+
+  "reminderNotificationDescription": "収集日の前日と当日に通知します",
+  "@reminderNotificationDescription": {
+    "description": "リマインダー通知の説明"
+  },
+
+  "reminderSettingFailed": "リマインダーの設定に失敗しました",
+  "@reminderSettingFailed": {
+    "description": "リマインダー設定失敗メッセージ"
+  },
+
+  "regionSettingUpdated": "地域設定を更新しました",
+  "@regionSettingUpdated": {
+    "description": "地域設定更新完了メッセージ"
+  },
+
+  "cancel": "キャンセル",
+  "@cancel": {
+    "description": "キャンセルボタン"
+  },
+
+  "detectFromGps": "現在地から設定",
+  "@detectFromGps": {
+    "description": "GPS位置情報検出ボタン"
+  },
+
+  "setRegionPrompt": "お住まいの地域を設定してください",
+  "@setRegionPrompt": {
+    "description": "地域設定プロンプトメッセージ"
+  },
+
+  "regionOptimizationDescription": "ごみの収集日や正しい分別ルールを、お住まいの地域に合わせて最適化します。",
+  "@regionOptimizationDescription": {
+    "description": "地域最適化の説明"
+  },
+
+  "pleaseSelect": "選択してください",
+  "@pleaseSelect": {
+    "description": "選択を促すプレースホルダー"
+  },
+
+  "settingsCanChangeLater": "設定は後から「設定画面」で変更できます",
+  "@settingsCanChangeLater": {
+    "description": "設定変更可能の注記"
+  },
+
+  "gpsResult": "GPS判定結果",
+  "@gpsResult": {
+    "description": "GPS判定結果ダイアログタイトル"
+  },
+
+  "gpsRegionDetected": "以下の地域が検出されました：",
+  "@gpsRegionDetected": {
+    "description": "GPS検出結果の説明"
+  },
+
+  "setThisRegion": "この地域で設定",
+  "@setThisRegion": {
+    "description": "GPS検出地域で設定するボタン"
+  },
+
+  "selectImage": "画像を選択してください",
+  "@selectImage": {
+    "description": "画像選択プロンプト"
+  },
+
+  "takePhoto": "カメラで撮影",
+  "@takePhoto": {
+    "description": "カメラ撮影ボタン"
+  },
+
+  "chooseFromGallery": "ギャラリーから選択",
+  "@chooseFromGallery": {
+    "description": "ギャラリー選択ボタン"
+  },
+
+  "realtimeCamera": "リアルタイムカメラ",
+  "@realtimeCamera": {
+    "description": "リアルタイムカメラボタン"
+  },
+
+  "noCameraAvailable": "このデバイスにはカメラがありません",
+  "@noCameraAvailable": {
+    "description": "カメラ非搭載メッセージ"
+  },
+
+  "send": "送信",
+  "@send": {
+    "description": "送信ボタン"
+  },
+
+  "redo": "やり直し",
+  "@redo": {
+    "description": "やり直しボタン"
+  },
+
+  "uploading": "アップロード中...",
+  "@uploading": {
+    "description": "アップロード中メッセージ"
+  },
+
+  "uploadComplete": "アップロードが完了しました",
+  "@uploadComplete": {
+    "description": "アップロード完了メッセージ"
+  },
+
+  "imageSentSuccess": "画像が正常に送信されました",
+  "@imageSentSuccess": {
+    "description": "画像送信成功メッセージ"
+  },
+
+  "resend": "再送信",
+  "@resend": {
+    "description": "再送信ボタン"
+  },
+
+  "errorOccurred": "エラーが発生しました",
+  "@errorOccurred": {
+    "description": "一般エラーメッセージ"
+  },
+
+  "municipality": "市区町村",
+  "@municipality": {
+    "description": "市区町村ラベル"
+  },
+
+  "district": "地区",
+  "@district": {
+    "description": "地区ラベル"
+  },
+
+  "city": "市",
+  "@city": {
+    "description": "市ラベル"
+  },
+
+  "eveningNotification": "前日通知",
+  "@eveningNotification": {
+    "description": "前日通知時刻設定ラベル"
+  },
+
+  "morningNotification": "当日通知",
+  "@morningNotification": {
+    "description": "当日通知時刻設定ラベル"
+  },
+
+  "addDistrict": "地区を追加",
+  "@addDistrict": {
+    "description": "地区追加ボタン"
+  },
+
+  "districtListLoadError": "地区リストの読み込みに失敗しました",
+  "@districtListLoadError": {
+    "description": "地区リスト読み込み失敗メッセージ"
+  },
+
+  "inUse": "使用中",
+  "@inUse": {
+    "description": "使用中チップラベル"
+  },
+
+  "deleteDistrict": "地区を削除",
+  "@deleteDistrict": {
+    "description": "地区削除ダイアログタイトル"
+  },
+
+  "deleteDistrictConfirm": "「{label}」を削除しますか？",
+  "@deleteDistrictConfirm": {
+    "description": "地区削除確認メッセージ",
+    "placeholders": {
+      "label": {
+        "type": "String",
+        "description": "地区ラベル名"
+      }
+    }
+  },
+
+  "delete": "削除",
+  "@delete": {
+    "description": "削除ボタン"
+  },
+
+  "addDistrictDialogTitle": "地区を追加",
+  "@addDistrictDialogTitle": {
+    "description": "地区追加ダイアログタイトル"
+  },
+
+  "addDistrictDescription": "新しい地区のラベルを入力してください。\n次に市区町村と地区を選択します。",
+  "@addDistrictDescription": {
+    "description": "地区追加ダイアログ説明"
+  },
+
+  "label": "ラベル",
+  "@label": {
+    "description": "ラベル入力フィールド"
+  },
+
+  "labelHint": "例: 職場、実家",
+  "@labelHint": {
+    "description": "ラベル入力ヒント"
+  },
+
+  "labelRequired": "ラベルを入力してください",
+  "@labelRequired": {
+    "description": "ラベル必須バリデーション"
+  },
+
+  "next": "次へ",
+  "@next": {
+    "description": "次へボタン"
+  },
+
+  "reminderLoadError": "リマインダー設定の読み込みに失敗しました",
+  "@reminderLoadError": {
+    "description": "リマインダー設定読み込み失敗メッセージ"
+  },
+
+  "regionSettingLabel": "地域設定",
+  "@regionSettingLabel": {
+    "description": "地域設定AppBarタイトル"
+  },
+
+  "districtCount": "{count}/5件",
+  "@districtCount": {
+    "description": "地区カウント表示",
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "description": "現在の地区数"
+      }
+    }
+  }
+}

@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../constants/strings.dart';
+import '../l10n/app_localizations.dart';
 import '../models/garbage_item.dart';
 import '../providers/search_provider.dart';
 import '../services/search_history_service.dart';
@@ -75,7 +75,9 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
     _historyDebounceTimer?.cancel();
     if (trimmedValue.trim().length >= 2) {
       _historyDebounceTimer = Timer(const Duration(seconds: 1), () {
-        _historyService.addHistory(trimmedValue.trim()).then((_) => _loadHistory());
+        _historyService
+            .addHistory(trimmedValue.trim())
+            .then((_) => _loadHistory());
       });
     }
 
@@ -143,7 +145,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
         maxLength: 50,
         onChanged: _onSearchChanged,
         decoration: InputDecoration(
-          hintText: AppStrings.searchHint,
+          hintText: AppLocalizations.of(context).searchHint,
           prefixIcon: const Icon(Icons.search, color: Colors.grey),
           suffixIcon: _searchController.text.isNotEmpty
               ? IconButton(
@@ -200,7 +202,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              AppStrings.dataLoadError,
+              AppLocalizations.of(context).dataLoadError,
               style: TextStyle(
                 fontSize: 14,
                 color: Colors.grey[600],
@@ -209,7 +211,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
             const SizedBox(height: 8),
             ElevatedButton(
               onPressed: () => ref.refresh(searchResultsProvider),
-              child: const Text(AppStrings.retry),
+              child: Text(AppLocalizations.of(context).retry),
             ),
           ],
         ),
@@ -227,7 +229,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
             child: Text(
-              AppStrings.multipleItemsFound,
+              AppLocalizations.of(context).multipleItemsFound,
               style: TextStyle(
                 fontSize: 14,
                 color: Colors.grey[700],
@@ -274,7 +276,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
           ),
           const SizedBox(height: 12),
           Text(
-            AppStrings.noSearchResults,
+            AppLocalizations.of(context).noSearchResults,
             style: TextStyle(
               fontSize: 14,
               color: Colors.grey[600],
@@ -336,7 +338,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  '捨て方がわからないものを検索',
+                  AppLocalizations.of(context).searchTip,
                   style: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.bold,
@@ -345,7 +347,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  '品目名を入力すると分別方法がわかります',
+                  AppLocalizations.of(context).searchTipDescription,
                   style: TextStyle(
                     fontSize: 12,
                     color: Colors.green.shade700,
@@ -361,20 +363,29 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
 
   /// カテゴリ別クイック検索を構築する
   Widget _buildCategoryQuickSearch() {
+    final l10n = AppLocalizations.of(context);
     final categories = [
-      ('可燃ごみ', Icons.local_fire_department, Colors.pink.shade400),
-      ('資源ごみ', Icons.recycling, Colors.green.shade600),
-      ('プラスチック', Icons.shopping_bag_outlined, Colors.orange.shade600),
-      ('ペットボトル', Icons.water_drop_outlined, Colors.blue.shade600),
-      ('危険ごみ', Icons.warning_amber, Colors.red.shade600),
+      (
+        l10n.categoryBurnable,
+        Icons.local_fire_department,
+        Colors.pink.shade400
+      ),
+      (l10n.categoryRecyclable, Icons.recycling, Colors.green.shade600),
+      (
+        l10n.categoryPlastic,
+        Icons.shopping_bag_outlined,
+        Colors.orange.shade600
+      ),
+      (l10n.categoryPetBottle, Icons.water_drop_outlined, Colors.blue.shade600),
+      (l10n.categoryHazardous, Icons.warning_amber, Colors.red.shade600),
     ];
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          'カテゴリから探す',
-          style: TextStyle(
+        Text(
+          l10n.searchByCategory,
+          style: const TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w600,
             color: Colors.black87,
@@ -434,9 +445,9 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text(
-              '検索履歴',
-              style: TextStyle(
+            Text(
+              AppLocalizations.of(context).searchHistory,
+              style: const TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.bold,
                 color: Colors.black87,
@@ -448,7 +459,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                 _loadHistory();
               },
               child: Text(
-                'すべて削除',
+                AppLocalizations.of(context).deleteAll,
                 style: TextStyle(fontSize: 12, color: Colors.grey[600]),
               ),
             ),

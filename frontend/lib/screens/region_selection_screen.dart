@@ -3,11 +3,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:geolocator/geolocator.dart';
 
 import '../constants/colors.dart';
-import '../constants/strings.dart';
+import '../l10n/app_localizations.dart';
 import '../models/gps_detection.dart';
 import '../models/region.dart';
 import '../providers/gps_detection_provider.dart';
+import '../providers/locale_provider.dart';
 import '../providers/region_provider.dart';
+import '../services/romanization_service.dart';
 import '../widgets/candidate_bottom_sheet.dart';
 
 /// 地域選択画面
@@ -20,15 +22,18 @@ class RegionSelectionScreen extends ConsumerStatefulWidget {
   /// 地域選択完了時のコールバック
   final VoidCallback? onRegionSelected;
 
-  const RegionSelectionScreen({super.key, this.onRegionSelected});
+  /// GPS自動検出を開始するかどうか
+  final bool autoDetect;
+
+  const RegionSelectionScreen(
+      {super.key, this.onRegionSelected, this.autoDetect = false});
 
   @override
   ConsumerState<RegionSelectionScreen> createState() =>
       _RegionSelectionScreenState();
 }
 
-class _RegionSelectionScreenState
-    extends ConsumerState<RegionSelectionScreen> {
+class _RegionSelectionScreenState extends ConsumerState<RegionSelectionScreen> {
   // 愛媛県固定（このアプリは愛媛県専用）
   final Prefecture _fixedPrefecture = Prefecture(id: '38', name: '愛媛県');
 
@@ -41,6 +46,16 @@ class _RegionSelectionScreenState
 
   // 保存中フラグ
   bool _isSaving = false;
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.autoDetect) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        ref.read(gpsDetectionProvider.notifier).detectDistrict();
+      });
+    }
+  }
 
   /// 市区町村選択時の処理
   void _onMunicipalitySelected(Municipality municipality) {
@@ -64,10 +79,10 @@ class _RegionSelectionScreenState
   Future<void> _onStartPressed() async {
     // バリデーション実行
     final result = ref.read(regionSettingProvider.notifier).validate(
-      prefectureId: _fixedPrefecture.id,
-      municipalityId: _selectedMunicipality?.id,
-      districtId: _selectedDistrict?.id,
-    );
+          prefectureId: _fixedPrefecture.id,
+          municipalityId: _selectedMunicipality?.id,
+          districtId: _selectedDistrict?.id,
+        );
 
     if (!result.isValid) {
       setState(() {
@@ -102,8 +117,7 @@ class _RegionSelectionScreenState
 
   /// 市区町村選択ダイアログを表示
   void _showMunicipalitySelector() {
-    final municipalitiesAsync =
-        ref.read(municipalitiesProvider('38'));
+    final municipalitiesAsync = ref.read(municipalitiesProvider('38'));
 
     municipalitiesAsync.when(
       data: (municipalities) {
@@ -159,7 +173,7 @@ class _RegionSelectionScreenState
                     vertical: 8,
                   ),
                   child: Text(
-                    AppStrings.selectMunicipality,
+                    AppLocalizations.of(context).selectMunicipality,
                     style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
@@ -176,7 +190,9 @@ class _RegionSelectionScreenState
                       if (cities.isNotEmpty) ...[
                         _buildSectionHeader('市'),
                         ...cities.map((city) => ListTile(
-                              title: Text(city.name),
+                              title: Text(
+                                _formatMunicipalityName(city.name),
+                              ),
                               onTap: () {
                                 _onMunicipalitySelected(city);
                                 Navigator.of(context).pop();
@@ -187,7 +203,9 @@ class _RegionSelectionScreenState
                       for (final entry in townsByGun.entries) ...[
                         _buildSectionHeader(entry.key),
                         ...entry.value.map((town) => ListTile(
-                              title: Text(town.name),
+                              title: Text(
+                                _formatMunicipalityName(town.name),
+                              ),
                               onTap: () {
                                 _onMunicipalitySelected(town);
                                 Navigator.of(context).pop();
@@ -222,6 +240,32 @@ class _RegionSelectionScreenState
     );
   }
 
+  /// 自治体名をロケールに応じてフォーマットする（リスト表示用）
+  String _formatMunicipalityName(String japaneseName) {
+    final locale = ref.read(localeProvider);
+    return RomanizationService.instance.formatMunicipalityName(
+      japaneseName,
+      isJapaneseLocale: locale.languageCode == 'ja',
+    );
+  }
+
+  /// Municipality.displayName相当をロケールに応じてフォーマットする（選択表示用）
+  String _formatMunicipalityDisplayName(Municipality municipality) {
+    final locale = ref.read(localeProvider);
+    final baseName = municipality.displayName;
+    // displayName already includes gun prefix for towns like "越智郡 上島町"
+    // We only romanize the municipality name part
+    if (locale.languageCode == 'ja') {
+      return baseName;
+    }
+    final romanized =
+        RomanizationService.instance.getRomanizedName(municipality.name);
+    if (romanized == null) {
+      return baseName;
+    }
+    return '$baseName ($romanized)';
+  }
+
   /// 地区選択ダイアログを表示
   void _showDistrictSelector() {
     if (_selectedMunicipality == null) return;
@@ -232,7 +276,7 @@ class _RegionSelectionScreenState
     districtsAsync.when(
       data: (districts) {
         _showSelectionDialog<District>(
-          title: AppStrings.selectDistrict,
+          title: AppLocalizations.of(context).selectDistrict,
           items: districts,
           getName: (d) => d.name,
           onSelected: _onDistrictSelected,
@@ -344,6 +388,7 @@ class _RegionSelectionScreenState
     });
 
     final canPop = Navigator.of(context).canPop();
+
     return Scaffold(
       appBar: canPop
           ? AppBar(
@@ -351,9 +396,10 @@ class _RegionSelectionScreenState
                 icon: const Icon(Icons.arrow_back),
                 onPressed: () => Navigator.of(context).pop(),
               ),
-              title: const Text(
-                '地域設定',
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+              title: Text(
+                AppLocalizations.of(context).regionSettingLabel,
+                style:
+                    const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
               ),
               centerTitle: true,
               backgroundColor: Colors.transparent,
@@ -362,7 +408,7 @@ class _RegionSelectionScreenState
                 TextButton(
                   onPressed: () => Navigator.of(context).pop(),
                   child: Text(
-                    'キャンセル',
+                    AppLocalizations.of(context).cancel,
                     style: TextStyle(color: Colors.grey[600]),
                   ),
                 ),
@@ -430,7 +476,7 @@ class _RegionSelectionScreenState
                 child: CircularProgressIndicator(strokeWidth: 2),
               )
             : const Icon(Icons.my_location),
-        label: const Text('現在地から設定'),
+        label: Text(AppLocalizations.of(context).detectFromGps),
         style: ElevatedButton.styleFrom(
           padding: const EdgeInsets.symmetric(vertical: 14),
           shape: RoundedRectangleBorder(
@@ -442,11 +488,6 @@ class _RegionSelectionScreenState
   }
 
   /// 設定アプリ誘導SnackBarを表示する。
-  ///
-  /// permissionDenied / serviceDisabled エラー時に、「設定を開く」アクションボタン付き
-  /// SnackBarを表示する。ユーザーがアクションをタップするか閉じるまで維持される。
-  /// タップ時は Geolocator.openAppSettings() を呼び出す。
-  /// 設定から戻った後は自動再試行せず、ボタン再タップ可能な状態を維持する。
   void _showSettingsSnackBar(String message) {
     ScaffoldMessenger.of(context).hideCurrentSnackBar();
     ScaffoldMessenger.of(context).showSnackBar(
@@ -465,9 +506,6 @@ class _RegionSelectionScreenState
   }
 
   /// タイムアウト・精度不足エラー時の再試行SnackBarを表示
-  ///
-  /// 10秒後に自動で消えるか、ユーザーが「再試行」をタップすると消える。
-  /// 「再試行」タップ時: SnackBarを閉じてGPS判定フローを再実行する。
   void _showRetrySnackBar(String message) {
     ScaffoldMessenger.of(context).hideCurrentSnackBar();
     ScaffoldMessenger.of(context).showSnackBar(
@@ -491,12 +529,12 @@ class _RegionSelectionScreenState
       context: context,
       builder: (dialogContext) {
         return AlertDialog(
-          title: const Text('GPS判定結果'),
+          title: Text(AppLocalizations.of(context).gpsResult),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text('以下の地域が検出されました：'),
+              Text(AppLocalizations.of(context).gpsRegionDetected),
               const SizedBox(height: 12),
               Text('都道府県: 愛媛県'),
               Text('市区町村: 松山市'),
@@ -509,7 +547,7 @@ class _RegionSelectionScreenState
                 Navigator.of(dialogContext).pop();
                 ref.read(gpsDetectionProvider.notifier).reset();
               },
-              child: const Text('キャンセル'),
+              child: Text(AppLocalizations.of(context).cancel),
             ),
             ElevatedButton(
               onPressed: () async {
@@ -529,7 +567,7 @@ class _RegionSelectionScreenState
                 }
                 widget.onRegionSelected?.call();
               },
-              child: const Text('この地域で設定'),
+              child: Text(AppLocalizations.of(context).setThisRegion),
             ),
           ],
         );
@@ -548,7 +586,6 @@ class _RegionSelectionScreenState
     );
 
     if (selectedCandidate != null) {
-      // ユーザーが候補を選択し確認した → 地区を適用
       final setting = RegionSetting(
         prefectureId: '38',
         prefectureName: '愛媛県',
@@ -560,8 +597,6 @@ class _RegionSelectionScreenState
       await ref.read(regionSettingProvider.notifier).saveSetting(setting);
       widget.onRegionSelected?.call();
     }
-
-    // null の場合: ボトムシート外タップで閉じた → 手動選択モードに戻る
     ref.read(gpsDetectionProvider.notifier).reset();
   }
 
@@ -575,9 +610,9 @@ class _RegionSelectionScreenState
           color: AppColors.primary,
         ),
         const SizedBox(height: 12),
-        const Text(
-          'お住まいの地域を設定してください',
-          style: TextStyle(
+        Text(
+          AppLocalizations.of(context).setRegionPrompt,
+          style: const TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,
           ),
@@ -589,9 +624,9 @@ class _RegionSelectionScreenState
 
   /// 説明文
   Widget _buildDescription() {
-    return const Text(
-      'ごみの収集日や正しい分別ルールを、お住まいの地域に合わせて最適化します。',
-      style: TextStyle(
+    return Text(
+      AppLocalizations.of(context).regionOptimizationDescription,
+      style: const TextStyle(
         fontSize: 14,
         color: Colors.grey,
       ),
@@ -601,14 +636,15 @@ class _RegionSelectionScreenState
 
   /// 市区町村選択カード
   Widget _buildMunicipalityCard() {
-    final municipalitiesAsync =
-        ref.watch(municipalitiesProvider('38'));
+    final municipalitiesAsync = ref.watch(municipalitiesProvider('38'));
 
     return municipalitiesAsync.when(
       data: (_) => _buildStepCard(
         stepNumber: 1,
         label: '市区町村',
-        selectedValue: _selectedMunicipality?.displayName,
+        selectedValue: _selectedMunicipality != null
+            ? _formatMunicipalityDisplayName(_selectedMunicipality!)
+            : null,
         isSelected: _selectedMunicipality != null,
         isActive: true,
         error: _validationResult?.municipalityError,
@@ -624,10 +660,10 @@ class _RegionSelectionScreenState
         onTap: null,
       ),
       error: (error, _) => _buildErrorCard(
+        context: context,
         stepNumber: 1,
         label: '市区町村',
-        onRetry: () =>
-            ref.invalidate(municipalitiesProvider('38')),
+        onRetry: () => ref.invalidate(municipalitiesProvider('38')),
       ),
     );
   }
@@ -668,6 +704,7 @@ class _RegionSelectionScreenState
         onTap: null,
       ),
       error: (error, _) => _buildErrorCard(
+        context: context,
         stepNumber: 2,
         label: '地区',
         onRetry: () =>
@@ -687,14 +724,17 @@ class _RegionSelectionScreenState
     bool isLoading = false,
     VoidCallback? onTap,
   }) {
-    // アクティブで選択中のステップは緑枠ハイライト
-    final bool isHighlighted = isActive && !isSelected && _selectedDistrict == null;
+    final bool isHighlighted =
+        isActive && !isSelected && _selectedDistrict == null;
     final borderColor = isSelected
         ? AppColors.primary
         : (isHighlighted && stepNumber == _currentActiveStep)
             ? AppColors.primary
             : Colors.grey[300]!;
-    final borderWidth = (isSelected || (isHighlighted && stepNumber == _currentActiveStep)) ? 2.0 : 1.0;
+    final borderWidth =
+        (isSelected || (isHighlighted && stepNumber == _currentActiveStep))
+            ? 2.0
+            : 1.0;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -718,7 +758,6 @@ class _RegionSelectionScreenState
               ),
               child: Row(
                 children: [
-                  // ステップ番号
                   Container(
                     width: 32,
                     height: 32,
@@ -741,7 +780,6 @@ class _RegionSelectionScreenState
                     ),
                   ),
                   const SizedBox(width: 12),
-                  // ラベルと選択値
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -762,7 +800,8 @@ class _RegionSelectionScreenState
                           )
                         else
                           Text(
-                            selectedValue ?? '選択してください',
+                            selectedValue ??
+                                AppLocalizations.of(context).pleaseSelect,
                             style: TextStyle(
                               fontSize: 16,
                               fontWeight: selectedValue != null
@@ -776,7 +815,6 @@ class _RegionSelectionScreenState
                       ],
                     ),
                   ),
-                  // チェックマークまたは矢印
                   if (isSelected)
                     const Icon(
                       Icons.check_circle,
@@ -794,7 +832,6 @@ class _RegionSelectionScreenState
             ),
           ),
         ),
-        // バリデーションエラー表示
         if (error != null)
           Padding(
             padding: const EdgeInsets.only(left: 16, top: 4),
@@ -812,6 +849,7 @@ class _RegionSelectionScreenState
 
   /// エラーカード（データ取得失敗時）
   Widget _buildErrorCard({
+    required BuildContext context,
     required int stepNumber,
     required String label,
     required VoidCallback onRetry,
@@ -826,7 +864,6 @@ class _RegionSelectionScreenState
       ),
       child: Row(
         children: [
-          // ステップ番号
           Container(
             width: 32,
             height: 32,
@@ -845,7 +882,6 @@ class _RegionSelectionScreenState
             ),
           ),
           const SizedBox(width: 12),
-          // エラーメッセージ
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -858,9 +894,9 @@ class _RegionSelectionScreenState
                   ),
                 ),
                 const SizedBox(height: 2),
-                const Text(
-                  AppStrings.regionDataError,
-                  style: TextStyle(
+                Text(
+                  AppLocalizations.of(context).regionDataError,
+                  style: const TextStyle(
                     fontSize: 14,
                     color: AppColors.error,
                   ),
@@ -868,11 +904,10 @@ class _RegionSelectionScreenState
               ],
             ),
           ),
-          // 再試行ボタン
           TextButton.icon(
             onPressed: onRetry,
             icon: const Icon(Icons.refresh, size: 18),
-            label: const Text(AppStrings.retry),
+            label: Text(AppLocalizations.of(context).retry),
             style: TextButton.styleFrom(
               foregroundColor: AppColors.error,
             ),
@@ -884,8 +919,8 @@ class _RegionSelectionScreenState
 
   /// 「この地域で始める →」ボタン
   Widget _buildStartButton() {
-    final isAllSelected = _selectedMunicipality != null &&
-        _selectedDistrict != null;
+    final isAllSelected =
+        _selectedMunicipality != null && _selectedDistrict != null;
 
     return SizedBox(
       width: double.infinity,
@@ -909,18 +944,18 @@ class _RegionSelectionScreenState
                   color: Colors.white,
                 ),
               )
-            : const Row(
+            : Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    AppStrings.startWithRegion,
-                    style: TextStyle(
+                    AppLocalizations.of(context).startWithRegion,
+                    style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(width: 8),
-                  Icon(Icons.arrow_forward, size: 20),
+                  const SizedBox(width: 8),
+                  const Icon(Icons.arrow_forward, size: 20),
                 ],
               ),
       ),
@@ -930,7 +965,7 @@ class _RegionSelectionScreenState
   /// 注記テキスト
   Widget _buildNote() {
     return Text(
-      '設定は後から「設定画面」で変更できます',
+      AppLocalizations.of(context).settingsCanChangeLater,
       style: TextStyle(
         fontSize: 12,
         color: Colors.grey[500],

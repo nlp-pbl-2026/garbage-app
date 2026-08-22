@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../models/garbage_item.dart';
+import 'locale_provider.dart';
 import '../services/garbage_service.dart';
 
 /// GarbageServiceのプロバイダー
@@ -21,6 +22,9 @@ final searchQueryProvider = StateProvider<String>((ref) => '');
 /// searchQueryProviderの値を監視し、2文字以上の場合に検索を実行する。
 /// 2文字未満の場合は空リストを返す。
 /// autoDisposeにより、参照されなくなった際にリソースを解放する。
+///
+/// 非日本語ロケール選択時はデュアル言語検索を有効にし、
+/// ローカライズされたフィールドと日本語フィールドの両方で検索する（要件7.6, 7.7）。
 final searchResultsProvider =
     FutureProvider.autoDispose<List<GarbageItem>>((ref) async {
   final query = ref.watch(searchQueryProvider);
@@ -30,8 +34,11 @@ final searchResultsProvider =
     return [];
   }
 
+  final locale = ref.watch(localeProvider);
+  final isDualLanguage = locale.languageCode != 'ja';
+
   final garbageService = ref.read(garbageServiceProvider);
-  return garbageService.searchItems(query);
+  return garbageService.searchItems(query, isDualLanguage: isDualLanguage);
 });
 
 /// よく検索される品目のFutureProvider

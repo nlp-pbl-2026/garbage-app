@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../constants/colors.dart';
-import '../constants/strings.dart';
+import '../l10n/app_localizations.dart';
 import '../providers/auth_provider.dart';
+import '../providers/locale_provider.dart';
 import '../providers/region_provider.dart';
 import '../screens/login_screen.dart';
+import '../services/romanization_service.dart';
 
 /// 地域ヘッダーウィジェット
 ///
@@ -49,17 +51,24 @@ class RegionHeader extends ConsumerWidget implements PreferredSizeWidget {
         data: (setting) {
           if (setting == null) {
             // 地域未設定時
-            return const Text(
-              AppStrings.regionNotSet,
+            return Text(
+              AppLocalizations.of(context).regionNotSet,
               style: TextStyle(
                 color: Colors.black87,
                 fontSize: 16,
               ),
             );
           }
-          // 地域設定済み：displayNameで20文字制限付き表示
+          // 地域設定済み：自治体名＋地区名を表示（非日本語時はローマ字付き）
+          final locale = ref.watch(localeProvider);
+          final formattedMunicipality =
+              RomanizationService.instance.formatMunicipalityName(
+            setting.municipalityName,
+            isJapaneseLocale: locale.languageCode == 'ja',
+          );
+          final displayText = '$formattedMunicipality ${setting.districtName}';
           return Text(
-            setting.displayName,
+            displayText,
             style: const TextStyle(
               color: Colors.black87,
               fontSize: 16,
@@ -73,8 +82,8 @@ class RegionHeader extends ConsumerWidget implements PreferredSizeWidget {
           height: 20,
           child: CircularProgressIndicator(strokeWidth: 2),
         ),
-        error: (_, __) => const Text(
-          AppStrings.regionNotSet,
+        error: (_, __) => Text(
+          AppLocalizations.of(context).regionNotSet,
           style: TextStyle(
             color: Colors.black87,
             fontSize: 16,
@@ -91,7 +100,7 @@ class RegionHeader extends ConsumerWidget implements PreferredSizeWidget {
             color: Colors.black87,
           ),
           onPressed: onEditPressed,
-          tooltip: AppStrings.changeRegion,
+          tooltip: AppLocalizations.of(context).changeRegion,
         ),
         // ログイン状態アイコン（タップでログイン画面へ遷移）
         _buildAuthStatusIcon(context, authAsync),
@@ -101,7 +110,8 @@ class RegionHeader extends ConsumerWidget implements PreferredSizeWidget {
   }
 
   /// ログイン状態を示すアイコンウィジェット（タップ可能）
-  Widget _buildAuthStatusIcon(BuildContext context, AsyncValue<AuthState> authAsync) {
+  Widget _buildAuthStatusIcon(
+      BuildContext context, AsyncValue<AuthState> authAsync) {
     return authAsync.when(
       data: (authState) {
         if (authState.isLoggedIn) {

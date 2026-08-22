@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../constants/colors.dart';
-import '../constants/strings.dart';
+import '../l10n/app_localizations.dart';
+import '../providers/region_provider.dart';
 import '../widgets/ai_chat_widget.dart';
+import 'bulky_waste_screen.dart';
 import 'calendar_screen.dart';
 import 'image_input_screen.dart';
+import 'region_selection_screen.dart';
 import 'search_screen.dart';
 import 'settings_screen.dart';
 
@@ -44,6 +47,13 @@ class _MainScreenState extends ConsumerState<MainScreen> {
           const AiChatWidget(),
         ],
       ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: _onBulkyWasteTapped,
+        icon: const Icon(Icons.delete_outline),
+        label: Text(AppLocalizations.of(context).bulkyWaste),
+        backgroundColor: AppColors.primary,
+        foregroundColor: Colors.white,
+      ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: (index) {
@@ -58,23 +68,57 @@ class _MainScreenState extends ConsumerState<MainScreen> {
         items: [
           BottomNavigationBarItem(
             icon: _buildIcon(Icons.search, 0),
-            label: AppStrings.tabSearch,
+            label: AppLocalizations.of(context).tabSearch,
           ),
           BottomNavigationBarItem(
             icon: _buildIcon(Icons.calendar_today, 1),
-            label: AppStrings.tabCalendar,
+            label: AppLocalizations.of(context).tabCalendar,
           ),
           BottomNavigationBarItem(
             icon: _buildIcon(Icons.camera_alt, 2),
-            label: AppStrings.tabImageInput,
+            label: AppLocalizations.of(context).tabImageInput,
           ),
           BottomNavigationBarItem(
             icon: _buildIcon(Icons.settings, 3),
-            label: AppStrings.tabSettings,
+            label: AppLocalizations.of(context).tabSettings,
           ),
         ],
       ),
     );
+  }
+
+  /// 粗大ごみFABタップ時の処理
+  ///
+  /// Region_Setting が null の場合は RegionSelectionScreen へ遷移し、
+  /// 「地域設定が必要です」メッセージを表示する。
+  /// Region_Setting が設定済みの場合は BulkyWasteScreen へ遷移する。
+  void _onBulkyWasteTapped() {
+    final regionAsync = ref.read(regionSettingProvider);
+    final regionSetting = regionAsync.valueOrNull;
+
+    if (regionSetting == null) {
+      // 地域未設定: RegionSelectionScreen へ遷移 + メッセージ表示
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(AppLocalizations.of(context).regionRequired),
+          duration: const Duration(seconds: 3),
+        ),
+      );
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const RegionSelectionScreen(),
+        ),
+      );
+    } else {
+      // 地域設定済み: BulkyWasteScreen へ遷移
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const BulkyWasteScreen(),
+        ),
+      );
+    }
   }
 
   /// アクティブタブは緑背景色のアイコンを構築する

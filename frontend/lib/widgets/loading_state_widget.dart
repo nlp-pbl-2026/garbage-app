@@ -11,7 +11,7 @@ import 'package:flutter/material.dart';
 ///   data: (data) => DataWidget(data),
 ///   loading: () => const LoadingStateWidget(),
 ///   error: (error, stack) => ErrorStateWidget(
-///     message: AppStrings.dataLoadError,
+///     message: AppLocalizations.of(context).dataLoadError,
 ///     onRetry: () => ref.refresh(someProvider),
 ///   ),
 /// );

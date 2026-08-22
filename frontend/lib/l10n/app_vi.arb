@@ -1,0 +1,410 @@
+{
+  "@@locale": "vi",
+
+  "appName": "Ứng dụng Rác Ehime",
+  "@appName": {
+    "description": "Tên ứng dụng"
+  },
+
+  "categoryBurnable": "Rác đốt được",
+  "@categoryBurnable": {
+    "description": "Danh mục rác: Rác đốt được"
+  },
+
+  "categoryRecyclable": "Rác tái chế",
+  "@categoryRecyclable": {
+    "description": "Danh mục rác: Rác tái chế"
+  },
+
+  "categoryPlastic": "Bao bì nhựa",
+  "@categoryPlastic": {
+    "description": "Danh mục rác: Bao bì và hộp nhựa"
+  },
+
+  "categoryPetBottle": "Chai PET",
+  "@categoryPetBottle": {
+    "description": "Danh mục rác: Chai PET"
+  },
+
+  "categoryHazardous": "Rác nguy hại",
+  "@categoryHazardous": {
+    "description": "Danh mục rác: Rác nguy hại"
+  },
+
+  "tabSearch": "Tìm kiếm",
+  "@tabSearch": {
+    "description": "Nhãn tab tìm kiếm"
+  },
+
+  "tabCalendar": "Lịch",
+  "@tabCalendar": {
+    "description": "Nhãn tab lịch"
+  },
+
+  "tabSettings": "Cài đặt",
+  "@tabSettings": {
+    "description": "Nhãn tab cài đặt"
+  },
+
+  "tabImageInput": "Hình ảnh",
+  "@tabImageInput": {
+    "description": "Nhãn tab nhập hình ảnh"
+  },
+
+  "regionSelectionTitle": "Chọn Khu vực",
+  "@regionSelectionTitle": {
+    "description": "Tiêu đề màn hình chọn khu vực"
+  },
+
+  "selectPrefecture": "Chọn Tỉnh",
+  "@selectPrefecture": {
+    "description": "Bước chọn tỉnh"
+  },
+
+  "selectMunicipality": "Chọn Thành phố/Quận",
+  "@selectMunicipality": {
+    "description": "Bước chọn thành phố/quận"
+  },
+
+  "selectDistrict": "Chọn Phường/Xã",
+  "@selectDistrict": {
+    "description": "Bước chọn phường/xã"
+  },
+
+  "startWithRegion": "Bắt đầu với khu vực này",
+  "@startWithRegion": {
+    "description": "Nút hoàn tất thiết lập khu vực"
+  },
+
+  "searchTitle": "Tìm kiếm Vật phẩm Rác",
+  "@searchTitle": {
+    "description": "Tiêu đề màn hình tìm kiếm"
+  },
+
+  "searchHint": "Nhập tên vật phẩm (2 ký tự trở lên)",
+  "@searchHint": {
+    "description": "Gợi ý tìm kiếm"
+  },
+
+  "popularItems": "Vật phẩm Tìm kiếm Nhiều",
+  "@popularItems": {
+    "description": "Tiêu đề mục vật phẩm phổ biến"
+  },
+
+  "multipleItemsFound": "Tìm thấy nhiều vật phẩm tương tự",
+  "@multipleItemsFound": {
+    "description": "Thông báo nhiều vật phẩm phù hợp"
+  },
+
+  "multipleCategoriesNote": "Hoặc khác nhau tùy vật phẩm",
+  "@multipleCategoriesNote": {
+    "description": "Ghi chú nhiều danh mục"
+  },
+
+  "itemDetailTitle": "Chi tiết Vật phẩm",
+  "@itemDetailTitle": {
+    "description": "Tiêu đề màn hình chi tiết vật phẩm"
+  },
+
+  "nextCollectionDate": "Ngày Thu gom Tiếp theo",
+  "@nextCollectionDate": {
+    "description": "Nhãn ngày thu gom tiếp theo"
+  },
+
+  "disposalMethod": "Cách Vứt bỏ",
+  "@disposalMethod": {
+    "description": "Nhãn phương pháp vứt bỏ"
+  },
+
+  "caution": "Lưu ý",
+  "@caution": {
+    "description": "Nhãn lưu ý"
+  },
+
+  "registerToCalendar": "Thêm vào Lịch",
+  "@registerToCalendar": {
+    "description": "Nút thêm vào lịch"
+  },
+
+  "calendarTitle": "Lịch Thu gom",
+  "@calendarTitle": {
+    "description": "Tiêu đề màn hình lịch"
+  },
+
+  "nextCollection": "Thu gom Tiếp theo",
+  "@nextCollection": {
+    "description": "Biểu ngữ thu gom tiếp theo"
+  },
+
+  "noSchedule": "Không có lịch thu gom cho ngày này",
+  "@noSchedule": {
+    "description": "Thông báo không có lịch"
+  },
+
+  "colorLegend": "Chú giải Màu sắc",
+  "@colorLegend": {
+    "description": "Tiêu đề chú giải màu sắc"
+  },
+
+  "settingsTitle": "Cài đặt",
+  "@settingsTitle": {
+    "description": "Tiêu đề màn hình cài đặt"
+  },
+
+  "regionSettings": "Cài đặt Khu vực",
+  "@regionSettings": {
+    "description": "Mục cài đặt khu vực"
+  },
+
+  "changeRegion": "Thay đổi Khu vực",
+  "@changeRegion": {
+    "description": "Nút thay đổi khu vực"
+  },
+
+  "notificationSettings": "Cài đặt Thông báo",
+  "@notificationSettings": {
+    "description": "Mục cài đặt thông báo"
+  },
+
+  "languageSettings": "Ngôn ngữ",
+  "@languageSettings": {
+    "description": "Mục cài đặt ngôn ngữ"
+  },
+
+  "reminderToggle": "Nhắc nhở trước ngày thu gom",
+  "@reminderToggle": {
+    "description": "Nhãn nút nhắc nhở"
+  },
+
+  "reminderDescription": "Thông báo lúc 18:00 ngày trước ngày thu gom",
+  "@reminderDescription": {
+    "description": "Mô tả nhắc nhở"
+  },
+
+  "noSearchResults": "Không tìm thấy vật phẩm phù hợp",
+  "@noSearchResults": {
+    "description": "Thông báo không có kết quả tìm kiếm"
+  },
+
+  "dataLoadError": "Không thể tải dữ liệu",
+  "@dataLoadError": {
+    "description": "Thông báo lỗi tải dữ liệu"
+  },
+
+  "regionDataError": "Không thể tải dữ liệu khu vực",
+  "@regionDataError": {
+    "description": "Thông báo lỗi tải dữ liệu khu vực"
+  },
+
+  "saveError": "Không thể lưu",
+  "@saveError": {
+    "description": "Thông báo lỗi lưu"
+  },
+
+  "regionNotSet": "Chưa thiết lập khu vực",
+  "@regionNotSet": {
+    "description": "Thông báo chưa thiết lập khu vực"
+  },
+
+  "dataOutdated": "Dữ liệu có thể đã cũ. Vui lòng kết nối mạng để cập nhật.",
+  "@dataOutdated": {
+    "description": "Thông báo dữ liệu cũ"
+  },
+
+  "noOfflineData": "Dữ liệu không khả dụng. Cần kết nối mạng.",
+  "@noOfflineData": {
+    "description": "Thông báo không có dữ liệu ngoại tuyến"
+  },
+
+  "prefectureNotSelected": "Vui lòng chọn tỉnh",
+  "@prefectureNotSelected": {
+    "description": "Xác thực tỉnh chưa được chọn"
+  },
+
+  "municipalityNotSelected": "Vui lòng chọn thành phố/quận",
+  "@municipalityNotSelected": {
+    "description": "Xác thực thành phố/quận chưa được chọn"
+  },
+
+  "districtNotSelected": "Vui lòng chọn phường/xã",
+  "@districtNotSelected": {
+    "description": "Xác thực phường/xã chưa được chọn"
+  },
+
+  "regionSaved": "Đã lưu cài đặt khu vực",
+  "@regionSaved": {
+    "description": "Xác nhận lưu khu vực"
+  },
+
+  "calendarRegistered": "Đã thêm vào lịch",
+  "@calendarRegistered": {
+    "description": "Xác nhận đăng ký lịch"
+  },
+
+  "calendarPermissionDenied": "Cần quyền truy cập lịch. Vui lòng cho phép truy cập trong cài đặt thiết bị.",
+  "@calendarPermissionDenied": {
+    "description": "Thông báo lỗi quyền lịch"
+  },
+
+  "retry": "Thử lại",
+  "@retry": {
+    "description": "Nhãn nút thử lại"
+  },
+
+  "back": "Quay lại",
+  "@back": {
+    "description": "Nhãn nút quay lại"
+  },
+
+  "openSettings": "Mở Cài đặt",
+  "@openSettings": {
+    "description": "Nhãn nút mở cài đặt"
+  },
+
+  "aiErrorMessage": "Không thể hoàn thành yêu cầu. Vui lòng thử lại sau.",
+  "@aiErrorMessage": {
+    "description": "Thông báo lỗi chat AI"
+  },
+
+  "notificationTomorrowTitle": "Rác Ngày mai",
+  "@notificationTomorrowTitle": {
+    "description": "Tiêu đề thông báo nhắc nhở thu gom ngày mai"
+  },
+
+  "notificationTomorrowBody": "Ngày mai là ngày thu gom {categories}",
+  "@notificationTomorrowBody": {
+    "description": "Nội dung thông báo nhắc nhở thu gom ngày mai",
+    "placeholders": {
+      "categories": {
+        "type": "String",
+        "description": "Tên danh mục thu gom (phân cách bằng /)"
+      }
+    }
+  },
+
+  "notificationTodayTitle": "Rác Hôm nay",
+  "@notificationTodayTitle": {
+    "description": "Tiêu đề thông báo nhắc nhở thu gom hôm nay"
+  },
+
+  "notificationTodayBody": "Hôm nay là ngày thu gom {categories}",
+  "@notificationTodayBody": {
+    "description": "Nội dung thông báo nhắc nhở thu gom hôm nay",
+    "placeholders": {
+      "categories": {
+        "type": "String",
+        "description": "Tên danh mục thu gom (phân cách bằng /)"
+      }
+    }
+  },
+
+  "municipalityRomanization": "{japaneseName} ({romanizedName})",
+  "@municipalityRomanization": {
+    "description": "Mẫu tên thành phố/quận với phiên âm La-tinh",
+    "placeholders": {
+      "japaneseName": {
+        "type": "String",
+        "description": "Tên thành phố/quận bằng tiếng Nhật"
+      },
+      "romanizedName": {
+        "type": "String",
+        "description": "Tên thành phố/quận phiên âm La-tinh"
+      }
+    }
+  },
+
+  "bulkyWaste": "Rác cồng kềnh",
+  "regionRequired": "Cần thiết lập khu vực",
+  "searchTip": "Tìm kiếm các vật phẩm bạn không biết cách vứt bỏ",
+  "searchTipDescription": "Nhập tên vật phẩm để biết cách phân loại",
+  "searchByCategory": "Tìm theo Danh mục",
+  "searchHistory": "Lịch sử Tìm kiếm",
+  "deleteAll": "Xóa Tất cả",
+  "searchResults": "Kết quả Tìm kiếm",
+  "nextCollectionDates": "Ngày Thu gom Tiếp theo",
+  "today": "Hôm nay",
+  "tomorrow": "Ngày mai",
+  "dayAfterTomorrow": "Ngày kia",
+  "daysRemaining": "Còn {days} ngày",
+  "@daysRemaining": {
+    "placeholders": { "days": { "type": "int" } }
+  },
+  "collectionDaysFor": "Ngày Thu gom {category}",
+  "@collectionDaysFor": {
+    "placeholders": { "category": { "type": "String" } }
+  },
+  "noUpcomingCollections": "Không tìm thấy ngày thu gom sắp tới",
+  "selectDate": "Vui lòng chọn ngày",
+  "exportCalendar": "Xuất Lịch",
+  "categoryShortBurnable": "Đốt",
+  "categoryShortRecyclable": "Tái chế",
+  "categoryShortPlastic": "Nhựa",
+  "categoryShortPetBottle": "PET",
+  "categoryShortHazardous": "Nguy hại",
+  "account": "Tài khoản",
+  "loggedIn": "Đã đăng nhập",
+  "changePassword": "Đổi Mật khẩu",
+  "logout": "Đăng xuất",
+  "loginOrRegister": "Đăng nhập / Đăng ký",
+  "loginSyncMessage": "Đăng nhập để đồng bộ cài đặt",
+  "currentRegion": "Khu vực Hiện tại",
+  "detectFromLocation": "Phát hiện lại từ vị trí hiện tại",
+  "theme": "Giao diện",
+  "themeSystem": "Hệ thống",
+  "themeLight": "Sáng",
+  "themeDark": "Tối",
+  "languageSettings": "Ngôn ngữ",
+  "other": "Khác",
+  "faq": "Câu hỏi Thường gặp",
+  "termsOfService": "Điều khoản Dịch vụ",
+  "reminderNotificationDescription": "Thông báo vào ngày trước và ngày thu gom",
+  "reminderSettingFailed": "Không thể cài đặt nhắc nhở",
+  "regionSettingUpdated": "Đã cập nhật cài đặt khu vực",
+  "cancel": "Hủy",
+  "detectFromGps": "Phát hiện từ vị trí hiện tại",
+  "setRegionPrompt": "Vui lòng thiết lập khu vực cư trú",
+  "regionOptimizationDescription": "Tối ưu hóa lịch thu gom và quy tắc phân loại cho khu vực của bạn.",
+  "pleaseSelect": "Vui lòng chọn",
+  "settingsCanChangeLater": "Bạn có thể thay đổi cài đặt sau trong màn hình Cài đặt",
+  "gpsResult": "Kết quả Phát hiện GPS",
+  "gpsRegionDetected": "Khu vực sau đã được phát hiện:",
+  "setThisRegion": "Sử dụng khu vực này",
+  "selectImage": "Vui lòng chọn hình ảnh",
+  "takePhoto": "Chụp ảnh",
+  "chooseFromGallery": "Chọn từ Thư viện",
+  "realtimeCamera": "Camera Thời gian thực",
+  "noCameraAvailable": "Thiết bị này không có camera",
+  "send": "Gửi",
+  "redo": "Làm lại",
+  "uploading": "Đang tải lên...",
+  "uploadComplete": "Tải lên hoàn tất",
+  "imageSentSuccess": "Hình ảnh đã gửi thành công",
+  "resend": "Gửi lại",
+  "errorOccurred": "Đã xảy ra lỗi",
+  "municipality": "Thành phố/Quận",
+  "district": "Phường/Xã",
+  "city": "Thành phố",
+  "eveningNotification": "Thông báo tối",
+  "morningNotification": "Thông báo sáng",
+  "addDistrict": "Thêm Khu vực",
+  "districtListLoadError": "Không thể tải danh sách khu vực",
+  "inUse": "Đang dùng",
+  "deleteDistrict": "Xóa Khu vực",
+  "deleteDistrictConfirm": "Xóa \"{label}\"?",
+  "@deleteDistrictConfirm": {
+    "placeholders": { "label": { "type": "String" } }
+  },
+  "delete": "Xóa",
+  "addDistrictDialogTitle": "Thêm Khu vực",
+  "addDistrictDescription": "Nhập nhãn cho khu vực mới.\nSau đó chọn thành phố/quận và phường/xã.",
+  "label": "Nhãn",
+  "labelHint": "VD: Nơi làm việc, Nhà bố mẹ",
+  "labelRequired": "Vui lòng nhập nhãn",
+  "next": "Tiếp theo",
+  "reminderLoadError": "Không thể tải cài đặt nhắc nhở",
+  "regionSettingLabel": "Cài đặt Khu vực",
+  "districtCount": "{count}/5",
+  "@districtCount": {
+    "placeholders": { "count": { "type": "int" } }
+  }
+}

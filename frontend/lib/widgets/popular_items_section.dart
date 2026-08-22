@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../constants/colors.dart';
-import '../constants/strings.dart';
+import '../l10n/app_localizations.dart';
 import '../models/garbage_item.dart';
 import '../providers/search_provider.dart';
 
@@ -29,11 +29,11 @@ class PopularItemsSection extends ConsumerWidget {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Padding(
-              padding: EdgeInsets.only(bottom: 12.0),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 12.0),
               child: Text(
-                AppStrings.popularItems,
-                style: TextStyle(
+                AppLocalizations.of(context).popularItems,
+                style: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
                   color: Colors.black87,
@@ -44,13 +44,14 @@ class PopularItemsSection extends ConsumerWidget {
               spacing: 8.0,
               runSpacing: 8.0,
               children: items.map((item) {
-                final isSelected = currentQuery == item.name;
+                final isSelected = currentQuery == item.displayName;
                 return _PopularItemChip(
                   item: item,
                   isSelected: isSelected,
                   onTap: () {
-                    ref.read(searchQueryProvider.notifier).state = item.name;
-                    onItemSelected?.call(item.name);
+                    ref.read(searchQueryProvider.notifier).state =
+                        item.displayName;
+                    onItemSelected?.call(item.displayName);
                   },
                 );
               }).toList(),
@@ -101,7 +102,7 @@ class _PopularItemChip extends StatelessWidget {
           ),
         ),
         child: Text(
-          item.name,
+          item.displayName,
           style: TextStyle(
             fontSize: 14,
             color: isSelected ? AppColors.primary : Colors.black87,

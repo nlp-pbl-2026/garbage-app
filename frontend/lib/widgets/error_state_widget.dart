@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../constants/strings.dart';
+import '../l10n/app_localizations.dart';
 
 /// エラー状態表示用の統一ウィジェット
 ///
@@ -13,7 +13,7 @@ import '../constants/strings.dart';
 ///   data: (data) => DataWidget(data),
 ///   loading: () => const LoadingStateWidget(),
 ///   error: (error, stack) => ErrorStateWidget(
-///     message: AppStrings.dataLoadError,
+///     message: AppLocalizations.of(context).dataLoadError,
 ///     onRetry: () => ref.refresh(someProvider),
 ///   ),
 /// );
@@ -69,7 +69,7 @@ class ErrorStateWidget extends StatelessWidget {
             ElevatedButton.icon(
               onPressed: onRetry,
               icon: const Icon(Icons.refresh, size: 18),
-              label: const Text(AppStrings.retry),
+              label: Text(AppLocalizations.of(context).retry),
               style: ElevatedButton.styleFrom(
                 padding: const EdgeInsets.symmetric(
                   horizontal: 24,
