@@ -3,9 +3,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../constants/colors.dart';
 import '../constants/strings.dart';
+import '../providers/region_provider.dart';
 import '../widgets/ai_chat_widget.dart';
+import 'bulky_waste_screen.dart';
 import 'calendar_screen.dart';
 import 'image_input_screen.dart';
+import 'region_selection_screen.dart';
 import 'search_screen.dart';
 import 'settings_screen.dart';
 
@@ -44,6 +47,13 @@ class _MainScreenState extends ConsumerState<MainScreen> {
           const AiChatWidget(),
         ],
       ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: _onBulkyWasteTapped,
+        icon: const Icon(Icons.delete_outline),
+        label: const Text('粗大ごみ'),
+        backgroundColor: AppColors.primary,
+        foregroundColor: Colors.white,
+      ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: (index) {
@@ -75,6 +85,34 @@ class _MainScreenState extends ConsumerState<MainScreen> {
         ],
       ),
     );
+  }
+
+  /// 粗大ごみFABタップ時の処理
+  void _onBulkyWasteTapped() {
+    final regionAsync = ref.read(regionSettingProvider);
+    final regionSetting = regionAsync.valueOrNull;
+
+    if (regionSetting == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('地域設定が必要です'),
+          duration: Duration(seconds: 3),
+        ),
+      );
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const RegionSelectionScreen(),
+        ),
+      );
+    } else {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const BulkyWasteScreen(),
+        ),
+      );
+    }
   }
 
   /// アクティブタブは緑背景色のアイコンを構築する
