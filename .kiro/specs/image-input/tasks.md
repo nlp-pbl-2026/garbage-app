@@ -13,7 +13,7 @@
     - DB マイグレーション（テーブル作成）を反映する
     - _Requirements: 7.1, 7.2_
 
-  - [-] 1.2 ImageValidator サービスを実装する
+  - [ ] 1.2 ImageValidator サービスを実装する
     - `app/services/image_validator.py` を作成
     - Content-Type チェック（image/jpeg, image/png のみ許可）
     - ファイルサイズチェック（10MB 上限）
@@ -27,14 +27,14 @@
     - `pytest` + `hypothesis` でテストファイル `tests/test_image_validator_properties.py` を作成
     - **Validates: Requirements 7.3, 7.4**
 
-  - [-] 1.4 FileStorageService を実装する
+  - [ ] 1.4 FileStorageService を実装する
     - `app/services/file_storage.py` を作成
     - UUID ベースのファイル名生成で保存
     - `uploads/` ディレクトリへの非同期ファイル書き込み
     - ファイル削除メソッドも実装
     - _Requirements: 7.1_
 
-  - [~] 1.5 ImageUploadRouter を実装する
+  - [ ] 1.5 ImageUploadRouter を実装する
     - `app/routers/image_router.py` を作成
     - `POST /api/images/upload` エンドポイント（multipart/form-data）
     - 認証チェック（`get_current_user` 依存）
@@ -51,7 +51,7 @@
     - 未認証 → 401 を確認
     - _Requirements: 7.1, 7.2, 7.3, 7.4_
 
-- [~] 2. Checkpoint - バックエンド確認
+- [ ] 2. Checkpoint - バックエンド確認
   - Ensure all tests pass, ask the user if questions arise.
 
 - [ ] 3. フロントエンド：画像取得・バリデーション基盤の構築
@@ -70,14 +70,14 @@
     - テストファイル `test/services/image_validation_service_property_test.dart` を作成
     - **Validates: Requirements 5.1, 5.2**
 
-  - [-] 3.3 ImagePickerService を実装する
+  - [ ] 3.3 ImagePickerService を実装する
     - `lib/services/image_picker_service.dart` を作成
     - `pickFromCamera()` / `pickFromGallery()` メソッド
     - `isCameraAvailable()` でカメラ搭載チェック
     - `image_picker` パッケージをラップ（テスト可能に）
     - _Requirements: 1.2, 1.3, 2.1, 2.2, 3.1, 3.2_
 
-  - [~] 3.4 ImageUploadService を実装する
+  - [ ] 3.4 ImageUploadService を実装する
     - `lib/services/image_upload_service.dart` を作成
     - `upload(XFile imageFile, String authToken)` メソッド
     - Multipart POST リクエストを `http` パッケージで送信
@@ -86,7 +86,7 @@
     - _Requirements: 6.1, 6.4_
 
 - [ ] 4. フロントエンド：状態管理と画面の構築
-  - [~] 4.1 ImageInputProvider（StateNotifier）を実装する
+  - [ ] 4.1 ImageInputProvider（StateNotifier）を実装する
     - `lib/providers/image_input_provider.dart` を作成
     - `ImageInputState`（status, selectedImage, errorMessage, uploadedImageId, hasCameraPermission, hasGalleryPermission, isCameraAvailable）
     - `ImageInputNotifier` に `pickFromCamera()`, `pickFromGallery()`, `uploadImage()`, `reset()` を実装
@@ -102,7 +102,7 @@
     - アップロード失敗時のリトライ可能状態テスト
     - _Requirements: 2.2, 3.2, 5.3, 5.4, 6.2, 6.3, 6.4, 8.3, 8.4_
 
-  - [~] 4.3 ImageInputScreen（UI）を実装する
+  - [ ] 4.3 ImageInputScreen（UI）を実装する
     - `lib/screens/image_input_screen.dart` を作成（ConsumerWidget）
     - 初期状態：カメラボタン + ギャラリーボタン表示
     - カメラ非搭載時：カメラボタン非活性
@@ -119,11 +119,11 @@
     - エラー状態でエラーメッセージが表示されることを確認
     - _Requirements: 1.1, 4.1, 4.2, 6.2_
 
-- [~] 5. Checkpoint - フロントエンド確認
+- [ ] 5. Checkpoint - フロントエンド確認
   - Ensure all tests pass, ask the user if questions arise.
 
 - [ ] 6. 結合とナビゲーション
-  - [~] 6.1 フロントエンドからバックエンドへのアップロードを結合する
+  - [ ] 6.1 フロントエンドからバックエンドへのアップロードを結合する
     - ImageUploadService の API ベース URL を設定に追加
     - 認証トークンの取得と受け渡しを実装（既存の認証プロバイダーと連携）
     - ImageInputScreen をアプリのナビゲーションに組み込む
@@ -135,7 +135,7 @@
     - 異常系：ネットワークエラー → エラー表示 → リトライ
     - _Requirements: 6.1, 6.3, 6.4_
 
-- [~] 7. Final checkpoint - 全テスト確認
+- [ ] 7. Final checkpoint - 全テスト確認
   - Ensure all tests pass, ask the user if questions arise.
 
 ## Notes

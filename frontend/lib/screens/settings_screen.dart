@@ -512,15 +512,6 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             _buildThemeOption(
               context,
               ref,
-              icon: Icons.settings_suggest,
-              label: 'システム設定',
-              mode: ThemeMode.system,
-              currentMode: currentMode,
-            ),
-            const Divider(height: 1, indent: 56),
-            _buildThemeOption(
-              context,
-              ref,
               icon: Icons.light_mode,
               label: 'ライト',
               mode: ThemeMode.light,

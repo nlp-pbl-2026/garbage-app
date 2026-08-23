@@ -50,13 +50,13 @@ packages:
     source: hosted
     version: "0.11.4"
   camera_android_camerax:
-    dependency: transitive
+    dependency: "direct overridden"
     description:
       name: camera_android_camerax
-      sha256: "8516fe308bc341a5067fb1a48edff0ddfa57c0d3cdcc9dbe7ceca3ba119e2577"
+      sha256: cf6c248ef3d3c4846e99e488de9487d95927437e083c396e5fed2c1ece7f93a7
       url: "https://pub.dev"
     source: hosted
-    version: "0.6.30"
+    version: "0.7.4+1"
   camera_avfoundation:
     dependency: transitive
     description:
@@ -308,18 +308,18 @@ packages:
     dependency: "direct main"
     description:
       name: geocoding
-      sha256: d580c801cba9386b4fac5047c4c785a4e19554f46be42f4f5e5b7deacd088a66
+      sha256: "606be036287842d779d7ec4e2f6c9435fc29bbbd3c6da6589710f981d8852895"
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.0"
+    version: "4.0.0"
   geocoding_android:
     dependency: transitive
     description:
       name: geocoding_android
-      sha256: "1b13eca79b11c497c434678fed109c2be020b158cec7512c848c102bc7232603"
+      sha256: ba810da90d6633cbb82bbab630e5b4a3b7d23503263c00ae7f1ef0316dcae5b9
       url: "https://pub.dev"
     source: hosted
-    version: "3.3.1"
+    version: "4.0.1"
   geocoding_ios:
     dependency: transitive
     description:

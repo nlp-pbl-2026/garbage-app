@@ -30,12 +30,44 @@ class ImageValidationService {
   static const List<String> supportedExtensions = ['jpg', 'jpeg', 'png'];
 
   /// 画像ファイルを検証する
+  /// ファイルパスまたはファイル名から拡張子を取得する（小文字に変換）
   ///
-  /// ファイル拡張子とファイルサイズをチェックし、[ImageValidationResult] を返す。
-  /// 拡張子チェックは大文字小文字を区別しない。
+  /// Web環境ではXFile.pathがBlob URLになるため、
+  /// XFile.nameも参照して拡張子を取得する。
+  String _getExtension(String path) {
+    final lastDot = path.lastIndexOf('.');
+    if (lastDot == -1 || lastDot == path.length - 1) {
+      return '';
+    }
+    return path.substring(lastDot + 1).toLowerCase();
+  }
+
+  /// 画像ファイルを検証する（Web対応版）
+  ///
+  /// ファイル拡張子、MIMEタイプ、ファイルサイズをチェックし、
+  /// [ImageValidationResult] を返す。
   Future<ImageValidationResult> validate(XFile file) async {
-    // ファイル拡張子チェック
-    final extension = _getExtension(file.path);
+    // ファイル拡張子チェック（パスとファイル名の両方を試行）
+    var extension = _getExtension(file.path);
+
+    // Web環境ではpathがBlob URLのため拡張子が取れない場合がある
+    if (extension.isEmpty || !_isExtensionSupported(extension)) {
+      // XFile.name を試行
+      extension = _getExtension(file.name);
+    }
+
+    // MIMEタイプでもチェック（Web環境のフォールバック）
+    if (!_isExtensionSupported(extension)) {
+      final mimeType = file.mimeType;
+      if (mimeType != null) {
+        if (mimeType == 'image/jpeg' || mimeType == 'image/jpg') {
+          extension = 'jpg';
+        } else if (mimeType == 'image/png') {
+          extension = 'png';
+        }
+      }
+    }
+
     if (!_isExtensionSupported(extension)) {
       return const ImageValidationResult.invalid(
         'JPEG または PNG 形式の画像を選択してください',
@@ -51,15 +83,6 @@ class ImageValidationService {
     }
 
     return const ImageValidationResult.valid();
-  }
-
-  /// ファイルパスから拡張子を取得する（小文字に変換）
-  String _getExtension(String path) {
-    final lastDot = path.lastIndexOf('.');
-    if (lastDot == -1 || lastDot == path.length - 1) {
-      return '';
-    }
-    return path.substring(lastDot + 1).toLowerCase();
   }
 
   /// 拡張子がサポート対象かチェックする
