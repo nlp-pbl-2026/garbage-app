@@ -92,6 +92,49 @@ async def test_classify_endpoint_returns_follow_up_question():
 
 
 @pytest.mark.asyncio
+async def test_staged_endpoints_pass_actual_results_between_agents():
+    documents = [RetrievedDocument(text="傘は粗大ごみ", score=0.88)]
+    result = WasteGuideResult(
+        status="needs_clarification",
+        rewritten_query="壊れた傘 素材 大きさ",
+        follow_up_question="傘の長さは何cmですか？",
+        sources=documents,
+    )
+    with (
+        patch("app.routers.search_router.WasteGuideService") as service_class,
+        patch("app.routers.search_router.SearchLogService"),
+    ):
+        service = service_class.return_value
+        service.rewrite.return_value = "壊れた傘 素材 大きさ"
+        service.retrieve.return_value = documents
+        service.decide.return_value = result
+        async with AsyncClient(
+            transport=ASGITransport(app=app), base_url="http://test"
+        ) as client:
+            rewrite = await client.post(
+                "/api/search/rewrite", json={"query": "雨の日の長いやつ"}
+            )
+            retrieve = await client.post(
+                "/api/search/retrieve",
+                json={"rewritten_query": rewrite.json()["rewritten_query"]},
+            )
+            decide = await client.post(
+                "/api/search/decide",
+                json={
+                    "query": "雨の日の長いやつ",
+                    "rewritten_query": rewrite.json()["rewritten_query"],
+                    "documents": retrieve.json()["documents"],
+                },
+            )
+
+    assert rewrite.status_code == 200
+    assert retrieve.json()["documents"][0]["score"] == 0.88
+    assert decide.json()["follow_up_question"] == "傘の長さは何cmですか？"
+    passed_documents = service.decide.call_args.kwargs["documents"]
+    assert passed_documents[0].text == "傘は粗大ごみ"
+
+
+@pytest.mark.asyncio
 async def test_analytics_endpoint_requires_key(monkeypatch):
     monkeypatch.setattr("app.routers.search_router.config.ANALYTICS_API_KEY", "secret")
     async with AsyncClient(

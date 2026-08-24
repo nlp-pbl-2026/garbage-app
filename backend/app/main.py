@@ -8,7 +8,6 @@ from fastapi.middleware.cors import CORSMiddleware
 from .database import init_db
 from .routers.auth_router import router as auth_router
 from .routers.bulky_waste_router import router as bulky_waste_router
-from .routers.image_router import router as image_router
 from .routers.search_router import router as search_router
 
 
@@ -37,7 +36,6 @@ app.add_middleware(
 # ルーター登録
 app.include_router(auth_router)
 app.include_router(bulky_waste_router)
-app.include_router(image_router)
 app.include_router(search_router)
 
 

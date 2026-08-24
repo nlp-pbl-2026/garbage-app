@@ -49,25 +49,6 @@ class UserSettingsUpdate(BaseModel):
     settings: dict
 
 
-class ImageUploadResponse(BaseModel):
-    """画像アップロードレスポンス"""
-
-    id: str
-    filename: str
-    file_size: int
-    content_type: str
-    uploaded_at: datetime
-
-    class Config:
-        from_attributes = True
-
-
-class ImageErrorResponse(BaseModel):
-    """画像エラーレスポンス"""
-
-    detail: str
-
-
 class ChangePassword(BaseModel):
     """パスワード変更リクエスト"""
 
@@ -198,6 +179,33 @@ class WasteGuideResponse(BaseModel):
     next_collection: NextCollection | None = None
     sources: list[GuideSource] = Field(default_factory=list)
     request_id: str
+
+
+class SearchRewriteResponse(BaseModel):
+    """言い換えエージェントの出力。"""
+
+    rewritten_query: str
+
+
+class SearchRetrieveRequest(BaseModel):
+    """地域資料検索の入力。"""
+
+    rewritten_query: str = Field(min_length=1, max_length=500)
+    municipality_id: str = "38201"
+    district_id: str = "38201-08"
+
+
+class SearchRetrieveResponse(BaseModel):
+    """Knowledge Baseから取得した分類根拠。"""
+
+    documents: list[GuideSource] = Field(default_factory=list)
+
+
+class SearchDecisionRequest(WasteGuideRequest):
+    """分類エージェントの入力。"""
+
+    rewritten_query: str = Field(min_length=1, max_length=500)
+    documents: list[GuideSource] = Field(default_factory=list, max_length=20)
 
 
 class SearchAnalyticsSummary(BaseModel):

@@ -244,16 +244,66 @@ class WasteGuideService:
         district_id: str,
         clarifications: list[dict] | None = None,
     ) -> WasteGuideResult:
-        if (
-            municipality_id != SUPPORTED_MUNICIPALITY_ID
-            or district_id != SUPPORTED_DISTRICT_ID
-        ):
-            raise UnsupportedRegionError("現在は松山市・清水地区のみ対応しています。")
-
         clarification_items = clarifications or []
-        rewritten_query = self._gateway.rewrite_query(query, clarification_items)
-        documents = self._gateway.retrieve(rewritten_query)
-        decision = self._gateway.classify(query, clarification_items, documents)
+        rewritten_query = self.rewrite(
+            query=query,
+            municipality_id=municipality_id,
+            district_id=district_id,
+            clarifications=clarification_items,
+        )
+        documents = self.retrieve(
+            rewritten_query=rewritten_query,
+            municipality_id=municipality_id,
+            district_id=district_id,
+        )
+        return self.decide(
+            query=query,
+            rewritten_query=rewritten_query,
+            documents=documents,
+            municipality_id=municipality_id,
+            district_id=district_id,
+            clarifications=clarification_items,
+        )
+
+    def rewrite(
+        self,
+        *,
+        query: str,
+        municipality_id: str,
+        district_id: str,
+        clarifications: list[dict] | None = None,
+    ) -> str:
+        """利用者の表現を、地域資料を探すための検索文へ言い換える。"""
+
+        self._validate_region(municipality_id, district_id)
+        return self._gateway.rewrite_query(query, clarifications or [])
+
+    def retrieve(
+        self,
+        *,
+        rewritten_query: str,
+        municipality_id: str,
+        district_id: str,
+    ) -> list[RetrievedDocument]:
+        """言い換え済み検索文で地域別Knowledge Baseを検索する。"""
+
+        self._validate_region(municipality_id, district_id)
+        return self._gateway.retrieve(rewritten_query)
+
+    def decide(
+        self,
+        *,
+        query: str,
+        rewritten_query: str,
+        documents: list[RetrievedDocument],
+        municipality_id: str,
+        district_id: str,
+        clarifications: list[dict] | None = None,
+    ) -> WasteGuideResult:
+        """検索根拠から分類を決め、回答または追加質問を組み立てる。"""
+
+        self._validate_region(municipality_id, district_id)
+        decision = self._gateway.classify(query, clarifications or [], documents)
         sources = documents[:3]
 
         if not decision.is_resolved:
@@ -290,6 +340,14 @@ class WasteGuideService:
             next_collection=next_collection,
             sources=sources,
         )
+
+    @staticmethod
+    def _validate_region(municipality_id: str, district_id: str) -> None:
+        if (
+            municipality_id != SUPPORTED_MUNICIPALITY_ID
+            or district_id != SUPPORTED_DISTRICT_ID
+        ):
+            raise UnsupportedRegionError("現在は松山市・清水地区のみ対応しています。")
 
     @staticmethod
     def _build_answer(
