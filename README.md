@@ -23,7 +23,9 @@
 
 `scripts/aws-down.sh` はKnowledge Base、検索ログ、S3の全object versionも削除します。確認入力を要求し、コードとCSVは手元に残します。詳細は [`infra/README.md`](infra/README.md) を参照してください。
 
-両スクリプトは最初にAWS認証と `iam:GetPolicyVersion`、`iam:ListPolicyVersions` を検査し、不足時はAWSを部分変更する前に終了します。現在の `Nonomura` ユーザーは2026-08-24の実測でもこの2つの読み取り権限が不足しているため、日常運用前に [`infra/operator-policy.example.json`](infra/operator-policy.example.json) の権限付与が必要です。
+`scripts/aws-up.sh` は最初に `iam:GetPolicyVersion`、`iam:ListPolicyVersions` を検査します。権限が揃っていればTerraformとRAGデータを含む全体を更新します。現在の `Nonomura` ユーザーのように読取権限が不足していても、既存の `garbage-guide-dev-api` を確認できれば**制限モード**に切り替え、LambdaのBackendコードだけを更新します。このモードではTerraform、Knowledge Base、S3へ触れず、新しいリソースも作りません。
+
+新規構築・インフラ変更・RAGデータ更新には [`infra/operator-policy.example.json`](infra/operator-policy.example.json) の権限が必要です。`scripts/aws-down.sh` は安全な全削除に必要な読取権限がなければ、部分削除せず停止します。
 
 ## 処理フロー
 
@@ -33,6 +35,8 @@
 4. 分類と確信度を評価する
 5. 確定できる場合は地域別カレンダーから次回収集日を返す
 6. 確定できない場合は追加質問を1件返す
+
+Flutterの検索画面にはこの処理を担当する2つのNova Liteエージェント、Bedrock Knowledge Base、清水地区カレンダーを表示します。実際の段階APIが切り替わるタイミングに合わせて担当アイコンと受け渡し矢印が動きます。画面右上のヘルプから、RAGを含む仕組みをアプリ内でも確認できます。
 
 収集日当日は松山市資料の搬出期限を使い、可燃ごみは朝7時、それ以外の定期収集は朝8時を過ぎると、その次の収集日を返します。全分類を同じ時刻にしたい場合だけ `COLLECTION_CUTOFF_HOUR` で上書きできます。
 

@@ -103,7 +103,11 @@ Terraform stateはGit管理しません。複数人で運用する場合は、�
 ./scripts/aws-down.sh
 ```
 
-`scripts/aws-up.sh` はLambda packageを作成し、Terraformで全AWSリソースを作成・更新して、Knowledge Baseの取り込み完了まで待ちます。`scripts/aws-down.sh` は削除planを表示した後、Knowledge Base、API、ログテーブル、S3を含む全リソースを削除します。
+`scripts/aws-up.sh` は権限が揃っている場合、Lambda packageを作成し、Terraformで全AWSリソースを作成・更新して、Knowledge Baseの取り込み完了まで待ちます。
+
+`iam:GetPolicyVersion` または `iam:ListPolicyVersions` が不足していても、既存の `garbage-guide-dev-api` を確認できる場合は制限モードへ自動的に切り替わります。この場合は既存Lambdaのコードだけを `UpdateFunctionCode` で更新し、Terraform、Knowledge Base、S3は変更しません。したがって、権限不足の状態でこのスクリプトを繰り返してもAWSリソースは増えません。新規構築、構成変更、RAGデータ更新には完全な権限が必要です。
+
+`scripts/aws-down.sh` は削除planを表示した後、Knowledge Base、API、ログテーブル、S3を含む全リソースを削除します。必要なIAM読取権限がなければ部分削除せず停止します。
 
 ## Terraformを個別に実行する場合
 
