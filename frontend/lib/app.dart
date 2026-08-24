@@ -21,9 +21,28 @@ class GarbageApp extends ConsumerWidget {
     return MaterialApp(
       title: AppStrings.appName,
       theme: ThemeData(
-        primarySwatch: Colors.green,
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color(0xFF1F6B4F),
+          surface: const Color(0xFFF6F4EE),
+        ),
+        scaffoldBackgroundColor: const Color(0xFFF6F4EE),
         useMaterial3: true,
+        inputDecorationTheme: InputDecorationTheme(
+          filled: true,
+          fillColor: const Color(0xFFF7F8F5),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(15),
+            borderSide: const BorderSide(color: Color(0xFFDDE4DF)),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(15),
+            borderSide: const BorderSide(color: Color(0xFFDDE4DF)),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(15),
+            borderSide: const BorderSide(color: Color(0xFF1F6B4F), width: 2),
+          ),
+        ),
       ),
       darkTheme: ThemeData(
         colorScheme: ColorScheme.fromSeed(

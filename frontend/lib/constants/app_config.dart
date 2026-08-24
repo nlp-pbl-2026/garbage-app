@@ -17,8 +17,4 @@ class AppConfig {
 
   /// アップロードタイムアウト（秒）
   static const int uploadTimeoutSeconds = 30;
-
-  /// Gemini API キー
-  static const String geminiApiKey =
-      'AQ.Ab8RN6JhLmEJ_g-4niLbK_unNMkx_klB7O3G_8Etu6LixW3NMA';
 }
