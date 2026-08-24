@@ -102,6 +102,37 @@ def test_classification_requires_cited_evidence_supporting_category():
     assert supported.evidence_indexes == (1,)
 
 
+def test_classification_prompt_contains_missing_information_checklist():
+    runtime = FakeRuntime(
+        {
+            "is_resolved": False,
+            "confidence": 0,
+            "clarifying_question": "素材は何ですか？",
+            "evidence_indexes": [],
+        }
+    )
+    gateway = BedrockGateway(runtime_client=runtime, agent_runtime_client=object())
+
+    gateway.classify(
+        "よく分からない容器",
+        [],
+        [RetrievedDocument(text="品目: 容器\n分類コード: プラ")],
+    )
+
+    prompt = runtime.request["messages"][0]["content"][0]["text"]
+    for required_rule in (
+        "素材・構成",
+        "製品か容器包装か",
+        "指定袋に入るか",
+        "識別表示",
+        "電池・充電池・バッテリー",
+        "家庭用か事業用か",
+        "分類候補を最も大きく絞れる確認を一つだけ",
+        "出し方だけが変わる場合",
+    ):
+        assert required_rule in prompt
+
+
 def test_rewrite_removes_known_region_and_generic_search_terms():
     gateway = BedrockGateway(
         runtime_client=FakeRuntime(
