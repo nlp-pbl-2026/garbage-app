@@ -30,7 +30,7 @@ class DistrictMatcherService extends AbstractDistrictMatcher {
     if (_cachedEntries != null) return;
 
     final csvString = await rootBundle.loadString('assets/choumei.csv');
-    final rows = const CsvToListConverter().convert(csvString);
+    final rows = const CsvToListConverter(eol: '\n').convert(csvString);
 
     // ヘッダー行をスキップしてパース
     _cachedEntries = rows.skip(1).map((row) {
@@ -62,7 +62,8 @@ class DistrictMatcherService extends AbstractDistrictMatcher {
   @override
   DistrictMatchResult matchDistrict(GeocodedAddress address, {String? areaId}) {
     if (_cachedEntries == null) {
-      throw StateError('choumei data not loaded. Call loadChoumeiData() first.');
+      throw StateError(
+          'choumei data not loaded. Call loadChoumeiData() first.');
     }
 
     // areaIdが指定されている場合はAreaConfigRegistryで検証
@@ -75,8 +76,7 @@ class DistrictMatcherService extends AbstractDistrictMatcher {
     }
 
     // 市区町村名チェック
-    final expectedCity =
-        areaConfig?.municipalityName ?? '松山市';
+    final expectedCity = areaConfig?.municipalityName ?? '松山市';
     if (address.city != expectedCity) {
       throw OutOfAreaException();
     }
@@ -94,7 +94,8 @@ class DistrictMatcherService extends AbstractDistrictMatcher {
 
     // (2) 正規化して完全一致検索
     final normalizedText = _normalizer.normalize(rawTownText);
-    final normalizedExactMatch = _findNormalizedExactMatch(entries, normalizedText);
+    final normalizedExactMatch =
+        _findNormalizedExactMatch(entries, normalizedText);
 
     // 原文と正規化の両方でマッチしたが異なる地区の場合、原文を優先 (Req 4.8)
     if (rawExactMatch != null && normalizedExactMatch != null) {
@@ -111,7 +112,7 @@ class DistrictMatcherService extends AbstractDistrictMatcher {
       return normalizedExactMatch;
     }
 
-    // (3) 前方一致検索（正規化済みテキストで）
+    // (3) 前方一致検索（CSVエントリが入力テキストで始まるか）
     final prefixMatches = _findPrefixMatches(entries, normalizedText);
 
     if (prefixMatches.length == 1) {
@@ -126,6 +127,32 @@ class DistrictMatcherService extends AbstractDistrictMatcher {
     if (prefixMatches.isNotEmpty) {
       // 複数ヒットした場合は最初のエントリを返す（互換性維持）
       final entry = prefixMatches.first;
+      return DistrictMatchResult(
+        districtNumber: entry.districtNumber,
+        districtName: entry.districtName,
+        matchedTown: entry.townName,
+      );
+    }
+
+    // (4) 逆方向前方一致検索（入力テキストがCSVエントリで始まるか）
+    // subTown（road等）連結により入力がCSVエントリより長い場合に対応
+    final reversePrefixMatches =
+        _findReversePrefixMatches(entries, normalizedText);
+
+    if (reversePrefixMatches.length == 1) {
+      final entry = reversePrefixMatches.first;
+      return DistrictMatchResult(
+        districtNumber: entry.districtNumber,
+        districtName: entry.districtName,
+        matchedTown: entry.townName,
+      );
+    }
+
+    if (reversePrefixMatches.isNotEmpty) {
+      // 複数ヒット: 最長一致のエントリを優先（より具体的なマッチ）
+      reversePrefixMatches
+          .sort((a, b) => b.townName.length.compareTo(a.townName.length));
+      final entry = reversePrefixMatches.first;
       return DistrictMatchResult(
         districtNumber: entry.districtNumber,
         districtName: entry.districtName,
@@ -152,7 +179,8 @@ class DistrictMatcherService extends AbstractDistrictMatcher {
     String? areaId,
   }) {
     if (_cachedEntries == null) {
-      throw StateError('choumei data not loaded. Call loadChoumeiData() first.');
+      throw StateError(
+          'choumei data not loaded. Call loadChoumeiData() first.');
     }
 
     // areaIdが指定されている場合はAreaConfigRegistryで検証
@@ -173,11 +201,19 @@ class DistrictMatcherService extends AbstractDistrictMatcher {
     // 正規化テキスト
     final normalizedText = _normalizer.normalize(rawTownText);
 
-    // 前方一致検索
+    // 前方一致検索 + 逆方向前方一致検索を統合
     final prefixMatches = _findPrefixMatches(entries, normalizedText);
+    final reversePrefixMatches =
+        _findReversePrefixMatches(entries, normalizedText);
+
+    // 両方の結果を統合（重複排除）
+    final allMatches = <ChoumeiEntry>{
+      ...prefixMatches,
+      ...reversePrefixMatches
+    };
 
     // DistrictCandidateに変換
-    final candidates = prefixMatches
+    final candidates = allMatches
         .map((entry) => DistrictCandidate(
               districtNumber: entry.districtNumber,
               districtName: entry.districtName,
@@ -258,6 +294,26 @@ class DistrictMatcherService extends AbstractDistrictMatcher {
     for (final entry in entries) {
       final normalizedEntryTown = _normalizer.normalize(entry.townName);
       if (normalizedEntryTown.startsWith(normalizedText)) {
+        matches.add(entry);
+      }
+    }
+    return matches;
+  }
+
+  /// 逆方向前方一致検索（入力テキストがCSVエントリで始まるか）。
+  ///
+  /// subTown（road等）の連結により入力テキストがCSVエントリより長い場合に対応する。
+  /// 例: 入力="中野町県道334号線" vs CSV="中野町" → "中野町県道334号線".startsWith("中野町") = true
+  List<ChoumeiEntry> _findReversePrefixMatches(
+      List<ChoumeiEntry> entries, String normalizedText) {
+    final matches = <ChoumeiEntry>[];
+    for (final entry in entries) {
+      final normalizedEntryTown = _normalizer.normalize(entry.townName);
+      // 完全一致は除外（既に他のステップで処理済み）、かつ入力テキストがCSVエントリで始まるか
+      if (normalizedEntryTown != normalizedText &&
+          normalizedText.startsWith(normalizedEntryTown) &&
+          normalizedEntryTown.length >= 2) {
+        // 最低2文字以上のマッチを要求（"町"や"丁"単独での誤マッチ防止）
         matches.add(entry);
       }
     }
