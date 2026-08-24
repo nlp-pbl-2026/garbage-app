@@ -6,8 +6,10 @@ import '../models/waste_guide_result.dart';
 import '../providers/region_provider.dart';
 import '../services/waste_guide_service.dart';
 import '../widgets/region_header.dart';
+import '../widgets/search_pipeline_view.dart';
 import 'region_selection_screen.dart';
 import 'search_analytics_screen.dart';
+import 'search_system_guide_screen.dart';
 
 class SearchScreen extends ConsumerStatefulWidget {
   const SearchScreen({super.key});
@@ -26,6 +28,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
   String? _originalQuery;
   String? _pendingQuestion;
   bool _isLoading = false;
+  SearchPipelineStage _pipelineStage = SearchPipelineStage.idle;
 
   static const _green = Color(0xFF1F6B4F);
   static const _ink = Color(0xFF17352B);
@@ -70,6 +73,9 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
         query: query,
         region: region,
         clarifications: clarifications,
+        onStageChanged: (stage) {
+          if (mounted) setState(() => _pipelineStage = stage);
+        },
       );
       if (!mounted) return;
       setState(() {
@@ -77,6 +83,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
         _pendingQuestion =
             result.needsClarification ? result.followUpQuestion : null;
         _isLoading = false;
+        _pipelineStage = SearchPipelineStage.completed;
         _queryController.clear();
       });
       if (result.needsClarification) {
@@ -87,6 +94,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
       setState(() {
         _error = error.message;
         _isLoading = false;
+        _pipelineStage = SearchPipelineStage.idle;
       });
     }
   }
@@ -97,6 +105,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
       _error = null;
       _originalQuery = null;
       _pendingQuestion = null;
+      _pipelineStage = SearchPipelineStage.idle;
       _queryController.text = suggestion ?? '';
     });
     _queryFocus.requestFocus();
@@ -128,7 +137,8 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                 const SizedBox(height: 18),
                 _buildSearchCard(),
                 const SizedBox(height: 18),
-                if (_isLoading) _buildLoadingCard(),
+                _buildPipelineCard(),
+                const SizedBox(height: 18),
                 if (_error != null) _buildErrorCard(),
                 if (!_isLoading && _error == null && _result != null)
                   _result!.needsClarification
@@ -175,6 +185,17 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                 ]),
               ),
               IconButton(
+                tooltip: 'あいまい検索の仕組み',
+                onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => const SearchSystemGuideScreen(),
+                  ),
+                ),
+                icon: const Icon(Icons.help_outline_rounded,
+                    color: Color(0xFFD7E9DF)),
+              ),
+              IconButton(
                 tooltip: '検索ログを分析',
                 onPressed: () => Navigator.push(
                   context,
@@ -189,7 +210,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
           ),
           const SizedBox(height: 16),
           const Text(
-            '名前がわからなくても、\nこれ何ごみ？',
+            '捨て方を、\nひとことから。',
             style: TextStyle(
               color: Colors.white,
               fontSize: 32,
@@ -200,8 +221,8 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
           ),
           const SizedBox(height: 10),
           const Text(
-            '「お弁当の透明なフタ」のような曖昧な言い方から、\n'
-            '地域の資料を探して分別と次回収集日を答えます。',
+            '品目名が曖昧でも、AIが地域の資料から根拠を探し、\n'
+            '分別方法と次回収集日まで案内します。',
             style: TextStyle(
               color: Color(0xFFC5D8CF),
               fontSize: 15,
@@ -289,17 +310,43 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
     );
   }
 
-  Widget _buildLoadingCard() {
+  Widget _buildPipelineCard() {
+    final message = switch (_pipelineStage) {
+      SearchPipelineStage.idle => '検索すると、4つの処理が順番に動きます',
+      SearchPipelineStage.rewriting => '言い換えAIが質問の意味を整理しています',
+      SearchPipelineStage.retrieving => '清水地区の資料から根拠を探しています',
+      SearchPipelineStage.classifying => '根拠から分別を判定し、収集日を照合しています',
+      SearchPipelineStage.completed => 'すべての処理が完了しました',
+    };
     return _panel(
-      child: const Row(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(
-            width: 24,
-            height: 24,
-            child: CircularProgressIndicator(strokeWidth: 2.5),
+          Row(
+            children: [
+              if (_isLoading)
+                const SizedBox(
+                  width: 16,
+                  height: 16,
+                  child: CircularProgressIndicator(strokeWidth: 2),
+                )
+              else
+                const Icon(Icons.hub_outlined, size: 18, color: _green),
+              const SizedBox(width: 9),
+              Expanded(
+                child: Text(
+                  message,
+                  style: const TextStyle(
+                    color: _ink,
+                    fontSize: 13,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ),
+            ],
           ),
-          SizedBox(width: 14),
-          Expanded(child: Text('松山市の分別情報を確認しています…')),
+          const SizedBox(height: 16),
+          SearchPipelineView(stage: _pipelineStage),
         ],
       ),
     );
