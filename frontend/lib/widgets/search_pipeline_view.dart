@@ -54,7 +54,7 @@ class _SearchPipelineViewState extends State<SearchPipelineView>
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        final horizontal = constraints.maxWidth >= 620 && !widget.compact;
+        final spacious = constraints.maxWidth >= 620 && !widget.compact;
         final children = <Widget>[];
         for (var i = 0; i < _steps.length; i++) {
           final card = _AgentCard(
@@ -63,26 +63,24 @@ class _SearchPipelineViewState extends State<SearchPipelineView>
                 (widget.stage == SearchPipelineStage.classifying && i == 3),
             complete: _activeIndex > i,
             motion: _motion,
+            compact: !spacious,
           );
-          children.add(horizontal ? Expanded(child: card) : card);
+          children.add(Expanded(child: card));
           if (i < _steps.length - 1) {
             final transferring = _activeIndex == i + 1 ||
                 (widget.stage == SearchPipelineStage.classifying && i == 2);
             children.add(
               _AnimatedConnector(
-                vertical: !horizontal,
+                vertical: false,
                 active: transferring,
                 complete: _activeIndex > i + 1,
                 motion: _motion,
+                compact: !spacious,
               ),
             );
           }
         }
-        return horizontal
-            ? Row(children: children)
-            : Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: children);
+        return Row(key: const Key('search-pipeline-row'), children: children);
       },
     );
   }
@@ -101,12 +99,14 @@ class _AgentCard extends StatelessWidget {
   final bool active;
   final bool complete;
   final Animation<double> motion;
+  final bool compact;
 
   const _AgentCard({
     required this.step,
     required this.active,
     required this.complete,
     required this.motion,
+    required this.compact,
   });
 
   @override
@@ -120,8 +120,11 @@ class _AgentCard extends StatelessWidget {
       },
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 280),
-        constraints: const BoxConstraints(minHeight: 106),
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 14),
+        constraints: BoxConstraints(minHeight: compact ? 72 : 106),
+        padding: EdgeInsets.symmetric(
+          horizontal: compact ? 3 : 10,
+          vertical: compact ? 8 : 14,
+        ),
         decoration: BoxDecoration(
           color: active
               ? const Color(0xFFE2F5EA)
@@ -150,7 +153,7 @@ class _AgentCard extends StatelessWidget {
               clipBehavior: Clip.none,
               children: [
                 Icon(step.icon,
-                    size: 29,
+                    size: compact ? 21 : 29,
                     color: active || complete
                         ? const Color(0xFF1F6B4F)
                         : const Color(0xFF829089)),
@@ -163,15 +166,19 @@ class _AgentCard extends StatelessWidget {
                   ),
               ],
             ),
-            const SizedBox(height: 8),
+            SizedBox(height: compact ? 5 : 8),
             Text(step.title,
                 textAlign: TextAlign.center,
-                style:
-                    const TextStyle(fontWeight: FontWeight.w800, fontSize: 12)),
-            const SizedBox(height: 3),
+                style: TextStyle(
+                    fontWeight: FontWeight.w800, fontSize: compact ? 9 : 12)),
+            SizedBox(height: compact ? 1 : 3),
             Text(step.technology,
                 textAlign: TextAlign.center,
-                style: const TextStyle(fontSize: 10, color: Color(0xFF66756E))),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                    fontSize: compact ? 7 : 10,
+                    color: const Color(0xFF66756E))),
           ],
         ),
       ),
@@ -184,12 +191,14 @@ class _AnimatedConnector extends StatelessWidget {
   final bool active;
   final bool complete;
   final Animation<double> motion;
+  final bool compact;
 
   const _AnimatedConnector({
     required this.vertical,
     required this.active,
     required this.complete,
     required this.motion,
+    required this.compact,
   });
 
   @override
@@ -197,8 +206,8 @@ class _AnimatedConnector extends StatelessWidget {
     final color =
         active || complete ? const Color(0xFF2A8A65) : const Color(0xFFCBD6D0);
     return SizedBox(
-      width: vertical ? double.infinity : 34,
-      height: vertical ? 30 : 106,
+      width: vertical ? double.infinity : (compact ? 12 : 34),
+      height: vertical ? 30 : (compact ? 72 : 106),
       child: AnimatedBuilder(
         animation: motion,
         builder: (context, _) {

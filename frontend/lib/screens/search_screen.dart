@@ -118,7 +118,6 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final region = ref.watch(regionSettingProvider).valueOrNull;
     return Scaffold(
       backgroundColor: _surface,
       appBar: RegionHeader(
@@ -138,17 +137,22 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
             child: ListView(
               padding: const EdgeInsets.fromLTRB(20, 24, 20, 120),
               children: [
-                _buildHero(region),
-                const SizedBox(height: 18),
+                if (!_isLoading &&
+                    _error == null &&
+                    _result?.needsClarification == true) ...[
+                  _buildClarificationCard(_result!),
+                  const SizedBox(height: 10),
+                ],
                 _buildSearchCard(),
-                const SizedBox(height: 18),
+                const SizedBox(height: 12),
                 _buildPipelineCard(),
-                const SizedBox(height: 18),
+                const SizedBox(height: 12),
                 if (_error != null) _buildErrorCard(),
-                if (!_isLoading && _error == null && _result != null)
-                  _result!.needsClarification
-                      ? _buildClarificationCard(_result!)
-                      : _buildAnswerCard(_result!),
+                if (!_isLoading &&
+                    _error == null &&
+                    _result != null &&
+                    !_result!.needsClarification)
+                  _buildAnswerCard(_result!),
                 if (!_isLoading && _result == null && _error == null)
                   _buildExamples(),
               ],
@@ -159,114 +163,51 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
     );
   }
 
-  Widget _buildHero(RegionSetting? region) {
-    return Container(
-      padding: const EdgeInsets.all(24),
-      decoration: BoxDecoration(
-        color: _ink,
-        borderRadius: BorderRadius.circular(28),
-        boxShadow: const [
-          BoxShadow(
-            color: Color(0x2417352B),
-            blurRadius: 24,
-            offset: Offset(0, 10),
-          ),
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              const Expanded(
-                child: Row(children: [
-                  Icon(Icons.auto_awesome_rounded,
-                      color: Color(0xFFBDE8D3), size: 18),
-                  SizedBox(width: 7),
-                  Text('AIあいまい検索',
-                      style: TextStyle(
-                          color: Color(0xFFBDE8D3),
-                          fontWeight: FontWeight.w800)),
-                ]),
-              ),
-              IconButton(
-                tooltip: 'あいまい検索の仕組み',
-                onPressed: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (_) => const SearchSystemGuideScreen(),
-                  ),
-                ),
-                icon: const Icon(Icons.help_outline_rounded,
-                    color: Color(0xFFD7E9DF)),
-              ),
-              IconButton(
-                tooltip: '検索ログを分析',
-                onPressed: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (_) => const SearchAnalyticsScreen(),
-                  ),
-                ),
-                icon: const Icon(Icons.analytics_outlined,
-                    color: Color(0xFFD7E9DF)),
-              ),
-            ],
-          ),
-          const SizedBox(height: 16),
-          const Text(
-            '捨て方を、\nひとことから。',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 32,
-              height: 1.15,
-              fontWeight: FontWeight.w800,
-              letterSpacing: -0.8,
-            ),
-          ),
-          const SizedBox(height: 10),
-          const Text(
-            '品目名が曖昧でも、AIが地域の資料から根拠を探し、\n'
-            '分別方法と次回収集日まで案内します。',
-            style: TextStyle(
-              color: Color(0xFFC5D8CF),
-              fontSize: 15,
-              height: 1.65,
-            ),
-          ),
-          const SizedBox(height: 18),
-          Row(children: [
-            const Icon(Icons.location_on_outlined,
-                color: Color(0xFFD7E9DF), size: 17),
-            const SizedBox(width: 6),
-            Text(
-              region == null
-                  ? '地域未設定'
-                  : '${region.municipalityName}・${region.districtName}地区',
-              style: const TextStyle(
-                  color: Color(0xFFD7E9DF), fontWeight: FontWeight.w600),
-            ),
-          ]),
-        ],
-      ),
-    );
-  }
-
   Widget _buildSearchCard() {
     final isClarification = _pendingQuestion != null;
     return _panel(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            isClarification ? '追加情報を入力' : '普段の言葉で入力してください',
-            style: const TextStyle(
-              color: _ink,
-              fontSize: 13,
-              fontWeight: FontWeight.w700,
-            ),
+          Row(
+            children: [
+              const Icon(Icons.auto_awesome_rounded, color: _green, size: 18),
+              const SizedBox(width: 7),
+              Expanded(
+                child: Text(
+                  isClarification ? '回答を入力' : 'AIあいまい検索',
+                  style: const TextStyle(
+                    color: _ink,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w800,
+                  ),
+                ),
+              ),
+              IconButton(
+                tooltip: 'あいまい検索の仕組み',
+                visualDensity: VisualDensity.compact,
+                onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => const SearchSystemGuideScreen(),
+                  ),
+                ),
+                icon: const Icon(Icons.help_outline_rounded, size: 21),
+              ),
+              IconButton(
+                tooltip: '検索ログを分析',
+                visualDensity: VisualDensity.compact,
+                onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => const SearchAnalyticsScreen(),
+                  ),
+                ),
+                icon: const Icon(Icons.analytics_outlined, size: 21),
+              ),
+            ],
           ),
-          const SizedBox(height: 10),
+          const SizedBox(height: 8),
           Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
@@ -316,6 +257,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
   }
 
   Widget _buildPipelineCard() {
+    final compact = MediaQuery.sizeOf(context).width < 620;
     final message = switch (_pipelineStage) {
       SearchPipelineStage.idle => '検索すると、4つの処理が順番に動きます',
       SearchPipelineStage.rewriting => '言い換えAIが質問の意味を整理しています',
@@ -324,6 +266,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
       SearchPipelineStage.completed => 'すべての処理が完了しました',
     };
     return _panel(
+      padding: EdgeInsets.all(compact ? 12 : 20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -350,7 +293,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
               ),
             ],
           ),
-          const SizedBox(height: 16),
+          SizedBox(height: compact ? 10 : 16),
           SearchPipelineView(stage: _pipelineStage),
         ],
       ),
@@ -609,10 +552,11 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
     required Widget child,
     Color color = Colors.white,
     Color borderColor = const Color(0xFFE3E7E2),
+    EdgeInsetsGeometry padding = const EdgeInsets.all(20),
   }) {
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.all(20),
+      padding: padding,
       decoration: BoxDecoration(
         color: color,
         borderRadius: BorderRadius.circular(22),

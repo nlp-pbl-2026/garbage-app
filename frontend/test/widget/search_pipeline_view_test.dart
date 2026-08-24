@@ -28,6 +28,9 @@ void main() {
 
       expect(find.text('言い換えAI'), findsOneWidget);
       expect(find.text('Bedrock KB'), findsOneWidget);
+      final pipelineHeight =
+          tester.getSize(find.byKey(const Key('search-pipeline-row'))).height;
+      expect(pipelineHeight, size.width < 620 ? 72 : 106);
       expect(tester.takeException(), isNull);
     });
   }
