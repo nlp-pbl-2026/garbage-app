@@ -91,6 +91,7 @@ class BedrockGateway:
 松山市清水地区のごみ分別データを検索するため、利用者の表現を短い検索文に言い換えてください。
 品目、素材、大きさ、用途、汚れの状態など、分類に必要な語を残してください。
 推測で情報を追加しないでください。
+「松山市」「清水地区」「ごみ分別」のような検索対象側で既知の語は追加しないでください。
 
 利用者の質問:
 {query}
@@ -103,7 +104,22 @@ class BedrockGateway:
 """.strip()
         payload = self._converse_json(prompt, max_tokens=200)
         rewritten = str(payload.get("search_query", "")).strip()
-        return rewritten or query.strip()
+        return self._clean_rewritten_query(rewritten) or query.strip()
+
+    @staticmethod
+    def _clean_rewritten_query(value: str) -> str:
+        cleaned = value
+        for phrase in (
+            "松山市清水地区",
+            "松山市",
+            "清水地区",
+            "ごみ分別データ",
+            "ゴミ分別データ",
+            "ごみ分別",
+            "ゴミ分別",
+        ):
+            cleaned = cleaned.replace(phrase, " ")
+        return " ".join(cleaned.split())
 
     def retrieve(self, query: str) -> list[RetrievedDocument]:
         if not config.BEDROCK_KNOWLEDGE_BASE_ID:

@@ -100,6 +100,17 @@ def test_classification_requires_cited_evidence_supporting_category():
     assert supported.evidence_indexes == (1,)
 
 
+def test_rewrite_removes_known_region_and_generic_search_terms():
+    gateway = BedrockGateway(
+        runtime_client=FakeRuntime(
+            {"search_query": "松山市清水地区 汚れたびん ごみ分別"}
+        ),
+        agent_runtime_client=object(),
+    )
+
+    assert gateway.rewrite_query("汚れたびん", []) == "汚れたびん"
+
+
 def test_answered_result_includes_next_collection():
     gateway = FakeGateway(
         ClassificationDecision(
