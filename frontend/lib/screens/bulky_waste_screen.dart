@@ -5,6 +5,8 @@ import '../constants/colors.dart';
 import '../models/bulky_waste.dart';
 import '../providers/bulky_waste_provider.dart';
 import '../repositories/bulky_waste_repository.dart';
+import '../widgets/bulky_waste/application_guide_view.dart';
+import '../widgets/bulky_waste/item_list_view.dart';
 import '../widgets/bulky_waste/status_tracker_view.dart';
 
 /// 粗大ごみ機能のメイン画面
@@ -139,10 +141,10 @@ class _BulkyWasteScreenState extends ConsumerState<BulkyWasteScreen>
         Expanded(
           child: TabBarView(
             controller: _tabController,
-            children: const [
-              _ItemListViewPlaceholder(),
-              _ApplicationGuideViewPlaceholder(),
-              StatusTrackerView(),
+            children: [
+              ItemListView(municipalityId: cachedResult.data.municipalityId),
+              ApplicationGuideView(config: cachedResult.data),
+              const StatusTrackerView(),
             ],
           ),
         ),
@@ -251,36 +253,6 @@ class _BulkyWasteScreenState extends ConsumerState<BulkyWasteScreen>
           ),
         ),
       ],
-    );
-  }
-}
-
-/// 品目一覧タブのプレースホルダー（後のタスクで実装）
-class _ItemListViewPlaceholder extends StatelessWidget {
-  const _ItemListViewPlaceholder();
-
-  @override
-  Widget build(BuildContext context) {
-    return const Center(
-      child: Text(
-        '品目一覧',
-        style: TextStyle(fontSize: 16, color: Colors.grey),
-      ),
-    );
-  }
-}
-
-/// 申し込みガイドタブのプレースホルダー（後のタスクで実装）
-class _ApplicationGuideViewPlaceholder extends StatelessWidget {
-  const _ApplicationGuideViewPlaceholder();
-
-  @override
-  Widget build(BuildContext context) {
-    return const Center(
-      child: Text(
-        '申し込みガイド',
-        style: TextStyle(fontSize: 16, color: Colors.grey),
-      ),
     );
   }
 }
