@@ -40,6 +40,7 @@ class SearchAnalytics {
   final int totalSearches;
   final int answeredCount;
   final int clarificationCount;
+  final int unableCount;
   final double? averageConfidence;
   final double? averageDurationMs;
   final Map<String, int> categories;
@@ -49,6 +50,7 @@ class SearchAnalytics {
     required this.totalSearches,
     required this.answeredCount,
     required this.clarificationCount,
+    required this.unableCount,
     required this.averageConfidence,
     required this.averageDurationMs,
     required this.categories,
@@ -60,6 +62,7 @@ class SearchAnalytics {
         totalSearches: json['total_searches'] as int? ?? 0,
         answeredCount: json['answered_count'] as int? ?? 0,
         clarificationCount: json['clarification_count'] as int? ?? 0,
+        unableCount: json['unable_count'] as int? ?? 0,
         averageConfidence: (json['average_confidence'] as num?)?.toDouble(),
         averageDurationMs: (json['average_duration_ms'] as num?)?.toDouble(),
         categories: (json['categories'] as Map<String, dynamic>? ?? const {})

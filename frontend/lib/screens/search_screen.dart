@@ -27,6 +27,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
   String? _error;
   String? _originalQuery;
   String? _pendingQuestion;
+  List<Map<String, String>> _clarifications = [];
   bool _isLoading = false;
   SearchPipelineStage _pipelineStage = SearchPipelineStage.idle;
 
@@ -55,6 +56,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
     final query = isClarification ? _originalQuery! : input;
     final clarifications = isClarification
         ? [
+            ..._clarifications,
             {'question': _pendingQuestion!, 'answer': input},
           ]
         : <Map<String, String>>[];
@@ -65,6 +67,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
       if (!isClarification) {
         _originalQuery = input;
         _result = null;
+        _clarifications = [];
       }
     });
 
@@ -82,6 +85,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
         _result = result;
         _pendingQuestion =
             result.needsClarification ? result.followUpQuestion : null;
+        _clarifications = clarifications;
         _isLoading = false;
         _pipelineStage = SearchPipelineStage.completed;
         _queryController.clear();
@@ -105,6 +109,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
       _error = null;
       _originalQuery = null;
       _pendingQuestion = null;
+      _clarifications = [];
       _pipelineStage = SearchPipelineStage.idle;
       _queryController.text = suggestion ?? '';
     });
@@ -407,6 +412,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
 
   Widget _buildAnswerCard(WasteGuideResult result) {
     final classification = result.classification;
+    final unable = result.unableToDetermine;
     return Column(
       children: [
         _panel(
@@ -418,17 +424,22 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                   Container(
                     width: 44,
                     height: 44,
-                    decoration: const BoxDecoration(
-                      color: Color(0xFFE1F0E8),
+                    decoration: BoxDecoration(
+                      color: unable
+                          ? const Color(0xFFFFF1D6)
+                          : const Color(0xFFE1F0E8),
                       shape: BoxShape.circle,
                     ),
-                    child: const Icon(Icons.check_rounded, color: _green),
+                    child: Icon(
+                      unable ? Icons.info_outline_rounded : Icons.check_rounded,
+                      color: unable ? const Color(0xFF946B00) : _green,
+                    ),
                   ),
                   const SizedBox(width: 12),
-                  const Expanded(
+                  Expanded(
                     child: Text(
-                      '分別結果',
-                      style: TextStyle(
+                      unable ? '今回は確定できませんでした' : '分別結果',
+                      style: const TextStyle(
                         color: _ink,
                         fontSize: 20,
                         fontWeight: FontWeight.w800,

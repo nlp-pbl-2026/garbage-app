@@ -124,6 +124,7 @@ class _SearchAnalyticsScreenState extends State<SearchAnalyticsScreen> {
         _metric('検索数', '${data.totalSearches}', Icons.search_rounded),
         _metric('回答率', '${answerRate.toStringAsFixed(1)}%',
             Icons.check_circle_outline),
+        _metric('確定不能', '${data.unableCount}', Icons.info_outline_rounded),
         _metric(
           '平均確信度',
           data.averageConfidence == null
@@ -195,7 +196,7 @@ class _SearchAnalyticsScreenState extends State<SearchAnalyticsScreen> {
                     title: Text(item.query),
                     subtitle: Text(
                       '言い換え: ${item.rewrittenQuery}\n'
-                      '${item.categoryName ?? '追加質問'}・${(item.durationMs / 1000).toStringAsFixed(1)}秒',
+                      '${item.categoryName ?? (item.status == 'unable_to_determine' ? '確定不能' : '追加質問')}・${(item.durationMs / 1000).toStringAsFixed(1)}秒',
                     ),
                     isThreeLine: true,
                     trailing: item.confidence == null

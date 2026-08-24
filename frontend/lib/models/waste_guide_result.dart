@@ -82,6 +82,7 @@ class WasteGuideResult {
   });
 
   bool get needsClarification => status == 'needs_clarification';
+  bool get unableToDetermine => status == 'unable_to_determine';
 
   factory WasteGuideResult.fromJson(Map<String, dynamic> json) {
     return WasteGuideResult(
