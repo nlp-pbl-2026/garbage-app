@@ -58,7 +58,8 @@ class GpsDetectionError extends GpsDetectionState {
   final String message;
   final GpsDetectionErrorType errorType;
 
-  const GpsDetectionError(this.message, {this.errorType = GpsDetectionErrorType.unknown});
+  const GpsDetectionError(this.message,
+      {this.errorType = GpsDetectionErrorType.unknown});
 }
 
 // ---------------------------------------------------------------------------
@@ -241,8 +242,10 @@ class GpsDetectionNotifier extends StateNotifier<GpsDetectionState> {
   /// 例外の型からエラー種別（GpsDetectionErrorType）へのマッピング。
   GpsDetectionErrorType _mapExceptionToErrorType(GpsDetectionException e) {
     return switch (e) {
-      LocationPermissionDeniedException() => GpsDetectionErrorType.permissionDenied,
-      LocationServiceDisabledException() => GpsDetectionErrorType.serviceDisabled,
+      LocationPermissionDeniedException() =>
+        GpsDetectionErrorType.permissionDenied,
+      LocationServiceDisabledException() =>
+        GpsDetectionErrorType.serviceDisabled,
       LocationTimeoutException() => GpsDetectionErrorType.timeout,
       LocationInaccurateException() => GpsDetectionErrorType.inaccurate,
       GeocodingFailedException() => GpsDetectionErrorType.geocodingFailed,
