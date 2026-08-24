@@ -75,8 +75,8 @@ S3は公開アクセスをすべて遮断し、バージョニングとSSE-S3（
 | `terraform/outputs.tf` | バックエンドに必要なID |
 | `scripts/sync_knowledge_base.sh` | 取り込み開始と完了待機 |
 | `../scripts/package_backend.sh` | Lambda向けLinux/ARM64 zipの生成 |
-| `../aws-up.sh` | package、Terraform apply、RAG取り込みをまとめて実行 |
-| `../aws-down.sh` | 全リソースを確認付きでdestroy |
+| `../scripts/aws-up.sh` | package、Terraform apply、RAG取り込みをまとめて実行 |
+| `../scripts/aws-down.sh` | 全リソースを確認付きでdestroy |
 | `operator-policy.example.json` | Terraform操作者に必要な最小権限例 |
 
 Terraform stateはGit管理しません。複数人で運用する場合は、別途ブートストラップしたS3 backendなどへstateを移行してください。
@@ -99,11 +99,11 @@ Terraform stateはGit管理しません。複数人で運用する場合は、�
 通常はプロジェクトルートで次だけを実行します。
 
 ```bash
-./aws-up.sh
-./aws-down.sh
+./scripts/aws-up.sh
+./scripts/aws-down.sh
 ```
 
-`aws-up.sh` はLambda packageを作成し、Terraformで全AWSリソースを作成・更新して、Knowledge Baseの取り込み完了まで待ちます。`aws-down.sh` は削除planを表示した後、Knowledge Base、API、ログテーブル、S3を含む全リソースを削除します。
+`scripts/aws-up.sh` はLambda packageを作成し、Terraformで全AWSリソースを作成・更新して、Knowledge Baseの取り込み完了まで待ちます。`scripts/aws-down.sh` は削除planを表示した後、Knowledge Base、API、ログテーブル、S3を含む全リソースを削除します。
 
 ## Terraformを個別に実行する場合
 
@@ -226,7 +226,7 @@ Flutterを終了してください。Lambdaは常時起動ではないため停�
 削除前に必ずplanを確認してください。次の変数は、バージョニング済みS3内の全object versionも削除対象にします。
 
 ```bash
-./aws-down.sh
+./scripts/aws-down.sh
 ```
 
 これはKnowledge Base、index、data source、Backend API、検索ログ、IAMロール・ポリシー、S3内の原本と全versionを削除する復旧不能な操作です。リポジトリ内のコードとCSVは残るため、再構築は可能です。

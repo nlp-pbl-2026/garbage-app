@@ -15,13 +15,13 @@
 
 ```bash
 # Knowledge Base、Backend API、検索ログ基盤を構築・更新
-./aws-up.sh
+./scripts/aws-up.sh
 
 # 全AWSリソースを削除し、継続費用を止める
-./aws-down.sh
+./scripts/aws-down.sh
 ```
 
-`aws-down.sh` はKnowledge Base、検索ログ、S3の全object versionも削除します。確認入力を要求し、コードとCSVは手元に残します。詳細は [`infra/README.md`](infra/README.md) を参照してください。
+`scripts/aws-down.sh` はKnowledge Base、検索ログ、S3の全object versionも削除します。確認入力を要求し、コードとCSVは手元に残します。詳細は [`infra/README.md`](infra/README.md) を参照してください。
 
 両スクリプトは最初にAWS認証と `iam:GetPolicyVersion`、`iam:ListPolicyVersions` を検査し、不足時はAWSを部分変更する前に終了します。現在の `Nonomura` ユーザーは2026-08-24の実測でもこの2つの読み取り権限が不足しているため、日常運用前に [`infra/operator-policy.example.json`](infra/operator-policy.example.json) の権限付与が必要です。
 
@@ -45,6 +45,7 @@
 | `data/regions/matsuyama/common/knowledge/` | RAGへ取り込む松山市の品目・分類ルール |
 | `data/regions/matsuyama/shimizu/calendar/` | 清水地区の収集カレンダー |
 | `infra/terraform/` | RAG、Lambda API、API Gateway、DynamoDBを管理するTerraform |
+| `scripts/` | AWS環境の構築・削除とLambda package生成を行う操作スクリプト |
 | `infra/scripts/` | Knowledge Baseの取り込みスクリプト |
 
 AWSの実リソース、費用、構築・更新・削除手順は [`infra/README.md`](infra/README.md) を参照してください。
@@ -61,7 +62,7 @@ AWSの実リソース、費用、構築・更新・削除手順は [`infra/READM
 ## AWS版を起動
 
 ```bash
-./aws-up.sh
+./scripts/aws-up.sh
 API_BASE_URL="$(terraform -chdir=infra/terraform output -raw backend_api_url)"
 cd frontend
 flutter pub get

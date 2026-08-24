@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-PROJECT_ROOT="$(cd "$(dirname "$0")" && pwd)"
+PROJECT_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 TERRAFORM_BIN="${TERRAFORM_BIN:-terraform}"
 ACCOUNT_ID="$(aws sts get-caller-identity --query Account --output text)"
 POLICY_ARN="arn:aws:iam::${ACCOUNT_ID}:policy/service-role/AmazonBedrockS3PolicyForKnowledgeBase_U-22-BedrockKnowledgeBaseRole-GarbageGuideDev"
