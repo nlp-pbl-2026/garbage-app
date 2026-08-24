@@ -243,6 +243,17 @@ class BedrockGateway:
 5. 不足情報がある場合は is_resolved=false にし、分類候補を最も大きく絞れる確認を一つだけ
    clarifying_question に入れる。質問は利用者が見て答えられる具体的な日本語にする。
 
+条件付き根拠の扱い:
+- 根拠の「金属製のものは『金・ガ』」「袋に入らないものは『粗大』」
+  「プラマークがあれば『プラ』」「事業用は排出禁止」等は、注意書きではなく分類の分岐条件である。
+- 分岐条件に必要な情報が質問・補足にない場合、行に記載された既定の分類コードだけを採用してはいけない。
+- 例えば「おぼん」は、素材で可燃と金・ガに分かれるため、まず
+  「おぼんは何製ですか？（木・プラスチック・金属など）」と質問する。
+- 素材が木またはプラスチックと分かった後も、袋に入るかで可燃と粗大に分かれるなら、次に
+  「松山市の指定ごみ袋に入る大きさですか？」と質問する。
+- 一方、「すすいで出す」「電池は外す」「危なくないように包む」のように分類コードが変わらない記述は、
+  追加質問の理由にせず disposal_instructions で案内する。
+
 追加質問の規則:
 - 一度に質問する論点は一つだけにし、可能なら根拠に存在する選択肢を短く示す。
 - 素材によって分類が変わるなら素材を聞く。大きさによって変わるなら指定袋に入るかを聞く。
@@ -490,17 +501,25 @@ class WasteGuideService:
             clarifications=clarification_items,
             documents=documents,
         )
-        if ambiguity_question and (
+        conditional_question = self._conditional_evidence_question(
+            query=query,
+            clarifications=clarification_items,
+            documents=documents,
+        )
+        required_question = conditional_question
+        if required_question is None and ambiguity_question and (
             decision.is_resolved or not decision.clarifying_question
         ):
+            required_question = ambiguity_question
+        if required_question:
             logger.info(
-                "Downgrading classification because the query lacks a required detail: %s",
+                "Applying required clarification because the query lacks a detail: %s",
                 query,
             )
             decision = replace(
                 decision,
                 is_resolved=False,
-                clarifying_question=ambiguity_question,
+                clarifying_question=required_question,
             )
         cited_indexes = [index - 1 for index in decision.evidence_indexes]
         source_indexes = cited_indexes + [
@@ -645,6 +664,105 @@ class WasteGuideService:
             return "ボトルは、ペットボトル・プラスチック製容器・ガラスびんのどれですか？"
         if "容器" in text:
             return "容器は、プラスチック製・ガラス製・金属製のどれですか？"
+        return None
+
+    @classmethod
+    def _conditional_evidence_question(
+        cls,
+        *,
+        query: str,
+        clarifications: list[dict],
+        documents: list[RetrievedDocument],
+    ) -> str | None:
+        """地域資料の分類分岐条件が未回答なら、確定前に一つ確認する。"""
+
+        context = unicodedata.normalize(
+            "NFKC",
+            " ".join(
+                [query]
+                + [str(item.get("answer", "")) for item in clarifications]
+            ),
+        ).lower()
+        structured = next(
+            (
+                document
+                for document in documents
+                if document.text.startswith("品目:")
+            ),
+            None,
+        )
+        if structured is None:
+            return None
+
+        lines = structured.text.splitlines()
+        item_name = lines[0].removeprefix("品目:").strip()
+        display_item = re.sub(r"[（(].*$", "", item_name).strip() or "品物"
+        evidence = unicodedata.normalize("NFKC", structured.text)
+
+        material_branches = (
+            "金属製のものは",
+            "金属・ガラス製のものは",
+            "プラスチック製のものは",
+            "木・プラスチック製",
+            "紙製は",
+            "紙製のものは",
+            "ガラス製のものは",
+            "陶器製のものは",
+        )
+        material_answers = (
+            "プラスチック",
+            "樹脂",
+            "金属",
+            "アルミ",
+            "スチール",
+            "ガラス",
+            "陶器",
+            "セラミック",
+            "紙製",
+            "紙の",
+            "木製",
+            "木の",
+            "布製",
+            "革製",
+            "ゴム製",
+        )
+        if any(branch in evidence for branch in material_branches) and not any(
+            material in context for material in material_answers
+        ):
+            return (
+                f"{display_item}は何製ですか？"
+                "（木・プラスチック・金属など）"
+            )
+
+        size_branch = "袋に入らない" in evidence or "袋に入らない場合" in evidence
+        size_answers = (
+            "袋に入る",
+            "袋に入ります",
+            "袋に入らない",
+            "袋に入りません",
+            "指定袋",
+            "粗大",
+            "cm",
+            "センチ",
+        )
+        if size_branch and not any(answer in context for answer in size_answers):
+            return "松山市の指定ごみ袋に入る大きさですか？"
+
+        if "プラマーク" in evidence and not any(
+            marker in context for marker in ("プラマーク", "プラ表示", "マークあり", "マークなし")
+        ):
+            return "プラマークは付いていますか？"
+
+        if "事業用" in evidence and not any(
+            source in context for source in ("家庭用", "家庭で", "事業用", "仕事で", "店舗で")
+        ):
+            return "家庭で使用したものですか、それとも事業用ですか？"
+
+        if "電気・電池を使用するものは" in evidence and not any(
+            power in context for power in ("電動", "電池", "充電", "電気を使", "電気式", "手動")
+        ):
+            return "電池や電源を使うものですか？"
+
         return None
 
     @staticmethod

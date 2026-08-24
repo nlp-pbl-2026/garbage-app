@@ -257,6 +257,73 @@ def test_generic_container_is_asked_for_material_even_when_model_resolves():
     )
 
 
+def test_conditional_evidence_requires_material_before_resolving():
+    gateway = FakeGateway(
+        ClassificationDecision(
+            is_resolved=True,
+            item_name="おぼん",
+            category_code="可燃",
+            confidence=0.95,
+            evidence_indexes=(1,),
+        )
+    )
+    service = WasteGuideService(gateway=gateway, item_search=EmptyItemSearch())
+
+    result = service.decide(
+        query="おぼん",
+        rewritten_query="おぼん",
+        documents=[
+            RetrievedDocument(
+                text=(
+                    "品目: おぼん\n分類コード: 可燃\n分類: 可燃ごみ\n"
+                    "出し方・注意: 金属製のものは『金・ガ』 "
+                    "袋に入らないものは『粗大』"
+                )
+            )
+        ],
+        municipality_id="38201",
+        district_id="38201-08",
+    )
+
+    assert result.status == "needs_clarification"
+    assert result.follow_up_question == (
+        "おぼんは何製ですか？（木・プラスチック・金属など）"
+    )
+
+
+def test_conditional_evidence_asks_size_after_material_is_answered():
+    gateway = FakeGateway(
+        ClassificationDecision(
+            is_resolved=True,
+            item_name="おぼん",
+            category_code="可燃",
+            confidence=0.95,
+            evidence_indexes=(1,),
+        )
+    )
+    service = WasteGuideService(gateway=gateway, item_search=EmptyItemSearch())
+
+    result = service.decide(
+        query="おぼん",
+        rewritten_query="木製のおぼん",
+        documents=[
+            RetrievedDocument(
+                text=(
+                    "品目: おぼん\n分類コード: 可燃\n分類: 可燃ごみ\n"
+                    "出し方・注意: 金属製のものは『金・ガ』 "
+                    "袋に入らないものは『粗大』"
+                )
+            )
+        ],
+        municipality_id="38201",
+        district_id="38201-08",
+        clarifications=[{"question": "何製ですか？", "answer": "木製です"}],
+    )
+
+    assert result.status == "needs_clarification"
+    assert result.follow_up_question == "松山市の指定ごみ袋に入る大きさですか？"
+
+
 def test_bottle_can_be_resolved_after_material_clarification():
     gateway = FakeGateway(
         ClassificationDecision(
