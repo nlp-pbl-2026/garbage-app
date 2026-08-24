@@ -99,6 +99,17 @@ class ItemSearchService:
                 score += 0.2
             if "ふた" in normalized_query and "ふた" in normalized_item:
                 score += 0.08
+            # 「弁当の透明なふた」は、通常は再利用する弁当箱ではなく
+            # 使い捨ての弁当・惣菜容器の透明なふたを指す。弁当箱と容器が
+            # 同点になると分類が不必要に曖昧になるため、用途・外見を使って
+            # 地域資料内のより具体的な候補を優先する。
+            if all(
+                marker in normalized_query for marker in ("弁当", "透明", "ふた")
+            ):
+                if "容器" in normalized_item and row.get("category") == "プラ":
+                    score += 0.35
+                if "弁当箱" in normalized_item or "紙製" in normalized_item:
+                    score -= 0.15
             score = min(score, 1.0)
             if score < config.LEXICAL_SEARCH_MIN_SCORE:
                 continue

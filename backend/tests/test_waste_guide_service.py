@@ -24,8 +24,10 @@ class FakeAgentRuntime:
 class FakeRuntime:
     def __init__(self, payload):
         self.payload = payload
+        self.request = None
 
     def converse(self, **kwargs):
+        self.request = kwargs
         return {
             "output": {
                 "message": {"content": [{"text": json.dumps(self.payload)}]}
@@ -109,6 +111,19 @@ def test_rewrite_removes_known_region_and_generic_search_terms():
     )
 
     assert gateway.rewrite_query("汚れたびん", []) == "汚れたびん"
+
+
+def test_rewrite_prompt_treats_transparent_bento_lid_as_disposable_container():
+    runtime = FakeRuntime(
+        {"search_query": "弁当・惣菜の透明なプラスチック製容器のふた"}
+    )
+    gateway = BedrockGateway(runtime_client=runtime, agent_runtime_client=object())
+
+    rewritten = gateway.rewrite_query("お弁当の透明なフタ", [])
+
+    prompt = runtime.request["messages"][0]["content"][0]["text"]
+    assert rewritten == "弁当・惣菜の透明なプラスチック製容器のふた"
+    assert "一般的な使い捨て" in prompt
 
 
 def test_answered_result_includes_next_collection():

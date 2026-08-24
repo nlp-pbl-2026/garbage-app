@@ -11,6 +11,13 @@ def test_bento_lid_search_includes_structured_bento_container_record():
     assert matching_items["弁当・惣菜の容器（プラスチック製）"].category == "プラ"
 
 
+def test_transparent_bento_lid_prioritizes_disposable_container_records():
+    matches = ItemSearchService().search("お弁当の透明なフタ")
+
+    assert [match.category for match in matches[:2]] == ["プラ", "プラ"]
+    assert all("弁当箱" not in match.item for match in matches)
+
+
 def test_material_mentioned_only_in_note_does_not_dominate_item_name_match():
     matches = ItemSearchService().search("弁当 プラスチック製 ふた")
     names = [match.item for match in matches]
