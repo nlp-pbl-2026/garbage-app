@@ -222,6 +222,7 @@ class BedrockGateway:
         )
         prompt = f"""
 あなたは松山市のごみ分別判定器です。検索根拠だけを使い、品目の分類を判定してください。
+人間や人物など、ごみとして扱えない対象について分別の追加質問を生成してはいけません。
 分類コードは 可燃, 埋立, 金・ガ, 紙類, ペット, プラ, 水銀, 粗大, 禁止 のいずれかです。
 複数候補が残る、素材・大きさ・汚れ等が不足する、または根拠が弱い場合は is_resolved=false にし、
 分類を確定するための質問を一つだけ clarifying_question に入れてください。
@@ -431,6 +432,16 @@ class WasteGuideService:
 
         self._validate_region(municipality_id, district_id)
         clarification_items = clarifications or []
+        if self._is_out_of_scope(query):
+            return WasteGuideResult(
+                status="unable_to_determine",
+                rewritten_query=rewritten_query,
+                answer=(
+                    "人間や人物はごみとして分類できません。"
+                    "ごみとして捨てたい品物の名前や用途を入力してください。"
+                ),
+                decision=ClassificationDecision(is_resolved=False),
+            )
         if not documents:
             if clarification_items:
                 return WasteGuideResult(
@@ -478,6 +489,9 @@ class WasteGuideService:
             question = decision.clarifying_question or (
                 "素材、大きさ、汚れの有無など、品物の状態をもう少し教えてください。"
             )
+            if not self._is_valid_follow_up_question(question):
+                logger.warning("Rejected malformed follow-up question: %r", question)
+                question = "品物の名前や用途、素材をもう少し具体的に教えてください。"
             previous_questions = [
                 item.get("question", "") for item in (clarifications or [])
             ]
@@ -533,6 +547,29 @@ class WasteGuideService:
     def _normalize_question(question: str) -> str:
         value = unicodedata.normalize("NFKC", question).lower()
         return re.sub(r"[\s\W_]+", "", value)
+
+    @staticmethod
+    def _is_out_of_scope(query: str) -> bool:
+        normalized = unicodedata.normalize("NFKC", query)
+        return any(
+            phrase in normalized
+            for phrase in ("人間", "人物", "人を捨て", "人の捨て方", "遺体", "死体")
+        )
+
+    @staticmethod
+    def _is_valid_follow_up_question(question: str) -> bool:
+        normalized = unicodedata.normalize("NFKC", question).strip()
+        if not 5 <= len(normalized) <= 120:
+            return False
+        if any(
+            unicodedata.category(character).startswith("C")
+            for character in normalized
+        ):
+            return False
+        question_marks = normalized.count("?") + normalized.count("？")
+        if question_marks > 1:
+            return False
+        return "�" not in normalized
 
     @classmethod
     def _missing_detail_question(

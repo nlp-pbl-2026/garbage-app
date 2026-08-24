@@ -342,6 +342,53 @@ def test_no_documents_never_calls_generation_or_claims_a_category():
     assert gateway.classify_calls == []
 
 
+def test_person_query_is_rejected_without_asking_follow_up_questions():
+    gateway = FakeGateway(ClassificationDecision(is_resolved=False))
+    service = WasteGuideService(gateway=gateway, item_search=EmptyItemSearch())
+
+    result = service.decide(
+        query="汚れた人間",
+        rewritten_query="汚れた人間",
+        documents=[RetrievedDocument(text="無関係な検索結果")],
+        municipality_id="38201",
+        district_id="38201-08",
+    )
+
+    assert result.status == "unable_to_determine"
+    assert result.follow_up_question is None
+    assert result.answer == (
+        "人間や人物はごみとして分類できません。"
+        "ごみとして捨てたい品物の名前や用途を入力してください。"
+    )
+    assert gateway.classify_calls == []
+
+
+def test_malformed_follow_up_question_is_replaced_with_readable_fallback():
+    gateway = FakeGateway(
+        ClassificationDecision(
+            is_resolved=False,
+            clarifying_question=(
+                "浩れた人除は常できないのですか？"
+                "何の話がしたいのですか？どういうものですか？"
+            ),
+        )
+    )
+    service = WasteGuideService(gateway=gateway, item_search=EmptyItemSearch())
+
+    result = service.decide(
+        query="よく分からないもの",
+        rewritten_query="よく分からないもの",
+        documents=[RetrievedDocument(text="候補")],
+        municipality_id="38201",
+        district_id="38201-08",
+    )
+
+    assert result.status == "needs_clarification"
+    assert result.follow_up_question == (
+        "品物の名前や用途、素材をもう少し具体的に教えてください。"
+    )
+
+
 def test_cited_evidence_is_shown_before_other_candidates():
     gateway = FakeGateway(
         ClassificationDecision(
