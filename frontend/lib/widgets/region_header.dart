@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../constants/colors.dart';
 import '../constants/strings.dart';
 import '../providers/auth_provider.dart';
 import '../providers/region_provider.dart';
@@ -34,25 +33,25 @@ class RegionHeader extends ConsumerWidget implements PreferredSizeWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final regionAsync = ref.watch(regionSettingProvider);
     final authAsync = ref.watch(authStateProvider);
+    final colors = Theme.of(context).colorScheme;
 
     return AppBar(
-      backgroundColor: Colors.white,
       elevation: 1,
-      leading: const Padding(
-        padding: EdgeInsets.all(12.0),
+      leading: Padding(
+        padding: const EdgeInsets.all(12.0),
         child: Icon(
           Icons.location_on,
-          color: AppColors.primary,
+          color: colors.primary,
         ),
       ),
       title: regionAsync.when(
         data: (setting) {
           if (setting == null) {
             // 地域未設定時
-            return const Text(
+            return Text(
               AppStrings.regionNotSet,
               style: TextStyle(
-                color: Colors.black87,
+                color: colors.onSurface,
                 fontSize: 16,
               ),
             );
@@ -60,8 +59,8 @@ class RegionHeader extends ConsumerWidget implements PreferredSizeWidget {
           // 地域設定済み：displayNameで20文字制限付き表示
           return Text(
             setting.displayName,
-            style: const TextStyle(
-              color: Colors.black87,
+            style: TextStyle(
+              color: colors.onSurface,
               fontSize: 16,
             ),
             overflow: TextOverflow.ellipsis,
@@ -73,10 +72,10 @@ class RegionHeader extends ConsumerWidget implements PreferredSizeWidget {
           height: 20,
           child: CircularProgressIndicator(strokeWidth: 2),
         ),
-        error: (_, __) => const Text(
+        error: (_, __) => Text(
           AppStrings.regionNotSet,
           style: TextStyle(
-            color: Colors.black87,
+            color: colors.onSurface,
             fontSize: 16,
           ),
         ),
@@ -86,22 +85,26 @@ class RegionHeader extends ConsumerWidget implements PreferredSizeWidget {
         if (extraActions != null) ...extraActions!,
         // 地域変更ボタン
         IconButton(
-          icon: const Icon(
+          icon: Icon(
             Icons.edit,
-            color: Colors.black87,
+            color: colors.onSurface,
           ),
           onPressed: onEditPressed,
           tooltip: AppStrings.changeRegion,
         ),
         // ログイン状態アイコン（タップでログイン画面へ遷移）
-        _buildAuthStatusIcon(context, authAsync),
+        _buildAuthStatusIcon(context, authAsync, colors),
         const SizedBox(width: 4),
       ],
     );
   }
 
   /// ログイン状態を示すアイコンウィジェット（タップ可能）
-  Widget _buildAuthStatusIcon(BuildContext context, AsyncValue<AuthState> authAsync) {
+  Widget _buildAuthStatusIcon(
+    BuildContext context,
+    AsyncValue<AuthState> authAsync,
+    ColorScheme colors,
+  ) {
     return authAsync.when(
       data: (authState) {
         if (authState.isLoggedIn) {
@@ -119,12 +122,12 @@ class RegionHeader extends ConsumerWidget implements PreferredSizeWidget {
               child: Container(
                 padding: const EdgeInsets.all(6),
                 decoration: BoxDecoration(
-                  color: AppColors.primary.withOpacity(0.1),
+                  color: colors.primaryContainer,
                   shape: BoxShape.circle,
                 ),
-                child: const Icon(
+                child: Icon(
                   Icons.person,
-                  color: AppColors.primary,
+                  color: colors.onPrimaryContainer,
                   size: 20,
                 ),
               ),
@@ -145,12 +148,12 @@ class RegionHeader extends ConsumerWidget implements PreferredSizeWidget {
               child: Container(
                 padding: const EdgeInsets.all(6),
                 decoration: BoxDecoration(
-                  color: Colors.grey.withOpacity(0.1),
+                  color: colors.surfaceContainerHighest,
                   shape: BoxShape.circle,
                 ),
-                child: const Icon(
+                child: Icon(
                   Icons.person_outline,
-                  color: Colors.grey,
+                  color: colors.onSurfaceVariant,
                   size: 20,
                 ),
               ),
@@ -163,9 +166,9 @@ class RegionHeader extends ConsumerWidget implements PreferredSizeWidget {
         height: 32,
         child: CircularProgressIndicator(strokeWidth: 2),
       ),
-      error: (_, __) => const Icon(
+      error: (_, __) => Icon(
         Icons.person_off,
-        color: Colors.grey,
+        color: colors.onSurfaceVariant,
         size: 20,
       ),
     );

@@ -49,25 +49,6 @@ class UserSettingsUpdate(BaseModel):
     settings: dict
 
 
-class ImageUploadResponse(BaseModel):
-    """画像アップロードレスポンス"""
-
-    id: str
-    filename: str
-    file_size: int
-    content_type: str
-    uploaded_at: datetime
-
-    class Config:
-        from_attributes = True
-
-
-class ImageErrorResponse(BaseModel):
-    """画像エラーレスポンス"""
-
-    detail: str
-
-
 class ChangePassword(BaseModel):
     """パスワード変更リクエスト"""
 
@@ -75,46 +56,7 @@ class ChangePassword(BaseModel):
     new_password: str = Field(min_length=6, max_length=100)
 
 
-# --- RAG スキーマ ---
-
-from pydantic import field_validator
-
-
-class RAGQueryRequest(BaseModel):
-    """RAGクエリリクエスト"""
-
-    query: str = Field(min_length=1)
-    municipality_id: str | None = None
-    municipality_name: str | None = None
-    district_id: str | None = None
-    district_name: str | None = None
-
-    @field_validator("query")
-    @classmethod
-    def query_not_whitespace(cls, v: str) -> str:
-        if not v.strip():
-            raise ValueError("query must not be empty or whitespace only")
-        return v
-
-
-class RAGSource(BaseModel):
-    """RAGソース情報"""
-
-    title: str | None = None
-    uri: str | None = None
-    snippet: str | None = None
-
-
-class RAGQueryResponse(BaseModel):
-    """RAGクエリレスポンス"""
-
-    answer: str
-    sources: list[RAGSource] = []
-
-
 # --- 粗大ごみ関連スキーマ ---
-
-from typing import Literal
 
 
 class ApplicationStep(BaseModel):
@@ -134,8 +76,8 @@ class MunicipalityConfigResponse(BaseModel):
     collection_frequency: str
     reception_hours: str
     collection_rules: str
-    fee_structure_type: str
-    application_method: str
+    fee_structure_type: str  # "size_based" | "weight_based" | "fixed"
+    application_method: str  # "web_form" | "phone" | "both"
     web_form_url: str | None = None
     phone_number: str | None = None
     steps: list[ApplicationStep]
@@ -167,3 +109,117 @@ class BulkyWasteItemListResponse(BaseModel):
     items: list[BulkyWasteItemResponse]
     total_count: int
     municipality_name: str
+
+
+# --- ごみ検索/RAG スキーマ ---
+
+from pydantic import field_validator
+
+
+class ClarificationExchange(BaseModel):
+    """追加質問と、それに対する回答。"""
+
+    question: str = Field(min_length=1, max_length=200)
+    answer: str = Field(min_length=1, max_length=500)
+
+
+class WasteGuideRequest(BaseModel):
+    """ごみ分別検索リクエスト。会話履歴は保持せず、必要な補足だけを渡す。"""
+
+    query: str = Field(min_length=1, max_length=500)
+    municipality_id: str = "38201"
+    municipality_name: str = "松山市"
+    district_id: str = "38201-08"
+    district_name: str = "清水"
+    clarifications: list[ClarificationExchange] = Field(
+        default_factory=list, max_length=3
+    )
+
+    @field_validator("query")
+    @classmethod
+    def query_not_whitespace(cls, v: str) -> str:
+        if not v.strip():
+            raise ValueError("query must not be empty or whitespace only")
+        return v
+
+
+class GuideSource(BaseModel):
+    """回答根拠となった検索結果。"""
+
+    title: str | None = None
+    uri: str | None = None
+    snippet: str | None = None
+    score: float | None = None
+
+
+class WasteClassification(BaseModel):
+    """確定したごみ分類。"""
+
+    item_name: str
+    category_code: str
+    category_name: str
+    disposal_instructions: str
+    confidence: float = Field(ge=0, le=1)
+
+
+class NextCollection(BaseModel):
+    """対象地区の次回収集日。"""
+
+    date: str
+    display_date: str
+    collection_type: str
+
+
+class WasteGuideResponse(BaseModel):
+    """単発の回答、または分類確定に必要な追加質問。"""
+
+    status: str = Field(
+        pattern=r"^(answered|needs_clarification|unable_to_determine)$"
+    )
+    answer: str | None = None
+    follow_up_question: str | None = None
+    rewritten_query: str
+    classification: WasteClassification | None = None
+    next_collection: NextCollection | None = None
+    sources: list[GuideSource] = Field(default_factory=list)
+    request_id: str
+
+
+class SearchRewriteResponse(BaseModel):
+    """言い換えエージェントの出力。"""
+
+    rewritten_query: str
+
+
+class SearchRetrieveRequest(BaseModel):
+    """地域資料検索の入力。"""
+
+    rewritten_query: str = Field(min_length=1, max_length=500)
+    municipality_id: str = "38201"
+    district_id: str = "38201-08"
+
+
+class SearchRetrieveResponse(BaseModel):
+    """Knowledge Baseから取得した分類根拠。"""
+
+    documents: list[GuideSource] = Field(default_factory=list)
+
+
+class SearchDecisionRequest(WasteGuideRequest):
+    """分類エージェントの入力。"""
+
+    rewritten_query: str = Field(min_length=1, max_length=500)
+    documents: list[GuideSource] = Field(default_factory=list, max_length=20)
+
+
+class SearchAnalyticsSummary(BaseModel):
+    """管理画面向けの検索分析サマリー。"""
+
+    total_searches: int
+    answered_count: int
+    clarification_count: int
+    unable_count: int = 0
+    average_confidence: float | None = None
+    average_duration_ms: float | None = None
+    categories: dict[str, int] = Field(default_factory=dict)
+    recent: list[dict] = Field(default_factory=list)

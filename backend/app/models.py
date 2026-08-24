@@ -24,20 +24,6 @@ class User(Base):
     settings: Mapped[dict | None] = mapped_column(JSON, nullable=True)
 
 
-class UploadedImage(Base):
-    """アップロード画像テーブル"""
-    __tablename__ = "uploaded_images"
-
-    id: Mapped[str] = mapped_column(String(36), primary_key=True)  # UUID
-    user_id: Mapped[int] = mapped_column(ForeignKey("users.id"), nullable=False)
-    filename: Mapped[str] = mapped_column(String(255), nullable=False)
-    original_filename: Mapped[str] = mapped_column(String(255), nullable=False)
-    file_size: Mapped[int] = mapped_column(Integer, nullable=False)
-    content_type: Mapped[str] = mapped_column(String(50), nullable=False)
-    storage_path: Mapped[str] = mapped_column(String(500), nullable=False)
-    uploaded_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
-
-
 class MunicipalityConfig(Base):
     """自治体粗大ごみ設定"""
     __tablename__ = "municipality_configs"

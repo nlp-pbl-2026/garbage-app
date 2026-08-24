@@ -20,20 +20,49 @@ class GarbageApp extends ConsumerWidget {
 
     return MaterialApp(
       title: AppStrings.appName,
-      theme: ThemeData(
-        primarySwatch: Colors.green,
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
-        useMaterial3: true,
-      ),
-      darkTheme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.green,
-          brightness: Brightness.dark,
-        ),
-        useMaterial3: true,
-      ),
+      theme: _buildTheme(Brightness.light),
+      darkTheme: _buildTheme(Brightness.dark),
       themeMode: themeMode,
       home: const _AppHome(),
+    );
+  }
+
+  static ThemeData _buildTheme(Brightness brightness) {
+    final baseScheme = ColorScheme.fromSeed(
+      seedColor: const Color(0xFF1F6B4F),
+      brightness: brightness,
+    );
+    final scheme = brightness == Brightness.light
+        ? baseScheme.copyWith(surface: const Color(0xFFF6F4EE))
+        : baseScheme;
+    final inputBorder = OutlineInputBorder(
+      borderRadius: BorderRadius.circular(15),
+      borderSide: BorderSide(color: scheme.outlineVariant),
+    );
+    return ThemeData(
+      colorScheme: scheme,
+      scaffoldBackgroundColor: scheme.surface,
+      useMaterial3: true,
+      appBarTheme: AppBarTheme(
+        backgroundColor: scheme.surface,
+        foregroundColor: scheme.onSurface,
+        surfaceTintColor: Colors.transparent,
+      ),
+      inputDecorationTheme: InputDecorationTheme(
+        filled: true,
+        fillColor: scheme.surfaceContainerHighest,
+        hintStyle: TextStyle(color: scheme.onSurfaceVariant),
+        border: inputBorder,
+        enabledBorder: inputBorder,
+        focusedBorder: inputBorder.copyWith(
+          borderSide: BorderSide(color: scheme.primary, width: 2),
+        ),
+      ),
+      cardTheme: CardThemeData(
+        color: scheme.surfaceContainerLow,
+        surfaceTintColor: Colors.transparent,
+      ),
+      dividerColor: scheme.outlineVariant,
     );
   }
 }
