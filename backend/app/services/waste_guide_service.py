@@ -521,6 +521,21 @@ class WasteGuideService:
                 is_resolved=False,
                 clarifying_question=required_question,
             )
+        elif (
+            not decision.is_resolved
+            and len(clarification_items) >= config.MAX_CLARIFICATION_TURNS
+        ):
+            structured_decision = self._resolve_answered_structured_conditions(
+                query=query,
+                clarifications=clarification_items,
+                documents=documents,
+            )
+            if structured_decision is not None:
+                logger.info(
+                    "Resolved classification from fully answered structured evidence: %s",
+                    query,
+                )
+                decision = structured_decision
         cited_indexes = [index - 1 for index in decision.evidence_indexes]
         source_indexes = cited_indexes + [
             index for index in range(len(documents)) if index not in cited_indexes
@@ -740,6 +755,8 @@ class WasteGuideService:
             "袋に入ります",
             "袋に入らない",
             "袋に入りません",
+            "入ります",
+            "入りません",
             "指定袋",
             "粗大",
             "cm",
@@ -764,6 +781,84 @@ class WasteGuideService:
             return "電池や電源を使うものですか？"
 
         return None
+
+    @classmethod
+    def _resolve_answered_structured_conditions(
+        cls,
+        *,
+        query: str,
+        clarifications: list[dict],
+        documents: list[RetrievedDocument],
+    ) -> ClassificationDecision | None:
+        """回答済みの分岐条件を、完全一致した地域資料へ適用する。"""
+
+        if not documents:
+            return None
+        document = documents[0]
+        if not document.uri or not document.uri.startswith("local://items/"):
+            return None
+        if document.score is None or document.score < 0.5:
+            return None
+
+        lines = document.text.splitlines()
+        if not lines or not lines[0].startswith("品目:"):
+            return None
+        item_name = lines[0].removeprefix("品目:").strip()
+        normalized_item = cls._normalize_question(
+            re.sub(r"[（(].*$", "", item_name)
+        )
+        normalized_query = cls._normalize_question(query)
+        if not normalized_item or normalized_item not in normalized_query:
+            return None
+
+        values = {}
+        for line in lines[1:]:
+            key, separator, value = line.partition(":")
+            if separator:
+                values[key.strip()] = value.strip()
+        category_code = values.get("分類コード", "")
+        if category_code not in CATEGORY_NAMES:
+            return None
+
+        context = unicodedata.normalize(
+            "NFKC",
+            " ".join(
+                [query]
+                + [str(item.get("answer", "")) for item in clarifications]
+            ),
+        ).lower()
+        evidence = unicodedata.normalize("NFKC", document.text)
+        conditional_categories = (
+            (("袋に入らない", "袋に入りません"), "袋に入らない"),
+            (("金属", "アルミ", "スチール"), "金属製"),
+            (("プラスチック", "樹脂"), "プラスチック製"),
+            (("ガラス",), "ガラス製"),
+            (("陶器", "セラミック"), "陶器製"),
+            (("紙製", "紙の"), "紙製"),
+            (("事業用", "仕事で", "店舗で"), "事業用"),
+            (("プラマーク", "プラ表示", "マークあり"), "プラマーク"),
+            (("電動", "電池", "充電", "電気式"), "電気・電池を使用するもの"),
+        )
+        for answers, condition in conditional_categories:
+            if not any(answer in context for answer in answers):
+                continue
+            condition_position = evidence.find(condition)
+            if condition_position < 0:
+                continue
+            condition_text = evidence[condition_position : condition_position + 80]
+            for candidate_code in CATEGORY_NAMES:
+                if f"「{candidate_code}」" in condition_text:
+                    category_code = candidate_code
+                    break
+
+        return ClassificationDecision(
+            is_resolved=True,
+            item_name=query.strip(),
+            category_code=category_code,
+            disposal_instructions=values.get("出し方・注意", ""),
+            confidence=max(0.9, document.score),
+            evidence_indexes=(1,),
+        )
 
     @staticmethod
     def _validate_region(municipality_id: str, district_id: str) -> None:
