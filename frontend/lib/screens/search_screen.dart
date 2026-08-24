@@ -7,6 +7,7 @@ import '../providers/region_provider.dart';
 import '../services/waste_guide_service.dart';
 import '../widgets/region_header.dart';
 import 'region_selection_screen.dart';
+import 'search_analytics_screen.dart';
 
 class SearchScreen extends ConsumerStatefulWidget {
   const SearchScreen({super.key});
@@ -160,36 +161,35 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 7),
-            decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.12),
-              borderRadius: BorderRadius.circular(99),
-            ),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const Icon(
-                  Icons.location_on_outlined,
-                  color: Color(0xFFD7E9DF),
-                  size: 17,
-                ),
-                const SizedBox(width: 6),
-                Text(
-                  region == null
-                      ? '地域未設定'
-                      : '${region.municipalityName}・${region.districtName}地区',
-                  style: const TextStyle(
-                    color: Color(0xFFD7E9DF),
-                    fontWeight: FontWeight.w600,
+          Row(
+            children: [
+              const Expanded(
+                child: Row(children: [
+                  Icon(Icons.auto_awesome_rounded,
+                      color: Color(0xFFBDE8D3), size: 18),
+                  SizedBox(width: 7),
+                  Text('AIあいまい検索',
+                      style: TextStyle(
+                          color: Color(0xFFBDE8D3),
+                          fontWeight: FontWeight.w800)),
+                ]),
+              ),
+              IconButton(
+                tooltip: '検索ログを分析',
+                onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => const SearchAnalyticsScreen(),
                   ),
                 ),
-              ],
-            ),
+                icon: const Icon(Icons.analytics_outlined,
+                    color: Color(0xFFD7E9DF)),
+              ),
+            ],
           ),
-          const SizedBox(height: 22),
+          const SizedBox(height: 16),
           const Text(
-            'これ、何ごみ？',
+            '名前がわからなくても、\nこれ何ごみ？',
             style: TextStyle(
               color: Colors.white,
               fontSize: 32,
@@ -200,13 +200,27 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
           ),
           const SizedBox(height: 10),
           const Text(
-            '品物の名前や状態を入力すると、分別方法と\n清水地区の次回収集日を調べます。',
+            '「お弁当の透明なフタ」のような曖昧な言い方から、\n'
+            '地域の資料を探して分別と次回収集日を答えます。',
             style: TextStyle(
               color: Color(0xFFC5D8CF),
               fontSize: 15,
               height: 1.65,
             ),
           ),
+          const SizedBox(height: 18),
+          Row(children: [
+            const Icon(Icons.location_on_outlined,
+                color: Color(0xFFD7E9DF), size: 17),
+            const SizedBox(width: 6),
+            Text(
+              region == null
+                  ? '地域未設定'
+                  : '${region.municipalityName}・${region.districtName}地区',
+              style: const TextStyle(
+                  color: Color(0xFFD7E9DF), fontWeight: FontWeight.w600),
+            ),
+          ]),
         ],
       ),
     );
@@ -219,7 +233,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            isClarification ? '追加情報を入力' : '捨てたいものを入力',
+            isClarification ? '追加情報を入力' : '普段の言葉で入力してください',
             style: const TextStyle(
               color: _ink,
               fontSize: 13,
@@ -400,6 +414,27 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                 result.answer ?? '',
                 style: const TextStyle(fontSize: 16, height: 1.75, color: _ink),
               ),
+              if (classification != null) ...[
+                const SizedBox(height: 14),
+                Row(children: [
+                  const Icon(Icons.psychology_outlined,
+                      size: 18, color: Color(0xFF527064)),
+                  const SizedBox(width: 7),
+                  Text(
+                    '判定の確信度 ${(classification.confidence * 100).round()}%',
+                    style: const TextStyle(
+                        color: Color(0xFF527064), fontWeight: FontWeight.w700),
+                  ),
+                ]),
+              ],
+              if (result.rewrittenQuery.isNotEmpty &&
+                  result.rewrittenQuery != _originalQuery) ...[
+                const SizedBox(height: 10),
+                Text(
+                  '検索時の言い換え: ${result.rewrittenQuery}',
+                  style: const TextStyle(fontSize: 12, color: Colors.black54),
+                ),
+              ],
               if (result.nextCollection != null) ...[
                 const SizedBox(height: 18),
                 Container(
@@ -483,7 +518,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
   }
 
   Widget _buildExamples() {
-    const examples = ['汚れた食品トレー', '壊れた傘', '使い切ったスプレー缶'];
+    const examples = ['お弁当の透明なフタ', '雨の日に使う壊れた長いやつ', '中身を使い切った銀色の缶'];
     return Padding(
       padding: const EdgeInsets.only(top: 6),
       child: Column(
