@@ -110,3 +110,60 @@ class RAGQueryResponse(BaseModel):
 
     answer: str
     sources: list[RAGSource] = []
+
+
+# --- 粗大ごみ関連スキーマ ---
+
+from typing import Literal
+
+
+class ApplicationStep(BaseModel):
+    """申し込み手順のステップ"""
+
+    step_number: int
+    title: str
+    description: str
+    notes: str | None = None
+
+
+class MunicipalityConfigResponse(BaseModel):
+    """自治体粗大ごみ設定レスポンス"""
+
+    municipality_id: str
+    municipality_name: str
+    collection_frequency: str
+    reception_hours: str
+    collection_rules: str
+    fee_structure_type: str
+    application_method: str
+    web_form_url: str | None = None
+    phone_number: str | None = None
+    steps: list[ApplicationStep]
+
+    class Config:
+        from_attributes = True
+
+
+class BulkyWasteItemResponse(BaseModel):
+    """粗大ごみ品目レスポンス"""
+
+    id: int
+    item_name: str
+    category: str
+    fee_amount: int = Field(ge=0, le=99999)
+    size_category: str | None = None
+    size_threshold_cm: int | None = None
+    weight_category: str | None = None
+    weight_threshold_kg: float | None = None
+    notes: str | None = None
+
+    class Config:
+        from_attributes = True
+
+
+class BulkyWasteItemListResponse(BaseModel):
+    """粗大ごみ品目一覧レスポンス"""
+
+    items: list[BulkyWasteItemResponse]
+    total_count: int
+    municipality_name: str
