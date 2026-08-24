@@ -1,0 +1,40 @@
+{
+  "metadataAttributes": {
+    "source_title": "松山市 ごみ分別はやわかり帳",
+    "edition": "平成23年度（R7.4改定）版",
+    "source_file": "R7.4gomibunbetsuhayawakaricho(4).pdf",
+    "source_sha256": "a25ad6f1b3813a5bc78b0d9261a6aa2cc7a17267dc284ff140632a25228bcf3d"
+  },
+  "documentStructureConfiguration": {
+    "type": "RECORD_BASED_STRUCTURE_METADATA",
+    "recordBasedStructureMetadata": {
+      "contentFields": [
+        {
+          "fieldName": "search_text"
+        }
+      ],
+      "metadataFieldsSpecification": {
+        "fieldsToInclude": [
+          {
+            "fieldName": "rule_id"
+          },
+          {
+            "fieldName": "title"
+          },
+          {
+            "fieldName": "record_type"
+          },
+          {
+            "fieldName": "source_pdf_page"
+          },
+          {
+            "fieldName": "source_printed_page"
+          },
+          {
+            "fieldName": "source_section"
+          }
+        ]
+      }
+    }
+  }
+}
