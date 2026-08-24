@@ -36,9 +36,6 @@ class AppStrings {
   /// 設定タブラベル
   static const String tabSettings = '設定';
 
-  /// 画像入力タブラベル
-  static const String tabImageInput = '画像入力';
-
   // 地域選択画面
   /// 地域選択画面タイトル
   static const String regionSelectionTitle = '地域を選択';
@@ -159,7 +156,8 @@ class AppStrings {
   static const String calendarRegistered = 'カレンダーに登録しました';
 
   /// カレンダー権限エラー
-  static const String calendarPermissionDenied = 'カレンダーへのアクセス権限が必要です。設定画面から権限を許可してください。';
+  static const String calendarPermissionDenied =
+      'カレンダーへのアクセス権限が必要です。設定画面から権限を許可してください。';
 
   // ボタンラベル
   /// 再試行ボタン

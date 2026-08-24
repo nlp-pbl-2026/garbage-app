@@ -6,7 +6,6 @@ import '../constants/strings.dart';
 import '../providers/region_provider.dart';
 import 'bulky_waste_screen.dart';
 import 'calendar_screen.dart';
-import 'image_input_screen.dart';
 import 'region_selection_screen.dart';
 import 'search_screen.dart';
 import 'settings_screen.dart';
@@ -30,7 +29,6 @@ class _MainScreenState extends ConsumerState<MainScreen> {
   final List<Widget> _screens = const [
     SearchScreen(),
     CalendarScreen(),
-    ImageInputScreen(),
     SettingsScreen(),
   ];
 
@@ -69,11 +67,7 @@ class _MainScreenState extends ConsumerState<MainScreen> {
             label: AppStrings.tabCalendar,
           ),
           BottomNavigationBarItem(
-            icon: _buildIcon(Icons.camera_alt, 2),
-            label: AppStrings.tabImageInput,
-          ),
-          BottomNavigationBarItem(
-            icon: _buildIcon(Icons.settings, 3),
+            icon: _buildIcon(Icons.settings, 2),
             label: AppStrings.tabSettings,
           ),
         ],
