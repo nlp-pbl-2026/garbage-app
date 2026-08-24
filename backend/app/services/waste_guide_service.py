@@ -4,7 +4,7 @@ import json
 import logging
 import re
 import unicodedata
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 from datetime import datetime
 from zoneinfo import ZoneInfo
 
@@ -171,6 +171,11 @@ class BedrockGateway:
 分類コードは 可燃, 埋立, 金・ガ, 紙類, ペット, プラ, 水銀, 粗大, 禁止 のいずれかです。
 複数候補が残る、素材・大きさ・汚れ等が不足する、または根拠が弱い場合は is_resolved=false にし、
 分類を確定するための質問を一つだけ clarifying_question に入れてください。
+検索根拠にプラスチック製の候補が多くても、利用者の質問に素材が書かれていなければ、
+プラスチック製だと推測して確定してはいけません。検索候補は可能性の一覧であり、利用者の品物そのものの証明ではありません。
+例えば「汚れた容器」には「容器は、プラスチック製・ガラス製・金属製のどれですか？」と質問し、
+「使い終わったボトル」には「ボトルは、ペットボトル・プラスチック製容器・ガラスびんのどれですか？」と質問してください。
+「保冷剤」「ペットボトル」のように、松山市資料上で品目が一意に特定できる場合は、素材を追加で聞かずに確定して構いません。
 補足欄ですでに回答された内容を再度質問してはいけません。
 過去の追加質問と同じ意味の質問を生成してはいけません。
 根拠にない分類や出し方を作らないでください。
@@ -386,6 +391,23 @@ class WasteGuideService:
                 decision=ClassificationDecision(is_resolved=False),
             )
         decision = self._gateway.classify(query, clarification_items, documents)
+        ambiguity_question = self._missing_detail_question(
+            query=query,
+            clarifications=clarification_items,
+            documents=documents,
+        )
+        if ambiguity_question and (
+            decision.is_resolved or not decision.clarifying_question
+        ):
+            logger.info(
+                "Downgrading classification because the query lacks a required detail: %s",
+                query,
+            )
+            decision = replace(
+                decision,
+                is_resolved=False,
+                clarifying_question=ambiguity_question,
+            )
         cited_indexes = [index - 1 for index in decision.evidence_indexes]
         source_indexes = cited_indexes + [
             index for index in range(len(documents)) if index not in cited_indexes
@@ -451,6 +473,59 @@ class WasteGuideService:
     def _normalize_question(question: str) -> str:
         value = unicodedata.normalize("NFKC", question).lower()
         return re.sub(r"[\s\W_]+", "", value)
+
+    @classmethod
+    def _missing_detail_question(
+        cls,
+        *,
+        query: str,
+        clarifications: list[dict],
+        documents: list[RetrievedDocument],
+    ) -> str | None:
+        """一般名詞だけの入力を、検索候補だけで確定しないための最終ガード。"""
+
+        text = unicodedata.normalize(
+            "NFKC",
+            " ".join(
+                [query]
+                + [
+                    f"{item.get('question', '')} {item.get('answer', '')}"
+                    for item in clarifications
+                ]
+            ),
+        ).lower()
+        material_markers = (
+            "プラスチック",
+            "樹脂",
+            "ガラス",
+            "金属",
+            "アルミ",
+            "スチール",
+            "紙製",
+            "紙の",
+            "ペットボトル",
+            "pet",
+        )
+        if any(marker in text for marker in material_markers):
+            return None
+
+        normalized_query = cls._normalize_question(query)
+        item_names = []
+        for document in documents:
+            first_line = document.text.splitlines()[0] if document.text else ""
+            if first_line.startswith("品目:"):
+                item_names.append(
+                    cls._normalize_question(first_line.removeprefix("品目:"))
+                )
+        # Exact catalog entries (例: 保冷剤) are already sufficiently specific.
+        if normalized_query and normalized_query in item_names:
+            return None
+
+        if "ボトル" in text:
+            return "ボトルは、ペットボトル・プラスチック製容器・ガラスびんのどれですか？"
+        if "容器" in text:
+            return "容器は、プラスチック製・ガラス製・金属製のどれですか？"
+        return None
 
     @staticmethod
     def _validate_region(municipality_id: str, district_id: str) -> None:

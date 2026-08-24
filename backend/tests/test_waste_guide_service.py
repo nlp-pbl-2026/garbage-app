@@ -128,7 +128,7 @@ def test_answered_result_includes_next_collection():
     )
 
     result = service.query(
-        query="飲み終わったボトルは？",
+        query="飲み終わったペットボトルは？",
         municipality_id="38201",
         district_id="38201-08",
     )
@@ -162,6 +162,62 @@ def test_unresolved_result_returns_one_follow_up_question():
     assert result.follow_up_question == "容器は紙製ですか、プラスチック製ですか？"
     assert result.decision is not None
     assert result.decision.confidence == 0.4
+
+
+def test_generic_container_is_asked_for_material_even_when_model_resolves():
+    gateway = FakeGateway(
+        ClassificationDecision(
+            is_resolved=True,
+            item_name="容器",
+            category_code="プラ",
+            confidence=0.98,
+            evidence_indexes=(1,),
+        )
+    )
+    service = WasteGuideService(gateway=gateway, item_search=EmptyItemSearch())
+
+    result = service.query(
+        query="汚れた容器",
+        municipality_id="38201",
+        district_id="38201-08",
+    )
+
+    assert result.status == "needs_clarification"
+    assert result.follow_up_question == (
+        "容器は、プラスチック製・ガラス製・金属製のどれですか？"
+    )
+
+
+def test_bottle_can_be_resolved_after_material_clarification():
+    gateway = FakeGateway(
+        ClassificationDecision(
+            is_resolved=True,
+            item_name="ボトル",
+            category_code="プラ",
+            disposal_instructions="汚れを取り除いて出してください。",
+            confidence=0.98,
+            evidence_indexes=(1,),
+        )
+    )
+    service = WasteGuideService(
+        gateway=gateway,
+        item_search=EmptyItemSearch(),
+        today_provider=lambda: date(2026, 8, 24),
+    )
+
+    result = service.query(
+        query="使い終わったボトル",
+        municipality_id="38201",
+        district_id="38201-08",
+        clarifications=[
+            {
+                "question": "ボトルは、ペットボトル・プラスチック製容器・ガラスびんのどれですか？",
+                "answer": "プラスチック製容器です",
+            }
+        ],
+    )
+
+    assert result.status == "answered"
 
 
 def test_clarification_is_passed_to_both_generation_steps():
