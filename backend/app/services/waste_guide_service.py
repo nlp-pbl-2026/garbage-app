@@ -2,6 +2,8 @@
 
 import json
 import logging
+import re
+import unicodedata
 from dataclasses import dataclass, field
 from datetime import datetime
 from zoneinfo import ZoneInfo
@@ -11,6 +13,7 @@ from botocore.exceptions import BotoCoreError, ClientError, NoCredentialsError
 
 from .. import config
 from .calendar_service import CalendarService, CollectionDate
+from .item_search_service import ItemSearchService
 
 logger = logging.getLogger(__name__)
 
@@ -54,6 +57,7 @@ class ClassificationDecision:
     disposal_instructions: str = ""
     confidence: float = 0.0
     clarifying_question: str = ""
+    evidence_indexes: tuple[int, ...] = ()
 
 
 @dataclass(frozen=True)
@@ -151,7 +155,10 @@ class BedrockGateway:
 分類コードは 可燃, 埋立, 金・ガ, 紙類, ペット, プラ, 水銀, 粗大, 禁止 のいずれかです。
 複数候補が残る、素材・大きさ・汚れ等が不足する、または根拠が弱い場合は is_resolved=false にし、
 分類を確定するための質問を一つだけ clarifying_question に入れてください。
+補足欄ですでに回答された内容を再度質問してはいけません。
+過去の追加質問と同じ意味の質問を生成してはいけません。
 根拠にない分類や出し方を作らないでください。
+確定する場合は、使用した根拠番号を evidence_indexes に必ず1件以上入れてください。
 
 利用者の質問:
 {query}
@@ -169,17 +176,33 @@ class BedrockGateway:
   "category_code": "分類コード",
   "disposal_instructions": "根拠に基づく出し方と注意点",
   "confidence": 0.0,
-  "clarifying_question": ""
+  "clarifying_question": "",
+  "evidence_indexes": [1]
 }}
 """.strip()
         payload = self._converse_json(prompt, max_tokens=600)
         category_code = str(payload.get("category_code", "")).strip()
         confidence = float(payload.get("confidence", 0.0) or 0.0)
         is_resolved = bool(payload.get("is_resolved", False))
+        evidence_indexes = tuple(
+            index
+            for index in payload.get("evidence_indexes", [])
+            if isinstance(index, int) and 1 <= index <= len(documents)
+        )
         if category_code not in CATEGORY_NAMES:
             is_resolved = False
             category_code = ""
         if confidence < config.CLASSIFICATION_CONFIDENCE_THRESHOLD:
+            is_resolved = False
+        if is_resolved and not any(
+            self._document_supports_category(documents[index - 1], category_code)
+            for index in evidence_indexes
+        ):
+            logger.warning(
+                "Rejected ungrounded classification: category=%s evidence=%s",
+                category_code,
+                evidence_indexes,
+            )
             is_resolved = False
         return ClassificationDecision(
             is_resolved=is_resolved,
@@ -192,7 +215,16 @@ class BedrockGateway:
             clarifying_question=str(
                 payload.get("clarifying_question", "")
             ).strip(),
+            evidence_indexes=evidence_indexes,
         )
+
+    @staticmethod
+    def _document_supports_category(
+        document: RetrievedDocument, category_code: str
+    ) -> bool:
+        text = unicodedata.normalize("NFKC", document.text)
+        category_name = CATEGORY_NAMES.get(category_code, "")
+        return category_code in text or (category_name and category_name in text)
 
     def _converse_json(self, prompt: str, *, max_tokens: int) -> dict:
         try:
@@ -227,11 +259,13 @@ class WasteGuideService:
         self,
         gateway: BedrockGateway | None = None,
         calendar: CalendarService | None = None,
+        item_search: ItemSearchService | None = None,
         now_provider=None,
         today_provider=None,
     ):
         self._gateway = gateway or BedrockGateway()
         self._calendar = calendar or CalendarService()
+        self._item_search = item_search or ItemSearchService()
         # today_providerは既存呼び出しとの互換用。新規コードは時刻を含むnow_providerを使う。
         self._now_provider = now_provider
         self._today_provider = today_provider
@@ -288,7 +322,19 @@ class WasteGuideService:
         """言い換え済み検索文で地域別Knowledge Baseを検索する。"""
 
         self._validate_region(municipality_id, district_id)
-        return self._gateway.retrieve(rewritten_query)
+        lexical_documents = [
+            RetrievedDocument(
+                text=match.evidence_text,
+                score=match.score,
+                uri=f"local://items/{match.item_id}",
+                title="松山市ごみ分別辞典（品目検索）",
+            )
+            for match in self._item_search.search(
+                rewritten_query, limit=config.LEXICAL_SEARCH_TOP_K
+            )
+        ]
+        vector_documents = self._gateway.retrieve(rewritten_query)
+        return lexical_documents + vector_documents
 
     def decide(
         self,
@@ -303,13 +349,57 @@ class WasteGuideService:
         """検索根拠から分類を決め、回答または追加質問を組み立てる。"""
 
         self._validate_region(municipality_id, district_id)
-        decision = self._gateway.classify(query, clarifications or [], documents)
-        sources = documents[:3]
+        clarification_items = clarifications or []
+        if not documents:
+            if clarification_items:
+                return WasteGuideResult(
+                    status="unable_to_determine",
+                    rewritten_query=rewritten_query,
+                    answer=(
+                        "いただいた情報は反映しましたが、松山市の公開資料から分類を"
+                        "確認できませんでした。品目名や用途を変えて、もう一度検索してください。"
+                    ),
+                    decision=ClassificationDecision(is_resolved=False),
+                )
+            return WasteGuideResult(
+                status="needs_clarification",
+                rewritten_query=rewritten_query,
+                follow_up_question=(
+                    "地域資料で候補を見つけられませんでした。品物の用途や素材を教えてください。"
+                ),
+                decision=ClassificationDecision(is_resolved=False),
+            )
+        decision = self._gateway.classify(query, clarification_items, documents)
+        cited_indexes = [index - 1 for index in decision.evidence_indexes]
+        source_indexes = cited_indexes + [
+            index for index in range(len(documents)) if index not in cited_indexes
+        ]
+        sources = [documents[index] for index in source_indexes[:3]]
 
         if not decision.is_resolved:
             question = decision.clarifying_question or (
                 "素材、大きさ、汚れの有無など、品物の状態をもう少し教えてください。"
             )
+            previous_questions = [
+                item.get("question", "") for item in (clarifications or [])
+            ]
+            is_duplicate = any(
+                self._normalize_question(question)
+                == self._normalize_question(previous_question)
+                for previous_question in previous_questions
+            )
+            if is_duplicate or len(previous_questions) >= config.MAX_CLARIFICATION_TURNS:
+                return WasteGuideResult(
+                    status="unable_to_determine",
+                    rewritten_query=rewritten_query,
+                    answer=(
+                        "いただいた情報は反映しましたが、松山市の公開資料から分類を"
+                        "確定できませんでした。品目名や用途、汚れの状態を含めて、"
+                        "別の言い方でもう一度検索してください。"
+                    ),
+                    decision=decision,
+                    sources=sources,
+                )
             return WasteGuideResult(
                 status="needs_clarification",
                 rewritten_query=rewritten_query,
@@ -340,6 +430,11 @@ class WasteGuideService:
             next_collection=next_collection,
             sources=sources,
         )
+
+    @staticmethod
+    def _normalize_question(question: str) -> str:
+        value = unicodedata.normalize("NFKC", question).lower()
+        return re.sub(r"[\s\W_]+", "", value)
 
     @staticmethod
     def _validate_region(municipality_id: str, district_id: str) -> None:

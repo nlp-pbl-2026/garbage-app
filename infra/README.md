@@ -24,7 +24,7 @@
 | IAM role | `/service-role/U-22-BedrockKnowledgeBaseRole-GarbageGuideDev` | BedrockからS3を読むためのロール |
 | IAM policy | `AmazonBedrockS3PolicyForKnowledgeBase_U-22-BedrockKnowledgeBaseRole-GarbageGuideDev` | 対象S3プレフィックスの読み取り |
 | IAM policy | `AmazonBedrockCloudWatchPolicyForKnowledgeBase_U-22-BedrockKnowledgeBaseRole-GarbageGuideDev` | Knowledge Baseメトリクスの送信 |
-| Lambda | `garbage-guide-dev-api` | FastAPIのAIあいまい検索API |
+| Lambda | `garbage-guide-dev-api` | FastAPIのAIあいまい検索API。品目CSVも同梱し、Knowledge Baseの検索結果と行単位検索を統合 |
 | API Gateway HTTP API | `garbage-guide-dev-http-api` | Flutter向けHTTPSエンドポイント |
 | DynamoDB | `garbage-guide-dev-search-logs` | 検索・回答・確信度・処理時間の分析ログ |
 | CloudWatch Logs | `/aws/lambda/garbage-guide-dev-api` | Backend実行ログ（30日保持） |

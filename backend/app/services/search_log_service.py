@@ -84,6 +84,9 @@ class SearchLogService:
             if item.get("category_name")
         )
         answered = sum(item.get("status") == "answered" for item in items)
+        unable = sum(
+            item.get("status") == "unable_to_determine" for item in items
+        )
         confidences = [
             float(item["confidence"])
             for item in items
@@ -93,7 +96,10 @@ class SearchLogService:
         return {
             "total_searches": len(items),
             "answered_count": answered,
-            "clarification_count": len(items) - answered,
+            "clarification_count": sum(
+                item.get("status") == "needs_clarification" for item in items
+            ),
+            "unable_count": unable,
             "average_confidence": (
                 sum(confidences) / len(confidences) if confidences else None
             ),

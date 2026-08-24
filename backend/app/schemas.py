@@ -131,7 +131,9 @@ class WasteGuideRequest(BaseModel):
     municipality_name: str = "松山市"
     district_id: str = "38201-08"
     district_name: str = "清水"
-    clarifications: list[ClarificationExchange] = Field(default_factory=list)
+    clarifications: list[ClarificationExchange] = Field(
+        default_factory=list, max_length=3
+    )
 
     @field_validator("query")
     @classmethod
@@ -171,7 +173,9 @@ class NextCollection(BaseModel):
 class WasteGuideResponse(BaseModel):
     """単発の回答、または分類確定に必要な追加質問。"""
 
-    status: str = Field(pattern=r"^(answered|needs_clarification)$")
+    status: str = Field(
+        pattern=r"^(answered|needs_clarification|unable_to_determine)$"
+    )
     answer: str | None = None
     follow_up_question: str | None = None
     rewritten_query: str
@@ -214,6 +218,7 @@ class SearchAnalyticsSummary(BaseModel):
     total_searches: int
     answered_count: int
     clarification_count: int
+    unable_count: int = 0
     average_confidence: float | None = None
     average_duration_ms: float | None = None
     categories: dict[str, int] = Field(default_factory=dict)

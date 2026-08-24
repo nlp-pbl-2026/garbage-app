@@ -24,11 +24,15 @@ cp "${PROJECT_ROOT}/backend/app/routers/search_router.py" "${BUILD_DIR}/app/rout
 cp "${PROJECT_ROOT}/backend/app/services/__init__.py" "${BUILD_DIR}/app/services/"
 cp "${PROJECT_ROOT}/backend/app/services/calendar_service.py" "${BUILD_DIR}/app/services/"
 cp "${PROJECT_ROOT}/backend/app/services/search_log_service.py" "${BUILD_DIR}/app/services/"
+cp "${PROJECT_ROOT}/backend/app/services/item_search_service.py" "${BUILD_DIR}/app/services/"
 cp "${PROJECT_ROOT}/backend/app/services/waste_guide_service.py" "${BUILD_DIR}/app/services/"
 
 mkdir -p "${BUILD_DIR}/data/regions/matsuyama/shimizu/calendar"
 cp "${PROJECT_ROOT}/data/regions/matsuyama/shimizu/calendar/2026.csv" \
   "${BUILD_DIR}/data/regions/matsuyama/shimizu/calendar/"
+mkdir -p "${BUILD_DIR}/data/regions/matsuyama/common/knowledge"
+cp "${PROJECT_ROOT}/data/regions/matsuyama/common/knowledge/items.csv" \
+  "${BUILD_DIR}/data/regions/matsuyama/common/knowledge/"
 
 (cd "${BUILD_DIR}" && zip -q -r "${ZIP_PATH}" .)
 echo "Lambda package: ${ZIP_PATH}"

@@ -30,11 +30,13 @@
 ## 処理フロー
 
 1. Amazon Nova Liteで利用者の入力を検索向けに言い換える
-2. Amazon Bedrock Managed Knowledge Baseから関連文書をtop-k検索する
+2. 品目CSVの文字列類似検索とAmazon Bedrock Managed Knowledge Baseのtop-k検索を併用する
 3. 検索結果だけを根拠にごみ分類を生成する
 4. 分類と確信度を評価する
 5. 確定できる場合は地域別カレンダーから次回収集日を返す
 6. 確定できない場合は追加質問を1件返す
+
+追加回答は検索中すべて保持します。同じ内容を再質問しようとした場合、または追加質問が2回に達した場合はループを打ち切り、確定できなかったことを明示します。品目CSVは行単位でも検索するため、大きなCSV断片から目的の品目がRAGで取りこぼされる問題を補います。
 
 Flutterの検索画面にはこの処理を担当する2つのNova Liteエージェント、Bedrock Knowledge Base、清水地区カレンダーを表示します。実際の段階APIが切り替わるタイミングに合わせて担当アイコンと受け渡し矢印が動きます。画面右上のヘルプから、RAGを含む仕組みをアプリ内でも確認できます。
 
@@ -150,6 +152,9 @@ curl -sS http://127.0.0.1:8000/api/search/classify \
 | モデルID | `backend/app/config.py` の `BEDROCK_MODEL_ID` | 既定値 `amazon.nova-lite-v1:0`。環境変数で上書き可能 |
 | Knowledge Base ID | 同ファイルの `BEDROCK_KNOWLEDGE_BASE_ID` | Terraform outputから設定 |
 | RAG取得件数 | 同ファイルの `RAG_TOP_K` | 既定値 `8` |
+| 品目検索件数 | 同ファイルの `LEXICAL_SEARCH_TOP_K` | 文字列類似検索から追加する件数。既定値 `5` |
+| 品目検索しきい値 | 同ファイルの `LEXICAL_SEARCH_MIN_SCORE` | 既定値 `0.18` |
+| 追加質問上限 | 同ファイルの `MAX_CLARIFICATION_TURNS` | 既定値 `2`。重複質問は上限前でも停止 |
 | 分類確信度 | 同ファイルの `CLASSIFICATION_CONFIDENCE_THRESHOLD` | 既定値 `0.75` |
 | APIタイムアウト | 同ファイルの `RAG_REQUEST_TIMEOUT_SECONDS` | 既定値 `60` 秒 |
 | AWS認証 | AWS SDKの標準credential chain | 必要なら `AWS_PROFILE` を設定 |
