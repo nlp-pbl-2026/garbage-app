@@ -126,6 +126,29 @@ def test_rewrite_prompt_treats_transparent_bento_lid_as_disposable_container():
     assert "一般的な使い捨て" in prompt
 
 
+def test_rewrite_removes_material_not_supported_by_user_input():
+    gateway = BedrockGateway(
+        runtime_client=FakeRuntime({"search_query": "汚れたプラスチック製のビン"}),
+        agent_runtime_client=object(),
+    )
+
+    assert gateway.rewrite_query("汚れたビン", []) == "汚れたびん"
+
+
+def test_rewrite_keeps_material_from_clarification():
+    gateway = BedrockGateway(
+        runtime_client=FakeRuntime({"search_query": "汚れたガラス製ビン"}),
+        agent_runtime_client=object(),
+    )
+
+    rewritten = gateway.rewrite_query(
+        "汚れたビン",
+        [{"question": "何製ですか？", "answer": "ガラス"}],
+    )
+
+    assert rewritten == "汚れたガラス製びん"
+
+
 def test_answered_result_includes_next_collection():
     gateway = FakeGateway(
         ClassificationDecision(

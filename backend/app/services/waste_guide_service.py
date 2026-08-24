@@ -107,7 +107,13 @@ class BedrockGateway:
 """.strip()
         payload = self._converse_json(prompt, max_tokens=200)
         rewritten = str(payload.get("search_query", "")).strip()
-        return self._clean_rewritten_query(rewritten) or query.strip()
+        cleaned = self._clean_rewritten_query(rewritten)
+        cleaned = self._remove_unsupported_materials(
+            cleaned,
+            query=query,
+            clarifications=clarifications,
+        )
+        return self._normalize_search_spelling(cleaned) or query.strip()
 
     @staticmethod
     def _clean_rewritten_query(value: str) -> str:
@@ -123,6 +129,51 @@ class BedrockGateway:
         ):
             cleaned = cleaned.replace(phrase, " ")
         return " ".join(cleaned.split())
+
+    @staticmethod
+    def _remove_unsupported_materials(
+        value: str, *, query: str, clarifications: list[dict]
+    ) -> str:
+        """入力にない素材を言い換えが勝手に補った場合に除去する。"""
+
+        source = unicodedata.normalize(
+            "NFKC",
+            " ".join(
+                [query]
+                + [
+                    str(item.get("answer", ""))
+                    for item in clarifications
+                ]
+            ),
+        ).lower()
+        allow_transparent_bento_lid = all(
+            marker in source for marker in ("弁当", "透明")
+        ) and any(marker in source for marker in ("ふた", "フタ", "蓋"))
+        material_groups = (
+            (
+                ("プラスチック製の", "プラスチック製", "プラスチック", "樹脂製の", "樹脂製", "樹脂"),
+                ("プラスチック", "樹脂"),
+                allow_transparent_bento_lid,
+            ),
+            (("ガラス製の", "ガラス製", "ガラス"), ("ガラス",), False),
+            (
+                ("金属製の", "金属製", "金属", "アルミ製の", "アルミ製", "アルミ", "スチール製", "スチール"),
+                ("金属", "アルミ", "スチール"),
+                False,
+            ),
+            (("紙製の", "紙製"), ("紙製", "紙の"), False),
+        )
+        cleaned = value
+        for output_terms, source_terms, context_allows in material_groups:
+            if context_allows or any(term in source for term in source_terms):
+                continue
+            for term in output_terms:
+                cleaned = cleaned.replace(term, "")
+        return " ".join(cleaned.split())
+
+    @staticmethod
+    def _normalize_search_spelling(value: str) -> str:
+        return value.replace("ビン", "びん").replace("瓶", "びん")
 
     def retrieve(self, query: str) -> list[RetrievedDocument]:
         if not config.BEDROCK_KNOWLEDGE_BASE_ID:
@@ -180,6 +231,8 @@ class BedrockGateway:
 「お弁当の透明なフタ」は一般的な使い捨て弁当・惣菜容器のふたを指すため、
 「弁当・惣菜の容器（プラスチック製）」の根拠を使って確定し、素材を質問しないでください。
 「弁当箱（プラスチック製）」は繰り返し使う製品なので、この入力の根拠として優先してはいけません。
+「びん」「ビン」「瓶」は通常のガラスびんとして扱ってください。入力が「汚れたびん」の場合は、
+素材を質問せず「びん」の根拠で金物・ガラス類に確定し、すすぐ等の資料上の出し方を案内してください。
 例えば「汚れた容器」には「容器は、プラスチック製・ガラス製・金属製のどれですか？」と質問し、
 「使い終わったボトル」には「ボトルは、ペットボトル・プラスチック製容器・ガラスびんのどれですか？」と質問してください。
 「保冷剤」「ペットボトル」のように、松山市資料上で品目が一意に特定できる場合は、素材を追加で聞かずに確定して構いません。
@@ -496,7 +549,7 @@ class WasteGuideService:
             " ".join(
                 [query]
                 + [
-                    f"{item.get('question', '')} {item.get('answer', '')}"
+                    str(item.get("answer", ""))
                     for item in clarifications
                 ]
             ),

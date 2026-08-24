@@ -47,6 +47,10 @@ class ItemSearchService:
         "汚れの状態",
         "これは何ごみ",
         "何ごみ",
+        "分類",
+        "処理方法",
+        "捨て方",
+        "出し方",
     )
 
     def __init__(self, items_path: Path | None = None):
@@ -130,6 +134,7 @@ class ItemSearchService:
     def _normalize(cls, value: str) -> str:
         normalized = unicodedata.normalize("NFKC", value).lower()
         normalized = normalized.replace("フタ", "ふた").replace("蓋", "ふた")
+        normalized = normalized.replace("ビン", "びん").replace("瓶", "びん")
         for phrase in cls._ignored_phrases:
             normalized = normalized.replace(phrase.lower(), "")
         normalized = re.sub(r"[\s\W_]+", "", normalized)

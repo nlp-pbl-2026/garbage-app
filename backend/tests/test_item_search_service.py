@@ -18,6 +18,13 @@ def test_transparent_bento_lid_prioritizes_disposable_container_records():
     assert all("弁当箱" not in match.item for match in matches)
 
 
+def test_katakana_bottle_matches_hiragana_bottle_record():
+    matches = ItemSearchService().search("汚れたビン")
+
+    assert matches[0].item == "びん"
+    assert matches[0].category == "金・ガ"
+
+
 def test_material_mentioned_only_in_note_does_not_dominate_item_name_match():
     matches = ItemSearchService().search("弁当 プラスチック製 ふた")
     names = [match.item for match in matches]
