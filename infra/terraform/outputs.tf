@@ -25,3 +25,19 @@ output "backend_environment" {
   }
   description = "Environment values required by the backend."
 }
+
+output "backend_api_url" {
+  value       = aws_apigatewayv2_api.backend.api_endpoint
+  description = "Public base URL of the serverless backend API."
+}
+
+output "search_log_table_name" {
+  value       = aws_dynamodb_table.search_logs.name
+  description = "DynamoDB table containing structured search analytics."
+}
+
+output "analytics_api_key" {
+  value       = random_password.analytics_api_key.result
+  description = "Key required by the analytics endpoint. Enter it in the admin UI; do not embed it in a public Flutter build."
+  sensitive   = true
+}

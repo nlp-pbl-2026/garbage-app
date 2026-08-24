@@ -39,3 +39,26 @@ variable "knowledge_base_name" {
   type        = string
   default     = "garbage-guide-matsuyama-shimizu-dev"
 }
+
+variable "backend_package_path" {
+  description = "Lambda deployment zip built by scripts/package_backend.sh."
+  type        = string
+  default     = "../../backend/dist/backend-lambda.zip"
+}
+
+variable "collection_cutoff_hour" {
+  description = "Optional global cutoff override. Null uses official category cutoffs: combustible 7:00, others 8:00."
+  type        = number
+  default     = null
+
+  validation {
+    condition     = var.collection_cutoff_hour == null || (var.collection_cutoff_hour >= 0 && var.collection_cutoff_hour <= 23)
+    error_message = "collection_cutoff_hour must be between 0 and 23."
+  }
+}
+
+variable "search_log_retention_days" {
+  description = "Days before DynamoDB automatically expires search analytics logs."
+  type        = number
+  default     = 90
+}

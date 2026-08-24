@@ -83,6 +83,7 @@ resource "aws_iam_policy" "knowledge_base_s3" {
   name        = local.knowledge_s3_policy_name
   path        = "/service-role/"
   description = "Read the Terraform-managed garbage guide knowledge documents."
+  tags        = {}
 
   policy = jsonencode({
     Version = "2012-10-17"
@@ -117,6 +118,7 @@ resource "aws_iam_policy" "knowledge_base_cloudwatch" {
   name        = local.knowledge_cloudwatch_policy_name
   path        = "/service-role/"
   description = "Publish metrics for the Terraform-managed Bedrock Knowledge Base."
+  tags        = {}
 
   policy = jsonencode({
     Version = "2012-10-17"

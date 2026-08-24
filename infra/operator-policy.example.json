@@ -44,7 +44,10 @@
         "iam:UntagRole",
         "iam:UpdateAssumeRolePolicy"
       ],
-      "Resource": "arn:aws:iam::*:role/service-role/U-22-BedrockKnowledgeBaseRole-GarbageGuide*"
+      "Resource": [
+        "arn:aws:iam::*:role/service-role/U-22-BedrockKnowledgeBaseRole-GarbageGuide*",
+        "arn:aws:iam::*:role/service-role/U-22-LambdaExecutionRole-GarbageGuide*"
+      ]
     },
     {
       "Sid": "ManageGarbageGuideRolePolicies",
@@ -60,7 +63,10 @@
         "iam:GetPolicyVersion",
         "iam:ListPolicyVersions"
       ],
-      "Resource": "arn:aws:iam::*:policy/service-role/AmazonBedrock*PolicyForKnowledgeBase_U-22-BedrockKnowledgeBaseRole-GarbageGuide*"
+      "Resource": [
+        "arn:aws:iam::*:policy/service-role/AmazonBedrock*PolicyForKnowledgeBase_U-22-BedrockKnowledgeBaseRole-GarbageGuide*",
+        "arn:aws:iam::*:policy/service-role/AmazonBedrockLambdaRuntimePolicyForKnowledgeBase_U-22-BedrockKnowledgeBaseRole-GarbageGuide*"
+      ]
     },
     {
       "Sid": "ManageGarbageGuideKnowledgeBase",
@@ -84,6 +90,65 @@
         "bedrock:UpdateKnowledgeBase"
       ],
       "Resource": "*"
+    },
+    {
+      "Sid": "ManageGarbageGuideLambda",
+      "Effect": "Allow",
+      "Action": [
+        "lambda:AddPermission",
+        "lambda:CreateFunction",
+        "lambda:DeleteFunction",
+        "lambda:GetFunction",
+        "lambda:GetFunctionCodeSigningConfig",
+        "lambda:GetPolicy",
+        "lambda:ListVersionsByFunction",
+        "lambda:RemovePermission",
+        "lambda:TagResource",
+        "lambda:UntagResource",
+        "lambda:UpdateFunctionCode",
+        "lambda:UpdateFunctionConfiguration"
+      ],
+      "Resource": "arn:aws:lambda:ap-northeast-1:*:function:garbage-guide-*"
+    },
+    {
+      "Sid": "ManageGarbageGuideDataAndLogs",
+      "Effect": "Allow",
+      "Action": [
+        "dynamodb:CreateTable",
+        "dynamodb:DeleteTable",
+        "dynamodb:DescribeContinuousBackups",
+        "dynamodb:DescribeTable",
+        "dynamodb:DescribeTimeToLive",
+        "dynamodb:ListTagsOfResource",
+        "dynamodb:TagResource",
+        "dynamodb:UntagResource",
+        "dynamodb:UpdateContinuousBackups",
+        "dynamodb:UpdateTable",
+        "dynamodb:UpdateTimeToLive",
+        "logs:CreateLogGroup",
+        "logs:DeleteLogGroup",
+        "logs:DescribeLogGroups",
+        "logs:ListTagsForResource",
+        "logs:PutRetentionPolicy",
+        "logs:TagResource",
+        "logs:UntagResource"
+      ],
+      "Resource": [
+        "arn:aws:dynamodb:ap-northeast-1:*:table/garbage-guide-*",
+        "arn:aws:logs:ap-northeast-1:*:log-group:/aws/lambda/garbage-guide-*"
+      ]
+    },
+    {
+      "Sid": "ManageGarbageGuideHttpApi",
+      "Effect": "Allow",
+      "Action": [
+        "apigateway:DELETE",
+        "apigateway:GET",
+        "apigateway:PATCH",
+        "apigateway:POST",
+        "apigateway:PUT"
+      ],
+      "Resource": "arn:aws:apigateway:ap-northeast-1::/apis*"
     }
   ]
 }
