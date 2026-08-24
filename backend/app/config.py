@@ -22,3 +22,14 @@ CLASSIFICATION_CONFIDENCE_THRESHOLD = float(
 )
 TIMEZONE = os.getenv("TIMEZONE", "Asia/Tokyo")
 RAG_REQUEST_TIMEOUT_SECONDS = int(os.getenv("RAG_REQUEST_TIMEOUT_SECONDS", "60"))
+_collection_cutoff_hour = os.getenv("COLLECTION_CUTOFF_HOUR")
+COLLECTION_CUTOFF_HOUR = (
+    int(_collection_cutoff_hour) if _collection_cutoff_hour else None
+)
+CALENDAR_PATH = os.getenv("CALENDAR_PATH", "")
+
+# 検索分析ログ。AWSではDynamoDB、ローカルではJSON Linesを使う。
+SEARCH_LOG_TABLE = os.getenv("SEARCH_LOG_TABLE", "")
+SEARCH_LOG_FILE = os.getenv("SEARCH_LOG_FILE", "search_logs.jsonl")
+SEARCH_LOG_RETENTION_DAYS = int(os.getenv("SEARCH_LOG_RETENTION_DAYS", "90"))
+ANALYTICS_API_KEY = os.getenv("ANALYTICS_API_KEY", "")

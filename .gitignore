@@ -4,6 +4,8 @@ __pycache__/
 .pytest_cache/
 .venv/
 backend/.venv/
+backend/search_logs.jsonl
+backend/dist/
 
 # Environment variables
 .env

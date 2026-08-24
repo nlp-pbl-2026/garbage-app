@@ -106,7 +106,8 @@ def test_unresolved_result_returns_one_follow_up_question():
     assert result.status == "needs_clarification"
     assert result.answer is None
     assert result.follow_up_question == "容器は紙製ですか、プラスチック製ですか？"
-    assert result.decision is None
+    assert result.decision is not None
+    assert result.decision.confidence == 0.4
 
 
 def test_clarification_is_passed_to_both_generation_steps():

@@ -197,3 +197,16 @@ class WasteGuideResponse(BaseModel):
     classification: WasteClassification | None = None
     next_collection: NextCollection | None = None
     sources: list[GuideSource] = Field(default_factory=list)
+    request_id: str
+
+
+class SearchAnalyticsSummary(BaseModel):
+    """管理画面向けの検索分析サマリー。"""
+
+    total_searches: int
+    answered_count: int
+    clarification_count: int
+    average_confidence: float | None = None
+    average_duration_ms: float | None = None
+    categories: dict[str, int] = Field(default_factory=dict)
+    recent: list[dict] = Field(default_factory=list)

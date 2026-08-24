@@ -2,8 +2,11 @@
 
 import csv
 from dataclasses import dataclass
-from datetime import date
+from datetime import date, datetime, time, timedelta
 from pathlib import Path
+from zoneinfo import ZoneInfo
+
+from .. import config
 
 
 CATEGORY_TO_COLLECTION_TYPE = {
@@ -14,6 +17,17 @@ CATEGORY_TO_COLLECTION_TYPE = {
     "ペット": "pet_bottle",
     "プラ": "plastic_packaging",
     "水銀": "mercury",
+}
+
+# 松山市「ごみ分別はやわかり帳」の分類別搬出期限。
+CATEGORY_COLLECTION_CUTOFF_HOURS = {
+    "可燃": 7,
+    "埋立": 8,
+    "金・ガ": 8,
+    "紙類": 8,
+    "ペット": 8,
+    "プラ": 8,
+    "水銀": 8,
 }
 
 
@@ -35,7 +49,8 @@ class CalendarService:
     """CSVを一度だけ読み込み、分類コードから次の収集日を返す。"""
 
     def __init__(self, calendar_path: Path | None = None):
-        self._calendar_path = calendar_path or (
+        configured_path = Path(config.CALENDAR_PATH) if config.CALENDAR_PATH else None
+        self._calendar_path = calendar_path or configured_path or (
             Path(__file__).resolve().parents[3]
             / "data/regions/matsuyama/shimizu/calendar/2026.csv"
         )
@@ -64,12 +79,30 @@ class CalendarService:
         return dates
 
     def next_collection(
-        self, category_code: str, *, from_date: date | None = None
+        self,
+        category_code: str,
+        *,
+        from_date: date | None = None,
+        at: datetime | None = None,
+        cutoff_hour: int | None = None,
     ) -> CollectionDate | None:
         collection_type_id = CATEGORY_TO_COLLECTION_TYPE.get(category_code)
         if collection_type_id is None:
             return None
         target_date = from_date or date.today()
+        if at is not None:
+            local_now = at.astimezone(ZoneInfo(config.TIMEZONE))
+            target_date = local_now.date()
+            effective_cutoff = cutoff_hour
+            if effective_cutoff is None:
+                effective_cutoff = config.COLLECTION_CUTOFF_HOUR
+            if effective_cutoff is None:
+                effective_cutoff = CATEGORY_COLLECTION_CUTOFF_HOURS.get(
+                    category_code, 8
+                )
+            collection_cutoff = time(hour=effective_cutoff)
+            if local_now.time() >= collection_cutoff:
+                target_date += timedelta(days=1)
         return next(
             (
                 item

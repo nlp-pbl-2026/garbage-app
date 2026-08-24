@@ -3,7 +3,8 @@
 import json
 import logging
 from dataclasses import dataclass, field
-from datetime import date
+from datetime import datetime
+from zoneinfo import ZoneInfo
 
 import boto3
 from botocore.exceptions import BotoCoreError, ClientError, NoCredentialsError
@@ -226,11 +227,14 @@ class WasteGuideService:
         self,
         gateway: BedrockGateway | None = None,
         calendar: CalendarService | None = None,
+        now_provider=None,
         today_provider=None,
     ):
         self._gateway = gateway or BedrockGateway()
         self._calendar = calendar or CalendarService()
-        self._today_provider = today_provider or date.today
+        # today_providerは既存呼び出しとの互換用。新規コードは時刻を含むnow_providerを使う。
+        self._now_provider = now_provider
+        self._today_provider = today_provider
 
     def query(
         self,
@@ -260,12 +264,23 @@ class WasteGuideService:
                 status="needs_clarification",
                 rewritten_query=rewritten_query,
                 follow_up_question=question,
+                decision=decision,
                 sources=sources,
             )
 
-        next_collection = self._calendar.next_collection(
-            decision.category_code, from_date=self._today_provider()
-        )
+        if self._now_provider is not None:
+            next_collection = self._calendar.next_collection(
+                decision.category_code, at=self._now_provider()
+            )
+        elif self._today_provider is not None:
+            next_collection = self._calendar.next_collection(
+                decision.category_code, from_date=self._today_provider()
+            )
+        else:
+            next_collection = self._calendar.next_collection(
+                decision.category_code,
+                at=datetime.now(ZoneInfo(config.TIMEZONE)),
+            )
         answer = self._build_answer(decision, next_collection)
         return WasteGuideResult(
             status="answered",

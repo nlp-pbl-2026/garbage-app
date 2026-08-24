@@ -38,7 +38,10 @@ async def test_classify_endpoint_returns_answer():
         ],
     )
 
-    with patch("app.routers.search_router.WasteGuideService") as service_class:
+    with (
+        patch("app.routers.search_router.WasteGuideService") as service_class,
+        patch("app.routers.search_router.SearchLogService") as log_class,
+    ):
         service_class.return_value.query.return_value = result
         async with AsyncClient(
             transport=ASGITransport(app=app), base_url="http://test"
@@ -54,6 +57,11 @@ async def test_classify_endpoint_returns_answer():
     assert body["classification"]["category_code"] == "ペット"
     assert body["next_collection"]["date"] == "2026-09-02"
     assert body["sources"][0]["score"] == 0.91
+    assert body["request_id"]
+    event = log_class.return_value.record.call_args.args[0]
+    assert event["query"] == "これは何ごみ？"
+    assert event["confidence"] == 0.97
+    assert event["status"] == "answered"
 
 
 @pytest.mark.asyncio
@@ -64,7 +72,10 @@ async def test_classify_endpoint_returns_follow_up_question():
         follow_up_question="素材は紙ですか、プラスチックですか？",
     )
 
-    with patch("app.routers.search_router.WasteGuideService") as service_class:
+    with (
+        patch("app.routers.search_router.WasteGuideService") as service_class,
+        patch("app.routers.search_router.SearchLogService"),
+    ):
         service_class.return_value.query.return_value = result
         async with AsyncClient(
             transport=ASGITransport(app=app), base_url="http://test"
@@ -78,6 +89,42 @@ async def test_classify_endpoint_returns_follow_up_question():
     assert body["status"] == "needs_clarification"
     assert body["answer"] is None
     assert body["follow_up_question"] == "素材は紙ですか、プラスチックですか？"
+
+
+@pytest.mark.asyncio
+async def test_analytics_endpoint_requires_key(monkeypatch):
+    monkeypatch.setattr("app.routers.search_router.config.ANALYTICS_API_KEY", "secret")
+    async with AsyncClient(
+        transport=ASGITransport(app=app), base_url="http://test"
+    ) as client:
+        response = await client.get("/api/search/analytics")
+
+    assert response.status_code == 403
+
+
+@pytest.mark.asyncio
+async def test_analytics_endpoint_returns_summary(monkeypatch):
+    monkeypatch.setattr("app.routers.search_router.config.ANALYTICS_API_KEY", "secret")
+    summary = {
+        "total_searches": 1,
+        "answered_count": 1,
+        "clarification_count": 0,
+        "average_confidence": 0.93,
+        "average_duration_ms": 1200.0,
+        "categories": {"可燃ごみ": 1},
+        "recent": [],
+    }
+    with patch("app.routers.search_router.SearchLogService") as log_class:
+        log_class.return_value.summary.return_value = summary
+        async with AsyncClient(
+            transport=ASGITransport(app=app), base_url="http://test"
+        ) as client:
+            response = await client.get(
+                "/api/search/analytics", headers={"X-Analytics-Key": "secret"}
+            )
+
+    assert response.status_code == 200
+    assert response.json()["average_confidence"] == 0.93
 
 
 @pytest.mark.asyncio
