@@ -92,7 +92,7 @@ Terraform stateはGit管理しません。複数人で運用する場合は、�
 - Lambda実行ポリシーもアカウントの `iam:CreatePolicy` 制約に合わせ、同じBedrock service-role接頭辞で作成
 - 現在の `Nonomura` ユーザーには `iam:TagPolicy` がないため、IAM管理ポリシーだけタグなしで作成
 
-現在のユーザーは管理ポリシーを作成できますが、`iam:GetPolicyVersion` を持っていません。初回構築は作成済みstateを検証したうえでrefreshなしに完了しましたが、通常の `terraform plan/apply/destroy` にはポリシー内容の読み戻しが必要です。日常運用前に [`operator-policy.example.json`](operator-policy.example.json) のスコープで `iam:GetPolicyVersion` を付与してください。
+現在のユーザーは管理ポリシーを作成できますが、`iam:GetPolicyVersion` と `iam:ListPolicyVersions` を持っていません。初回構築は作成済みstateを検証したうえで復旧しましたが、通常の `terraform plan/apply/destroy` にはポリシー内容とversion一覧の読み戻しが必要です。日常運用前に [`operator-policy.example.json`](operator-policy.example.json) のスコープで両権限を付与してください。
 
 ## ルートから構築・削除
 
@@ -221,7 +221,7 @@ Flutterを終了してください。Lambdaは常時起動ではないため停�
 
 費用を止めるにはAWSリソースを削除します。再開時はTerraform applyと取り込みをやり直せます。
 
-現在の `Nonomura` ユーザーのまま実行する場合、先に管理者から前述の `iam:GetPolicyVersion` を付与してもらってください。付与されるまではTerraformが管理ポリシーをrefreshできないため、通常のdestroyを安全に完遂できません。
+現在の `Nonomura` ユーザーのまま実行する場合、先に管理者から前述の `iam:GetPolicyVersion` と `iam:ListPolicyVersions` を付与してもらってください。付与されるまではTerraformが管理ポリシーをrefreshできないため、通常のdestroyを安全に完遂できません。
 
 削除前に必ずplanを確認してください。次の変数は、バージョニング済みS3内の全object versionも削除対象にします。
 

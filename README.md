@@ -23,7 +23,7 @@
 
 `aws-down.sh` はKnowledge Base、検索ログ、S3の全object versionも削除します。確認入力を要求し、コードとCSVは手元に残します。詳細は [`infra/README.md`](infra/README.md) を参照してください。
 
-両スクリプトは最初にAWS認証と `iam:GetPolicyVersion` を検査し、不足時はAWSを部分変更する前に終了します。現在の `Nonomura` ユーザーは2026-08-24の実測でもこの読み取り権限だけ不足しているため、日常運用前に [`infra/operator-policy.example.json`](infra/operator-policy.example.json) の権限付与が必要です。
+両スクリプトは最初にAWS認証と `iam:GetPolicyVersion`、`iam:ListPolicyVersions` を検査し、不足時はAWSを部分変更する前に終了します。現在の `Nonomura` ユーザーは2026-08-24の実測でもこの2つの読み取り権限が不足しているため、日常運用前に [`infra/operator-policy.example.json`](infra/operator-policy.example.json) の権限付与が必要です。
 
 ## 処理フロー
 

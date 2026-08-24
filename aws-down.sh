@@ -7,9 +7,14 @@ ACCOUNT_ID="$(aws sts get-caller-identity --query Account --output text)"
 POLICY_ARN="arn:aws:iam::${ACCOUNT_ID}:policy/service-role/AmazonBedrockS3PolicyForKnowledgeBase_U-22-BedrockKnowledgeBaseRole-GarbageGuideDev"
 POLICY_VERSION="$(aws iam get-policy --policy-arn "${POLICY_ARN}" --query 'Policy.DefaultVersionId' --output text 2>/dev/null || true)"
 
-if [[ -n "${POLICY_VERSION}" ]] && ! aws iam get-policy-version \
-  --policy-arn "${POLICY_ARN}" --version-id "${POLICY_VERSION}" >/dev/null 2>&1; then
-  echo "ERROR: 安全な全削除には iam:GetPolicyVersion が必要です。" >&2
+if [[ -n "${POLICY_VERSION}" ]] && {
+  ! aws iam get-policy-version \
+    --policy-arn "${POLICY_ARN}" --version-id "${POLICY_VERSION}" >/dev/null 2>&1 ||
+  ! aws iam list-policy-versions \
+    --policy-arn "${POLICY_ARN}" >/dev/null 2>&1
+}; then
+  echo "ERROR: AWSリソースの作成権限はありますが、Terraformが削除対象のIAMポリシーを照合できません。" >&2
+  echo "必要な権限: iam:GetPolicyVersion, iam:ListPolicyVersions" >&2
   echo "権限不足のまま部分削除せず、infra/operator-policy.example.json を管理者へ渡してください。" >&2
   exit 1
 fi
