@@ -25,4 +25,3 @@ output "backend_environment" {
   }
   description = "Environment values required by the backend."
 }
-

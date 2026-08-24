@@ -88,4 +88,3 @@ async def test_request_rejects_blank_query():
         response = await client.post("/api/search/classify", json={"query": "   "})
 
     assert response.status_code == 422
-

@@ -19,4 +19,3 @@ def test_returns_none_for_non_calendar_category():
 
     assert service.next_collection("禁止", from_date=date(2026, 8, 24)) is None
     assert service.next_collection("粗大", from_date=date(2026, 8, 24)) is None
-

@@ -90,4 +90,3 @@ async def classify_waste(request: WasteGuideRequest) -> WasteGuideResponse:
         next_collection=next_collection,
         sources=sources,
     )
-
