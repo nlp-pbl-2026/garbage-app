@@ -17,8 +17,6 @@ class _SearchAnalyticsScreenState extends State<SearchAnalyticsScreen> {
   String? _error;
   bool _loading = false;
 
-  static const _green = Color(0xFF1F6B4F);
-
   @override
   void dispose() {
     _keyController.dispose();
@@ -45,11 +43,11 @@ class _SearchAnalyticsScreenState extends State<SearchAnalyticsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
     return Scaffold(
-      backgroundColor: const Color(0xFFF6F4EE),
+      backgroundColor: colors.surface,
       appBar: AppBar(
         title: const Text('あいまい検索の分析'),
-        backgroundColor: const Color(0xFFF6F4EE),
       ),
       body: Center(
         child: ConstrainedBox(
@@ -60,7 +58,7 @@ class _SearchAnalyticsScreenState extends State<SearchAnalyticsScreen> {
               _keyPanel(),
               if (_error != null) ...[
                 const SizedBox(height: 12),
-                Text(_error!, style: const TextStyle(color: Colors.red)),
+                Text(_error!, style: TextStyle(color: colors.error)),
               ],
               if (_analytics != null) ...[
                 const SizedBox(height: 22),
@@ -143,21 +141,24 @@ class _SearchAnalyticsScreenState extends State<SearchAnalyticsScreen> {
     );
   }
 
-  Widget _metric(String label, String value, IconData icon) => SizedBox(
-        width: 218,
-        child: _panel(
-          child: Row(children: [
-            Icon(icon, color: _green),
-            const SizedBox(width: 12),
-            Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Text(label, style: const TextStyle(color: Colors.black54)),
-              Text(value,
-                  style: const TextStyle(
-                      fontSize: 22, fontWeight: FontWeight.w800)),
-            ]),
+  Widget _metric(String label, String value, IconData icon) {
+    final colors = Theme.of(context).colorScheme;
+    return SizedBox(
+      width: 218,
+      child: _panel(
+        child: Row(children: [
+          Icon(icon, color: colors.primary),
+          const SizedBox(width: 12),
+          Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Text(label, style: TextStyle(color: colors.onSurfaceVariant)),
+            Text(value,
+                style:
+                    const TextStyle(fontSize: 22, fontWeight: FontWeight.w800)),
           ]),
-        ),
-      );
+        ]),
+      ),
+    );
+  }
 
   Widget _categories(SearchAnalytics data) => _panel(
         child: Column(
@@ -202,20 +203,24 @@ class _SearchAnalyticsScreenState extends State<SearchAnalyticsScreen> {
                     trailing: item.confidence == null
                         ? const Icon(Icons.help_outline)
                         : Text('${(item.confidence! * 100).round()}%',
-                            style: const TextStyle(
-                                color: _green, fontWeight: FontWeight.w800)),
+                            style: TextStyle(
+                                color: Theme.of(context).colorScheme.primary,
+                                fontWeight: FontWeight.w800)),
                   )),
           ],
         ),
       );
 
-  Widget _panel({required Widget child}) => Container(
-        padding: const EdgeInsets.all(20),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(20),
-          border: Border.all(color: const Color(0xFFE3E7E2)),
-        ),
-        child: child,
-      );
+  Widget _panel({required Widget child}) {
+    final colors = Theme.of(context).colorScheme;
+    return Container(
+      padding: const EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        color: colors.surfaceContainerLow,
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(color: colors.outlineVariant),
+      ),
+      child: child,
+    );
+  }
 }

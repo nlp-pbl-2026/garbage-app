@@ -111,6 +111,18 @@ class _AgentCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
+    final backgroundColor = active
+        ? colors.primaryContainer
+        : complete
+            ? colors.secondaryContainer
+            : colors.surfaceContainerHigh;
+    final foregroundColor = active
+        ? colors.onPrimaryContainer
+        : complete
+            ? colors.onSecondaryContainer
+            : colors.onSurface;
+
     return AnimatedBuilder(
       animation: motion,
       builder: (context, child) {
@@ -120,28 +132,25 @@ class _AgentCard extends StatelessWidget {
       },
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 280),
+        height: compact ? 72 : null,
         constraints: BoxConstraints(minHeight: compact ? 72 : 106),
         padding: EdgeInsets.symmetric(
           horizontal: compact ? 3 : 10,
-          vertical: compact ? 8 : 14,
+          vertical: compact ? 7 : 14,
         ),
         decoration: BoxDecoration(
-          color: active
-              ? const Color(0xFFE2F5EA)
-              : complete
-                  ? const Color(0xFFF0F7F3)
-                  : Colors.white,
+          color: backgroundColor,
           borderRadius: BorderRadius.circular(18),
           border: Border.all(
-            color: active ? const Color(0xFF2A8A65) : const Color(0xFFDDE6E0),
+            color: active ? colors.primary : colors.outlineVariant,
             width: active ? 2 : 1,
           ),
           boxShadow: active
-              ? const [
+              ? [
                   BoxShadow(
-                    color: Color(0x302A8A65),
+                    color: colors.primary.withValues(alpha: 0.20),
                     blurRadius: 18,
-                    offset: Offset(0, 6),
+                    offset: const Offset(0, 6),
                   ),
                 ]
               : const [],
@@ -155,14 +164,14 @@ class _AgentCard extends StatelessWidget {
                 Icon(step.icon,
                     size: compact ? 21 : 29,
                     color: active || complete
-                        ? const Color(0xFF1F6B4F)
-                        : const Color(0xFF829089)),
+                        ? foregroundColor
+                        : colors.onSurfaceVariant),
                 if (complete)
-                  const Positioned(
+                  Positioned(
                     right: -8,
                     top: -7,
                     child: Icon(Icons.check_circle_rounded,
-                        size: 16, color: Color(0xFF2A8A65)),
+                        size: 16, color: colors.onSecondaryContainer),
                   ),
               ],
             ),
@@ -170,15 +179,20 @@ class _AgentCard extends StatelessWidget {
             Text(step.title,
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                    fontWeight: FontWeight.w800, fontSize: compact ? 9 : 12)),
+                    color: foregroundColor,
+                    fontWeight: FontWeight.w800,
+                    fontSize: compact ? 10 : 12)),
             SizedBox(height: compact ? 1 : 3),
             Text(step.technology,
                 textAlign: TextAlign.center,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
-                    fontSize: compact ? 7 : 10,
-                    color: const Color(0xFF66756E))),
+                    fontSize: compact ? 8.5 : 10,
+                    fontWeight: FontWeight.w600,
+                    color: active || complete
+                        ? foregroundColor
+                        : colors.onSurfaceVariant)),
           ],
         ),
       ),
@@ -203,8 +217,8 @@ class _AnimatedConnector extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final color =
-        active || complete ? const Color(0xFF2A8A65) : const Color(0xFFCBD6D0);
+    final colors = Theme.of(context).colorScheme;
+    final color = active || complete ? colors.primary : colors.outline;
     return SizedBox(
       width: vertical ? double.infinity : (compact ? 12 : 34),
       height: vertical ? 30 : (compact ? 72 : 106),

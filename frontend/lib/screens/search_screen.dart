@@ -31,10 +31,6 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
   bool _isLoading = false;
   SearchPipelineStage _pipelineStage = SearchPipelineStage.idle;
 
-  static const _green = Color(0xFF1F6B4F);
-  static const _ink = Color(0xFF17352B);
-  static const _surface = Color(0xFFF6F4EE);
-
   @override
   void dispose() {
     _queryController.dispose();
@@ -118,8 +114,9 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
     return Scaffold(
-      backgroundColor: _surface,
+      backgroundColor: colors.surface,
       appBar: RegionHeader(
         onEditPressed: () {
           Navigator.push(
@@ -165,19 +162,20 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
 
   Widget _buildSearchCard() {
     final isClarification = _pendingQuestion != null;
+    final colors = Theme.of(context).colorScheme;
     return _panel(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             children: [
-              const Icon(Icons.auto_awesome_rounded, color: _green, size: 18),
+              Icon(Icons.auto_awesome_rounded, color: colors.primary, size: 18),
               const SizedBox(width: 7),
               Expanded(
                 child: Text(
                   isClarification ? '回答を入力' : 'AIあいまい検索',
-                  style: const TextStyle(
-                    color: _ink,
+                  style: TextStyle(
+                    color: colors.onSurface,
                     fontSize: 14,
                     fontWeight: FontWeight.w800,
                   ),
@@ -229,7 +227,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                       isClarification
                           ? Icons.edit_note_rounded
                           : Icons.search_rounded,
-                      color: _green,
+                      color: colors.primary,
                     ),
                   ),
                 ),
@@ -240,7 +238,8 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                 child: FilledButton(
                   onPressed: _isLoading ? null : _submit,
                   style: FilledButton.styleFrom(
-                    backgroundColor: _green,
+                    backgroundColor: colors.primary,
+                    foregroundColor: colors.onPrimary,
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15),
@@ -257,6 +256,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
   }
 
   Widget _buildPipelineCard() {
+    final colors = Theme.of(context).colorScheme;
     final compact = MediaQuery.sizeOf(context).width < 620;
     final message = switch (_pipelineStage) {
       SearchPipelineStage.idle => '検索すると、4つの処理が順番に動きます',
@@ -279,13 +279,13 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                   child: CircularProgressIndicator(strokeWidth: 2),
                 )
               else
-                const Icon(Icons.hub_outlined, size: 18, color: _green),
+                Icon(Icons.hub_outlined, size: 18, color: colors.primary),
               const SizedBox(width: 9),
               Expanded(
                 child: Text(
                   message,
-                  style: const TextStyle(
-                    color: _ink,
+                  style: TextStyle(
+                    color: colors.onSurface,
                     fontSize: 13,
                     fontWeight: FontWeight.w700,
                   ),
@@ -301,13 +301,14 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
   }
 
   Widget _buildErrorCard() {
+    final colors = Theme.of(context).colorScheme;
     return _panel(
-      color: const Color(0xFFFFF4F0),
-      borderColor: const Color(0xFFF4C8BB),
+      color: colors.errorContainer,
+      borderColor: colors.error,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Icon(Icons.error_outline, color: Color(0xFFB4482C)),
+          Icon(Icons.error_outline, color: colors.onErrorContainer),
           const SizedBox(width: 12),
           Expanded(child: Text(_error!)),
           TextButton(onPressed: _submit, child: const Text('再試行')),
@@ -317,20 +318,22 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
   }
 
   Widget _buildClarificationCard(WasteGuideResult result) {
+    final colors = Theme.of(context).colorScheme;
     return _panel(
-      color: const Color(0xFFFFF9E9),
-      borderColor: const Color(0xFFEBD69A),
+      color: colors.tertiaryContainer,
+      borderColor: colors.tertiary,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Row(
+          Row(
             children: [
-              Icon(Icons.help_outline_rounded, color: Color(0xFF946B00)),
-              SizedBox(width: 10),
+              Icon(Icons.help_outline_rounded,
+                  color: colors.onTertiaryContainer),
+              const SizedBox(width: 10),
               Text(
                 'もう少しだけ教えてください',
                 style: TextStyle(
-                  color: Color(0xFF664B00),
+                  color: colors.onTertiaryContainer,
                   fontSize: 17,
                   fontWeight: FontWeight.w800,
                 ),
@@ -340,7 +343,8 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
           const SizedBox(height: 14),
           Text(
             result.followUpQuestion ?? '品物の状態をもう少し詳しく教えてください。',
-            style: const TextStyle(fontSize: 16, height: 1.6, color: _ink),
+            style: TextStyle(
+                fontSize: 16, height: 1.6, color: colors.onTertiaryContainer),
           ),
           const SizedBox(height: 12),
           TextButton.icon(
@@ -354,6 +358,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
   }
 
   Widget _buildAnswerCard(WasteGuideResult result) {
+    final colors = Theme.of(context).colorScheme;
     final classification = result.classification;
     final unable = result.unableToDetermine;
     return Column(
@@ -369,21 +374,23 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                     height: 44,
                     decoration: BoxDecoration(
                       color: unable
-                          ? const Color(0xFFFFF1D6)
-                          : const Color(0xFFE1F0E8),
+                          ? colors.tertiaryContainer
+                          : colors.primaryContainer,
                       shape: BoxShape.circle,
                     ),
                     child: Icon(
                       unable ? Icons.info_outline_rounded : Icons.check_rounded,
-                      color: unable ? const Color(0xFF946B00) : _green,
+                      color: unable
+                          ? colors.onTertiaryContainer
+                          : colors.onPrimaryContainer,
                     ),
                   ),
                   const SizedBox(width: 12),
                   Expanded(
                     child: Text(
                       unable ? '今回は確定できませんでした' : '分別結果',
-                      style: const TextStyle(
-                        color: _ink,
+                      style: TextStyle(
+                        color: colors.onSurface,
                         fontSize: 20,
                         fontWeight: FontWeight.w800,
                       ),
@@ -396,13 +403,13 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                         vertical: 7,
                       ),
                       decoration: BoxDecoration(
-                        color: _ink,
+                        color: colors.primary,
                         borderRadius: BorderRadius.circular(99),
                       ),
                       child: Text(
                         classification.categoryName,
-                        style: const TextStyle(
-                          color: Colors.white,
+                        style: TextStyle(
+                          color: colors.onPrimary,
                           fontSize: 12,
                           fontWeight: FontWeight.w700,
                         ),
@@ -413,18 +420,20 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
               const SizedBox(height: 18),
               Text(
                 result.answer ?? '',
-                style: const TextStyle(fontSize: 16, height: 1.75, color: _ink),
+                style: TextStyle(
+                    fontSize: 16, height: 1.75, color: colors.onSurface),
               ),
               if (classification != null) ...[
                 const SizedBox(height: 14),
                 Row(children: [
-                  const Icon(Icons.psychology_outlined,
-                      size: 18, color: Color(0xFF527064)),
+                  Icon(Icons.psychology_outlined,
+                      size: 18, color: colors.onSurfaceVariant),
                   const SizedBox(width: 7),
                   Text(
                     '判定の確信度 ${(classification.confidence * 100).round()}%',
-                    style: const TextStyle(
-                        color: Color(0xFF527064), fontWeight: FontWeight.w700),
+                    style: TextStyle(
+                        color: colors.onSurfaceVariant,
+                        fontWeight: FontWeight.w700),
                   ),
                 ]),
               ],
@@ -433,7 +442,8 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                 const SizedBox(height: 10),
                 Text(
                   '検索時の言い換え: ${result.rewrittenQuery}',
-                  style: const TextStyle(fontSize: 12, color: Colors.black54),
+                  style:
+                      TextStyle(fontSize: 12, color: colors.onSurfaceVariant),
                 ),
               ],
               if (result.nextCollection != null) ...[
@@ -442,21 +452,22 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                   width: double.infinity,
                   padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
-                    color: const Color(0xFFEAF5EF),
+                    color: colors.primaryContainer,
                     borderRadius: BorderRadius.circular(16),
                   ),
                   child: Row(
                     children: [
-                      const Icon(Icons.event_available_rounded, color: _green),
+                      Icon(Icons.event_available_rounded,
+                          color: colors.onPrimaryContainer),
                       const SizedBox(width: 12),
                       Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const Text(
+                            Text(
                               '次回の収集日',
                               style: TextStyle(
-                                color: Color(0xFF527064),
+                                color: colors.onPrimaryContainer,
                                 fontSize: 12,
                                 fontWeight: FontWeight.w600,
                               ),
@@ -464,8 +475,8 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                             const SizedBox(height: 3),
                             Text(
                               result.nextCollection!.displayDate,
-                              style: const TextStyle(
-                                color: _ink,
+                              style: TextStyle(
+                                color: colors.onPrimaryContainer,
                                 fontSize: 18,
                                 fontWeight: FontWeight.w800,
                               ),
@@ -519,15 +530,17 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
   }
 
   Widget _buildExamples() {
+    final colors = Theme.of(context).colorScheme;
     const examples = ['お弁当の透明なフタ', '雨の日に使う壊れた長いやつ', '中身を使い切った銀色の缶'];
     return Padding(
       padding: const EdgeInsets.only(top: 6),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+          Text(
             '入力例',
-            style: TextStyle(color: _ink, fontWeight: FontWeight.w700),
+            style:
+                TextStyle(color: colors.onSurface, fontWeight: FontWeight.w700),
           ),
           const SizedBox(height: 10),
           Wrap(
@@ -550,17 +563,18 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
 
   Widget _panel({
     required Widget child,
-    Color color = Colors.white,
-    Color borderColor = const Color(0xFFE3E7E2),
+    Color? color,
+    Color? borderColor,
     EdgeInsetsGeometry padding = const EdgeInsets.all(20),
   }) {
+    final colors = Theme.of(context).colorScheme;
     return Container(
       width: double.infinity,
       padding: padding,
       decoration: BoxDecoration(
-        color: color,
+        color: color ?? colors.surfaceContainerLow,
         borderRadius: BorderRadius.circular(22),
-        border: Border.all(color: borderColor),
+        border: Border.all(color: borderColor ?? colors.outlineVariant),
       ),
       child: child,
     );

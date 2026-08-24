@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../constants/colors.dart';
 import '../constants/strings.dart';
 import '../providers/region_provider.dart';
 import 'bulky_waste_screen.dart';
@@ -34,6 +33,7 @@ class _MainScreenState extends ConsumerState<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
     return Scaffold(
       body: IndexedStack(
         index: _currentIndex,
@@ -43,8 +43,8 @@ class _MainScreenState extends ConsumerState<MainScreen> {
         onPressed: _onBulkyWasteTapped,
         icon: const Icon(Icons.delete_outline),
         label: const Text('粗大ごみ'),
-        backgroundColor: AppColors.primary,
-        foregroundColor: Colors.white,
+        backgroundColor: colors.primary,
+        foregroundColor: colors.onPrimary,
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
@@ -53,9 +53,9 @@ class _MainScreenState extends ConsumerState<MainScreen> {
             _currentIndex = index;
           });
         },
-        selectedItemColor: AppColors.primary,
-        unselectedItemColor: Colors.grey,
-        backgroundColor: Colors.white,
+        selectedItemColor: colors.primary,
+        unselectedItemColor: colors.onSurfaceVariant,
+        backgroundColor: colors.surface,
         type: BottomNavigationBarType.fixed,
         items: [
           BottomNavigationBarItem(
@@ -110,18 +110,18 @@ class _MainScreenState extends ConsumerState<MainScreen> {
       return Container(
         padding: const EdgeInsets.all(8),
         decoration: BoxDecoration(
-          color: AppColors.primary,
+          color: Theme.of(context).colorScheme.primary,
           borderRadius: BorderRadius.circular(12),
         ),
         child: Icon(
           iconData,
-          color: Colors.white,
+          color: Theme.of(context).colorScheme.onPrimary,
         ),
       );
     }
     return Icon(
       iconData,
-      color: Colors.grey,
+      color: Theme.of(context).colorScheme.onSurfaceVariant,
     );
   }
 }
