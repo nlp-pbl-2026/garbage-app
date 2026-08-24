@@ -28,3 +28,14 @@ frontend/windows/flutter/ephemeral/
 # OS
 .DS_Store
 Thumbs.db
+
+# Terraform
+**/.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+crash.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json

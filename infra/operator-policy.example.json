@@ -1,0 +1,89 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "ManageGarbageGuideBucket",
+      "Effect": "Allow",
+      "Action": [
+        "s3:CreateBucket",
+        "s3:DeleteBucket",
+        "s3:GetBucketLocation",
+        "s3:GetBucketPublicAccessBlock",
+        "s3:GetBucketTagging",
+        "s3:GetBucketVersioning",
+        "s3:GetEncryptionConfiguration",
+        "s3:ListBucket",
+        "s3:PutBucketPublicAccessBlock",
+        "s3:PutBucketTagging",
+        "s3:PutBucketVersioning",
+        "s3:PutEncryptionConfiguration"
+      ],
+      "Resource": "arn:aws:s3:::garbage-guide-*"
+    },
+    {
+      "Sid": "ManageGarbageGuideObjects",
+      "Effect": "Allow",
+      "Action": [
+        "s3:DeleteObject",
+        "s3:GetObject",
+        "s3:PutObject"
+      ],
+      "Resource": "arn:aws:s3:::garbage-guide-*/*"
+    },
+    {
+      "Sid": "ManageGarbageGuideRole",
+      "Effect": "Allow",
+      "Action": [
+        "iam:CreateRole",
+        "iam:DeleteRole",
+        "iam:GetRole",
+        "iam:ListRolePolicies",
+        "iam:ListAttachedRolePolicies",
+        "iam:PassRole",
+        "iam:TagRole",
+        "iam:UntagRole",
+        "iam:UpdateAssumeRolePolicy"
+      ],
+      "Resource": "arn:aws:iam::*:role/service-role/U-22-BedrockKnowledgeBaseRole-GarbageGuide*"
+    },
+    {
+      "Sid": "ManageGarbageGuideRolePolicies",
+      "Effect": "Allow",
+      "Action": [
+        "iam:AttachRolePolicy",
+        "iam:CreatePolicy",
+        "iam:CreatePolicyVersion",
+        "iam:DeletePolicy",
+        "iam:DeletePolicyVersion",
+        "iam:DetachRolePolicy",
+        "iam:GetPolicy",
+        "iam:GetPolicyVersion",
+        "iam:ListPolicyVersions"
+      ],
+      "Resource": "arn:aws:iam::*:policy/service-role/AmazonBedrock*PolicyForKnowledgeBase_U-22-BedrockKnowledgeBaseRole-GarbageGuide*"
+    },
+    {
+      "Sid": "ManageGarbageGuideKnowledgeBase",
+      "Effect": "Allow",
+      "Action": [
+        "bedrock:CreateDataSource",
+        "bedrock:CreateKnowledgeBase",
+        "bedrock:DeleteDataSource",
+        "bedrock:DeleteKnowledgeBase",
+        "bedrock:GetDataSource",
+        "bedrock:GetIngestionJob",
+        "bedrock:GetKnowledgeBase",
+        "bedrock:ListDataSources",
+        "bedrock:ListIngestionJobs",
+        "bedrock:ListKnowledgeBases",
+        "bedrock:StartIngestionJob",
+        "bedrock:StopIngestionJob",
+        "bedrock:TagResource",
+        "bedrock:UntagResource",
+        "bedrock:UpdateDataSource",
+        "bedrock:UpdateKnowledgeBase"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
