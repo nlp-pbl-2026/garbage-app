@@ -4,6 +4,7 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'app.dart';
+import 'providers/bulky_waste_provider.dart';
 import 'providers/memo_provider.dart';
 import 'providers/notification_customization_provider.dart';
 import 'services/notification_customization_service.dart';
@@ -26,6 +27,7 @@ void main() async {
         memoServiceProvider.overrideWithValue(memoService),
         notificationCustomizationServiceProvider
             .overrideWithValue(notificationCustomizationService),
+        sharedPreferencesProvider.overrideWithValue(prefs),
       ],
       child: const GarbageApp(),
     ),

@@ -100,7 +100,7 @@ async def get_municipality_config(
     db: AsyncSession = Depends(get_db),
 ) -> MunicipalityConfigResponse:
     """自治体粗大ごみ設定を取得する"""
-    language = request.state.language
+    language = getattr(request.state, "language", "ja")
 
     result = await db.execute(
         select(MunicipalityConfig).where(
@@ -142,7 +142,7 @@ async def get_bulky_waste_items(
     db: AsyncSession = Depends(get_db),
 ) -> BulkyWasteItemListResponse:
     """自治体の粗大ごみ品目一覧を取得する（最大500件）"""
-    language = request.state.language
+    language = getattr(request.state, "language", "ja")
 
     # 自治体存在チェック
     config_result = await db.execute(
@@ -208,7 +208,7 @@ async def get_bulky_waste_item_detail(
     db: AsyncSession = Depends(get_db),
 ) -> BulkyWasteItemResponse:
     """粗大ごみ品目詳細を取得する"""
-    language = request.state.language
+    language = getattr(request.state, "language", "ja")
 
     # 自治体存在チェック
     config_result = await db.execute(
