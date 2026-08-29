@@ -36,6 +36,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
   Widget build(BuildContext context) {
     final regionAsync = ref.watch(regionSettingProvider);
     final reminderAsync = ref.watch(reminderEnabledProvider);
+    final timesAsync = ref.watch(notificationTimesProvider);
     final authAsync = ref.watch(authStateProvider);
     final multiRegionAsync = ref.watch(multiRegionProvider);
 
@@ -90,7 +91,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
           // 「通知設定」セクション
           _buildSectionTitle(AppStrings.notificationSettings),
           const SizedBox(height: 8),
-          _buildReminderCard(context, ref, reminderAsync),
+          _buildReminderCard(context, ref, reminderAsync, timesAsync),
           const SizedBox(height: 24),
           // 「テーマ」セクション
           _buildSectionTitle('テーマ'),
@@ -145,7 +146,8 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                 ),
                 const Divider(height: 1, indent: 56),
                 ListTile(
-                  leading: const Icon(Icons.lock_outline, color: AppColors.primary),
+                  leading:
+                      const Icon(Icons.lock_outline, color: AppColors.primary),
                   title: const Text('パスワード変更'),
                   trailing: const Icon(Icons.chevron_right),
                   onTap: () => _showChangePasswordDialog(context, ref),
@@ -307,7 +309,8 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
           ),
           const Divider(height: 1, indent: 56),
           ListTile(
-            leading: const Icon(Icons.edit_location_alt, color: AppColors.primary),
+            leading:
+                const Icon(Icons.edit_location_alt, color: AppColors.primary),
             title: const Text('地域を変更'),
             trailing: const Icon(Icons.chevron_right),
             onTap: () => _navigateToRegionSelection(context, ref),
@@ -325,9 +328,12 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
   }
 
   /// リマインダー通知カード
-  Widget _buildReminderCard(BuildContext context, WidgetRef ref, AsyncValue<bool> reminderAsync) {
-    final notificationService = ref.watch(notificationServiceProvider);
-
+  Widget _buildReminderCard(
+    BuildContext context,
+    WidgetRef ref,
+    AsyncValue<bool> reminderAsync,
+    AsyncValue<NotificationTimes> timesAsync,
+  ) {
     return Card(
       elevation: 1,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -350,44 +356,31 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                   ),
                   value: enabled,
                   activeColor: AppColors.primary,
-                  onChanged: (_) async {
-                    try {
-                      await ref.read(reminderEnabledProvider.notifier).toggle();
-                    } catch (e) {
-                      if (context.mounted) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: const Text('リマインダーの設定に失敗しました'),
-                            duration: const Duration(seconds: 10),
-                            action: SnackBarAction(
-                              label: '再試行',
-                              onPressed: () {
-                                ref.read(reminderEnabledProvider.notifier).toggle();
-                              },
-                            ),
-                          ),
-                        );
-                      }
-                    }
-                  },
+                  onChanged: (_) => _onReminderToggle(context, ref),
                 ),
                 if (enabled) ...[
                   const Divider(height: 1, indent: 16, endIndent: 16),
                   _buildTimePicker(
                     context,
-                    notificationService,
+                    ref,
                     icon: Icons.nightlight_round,
                     label: '前日通知',
-                    getTime: () => notificationService.getEveningTime(),
-                    setTime: (h, m) => notificationService.setEveningTime(h, m),
+                    timesAsync: timesAsync,
+                    selectTime: (t) => t.evening,
+                    setTime: (h, m) => ref
+                        .read(notificationTimesProvider.notifier)
+                        .setEveningTime(h, m),
                   ),
                   _buildTimePicker(
                     context,
-                    notificationService,
+                    ref,
                     icon: Icons.wb_sunny,
                     label: '当日通知',
-                    getTime: () => notificationService.getMorningTime(),
-                    setTime: (h, m) => notificationService.setMorningTime(h, m),
+                    timesAsync: timesAsync,
+                    selectTime: (t) => t.morning,
+                    setTime: (h, m) => ref
+                        .read(notificationTimesProvider.notifier)
+                        .setMorningTime(h, m),
                   ),
                   const NotificationCustomizationWidget(),
                 ],
@@ -402,8 +395,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               title: Text(AppStrings.reminderToggle),
             ),
             error: (_, __) => ListTile(
-              leading:
-                  const Icon(Icons.error_outline, color: AppColors.error),
+              leading: const Icon(Icons.error_outline, color: AppColors.error),
               title: const Text(AppStrings.reminderToggle),
               subtitle: const Text(
                 'リマインダー設定の読み込みに失敗しました',
@@ -452,49 +444,140 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
     });
   }
 
-  /// 通知時刻ピッカー行
-  Widget _buildTimePicker(
-    BuildContext context,
-    NotificationService service, {
-    required IconData icon,
-    required String label,
-    required Future<({int hour, int minute})> Function() getTime,
-    required Future<void> Function(int hour, int minute) setTime,
-  }) {
-    return FutureBuilder<({int hour, int minute})>(
-      future: getTime(),
-      builder: (context, snapshot) {
-        final hour = snapshot.data?.hour ?? 0;
-        final minute = snapshot.data?.minute ?? 0;
-        final timeStr =
-            '${hour.toString().padLeft(2, '0')}:${minute.toString().padLeft(2, '0')}';
-
-        return ListTile(
-          leading: Icon(icon, color: Colors.grey[600], size: 20),
-          title: Text(label, style: const TextStyle(fontSize: 14)),
-          trailing: TextButton(
-            onPressed: () async {
-              final picked = await showTimePicker(
-                context: context,
-                initialTime: TimeOfDay(hour: hour, minute: minute),
-              );
-              if (picked != null) {
-                await setTime(picked.hour, picked.minute);
-                // リビルドのため setState 相当（StatelessWidget なので ref.invalidate で代替）
-                (context as Element).markNeedsBuild();
-              }
-            },
-            child: Text(
-              timeStr,
-              style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-                color: AppColors.primary,
-              ),
+  /// リマインダーON/OFFトグルのハンドラ
+  ///
+  /// [ReminderNotifier.toggle] の戻り値 [EnableResult] に応じて、
+  /// `permissionDenied` 時は OS設定画面への導線を含む案内ダイアログを表示し（要件2.5）、
+  /// `requestFailed` 時は権限が必要な旨のメッセージを提示する（要件2.4）。
+  /// 無効化時（戻り値 `null`）は追加の案内を行わない。
+  Future<void> _onReminderToggle(BuildContext context, WidgetRef ref) async {
+    try {
+      final result = await ref.read(reminderEnabledProvider.notifier).toggle();
+      if (!context.mounted) return;
+      switch (result) {
+        case EnableResult.permissionDenied:
+          // OS設定画面への導線を含む案内を提示する（要件2.5）。
+          await _showPermissionDeniedDialog(context);
+          break;
+        case EnableResult.requestFailed:
+          // 権限が必要である旨を提示する（要件2.4）。
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('通知を受け取るには通知権限が必要です'),
+              duration: Duration(seconds: 5),
+            ),
+          );
+          break;
+        case EnableResult.success:
+        case null:
+          break;
+      }
+    } catch (e) {
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: const Text('リマインダーの設定に失敗しました'),
+            duration: const Duration(seconds: 10),
+            action: SnackBarAction(
+              label: '再試行',
+              onPressed: () => _onReminderToggle(context, ref),
             ),
           ),
         );
+      }
+    }
+  }
+
+  /// 通知権限が拒否された場合の案内ダイアログ（要件2.5）
+  ///
+  /// 権限が付与されていないためリマインダーを有効化できない旨を伝え、
+  /// OS設定画面への導線（「設定を開く」）を提供する。
+  Future<void> _showPermissionDeniedDialog(BuildContext context) async {
+    await showDialog<void>(
+      context: context,
+      builder: (dialogContext) {
+        return AlertDialog(
+          title: const Text('通知が許可されていません'),
+          content: const Text(
+            'リマインダー通知を受け取るには、端末の設定で通知を許可してください。'
+            '「設定を開く」からアプリの通知設定を変更できます。',
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(dialogContext).pop(),
+              child: const Text('閉じる'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(dialogContext).pop();
+                // 既存のGPS権限案内と同じく Geolocator の導線でOSのアプリ設定画面を開く。
+                Geolocator.openAppSettings();
+              },
+              child: const Text('設定を開く'),
+            ),
+          ],
+        );
       },
+    );
+  }
+
+  /// 通知時刻ピッカー行
+  ///
+  /// [notificationTimesProvider] の現在値を表示し、[showTimePicker] で選択された
+  /// 時刻を [setTime]（`setEveningTime` / `setMorningTime`）へ渡す。
+  /// 保存が [SaveTimeResult.failed] を返した場合は保存失敗のエラーメッセージを
+  /// 提示する（要件4.4）。
+  Widget _buildTimePicker(
+    BuildContext context,
+    WidgetRef ref, {
+    required IconData icon,
+    required String label,
+    required AsyncValue<NotificationTimes> timesAsync,
+    required ({int hour, int minute}) Function(NotificationTimes times)
+        selectTime,
+    required Future<SaveTimeResult> Function(int hour, int minute) setTime,
+  }) {
+    final time = timesAsync.valueOrNull;
+    final selected = time == null ? null : selectTime(time);
+    final hour = selected?.hour ?? 0;
+    final minute = selected?.minute ?? 0;
+    final timeStr = time == null
+        ? '--:--'
+        : '${hour.toString().padLeft(2, '0')}:${minute.toString().padLeft(2, '0')}';
+
+    return ListTile(
+      leading: Icon(icon, color: Colors.grey[600], size: 20),
+      title: Text(label, style: const TextStyle(fontSize: 14)),
+      trailing: TextButton(
+        onPressed: time == null
+            ? null
+            : () async {
+                final picked = await showTimePicker(
+                  context: context,
+                  initialTime: TimeOfDay(hour: hour, minute: minute),
+                );
+                if (picked == null || !context.mounted) return;
+                final result = await setTime(picked.hour, picked.minute);
+                if (!context.mounted) return;
+                if (result == SaveTimeResult.failed) {
+                  // 保存失敗時はロールバック済み。エラーメッセージを提示する（要件4.4）。
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('通知時刻の保存に失敗しました'),
+                      duration: Duration(seconds: 5),
+                    ),
+                  );
+                }
+              },
+        child: Text(
+          timeStr,
+          style: const TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+            color: AppColors.primary,
+          ),
+        ),
+      ),
     );
   }
 
@@ -558,9 +641,8 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
         color: isSelected ? AppColors.primary : Colors.grey,
       ),
       title: Text(label),
-      trailing: isSelected
-          ? const Icon(Icons.check, color: AppColors.primary)
-          : null,
+      trailing:
+          isSelected ? const Icon(Icons.check, color: AppColors.primary) : null,
       onTap: () {
         ref.read(themeModeProvider.notifier).setThemeMode(mode);
       },
@@ -594,7 +676,8 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
       elevation: 1,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: ListTile(
-        leading: const Icon(Icons.description_outlined, color: AppColors.primary),
+        leading:
+            const Icon(Icons.description_outlined, color: AppColors.primary),
         title: const Text('利用規約'),
         trailing: const Icon(Icons.chevron_right),
         onTap: () {
@@ -627,7 +710,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             children: [
               if (regions.isNotEmpty) ...[
                 ...regions.map((region) => _buildSavedRegionTile(
-                      context, ref, region, regions.length)),
+                    context, ref, region, regions.length)),
               ],
               if (regions.length < 5)
                 ListTile(
@@ -976,9 +1059,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
         final currentState = ref.read(regionSettingProvider);
         if (currentState.hasError && previousSetting != null) {
           // エラー状態の場合は変更前データを復元
-          ref
-              .read(regionSettingProvider.notifier)
-              .saveSetting(previousSetting);
+          ref.read(regionSettingProvider.notifier).saveSetting(previousSetting);
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
               content: Text(AppStrings.saveError),
