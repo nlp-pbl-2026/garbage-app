@@ -33,6 +33,15 @@ def test_material_mentioned_only_in_note_does_not_dominate_item_name_match():
     assert "粉ミルクの缶" not in names
 
 
+def test_explicit_packaging_part_is_ranked_above_the_device():
+    matches = ItemSearchService().search(
+        "古いカメラのフィルムが入っていた紙箱の捨て方"
+    )
+
+    assert matches[0].item == "フィルム（カメラ用）の紙箱"
+    assert matches[0].category == "紙類"
+
+
 def test_packaged_lambda_path_is_detected(monkeypatch, tmp_path):
     packaged_csv = tmp_path / "data/regions/matsuyama/common/knowledge/items.csv"
     packaged_csv.parent.mkdir(parents=True)

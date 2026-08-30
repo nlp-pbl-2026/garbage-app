@@ -13,7 +13,7 @@ uv pip install \
   --python-version 3.12 \
   --python-platform aarch64-manylinux2014 \
   --only-binary :all: \
-  mangum fastapi pydantic 'boto3>=1.43.53'
+  mangum fastapi pydantic 'boto3>=1.43.53' numpy
 
 cp "${PROJECT_ROOT}/backend/app/__init__.py" "${BUILD_DIR}/app/"
 cp "${PROJECT_ROOT}/backend/app/config.py" "${BUILD_DIR}/app/"
@@ -25,6 +25,7 @@ cp "${PROJECT_ROOT}/backend/app/services/__init__.py" "${BUILD_DIR}/app/services
 cp "${PROJECT_ROOT}/backend/app/services/calendar_service.py" "${BUILD_DIR}/app/services/"
 cp "${PROJECT_ROOT}/backend/app/services/search_log_service.py" "${BUILD_DIR}/app/services/"
 cp "${PROJECT_ROOT}/backend/app/services/item_search_service.py" "${BUILD_DIR}/app/services/"
+cp "${PROJECT_ROOT}/backend/app/services/embedding_search_service.py" "${BUILD_DIR}/app/services/"
 cp "${PROJECT_ROOT}/backend/app/services/waste_guide_service.py" "${BUILD_DIR}/app/services/"
 
 mkdir -p "${BUILD_DIR}/data/regions/matsuyama/shimizu/calendar"
@@ -32,6 +33,9 @@ cp "${PROJECT_ROOT}/data/regions/matsuyama/shimizu/calendar/2026.csv" \
   "${BUILD_DIR}/data/regions/matsuyama/shimizu/calendar/"
 mkdir -p "${BUILD_DIR}/data/regions/matsuyama/common/knowledge"
 cp "${PROJECT_ROOT}/data/regions/matsuyama/common/knowledge/items.csv" \
+  "${BUILD_DIR}/data/regions/matsuyama/common/knowledge/"
+# 自前Embeddingインデックス（意味検索用の事前計算ベクトル）。
+cp "${PROJECT_ROOT}/data/regions/matsuyama/common/knowledge/item_embeddings.npz" \
   "${BUILD_DIR}/data/regions/matsuyama/common/knowledge/"
 
 (cd "${BUILD_DIR}" && zip -q -r "${ZIP_PATH}" .)
