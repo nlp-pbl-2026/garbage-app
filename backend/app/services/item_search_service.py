@@ -17,6 +17,7 @@ class ItemMatch:
     category_display: str
     note: str
     score: float
+    ranking_score: float = 0.0
 
     @property
     def evidence_text(self) -> str:
@@ -100,9 +101,34 @@ class ItemSearchService:
             score = (item_overlap * 0.85) + (context_overlap * 0.15)
             score += containment_bonus
             if "弁当" in normalized_query and "弁当" in normalized_item:
-                score += 0.2
+                score += 0.4
             if "ふた" in normalized_query and "ふた" in normalized_item:
                 score += 0.08
+            if all(marker in normalized_query for marker in ("弁当", "ふた")):
+                if "容器" in normalized_item and row.get("category") == "プラ":
+                    score += 0.3
+            # 「カメラのフィルムが入っていた箱」などは、本体名よりも
+            # 捨てる対象として明示された部品・包装語を優先する。
+            part_cues = (
+                "箱",
+                "ふた",
+                "キャップ",
+                "容器",
+                "ボトル",
+                "びん",
+                "缶",
+                "袋",
+                "芯",
+                "電球",
+                "ランプ",
+                "電池",
+                "バッテリー",
+            )
+            matched_part_cues = sum(
+                cue in normalized_query and cue in normalized_item
+                for cue in part_cues
+            )
+            score += min(matched_part_cues * 0.18, 0.3)
             # 「弁当の透明なふた」は、通常は再利用する弁当箱ではなく
             # 使い捨ての弁当・惣菜容器の透明なふたを指す。弁当箱と容器が
             # 同点になると分類が不必要に曖昧になるため、用途・外見を使って
@@ -114,8 +140,9 @@ class ItemSearchService:
                     score += 0.35
                 if "弁当箱" in normalized_item or "紙製" in normalized_item:
                     score -= 0.15
-            score = min(score, 1.0)
-            if score < config.LEXICAL_SEARCH_MIN_SCORE:
+            ranking_score = score
+            score = min(ranking_score, 1.0)
+            if ranking_score < config.LEXICAL_SEARCH_MIN_SCORE:
                 continue
             matches.append(
                 ItemMatch(
@@ -125,9 +152,16 @@ class ItemSearchService:
                     category_display=row.get("category_display", ""),
                     note=row.get("note", ""),
                     score=score,
+                    ranking_score=ranking_score,
                 )
             )
-        matches.sort(key=lambda match: (-match.score, len(match.item), match.item_id))
+        matches.sort(
+            key=lambda match: (
+                -match.ranking_score,
+                len(match.item),
+                match.item_id,
+            )
+        )
         return matches[:limit]
 
     @classmethod

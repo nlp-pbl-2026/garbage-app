@@ -5,6 +5,7 @@ locals {
   )
   knowledge_path                   = "${path.module}/../../data/regions/matsuyama/common/knowledge"
   knowledge_prefix                 = "knowledge/matsuyama/common"
+  knowledge_records_prefix         = "${local.knowledge_prefix}/records"
   knowledge_role_name              = "U-22-BedrockKnowledgeBaseRole-GarbageGuideDev"
   knowledge_s3_policy_name         = "AmazonBedrockS3PolicyForKnowledgeBase_${local.knowledge_role_name}"
   knowledge_cloudwatch_policy_name = "AmazonBedrockCloudWatchPolicyForKnowledgeBase_${local.knowledge_role_name}"
@@ -195,7 +196,10 @@ resource "aws_bedrockagent_data_source" "knowledge" {
         aclEnabled = false
         filterConfiguration = {
           maxFileSizeInMegaBytes = "500"
-          inclusionPrefixes      = ["${local.knowledge_prefix}/"]
+          # 生成スクリプトが作る1品目1ファイルだけを取り込む。
+          # CSV原本を直接取り込むと複数行が同じchunkになり、曖昧検索の
+          # 検索結果へ無関係な品目が混ざるため。
+          inclusionPrefixes = ["${local.knowledge_records_prefix}/"]
         }
       })
 

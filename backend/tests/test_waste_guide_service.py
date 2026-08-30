@@ -64,18 +64,63 @@ class EmptyItemSearch:
         return []
 
 
+class FakeEmbeddingSearch:
+    def __init__(self, matches=None):
+        self.matches = matches or []
+        self.queries = []
+
+    def search(self, query, *, limit=None):
+        self.queries.append(query)
+        return self.matches
+
+
 def test_managed_knowledge_base_uses_managed_search_configuration(monkeypatch):
     agent_runtime = FakeAgentRuntime()
     monkeypatch.setattr(
         "app.services.waste_guide_service.config.BEDROCK_KNOWLEDGE_BASE_ID",
         "FMPYJSHELD",
     )
-    gateway = BedrockGateway(runtime_client=object(), agent_runtime_client=agent_runtime)
+    monkeypatch.setattr(
+        "app.services.waste_guide_service.config.USE_BEDROCK_KNOWLEDGE_BASE",
+        True,
+    )
+    gateway = BedrockGateway(
+        runtime_client=object(),
+        agent_runtime_client=agent_runtime,
+        embedding_search=FakeEmbeddingSearch(),
+    )
 
     assert gateway.retrieve("スプレー缶") == []
     assert agent_runtime.request["retrievalConfiguration"] == {
         "managedSearchConfiguration": {"numberOfResults": 8}
     }
+
+
+def test_default_retrieve_uses_self_managed_embedding_search():
+    from app.services.item_search_service import ItemMatch
+
+    match = ItemMatch(
+        item_id="item_0107",
+        item="エアキャップ（ぷちぷち）",
+        category="プラ",
+        category_display="プラスチック製容器包装",
+        note="",
+        score=0.82,
+    )
+    embedding = FakeEmbeddingSearch([match])
+    gateway = BedrockGateway(
+        runtime_client=object(),
+        agent_runtime_client=object(),
+        embedding_search=embedding,
+    )
+
+    documents = gateway.retrieve("梱包のプチプチみたいなの")
+
+    assert embedding.queries == ["梱包のプチプチみたいなの"]
+    assert len(documents) == 1
+    assert documents[0].uri == "local://items/item_0107"
+    assert documents[0].text.startswith("品目: エアキャップ")
+    assert documents[0].score == pytest.approx(0.82)
 
 
 def test_classification_requires_cited_evidence_supporting_category():
@@ -180,6 +225,37 @@ def test_rewrite_keeps_material_from_clarification():
     assert rewritten == "汚れたガラス製びん"
 
 
+def test_rewrite_preserves_explicit_paper_and_box_features():
+    gateway = BedrockGateway(
+        runtime_client=FakeRuntime(
+            {"search_query": "古いカメラのフィルムが入っていた容器"}
+        ),
+        agent_runtime_client=object(),
+    )
+
+    rewritten = gateway.rewrite_query(
+        "古いカメラのフィルムが入っていた紙箱", []
+    )
+
+    assert "紙製" in rewritten
+    assert "箱" in rewritten
+
+
+def test_rewrite_does_not_replace_explicit_paper_with_plastic():
+    gateway = BedrockGateway(
+        runtime_client=FakeRuntime(
+            {"search_query": "使い捨てのプラスチック製容器のふた"}
+        ),
+        agent_runtime_client=object(),
+    )
+
+    rewritten = gateway.rewrite_query("使い捨ての紙の容器", [])
+
+    assert "プラスチック" not in rewritten
+    assert "紙製" in rewritten
+    assert "容器" in rewritten
+
+
 def test_answered_result_includes_next_collection():
     gateway = FakeGateway(
         ClassificationDecision(
@@ -255,6 +331,49 @@ def test_generic_container_is_asked_for_material_even_when_model_resolves():
     assert result.follow_up_question == (
         "容器は、プラスチック製・ガラス製・金属製のどれですか？"
     )
+
+
+def test_beverage_container_question_distinguishes_pet_and_plastic_packaging():
+    gateway = FakeGateway(
+        ClassificationDecision(
+            is_resolved=True,
+            item_name="ジュースの容器",
+            category_code="プラ",
+            confidence=0.98,
+            evidence_indexes=(1,),
+        )
+    )
+    service = WasteGuideService(gateway=gateway, item_search=EmptyItemSearch())
+
+    result = service.decide(
+        query="ジュースの空き容器",
+        rewritten_query="ジュースの空き容器",
+        documents=[RetrievedDocument(text="品目: 飲料容器\n分類コード: プラ")],
+        municipality_id="38201",
+        district_id="38201-08",
+    )
+
+    assert result.status == "needs_clarification"
+    assert "PETマーク" in result.follow_up_question
+    assert "プラマーク" in result.follow_up_question
+    assert "紙パック" in result.follow_up_question
+
+
+def test_explicit_paper_does_not_trigger_plastic_mark_question():
+    question = WasteGuideService._conditional_evidence_question(
+        query="使い捨ての紙の容器",
+        clarifications=[],
+        documents=[
+            RetrievedDocument(
+                text=(
+                    "品目: 容器（プラスチック製）\n分類コード: プラ\n"
+                    "出し方・注意: プラマークを確認"
+                )
+            )
+        ],
+    )
+
+    assert question is None
 
 
 def test_conditional_evidence_requires_material_before_resolving():

@@ -13,6 +13,7 @@ from botocore.exceptions import BotoCoreError, ClientError, NoCredentialsError
 
 from .. import config
 from .calendar_service import CalendarService, CollectionDate
+from .embedding_search_service import EmbeddingSearchService
 from .item_search_service import ItemSearchService
 
 logger = logging.getLogger(__name__)
@@ -74,12 +75,21 @@ class WasteGuideResult:
 class BedrockGateway:
     """Bedrock RuntimeとKnowledge Base Runtimeへの薄いアダプター。"""
 
-    def __init__(self, runtime_client=None, agent_runtime_client=None):
+    def __init__(
+        self,
+        runtime_client=None,
+        agent_runtime_client=None,
+        embedding_search: EmbeddingSearchService | None = None,
+    ):
         self._runtime = runtime_client or boto3.client(
             "bedrock-runtime", region_name=config.AWS_REGION
         )
         self._agent_runtime = agent_runtime_client or boto3.client(
             "bedrock-agent-runtime", region_name=config.AWS_REGION
+        )
+        # 自前Embedding検索はクエリのEmbeddingに同じRuntimeを使い回す。
+        self._embedding_search = embedding_search or EmbeddingSearchService(
+            runtime_client=self._runtime
         )
 
     def rewrite_query(self, query: str, clarifications: list[dict]) -> str:
@@ -109,6 +119,11 @@ class BedrockGateway:
         rewritten = str(payload.get("search_query", "")).strip()
         cleaned = self._clean_rewritten_query(rewritten)
         cleaned = self._remove_unsupported_materials(
+            cleaned,
+            query=query,
+            clarifications=clarifications,
+        )
+        cleaned = self._preserve_explicit_features(
             cleaned,
             query=query,
             clarifications=clarifications,
@@ -175,7 +190,80 @@ class BedrockGateway:
     def _normalize_search_spelling(value: str) -> str:
         return value.replace("ビン", "びん").replace("瓶", "びん")
 
+    @staticmethod
+    def _preserve_explicit_features(
+        value: str, *, query: str, clarifications: list[dict]
+    ) -> str:
+        """利用者が明示した分類特徴を、LLMの言い換えで欠落させない。"""
+
+        source = unicodedata.normalize(
+            "NFKC",
+            " ".join(
+                [query]
+                + [str(item.get("answer", "")) for item in clarifications]
+            ),
+        ).lower()
+        cleaned = unicodedata.normalize("NFKC", value)
+        normalized_cleaned = cleaned.lower()
+        feature_groups = (
+            (("紙製", "紙の", "紙箱", "紙パック"), "紙製"),
+            (("プラスチック", "樹脂"), "プラスチック製"),
+            (("ガラス",), "ガラス製"),
+            (("金属", "アルミ", "スチール"), "金属製"),
+            (("陶器", "陶磁器", "セラミック"), "陶磁器製"),
+            (("petマーク", "pet表示"), "PETマークあり"),
+            (("プラマーク", "プラ表示"), "プラマークあり"),
+        )
+        additions: list[str] = []
+        for markers, canonical in feature_groups:
+            if any(marker in source for marker in markers) and not any(
+                marker in normalized_cleaned for marker in markers
+            ):
+                additions.append(canonical)
+
+        # 「Xが入っていた箱」のような入力では、X本体ではなく包装・部品が対象。
+        # 対象部位を落とすと別品目へ寄るため、明示語を必ず検索文へ残す。
+        part_markers = (
+            "箱",
+            "ふた",
+            "蓋",
+            "キャップ",
+            "容器",
+            "ボトル",
+            "びん",
+            "瓶",
+            "缶",
+            "袋",
+            "芯",
+            "電球",
+            "ランプ",
+            "電池",
+            "バッテリー",
+        )
+        for marker in part_markers:
+            if marker in source and marker not in normalized_cleaned:
+                additions.append(marker)
+        return " ".join([cleaned, *dict.fromkeys(additions)]).strip()
+
     def retrieve(self, query: str) -> list[RetrievedDocument]:
+        """クエリの意味検索。既定は自前Embedding、任意でマネージドKBを併用。"""
+
+        if not config.USE_BEDROCK_KNOWLEDGE_BASE:
+            return self._retrieve_by_embedding(query)
+        return self._retrieve_from_knowledge_base(query)
+
+    def _retrieve_by_embedding(self, query: str) -> list[RetrievedDocument]:
+        return [
+            RetrievedDocument(
+                text=match.evidence_text,
+                score=match.score,
+                uri=f"local://items/{match.item_id}",
+                title="松山市ごみ分別辞典（意味検索）",
+            )
+            for match in self._embedding_search.search(query)
+        ]
+
+    def _retrieve_from_knowledge_base(self, query: str) -> list[RetrievedDocument]:
         if not config.BEDROCK_KNOWLEDGE_BASE_ID:
             raise WasteGuideError("BEDROCK_KNOWLEDGE_BASE_ID is not configured")
         try:
@@ -254,6 +342,27 @@ class BedrockGateway:
 - 一方、「すすいで出す」「電池は外す」「危なくないように包む」のように分類コードが変わらない記述は、
   追加質問の理由にせず disposal_instructions で案内する。
 
+品目種別ごとの分類原則:
+- 「木」の排出方法（対象:植木・枝・木の板・木の根・切株・庭木など）のルールは、木材そのものだけに
+  適用する。木製の家具・箱物家具（サイドボード・タンス・食器棚・本棚・棚・机・椅子・収納家具など）や
+  木製の完成品には適用しない。木材ルールに「収集できない」「南クリーンセンターへ」等と書いてあっても、
+  家具にそれを当てはめて「禁止」にしてはいけない。家具・収納家具は、木材ルールしか根拠に無くても、
+  指定袋に入らない大きさなら製品として「粗大」（戸別収集の申込制）と判定する。
+- 「プラスチック製容器包装（プラ）」の説明（カップ・パック・トレイ・ボトル・ポリ袋・フィルム等）は、
+  商品を包んでいた容器・包装だけに適用する。造花・花束・観葉植物・おもちゃ・文具・ハンガー・
+  日用品などの繰り返し使う「製品」には適用しない。プラ容器包装ルールしか根拠に無くても、
+  これらの製品を「プラ」にしてはいけない。プラスチック製の造花・花束・おもちゃ等は「可燃」
+  （大型なら「粗大」）と判定してよい。素材がプラスチックというだけで「プラ」に確定しない。
+- 電池・充電池・バッテリー（乾電池・ボタン電池・ニッケル水素・リチウムイオン・カメラや機器の電池）は、
+  市の収集に出せない「禁止」で、販売店等の回収箱へ出す。「◯◯の電池」と言われた場合は、
+  本体（カメラ・玩具など）ではなく電池そのものを対象に判定する。
+- 土・砂・粘土・石・陶器・ガラス製の食器や置物など、燃えず金属でもないものは「埋立」。
+  「土」「粘土」「砂」を捨てる場合は、根拠に土・砂の項目があれば「埋立」を優先する。
+- ただし市が収集しない特定品目（アコースティックピアノ、消火器、タイヤ、金庫、バッテリー、
+  農機具など）は、大型・木製でも「粗大」ではなく「禁止」。特に「ピアノ」は木製の大型鍵盤楽器だが
+  「禁止」（電子ピアノ・オルガン・電子オルガン・アコーディオン等の他の楽器は「粗大」）。
+  鍵盤を弾くアコースティックな大型ピアノと判断できる場合は「禁止」とする。
+
 追加質問の規則:
 - 一度に質問する論点は一つだけにし、可能なら根拠に存在する選択肢を短く示す。
 - 素材によって分類が変わるなら素材を聞く。大きさによって変わるなら指定袋に入るかを聞く。
@@ -261,6 +370,10 @@ class BedrockGateway:
 - 回答によって分類が変わらず、「すすぐ」「使い切る」「電池を外す」等の出し方だけが変わる場合は、
   その確認を質問せず、分類確定後の disposal_instructions で案内する。
 - 検索根拠にない選択肢、条件、出し方を作らない。
+- 「Xが入っていた箱」「Xの容器」「Xのふた」のような表現では、捨てる対象はX本体ではなく、
+  明示された箱・容器・ふたである。本体の根拠を上位という理由だけで採用しない。
+- 飲料の空き容器は、プラスチック製という回答だけではペットボトルとプラ容器を区別できない。
+  PETマーク、プラマーク、紙パック、ガラスびん、金属缶のどれかを確認する。
 
 検索根拠にプラスチック製の候補が多くても、利用者の質問に素材が書かれていなければ、
 プラスチック製だと推測して確定してはいけません。検索候補は可能性の一覧であり、利用者の品物そのものの証明ではありません。
@@ -438,19 +551,66 @@ class WasteGuideService:
         """言い換え済み検索文で地域別Knowledge Baseを検索する。"""
 
         self._validate_region(municipality_id, district_id)
-        lexical_documents = [
-            RetrievedDocument(
-                text=match.evidence_text,
-                score=match.score,
-                uri=f"local://items/{match.item_id}",
-                title="松山市ごみ分別辞典（品目検索）",
-            )
-            for match in self._item_search.search(
-                rewritten_query, limit=config.LEXICAL_SEARCH_TOP_K
-            )
-        ]
+        # 既定は意味検索(Embedding)単体。表層一致は設定で併用可能。
+        lexical_documents: list[RetrievedDocument] = []
+        if config.LEXICAL_SEARCH_ENABLED:
+            lexical_documents = [
+                RetrievedDocument(
+                    text=match.evidence_text,
+                    score=match.score,
+                    uri=f"local://items/{match.item_id}",
+                    title="松山市ごみ分別辞典（品目検索）",
+                )
+                for match in self._item_search.search(
+                    rewritten_query, limit=config.LEXICAL_SEARCH_TOP_K
+                )
+            ]
         vector_documents = self._gateway.retrieve(rewritten_query)
-        return lexical_documents + vector_documents
+        return self._fuse_documents(lexical_documents, vector_documents)
+
+    @staticmethod
+    def _fuse_documents(
+        lexical: list[RetrievedDocument],
+        vector: list[RetrievedDocument],
+        *,
+        rrf_k: int = 60,
+    ) -> list[RetrievedDocument]:
+        """表層一致とEmbeddingの結果をRRFで統合し、重複品目をまとめる。
+
+        両方の検索で上位に来た品目を押し上げ、同一品目（同一uri）の重複を
+        除く。スコアは両検索の最大値を残し、既存の確信度ガードと整合させる。
+        """
+
+        fused: dict[str, dict] = {}
+        for documents in (lexical, vector):
+            for rank, document in enumerate(documents):
+                key = document.uri or document.text
+                entry = fused.get(key)
+                contribution = 1.0 / (rrf_k + rank)
+                if entry is None:
+                    fused[key] = {
+                        "document": document,
+                        "rrf": contribution,
+                        "best_score": document.score or 0.0,
+                    }
+                else:
+                    entry["rrf"] += contribution
+                    if (document.score or 0.0) > entry["best_score"]:
+                        entry["best_score"] = document.score or 0.0
+                        entry["document"] = document
+        ordered = sorted(fused.values(), key=lambda entry: -entry["rrf"])
+        results: list[RetrievedDocument] = []
+        for entry in ordered[: config.RAG_TOP_K]:
+            document = entry["document"]
+            results.append(
+                RetrievedDocument(
+                    text=document.text,
+                    score=entry["best_score"],
+                    uri=document.uri,
+                    title=document.title,
+                )
+            )
+        return results
 
     def decide(
         self,
@@ -675,6 +835,12 @@ class WasteGuideService:
         if normalized_query and normalized_query in item_names:
             return None
 
+        beverage_markers = ("ジュース", "飲料", "お茶", "水", "酒", "しょうゆ")
+        if "容器" in text and any(marker in text for marker in beverage_markers):
+            return (
+                "飲料などの容器は、PETマークのあるペットボトル・"
+                "プラマークのある容器・紙パック・ガラスびん・金属缶のどれですか？"
+            )
         if "ボトル" in text:
             return "ボトルは、ペットボトル・プラスチック製容器・ガラスびんのどれですか？"
         if "容器" in text:
@@ -765,7 +931,11 @@ class WasteGuideService:
         if size_branch and not any(answer in context for answer in size_answers):
             return "松山市の指定ごみ袋に入る大きさですか？"
 
-        if "プラマーク" in evidence and not any(
+        explicitly_non_plastic = any(
+            marker in context
+            for marker in ("紙製", "紙の", "紙箱", "ガラス", "金属", "陶器", "陶磁器")
+        )
+        if "プラマーク" in evidence and not explicitly_non_plastic and not any(
             marker in context for marker in ("プラマーク", "プラ表示", "マークあり", "マークなし")
         ):
             return "プラマークは付いていますか？"
