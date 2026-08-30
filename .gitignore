@@ -7,6 +7,11 @@ backend/.venv/
 backend/search_logs.jsonl
 backend/dist/
 
+# Evaluation datasets and reports derived from external/public source data
+backend/evaluation/artifacts/
+backend/evaluation/source/
+infra/generated/
+
 # Environment variables
 .env
 .env.*
