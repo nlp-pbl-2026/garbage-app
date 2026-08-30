@@ -117,6 +117,10 @@ resource "aws_lambda_function" "backend" {
     variables = merge({
       BEDROCK_KNOWLEDGE_BASE_ID           = aws_bedrockagent_knowledge_base.this.id
       BEDROCK_MODEL_ID                    = "amazon.nova-lite-v1:0"
+      # 本番LambdaはTitan Embed Textを直接呼び出す権限を持たないため、
+      # 意味検索はManaged Knowledge Base経由に固定する。
+      USE_BEDROCK_KNOWLEDGE_BASE          = "true"
+      LEXICAL_SEARCH_ENABLED              = "true"
       TIMEZONE                            = "Asia/Tokyo"
       CALENDAR_PATH                       = "/var/task/data/regions/matsuyama/shimizu/calendar/2026.csv"
       SEARCH_LOG_TABLE                    = aws_dynamodb_table.search_logs.name

@@ -50,7 +50,9 @@ Bedrock Managed Knowledge Base
           ▼
 FastAPI
   ├─ Nova Lite: 言い換え
-  ├─ Managed KB: top-k検索
+  ├─ ローカル品目CSV: 表層一致検索
+  ├─ Managed KB: 意味検索
+  ├─ RRF: 2つの検索結果を統合
   ├─ Nova Lite: 分類または追加質問
   ├─ ローカルCSV: 清水地区の次回収集日（可燃7時、ほか8時締切）
   └─ DynamoDB: 検索分析ログ（90日TTL）
@@ -107,6 +109,8 @@ Terraform stateはGit管理しません。複数人で運用する場合は、�
 
 `iam:GetPolicyVersion` または `iam:ListPolicyVersions` が不足していても、既存の `garbage-guide-dev-api` を確認できる場合は制限モードへ自動的に切り替わります。この場合は既存Lambdaのコードだけを `UpdateFunctionCode` で更新し、Terraform、Knowledge Base、S3は変更しません。したがって、権限不足の状態でこのスクリプトを繰り返してもAWSリソースは増えません。新規構築、構成変更、RAGデータ更新には完全な権限が必要です。
 
+制限モードでは、コード更新前に既存Lambdaの`USE_BEDROCK_KNOWLEDGE_BASE=true`と`BEDROCK_KNOWLEDGE_BASE_ID`を確認します。このアカウントではLambdaからTitan Embed Textを直接呼ぶ権限がないため、設定が欠けていれば表層検索だけへ縮退させず、安全のため更新を停止します。
+
 `scripts/aws-down.sh` は削除planを表示した後、Knowledge Base、API、ログテーブル、S3を含む全リソースを削除します。必要なIAM読取権限がなければ部分削除せず停止します。
 
 ## Terraformを個別に実行する場合
@@ -158,17 +162,30 @@ TerraformがS3オブジェクトのETag差分を検出してアップロード�
 export AWS_REGION="$(terraform -chdir=infra/terraform output -raw aws_region)"
 export BEDROCK_KNOWLEDGE_BASE_ID="$(terraform -chdir=infra/terraform output -raw knowledge_base_id)"
 export BEDROCK_MODEL_ID="amazon.nova-lite-v1:0"
+export USE_BEDROCK_KNOWLEDGE_BASE="true"
+export LEXICAL_SEARCH_ENABLED="true"
 ```
 
 このアカウントではAPACクロスリージョン推論プロファイル `apac.amazon.nova-lite-v1:0` がシドニーなどへルーティングされる可能性があり、identity policyで拒否されます。東京リージョン内の直接モデルIDを使用してください。
 
 AWS上ではこれらの値をTerraformがLambda環境変数へ設定し、Bedrock・DynamoDBへの認証はLambda実行ロールが担当します。アクセスキーの `.env` 保存は不要です。FlutterはAWS認証情報を持たず、次のAPI URLだけを受け取ります。
 
+本番の意味検索はManaged Knowledge Baseが担当します。自前Embedding実装はローカル比較用・将来切替用であり、現在のLambdaからTitan Embed Textを直接呼び出すことはありません。
+
 ```bash
 API_BASE_URL="$(terraform -chdir=infra/terraform output -raw backend_api_url)"
 cd frontend
 flutter run -d chrome --dart-define=API_BASE_URL="${API_BASE_URL}"
 ```
+
+ハッカソン審査では、リポジトリルートの次のコマンドで公開APIの確認から起動まで行えます。
+
+```bash
+./scripts/run-demo.sh
+```
+
+公開APIはAWS認証不要です。API Gatewayの既定ルートは5 req/s、burst 10に制限し、分析APIだけは別途管理キーで保護しています。公開URLは審査関係者に限定して共有してください。
+APIの疎通だけを確認する場合は`./scripts/run-demo.sh --check`を実行します。
 
 検索分析画面へ入力する管理キーは次で表示します。この値はGitや公開Flutter buildへ含めないでください。
 

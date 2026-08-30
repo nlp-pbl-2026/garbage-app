@@ -8,6 +8,20 @@ AWS_PROFILE_NAME="${AWS_PROFILE:-default}"
 AWS_REGION_NAME="${AWS_REGION:-$("${TERRAFORM_BIN}" -chdir="${TERRAFORM_DIR}" output -raw aws_region)}"
 KNOWLEDGE_BASE_ID="$("${TERRAFORM_BIN}" -chdir="${TERRAFORM_DIR}" output -raw knowledge_base_id)"
 DATA_SOURCE_ID="$("${TERRAFORM_BIN}" -chdir="${TERRAFORM_DIR}" output -raw data_source_id)"
+KNOWLEDGE_BUCKET="$("${TERRAFORM_BIN}" -chdir="${TERRAFORM_DIR}" output -raw knowledge_bucket_name)"
+GENERATED_RECORDS_DIR="${SCRIPT_DIR}/../generated/knowledge_records"
+RECORDS_PREFIX="knowledge/matsuyama/common/records"
+
+python3 "${SCRIPT_DIR}/build_knowledge_records.py" \
+  --output-dir "${GENERATED_RECORDS_DIR}"
+
+aws s3 sync \
+  "${GENERATED_RECORDS_DIR}/" \
+  "s3://${KNOWLEDGE_BUCKET}/${RECORDS_PREFIX}/" \
+  --delete \
+  --exclude "manifest.json" \
+  --region "${AWS_REGION_NAME}" \
+  --profile "${AWS_PROFILE_NAME}"
 
 INGESTION_JOB_ID="$(
   aws bedrock-agent start-ingestion-job \
