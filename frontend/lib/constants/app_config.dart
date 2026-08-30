@@ -9,7 +9,7 @@ class AppConfig {
   /// バックエンド API のベース URL
   ///
   /// 開発環境: http://localhost:8000
-  /// 本番環境: TODO 環境変数やDartのdefineで切り替え
+  /// AWSデモ環境: --dart-define=API_BASE_URL=https://... で切り替え
   static const String apiBaseUrl = String.fromEnvironment(
     'API_BASE_URL',
     defaultValue: 'http://localhost:8000',
