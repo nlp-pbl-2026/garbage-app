@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../constants/strings.dart';
+import '../providers/navigation_provider.dart';
 import '../providers/region_provider.dart';
 import 'bulky_waste_screen.dart';
 import 'calendar_screen.dart';
@@ -21,9 +22,6 @@ class MainScreen extends ConsumerStatefulWidget {
 }
 
 class _MainScreenState extends ConsumerState<MainScreen> {
-  /// 現在選択中のタブインデックス
-  int _currentIndex = 0;
-
   /// 各タブに対応する画面ウィジェット
   final List<Widget> _screens = const [
     SearchScreen(),
@@ -34,9 +32,12 @@ class _MainScreenState extends ConsumerState<MainScreen> {
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
+    // タブインデックスは selectedTabProvider で管理し、通知タップ等の
+    // 外部要因からもカレンダータブへ切り替えられるようにする。
+    final currentIndex = ref.watch(selectedTabProvider);
     return Scaffold(
       body: IndexedStack(
-        index: _currentIndex,
+        index: currentIndex,
         children: _screens,
       ),
       floatingActionButton: FloatingActionButton.extended(
@@ -47,11 +48,9 @@ class _MainScreenState extends ConsumerState<MainScreen> {
         foregroundColor: colors.onPrimary,
       ),
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
+        currentIndex: currentIndex,
         onTap: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
+          ref.read(selectedTabProvider.notifier).state = index;
         },
         selectedItemColor: colors.primary,
         unselectedItemColor: colors.onSurfaceVariant,
@@ -105,7 +104,7 @@ class _MainScreenState extends ConsumerState<MainScreen> {
 
   /// アクティブタブは緑背景色のアイコンを構築する
   Widget _buildIcon(IconData iconData, int index) {
-    final isActive = _currentIndex == index;
+    final isActive = ref.watch(selectedTabProvider) == index;
     if (isActive) {
       return Container(
         padding: const EdgeInsets.all(8),

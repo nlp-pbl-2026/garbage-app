@@ -25,8 +25,9 @@ final focusedMonthProvider = StateProvider<DateTime>((ref) => DateTime.now());
 /// 指定月の収集スケジュールを取得する。
 /// パラメータとしてDateTimeを受け取り、その年月のスケジュールを返す。
 /// regionSettingProviderから地区IDを取得し、ScheduleServiceで月間スケジュールを生成する。
-final monthlyScheduleProvider = FutureProvider.family<
-    Map<DateTime, List<ScheduleEntry>>, DateTime>((ref, month) async {
+final monthlyScheduleProvider =
+    FutureProvider.family<Map<DateTime, List<ScheduleEntry>>, DateTime>(
+        (ref, month) async {
   final regionSettingAsync = ref.watch(regionSettingProvider);
 
   // 地域設定を取得
