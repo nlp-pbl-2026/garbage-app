@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../constants/colors.dart';
 import '../providers/auth_provider.dart';
-import '../providers/region_provider.dart';
 
-/// ログイン/登録画面
+/// 初回起動時のウェルカム画面。
 ///
-/// タブでログインと新規登録を切り替えられる。
-/// ユーザー名とパスワードのフォーム入力を提供する。
+/// AWSの公開デモは登録なしで使えるため「すぐ試す」を主導線にし、
+/// ローカルBackend向けのログイン・登録フォームは必要なときだけ展開する。
 class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({super.key});
 
@@ -16,85 +14,38 @@ class LoginScreen extends ConsumerStatefulWidget {
   ConsumerState<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends ConsumerState<LoginScreen>
-    with SingleTickerProviderStateMixin {
-  late TabController _tabController;
+class _LoginScreenState extends ConsumerState<LoginScreen> {
+  final _formKey = GlobalKey<FormState>();
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
-  final _ageController = TextEditingController();
-  final _formKey = GlobalKey<FormState>();
 
+  bool _showAccountForm = false;
+  bool _registerMode = false;
   bool _isLoading = false;
-  String? _errorMessage;
   bool _obscurePassword = true;
-  String? _selectedGender;
-  String? _selectedDistrictId;
-
-  @override
-  void initState() {
-    super.initState();
-    _tabController = TabController(length: 2, vsync: this);
-    _tabController.addListener(() {
-      setState(() {
-        _errorMessage = null;
-      });
-    });
-  }
+  String? _errorMessage;
 
   @override
   void dispose() {
-    _tabController.dispose();
     _usernameController.dispose();
     _passwordController.dispose();
     _confirmPasswordController.dispose();
-    _ageController.dispose();
     super.dispose();
   }
 
-  /// ログイン処理
-  Future<void> _handleLogin() async {
-    if (!_formKey.currentState!.validate()) return;
-
-    setState(() {
-      _isLoading = true;
-      _errorMessage = null;
-    });
-
-    try {
-      await ref.read(authStateProvider.notifier).login(
-        _usernameController.text.trim(),
-        _passwordController.text,
-      );
-    } catch (e) {
-      setState(() {
-        final errorStr = e.toString();
-        if (errorStr.contains('ClientException') ||
-            errorStr.contains('Failed to fetch') ||
-            errorStr.contains('SocketException') ||
-            errorStr.contains('Connection refused')) {
-          _errorMessage = 'サーバーに接続できません。\n「ログインせずに利用する」でもアプリを使用できます。';
-        } else {
-          _errorMessage = errorStr.replaceAll('Exception: ', '');
-        }
-      });
-    } finally {
-      if (mounted) {
-        setState(() {
-          _isLoading = false;
-        });
-      }
-    }
+  Future<void> _continueWithoutLogin() async {
+    setState(() => _isLoading = true);
+    await ref.read(authStateProvider.notifier).skipLogin();
+    if (!mounted) return;
+    _finishIfPushed();
   }
 
-  /// 登録処理
-  Future<void> _handleRegister() async {
+  Future<void> _submitAccount() async {
     if (!_formKey.currentState!.validate()) return;
-
-    if (_passwordController.text != _confirmPasswordController.text) {
-      setState(() {
-        _errorMessage = 'パスワードが一致しません';
-      });
+    if (_registerMode &&
+        _passwordController.text != _confirmPasswordController.text) {
+      setState(() => _errorMessage = '確認用パスワードが一致しません');
       return;
     }
 
@@ -102,384 +53,345 @@ class _LoginScreenState extends ConsumerState<LoginScreen>
       _isLoading = true;
       _errorMessage = null;
     });
-
     try {
-      final ageText = _ageController.text.trim();
-      final age = ageText.isNotEmpty ? int.tryParse(ageText) : null;
-
-      await ref.read(authStateProvider.notifier).register(
-        _usernameController.text.trim(),
-        _passwordController.text,
-        age: age,
-        gender: _selectedGender,
-        districtId: _selectedDistrictId,
-      );
-    } catch (e) {
+      final notifier = ref.read(authStateProvider.notifier);
+      if (_registerMode) {
+        await notifier.register(
+          _usernameController.text.trim(),
+          _passwordController.text,
+        );
+      } else {
+        await notifier.login(
+          _usernameController.text.trim(),
+          _passwordController.text,
+        );
+      }
+      if (mounted) _finishIfPushed();
+    } catch (error) {
+      if (!mounted) return;
+      final message = error.toString();
       setState(() {
-        final errorStr = e.toString();
-        if (errorStr.contains('ClientException') ||
-            errorStr.contains('Failed to fetch') ||
-            errorStr.contains('SocketException') ||
-            errorStr.contains('Connection refused')) {
-          _errorMessage = 'サーバーに接続できません。\n「ログインせずに利用する」でもアプリを使用できます。';
-        } else {
-          _errorMessage = errorStr.replaceAll('Exception: ', '');
-        }
+        _errorMessage = message.contains('ClientException') ||
+                message.contains('Failed to fetch') ||
+                message.contains('SocketException') ||
+                message.contains('Connection refused')
+            ? 'アカウント機能に接続できません。登録なしでも検索できます。'
+            : message.replaceAll('Exception: ', '');
       });
     } finally {
-      if (mounted) {
-        setState(() {
-          _isLoading = false;
-        });
-      }
+      if (mounted) setState(() => _isLoading = false);
     }
+  }
+
+  void _finishIfPushed() {
+    if (Navigator.of(context).canPop()) Navigator.of(context).pop();
   }
 
   @override
   Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
     final canPop = Navigator.of(context).canPop();
+
     return Scaffold(
       appBar: canPop
           ? AppBar(
-              leading: IconButton(
-                icon: const Icon(Icons.arrow_back),
-                onPressed: () => Navigator.of(context).pop(),
-              ),
-              backgroundColor: Colors.transparent,
-              elevation: 0,
+              title: const Text('アカウント'),
+              centerTitle: true,
             )
           : null,
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24),
-          child: Column(
-            children: [
-              if (!canPop) const SizedBox(height: 48),
-              // アプリロゴ・タイトル
-              _buildHeader(),
-              const SizedBox(height: 32),
-              // ログイン/登録タブ
-              _buildTabBar(),
-              const SizedBox(height: 24),
-              // フォーム
-              Expanded(
-                child: TabBarView(
-                  controller: _tabController,
-                  children: [
-                    _buildLoginForm(),
-                    _buildRegisterForm(),
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.fromLTRB(20, 24, 20, 32),
+          child: Center(
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 520),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  if (!canPop) const SizedBox(height: 18),
+                  _buildHero(colors),
+                  const SizedBox(height: 24),
+                  if (!canPop) ...[
+                    FilledButton.icon(
+                      key: const Key('continue-without-login'),
+                      onPressed: _isLoading ? null : _continueWithoutLogin,
+                      icon: _isLoading
+                          ? const SizedBox.square(
+                              dimension: 18,
+                              child: CircularProgressIndicator(strokeWidth: 2),
+                            )
+                          : const Icon(Icons.arrow_forward_rounded),
+                      label: const Text('ログインせず、すぐ試す'),
+                      style: FilledButton.styleFrom(
+                        minimumSize: const Size.fromHeight(56),
+                        textStyle: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w800,
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    Text(
+                      '登録不要・AWSアカウント不要',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: colors.onSurfaceVariant,
+                      ),
+                    ),
+                    const SizedBox(height: 24),
+                    OutlinedButton.icon(
+                      key: const Key('account-form-toggle'),
+                      onPressed: _isLoading
+                          ? null
+                          : () => setState(() {
+                                _showAccountForm = !_showAccountForm;
+                                _errorMessage = null;
+                              }),
+                      icon: Icon(
+                        _showAccountForm
+                            ? Icons.expand_less_rounded
+                            : Icons.person_outline_rounded,
+                      ),
+                      label: Text(
+                        _showAccountForm ? 'アカウント入力を閉じる' : 'アカウントを使う',
+                      ),
+                      style: OutlinedButton.styleFrom(
+                        minimumSize: const Size.fromHeight(48),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(14),
+                        ),
+                      ),
+                    ),
                   ],
-                ),
+                  AnimatedSwitcher(
+                    duration: const Duration(milliseconds: 220),
+                    transitionBuilder: (child, animation) => SizeTransition(
+                      sizeFactor: animation,
+                      alignment: Alignment.topCenter,
+                      child: child,
+                    ),
+                    child: (_showAccountForm || canPop)
+                        ? KeyedSubtree(
+                            key: const Key('account-form'),
+                            child: _buildAccountForm(colors),
+                          )
+                        : const SizedBox.shrink(
+                            key: Key('account-form-collapsed'),
+                          ),
+                  ),
+                ],
               ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildHero(ColorScheme colors) {
+    return Container(
+      padding: const EdgeInsets.fromLTRB(24, 28, 24, 24),
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: [colors.primaryContainer, colors.tertiaryContainer],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+        borderRadius: BorderRadius.circular(28),
+      ),
+      child: Column(
+        children: [
+          Container(
+            width: 68,
+            height: 68,
+            decoration: BoxDecoration(
+              color: colors.surface.withValues(alpha: 0.92),
+              borderRadius: BorderRadius.circular(22),
+            ),
+            child: Icon(
+              Icons.recycling_rounded,
+              size: 38,
+              color: colors.primary,
+            ),
+          ),
+          const SizedBox(height: 20),
+          Text(
+            '名前がわからなくても、\nちゃんと分別できる。',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 27,
+              height: 1.28,
+              fontWeight: FontWeight.w900,
+              color: colors.onPrimaryContainer,
+            ),
+          ),
+          const SizedBox(height: 12),
+          Text(
+            '見た目や使い方をひとこと入力。\n松山市の資料をもとにAIが探します。',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              height: 1.55,
+              color: colors.onPrimaryContainer.withValues(alpha: 0.78),
+            ),
+          ),
+          const SizedBox(height: 20),
+          const Wrap(
+            alignment: WrapAlignment.center,
+            spacing: 8,
+            runSpacing: 8,
+            children: [
+              _FeatureChip(icon: Icons.search_rounded, label: 'あいまい検索'),
+              _FeatureChip(icon: Icons.chat_bubble_outline, label: '追加質問'),
+              _FeatureChip(icon: Icons.event_outlined, label: '収集日'),
             ],
           ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildHeader() {
-    return Column(
-      children: [
-        Icon(
-          Icons.delete_outline,
-          size: 56,
-          color: AppColors.primary,
-        ),
-        const SizedBox(height: 12),
-        const Text(
-          '愛媛ゴミ出しアプリ',
-          style: TextStyle(
-            fontSize: 22,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        const SizedBox(height: 4),
-        Text(
-          'ログインして設定を同期',
-          style: TextStyle(
-            fontSize: 14,
-            color: Colors.grey[600],
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildTabBar() {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.grey[100],
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: TabBar(
-        controller: _tabController,
-        indicator: BoxDecoration(
-          color: AppColors.primary,
-          borderRadius: BorderRadius.circular(12),
-        ),
-        labelColor: Colors.white,
-        unselectedLabelColor: Colors.grey[600],
-        indicatorSize: TabBarIndicatorSize.tab,
-        dividerColor: Colors.transparent,
-        tabs: const [
-          Tab(text: 'ログイン'),
-          Tab(text: '新規登録'),
         ],
       ),
     );
   }
 
-  Widget _buildLoginForm() {
-    return SingleChildScrollView(
-      child: Form(
-        key: _formKey,
-        child: Column(
-          children: [
-            _buildUsernameField(),
-            const SizedBox(height: 16),
-            _buildPasswordField(),
-            if (_errorMessage != null) ...[
-              const SizedBox(height: 12),
-              _buildErrorMessage(),
-            ],
-            const SizedBox(height: 24),
-            _buildSubmitButton('ログイン', _handleLogin),
-            const SizedBox(height: 16),
-            _buildSkipButton(),
-          ],
+  Widget _buildAccountForm(ColorScheme colors) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 18),
+      child: Container(
+        padding: const EdgeInsets.all(20),
+        decoration: BoxDecoration(
+          color: colors.surfaceContainerLow,
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(color: colors.outlineVariant),
         ),
-      ),
-    );
-  }
-
-  Widget _buildRegisterForm() {
-    return SingleChildScrollView(
-      child: Form(
-        key: _formKey,
-        child: Column(
-          children: [
-            _buildUsernameField(),
-            const SizedBox(height: 16),
-            _buildPasswordField(),
-            const SizedBox(height: 16),
-            _buildConfirmPasswordField(),
-            const SizedBox(height: 16),
-            _buildAgeField(),
-            const SizedBox(height: 16),
-            _buildGenderField(),
-            const SizedBox(height: 16),
-            _buildDistrictField(),
-            if (_errorMessage != null) ...[
-              const SizedBox(height: 12),
-              _buildErrorMessage(),
-            ],
-            const SizedBox(height: 24),
-            _buildSubmitButton('登録', _handleRegister),
-            const SizedBox(height: 16),
-            _buildSkipButton(),
-            const SizedBox(height: 24),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildUsernameField() {
-    return TextFormField(
-      controller: _usernameController,
-      decoration: InputDecoration(
-        labelText: 'ユーザー名',
-        hintText: '3文字以上',
-        prefixIcon: const Icon(Icons.person_outline),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
-      ),
-      validator: (value) {
-        if (value == null || value.trim().isEmpty) {
-          return 'ユーザー名を入力してください';
-        }
-        if (value.trim().length < 3) {
-          return 'ユーザー名は3文字以上で入力してください';
-        }
-        return null;
-      },
-    );
-  }
-
-  Widget _buildPasswordField() {
-    return TextFormField(
-      controller: _passwordController,
-      obscureText: _obscurePassword,
-      decoration: InputDecoration(
-        labelText: 'パスワード',
-        hintText: '6文字以上',
-        prefixIcon: const Icon(Icons.lock_outline),
-        suffixIcon: IconButton(
-          icon: Icon(
-            _obscurePassword ? Icons.visibility_off : Icons.visibility,
-          ),
-          onPressed: () {
-            setState(() {
-              _obscurePassword = !_obscurePassword;
-            });
-          },
-        ),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
-      ),
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return 'パスワードを入力してください';
-        }
-        if (value.length < 6) {
-          return 'パスワードは6文字以上で入力してください';
-        }
-        return null;
-      },
-    );
-  }
-
-  Widget _buildConfirmPasswordField() {
-    return TextFormField(
-      controller: _confirmPasswordController,
-      obscureText: true,
-      decoration: InputDecoration(
-        labelText: 'パスワード（確認）',
-        prefixIcon: const Icon(Icons.lock_outline),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
-      ),
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return 'パスワードを再入力してください';
-        }
-        return null;
-      },
-    );
-  }
-
-  Widget _buildErrorMessage() {
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        color: Colors.red[50],
-        borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: AppColors.error.withOpacity(0.3)),
-      ),
-      child: Text(
-        _errorMessage!,
-        style: const TextStyle(
-          color: AppColors.error,
-          fontSize: 13,
-        ),
-      ),
-    );
-  }
-
-  Widget _buildSubmitButton(String label, VoidCallback onPressed) {
-    return SizedBox(
-      width: double.infinity,
-      height: 52,
-      child: ElevatedButton(
-        onPressed: _isLoading ? null : onPressed,
-        style: ElevatedButton.styleFrom(
-          backgroundColor: AppColors.primary,
-          foregroundColor: Colors.white,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
-          ),
-        ),
-        child: _isLoading
-            ? const SizedBox(
-                width: 24,
-                height: 24,
-                child: CircularProgressIndicator(
-                  strokeWidth: 2,
-                  color: Colors.white,
-                ),
-              )
-            : Text(
-                label,
-                style: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
+        child: Form(
+          key: _formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              SegmentedButton<bool>(
+                segments: const [
+                  ButtonSegment(value: false, label: Text('ログイン')),
+                  ButtonSegment(value: true, label: Text('新規登録')),
+                ],
+                selected: {_registerMode},
+                onSelectionChanged: (selection) => setState(() {
+                  _registerMode = selection.first;
+                  _errorMessage = null;
+                }),
               ),
+              const SizedBox(height: 18),
+              TextFormField(
+                controller: _usernameController,
+                textInputAction: TextInputAction.next,
+                decoration: const InputDecoration(
+                  labelText: 'ユーザー名',
+                  prefixIcon: Icon(Icons.person_outline_rounded),
+                ),
+                validator: (value) {
+                  if (value == null || value.trim().length < 3) {
+                    return '3文字以上で入力してください';
+                  }
+                  return null;
+                },
+              ),
+              const SizedBox(height: 14),
+              TextFormField(
+                controller: _passwordController,
+                obscureText: _obscurePassword,
+                textInputAction:
+                    _registerMode ? TextInputAction.next : TextInputAction.done,
+                onFieldSubmitted: (_) {
+                  if (!_registerMode) _submitAccount();
+                },
+                decoration: InputDecoration(
+                  labelText: 'パスワード',
+                  prefixIcon: const Icon(Icons.lock_outline_rounded),
+                  suffixIcon: IconButton(
+                    onPressed: () => setState(
+                      () => _obscurePassword = !_obscurePassword,
+                    ),
+                    icon: Icon(
+                      _obscurePassword
+                          ? Icons.visibility_off_outlined
+                          : Icons.visibility_outlined,
+                    ),
+                  ),
+                ),
+                validator: (value) {
+                  if (value == null || value.length < 6) {
+                    return '6文字以上で入力してください';
+                  }
+                  return null;
+                },
+              ),
+              if (_registerMode) ...[
+                const SizedBox(height: 14),
+                TextFormField(
+                  controller: _confirmPasswordController,
+                  obscureText: true,
+                  onFieldSubmitted: (_) => _submitAccount(),
+                  decoration: const InputDecoration(
+                    labelText: 'パスワード（確認）',
+                    prefixIcon: Icon(Icons.lock_reset_rounded),
+                  ),
+                  validator: (value) => value == null || value.isEmpty
+                      ? '確認用パスワードを入力してください'
+                      : null,
+                ),
+              ],
+              if (_errorMessage != null) ...[
+                const SizedBox(height: 14),
+                Container(
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: colors.errorContainer,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Text(
+                    _errorMessage!,
+                    style: TextStyle(color: colors.onErrorContainer),
+                  ),
+                ),
+              ],
+              const SizedBox(height: 18),
+              FilledButton(
+                onPressed: _isLoading ? null : _submitAccount,
+                child: Text(_registerMode ? '登録する' : 'ログイン'),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
+}
 
-  Widget _buildAgeField() {
-    return TextFormField(
-      controller: _ageController,
-      keyboardType: TextInputType.number,
-      decoration: InputDecoration(
-        labelText: '年齢（任意）',
-        hintText: '例: 30',
-        prefixIcon: const Icon(Icons.cake_outlined),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
+class _FeatureChip extends StatelessWidget {
+  final IconData icon;
+  final String label;
+
+  const _FeatureChip({required this.icon, required this.label});
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 11, vertical: 7),
+      decoration: BoxDecoration(
+        color: colors.surface.withValues(alpha: 0.82),
+        borderRadius: BorderRadius.circular(999),
       ),
-      validator: (value) {
-        if (value != null && value.isNotEmpty) {
-          final age = int.tryParse(value);
-          if (age == null || age < 1 || age > 150) {
-            return '正しい年齢を入力してください';
-          }
-        }
-        return null;
-      },
-    );
-  }
-
-  Widget _buildGenderField() {
-    return DropdownButtonFormField<String>(
-      value: _selectedGender,
-      decoration: InputDecoration(
-        labelText: '性別（任意）',
-        prefixIcon: const Icon(Icons.person_outline),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
-      ),
-      items: const [
-        DropdownMenuItem(value: 'male', child: Text('男性')),
-        DropdownMenuItem(value: 'female', child: Text('女性')),
-        DropdownMenuItem(value: 'other', child: Text('その他')),
-      ],
-      onChanged: (value) {
-        setState(() {
-          _selectedGender = value;
-        });
-      },
-    );
-  }
-
-  Widget _buildDistrictField() {
-    // 地域設定は登録後に地域選択画面で行うため、
-    // 登録フォームでは地区選択を表示しない
-    return const SizedBox.shrink();
-  }
-
-  /// ログインをスキップして直接利用するボタン
-  Widget _buildSkipButton() {
-    return TextButton(
-      onPressed: () {
-        // スキップ→未ログイン状態で地域設定へ
-        ref.read(authStateProvider.notifier).skipLogin();
-      },
-      child: Text(
-        'ログインせずに利用する',
-        style: TextStyle(
-          color: Colors.grey[600],
-          fontSize: 14,
-        ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(icon, size: 16, color: colors.primary),
+          const SizedBox(width: 5),
+          Text(
+            label,
+            style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w700),
+          ),
+        ],
       ),
     );
   }
