@@ -20,6 +20,7 @@ void main() {
       ),
     );
 
+    expect(find.text('ごみサポ'), findsOneWidget);
     expect(find.byKey(const Key('continue-without-login')), findsOneWidget);
     expect(find.text('ログインせず、すぐ試す'), findsOneWidget);
     expect(find.byType(TextFormField), findsNothing);

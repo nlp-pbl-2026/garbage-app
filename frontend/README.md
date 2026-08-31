@@ -1,4 +1,4 @@
-# Garbage guide frontend
+# ごみサポ Frontend
 
 Flutter client for the Matsuyama City garbage classification service. The first supported area is Shimizu district.
 

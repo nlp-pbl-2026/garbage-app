@@ -19,10 +19,9 @@ BEDROCK_MODEL_ID = os.getenv("BEDROCK_MODEL_ID", "amazon.nova-lite-v1:0")
 RAG_TOP_K = int(os.getenv("RAG_TOP_K", "8"))
 LEXICAL_SEARCH_TOP_K = int(os.getenv("LEXICAL_SEARCH_TOP_K", "5"))
 LEXICAL_SEARCH_MIN_SCORE = float(os.getenv("LEXICAL_SEARCH_MIN_SCORE", "0.18"))
-# 検索は表層一致＋意味検索のハイブリッド。デプロイ環境の意味検索(KB)は表層一致と
-# 相性がよく、単体より高精度なため既定で有効。自前Titan Embeddingを使える環境では
-# Embedding単体が最良になるため、falseで表層一致を切りEmbedding単体に切替できる。
-LEXICAL_SEARCH_ENABLED = os.getenv("LEXICAL_SEARCH_ENABLED", "true").lower() == "true"
+# AWS本番はTitan Embedding単体を採用。比較実験では環境変数をtrueにして
+# 表層一致とのハイブリッドへ切り替えられる。
+LEXICAL_SEARCH_ENABLED = os.getenv("LEXICAL_SEARCH_ENABLED", "false").lower() == "true"
 KNOWLEDGE_ITEMS_PATH = os.getenv("KNOWLEDGE_ITEMS_PATH", "")
 # 自前Embedding検索（マネージドKnowledge Baseのチャンク分割に依存しない）。
 BEDROCK_EMBEDDING_MODEL_ID = os.getenv(
@@ -33,9 +32,8 @@ EMBEDDING_SEARCH_TOP_K = int(os.getenv("EMBEDDING_SEARCH_TOP_K", "8"))
 # 検索器は再現率を優先し、低い候補もLLM判定へ渡す（最終確定はclassifyが担う）。
 EMBEDDING_SEARCH_MIN_SCORE = float(os.getenv("EMBEDDING_SEARCH_MIN_SCORE", "0.15"))
 EMBEDDING_INDEX_PATH = os.getenv("EMBEDDING_INDEX_PATH", "")
-# Knowledge Base連携を使うか。コード既定はFalse（自前Embedding用）。
-# Titan直接呼び出し権限のないAWS本番ではLambda環境変数でtrueに上書きし、
-# lexical + Managed Knowledge Baseのハイブリッドとして動かす。
+# Knowledge Base連携を使うか。AWS本番はTitanを直接呼び出すためFalse。
+# 既存Knowledge Baseとの比較実験では環境変数をtrueにして切り替えられる。
 USE_BEDROCK_KNOWLEDGE_BASE = (
     os.getenv("USE_BEDROCK_KNOWLEDGE_BASE", "false").lower() == "true"
 )
