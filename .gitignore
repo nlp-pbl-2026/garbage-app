@@ -36,6 +36,10 @@ frontend/windows/flutter/ephemeral/
 .DS_Store
 Thumbs.db
 
+# Local architecture diagrams and diagrams.net backups
+*.drawio
+*.drawio.bkp
+
 # Terraform
 **/.terraform/
 *.tfstate
