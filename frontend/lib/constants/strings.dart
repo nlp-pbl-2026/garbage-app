@@ -8,7 +8,7 @@ class AppStrings {
 
   // アプリ基本情報
   /// アプリ名
-  static const String appName = '愛媛ゴミ出しアプリ';
+  static const String appName = 'ごみサポ';
 
   // ゴミ分類カテゴリ名
   /// 可燃ごみ

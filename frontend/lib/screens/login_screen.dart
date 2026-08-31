@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../constants/strings.dart';
 import '../providers/auth_provider.dart';
 
 /// 初回起動時のウェルカム画面。
@@ -218,7 +219,17 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
               color: colors.primary,
             ),
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 14),
+          Text(
+            AppStrings.appName,
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.w800,
+              letterSpacing: 1.2,
+              color: colors.primary,
+            ),
+          ),
+          const SizedBox(height: 14),
           Text(
             '名前がわからなくても、\nちゃんと分別できる。',
             textAlign: TextAlign.center,

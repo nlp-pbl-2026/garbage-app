@@ -19,7 +19,7 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(
-    title="愛媛ゴミ出しアプリ API",
+    title="ごみサポ API",
     version="1.0.0",
     lifespan=lifespan,
 )

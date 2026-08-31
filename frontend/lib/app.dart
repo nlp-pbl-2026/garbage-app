@@ -11,7 +11,7 @@ import 'screens/main_screen.dart';
 import 'screens/region_selection_screen.dart';
 import 'widgets/background_monitor_prompt.dart';
 
-/// 愛媛県ゴミ出しアプリケーションのルートウィジェット
+/// ごみサポのルートウィジェット
 class GarbageApp extends ConsumerStatefulWidget {
   const GarbageApp({super.key});
 

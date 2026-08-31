@@ -1,11 +1,11 @@
 {
-    "name": "garbage_app",
-    "short_name": "garbage_app",
+    "name": "ごみサポ",
+    "short_name": "ごみサポ",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "名前がわからないごみも、AIであいまい検索できるごみ分別アプリ",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

@@ -107,7 +107,7 @@ class _TermsOfServiceScreenState extends State<TermsOfServiceScreen> {
 
 最終更新日: 2026年7月1日
 
-本利用規約（以下「本規約」）は、愛媛ゴミ出しアプリ（以下「本アプリ」）の利用条件を定めるものです。本アプリをご利用いただく前に、本規約をよくお読みください。本アプリをダウンロードまたは使用することにより、本規約に同意したものとみなされます。
+本利用規約（以下「本規約」）は、ごみサポ（以下「本アプリ」）の利用条件を定めるものです。本アプリをご利用いただく前に、本規約をよくお読みください。本アプリをダウンロードまたは使用することにより、本規約に同意したものとみなされます。
 
 第1条（サービスの概要）
 本アプリは、愛媛県内の市町村におけるゴミ収集スケジュールおよび分別情報を提供するアプリケーションです。
@@ -155,7 +155,7 @@ Terms of Service
 
 Last updated: July 1, 2026
 
-These Terms of Service ("Terms") govern your use of the Ehime Garbage Collection App ("the App"). Please read these Terms carefully before using the App. By downloading or using the App, you agree to be bound by these Terms.
+These Terms of Service ("Terms") govern your use of Gomi Sapo ("the App"). Please read these Terms carefully before using the App. By downloading or using the App, you agree to be bound by these Terms.
 
 Article 1 (Service Overview)
 The App provides garbage collection schedules and sorting information for municipalities in Ehime Prefecture, Japan.
