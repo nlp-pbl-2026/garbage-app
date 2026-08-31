@@ -4,7 +4,7 @@
 
 ## データの扱い
 
-- 正解ラベルにはリポジトリ内の松山市公式冊子由来`items.csv`を使用します。
+- 正解ラベルには利用条件を確認済みの`items.csv`を使用します。CSVはGitには含まれません。
 - ごみサクは出典確認にのみ使用し、サイトを自動取得・複製しません。
 - 生成データ、外部から手動で用意した原典、評価応答、レポートは`artifacts/`または`source/`へ置きます。
 - 上記2ディレクトリは`.gitignore`対象で、Gitへコミットしません。
@@ -14,6 +14,7 @@
 ## 1. データセット生成
 
 AWSへログインした状態で、`backend/`から実行します。
+先に`../data/regions/matsuyama/common/knowledge/items.csv`を配置してください。
 
 ```bash
 uv run python -m evaluation.build_dataset \
@@ -32,6 +33,7 @@ uv run python -m evaluation.build_dataset \
 ## 2. train評価と改善
 
 ```bash
+export EVAL_API_BASE_URL='https://<evaluation-api-endpoint>'
 uv run python -m evaluation.run_evaluation --split train
 ```
 

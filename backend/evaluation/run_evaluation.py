@@ -27,9 +27,6 @@ from evaluation.common import (
 BACKEND_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_DATASET_DIR = BACKEND_ROOT / "evaluation/artifacts/dataset"
 DEFAULT_RUNS_DIR = BACKEND_ROOT / "evaluation/artifacts/runs"
-DEFAULT_API_URL = (
-    "https://620bktqeq9.execute-api.ap-northeast-1.amazonaws.com"
-)
 
 
 def clarification_prompt(case: dict[str, Any], question: str) -> str:
@@ -348,13 +345,16 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--limit", type=int, default=0)
     parser.add_argument("--max-turns", type=int, default=2)
     parser.add_argument("--delay", type=float, default=0.25)
-    parser.add_argument("--api-url", default=os.getenv("EVAL_API_BASE_URL", DEFAULT_API_URL))
+    parser.add_argument("--api-url", default=os.getenv("EVAL_API_BASE_URL", ""))
     parser.add_argument(
         "--simulator-model-id",
         default=os.getenv("EVAL_SIMULATOR_MODEL_ID", DEFAULT_MODEL_ID),
     )
     parser.add_argument("--region", default=os.getenv("AWS_REGION", DEFAULT_REGION))
-    return parser.parse_args()
+    args = parser.parse_args()
+    if not args.api_url:
+        parser.error("--api-url または EVAL_API_BASE_URL を指定してください")
+    return args
 
 
 def main() -> None:
