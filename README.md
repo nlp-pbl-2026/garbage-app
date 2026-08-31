@@ -16,10 +16,12 @@
 
 Flutter SDKとChromeがあれば利用できます。AWS認証やローカルBackendの起動は不要です。
 
-ハッカソン審査用には、プロジェクトルートから次を実行してください。公開APIの
-ヘルスチェック、Flutter依存関係の取得、Chromeでの起動をまとめて実行します。
+ハッカソン審査用には、審査担当者から共有されたAPI URLを環境変数に設定し、
+プロジェクトルートから次を実行してください。ヘルスチェック、Flutter依存関係の
+取得、Chromeでの起動をまとめて実行します。
 
 ```bash
+export GARBAGE_API_BASE_URL='https://<shared-api-endpoint>'
 ./scripts/run-demo.sh
 ```
 
@@ -30,9 +32,10 @@ APIの疎通だけを確認する場合は`./scripts/run-demo.sh --check`を使�
 個別に起動する場合は、`frontend/` ディレクトリで次を実行してください。
 
 ```bash
+export GARBAGE_API_BASE_URL='https://<shared-api-endpoint>'
 flutter pub get
 flutter run -d chrome \
-  --dart-define=API_BASE_URL=https://620bktqeq9.execute-api.ap-northeast-1.amazonaws.com
+  --dart-define=API_BASE_URL="${GARBAGE_API_BASE_URL}"
 ```
 
 初期画面ではログインをスキップして利用できます。
@@ -68,6 +71,9 @@ AWS本番は`USE_BEDROCK_KNOWLEDGE_BASE=false`、`LEXICAL_SEARCH_ENABLED=false`�
 | `infra/` | TerraformとAWS構成 |
 | `scripts/` | AWSの構築・削除・デプロイスクリプト |
 | `docs/` | データ配置ガイド・実験レポートなどのドキュメント |
+
+自治体の分別資料から作成したCSVはGitに含めていません。バックエンドの再構築・再デプロイや
+精度評価を行う場合は、[`docs/data.md`](docs/data.md)に従って利用条件を確認済みのデータを配置してください。
 
 ## AWS環境の管理
 

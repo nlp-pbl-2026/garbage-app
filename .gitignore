@@ -5,12 +5,16 @@ __pycache__/
 .venv/
 backend/.venv/
 backend/search_logs.jsonl
+backend/garbage_app.db
 backend/dist/
 
 # Evaluation datasets and reports derived from external/public source data
 backend/evaluation/artifacts/
 backend/evaluation/source/
 infra/generated/
+
+# Municipality source data must be supplied separately under the documented paths
+data/regions/**/*.csv
 
 # Environment variables
 .env

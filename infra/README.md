@@ -4,34 +4,28 @@
 
 ## 現在の構成
 
-リージョンとアカウント:
+基本設定:
 
 | 項目 | 値 |
 | --- | --- |
-| AWSアカウント | `088066169748` |
 | リージョン | `ap-northeast-1`（東京） |
 | Terraform | 1.10以上 |
 | AWS Provider | `~> 6.60` |
-| 管理タグ | `Project=U-22`, `Application=garbage-guide`, `Environment=dev`, `ManagedBy=Terraform` |
+| 管理タグ | Terraform変数で指定 |
 
 作成済みリソース:
 
-| 種別 | 名前・ID | 用途 |
-| --- | --- | --- |
-| Bedrock Managed Knowledge Base | `garbage-guide-matsuyama-shimizu-dev` / `FMPYJSHELD` | 検索インデックスとRAG検索 |
-| Bedrock data source | `garbage-guide-dev-matsuyama-knowledge` / `BNBPIADIJD` | S3データの取り込み |
-| S3 | `garbage-guide-dev-088066169748-ap-northeast-1` | バージョン管理されたRAG原本 |
-| IAM role | `/service-role/U-22-BedrockKnowledgeBaseRole-GarbageGuideDev` | BedrockからS3を読むためのロール |
-| IAM policy | `AmazonBedrockS3PolicyForKnowledgeBase_U-22-BedrockKnowledgeBaseRole-GarbageGuideDev` | 対象S3プレフィックスの読み取り |
-| IAM policy | `AmazonBedrockCloudWatchPolicyForKnowledgeBase_U-22-BedrockKnowledgeBaseRole-GarbageGuideDev` | Knowledge Baseメトリクスの送信 |
-| Lambda | `garbage-guide-dev-api` | FastAPIのAIあいまい検索API。品目CSVも同梱し、Knowledge Baseの検索結果と行単位検索を統合 |
-| API Gateway HTTP API | `garbage-guide-dev-http-api` | Flutter向けHTTPSエンドポイント |
-| DynamoDB | `garbage-guide-dev-search-logs` | 検索・回答・確信度・処理時間の分析ログ |
-| CloudWatch Logs | `/aws/lambda/garbage-guide-dev-api` | Backend実行ログ（30日保持） |
+| 種別 | 用途 |
+| --- | --- |
+| Amazon Bedrock | Nova LiteとTitan Text Embeddings V2による言い換え・意味検索・分類 |
+| Amazon S3 / Bedrock Knowledge Base | 比較実験用のRAGデータと検索経路 |
+| AWS Lambda | FastAPIのAIあいまい検索API |
+| Amazon API Gateway | Flutter向けHTTPSエンドポイント |
+| Amazon DynamoDB | 検索・回答・確信度・処理時間の分析ログ |
+| Amazon CloudWatch Logs | Backend実行ログ（30日保持） |
 
-Backend API URLは `https://620bktqeq9.execute-api.ap-northeast-1.amazonaws.com` です。固定値へ依存せず、通常は `terraform output -raw backend_api_url` で取得してください。
-
-Knowledge Baseは `ACTIVE`、2026-08-24の取り込みジョブ `1Y7IZ7ZHOT` は `COMPLETE` です。
+Backend API URLとAWSリソースIDはGitに固定値を記録せず、
+`terraform output -raw backend_api_url`などのTerraform outputから取得してください。
 
 ## アーキテクチャ
 
@@ -83,18 +77,12 @@ S3は公開アクセスをすべて遮断し、バージョニングとSSE-S3（
 
 Terraform stateはGit管理しません。複数人で運用する場合は、別途ブートストラップしたS3 backendなどへstateを移行してください。
 
-## アカウント固有のIAM規則
+## IAM制約のある環境
 
-このアカウントでは `Permission-Boundary_20260704` というidentity policyによるガードレールがあります。TerraformはAWSコンソールのBedrock作成フローと同じ規則へ合わせています。
-
-- S3作成時は `Project=U-22` タグが必要
-- Bedrockロールは `/service-role/` と `U-22-BedrockKnowledgeBaseRole...` の命名を使用
-- ロール権限はinline policyではなくcustomer-managed policyを作成してattach
-- Bedrock用管理ポリシーは `/service-role/AmazonBedrock...PolicyForKnowledgeBase_U-22...` の命名を使用
-- Lambda実行ポリシーもアカウントの `iam:CreatePolicy` 制約に合わせ、同じBedrock service-role接頭辞で作成
-- 現在の `Nonomura` ユーザーには `iam:TagPolicy` がないため、IAM管理ポリシーだけタグなしで作成
-
-現在のユーザーは管理ポリシーを作成できますが、`iam:GetPolicyVersion` と `iam:ListPolicyVersions` を持っていません。初回構築は作成済みstateを検証したうえで復旧しましたが、通常の `terraform plan/apply/destroy` にはポリシー内容とversion一覧の読み戻しが必要です。日常運用前に [`operator-policy.example.json`](operator-policy.example.json) のスコープで両権限を付与してください。
+組織のガードレールでIAMロールの命名、タグ、ポリシー作成が制限されている場合は、
+Terraform変数とリソース名をその環境に合わせてください。通常の`terraform plan/apply/destroy`には、
+対象リソースの操作権限に加えて`iam:GetPolicyVersion`と`iam:ListPolicyVersions`が必要です。
+必要権限の例は[`operator-policy.example.json`](operator-policy.example.json)を参照してください。
 
 ## ルートから構築・削除
 
@@ -107,7 +95,9 @@ Terraform stateはGit管理しません。複数人で運用する場合は、�
 
 `scripts/aws-up.sh` は権限が揃っている場合、Lambda packageを作成し、Terraformで全AWSリソースを作成・更新して、Knowledge Baseの取り込み完了まで待ちます。
 
-`iam:GetPolicyVersion` または `iam:ListPolicyVersions` が不足していても、既存の `garbage-guide-dev-api` を確認できる場合は制限モードへ自動的に切り替わります。この場合は既存Lambdaのコードだけを `UpdateFunctionCode` で更新し、Terraform、Knowledge Base、S3は変更しません。したがって、権限不足の状態でこのスクリプトを繰り返してもAWSリソースは増えません。新規構築、構成変更、RAGデータ更新には完全な権限が必要です。
+`iam:GetPolicyVersion`または`iam:ListPolicyVersions`が不足していても、環境変数で指定した既存Lambdaを確認できる場合は、
+制限モードでそのコードだけを`UpdateFunctionCode`で更新します。Terraform、Knowledge Base、S3は変更しません。
+新規構築、構成変更、RAGデータ更新には完全な権限が必要です。
 
 制限モードでは、コード更新前に既存Lambdaの`USE_BEDROCK_KNOWLEDGE_BASE=false`と`LEXICAL_SEARCH_ENABLED=false`を確認します。公開環境はTitan Embedding単体に固定しているため、設定が異なる場合は意図しない検索方式へ切り替えず、安全のため更新を停止します。
 
@@ -243,7 +233,8 @@ Flutterを終了してください。Lambdaは常時起動ではないため停�
 
 費用を止めるにはAWSリソースを削除します。再開時はTerraform applyと取り込みをやり直せます。
 
-現在の `Nonomura` ユーザーのまま実行する場合、先に管理者から前述の `iam:GetPolicyVersion` と `iam:ListPolicyVersions` を付与してもらってください。付与されるまではTerraformが管理ポリシーをrefreshできないため、通常のdestroyを安全に完遂できません。
+Terraform実行者に前述の`iam:GetPolicyVersion`と`iam:ListPolicyVersions`がない場合、管理ポリシーをrefreshできず、
+通常のdestroyを安全に完遂できません。実行前に管理者へ権限付与を依頼してください。
 
 削除前に必ずplanを確認してください。次の変数は、バージョニング済みS3内の全object versionも削除対象にします。
 

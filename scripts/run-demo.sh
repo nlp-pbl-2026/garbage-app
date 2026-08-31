@@ -2,7 +2,7 @@
 set -euo pipefail
 
 PROJECT_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
-GARBAGE_API_BASE_URL="${GARBAGE_API_BASE_URL:-https://620bktqeq9.execute-api.ap-northeast-1.amazonaws.com}"
+GARBAGE_API_BASE_URL="${GARBAGE_API_BASE_URL:-}"
 GARBAGE_FLUTTER_DEVICE="${GARBAGE_FLUTTER_DEVICE:-chrome}"
 GARBAGE_CHECK_ONLY=false
 
@@ -10,6 +10,12 @@ if [[ "${1:-}" == "--check" ]]; then
   GARBAGE_CHECK_ONLY=true
 elif [[ -n "${1:-}" ]]; then
   echo "使い方: $0 [--check]" >&2
+  exit 2
+fi
+
+if [[ -z "${GARBAGE_API_BASE_URL}" ]]; then
+  echo "ERROR: GARBAGE_API_BASE_URL を設定してください。" >&2
+  echo "例: export GARBAGE_API_BASE_URL=https://example.execute-api.ap-northeast-1.amazonaws.com" >&2
   exit 2
 fi
 

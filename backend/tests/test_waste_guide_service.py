@@ -78,7 +78,7 @@ def test_managed_knowledge_base_uses_managed_search_configuration(monkeypatch):
     agent_runtime = FakeAgentRuntime()
     monkeypatch.setattr(
         "app.services.waste_guide_service.config.BEDROCK_KNOWLEDGE_BASE_ID",
-        "FMPYJSHELD",
+        "TESTKB1234",
     )
     monkeypatch.setattr(
         "app.services.waste_guide_service.config.USE_BEDROCK_KNOWLEDGE_BASE",
