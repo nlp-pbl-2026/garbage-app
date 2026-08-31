@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../constants/colors.dart';
 import '../constants/strings.dart';
+import '../providers/navigation_provider.dart';
 import '../providers/region_provider.dart';
-import '../widgets/ai_chat_widget.dart';
 import 'bulky_waste_screen.dart';
 import 'calendar_screen.dart';
-import 'image_input_screen.dart';
 import 'region_selection_screen.dart';
 import 'search_screen.dart';
 import 'settings_screen.dart';
@@ -24,46 +22,39 @@ class MainScreen extends ConsumerStatefulWidget {
 }
 
 class _MainScreenState extends ConsumerState<MainScreen> {
-  /// 現在選択中のタブインデックス
-  int _currentIndex = 1;
-
   /// 各タブに対応する画面ウィジェット
   final List<Widget> _screens = const [
     SearchScreen(),
     CalendarScreen(),
-    ImageInputScreen(),
     SettingsScreen(),
   ];
 
   @override
   Widget build(BuildContext context) {
+    final colors = Theme.of(context).colorScheme;
+    // タブインデックスは selectedTabProvider で管理し、通知タップ等の
+    // 外部要因からもカレンダータブへ切り替えられるようにする。
+    final currentIndex = ref.watch(selectedTabProvider);
     return Scaffold(
-      body: Stack(
-        children: [
-          IndexedStack(
-            index: _currentIndex,
-            children: _screens,
-          ),
-          const AiChatWidget(),
-        ],
+      body: IndexedStack(
+        index: currentIndex,
+        children: _screens,
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: _onBulkyWasteTapped,
         icon: const Icon(Icons.delete_outline),
         label: const Text('粗大ごみ'),
-        backgroundColor: AppColors.primary,
-        foregroundColor: Colors.white,
+        backgroundColor: colors.primary,
+        foregroundColor: colors.onPrimary,
       ),
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
+        currentIndex: currentIndex,
         onTap: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
+          ref.read(selectedTabProvider.notifier).state = index;
         },
-        selectedItemColor: AppColors.primary,
-        unselectedItemColor: Colors.grey,
-        backgroundColor: Colors.white,
+        selectedItemColor: colors.primary,
+        unselectedItemColor: colors.onSurfaceVariant,
+        backgroundColor: colors.surface,
         type: BottomNavigationBarType.fixed,
         items: [
           BottomNavigationBarItem(
@@ -75,11 +66,7 @@ class _MainScreenState extends ConsumerState<MainScreen> {
             label: AppStrings.tabCalendar,
           ),
           BottomNavigationBarItem(
-            icon: _buildIcon(Icons.camera_alt, 2),
-            label: AppStrings.tabImageInput,
-          ),
-          BottomNavigationBarItem(
-            icon: _buildIcon(Icons.settings, 3),
+            icon: _buildIcon(Icons.settings, 2),
             label: AppStrings.tabSettings,
           ),
         ],
@@ -117,23 +104,23 @@ class _MainScreenState extends ConsumerState<MainScreen> {
 
   /// アクティブタブは緑背景色のアイコンを構築する
   Widget _buildIcon(IconData iconData, int index) {
-    final isActive = _currentIndex == index;
+    final isActive = ref.watch(selectedTabProvider) == index;
     if (isActive) {
       return Container(
         padding: const EdgeInsets.all(8),
         decoration: BoxDecoration(
-          color: AppColors.primary,
+          color: Theme.of(context).colorScheme.primary,
           borderRadius: BorderRadius.circular(12),
         ),
         child: Icon(
           iconData,
-          color: Colors.white,
+          color: Theme.of(context).colorScheme.onPrimary,
         ),
       );
     }
     return Icon(
       iconData,
-      color: Colors.grey,
+      color: Theme.of(context).colorScheme.onSurfaceVariant,
     );
   }
 }

@@ -4,6 +4,13 @@ __pycache__/
 .pytest_cache/
 .venv/
 backend/.venv/
+backend/search_logs.jsonl
+backend/dist/
+
+# Evaluation datasets and reports derived from external/public source data
+backend/evaluation/artifacts/
+backend/evaluation/source/
+infra/generated/
 
 # Environment variables
 .env
@@ -28,3 +35,14 @@ frontend/windows/flutter/ephemeral/
 # OS
 .DS_Store
 Thumbs.db
+
+# Terraform
+**/.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+crash.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json

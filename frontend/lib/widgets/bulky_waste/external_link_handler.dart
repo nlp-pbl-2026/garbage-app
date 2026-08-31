@@ -88,7 +88,7 @@ class ExternalLinkHandler extends StatelessWidget {
       final uri = Uri.parse(url);
       final launched = await launchUrl(
         uri,
-        mode: LaunchMode.externalApplication,
+        mode: LaunchMode.platformDefault,
       );
       if (!launched) {
         if (context.mounted) {

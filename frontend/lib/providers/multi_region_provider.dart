@@ -25,8 +25,7 @@ final multiRegionProvider =
 );
 
 /// 複数地区管理のStateNotifier
-class MultiRegionNotifier
-    extends StateNotifier<AsyncValue<List<SavedRegion>>> {
+class MultiRegionNotifier extends StateNotifier<AsyncValue<List<SavedRegion>>> {
   final Ref _ref;
   final MultiRegionService _service;
   final NotificationService _notificationService;
@@ -115,7 +114,7 @@ class MultiRegionNotifier
     // regionSettingProviderを更新
     await _ref.read(regionSettingProvider.notifier).saveSetting(setting);
 
-    // 通知スケジュールを再計算
-    await _notificationService.refreshNotifications();
+    // 通知側にも新しいDistrict_IDを反映し、通知スケジュールを再計算する（要件 1.6, 3.7）
+    await _notificationService.updateDistrict(setting.districtId);
   }
 }

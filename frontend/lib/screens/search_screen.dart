@@ -1,31 +1,16 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../constants/strings.dart';
-import '../models/garbage_item.dart';
-import '../providers/search_provider.dart';
-import '../services/search_history_service.dart';
-import '../widgets/popular_items_section.dart';
+import '../models/region.dart';
+import '../models/waste_guide_result.dart';
+import '../providers/region_provider.dart';
+import '../services/waste_guide_service.dart';
 import '../widgets/region_header.dart';
-import '../widgets/search_result_tile.dart';
-import 'item_detail_screen.dart';
+import '../widgets/search_pipeline_view.dart';
 import 'region_selection_screen.dart';
+import 'search_analytics_screen.dart';
+import 'search_system_guide_screen.dart';
 
-/// ゴミ品目検索画面
-///
-/// 検索テキストフィールド（最大50文字）でゴミ品目を検索し、
-/// 結果をリスト形式で表示する。
-/// 2文字未満の入力では検索を実行せず、結果エリアを空で維持する。
-///
-/// 要件2.1: 最大50文字まで入力可能な検索テキストフィールド
-/// 要件2.2: 2文字以上のキーワードで部分一致検索（最大50件）
-/// 要件2.3: 複数品目該当時のメッセージ表示
-/// 要件2.4: 各品目にカテゴリ色タグ表示
-/// 要件2.5: 複数カテゴリ該当時の補足情報表示
-/// 要件2.6: 検索結果なし時のメッセージ表示
-/// 要件2.7: 2文字未満時は検索非実行
 class SearchScreen extends ConsumerStatefulWidget {
   const SearchScreen({super.key});
 
@@ -34,453 +19,564 @@ class SearchScreen extends ConsumerStatefulWidget {
 }
 
 class _SearchScreenState extends ConsumerState<SearchScreen> {
-  /// 検索テキストフィールドのコントローラー
-  late final TextEditingController _searchController;
-  final SearchHistoryService _historyService = SearchHistoryService();
-  List<String> _searchHistory = [];
+  final TextEditingController _queryController = TextEditingController();
+  final FocusNode _queryFocus = FocusNode();
+  final WasteGuideService _service = WasteGuideService();
 
-  /// 検索履歴保存用デバウンスタイマー
-  Timer? _historyDebounceTimer;
-
-  @override
-  void initState() {
-    super.initState();
-    _searchController = TextEditingController();
-    _loadHistory();
-  }
-
-  Future<void> _loadHistory() async {
-    final history = await _historyService.getHistory();
-    if (mounted) {
-      setState(() {
-        _searchHistory = history;
-      });
-    }
-  }
+  WasteGuideResult? _result;
+  String? _error;
+  String? _originalQuery;
+  String? _pendingQuestion;
+  List<Map<String, String>> _clarifications = [];
+  bool _isLoading = false;
+  SearchPipelineStage _pipelineStage = SearchPipelineStage.idle;
 
   @override
   void dispose() {
-    _historyDebounceTimer?.cancel();
-    _searchController.dispose();
+    _queryController.dispose();
+    _queryFocus.dispose();
     super.dispose();
   }
 
-  /// 検索テキストフィールドの変更を処理する
-  void _onSearchChanged(String value) {
-    // 50文字制限を適用
-    final trimmedValue = value.length > 50 ? value.substring(0, 50) : value;
-    ref.read(searchQueryProvider.notifier).state = trimmedValue;
+  Future<void> _submit() async {
+    final input = _queryController.text.trim();
+    if (input.isEmpty || _isLoading) return;
 
-    // デバウンス: 入力停止から1秒後に履歴保存（入力途中の文字列は保存しない）
-    _historyDebounceTimer?.cancel();
-    if (trimmedValue.trim().length >= 2) {
-      _historyDebounceTimer = Timer(const Duration(seconds: 1), () {
-        _historyService.addHistory(trimmedValue.trim()).then((_) => _loadHistory());
-      });
+    final RegionSetting? region = ref.read(regionSettingProvider).valueOrNull;
+    if (region == null) {
+      setState(() => _error = '先に地域を設定してください。');
+      return;
     }
 
-    // クリアボタンの表示/非表示を更新
-    setState(() {});
+    final isClarification = _pendingQuestion != null && _originalQuery != null;
+    final query = isClarification ? _originalQuery! : input;
+    final clarifications = isClarification
+        ? [
+            ..._clarifications,
+            {'question': _pendingQuestion!, 'answer': input},
+          ]
+        : <Map<String, String>>[];
+
+    setState(() {
+      _isLoading = true;
+      _error = null;
+      if (!isClarification) {
+        _originalQuery = input;
+        _result = null;
+        _clarifications = [];
+      }
+    });
+
+    try {
+      final result = await _service.classify(
+        query: query,
+        region: region,
+        clarifications: clarifications,
+        onStageChanged: (stage) {
+          if (mounted) setState(() => _pipelineStage = stage);
+        },
+      );
+      if (!mounted) return;
+      setState(() {
+        _result = result;
+        _pendingQuestion =
+            result.needsClarification ? result.followUpQuestion : null;
+        _clarifications = clarifications;
+        _isLoading = false;
+        _pipelineStage = SearchPipelineStage.completed;
+        _queryController.clear();
+      });
+      if (result.needsClarification) {
+        _queryFocus.requestFocus();
+      }
+    } on WasteGuideException catch (error) {
+      if (!mounted) return;
+      setState(() {
+        _error = error.message;
+        _isLoading = false;
+        _pipelineStage = SearchPipelineStage.idle;
+      });
+    }
   }
 
-  /// 検索テキストフィールドをクリアする
-  void _onClearSearch() {
-    _searchController.clear();
-    ref.read(searchQueryProvider.notifier).state = '';
-    // クリアボタンの表示/非表示を更新
-    setState(() {});
-  }
-
-  /// 品目タップ時の処理（品目詳細画面へ遷移）
-  void _onItemTap(GarbageItem item) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (_) => ItemDetailScreen(item: item),
-      ),
-    );
+  void _startNewSearch([String? suggestion]) {
+    setState(() {
+      _result = null;
+      _error = null;
+      _originalQuery = null;
+      _pendingQuestion = null;
+      _clarifications = [];
+      _pipelineStage = SearchPipelineStage.idle;
+      _queryController.text = suggestion ?? '';
+    });
+    _queryFocus.requestFocus();
   }
 
   @override
   Widget build(BuildContext context) {
-    final query = ref.watch(searchQueryProvider);
-    final searchResultsAsync = ref.watch(searchResultsProvider);
-
+    final colors = Theme.of(context).colorScheme;
     return Scaffold(
+      backgroundColor: colors.surface,
       appBar: RegionHeader(
         onEditPressed: () {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (_) => RegionSelectionScreen(
-                onRegionSelected: () {
-                  Navigator.of(context).pop();
-                },
-              ),
+              builder: (_) => const RegionSelectionScreen(),
             ),
           );
         },
       ),
-      body: Column(
+      body: SafeArea(
+        child: Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 760),
+            child: ListView(
+              padding: const EdgeInsets.fromLTRB(20, 24, 20, 120),
+              children: [
+                if (!_isLoading &&
+                    _error == null &&
+                    _result?.needsClarification == true) ...[
+                  _buildClarificationCard(_result!),
+                  const SizedBox(height: 10),
+                ],
+                _buildSearchCard(),
+                const SizedBox(height: 12),
+                _buildPipelineCard(),
+                const SizedBox(height: 12),
+                if (_error != null) _buildErrorCard(),
+                if (!_isLoading &&
+                    _error == null &&
+                    _result != null &&
+                    !_result!.needsClarification)
+                  _buildAnswerCard(_result!),
+                if (!_isLoading && _result == null && _error == null)
+                  _buildExamples(),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildSearchCard() {
+    final isClarification = _pendingQuestion != null;
+    final colors = Theme.of(context).colorScheme;
+    return _panel(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // 検索バー
-          _buildSearchBar(),
-          // 検索結果エリア
-          Expanded(
-            child: _buildSearchResultsArea(query, searchResultsAsync),
-          ),
-        ],
-      ),
-    );
-  }
-
-  /// 角丸テキストフィールドの検索バーを構築する
-  Widget _buildSearchBar() {
-    return Padding(
-      padding: const EdgeInsets.all(16),
-      child: TextField(
-        controller: _searchController,
-        maxLength: 50,
-        onChanged: _onSearchChanged,
-        decoration: InputDecoration(
-          hintText: AppStrings.searchHint,
-          prefixIcon: const Icon(Icons.search, color: Colors.grey),
-          suffixIcon: _searchController.text.isNotEmpty
-              ? IconButton(
-                  icon: const Icon(Icons.clear, color: Colors.grey),
-                  onPressed: _onClearSearch,
-                )
-              : null,
-          filled: true,
-          fillColor: Colors.grey[100],
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(24),
-            borderSide: BorderSide.none,
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(24),
-            borderSide: BorderSide.none,
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(24),
-            borderSide: BorderSide.none,
-          ),
-          counterText: '', // 文字数カウンターを非表示
-          contentPadding:
-              const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-        ),
-      ),
-    );
-  }
-
-  /// 検索結果エリアを構築する
-  Widget _buildSearchResultsArea(
-    String query,
-    AsyncValue<List<GarbageItem>> searchResultsAsync,
-  ) {
-    // 2文字未満の場合は空表示（よく検索される品目スペースを確保）
-    if (query.length < 2) {
-      return _buildEmptyState();
-    }
-
-    return searchResultsAsync.when(
-      data: (results) {
-        if (results.isEmpty) {
-          // 検索結果なし
-          return _buildNoResultsMessage();
-        }
-        // 検索結果あり
-        return _buildResultsList(results);
-      },
-      loading: () => const Center(
-        child: CircularProgressIndicator(),
-      ),
-      error: (error, stack) => Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              AppStrings.dataLoadError,
-              style: TextStyle(
-                fontSize: 14,
-                color: Colors.grey[600],
-              ),
-            ),
-            const SizedBox(height: 8),
-            ElevatedButton(
-              onPressed: () => ref.refresh(searchResultsProvider),
-              child: const Text(AppStrings.retry),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  /// 検索結果リストを構築する
-  Widget _buildResultsList(List<GarbageItem> results) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        // 複数品目該当時のメッセージ
-        if (results.length > 1)
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-            child: Text(
-              AppStrings.multipleItemsFound,
-              style: TextStyle(
-                fontSize: 14,
-                color: Colors.grey[700],
-              ),
-            ),
-          ),
-        // 検索結果リスト + よく検索されるもの
-        Expanded(
-          child: ListView(
-            padding: const EdgeInsets.only(bottom: 16),
+          Row(
             children: [
-              ...results.map((item) => SearchResultTile(
-                    item: item,
-                    onTap: () => _onItemTap(item),
-                  )),
-              const SizedBox(height: 24),
-              // よく検索されるものを常に表示
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: PopularItemsSection(
-                  onItemSelected: (name) {
-                    _searchController.text = name;
-                    setState(() {});
-                  },
+              Icon(Icons.auto_awesome_rounded, color: colors.primary, size: 18),
+              const SizedBox(width: 7),
+              Expanded(
+                child: Text(
+                  isClarification ? '回答を入力' : 'AIあいまい検索',
+                  style: TextStyle(
+                    color: colors.onSurface,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w800,
+                  ),
+                ),
+              ),
+              IconButton(
+                tooltip: 'あいまい検索の仕組み',
+                visualDensity: VisualDensity.compact,
+                onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => const SearchSystemGuideScreen(),
+                  ),
+                ),
+                icon: const Icon(Icons.help_outline_rounded, size: 21),
+              ),
+              IconButton(
+                tooltip: '検索ログを分析',
+                visualDensity: VisualDensity.compact,
+                onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => const SearchAnalyticsScreen(),
+                  ),
+                ),
+                icon: const Icon(Icons.analytics_outlined, size: 21),
+              ),
+            ],
+          ),
+          const SizedBox(height: 8),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Expanded(
+                child: TextField(
+                  controller: _queryController,
+                  focusNode: _queryFocus,
+                  minLines: 1,
+                  maxLines: 3,
+                  maxLength: 500,
+                  textInputAction: TextInputAction.search,
+                  onSubmitted: (_) => _submit(),
+                  decoration: InputDecoration(
+                    hintText: isClarification
+                        ? '例：プラスチック製で、汚れています'
+                        : '例：汚れた食品トレーはどう捨てる？',
+                    counterText: '',
+                    prefixIcon: Icon(
+                      isClarification
+                          ? Icons.edit_note_rounded
+                          : Icons.search_rounded,
+                      color: colors.primary,
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(width: 10),
+              SizedBox(
+                height: 54,
+                child: FilledButton(
+                  onPressed: _isLoading ? null : _submit,
+                  style: FilledButton.styleFrom(
+                    backgroundColor: colors.primary,
+                    foregroundColor: colors.onPrimary,
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                  ),
+                  child: Text(isClarification ? '回答する' : '調べる'),
                 ),
               ),
             ],
           ),
-        ),
-      ],
-    );
-  }
-
-  /// 検索結果なしメッセージを構築する
-  Widget _buildNoResultsMessage() {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(
-            Icons.search_off,
-            size: 48,
-            color: Colors.grey[400],
-          ),
-          const SizedBox(height: 12),
-          Text(
-            AppStrings.noSearchResults,
-            style: TextStyle(
-              fontSize: 14,
-              color: Colors.grey[600],
-            ),
-          ),
         ],
       ),
     );
   }
 
-  /// 空の状態（検索前）を構築する
-  /// 検索ヒント、カテゴリクイック検索、検索履歴、よく検索される品目を表示する
-  Widget _buildEmptyState() {
-    return SingleChildScrollView(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
+  Widget _buildPipelineCard() {
+    final colors = Theme.of(context).colorScheme;
+    final compact = MediaQuery.sizeOf(context).width < 620;
+    final message = switch (_pipelineStage) {
+      SearchPipelineStage.idle => '検索すると、4つの処理が順番に動きます',
+      SearchPipelineStage.rewriting => '言い換えAIが質問の意味を整理しています',
+      SearchPipelineStage.retrieving => '清水地区の資料から根拠を探しています',
+      SearchPipelineStage.classifying => '根拠から分別を判定し、収集日を照合しています',
+      SearchPipelineStage.completed => 'すべての処理が完了しました',
+    };
+    return _panel(
+      padding: EdgeInsets.all(compact ? 12 : 20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(height: 16),
-          // 検索ヒントセクション
-          _buildSearchHint(),
-          const SizedBox(height: 24),
-          // カテゴリ別クイック検索
-          _buildCategoryQuickSearch(),
-          const SizedBox(height: 24),
-          // 検索履歴セクション
-          if (_searchHistory.isNotEmpty) _buildHistorySection(),
-          // よく検索される品目セクション
-          PopularItemsSection(
-            onItemSelected: (name) {
-              _searchController.text = name;
-              setState(() {});
-            },
+          Row(
+            children: [
+              if (_isLoading)
+                const SizedBox(
+                  width: 16,
+                  height: 16,
+                  child: CircularProgressIndicator(strokeWidth: 2),
+                )
+              else
+                Icon(Icons.hub_outlined, size: 18, color: colors.primary),
+              const SizedBox(width: 9),
+              Expanded(
+                child: Text(
+                  message,
+                  style: TextStyle(
+                    color: colors.onSurface,
+                    fontSize: 13,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          SizedBox(height: compact ? 10 : 16),
+          SearchPipelineView(stage: _pipelineStage),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildErrorCard() {
+    final colors = Theme.of(context).colorScheme;
+    return _panel(
+      color: colors.errorContainer,
+      borderColor: colors.error,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Icon(Icons.error_outline, color: colors.onErrorContainer),
+          const SizedBox(width: 12),
+          Expanded(child: Text(_error!)),
+          TextButton(onPressed: _submit, child: const Text('再試行')),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildClarificationCard(WasteGuideResult result) {
+    final colors = Theme.of(context).colorScheme;
+    return _panel(
+      color: colors.tertiaryContainer,
+      borderColor: colors.tertiary,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Icon(Icons.help_outline_rounded,
+                  color: colors.onTertiaryContainer),
+              const SizedBox(width: 10),
+              Text(
+                'もう少しだけ教えてください',
+                style: TextStyle(
+                  color: colors.onTertiaryContainer,
+                  fontSize: 17,
+                  fontWeight: FontWeight.w800,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 14),
+          Text(
+            result.followUpQuestion ?? '品物の状態をもう少し詳しく教えてください。',
+            style: TextStyle(
+                fontSize: 16, height: 1.6, color: colors.onTertiaryContainer),
+          ),
+          const SizedBox(height: 12),
+          TextButton.icon(
+            onPressed: _startNewSearch,
+            icon: const Icon(Icons.refresh_rounded),
+            label: const Text('別のものを調べる'),
           ),
         ],
       ),
     );
   }
 
-  /// 検索ヒントカードを構築する
-  Widget _buildSearchHint() {
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [Colors.green.shade50, Colors.teal.shade50],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Row(
-        children: [
-          Icon(Icons.lightbulb_outline, color: Colors.green.shade700, size: 28),
-          const SizedBox(width: 12),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  '捨て方がわからないものを検索',
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.green.shade900,
+  Widget _buildAnswerCard(WasteGuideResult result) {
+    final colors = Theme.of(context).colorScheme;
+    final classification = result.classification;
+    final unable = result.unableToDetermine;
+    return Column(
+      children: [
+        _panel(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  Container(
+                    width: 44,
+                    height: 44,
+                    decoration: BoxDecoration(
+                      color: unable
+                          ? colors.tertiaryContainer
+                          : colors.primaryContainer,
+                      shape: BoxShape.circle,
+                    ),
+                    child: Icon(
+                      unable ? Icons.info_outline_rounded : Icons.check_rounded,
+                      color: unable
+                          ? colors.onTertiaryContainer
+                          : colors.onPrimaryContainer,
+                    ),
                   ),
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  '品目名を入力すると分別方法がわかります',
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: Colors.green.shade700,
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Text(
+                      unable ? '今回は確定できませんでした' : '分別結果',
+                      style: TextStyle(
+                        color: colors.onSurface,
+                        fontSize: 20,
+                        fontWeight: FontWeight.w800,
+                      ),
+                    ),
                   ),
+                  if (classification != null)
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 12,
+                        vertical: 7,
+                      ),
+                      decoration: BoxDecoration(
+                        color: colors.primary,
+                        borderRadius: BorderRadius.circular(99),
+                      ),
+                      child: Text(
+                        classification.categoryName,
+                        style: TextStyle(
+                          color: colors.onPrimary,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ),
+                ],
+              ),
+              const SizedBox(height: 18),
+              Text(
+                result.answer ?? '',
+                style: TextStyle(
+                    fontSize: 16, height: 1.75, color: colors.onSurface),
+              ),
+              if (classification != null) ...[
+                const SizedBox(height: 14),
+                Row(children: [
+                  Icon(Icons.psychology_outlined,
+                      size: 18, color: colors.onSurfaceVariant),
+                  const SizedBox(width: 7),
+                  Text(
+                    '判定の確信度 ${(classification.confidence * 100).round()}%',
+                    style: TextStyle(
+                        color: colors.onSurfaceVariant,
+                        fontWeight: FontWeight.w700),
+                  ),
+                ]),
+              ],
+              if (result.rewrittenQuery.isNotEmpty &&
+                  result.rewrittenQuery != _originalQuery) ...[
+                const SizedBox(height: 10),
+                Text(
+                  '検索時の言い換え: ${result.rewrittenQuery}',
+                  style:
+                      TextStyle(fontSize: 12, color: colors.onSurfaceVariant),
                 ),
               ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  /// カテゴリ別クイック検索を構築する
-  Widget _buildCategoryQuickSearch() {
-    final categories = [
-      ('可燃ごみ', Icons.local_fire_department, Colors.pink.shade400),
-      ('資源ごみ', Icons.recycling, Colors.green.shade600),
-      ('プラスチック', Icons.shopping_bag_outlined, Colors.orange.shade600),
-      ('ペットボトル', Icons.water_drop_outlined, Colors.blue.shade600),
-      ('危険ごみ', Icons.warning_amber, Colors.red.shade600),
-    ];
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Text(
-          'カテゴリから探す',
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
-            color: Colors.black87,
-          ),
-        ),
-        const SizedBox(height: 12),
-        SizedBox(
-          height: 80,
-          child: ListView.separated(
-            scrollDirection: Axis.horizontal,
-            itemCount: categories.length,
-            separatorBuilder: (_, __) => const SizedBox(width: 12),
-            itemBuilder: (context, index) {
-              final (label, icon, color) = categories[index];
-              return GestureDetector(
-                onTap: () {
-                  _searchController.text = label;
-                  _onSearchChanged(label);
-                },
-                child: Container(
-                  width: 80,
+              if (result.nextCollection != null) ...[
+                const SizedBox(height: 18),
+                Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
-                    color: color.withOpacity(0.1),
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: color.withOpacity(0.3)),
+                    color: colors.primaryContainer,
+                    borderRadius: BorderRadius.circular(16),
                   ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                  child: Row(
                     children: [
-                      Icon(icon, color: color, size: 28),
-                      const SizedBox(height: 4),
-                      Text(
-                        label,
-                        style: TextStyle(
-                          fontSize: 10,
-                          fontWeight: FontWeight.w600,
-                          color: color,
+                      Icon(Icons.event_available_rounded,
+                          color: colors.onPrimaryContainer),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              '次回の収集日',
+                              style: TextStyle(
+                                color: colors.onPrimaryContainer,
+                                fontSize: 12,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            const SizedBox(height: 3),
+                            Text(
+                              result.nextCollection!.displayDate,
+                              style: TextStyle(
+                                color: colors.onPrimaryContainer,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w800,
+                              ),
+                            ),
+                          ],
                         ),
-                        textAlign: TextAlign.center,
                       ),
                     ],
                   ),
                 ),
-              );
-            },
+              ],
+              if (result.sources.isNotEmpty) ...[
+                const SizedBox(height: 10),
+                ExpansionTile(
+                  tilePadding: EdgeInsets.zero,
+                  title: const Text(
+                    '確認に使った情報',
+                    style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
+                  ),
+                  children: result.sources
+                      .map(
+                        (source) => ListTile(
+                          dense: true,
+                          contentPadding: EdgeInsets.zero,
+                          leading:
+                              const Icon(Icons.description_outlined, size: 19),
+                          title: Text(source.title ?? '松山市ごみ分別資料'),
+                          subtitle: source.snippet == null
+                              ? null
+                              : Text(
+                                  source.snippet!,
+                                  maxLines: 2,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                        ),
+                      )
+                      .toList(),
+                ),
+              ],
+            ],
           ),
+        ),
+        const SizedBox(height: 12),
+        OutlinedButton.icon(
+          onPressed: _startNewSearch,
+          icon: const Icon(Icons.add_rounded),
+          label: const Text('別のものを調べる'),
         ),
       ],
     );
   }
 
-  /// 検索履歴セクションを構築する
-  Widget _buildHistorySection() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const Text(
-              '検索履歴',
-              style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.bold,
-                color: Colors.black87,
-              ),
-            ),
-            TextButton(
-              onPressed: () async {
-                await _historyService.clearHistory();
-                _loadHistory();
-              },
-              child: Text(
-                'すべて削除',
-                style: TextStyle(fontSize: 12, color: Colors.grey[600]),
-              ),
-            ),
-          ],
-        ),
-        Wrap(
-          spacing: 8,
-          runSpacing: 4,
-          children: _searchHistory.take(10).map((keyword) {
-            return GestureDetector(
-              onTap: () {
-                _searchController.text = keyword;
-                _onSearchChanged(keyword);
-              },
-              child: Chip(
-                label: Text(keyword, style: const TextStyle(fontSize: 13)),
-                deleteIcon: const Icon(Icons.close, size: 16),
-                onDeleted: () async {
-                  await _historyService.removeHistory(keyword);
-                  _loadHistory();
-                },
-                backgroundColor: Colors.grey[100],
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-              ),
-            );
-          }).toList(),
-        ),
-        const SizedBox(height: 16),
-      ],
+  Widget _buildExamples() {
+    final colors = Theme.of(context).colorScheme;
+    const examples = ['お弁当の透明なフタ', '雨の日に使う壊れた長いやつ', '中身を使い切った銀色の缶'];
+    return Padding(
+      padding: const EdgeInsets.only(top: 6),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            '入力例',
+            style:
+                TextStyle(color: colors.onSurface, fontWeight: FontWeight.w700),
+          ),
+          const SizedBox(height: 10),
+          Wrap(
+            spacing: 8,
+            runSpacing: 8,
+            children: examples
+                .map(
+                  (example) => ActionChip(
+                    avatar: const Icon(Icons.north_west_rounded, size: 16),
+                    label: Text(example),
+                    onPressed: () => _startNewSearch(example),
+                  ),
+                )
+                .toList(),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _panel({
+    required Widget child,
+    Color? color,
+    Color? borderColor,
+    EdgeInsetsGeometry padding = const EdgeInsets.all(20),
+  }) {
+    final colors = Theme.of(context).colorScheme;
+    return Container(
+      width: double.infinity,
+      padding: padding,
+      decoration: BoxDecoration(
+        color: color ?? colors.surfaceContainerLow,
+        borderRadius: BorderRadius.circular(22),
+        border: Border.all(color: borderColor ?? colors.outlineVariant),
+      ),
+      child: child,
     );
   }
 }

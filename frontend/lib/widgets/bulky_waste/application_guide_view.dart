@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../models/bulky_waste.dart';
+import 'external_link_handler.dart';
 
 /// 粗大ごみ申し込み手順ガイド表示ウィジェット
 ///
@@ -187,9 +188,6 @@ class _NotesBox extends StatelessWidget {
 }
 
 /// 外部申し込み窓口へのリンクセクション
-///
-/// ExternalLinkHandler（タスク8.1）が実装されるまでの
-/// プレースホルダーとして申し込み方法情報を表示する。
 class _ExternalLinkSection extends StatelessWidget {
   final MunicipalityConfig config;
 
@@ -225,91 +223,11 @@ class _ExternalLinkSection extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 12),
-            // 申し込み方法に応じたボタン表示
-            if (config.applicationMethod == ApplicationMethod.webForm ||
-                config.applicationMethod == ApplicationMethod.both) ...[
-              _LinkButton(
-                icon: Icons.language,
-                label: 'Webフォームで申し込む',
-                subtitle: config.webFormUrl,
-                onPressed: () {
-                  // ExternalLinkHandler実装後に置き換え
-                },
-              ),
-            ],
-            if (config.applicationMethod == ApplicationMethod.both)
-              const SizedBox(height: 8),
-            if (config.applicationMethod == ApplicationMethod.phone ||
-                config.applicationMethod == ApplicationMethod.both) ...[
-              _LinkButton(
-                icon: Icons.phone,
-                label: '電話で申し込む',
-                subtitle: config.phoneNumber,
-                onPressed: () {
-                  // ExternalLinkHandler実装後に置き換え
-                },
-              ),
-            ],
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-/// 申し込み窓口リンクボタン
-class _LinkButton extends StatelessWidget {
-  final IconData icon;
-  final String label;
-  final String? subtitle;
-  final VoidCallback onPressed;
-
-  const _LinkButton({
-    required this.icon,
-    required this.label,
-    this.subtitle,
-    required this.onPressed,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
-      child: OutlinedButton(
-        onPressed: onPressed,
-        style: OutlinedButton.styleFrom(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(8),
-          ),
-        ),
-        child: Row(
-          children: [
-            Icon(icon, size: 20),
-            const SizedBox(width: 12),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    label,
-                    style: const TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                  if (subtitle != null)
-                    Text(
-                      subtitle!,
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: Colors.grey[600],
-                      ),
-                    ),
-                ],
-              ),
+            ExternalLinkHandler(
+              applicationMethod: config.applicationMethod,
+              webFormUrl: config.webFormUrl,
+              phoneNumber: config.phoneNumber,
             ),
-            const Icon(Icons.chevron_right, size: 20),
           ],
         ),
       ),

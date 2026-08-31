@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'constants/strings.dart';
 import 'providers/auth_provider.dart';
 import 'providers/region_provider.dart';
+import 'providers/settings_provider.dart';
 import 'providers/theme_provider.dart';
 import 'screens/login_screen.dart';
 import 'screens/main_screen.dart';
@@ -11,29 +12,77 @@ import 'screens/region_selection_screen.dart';
 import 'widgets/background_monitor_prompt.dart';
 
 /// 愛媛県ゴミ出しアプリケーションのルートウィジェット
-class GarbageApp extends ConsumerWidget {
+class GarbageApp extends ConsumerStatefulWidget {
   const GarbageApp({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<GarbageApp> createState() => _GarbageAppState();
+}
+
+class _GarbageAppState extends ConsumerState<GarbageApp> {
+  @override
+  void initState() {
+    super.initState();
+    // UI（Navigator）準備完了後にコールドスタートの起動要因を確認し、
+    // 通知タップ起動ならカレンダー画面へ遷移する（要件 5.2）。
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      ref.read(notificationNavigationHandlerProvider).handleAppLaunchDetails();
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final themeMode = ref.watch(themeModeProvider);
+    // 通知タップ時のコンテキスト非依存ナビゲーション用に navigatorKey を接続する。
+    final navigatorKey =
+        ref.watch(notificationNavigationHandlerProvider).navigatorKey;
 
     return MaterialApp(
       title: AppStrings.appName,
-      theme: ThemeData(
-        primarySwatch: Colors.green,
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
-        useMaterial3: true,
-      ),
-      darkTheme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.green,
-          brightness: Brightness.dark,
-        ),
-        useMaterial3: true,
-      ),
+      navigatorKey: navigatorKey,
+      theme: _buildTheme(Brightness.light),
+      darkTheme: _buildTheme(Brightness.dark),
       themeMode: themeMode,
       home: const _AppHome(),
+    );
+  }
+
+  static ThemeData _buildTheme(Brightness brightness) {
+    final baseScheme = ColorScheme.fromSeed(
+      seedColor: const Color(0xFF1F6B4F),
+      brightness: brightness,
+    );
+    final scheme = brightness == Brightness.light
+        ? baseScheme.copyWith(surface: const Color(0xFFF6F4EE))
+        : baseScheme;
+    final inputBorder = OutlineInputBorder(
+      borderRadius: BorderRadius.circular(15),
+      borderSide: BorderSide(color: scheme.outlineVariant),
+    );
+    return ThemeData(
+      colorScheme: scheme,
+      scaffoldBackgroundColor: scheme.surface,
+      useMaterial3: true,
+      appBarTheme: AppBarTheme(
+        backgroundColor: scheme.surface,
+        foregroundColor: scheme.onSurface,
+        surfaceTintColor: Colors.transparent,
+      ),
+      inputDecorationTheme: InputDecorationTheme(
+        filled: true,
+        fillColor: scheme.surfaceContainerHighest,
+        hintStyle: TextStyle(color: scheme.onSurfaceVariant),
+        border: inputBorder,
+        enabledBorder: inputBorder,
+        focusedBorder: inputBorder.copyWith(
+          borderSide: BorderSide(color: scheme.primary, width: 2),
+        ),
+      ),
+      cardTheme: CardThemeData(
+        color: scheme.surfaceContainerLow,
+        surfaceTintColor: Colors.transparent,
+      ),
+      dividerColor: scheme.outlineVariant,
     );
   }
 }
