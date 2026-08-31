@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/services.dart' show rootBundle;
-import 'package:garbage_app/models/gps_detection.dart';
+import '../models/gps_detection.dart';
 
 /// ローカルGeoJSONポリゴンデータによる地区判定サービス
 ///

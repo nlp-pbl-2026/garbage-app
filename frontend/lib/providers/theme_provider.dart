@@ -8,9 +8,9 @@ const _kThemeModeKey = 'dark_mode';
 /// テーマモード管理用 StateNotifier
 ///
 /// SharedPreferences で「dark_mode」設定を永続化し、
-/// system / light / dark の3モードを管理する。
+/// light / dark の2モードを管理する。
 class ThemeModeNotifier extends StateNotifier<ThemeMode> {
-  ThemeModeNotifier() : super(ThemeMode.system) {
+  ThemeModeNotifier() : super(ThemeMode.light) {
     _loadThemeMode();
   }
 
@@ -30,13 +30,9 @@ class ThemeModeNotifier extends StateNotifier<ThemeMode> {
     await prefs.setString(_kThemeModeKey, _themeModeToString(mode));
   }
 
-  /// light → dark → system の順で循環切り替え
+  /// light ↔ dark の切り替え
   Future<void> toggle() async {
-    final next = switch (state) {
-      ThemeMode.light => ThemeMode.dark,
-      ThemeMode.dark => ThemeMode.system,
-      ThemeMode.system => ThemeMode.light,
-    };
+    final next = state == ThemeMode.light ? ThemeMode.dark : ThemeMode.light;
     await setThemeMode(next);
   }
 
@@ -45,23 +41,22 @@ class ThemeModeNotifier extends StateNotifier<ThemeMode> {
     return switch (mode) {
       ThemeMode.light => 'light',
       ThemeMode.dark => 'dark',
-      ThemeMode.system => 'system',
+      _ => 'light',
     };
   }
 
   /// 永続化用文字列 → ThemeMode
   static ThemeMode _themeModeFromString(String value) {
     return switch (value) {
-      'light' => ThemeMode.light,
       'dark' => ThemeMode.dark,
-      _ => ThemeMode.system,
+      _ => ThemeMode.light,
     };
   }
 }
 
 /// テーマモード Provider
 ///
-/// デフォルトは ThemeMode.system（端末設定に追従）。
+/// デフォルトは ThemeMode.light。
 final themeModeProvider =
     StateNotifierProvider<ThemeModeNotifier, ThemeMode>((ref) {
   return ThemeModeNotifier();

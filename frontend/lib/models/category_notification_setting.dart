@@ -1,4 +1,4 @@
-import 'package:garbage_app/models/garbage_item.dart';
+import 'garbage_item.dart';
 
 /// 各ゴミ種別に対する通知タイミング別ON/OFF設定
 ///

@@ -1,4 +1,4 @@
-import 'package:garbage_app/models/gps_detection.dart';
+import 'gps_detection.dart';
 
 /// バックグラウンド位置変化監視の状態
 ///

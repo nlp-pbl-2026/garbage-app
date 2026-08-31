@@ -213,7 +213,7 @@ class _RegionSelectionScreenState extends ConsumerState<RegionSelectionScreen> {
     ref.read(municipalitiesProvider(prefecture.id)).when(
           data: (items) => _showSelectionSheet<Municipality>(
             title: '市区町村を選択',
-            items: items.where((item) => item.id == _matsuyama.id).toList(),
+            items: items,
             nameOf: (item) => item.displayName,
             onSelected: _selectMunicipality,
           ),
@@ -222,14 +222,25 @@ class _RegionSelectionScreenState extends ConsumerState<RegionSelectionScreen> {
         );
   }
 
+  /// 地区名の表示ラベルを整える。
+  ///
+  /// 「清水」のように地区名で終わらないものには「地区」を付け、
+  /// 「三津浜地区」のように既に「地区」を含むものはそのまま表示する。
+  String _districtLabel(String name) {
+    if (name.contains('地区') || name.contains('（') || name.contains('収集')) {
+      return name;
+    }
+    return '$name地区';
+  }
+
   void _showDistrictSelector() {
     final municipality = _selectedMunicipality;
     if (municipality == null) return;
     ref.read(districtsProvider(municipality.id)).when(
           data: (items) => _showSelectionSheet<District>(
             title: '地区を選択',
-            items: items.where((item) => item.id == _shimizu.id).toList(),
-            nameOf: (item) => '${item.name}地区',
+            items: items,
+            nameOf: (item) => _districtLabel(item.name),
             onSelected: _selectDistrict,
           ),
           loading: () {},
@@ -551,7 +562,7 @@ class _RegionSelectionScreenState extends ConsumerState<RegionSelectionScreen> {
             label: '地区',
             value: _selectedDistrict == null
                 ? null
-                : '${_selectedDistrict!.name}地区',
+                : _districtLabel(_selectedDistrict!.name),
             loading: districts?.isLoading ?? false,
             error: _validationResult?.districtError,
             enabled: districts?.hasValue ?? false,

@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:garbage_app/models/gps_detection.dart';
+import 'gps_detection.dart';
 
 /// 逆ジオコーディング結果のキャッシュエントリ
 ///

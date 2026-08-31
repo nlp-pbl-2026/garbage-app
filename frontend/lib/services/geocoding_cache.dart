@@ -1,5 +1,5 @@
-import 'package:garbage_app/models/geocoding_cache_entry.dart';
-import 'package:garbage_app/models/gps_detection.dart';
+import '../models/geocoding_cache_entry.dart';
+import '../models/gps_detection.dart';
 
 /// セッション内逆ジオコーディング結果キャッシュ
 ///
