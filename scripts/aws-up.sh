@@ -20,22 +20,23 @@ update_existing_backend_only() {
     --function-name "${LAMBDA_FUNCTION_NAME}" \
     --query 'Configuration.Environment.Variables.USE_BEDROCK_KNOWLEDGE_BASE' \
     --output text)"
-  CURRENT_KNOWLEDGE_BASE_ID="$(aws lambda get-function \
+  CURRENT_LEXICAL_MODE="$(aws lambda get-function \
     --function-name "${LAMBDA_FUNCTION_NAME}" \
-    --query 'Configuration.Environment.Variables.BEDROCK_KNOWLEDGE_BASE_ID' \
+    --query 'Configuration.Environment.Variables.LEXICAL_SEARCH_ENABLED' \
     --output text)"
-  if [[ "${CURRENT_KB_MODE}" != "true" ]]; then
-    echo "ERROR: 既存LambdaのUSE_BEDROCK_KNOWLEDGE_BASEがtrueではありません。" >&2
-    echo "Titan Embed Textを直接呼ぶ権限がないため、この状態ではコードを更新できません。" >&2
+  if [[ "${CURRENT_KB_MODE}" != "false" ]]; then
+    echo "ERROR: 既存LambdaのUSE_BEDROCK_KNOWLEDGE_BASEがfalseではありません。" >&2
+    echo "公開環境はTitan Embedding直接呼び出しに固定しています。" >&2
     exit 1
   fi
-  if [[ -z "${CURRENT_KNOWLEDGE_BASE_ID}" || "${CURRENT_KNOWLEDGE_BASE_ID}" == "None" ]]; then
-    echo "ERROR: 既存LambdaにBEDROCK_KNOWLEDGE_BASE_IDが設定されていません。" >&2
+  if [[ "${CURRENT_LEXICAL_MODE}" != "false" ]]; then
+    echo "ERROR: 既存LambdaのLEXICAL_SEARCH_ENABLEDがfalseではありません。" >&2
+    echo "公開環境はTitan Embedding単体に固定しています。" >&2
     exit 1
   fi
 
   echo "INFO: IAM読取権限が不足しているため、既存Backendだけを更新する制限モードで続行します。"
-  echo "INFO: 意味検索はKnowledge Base ${CURRENT_KNOWLEDGE_BASE_ID} を使用します。"
+  echo "INFO: 検索はTitan Embedding単体を使用します。"
   "${PROJECT_ROOT}/scripts/package_backend.sh"
   aws lambda update-function-code \
     --function-name "${LAMBDA_FUNCTION_NAME}" \

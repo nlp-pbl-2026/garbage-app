@@ -76,6 +76,12 @@ resource "aws_iam_policy" "backend" {
         Resource = "arn:${data.aws_partition.current.partition}:bedrock:${var.aws_region}::foundation-model/amazon.nova-lite-v1:0"
       },
       {
+        Sid      = "InvokeTitanTextEmbeddingsV2"
+        Effect   = "Allow"
+        Action   = ["bedrock:InvokeModel"]
+        Resource = "arn:${data.aws_partition.current.partition}:bedrock:${var.aws_region}::foundation-model/amazon.titan-embed-text-v2:0"
+      },
+      {
         Sid      = "SearchAnalytics"
         Effect   = "Allow"
         Action   = ["dynamodb:PutItem", "dynamodb:Scan"]
@@ -117,10 +123,11 @@ resource "aws_lambda_function" "backend" {
     variables = merge({
       BEDROCK_KNOWLEDGE_BASE_ID           = aws_bedrockagent_knowledge_base.this.id
       BEDROCK_MODEL_ID                    = "amazon.nova-lite-v1:0"
-      # 本番LambdaはTitan Embed Textを直接呼び出す権限を持たないため、
-      # 意味検索はManaged Knowledge Base経由に固定する。
-      USE_BEDROCK_KNOWLEDGE_BASE          = "true"
-      LEXICAL_SEARCH_ENABLED              = "true"
+      BEDROCK_EMBEDDING_MODEL_ID          = "amazon.titan-embed-text-v2:0"
+      # test 30件ではHybrid 26/30に対しEmbedding単体が27/30だったため、
+      # 公開環境はTitan Embedding単体を使用する。
+      USE_BEDROCK_KNOWLEDGE_BASE          = "false"
+      LEXICAL_SEARCH_ENABLED              = "false"
       TIMEZONE                            = "Asia/Tokyo"
       CALENDAR_PATH                       = "/var/task/data/regions/matsuyama/shimizu/calendar/2026.csv"
       SEARCH_LOG_TABLE                    = aws_dynamodb_table.search_logs.name
