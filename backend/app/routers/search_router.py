@@ -6,10 +6,12 @@ from datetime import UTC, datetime
 from time import monotonic
 from uuid import uuid4
 
-from fastapi import APIRouter, Header, HTTPException
+from fastapi import APIRouter, Header, HTTPException, Query
 
 from .. import config
 from ..schemas import (
+    BulkyWasteItemListResponse,
+    BulkyWasteItemResponse,
     GuideSource,
     NextCollection,
     SearchDecisionRequest,
@@ -21,6 +23,7 @@ from ..schemas import (
     WasteGuideRequest,
     WasteGuideResponse,
 )
+from ..services.item_search_service import ItemSearchService
 from ..services.search_log_service import SearchLogService
 from ..services.waste_guide_service import (
     CATEGORY_NAMES,
@@ -151,6 +154,43 @@ async def classify_waste(request: WasteGuideRequest) -> WasteGuideResponse:
         result=result,
         clarification_items=clarification_items,
         started_at=started_at,
+    )
+
+
+@router.get(
+    "/items/{municipality_id}", response_model=BulkyWasteItemListResponse
+)
+async def list_waste_items(
+    municipality_id: str,
+    category: str = Query(default="粗大", max_length=20),
+    search: str | None = Query(default=None, max_length=100),
+) -> BulkyWasteItemListResponse:
+    """あいまい検索と同じ品目辞典から、分類別の品目一覧を返す。"""
+
+    if municipality_id != "38201":
+        raise HTTPException(status_code=404, detail="指定された自治体は未対応です。")
+
+    matches = ItemSearchService().list_items(
+        category=category,
+        query=search,
+        limit=None,
+    )
+    return BulkyWasteItemListResponse(
+        items=[
+            BulkyWasteItemResponse(
+                id=index,
+                item_name=match.item,
+                category=(
+                    match.category_display
+                    or CATEGORY_NAMES.get(match.category, match.category)
+                ),
+                fee_amount=0,
+                notes=match.note or None,
+            )
+            for index, match in enumerate(matches, start=1)
+        ],
+        total_count=len(matches),
+        municipality_name="松山市",
     )
 
 

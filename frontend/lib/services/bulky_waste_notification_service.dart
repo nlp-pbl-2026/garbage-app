@@ -32,6 +32,13 @@ class BulkyWasteNotificationService {
   Future<void> initialize() async {
     if (_initialized) return;
 
+    // flutter_local_notifications はWebをサポートしない。
+    // Web版では記録機能を利用可能にしたまま、通知だけを無効化する。
+    if (kIsWeb) {
+      _initialized = true;
+      return;
+    }
+
     tz_data.initializeTimeZones();
     tz.setLocalLocation(tz.getLocation('Asia/Tokyo'));
 
@@ -59,6 +66,7 @@ class BulkyWasteNotificationService {
   /// - 収集日が24時間以内の場合は収集日当日にスケジュール
   /// - completed ステータスの記録はスケジュールしない
   Future<void> scheduleNotification(ApplicationRecord record) async {
+    if (kIsWeb) return;
     await initialize();
 
     // completed ステータスはスケジュールしない
@@ -113,6 +121,7 @@ class BulkyWasteNotificationService {
   ///
   /// [recordId] に対応する通知をキャンセルする。
   Future<void> cancelNotification(String recordId) async {
+    if (kIsWeb) return;
     await initialize();
 
     final notificationId = _generateNotificationId(recordId);
@@ -127,6 +136,7 @@ class BulkyWasteNotificationService {
   /// アプリ起動時や設定変更時に呼び出す。
   /// completed 以外の記録に対して通知をスケジュールし直す。
   Future<void> rescheduleAll(List<ApplicationRecord> records) async {
+    if (kIsWeb) return;
     await initialize();
 
     for (final record in records) {

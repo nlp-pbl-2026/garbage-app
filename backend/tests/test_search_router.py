@@ -6,6 +6,7 @@ from httpx import ASGITransport, AsyncClient
 
 from app.main import app
 from app.services.calendar_service import CollectionDate
+from app.services.item_search_service import ItemMatch
 from app.services.waste_guide_service import (
     ClassificationDecision,
     RetrievedDocument,
@@ -178,3 +179,47 @@ async def test_request_rejects_blank_query():
         response = await client.post("/api/search/classify", json={"query": "   "})
 
     assert response.status_code == 422
+
+
+@pytest.mark.asyncio
+async def test_items_endpoint_uses_search_catalog_and_filters_bulky_items():
+    matches = [
+        ItemMatch(
+            item_id="item_1",
+            item="ソファ",
+            category="粗大",
+            category_display="粗大ごみ",
+            note="大きさを確認",
+            score=1.0,
+        )
+    ]
+    with patch("app.routers.search_router.ItemSearchService") as service_class:
+        service_class.return_value.list_items.return_value = matches
+        async with AsyncClient(
+            transport=ASGITransport(app=app), base_url="http://test"
+        ) as client:
+            response = await client.get(
+                "/api/search/items/38201", params={"category": "粗大"}
+            )
+
+    assert response.status_code == 200
+    assert response.json() == {
+        "items": [
+            {
+                "id": 1,
+                "item_name": "ソファ",
+                "category": "粗大ごみ",
+                "fee_amount": 0,
+                "size_category": None,
+                "size_threshold_cm": None,
+                "weight_category": None,
+                "weight_threshold_kg": None,
+                "notes": "大きさを確認",
+            }
+        ],
+        "total_count": 1,
+        "municipality_name": "松山市",
+    }
+    service_class.return_value.list_items.assert_called_once_with(
+        category="粗大", query=None, limit=None
+    )

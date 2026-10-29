@@ -91,7 +91,7 @@ enum ApplicationStatus {
   /// 申し込み済み
   applied,
 
-  /// 処理券購入済み
+  /// 収集日の通知を受領済み（旧データとの互換性のためenum名は維持）
   ticketPurchased,
 
   /// 収集待ち

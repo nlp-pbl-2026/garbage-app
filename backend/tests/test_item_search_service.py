@@ -58,3 +58,19 @@ def test_packaged_lambda_path_is_detected(monkeypatch, tmp_path):
     service = ItemSearchService()
 
     assert service.search("テスト容器")[0].item_id == "item_1"
+
+
+def test_list_items_filters_the_same_csv_by_category(tmp_path):
+    items_csv = tmp_path / "items.csv"
+    items_csv.write_text(
+        "search_text,item_id,item,reading,note,category,category_display\n"
+        "ソファ,item_1,ソファ,そふぁ,大きさを確認,粗大,粗大ごみ\n"
+        "いす,item_2,いす,いす,,粗大,粗大ごみ\n"
+        "紙箱,item_3,紙箱,かみばこ,,紙類,紙類\n",
+        encoding="utf-8",
+    )
+
+    items = ItemSearchService(items_path=items_csv).list_items(category="粗大")
+
+    assert [item.item for item in items] == ["いす", "ソファ"]
+    assert all(item.category == "粗大" for item in items)

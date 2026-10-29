@@ -277,7 +277,7 @@ class _ActiveRecordCard extends StatelessWidget {
 
 /// ステータスバッジ
 ///
-/// applied=青、ticketPurchased=橙、awaitingCollection=緑で表示する。
+/// applied=青、ticketPurchased（収集日通知済）=橙、awaitingCollection=緑で表示する。
 class _StatusBadge extends StatelessWidget {
   final ApplicationStatus status;
 
@@ -310,7 +310,7 @@ class _StatusBadge extends StatelessWidget {
       case ApplicationStatus.applied:
         return ('申し込み済', Colors.blue);
       case ApplicationStatus.ticketPurchased:
-        return ('処理券購入済', Colors.orange);
+        return ('収集日通知済', Colors.orange);
       case ApplicationStatus.awaitingCollection:
         return ('収集待ち', Colors.green);
       case ApplicationStatus.completed:
@@ -396,7 +396,7 @@ class _StatusDropdown extends StatelessWidget {
       case ApplicationStatus.applied:
         return ('申し込み済', Colors.blue);
       case ApplicationStatus.ticketPurchased:
-        return ('処理券購入済', Colors.orange);
+        return ('収集日通知済', Colors.orange);
       case ApplicationStatus.awaitingCollection:
         return ('収集待ち', Colors.green);
       case ApplicationStatus.completed:

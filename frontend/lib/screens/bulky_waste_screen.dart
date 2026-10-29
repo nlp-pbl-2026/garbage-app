@@ -134,7 +134,7 @@ class _BulkyWasteScreenState extends ConsumerState<BulkyWasteScreen>
     return Column(
       children: [
         // 古いデータの警告バナー
-        if (cachedResult.isStale) _buildStaleBanner(),
+        if (cachedResult.isStale) _buildDataNotice(cachedResult),
         // 概要セクション
         _buildOverviewCard(cachedResult.data),
         // タブコンテンツ
@@ -142,8 +142,15 @@ class _BulkyWasteScreenState extends ConsumerState<BulkyWasteScreen>
           child: TabBarView(
             controller: _tabController,
             children: [
-              ItemListView(municipalityId: cachedResult.data.municipalityId),
-              ApplicationGuideView(config: cachedResult.data),
+              ItemListView(
+                municipalityId: cachedResult.data.municipalityId,
+                config: cachedResult.data,
+                useOfficialInfoFallback: cachedResult.isBundledFallback,
+              ),
+              ApplicationGuideView(
+                config: cachedResult.data,
+                useOfficialInfoFallback: cachedResult.isBundledFallback,
+              ),
               const StatusTrackerView(),
             ],
           ),
@@ -153,21 +160,31 @@ class _BulkyWasteScreenState extends ConsumerState<BulkyWasteScreen>
   }
 
   /// キャッシュデータ使用時の警告バナー
-  Widget _buildStaleBanner() {
+  Widget _buildDataNotice(CachedResult<MunicipalityConfig> result) {
+    final message = result.isBundledFallback
+        ? '品目一覧はAWSの分別データを表示しています。申込条件や受付期間は松山市公式サイトで確認してください。'
+        : '表示されているデータは以前の取得結果です。最新情報を反映していない可能性があります。';
     return MaterialBanner(
-      content: const Text(
-        '表示されているデータは以前の取得結果です。最新情報を反映していない可能性があります。',
-        style: TextStyle(fontSize: 13),
+      content: Text(
+        message,
+        style: const TextStyle(fontSize: 13, color: Colors.black87),
       ),
       leading: const Icon(Icons.warning_amber, color: Colors.orange),
       backgroundColor: Colors.orange.shade50,
       actions: [
-        TextButton(
-          onPressed: () {
-            ref.invalidate(municipalityConfigProvider);
-          },
-          child: const Text('更新'),
-        ),
+        if (result.isBundledFallback)
+          TextButton(
+            onPressed: () => _tabController.animateTo(1),
+            style: TextButton.styleFrom(foregroundColor: Colors.teal.shade800),
+            child: const Text('ガイドを見る'),
+          )
+        else
+          TextButton(
+            onPressed: () {
+              ref.invalidate(municipalityConfigProvider);
+            },
+            child: const Text('更新'),
+          ),
       ],
     );
   }
