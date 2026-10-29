@@ -14,9 +14,13 @@ class ApplicationGuideView extends StatelessWidget {
   /// 自治体設定データ
   final MunicipalityConfig config;
 
+  /// API未提供時は、直接申込みではなく公式案内ページへの導線として表示する。
+  final bool useOfficialInfoFallback;
+
   const ApplicationGuideView({
     super.key,
     required this.config,
+    this.useOfficialInfoFallback = false,
   });
 
   @override
@@ -45,7 +49,10 @@ class ApplicationGuideView extends StatelessWidget {
               )),
           const SizedBox(height: 24),
           // 外部申し込み窓口セクション
-          _ExternalLinkSection(config: config),
+          _ExternalLinkSection(
+            config: config,
+            useOfficialInfoFallback: useOfficialInfoFallback,
+          ),
         ],
       ),
     );
@@ -190,8 +197,12 @@ class _NotesBox extends StatelessWidget {
 /// 外部申し込み窓口へのリンクセクション
 class _ExternalLinkSection extends StatelessWidget {
   final MunicipalityConfig config;
+  final bool useOfficialInfoFallback;
 
-  const _ExternalLinkSection({required this.config});
+  const _ExternalLinkSection({
+    required this.config,
+    required this.useOfficialInfoFallback,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -227,6 +238,8 @@ class _ExternalLinkSection extends StatelessWidget {
               applicationMethod: config.applicationMethod,
               webFormUrl: config.webFormUrl,
               phoneNumber: config.phoneNumber,
+              webButtonLabel:
+                  useOfficialInfoFallback ? '松山市公式サイトで確認' : 'Webで申し込む',
             ),
           ],
         ),

@@ -85,19 +85,19 @@ async def ensure_municipality_config(session: AsyncSession, municipality_id: str
     new_config = MunicipalityConfig(
         municipality_id=municipality_id,
         municipality_name="松山市",
-        collection_frequency="月1回（地区により異なる）",
-        reception_hours="平日 8:30〜17:00",
-        collection_rules="1回の申込みにつき10点まで。事前に処理券を購入し品目に貼付して排出。",
+        collection_frequency="年6回（申込区分ごとに受付期間が異なります）",
+        reception_hours="粗大ごみ収集申込みガイドで受付期間を確認",
+        collection_rules="ハガキまたはインターネットで事前に申し込み、収集日当日の午前8時までに粗大ごみシールを貼って指定場所へ排出。収集は無料。",
         fee_structure_type="fixed",
-        application_method="both",
+        application_method="web_form",
         web_form_url="https://www.city.matsuyama.ehime.jp/kurashi/gomi/dashikata/sodaigomi.html",
         phone_number="089-921-5516",
         steps=[
-            {"step_number": 1, "title": "品目の確認", "description": "粗大ごみとして出せる品目か確認します。", "notes": None},
-            {"step_number": 2, "title": "手数料の確認", "description": "品目ごとの手数料を確認します。1点につき720円です。", "notes": "大型のものは1,440円の場合があります。"},
-            {"step_number": 3, "title": "申し込み", "description": "電話またはWebで収集を申し込みます。", "notes": "収集日・排出場所が指定されます。"},
-            {"step_number": 4, "title": "処理券の購入", "description": "コンビニ等で粗大ごみ処理券を購入し、品目に貼付します。", "notes": None},
-            {"step_number": 5, "title": "排出", "description": "指定された収集日の朝8時までに、指定場所に出します。", "notes": None},
+            {"step_number": 1, "title": "申込区分の確認", "description": "住所がA〜Dのどの申込区分に該当するか、公式の申込みガイドで確認します。", "notes": None},
+            {"step_number": 2, "title": "申込期間の確認", "description": "申込区分ごとに定められた受付期間を確認します。", "notes": None},
+            {"step_number": 3, "title": "申し込み", "description": "専用ハガキまたはインターネットで申し込みます。", "notes": "インターネット申込みには、えひめ電子申請システムへの登録が必要です。"},
+            {"step_number": 4, "title": "収集日の連絡", "description": "収集日の約1週間前に、粗大ごみシール付きの通知ハガキが届きます。", "notes": None},
+            {"step_number": 5, "title": "排出", "description": "収集日当日の午前8時までに、シールを貼って申込時の指定場所へ出します。", "notes": None},
         ],
     )
     session.add(new_config)
@@ -145,7 +145,7 @@ async def import_items(
             item_name=item_name,
             item_name_kana=item_data["item_name_kana"],
             category="粗大ごみ",
-            fee_amount=720,  # 松山市のデフォルト手数料
+            fee_amount=0,  # 松山市の戸別収集は無料
             size_category=None,
             size_threshold_cm=None,
             weight_category=None,

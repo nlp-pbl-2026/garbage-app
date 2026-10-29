@@ -164,6 +164,64 @@ class ItemSearchService:
         )
         return matches[:limit]
 
+    def list_items(
+        self,
+        *,
+        category: str | None = None,
+        query: str | None = None,
+        limit: int | None = None,
+    ) -> list[ItemMatch]:
+        """品目辞典を分類ラベルと任意の検索語で絞り込み、読み順で返す。
+
+        あいまい検索と同じ ``items.csv`` を一覧表示にも再利用するための
+        読み取り専用メソッド。検索スコアは使用せず、CSVの分類ラベルを
+        完全一致で絞り込む。
+        """
+
+        normalized_query = self._normalize(query or "")
+        rows = [
+            row
+            for row in self._items
+            if (not category or row.get("category") == category)
+            and (
+                not normalized_query
+                or normalized_query
+                in self._normalize(
+                    " ".join(
+                        value
+                        for value in (
+                            row.get("item", ""),
+                            row.get("reading", ""),
+                            row.get("note", ""),
+                            row.get("search_text", ""),
+                        )
+                        if value
+                    )
+                )
+            )
+        ]
+        rows.sort(
+            key=lambda row: (
+                self._normalize(row.get("reading", "")),
+                self._normalize(row.get("item", "")),
+                row.get("item_id", ""),
+            )
+        )
+        items = [
+            ItemMatch(
+                item_id=row.get("item_id", ""),
+                item=row.get("item", ""),
+                category=row.get("category", ""),
+                category_display=row.get("category_display", ""),
+                note=row.get("note", ""),
+                score=1.0,
+                ranking_score=1.0,
+            )
+            for row in (rows if limit is None else rows[:limit])
+            if row.get("item")
+        ]
+        return items
+
     @classmethod
     def _normalize(cls, value: str) -> str:
         normalized = unicodedata.normalize("NFKC", value).lower()

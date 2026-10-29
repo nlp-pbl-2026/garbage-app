@@ -18,10 +18,18 @@ class CachedResult<T> {
   /// true の場合、キャッシュから取得したデータであることを示す
   final bool isStale;
 
-  const CachedResult({required this.data, required this.isStale});
+  /// true の場合、API/キャッシュではなくアプリ同梱の公式案内を使用している。
+  final bool isBundledFallback;
+
+  const CachedResult({
+    required this.data,
+    required this.isStale,
+    this.isBundledFallback = false,
+  });
 
   @override
-  String toString() => 'CachedResult(data: $data, isStale: $isStale)';
+  String toString() => 'CachedResult(data: $data, isStale: $isStale, '
+      'isBundledFallback: $isBundledFallback)';
 }
 
 /// 品目一覧のソート基準
@@ -94,6 +102,56 @@ class BulkyWasteRepository {
   static const String _configTimestampKeyPrefix =
       'bulky_waste_config_timestamp_';
 
+  /// 公開APIに粗大ごみルートがない場合に表示する松山市公式案内。
+  ///
+  /// 品目・料金データは同梱せず、変更され得る詳細は松山市公式サイトで
+  /// 確認してもらう。APIが200を返す場合はこの値よりAPIデータを優先する。
+  static MunicipalityConfig? _bundledConfig(String municipalityId) {
+    if (municipalityId != '38201') return null;
+
+    return MunicipalityConfig(
+      municipalityId: '38201',
+      municipalityName: '松山市',
+      collectionFrequency: '年6回（申込区分ごとに受付期間が異なります）',
+      receptionHours: '粗大ごみ収集申込みガイドで受付期間を確認',
+      collectionRules:
+          'ハガキまたはインターネットで事前に申し込み、収集日当日の午前8時までに粗大ごみシールを貼って指定場所へ出します。',
+      feeStructureType: FeeStructureType.fixed,
+      applicationMethod: ApplicationMethod.webForm,
+      webFormUrl:
+          'https://www.city.matsuyama.ehime.jp/kurashi/gomi/dashikata/sodaigomi.html',
+      phoneNumber: '089-921-5516',
+      steps: [
+        ApplicationStep(
+          stepNumber: 1,
+          title: '申込区分の確認',
+          description: '住所がA〜Dのどの申込区分に該当するか、公式の申込みガイドで確認します。',
+        ),
+        ApplicationStep(
+          stepNumber: 2,
+          title: '申込期間の確認',
+          description: '申込区分ごとに定められた受付期間を確認します。',
+        ),
+        ApplicationStep(
+          stepNumber: 3,
+          title: '申し込み',
+          description: '専用ハガキまたはインターネットで申し込みます。',
+          notes: 'インターネット申込みには、えひめ電子申請システムへの登録が必要です。',
+        ),
+        ApplicationStep(
+          stepNumber: 4,
+          title: '収集日の連絡',
+          description: '収集日の約1週間前に、粗大ごみシール付きの通知ハガキが届きます。',
+        ),
+        ApplicationStep(
+          stepNumber: 5,
+          title: '排出',
+          description: '収集日当日の午前8時までに、シールを貼って申込時の指定場所へ出します。',
+        ),
+      ],
+    );
+  }
+
   /// [BulkyWasteRepository] を生成する。
   ///
   /// [client] HTTP クライアント（テスト時にモック注入可能）
@@ -139,17 +197,18 @@ class BulkyWasteRepository {
         return CachedResult(data: config, isStale: false);
       }
 
-      // 404 の場合はキャッシュフォールバックせず null
+      // 公開Lambdaに粗大ごみルートがない場合も、キャッシュまたは
+      // 松山市公式案内へフォールバックして画面を利用可能にする。
       if (response.statusCode == 404) {
-        return null;
+        return _getBundledOrCachedConfigResult(municipalityId);
       }
 
       // その他のエラーはキャッシュフォールバック
-      return _getCachedConfigResult(municipalityId);
+      return _getCachedOrBundledConfigResult(municipalityId);
     } on TimeoutException {
-      return _getCachedConfigResult(municipalityId);
+      return _getCachedOrBundledConfigResult(municipalityId);
     } catch (_) {
-      return _getCachedConfigResult(municipalityId);
+      return _getCachedOrBundledConfigResult(municipalityId);
     }
   }
 
@@ -200,9 +259,43 @@ class BulkyWasteRepository {
       }
 
       if (response.statusCode == 404) {
-        return null;
+        return _getCatalogItems(
+          municipalityId,
+          search: search,
+        );
       }
 
+      return _getCachedItemsResult(municipalityId);
+    } on TimeoutException {
+      return _getCachedItemsResult(municipalityId);
+    } catch (_) {
+      return _getCachedItemsResult(municipalityId);
+    }
+  }
+
+  /// あいまい検索と同じAWS品目辞典から、粗大ラベルの品目を取得する。
+  Future<CachedResult<BulkyWasteItemList>?> _getCatalogItems(
+    String municipalityId, {
+    String? search,
+  }) async {
+    try {
+      final queryParams = <String, String>{'category': '粗大'};
+      if (search != null && search.isNotEmpty) {
+        queryParams['search'] = search;
+      }
+      final uri = Uri.parse('$_baseUrl/api/search/items/$municipalityId')
+          .replace(queryParameters: queryParams);
+      final response =
+          await _client.get(uri, headers: _buildHeaders()).timeout(_timeout);
+
+      if (response.statusCode == 200) {
+        final json = jsonDecode(response.body) as Map<String, dynamic>;
+        final itemList = BulkyWasteItemList.fromJson(json);
+        if (search == null || search.isEmpty) {
+          await _cacheItems(municipalityId, itemList);
+        }
+        return CachedResult(data: itemList, isStale: false);
+      }
       return _getCachedItemsResult(municipalityId);
     } on TimeoutException {
       return _getCachedItemsResult(municipalityId);
@@ -253,6 +346,35 @@ class BulkyWasteRepository {
     final cached = _getCachedConfig(municipalityId);
     if (cached == null) return null;
     return CachedResult(data: cached, isStale: true);
+  }
+
+  /// キャッシュを優先し、なければアプリ同梱の公式案内を返す。
+  CachedResult<MunicipalityConfig>? _getCachedOrBundledConfigResult(
+      String municipalityId) {
+    final cached = _getCachedConfigResult(municipalityId);
+    if (cached != null) return cached;
+
+    final bundled = _bundledConfig(municipalityId);
+    if (bundled == null) return null;
+    return CachedResult(
+      data: bundled,
+      isStale: true,
+      isBundledFallback: true,
+    );
+  }
+
+  /// APIルート自体が未提供の場合は、古いキャッシュより同梱案内を優先する。
+  CachedResult<MunicipalityConfig>? _getBundledOrCachedConfigResult(
+      String municipalityId) {
+    final bundled = _bundledConfig(municipalityId);
+    if (bundled != null) {
+      return CachedResult(
+        data: bundled,
+        isStale: true,
+        isBundledFallback: true,
+      );
+    }
+    return _getCachedConfigResult(municipalityId);
   }
 
   /// キャッシュから自治体設定を読み込む

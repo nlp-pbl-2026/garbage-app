@@ -24,11 +24,15 @@ class ExternalLinkHandler extends StatelessWidget {
   /// 電話番号（phone または both の場合に必須）
   final String? phoneNumber;
 
+  /// Webリンクボタンの表示名。
+  final String webButtonLabel;
+
   const ExternalLinkHandler({
     super.key,
     required this.applicationMethod,
     this.webFormUrl,
     this.phoneNumber,
+    this.webButtonLabel = 'Webで申し込む',
   });
 
   @override
@@ -60,7 +64,7 @@ class ExternalLinkHandler extends StatelessWidget {
     return ElevatedButton.icon(
       onPressed: () => _launchWebForm(context),
       icon: const Icon(Icons.open_in_browser),
-      label: const Text('Webで申し込む'),
+      label: Text(webButtonLabel),
       style: ElevatedButton.styleFrom(
         padding: const EdgeInsets.symmetric(vertical: 14),
       ),

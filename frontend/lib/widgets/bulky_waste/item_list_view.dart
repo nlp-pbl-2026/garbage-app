@@ -5,6 +5,7 @@ import '../../models/bulky_waste.dart';
 import '../../providers/bulky_waste_provider.dart';
 import '../../repositories/bulky_waste_repository.dart';
 import '../../screens/fee_display_screen.dart';
+import 'external_link_handler.dart';
 
 /// 品目一覧のソートモード
 enum ItemSortMode {
@@ -34,9 +35,17 @@ class ItemListView extends ConsumerStatefulWidget {
   /// 対象の自治体ID（5桁コード）
   final String municipalityId;
 
+  /// API未提供時に表示する自治体公式案内。
+  final MunicipalityConfig config;
+
+  /// 品目APIを呼ばず、公式サイトへの案内を表示するか。
+  final bool useOfficialInfoFallback;
+
   const ItemListView({
     super.key,
     required this.municipalityId,
+    required this.config,
+    this.useOfficialInfoFallback = false,
   });
 
   @override
@@ -154,17 +163,77 @@ class _ItemListViewState extends ConsumerState<ItemListView> {
   Widget build(BuildContext context) {
     final itemsAsync = ref.watch(bulkyWasteItemsProvider(_buildQuery()));
 
-    return Column(
-      children: [
-        // 検索バー
-        _buildSearchBar(),
-        // ソート切替
-        _buildSortSelector(),
-        // 品目リスト
-        Expanded(
-          child: _buildItemList(itemsAsync),
+    return itemsAsync.when(
+      data: (result) {
+        if (result == null) {
+          return widget.useOfficialInfoFallback
+              ? _buildOfficialInfoFallback()
+              : _buildErrorState();
+        }
+        return Column(
+          children: [
+            _buildSearchBar(),
+            _buildSortSelector(),
+            Expanded(child: _buildItemListContent(result)),
+          ],
+        );
+      },
+      loading: () => const Center(child: CircularProgressIndicator()),
+      error: (error, stack) => widget.useOfficialInfoFallback
+          ? _buildOfficialInfoFallback()
+          : _buildErrorState(),
+    );
+  }
+
+  /// 品目APIが未提供の場合も、正しい確認先へ進める画面を表示する。
+  Widget _buildOfficialInfoFallback() {
+    return SingleChildScrollView(
+      padding: const EdgeInsets.all(20),
+      child: Center(
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 560),
+          child: Card(
+            child: Padding(
+              padding: const EdgeInsets.all(20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Icon(
+                    Icons.fact_check_outlined,
+                    size: 48,
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
+                  const SizedBox(height: 16),
+                  Text(
+                    '品目を公式情報で確認',
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                          fontWeight: FontWeight.bold,
+                        ),
+                  ),
+                  const SizedBox(height: 12),
+                  const Text(
+                    '粗大ごみとして収集できるか、申込区分、受付期間は松山市公式サイトで確認してください。料金はかかりません。',
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: 20),
+                  ExternalLinkHandler(
+                    applicationMethod: ApplicationMethod.webForm,
+                    webFormUrl: widget.config.webFormUrl,
+                    webButtonLabel: '松山市公式サイトで確認',
+                  ),
+                  const SizedBox(height: 12),
+                  OutlinedButton.icon(
+                    onPressed: () => Navigator.of(context).pop(),
+                    icon: const Icon(Icons.search),
+                    label: const Text('アプリの分別検索に戻る'),
+                  ),
+                ],
+              ),
+            ),
+          ),
         ),
-      ],
+      ),
     );
   }
 
@@ -236,7 +305,7 @@ class _ItemListViewState extends ConsumerState<ItemListView> {
               onSelectionChanged: (selected) {
                 _onSortChanged(selected.first);
               },
-              style: ButtonStyle(
+              style: const ButtonStyle(
                 visualDensity: VisualDensity.compact,
                 tapTargetSize: MaterialTapTargetSize.shrinkWrap,
               ),
@@ -244,22 +313,6 @@ class _ItemListViewState extends ConsumerState<ItemListView> {
           ),
         ],
       ),
-    );
-  }
-
-  /// 品目リストエリアを構築する
-  Widget _buildItemList(
-      AsyncValue<CachedResult<BulkyWasteItemList>?> itemsAsync) {
-    return itemsAsync.when(
-      data: (result) {
-        if (result == null) {
-          // API 404 / データなし
-          return _buildErrorState();
-        }
-        return _buildItemListContent(result);
-      },
-      loading: () => const Center(child: CircularProgressIndicator()),
-      error: (error, stack) => _buildErrorState(),
     );
   }
 
