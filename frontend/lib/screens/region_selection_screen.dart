@@ -5,21 +5,24 @@ import 'package:geolocator/geolocator.dart';
 import '../models/gps_detection.dart';
 import '../models/region.dart';
 import '../providers/gps_detection_provider.dart';
+import '../providers/multi_region_provider.dart';
 import '../providers/region_provider.dart';
+import '../providers/settings_provider.dart';
 import '../widgets/candidate_bottom_sheet.dart';
 
 /// 初回起動時と設定変更時に使う地域選択画面。
 ///
-/// 審査用デモでは検索バックエンドが対応する松山市・清水地区を最短で
-/// 選べるようにし、詳細指定では都道府県から順に選択できる。
+/// 清水地区へのショートカットと、松山市の全収集地区からの手動選択を提供する。
 class RegionSelectionScreen extends ConsumerStatefulWidget {
   final VoidCallback? onRegionSelected;
   final bool autoDetect;
+  final bool updateActiveSavedRegion;
 
   const RegionSelectionScreen({
     super.key,
     this.onRegionSelected,
     this.autoDetect = false,
+    this.updateActiveSavedRegion = true,
   });
 
   @override
@@ -64,16 +67,34 @@ class _RegionSelectionScreenState extends ConsumerState<RegionSelectionScreen> {
     if (_isSaving) return;
     setState(() => _isSaving = true);
 
-    await ref.read(regionSettingProvider.notifier).saveSetting(
-          RegionSetting(
+    final setting = RegionSetting(
             prefectureId: prefecture.id,
             prefectureName: prefecture.name,
             municipalityId: municipality.id,
             municipalityName: municipality.name,
             districtId: district.id,
             districtName: district.name,
-          ),
+          );
+    await ref.read(regionSettingProvider.notifier).saveSetting(setting);
+    var notificationUpdated = false;
+    if (widget.updateActiveSavedRegion) {
+      final active = await ref.read(multiRegionServiceProvider).getActiveRegion();
+      if (active != null) {
+        await ref.read(multiRegionProvider.notifier).replaceRegionSetting(active.id, setting);
+        notificationUpdated = true;
+      }
+    }
+    try {
+      if (!notificationUpdated) {
+        await ref.read(notificationServiceProvider).updateDistrict(district.id);
+      }
+    } catch (_) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('地域は保存しましたが、通知を再設定できませんでした。通知設定を確認してください。')),
         );
+      }
+    }
 
     if (!mounted) return;
     setState(() => _isSaving = false);
@@ -228,7 +249,7 @@ class _RegionSelectionScreenState extends ConsumerState<RegionSelectionScreen> {
     ref.read(districtsProvider(municipality.id)).when(
           data: (items) => _showSelectionSheet<District>(
             title: '地区を選択',
-            items: items.where((item) => item.id == _shimizu.id).toList(),
+            items: items,
             nameOf: (item) => '${item.name}地区',
             onSelected: _selectDistrict,
           ),
@@ -597,33 +618,29 @@ class _RegionSelectionScreenState extends ConsumerState<RegionSelectionScreen> {
   }
 
   void _showGpsConfirmationDialog(DistrictMatchResult result) {
-    final supported = result.districtName == _shimizu.name;
+    final areaId = result.collectionAreaId ?? '38201-${result.districtNumber.toString().padLeft(2, '0')}';
     showDialog<void>(
       context: context,
       builder: (dialogContext) => AlertDialog(
-        icon: Icon(
-          supported ? Icons.location_on_rounded : Icons.info_outline_rounded,
+        icon: const Icon(
+          Icons.location_on_rounded,
         ),
-        title: Text(supported ? '現在地を確認しました' : '検索対象外の地区です'),
-        content: Text(
-          supported
-              ? '愛媛県 松山市 ${result.districtName}地区で設定します。'
-              : '${result.districtName}地区を検出しました。現在のデモは清水地区のみ検索に対応しています。',
-        ),
+        title: const Text('収集地区を確認してください'),
+        content: Text('住所「${result.matchedTown}」の候補は松山市 ${result.districtName}地区です。収集地区を確認して設定してください。'),
         actions: [
           TextButton(
             onPressed: () {
               Navigator.of(dialogContext).pop();
               ref.read(gpsDetectionProvider.notifier).reset();
             },
-            child: Text(supported ? 'キャンセル' : '閉じる'),
+            child: const Text('キャンセル'),
           ),
-          if (supported)
-            FilledButton(
+          FilledButton(
               onPressed: () async {
                 Navigator.of(dialogContext).pop();
                 ref.read(gpsDetectionProvider.notifier).reset();
-                await _useRecommendedRegion();
+                await _saveRegion(_ehime, _matsuyama, District(
+                  id: areaId, municipalityId: '38201', name: result.districtName));
               },
               child: const Text('この地域で設定'),
             ),
@@ -642,16 +659,9 @@ class _RegionSelectionScreenState extends ConsumerState<RegionSelectionScreen> {
     );
     if (!mounted) return;
 
-    if (selected?.districtName == _shimizu.name) {
-      await _useRecommendedRegion();
-    } else if (selected != null) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-            '${selected.districtName}地区は準備中です。現在は清水地区を選択してください。',
-          ),
-        ),
-      );
+    if (selected != null && selected.collectionAreaId != null) {
+      await _saveRegion(_ehime, _matsuyama, District(
+        id: selected.collectionAreaId!, municipalityId: '38201', name: selected.districtName));
     }
     ref.read(gpsDetectionProvider.notifier).reset();
   }

@@ -129,7 +129,9 @@ resource "aws_lambda_function" "backend" {
       USE_BEDROCK_KNOWLEDGE_BASE          = "false"
       LEXICAL_SEARCH_ENABLED              = "false"
       TIMEZONE                            = "Asia/Tokyo"
-      CALENDAR_PATH                       = "/var/task/data/regions/matsuyama/shimizu/calendar/2026.csv"
+      CALENDAR_BUNDLE_PATH                = "/var/task/data/regions/matsuyama/generated/calendar-2026.json"
+      REGION_REGISTRY_PATH                = "/var/task/data/regions/matsuyama/registry.json"
+      NAKAJIMA_ITEMS_PATH                 = "/var/task/data/regions/matsuyama/generated/nakajima_items.csv"
       SEARCH_LOG_TABLE                    = aws_dynamodb_table.search_logs.name
       SEARCH_LOG_RETENTION_DAYS           = tostring(var.search_log_retention_days)
       ANALYTICS_API_KEY                   = random_password.analytics_api_key.result

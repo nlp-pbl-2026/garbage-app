@@ -17,11 +17,13 @@ class DistrictCandidate {
   final int districtNumber;
   final String districtName;
   final String townName;
+  final String? collectionAreaId;
 
   const DistrictCandidate({
     required this.districtNumber,
     required this.districtName,
     required this.townName,
+    this.collectionAreaId,
   });
 
   @override
@@ -114,11 +116,13 @@ class DistrictMatchResult {
   final int districtNumber; // 地区番号（1〜84）
   final String districtName; // 地区名（例: "道後"）
   final String matchedTown; // マッチした町名
+  final String? collectionAreaId;
 
   const DistrictMatchResult({
     required this.districtNumber,
     required this.districtName,
     required this.matchedTown,
+    this.collectionAreaId,
   });
 
   @override

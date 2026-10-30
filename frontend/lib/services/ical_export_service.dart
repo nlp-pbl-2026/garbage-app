@@ -8,6 +8,7 @@ import '../models/collection_schedule.dart';
 import '../models/garbage_category.dart';
 import '../models/garbage_item.dart';
 import 'schedule_service.dart';
+import '../utils/japan_time.dart';
 
 /// iCal (.ics) 形式でゴミ収集スケジュールをエクスポートするサービス
 ///
@@ -16,15 +17,17 @@ import 'schedule_service.dart';
 /// Web環境ではテキスト共有、ネイティブ環境ではファイル共有を使い分ける。
 class IcalExportService {
   final ScheduleService _scheduleService;
+  final DateTime Function() _now;
 
-  IcalExportService(this._scheduleService);
+  IcalExportService(this._scheduleService, {DateTime Function()? now})
+      : _now = now ?? DateTime.now;
 
   /// 指定地区の今後[months]ヶ月分のスケジュールをiCal形式の文字列に変換する
   Future<String> generateIcalString(
     String districtId, {
     int months = 3,
   }) async {
-    final now = DateTime.now();
+    final now = japanWallTime(_now());
     final buffer = StringBuffer();
 
     buffer.writeln('BEGIN:VCALENDAR');
@@ -56,12 +59,13 @@ class IcalExportService {
   void _writeVEvent(StringBuffer buffer, ScheduleEntry entry) {
     final label = CategoryColors.getLabel(entry.category);
     final dateStr = _formatDate(entry.date);
-    final uid = '${dateStr}-${entry.category.toJsonString()}@garbageapp';
+    final uid = '${entry.districtId}-$dateStr-${entry.category.toJsonString()}@garbageapp';
+    final deadline = entry.category == GarbageCategory.burnable ? '7時' : '8時';
 
     buffer.writeln('BEGIN:VEVENT');
     buffer.writeln('DTSTART;VALUE=DATE:$dateStr');
     buffer.writeln('SUMMARY:${label}の日');
-    buffer.writeln('DESCRIPTION:今日は${label}の収集日です');
+    buffer.writeln('DESCRIPTION:今日は${label}の収集日です。$deadlineまでに出してください。');
     buffer.writeln('UID:$uid');
     buffer.writeln('END:VEVENT');
   }

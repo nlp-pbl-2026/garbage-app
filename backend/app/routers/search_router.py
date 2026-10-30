@@ -24,6 +24,8 @@ from ..schemas import (
     WasteGuideResponse,
 )
 from ..services.item_search_service import ItemSearchService
+from ..services.nakajima_search_service import NakajimaSearchService
+from ..services.region_registry_service import RegionResolutionError, get_registry
 from ..services.search_log_service import SearchLogService
 from ..services.waste_guide_service import (
     CATEGORY_NAMES,
@@ -89,7 +91,7 @@ async def rewrite_search_query(request: WasteGuideRequest) -> SearchRewriteRespo
 async def retrieve_regional_documents(
     request: SearchRetrieveRequest,
 ) -> SearchRetrieveResponse:
-    """Bedrock Knowledge Baseから松山市・清水地区の根拠を取得する。"""
+    """選択した松山市の地域に対応する根拠を取得する。"""
 
     documents = await _run_step(
         lambda: WasteGuideService().retrieve(
@@ -177,11 +179,29 @@ async def list_waste_items(
     municipality_id: str,
     category: str = Query(default="粗大", max_length=20),
     search: str | None = Query(default=None, max_length=100),
+    district_id: str | None = Query(default=None, max_length=20),
 ) -> BulkyWasteItemListResponse:
     """あいまい検索と同じ品目辞典から、分類別の品目一覧を返す。"""
 
     if municipality_id != "38201":
         raise HTTPException(status_code=404, detail="指定された自治体は未対応です。")
+    try:
+        region = get_registry().resolve(municipality_id, district_id or "38201-08")
+    except RegionResolutionError as error:
+        raise HTTPException(status_code=422, detail=str(error)) from error
+    if region.is_nakajima:
+        try:
+            rows = [row for row in NakajimaSearchService().rows
+                    if row["category"] == category and row["item_id"].startswith("nk-item-")
+                    and (not search or search in row["item"])]
+        except FileNotFoundError as error:
+            raise HTTPException(status_code=503, detail="中島地域の品目資料がありません。") from error
+        return BulkyWasteItemListResponse(
+            items=[BulkyWasteItemResponse(id=index, item_name=row["item"],
+                    category=row["category_display"], fee_amount=0, notes=row["note"])
+                   for index, row in enumerate(rows, start=1)],
+            total_count=len(rows), municipality_name="松山市・中島地域",
+        )
 
     matches = ItemSearchService().list_items(
         category=category,

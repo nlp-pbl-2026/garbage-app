@@ -9,6 +9,7 @@ from app.services.waste_guide_service import (
     ImageInput,
     RetrievedDocument,
     UnsupportedRegionError,
+    WasteGuideError,
     WasteGuideService,
 )
 
@@ -73,6 +74,47 @@ class FakeEmbeddingSearch:
     def search(self, query, *, limit=None):
         self.queries.append(query)
         return self.matches
+
+
+def test_shared_vectors_return_item_candidates_without_changing_mainland_evidence():
+    from app.services.item_search_service import ItemMatch
+
+    match = ItemMatch("item-can", "缶詰", "金・ガ", "金物・ガラス類", "汚れを取り除く", .92)
+    search = FakeEmbeddingSearch([match])
+    gateway = BedrockGateway(runtime_client=object(), agent_runtime_client=object(),
+                             embedding_search=search)
+
+    assert gateway.search_item_candidates("缶詰", limit=24) == [match]
+    mainland = gateway.retrieve("缶詰")
+    assert len(mainland) == 1
+    assert mainland[0].uri == "local://items/item-can"
+    assert "分類コード: 金・ガ" in mainland[0].text
+    assert "汚れを取り除く" in mainland[0].text
+    assert search.queries == ["缶詰", "缶詰"]
+
+
+def test_missing_embedding_index_is_service_error_not_an_empty_result():
+    class MissingIndex:
+        is_ready = False
+
+    gateway = BedrockGateway(runtime_client=object(), agent_runtime_client=object(),
+                             embedding_search=MissingIndex())
+    with pytest.raises(WasteGuideError, match="index is unavailable"):
+        gateway._retrieve_by_embedding("ペットボトル")
+
+
+def test_existing_vectors_require_a_verification_manifest(tmp_path):
+    import numpy as np
+    from app.services.embedding_search_service import EmbeddingSearchService
+
+    source = tmp_path / "items.csv"
+    source.write_text("item_id,item,category\nitem_1,缶,金・ガ\n", encoding="utf-8")
+    index = tmp_path / "item_embeddings.npz"
+    np.savez(index, vectors=np.array([[1., 0.]], dtype=np.float32),
+             item_ids=np.array(["item_1"]), model_id="test", dimensions=2)
+    with pytest.raises(FileNotFoundError, match="verification manifest is missing"):
+        EmbeddingSearchService(embeddings_path=index, items_path=source,
+                               runtime_client=object())
 
 
 def test_rewrite_does_not_load_calendar_or_lexical_csv(monkeypatch):

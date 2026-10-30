@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "version": "matsuyama-2026.1",
+  "retrieved_on": "2026-10-30",
+  "address_entries": 710,
+  "address_area_count": 40,
+  "address_source_sha256": {
+    "chikukensaku-a.html": "df85625b88cc99731bb425027576b477d364fa0fcd19e1dfe8fb4a59be9419e8",
+    "chikukensaku-ka.html": "50f8268948028c08db17be6bb22dd100ff8812c2c1d1ee3f6f8c48db2318ab63",
+    "chikukensaku-sa.html": "2256337b818db3e3264710ec1f42ae932d047e3f7b38149fd241264d1412ed12",
+    "chikukensaku-ta.html": "a0c9abcf623c3e1c12729c9728c0a9d7dc7d728dc3b920402bfd7fd3007a250c",
+    "chikukensaku-na.html": "9c9403bf9f899161210822993967112b2755ad827dbaa3a03a46363d6d358db2",
+    "chikukensaku-ha.html": "f212b23cec325b548966fe5d70db761d1a2146640c68523fa9888102a3bd3f42",
+    "chikukensaku-ma.html": "8daecb11514d91c4ad6aad3faba376987cb98a83db2ae267ed2948845fa23134",
+    "chikukensaku-yarawa.html": "fec6be84c4c83ac94ab88051e497a2a725bfa7c71e8687e53176b4fa93a193d2"
+  },
+  "nakajima": {
+    "source_url": "https://www.city.matsuyama.ehime.jp/kurashi/gomi/dashikata/gomicalender/r8gomicaletikubetu.files/2026nakajimaoura.pdf",
+    "source_sha256": "2f53572251a9af5404fe8eb01927c53224cf46eb4a1bd032ed4623e54eb0f3ba",
+    "item_count": 79,
+    "category_codes": [
+      "びん",
+      "プラ",
+      "ペット",
+      "可燃",
+      "埋立",
+      "水銀",
+      "禁止",
+      "粗大",
+      "紙類",
+      "缶",
+      "金・ガ"
+    ],
+    "verification_status": "official_sections_and_examples_checked",
+    "scope": "Calendar guide sections and examples; not a complete Nakajima item dictionary"
+  },
+  "redistribution_status": "not_confirmed"
+}

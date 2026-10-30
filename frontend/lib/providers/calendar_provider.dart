@@ -2,11 +2,18 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../models/collection_schedule.dart';
 import '../services/schedule_service.dart';
+import '../services/municipality_data_service.dart';
+import '../utils/japan_time.dart';
 import 'region_provider.dart';
 
 /// ScheduleServiceのプロバイダー
 final scheduleServiceProvider =
     Provider<ScheduleService>((ref) => ScheduleService());
+
+final ruleProfileProvider = FutureProvider.family<String?, String>((ref, districtId) async {
+  final area = await MunicipalityDataService().area(districtId);
+  return area?['rule_profile_id'] as String?;
+});
 
 /// 選択中の日付のStateProvider
 ///
@@ -18,7 +25,7 @@ final selectedDayProvider = StateProvider<DateTime?>((ref) => null);
 ///
 /// カレンダー画面で現在表示中の月を保持する。
 /// 初期値は現在の月。
-final focusedMonthProvider = StateProvider<DateTime>((ref) => DateTime.now());
+final focusedMonthProvider = StateProvider<DateTime>((ref) => japanWallTime(DateTime.now()));
 
 /// 月間スケジュールのFutureProvider.family
 ///

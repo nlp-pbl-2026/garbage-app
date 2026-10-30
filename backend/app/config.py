@@ -48,6 +48,8 @@ COLLECTION_CUTOFF_HOUR = (
     int(_collection_cutoff_hour) if _collection_cutoff_hour else None
 )
 CALENDAR_PATH = os.getenv("CALENDAR_PATH", "")
+CALENDAR_BUNDLE_PATH = os.getenv("CALENDAR_BUNDLE_PATH", "")
+NAKAJIMA_ITEMS_PATH = os.getenv("NAKAJIMA_ITEMS_PATH", "")
 
 # 検索分析ログ。AWSではDynamoDB、ローカルではJSON Linesを使う。
 SEARCH_LOG_TABLE = os.getenv("SEARCH_LOG_TABLE", "")

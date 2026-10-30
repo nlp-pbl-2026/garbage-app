@@ -8,6 +8,7 @@
 from __future__ import annotations
 
 import csv
+import hashlib
 import json
 import logging
 from pathlib import Path
@@ -75,6 +76,20 @@ class EmbeddingSearchService:
         if "dimensions" in data:
             self._dimensions = int(data["dimensions"])
         self._meta = self._load_items_metadata()
+        manifest_path = self._items_path.parent / "index_manifest.json"
+        if not manifest_path.exists():
+            raise FileNotFoundError(f"Item/index verification manifest is missing: {manifest_path}")
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        source_hash = hashlib.sha256(self._items_path.read_bytes()).hexdigest()
+        index_hash = hashlib.sha256(self._embeddings_path.read_bytes()).hexdigest()
+        if (source_hash != manifest["source_sha256"]
+                or index_hash != manifest["index_sha256"]
+                or len(self._item_ids) != manifest["item_count"]
+                or len(set(self._item_ids)) != len(self._item_ids)
+                or set(self._item_ids) != set(self._meta)
+                or self._vectors.shape != (manifest["item_count"], manifest["dimensions"])
+                or self._model_id != manifest["model_id"]):
+            raise ValueError("Item CSV and embedding index are not a verified pair")
 
     def _load_items_metadata(self) -> dict[str, dict[str, str]]:
         if not self._items_path.exists():

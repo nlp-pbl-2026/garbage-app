@@ -69,6 +69,15 @@ class RegionSettingNotifier extends StateNotifier<AsyncValue<RegionSetting?>> {
     }
   }
 
+  Future<void> clearSetting() async {
+    try {
+      await _service.clearRegionSetting();
+      state = const AsyncValue.data(null);
+    } catch (e, st) {
+      state = AsyncValue.error(e, st);
+    }
+  }
+
   /// 地域選択のバリデーションを実行する
   ///
   /// 都道府県・市区町村・地区がすべて選択されている場合にのみ有効と判定する。

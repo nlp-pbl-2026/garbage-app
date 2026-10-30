@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../models/bulky_waste.dart';
 import '../../providers/bulky_waste_provider.dart';
+import '../../providers/region_provider.dart';
 import '../../repositories/bulky_waste_repository.dart';
 import '../../screens/fee_display_screen.dart';
 import 'external_link_handler.dart';
@@ -29,7 +30,7 @@ enum ItemSortMode {
 /// 要件3.2: 品目名・カテゴリ・手数料を表示
 /// 要件3.3: 1文字以上のキーワードで部分一致フィルタリング
 /// 要件3.4: 検索結果0件時のメッセージ表示
-/// 要件3.5: ソート切替（名前順/手数料昇順/手数料降順）
+/// 要件3.5: 有料品目がある場合のソート切替（名前順/手数料昇順/手数料降順）
 /// 要件3.6: API失敗時のエラーメッセージ+リトライ
 class ItemListView extends ConsumerStatefulWidget {
   /// 対象の自治体ID（5桁コード）
@@ -142,6 +143,16 @@ class _ItemListViewState extends ConsumerState<ItemListView> {
     final config = configResult?.data;
     if (config == null) return;
 
+    if (config.applicationMethod == ApplicationMethod.none) {
+      showDialog<void>(context: context, builder: (dialogContext) => AlertDialog(
+        title: Text(item.itemName),
+        content: Text('${item.notes ?? '公式カレンダーで出し方を確認してください。'}\n\n収集日は選択地区のカレンダーで確認してください。'),
+        actions: [TextButton(onPressed: () => Navigator.of(dialogContext).pop(),
+          child: const Text('閉じる'))],
+      ));
+      return;
+    }
+
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -154,6 +165,7 @@ class _ItemListViewState extends ConsumerState<ItemListView> {
   BulkyWasteQuery _buildQuery() {
     return BulkyWasteQuery(
       municipalityId: widget.municipalityId,
+      districtId: ref.read(regionSettingProvider).valueOrNull?.districtId,
       sortBy: SortBy.name,
       sortOrder: SortOrder.asc,
     );
@@ -173,7 +185,7 @@ class _ItemListViewState extends ConsumerState<ItemListView> {
         return Column(
           children: [
             _buildSearchBar(),
-            _buildSortSelector(),
+            _buildSortSelector(result.data.items),
             Expanded(child: _buildItemListContent(result)),
           ],
         );
@@ -212,8 +224,10 @@ class _ItemListViewState extends ConsumerState<ItemListView> {
                         ),
                   ),
                   const SizedBox(height: 12),
-                  const Text(
-                    '粗大ごみとして収集できるか、申込区分、受付期間は松山市公式サイトで確認してください。料金はかかりません。',
+                  Text(
+                    widget.config.applicationMethod == ApplicationMethod.none
+                        ? '中島地域の粗大ごみ収集日と出し方は公式カレンダーで確認してください。'
+                        : '粗大ごみとして収集できるか、申込区分、受付期間は松山市公式サイトで確認してください。料金はかかりません。',
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(height: 20),
@@ -275,7 +289,10 @@ class _ItemListViewState extends ConsumerState<ItemListView> {
   }
 
   /// ソート切替UIを構築する
-  Widget _buildSortSelector() {
+  Widget _buildSortSelector(List<BulkyWasteItem> items) {
+    if (!items.any((item) => item.feeAmount > 0)) {
+      return const SizedBox.shrink();
+    }
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: Row(
@@ -375,7 +392,13 @@ class _ItemListViewState extends ConsumerState<ItemListView> {
         style: TextStyle(fontSize: 13, color: Colors.grey[600]),
       ),
       trailing: Text(
-        '${item.feeAmount}円',
+        widget.config.applicationMethod == ApplicationMethod.none
+            ? '資料を確認'
+            : item.feeAmount > 0
+                ? '${item.feeAmount}円'
+                : widget.config.municipalityId == '38201'
+                    ? '戸別収集無料'
+                    : '料金未確認',
         style: const TextStyle(
           fontSize: 15,
           fontWeight: FontWeight.w600,

@@ -11,7 +11,7 @@ import '../widgets/bulky_waste/status_tracker_view.dart';
 
 /// 粗大ごみ機能のメイン画面
 ///
-/// TabBar構成で品目一覧・申し込みガイド・状況追跡の3タブを表示する。
+/// TabBar構成で品目一覧・出し方ガイド・手動の収集記録の3タブを表示する。
 /// [municipalityConfigProvider] を watch し、自治体設定に応じた概要情報を表示する。
 /// ローディング中はインジケーター、データ未登録時はメッセージを表示する。
 class BulkyWasteScreen extends ConsumerStatefulWidget {
@@ -40,16 +40,21 @@ class _BulkyWasteScreenState extends ConsumerState<BulkyWasteScreen>
   @override
   Widget build(BuildContext context) {
     final configAsync = ref.watch(municipalityConfigProvider);
+    final recordTabLabel = switch (configAsync.valueOrNull?.data.applicationMethod) {
+      ApplicationMethod.none => '収集予定メモ',
+      null => '記録',
+      _ => '申込記録',
+    };
 
     return Scaffold(
       appBar: AppBar(
         title: _buildAppBarTitle(configAsync),
         bottom: TabBar(
           controller: _tabController,
-          tabs: const [
-            Tab(text: '品目一覧'),
-            Tab(text: '申し込みガイド'),
-            Tab(text: '状況追跡'),
+          tabs: [
+            const Tab(text: '品目一覧'),
+            const Tab(text: '出し方ガイド'),
+            Tab(text: recordTabLabel),
           ],
         ),
       ),
@@ -151,7 +156,9 @@ class _BulkyWasteScreenState extends ConsumerState<BulkyWasteScreen>
                 config: cachedResult.data,
                 useOfficialInfoFallback: cachedResult.isBundledFallback,
               ),
-              const StatusTrackerView(),
+              StatusTrackerView(
+                  isNakajima: cachedResult.data.applicationMethod ==
+                      ApplicationMethod.none),
             ],
           ),
         ),
@@ -162,7 +169,9 @@ class _BulkyWasteScreenState extends ConsumerState<BulkyWasteScreen>
   /// キャッシュデータ使用時の警告バナー
   Widget _buildDataNotice(CachedResult<MunicipalityConfig> result) {
     final message = result.isBundledFallback
-        ? '品目一覧はAWSの分別データを表示しています。申込条件や受付期間は松山市公式サイトで確認してください。'
+        ? result.data.applicationMethod == ApplicationMethod.none
+            ? '品目一覧は松山市の分別資料をもとにした参考情報です。中島地域の収集日と出し方は、地区別の公式カレンダーで確認してください。'
+            : '品目一覧は松山市の分別資料をもとにした参考情報です。収集対象や申込条件、受付期間は松山市公式サイトで確認してください。'
         : '表示されているデータは以前の取得結果です。最新情報を反映していない可能性があります。';
     return MaterialBanner(
       content: Text(

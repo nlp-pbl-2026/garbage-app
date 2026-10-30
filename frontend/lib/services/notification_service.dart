@@ -16,6 +16,7 @@ import '../models/garbage_item.dart';
 import '../models/notification_timing_type.dart';
 import 'notification_customization_service.dart';
 import 'schedule_service.dart';
+import '../utils/japan_time.dart';
 
 /// リマインダー有効化の結果
 ///
@@ -488,7 +489,8 @@ class NotificationService {
 
       // --- MorningNotification（当日 + morningTime） ---
       final morningEntries = entries
-          .where((e) => morningEnabledCategories.contains(e.category))
+          .where((e) => morningEnabledCategories.contains(e.category) &&
+              morningTime.hour < (e.category == GarbageCategory.burnable ? 7 : 8))
           .toList();
 
       if (morningEntries.isNotEmpty) {
@@ -558,7 +560,7 @@ class NotificationService {
 
     final planned = await computeScheduleWindow(
       districtId: districtId,
-      now: _now(),
+      now: japanWallTime(_now()),
       eveningTime: eveningTime,
       morningTime: morningTime,
       eveningEnabledCategories: eveningEnabledCategories,

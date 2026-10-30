@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../models/garbage_category.dart';
-import '../models/garbage_item.dart';
 import '../models/notification_timing_type.dart';
 import '../providers/notification_customization_provider.dart';
+import '../providers/calendar_provider.dart';
+import '../providers/region_provider.dart';
 import '../providers/settings_provider.dart';
 
 /// 種別ごとの通知カスタマイズウィジェット
@@ -67,7 +68,11 @@ class NotificationCustomizationWidget extends ConsumerWidget {
             ),
           ),
         ),
-        ...GarbageCategory.values.map((category) {
+        ...CategoryColors.forRuleProfile(
+          ref.watch(ruleProfileProvider(
+            ref.watch(regionSettingProvider).valueOrNull?.districtId ?? '38201-08',
+          )).valueOrNull,
+        ).map((category) {
           final setting = settings[category];
           if (setting == null) return const SizedBox.shrink();
 

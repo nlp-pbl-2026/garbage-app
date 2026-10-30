@@ -27,7 +27,7 @@ void main() {
       await tester.pump(const Duration(milliseconds: 500));
 
       expect(find.text('言い換えAI'), findsOneWidget);
-      expect(find.text('Bedrock KB'), findsOneWidget);
+      expect(find.text('地域別の根拠'), findsOneWidget);
       final pipelineHeight =
           tester.getSize(find.byKey(const Key('search-pipeline-row'))).height;
       expect(pipelineHeight, size.width < 620 ? 72 : 106);
@@ -57,7 +57,7 @@ void main() {
       await tester.pump(const Duration(milliseconds: 100));
 
       final agentName = tester.widget<Text>(find.text('言い換えAI'));
-      final technology = tester.widget<Text>(find.text('Bedrock KB'));
+      final technology = tester.widget<Text>(find.text('地域別の根拠'));
       expect(agentName.style?.color, scheme.onSurface);
       expect(agentName.style?.fontSize, 10);
       expect(technology.style?.color, scheme.onSurfaceVariant);

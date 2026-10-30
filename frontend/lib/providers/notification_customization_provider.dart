@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../models/category_notification_setting.dart';
+import '../models/garbage_category.dart';
 import '../models/garbage_item.dart';
 import '../models/notification_timing_type.dart';
 import '../services/notification_customization_service.dart';
@@ -123,7 +124,7 @@ class NotificationCustomizationNotifier
   /// デフォルト全ON状態の設定マップを生成する
   CategorySettingsMap _buildDefaultSettings() {
     final Map<GarbageCategory, CategoryNotificationSetting> defaults = {};
-    for (final category in GarbageCategory.values) {
+    for (final category in CategoryColors.collectionCategories) {
       defaults[category] = CategoryNotificationSetting(
         category: category,
         eveningEnabled: true,
