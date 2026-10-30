@@ -22,9 +22,9 @@ class _SearchPipelineViewState extends State<SearchPipelineView>
 
   static const _steps = [
     _PipelineStep(Icons.auto_fix_high_rounded, '言い換えAI', 'Nova Lite'),
-    _PipelineStep(Icons.travel_explore_rounded, '地域資料検索', 'Bedrock KB'),
+    _PipelineStep(Icons.travel_explore_rounded, '地域資料検索', '地域別の根拠'),
     _PipelineStep(Icons.psychology_alt_rounded, '分別判定AI', 'Nova Lite'),
-    _PipelineStep(Icons.event_available_rounded, '収集日照合', '清水カレンダー'),
+    _PipelineStep(Icons.event_available_rounded, '収集日照合', '公式カレンダー'),
   ];
 
   @override

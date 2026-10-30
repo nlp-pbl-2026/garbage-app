@@ -100,6 +100,33 @@ def test_nakajima_unknown_text_or_image_fails_closed_without_mainland_fallback(t
         assert not result.sources
 
 
+def test_nakajima_item_example_does_not_inherit_unrelated_section_conditions(tmp_path, monkeypatch):
+    import csv
+    source = tmp_path / "nakajima_items.csv"
+    with source.open("w", encoding="utf-8", newline="") as stream:
+        writer = csv.DictWriter(stream, fieldnames=["item_id", "item", "category",
+                                                    "category_display", "note"])
+        writer.writeheader()
+        writer.writerow({"item_id": "nk-item-foil", "item": "アルミ箔", "category": "可燃",
+                         "category_display": "可燃ごみ",
+                         "note": "中島地域2026年度カレンダーに可燃ごみの品目例として掲載。"})
+
+    class FoilGateway(FakeGateway):
+        def classify(self, query, clarifications, documents, image=None):
+            return ClassificationDecision(is_resolved=True, item_name="アルミ箔",
+                                          category_code="可燃", confidence=.98,
+                                          evidence_indexes=(1,))
+
+    monkeypatch.setattr("app.services.waste_guide_service.get_registry", lambda: FakeRegistry())
+    monkeypatch.setattr("app.services.nakajima_search_service.config.NAKAJIMA_ITEMS_PATH", str(source))
+    service = WasteGuideService(gateway=FoilGateway(),
+        calendar=calendar(ISLAND, {"2026-11-02": ["combustible"]}),
+        now_provider=lambda: datetime(2026, 10, 30, 9, tzinfo=ZoneInfo("Asia/Tokyo")))
+    result = service.query(query="アルミ箔", municipality_id="38201", district_id=ISLAND.area_id)
+    assert result.status == "answered"
+    assert result.next_collection.date == date(2026, 11, 2)
+
+
 def test_mainland_rejects_island_evidence(monkeypatch):
     monkeypatch.setattr("app.services.waste_guide_service.get_registry", lambda: FakeRegistry())
     service = WasteGuideService(gateway=FakeGateway())

@@ -91,7 +91,7 @@ async def rewrite_search_query(request: WasteGuideRequest) -> SearchRewriteRespo
 async def retrieve_regional_documents(
     request: SearchRetrieveRequest,
 ) -> SearchRetrieveResponse:
-    """Bedrock Knowledge Baseから松山市・清水地区の根拠を取得する。"""
+    """選択した松山市の地域に対応する根拠を取得する。"""
 
     documents = await _run_step(
         lambda: WasteGuideService().retrieve(

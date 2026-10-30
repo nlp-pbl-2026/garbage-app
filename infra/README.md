@@ -48,7 +48,7 @@ FastAPI
   ├─ Managed KB: 意味検索
   ├─ RRF: 2つの検索結果を統合
   ├─ Nova Lite: 分類または追加質問
-  ├─ ローカルCSV: 清水地区の次回収集日（可燃7時、ほか8時締切）
+  ├─ 同梱した2026年度カレンダー: 選択地区の次回収集日（可燃7時、ほか8時締切）
   └─ DynamoDB: 検索分析ログ（90日TTL）
           │ HTTP
           ▼
@@ -146,7 +146,7 @@ terraform -chdir=infra/terraform apply
 
 TerraformがS3オブジェクトのETag差分を検出してアップロードし、スクリプトが新しい取り込みジョブの完了まで待機します。
 
-清水地区の収集カレンダー `data/regions/matsuyama/shimizu/calendar/2026.csv` はバックエンドが直接読むため、S3・Knowledge Baseには登録しません。
+全地区の2026年度収集カレンダー `data/regions/matsuyama/generated/calendar-2026.json` はLambdaパッケージに同梱するため、S3・Knowledge Baseには登録しません。Flutterには同じ原本から生成した `frontend/assets/data/municipality_calendar.json` を同梱します。
 
 ## バックエンド設定
 

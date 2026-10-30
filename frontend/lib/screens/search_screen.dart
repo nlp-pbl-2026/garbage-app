@@ -13,7 +13,9 @@ import 'search_analytics_screen.dart';
 import 'search_system_guide_screen.dart';
 
 class SearchScreen extends ConsumerStatefulWidget {
-  const SearchScreen({super.key});
+  const SearchScreen({super.key, this.service});
+
+  final WasteGuideService? service;
 
   @override
   ConsumerState<SearchScreen> createState() => _SearchScreenState();
@@ -22,7 +24,7 @@ class SearchScreen extends ConsumerStatefulWidget {
 class _SearchScreenState extends ConsumerState<SearchScreen> {
   final TextEditingController _queryController = TextEditingController();
   final FocusNode _queryFocus = FocusNode();
-  final WasteGuideService _service = WasteGuideService();
+  late final WasteGuideService _service = widget.service ?? WasteGuideService();
   final ImagePicker _imagePicker = ImagePicker();
 
   WasteGuideResult? _result;
@@ -83,7 +85,8 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
         image: _selectedImage,
         clarifications: clarifications,
         onStageChanged: (stage) {
-          if (mounted && epoch == _requestEpoch) setState(() => _pipelineStage = stage);
+          if (mounted && epoch == _requestEpoch)
+            setState(() => _pipelineStage = stage);
         },
       );
       if (!mounted || epoch != _requestEpoch) return;
@@ -187,7 +190,8 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
 
   @override
   Widget build(BuildContext context) {
-    ref.listen<AsyncValue<RegionSetting?>>(regionSettingProvider, (previous, next) {
+    ref.listen<AsyncValue<RegionSetting?>>(regionSettingProvider,
+        (previous, next) {
       if (previous?.valueOrNull?.districtId != next.valueOrNull?.districtId) {
         _startNewSearch();
       }
@@ -420,7 +424,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
     final message = switch (_pipelineStage) {
       SearchPipelineStage.idle => '検索すると、4つの処理が順番に動きます',
       SearchPipelineStage.rewriting => '言い換えAIが質問の意味を整理しています',
-      SearchPipelineStage.retrieving => '清水地区の資料から根拠を探しています',
+      SearchPipelineStage.retrieving => '選択地区の資料から根拠を探しています',
       SearchPipelineStage.classifying => '根拠から分別を判定し、収集日を照合しています',
       SearchPipelineStage.completed => 'すべての処理が完了しました',
     };
@@ -649,30 +653,34 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
               ],
               if (result.sources.isNotEmpty) ...[
                 const SizedBox(height: 10),
-                ExpansionTile(
-                  tilePadding: EdgeInsets.zero,
-                  title: const Text(
-                    '確認に使った情報',
-                    style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
+                Material(
+                  type: MaterialType.transparency,
+                  child: ExpansionTile(
+                    tilePadding: EdgeInsets.zero,
+                    title: const Text(
+                      '確認に使った情報',
+                      style:
+                          TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
+                    ),
+                    children: result.sources
+                        .map(
+                          (source) => ListTile(
+                            dense: true,
+                            contentPadding: EdgeInsets.zero,
+                            leading: const Icon(Icons.description_outlined,
+                                size: 19),
+                            title: Text(source.title ?? '松山市ごみ分別資料'),
+                            subtitle: source.snippet == null
+                                ? null
+                                : Text(
+                                    source.snippet!,
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                          ),
+                        )
+                        .toList(),
                   ),
-                  children: result.sources
-                      .map(
-                        (source) => ListTile(
-                          dense: true,
-                          contentPadding: EdgeInsets.zero,
-                          leading:
-                              const Icon(Icons.description_outlined, size: 19),
-                          title: Text(source.title ?? '松山市ごみ分別資料'),
-                          subtitle: source.snippet == null
-                              ? null
-                              : Text(
-                                  source.snippet!,
-                                  maxLines: 2,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                        ),
-                      )
-                      .toList(),
                 ),
               ],
             ],

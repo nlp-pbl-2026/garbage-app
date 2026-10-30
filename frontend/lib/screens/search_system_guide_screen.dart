@@ -24,7 +24,7 @@ class SearchSystemGuideScreen extends StatelessWidget {
               ),
               const SizedBox(height: 10),
               Text(
-                '一般的なAI知識だけで答えず、松山市・清水地区の資料を探してから分別と収集日を案内します。',
+                '一般的なAI知識だけで答えず、選択地区に対応する松山市の資料を探してから分別と収集日を案内します。',
                 style: TextStyle(
                     fontSize: 15, height: 1.7, color: colors.onSurfaceVariant),
               ),
@@ -44,7 +44,7 @@ class SearchSystemGuideScreen extends StatelessWidget {
                 context,
                 Icons.travel_explore_rounded,
                 '2. 地域資料を探す',
-                'Amazon Bedrock Knowledge Baseが、松山市・清水地区のごみ分別資料から関連度の高い根拠を取得します。これがRAGです。',
+                '松山・北条地域では品目Embedding索引、中島地域では公式カレンダー掲載例を検索します。中島の掲載例は網羅的な品目辞典ではありません。',
               ),
               _section(
                 context,
@@ -56,7 +56,7 @@ class SearchSystemGuideScreen extends StatelessWidget {
                 context,
                 Icons.event_available_rounded,
                 '4. 収集日を照合する',
-                '分類が確定した場合、清水地区のカレンダーと現在時刻を照合します。当日の収集終了後は次の収集日を案内します。',
+                '分類が確定した場合、選択地区の2026年度公式カレンダーと現在時刻を照合します。当日の搬出期限後は次の収集日を案内します。',
               ),
               const SizedBox(height: 8),
               Container(

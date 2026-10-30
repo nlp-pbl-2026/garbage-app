@@ -81,6 +81,10 @@ def validate() -> dict:
     assert len(island_rows) == knowledge["nakajima"]["item_count"]
     assert sha256(DATA / "source/2026nakajimaoura.pdf") == knowledge["nakajima"]["source_sha256"]
     assert all(row["verification_status"].startswith("official_") for row in island_rows)
+    # Item evidence must not duplicate an entire category section: unrelated
+    # conditions in that section would create false follow-up questions.
+    assert all(len(row["note"]) < 200 for row in island_rows
+               if row["item_id"].startswith("nk-item-"))
     return {"areas": 58, "calendars": 43, "date_cells": 43 * 365,
             "address_rows": len(addresses["entries"]), "nakajima_evidence_rows": len(island_rows),
             "shared_calendar_sha256": sha256(bundle_path)}

@@ -124,7 +124,8 @@ def build_nakajima_items(source_pdf: Path, output: Path, registry: dict) -> dict
                 raise ValueError(f"Official Nakajima item example not found: {category} {item}")
             rows.append({"item_id": "nk-item-" + hashlib.sha256((category + item).encode()).hexdigest()[:12],
                          "item": item, "reading": "", "search_text": item,
-                         "category": category, "category_display": names[category], "note": text.strip(),
+                         "category": category, "category_display": names[category],
+                         "note": f"中島地域2026年度カレンダーに{names[category]}の品目例として掲載。",
                          "rule_ref": "中島地域2026年度カレンダー掲載の品目例", "source_url": source_url,
                          "verification_status": "official_example_checked"})
     # Explicit negative rules are evidence but not a scheduled collection type.
