@@ -32,8 +32,14 @@ class FeeDisplayScreen extends StatelessWidget {
 
   /// 手数料情報が利用可能かどうかを判定する
   ///
-  /// feeAmount が 0 の場合は手数料情報未登録とみなす。
+  /// 正の金額だけを品目別の手数料として表示する。
+  /// 松山市の無料戸別収集は別の案内で扱う。
   bool get _isFeeAvailable => item.feeAmount > 0;
+
+  bool get _isMatsuyamaFreeCollection =>
+      item.feeAmount == 0 &&
+      config.municipalityId == '38201' &&
+      config.applicationMethod != ApplicationMethod.none;
 
   @override
   Widget build(BuildContext context) {
@@ -41,9 +47,41 @@ class FeeDisplayScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(item.itemName),
       ),
-      body: _isFeeAvailable
-          ? _buildFeeContent(context)
-          : _buildNoFeeContent(context),
+      body: _isMatsuyamaFreeCollection
+          ? _buildMatsuyamaFreeContent(context)
+          : _isFeeAvailable
+              ? _buildFeeContent(context)
+              : _buildNoFeeContent(context),
+    );
+  }
+
+  Widget _buildMatsuyamaFreeContent(BuildContext context) {
+    return SingleChildScrollView(
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Card(
+            child: Padding(
+              padding: const EdgeInsets.all(20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(item.itemName,
+                      style: Theme.of(context).textTheme.titleLarge),
+                  const SizedBox(height: 12),
+                  const Text('松山・北条地域の戸別収集は無料です。',
+                      style: TextStyle(fontWeight: FontWeight.bold)),
+                  const SizedBox(height: 8),
+                  const Text('品目が収集対象か、住所の申込区分と受付期間は松山市公式サイトで確認してください。'),
+                ],
+              ),
+            ),
+          ),
+          const SizedBox(height: 24),
+          _buildExternalLinkSection(),
+        ],
+      ),
     );
   }
 

@@ -11,7 +11,7 @@ import '../widgets/bulky_waste/status_tracker_view.dart';
 
 /// 粗大ごみ機能のメイン画面
 ///
-/// TabBar構成で品目一覧・申し込みガイド・状況追跡の3タブを表示する。
+/// TabBar構成で品目一覧・出し方ガイド・手動の収集記録の3タブを表示する。
 /// [municipalityConfigProvider] を watch し、自治体設定に応じた概要情報を表示する。
 /// ローディング中はインジケーター、データ未登録時はメッセージを表示する。
 class BulkyWasteScreen extends ConsumerStatefulWidget {
@@ -40,16 +40,21 @@ class _BulkyWasteScreenState extends ConsumerState<BulkyWasteScreen>
   @override
   Widget build(BuildContext context) {
     final configAsync = ref.watch(municipalityConfigProvider);
+    final recordTabLabel = switch (configAsync.valueOrNull?.data.applicationMethod) {
+      ApplicationMethod.none => '収集予定メモ',
+      null => '記録',
+      _ => '申込記録',
+    };
 
     return Scaffold(
       appBar: AppBar(
         title: _buildAppBarTitle(configAsync),
         bottom: TabBar(
           controller: _tabController,
-          tabs: const [
-            Tab(text: '品目一覧'),
-            Tab(text: '出し方ガイド'),
-            Tab(text: '状況追跡'),
+          tabs: [
+            const Tab(text: '品目一覧'),
+            const Tab(text: '出し方ガイド'),
+            Tab(text: recordTabLabel),
           ],
         ),
       ),
@@ -151,7 +156,9 @@ class _BulkyWasteScreenState extends ConsumerState<BulkyWasteScreen>
                 config: cachedResult.data,
                 useOfficialInfoFallback: cachedResult.isBundledFallback,
               ),
-              StatusTrackerView(isNakajima: cachedResult.data.applicationMethod == ApplicationMethod.none),
+              StatusTrackerView(
+                  isNakajima: cachedResult.data.applicationMethod ==
+                      ApplicationMethod.none),
             ],
           ),
         ),

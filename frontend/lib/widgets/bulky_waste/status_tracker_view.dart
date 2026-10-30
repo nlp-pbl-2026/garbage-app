@@ -5,7 +5,7 @@ import 'package:intl/intl.dart';
 import '../../models/bulky_waste.dart';
 import '../../providers/bulky_waste_provider.dart';
 
-/// 粗大ごみ申し込み状況追跡ウィジェット
+/// 粗大ごみの収集予定を手動で保存するウィジェット
 ///
 /// ローカルに保存された申し込み記録を管理する画面。
 /// 記録の新規作成、ステータス変更、完了アーカイブ、期限超過表示を提供する。
@@ -30,23 +30,40 @@ class StatusTrackerView extends ConsumerWidget {
     final archivedRecords =
         records.where((r) => r.status == ApplicationStatus.completed).toList();
 
-    return Stack(
+    return Column(
       children: [
-        activeRecords.isEmpty && archivedRecords.isEmpty
-            ? _EmptyState(onAdd: () => _showAddRecordDialog(context, notifier), isNakajima: isNakajima)
-            : _RecordListBody(
-                activeRecords: activeRecords,
-                archivedRecords: archivedRecords,
-                notifier: notifier,
-                isNakajima: isNakajima,
+        Padding(
+          padding: const EdgeInsets.fromLTRB(16, 12, 16, 0),
+          child: Text(
+            isNakajima
+                ? '品目名と公式カレンダーで確認した収集日を、この端末に手動で記録します。市の収集状況は取得しません。'
+                : '松山市への申込み後、品目名・通知された収集日・進み具合を、この端末に手動で記録します。市への申込みや申込状況の取得は行いません。',
+            style: Theme.of(context).textTheme.bodySmall,
+          ),
+        ),
+        Expanded(
+          child: Stack(
+            children: [
+              activeRecords.isEmpty && archivedRecords.isEmpty
+                  ? _EmptyState(
+                      onAdd: () => _showAddRecordDialog(context, notifier),
+                      isNakajima: isNakajima)
+                  : _RecordListBody(
+                      activeRecords: activeRecords,
+                      archivedRecords: archivedRecords,
+                      notifier: notifier,
+                      isNakajima: isNakajima,
+                    ),
+              Positioned(
+                right: 16,
+                bottom: 16,
+                child: FloatingActionButton.extended(
+                  onPressed: () => _showAddRecordDialog(context, notifier),
+                  icon: const Icon(Icons.add),
+                  label: const Text('新規登録'),
+                ),
               ),
-        Positioned(
-          right: 16,
-          bottom: 16,
-          child: FloatingActionButton.extended(
-            onPressed: () => _showAddRecordDialog(context, notifier),
-            icon: const Icon(Icons.add),
-            label: const Text('新規登録'),
+            ],
           ),
         ),
       ],
@@ -64,7 +81,8 @@ class StatusTrackerView extends ConsumerWidget {
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
       ),
-      builder: (context) => _AddRecordSheet(notifier: notifier, isNakajima: isNakajima),
+      builder: (context) =>
+          _AddRecordSheet(notifier: notifier, isNakajima: isNakajima),
     );
   }
 }

@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 import '../../models/bulky_waste.dart';
 import 'external_link_handler.dart';
 
+const _matsuyamaAreaLookupUrl =
+    'https://www.city.matsuyama.ehime.jp/kurashi/gomi/dashikata/chikukensaku.html';
+
 /// 粗大ごみ申し込み手順ガイド表示ウィジェット
 ///
 /// MunicipalityConfigのstepsを番号付きリストで表示する。
-/// 標準5ステップ（品目確認→手数料確認→申し込み→処理券購入→排出）に加え、
-/// 自治体固有の追加ステップも正しい順序で表示する。
+/// 自治体ごとの手順を順序どおりに表示し、松山市では公式の住所検索へ案内する。
 ///
 /// Requirements: 5.1, 5.2, 5.3, 5.4, 5.5
 class ApplicationGuideView extends StatelessWidget {
@@ -44,6 +46,11 @@ class ApplicationGuideView extends StatelessWidget {
                 ),
           ),
           const SizedBox(height: 16),
+          if (config.municipalityId == '38201' &&
+              config.applicationMethod != ApplicationMethod.none) ...[
+            const _MatsuyamaApplicationGroupHelp(),
+            const SizedBox(height: 16),
+          ],
           // ステップ一覧
           ...sortedSteps.map((step) => _StepCard(
                 step: step,
@@ -56,7 +63,58 @@ class ApplicationGuideView extends StatelessWidget {
               config: config,
               useOfficialInfoFallback: useOfficialInfoFallback,
             ),
+          if (config.municipalityId == '38201' &&
+              config.applicationMethod == ApplicationMethod.none)
+            Card(
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    const Text('中島地域の公式案内'),
+                    const SizedBox(height: 8),
+                    const Text('中島地域はA〜Dの戸別収集申込みではなく、地区別カレンダーの収集日に集積場所へ出します。'),
+                    const SizedBox(height: 12),
+                    ExternalLinkHandler(
+                      applicationMethod: ApplicationMethod.webForm,
+                      webFormUrl: config.webFormUrl,
+                      webButtonLabel: '中島地域の出し方を確認',
+                    ),
+                  ],
+                ),
+              ),
+            ),
         ],
+      ),
+    );
+  }
+}
+
+class _MatsuyamaApplicationGroupHelp extends StatelessWidget {
+  const _MatsuyamaApplicationGroupHelp();
+
+  @override
+  Widget build(BuildContext context) {
+    return const Card(
+      child: Padding(
+        padding: EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text('申込区分A〜Dとは', style: TextStyle(fontWeight: FontWeight.bold)),
+            SizedBox(height: 8),
+            Text('松山・北条地域の住所ごとに決まる、粗大ごみの申込期間の区分です。ごみカレンダーの地区名とは別です。'),
+            SizedBox(height: 8),
+            Text(
+                '町名・丁目を松山市の「町別地区検索一覧」で確認してください。同じ町に複数の区分がある場合は、推測せず清掃課に確認してください。'),
+            SizedBox(height: 12),
+            ExternalLinkHandler(
+              applicationMethod: ApplicationMethod.webForm,
+              webFormUrl: _matsuyamaAreaLookupUrl,
+              webButtonLabel: '住所から申込区分を確認',
+            ),
+          ],
+        ),
       ),
     );
   }

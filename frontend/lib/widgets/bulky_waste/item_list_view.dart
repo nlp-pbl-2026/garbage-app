@@ -30,7 +30,7 @@ enum ItemSortMode {
 /// 要件3.2: 品目名・カテゴリ・手数料を表示
 /// 要件3.3: 1文字以上のキーワードで部分一致フィルタリング
 /// 要件3.4: 検索結果0件時のメッセージ表示
-/// 要件3.5: ソート切替（名前順/手数料昇順/手数料降順）
+/// 要件3.5: 有料品目がある場合のソート切替（名前順/手数料昇順/手数料降順）
 /// 要件3.6: API失敗時のエラーメッセージ+リトライ
 class ItemListView extends ConsumerStatefulWidget {
   /// 対象の自治体ID（5桁コード）
@@ -185,7 +185,7 @@ class _ItemListViewState extends ConsumerState<ItemListView> {
         return Column(
           children: [
             _buildSearchBar(),
-            _buildSortSelector(),
+            _buildSortSelector(result.data.items),
             Expanded(child: _buildItemListContent(result)),
           ],
         );
@@ -289,7 +289,10 @@ class _ItemListViewState extends ConsumerState<ItemListView> {
   }
 
   /// ソート切替UIを構築する
-  Widget _buildSortSelector() {
+  Widget _buildSortSelector(List<BulkyWasteItem> items) {
+    if (!items.any((item) => item.feeAmount > 0)) {
+      return const SizedBox.shrink();
+    }
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: Row(
@@ -390,7 +393,12 @@ class _ItemListViewState extends ConsumerState<ItemListView> {
       ),
       trailing: Text(
         widget.config.applicationMethod == ApplicationMethod.none
-            ? '資料を確認' : '${item.feeAmount}円',
+            ? '資料を確認'
+            : item.feeAmount > 0
+                ? '${item.feeAmount}円'
+                : widget.config.municipalityId == '38201'
+                    ? '戸別収集無料'
+                    : '料金未確認',
         style: const TextStyle(
           fontSize: 15,
           fontWeight: FontWeight.w600,
