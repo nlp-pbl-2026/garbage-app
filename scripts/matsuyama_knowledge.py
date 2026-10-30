@@ -72,10 +72,30 @@ def build_addresses(source_dir: Path, registry: dict) -> dict:
 _SECTION_RECTS = {
     "可燃": (18, 890, 188, 1640), "プラ": (189, 890, 350, 1307),
     "びん": (352, 890, 509, 1127), "紙類": (352, 1127, 509, 1640),
-    "ペット": (189, 1307, 350, 1640),
+    "ペット": (189, 1307, 350, 1606),
     "粗大": (513, 890, 674, 1172), "金・ガ": (513, 1172, 674, 1535),
     "缶": (675, 890, 835, 1172), "埋立": (675, 1172, 835, 1640),
     "水銀": (836, 890, 993, 1290),
+}
+
+# Explicit examples inspected in the official guide. Partial layout lines and
+# collection-facility bullets are deliberately excluded from the item index.
+_OFFICIAL_EXAMPLES = {
+    "可燃": ["生ごみ", "アルミ箔", "廃食油", "ペンキ", "衣類", "靴", "カバン",
+            "木の枝", "プラスチック製ライター", "洗濯ばさみ", "ストロー", "歯ブラシ",
+            "CD", "洗面器", "バケツ", "プラスチック製のおもちゃ", "紙コップ",
+            "紙皿", "写真", "アルバム", "ティッシュペーパー"],
+    "プラ": ["ラベル", "キャップ", "緩衝材", "ネット類", "ポリ袋", "レジ袋",
+            "マヨネーズ", "ケチャップ", "カップ", "パック類", "トレイ類"],
+    "びん": ["飲料・食料品用のもの"],
+    "紙類": ["新聞紙", "情報紙", "紙パック", "段ボール", "本類・雑がみ"],
+    "ペット": ["このマークがあるボトル"],
+    "粗大": ["電気・電池を使用する製品", "石油ストーブ", "家具類", "鏡", "バイクのヘルメット"],
+    "金・ガ": ["刃物", "割れガラス", "一斗缶", "カセットボンベ", "スプレー缶",
+               "金属製のなべ", "やかん", "フライパン"],
+    "缶": ["アルミ缶", "スチール缶", "飲料缶", "缶詰"],
+    "埋立": ["乾電池", "陶磁器製の茶碗", "植木鉢", "砂", "小石", "土", "ブロック", "レンガ"],
+    "水銀": ["白熱電球", "蛍光灯", "水銀体温計", "ボタン型電池"],
 }
 
 
@@ -93,24 +113,20 @@ def build_nakajima_items(source_pdf: Path, output: Path, registry: dict) -> dict
         text = re.sub(r"第\s*[1-5１-５]\s*[月火水木金土日]\s*曜\s*日?", "収集日は地区別カレンダーを確認", text)
         if norm(names[category]) not in norm(text):
             raise ValueError(f"Official Nakajima section not found: {category}")
-        # The whole section is the evidence. Only explicit bullet examples become items.
+        # The whole section is the evidence. Only checked, complete examples become items.
         rows.append({"item_id": "nk-rule-" + hashlib.sha256(category.encode()).hexdigest()[:12],
                      "item": names[category], "reading": "", "search_text": names[category],
                      "category": category, "category_display": names[category], "note": text.strip(),
                      "rule_ref": "中島地域2026年度カレンダー掲載の分別説明", "source_url": source_url,
                      "verification_status": "official_section_checked"})
-        for line in text.splitlines():
-            bullet = re.match(r"\s*●\s*(.+)", line)
-            if not bullet:
-                continue
-            item = " ".join(bullet[1].strip().split())
-            if len(item) < 2 or len(item) > 65:
-                continue
+        for item in _OFFICIAL_EXAMPLES[category]:
+            if norm(item).lower() not in norm(text).lower():
+                raise ValueError(f"Official Nakajima item example not found: {category} {item}")
             rows.append({"item_id": "nk-item-" + hashlib.sha256((category + item).encode()).hexdigest()[:12],
                          "item": item, "reading": "", "search_text": item,
                          "category": category, "category_display": names[category], "note": text.strip(),
                          "rule_ref": "中島地域2026年度カレンダー掲載の品目例", "source_url": source_url,
-                         "verification_status": "official_bullet_checked"})
+                         "verification_status": "official_example_checked"})
     # Explicit negative rules are evidence but not a scheduled collection type.
     prohibition = page.get_text(clip=pymupdf.Rect(828, 1365, 1165, 1630), sort=True)
     if "出してはいけない" not in prohibition:
@@ -129,5 +145,5 @@ def build_nakajima_items(source_pdf: Path, output: Path, registry: dict) -> dict
         writer.writerows(rows)
     return {"source_url": source_url, "source_sha256": hashlib.sha256(source_pdf.read_bytes()).hexdigest(),
             "item_count": len(rows), "category_codes": sorted({r["category"] for r in rows}),
-            "verification_status": "official_sections_and_bullets_checked",
+            "verification_status": "official_sections_and_examples_checked",
             "scope": "Calendar guide sections and examples; not a complete Nakajima item dictionary"}

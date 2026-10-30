@@ -17,7 +17,7 @@
   "nakajima": {
     "source_url": "https://www.city.matsuyama.ehime.jp/kurashi/gomi/dashikata/gomicalender/r8gomicaletikubetu.files/2026nakajimaoura.pdf",
     "source_sha256": "2f53572251a9af5404fe8eb01927c53224cf46eb4a1bd032ed4623e54eb0f3ba",
-    "item_count": 58,
+    "item_count": 79,
     "category_codes": [
       "びん",
       "プラ",
@@ -31,7 +31,7 @@
       "缶",
       "金・ガ"
     ],
-    "verification_status": "official_sections_and_bullets_checked",
+    "verification_status": "official_sections_and_examples_checked",
     "scope": "Calendar guide sections and examples; not a complete Nakajima item dictionary"
   },
   "redistribution_status": "not_confirmed"
