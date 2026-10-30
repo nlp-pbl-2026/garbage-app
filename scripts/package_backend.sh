@@ -34,6 +34,7 @@ cp "${PROJECT_ROOT}/backend/app/services/item_search_service.py" "${BUILD_DIR}/a
 cp "${PROJECT_ROOT}/backend/app/services/embedding_search_service.py" "${BUILD_DIR}/app/services/"
 cp "${PROJECT_ROOT}/backend/app/services/region_registry_service.py" "${BUILD_DIR}/app/services/"
 cp "${PROJECT_ROOT}/backend/app/services/nakajima_search_service.py" "${BUILD_DIR}/app/services/"
+cp "${PROJECT_ROOT}/backend/app/services/nakajima_rule_service.py" "${BUILD_DIR}/app/services/"
 cp "${PROJECT_ROOT}/backend/app/services/waste_guide_service.py" "${BUILD_DIR}/app/services/"
 
 mkdir -p "${BUILD_DIR}/data/regions/matsuyama/generated"

@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import csv
+from collections import Counter
 from datetime import date, timedelta
 import json
 from pathlib import Path
@@ -85,8 +86,38 @@ def validate() -> dict:
     # conditions in that section would create false follow-up questions.
     assert all(len(row["note"]) < 200 for row in island_rows
                if row["item_id"].startswith("nk-item-"))
+    # Keep the new shared-category rules consistent with the island examples.
+    # These are the subset whose names happen to match exactly; they do not
+    # establish item-by-item coverage for the rest of the dictionary.
+    from app.services.item_search_service import ItemMatch
+    from app.services.nakajima_rule_service import resolve_shared_item
+    mainland_path = DATA / "common/knowledge/items.csv"
+    with mainland_path.open(encoding="utf-8-sig", newline="") as stream:
+        mainland_rows = list(csv.DictReader(stream))
+    island_examples = {row["item"]: row for row in island_rows
+                       if row["item_id"].startswith("nk-item-")}
+    rule_statuses: Counter[str] = Counter()
+    matched_examples = 0
+    agreeing_examples = 0
+    for row in mainland_rows:
+        match = ItemMatch(row["item_id"], row["item"], row["category"],
+                          row["category_display"], row["note"], 0)
+        rule = resolve_shared_item(match)
+        rule_statuses[rule.status] += 1
+        example = island_examples.get(row["item"])
+        if example is not None:
+            matched_examples += 1
+            if rule.category is not None and rule.category != example["category"]:
+                raise ValueError(f"Shared rule contradicts official Nakajima example: {row['item']}")
+            if rule.category == example["category"]:
+                agreeing_examples += 1
     return {"areas": 58, "calendars": 43, "date_cells": 43 * 365,
             "address_rows": len(addresses["entries"]), "nakajima_evidence_rows": len(island_rows),
+            "nakajima_exact_example_overlaps": matched_examples,
+            "nakajima_exact_example_agreements": agreeing_examples,
+            "nakajima_exact_example_unresolved": matched_examples - agreeing_examples,
+            "nakajima_rule_eligible_rows": rule_statuses["common_rule"] + rule_statuses["split_rule"],
+            "nakajima_rule_review_rows": rule_statuses["conditional"] + rule_statuses["unverified"],
             "shared_calendar_sha256": sha256(bundle_path)}
 
 

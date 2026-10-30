@@ -76,6 +76,23 @@ class FakeEmbeddingSearch:
         return self.matches
 
 
+def test_shared_vectors_return_item_candidates_without_changing_mainland_evidence():
+    from app.services.item_search_service import ItemMatch
+
+    match = ItemMatch("item-can", "缶詰", "金・ガ", "金物・ガラス類", "汚れを取り除く", .92)
+    search = FakeEmbeddingSearch([match])
+    gateway = BedrockGateway(runtime_client=object(), agent_runtime_client=object(),
+                             embedding_search=search)
+
+    assert gateway.search_item_candidates("缶詰", limit=24) == [match]
+    mainland = gateway.retrieve("缶詰")
+    assert len(mainland) == 1
+    assert mainland[0].uri == "local://items/item-can"
+    assert "分類コード: 金・ガ" in mainland[0].text
+    assert "汚れを取り除く" in mainland[0].text
+    assert search.queries == ["缶詰", "缶詰"]
+
+
 def test_missing_embedding_index_is_service_error_not_an_empty_result():
     class MissingIndex:
         is_ready = False

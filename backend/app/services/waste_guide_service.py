@@ -16,6 +16,7 @@ from .calendar_service import CalendarService, CollectionDate
 from .embedding_search_service import EmbeddingSearchService
 from .item_search_service import ItemSearchService
 from .nakajima_search_service import NakajimaSearchService
+from .nakajima_rule_service import evidence_text as island_evidence_text, resolve_shared_item
 from .region_registry_service import CATEGORY_DEFINITIONS, RegionContext, RegionResolutionError, get_registry
 
 logger = logging.getLogger(__name__)
@@ -271,13 +272,6 @@ class BedrockGateway:
         return self._retrieve_from_knowledge_base(query)
 
     def _retrieve_by_embedding(self, query: str) -> list[RetrievedDocument]:
-        try:
-            if self._embedding_search is None:
-                self._embedding_search = EmbeddingSearchService(runtime_client=self._runtime)
-        except (OSError, ValueError, KeyError) as error:
-            raise WasteGuideError("Verified Matsuyama item index is unavailable") from error
-        if not getattr(self._embedding_search, "is_ready", True):
-            raise WasteGuideError("Verified Matsuyama item index is unavailable")
         return [
             RetrievedDocument(
                 text=match.evidence_text,
@@ -285,8 +279,19 @@ class BedrockGateway:
                 uri=f"local://items/{match.item_id}",
                 title="松山市ごみ分別辞典（意味検索）",
             )
-            for match in self._embedding_search.search(query)
+            for match in self.search_item_candidates(query)
         ]
+
+    def search_item_candidates(self, query: str, *, limit: int | None = None):
+        """Return shared item identities; callers choose regional evidence."""
+        try:
+            if self._embedding_search is None:
+                self._embedding_search = EmbeddingSearchService(runtime_client=self._runtime)
+        except (OSError, ValueError, KeyError) as error:
+            raise WasteGuideError("Verified Matsuyama item index is unavailable") from error
+        if not getattr(self._embedding_search, "is_ready", True):
+            raise WasteGuideError("Verified Matsuyama item index is unavailable")
+        return self._embedding_search.search(query, limit=limit)
 
     def _retrieve_from_knowledge_base(self, query: str) -> list[RetrievedDocument]:
         if not config.BEDROCK_KNOWLEDGE_BASE_ID:
@@ -340,8 +345,8 @@ class BedrockGateway:
         )
         island = region is not None and region.is_nakajima
         category_list = ", ".join(region.category_codes if region else CATEGORY_NAMES)
-        profile_note = ("中島地域の公式資料に記載された根拠だけを使ってください。"
-                        "松山・北条地域の品目辞典や収集方法を適用しないでください。"
+        profile_note = ("中島地域の公式資料に基づく共通区分・例外ルールだけで判定してください。"
+                        "共通索引の品目名は検索候補であり、松山・北条地域の分類や注意書きは適用しないでください。"
                         "中島では缶類とびん類を別に扱い、粗大ごみは地区別カレンダーの収集日に出します。"
                         if island else "松山・北条地域の公式資料に記載された根拠だけを使ってください。")
         mainland_examples = """品目種別ごとの分類原則:
@@ -351,9 +356,11 @@ class BedrockGateway:
 - 土・砂・粘土・石・陶器などは「埋立」。公式資料の対象条件を必ず確認する。
 - 市が収集しない品目は大型でも「粗大」にしない。"""
         island_examples = """中島地域の分類原則:
-- 飲料缶とびんは、それぞれ「缶」「びん」。金物・ガラス類へまとめない。
+- 飲料缶・缶詰は「缶」、飲料・食料品用のびんは「びん」。用途が不明な容器は確認する。
+- スプレー缶、一斗缶、金属製のびんのキャップなどは「金・ガ」。
 - 粗大ごみは地区別カレンダーに収集日がある。松山・北条地域の戸別申込制を当てはめない。
-- 中島の資料に品目や条件がない場合は分類を確定しない。"""
+- 共通索引の候補には、中島の公式計画で共通と確認できた区分だけを適用する。用途・材質・大きさ等の条件が足りない場合は確定しない。
+- 中島の資料に区分や条件の根拠がない場合は分類を確定しない。"""
         size_example = ("中島地域では透明袋45L以下か、粗大ごみとして出す大きさかを公式根拠で確認する。"
                         if island else "袋に入らないものは該当根拠に従って粗大ごみとして扱う。")
         prompt = f"""
@@ -613,11 +620,44 @@ class WasteGuideService:
                 matches = NakajimaSearchService().search(rewritten_query)
             except FileNotFoundError as error:
                 raise WasteGuideError("Nakajima source data is unavailable") from error
-            return [RetrievedDocument(
+            documents = [RetrievedDocument(
                 text=f"品目: {row['item']}\n分類: {row['category_display']} ({row['category']})\n出し方・条件: {row['note']}",
                 score=row['score'], uri=f"nakajima://items/{row['item_id']}",
                 title="中島地域 2026年度ごみカレンダー（公式）",
             ) for row in matches]
+            # Search the existing 1,756 vectors once, then replace the mainland
+            # category/note with an independently sourced Nakajima rule.  The
+            # broader candidate pool compensates for unresolved conditional rows.
+            search_candidates = getattr(self._gateway, "search_item_candidates", None)
+            if search_candidates is None:
+                return documents  # Test gateways without a vector adapter.
+            try:
+                candidates = search_candidates(rewritten_query, limit=24)
+            except WasteGuideError:
+                # The previously supported 79 official rows remain available
+                # when a local installation has no shared vector bundle.
+                logger.warning("Shared item index unavailable for Nakajima; using official examples only")
+                return documents
+            explicit_names = {
+                self._normalize_question(row["item"])
+                for row in matches
+                if not row["item_id"].startswith("nk-rule-")
+            }
+            for match in candidates:
+                if len(documents) >= config.RAG_TOP_K:
+                    break
+                if match.score < 0.4 or self._normalize_question(match.item) in explicit_names:
+                    continue
+                rule = resolve_shared_item(match)
+                if rule.category is None:
+                    continue
+                documents.append(RetrievedDocument(
+                    text=island_evidence_text(match, rule),
+                    score=match.score,
+                    uri=f"nakajima://shared/{match.item_id}",
+                    title="中島地域 2026年度共通分別ルール",
+                ))
+            return documents
         # 既定は意味検索(Embedding)単体。表層一致は設定で併用可能。
         lexical_documents: list[RetrievedDocument] = []
         if config.LEXICAL_SEARCH_ENABLED:
@@ -729,6 +769,28 @@ class WasteGuideService:
                 ),
                 decision=ClassificationDecision(is_resolved=False),
             )
+        if region.is_nakajima:
+            container_question = self._nakajima_container_question(query, clarification_items)
+            if container_question:
+                previous_questions = [item.get("question", "") for item in clarification_items]
+                if (len(previous_questions) >= config.MAX_CLARIFICATION_TURNS
+                        or any(self._normalize_question(container_question)
+                               == self._normalize_question(previous)
+                               for previous in previous_questions)):
+                    return WasteGuideResult(
+                        status="unable_to_determine",
+                        rewritten_query=rewritten_query,
+                        answer="中島地域の公式資料から、この容器の分別を確定できませんでした。用途や材質を確認してください。",
+                        decision=ClassificationDecision(is_resolved=False),
+                        sources=documents[:3],
+                    )
+                return WasteGuideResult(
+                    status="needs_clarification",
+                    rewritten_query=rewritten_query,
+                    follow_up_question=container_question,
+                    decision=ClassificationDecision(is_resolved=False),
+                    sources=documents[:3],
+                )
         if isinstance(self._gateway, BedrockGateway):
             decision = self._gateway.classify(query, clarification_items, documents,
                                               image=image, region=region)
@@ -858,6 +920,42 @@ class WasteGuideService:
             phrase in normalized
             for phrase in ("人間", "人物", "人を捨て", "人の捨て方", "遺体", "死体")
         )
+
+    @staticmethod
+    def _nakajima_container_question(query: str, clarifications: list[dict]) -> str | None:
+        """Do not let query rewriting turn an unspecified container into a type."""
+
+        context = unicodedata.normalize(
+            "NFKC", " ".join([query] + [str(item.get("answer", "")) for item in clarifications])
+        ).lower()
+        bottle = any(word in context for word in ("びん", "ビン", "瓶"))
+        can = "缶" in context
+        if can and bottle:
+            selected = next((
+                unicodedata.normalize("NFKC", str(item.get("answer", ""))).strip().lower()
+                for item in reversed(clarifications)
+                if unicodedata.normalize("NFKC", str(item.get("answer", ""))).strip().lower()
+                in ("缶", "空き缶", "缶だけ", "びん", "ビン", "瓶", "びんだけ", "瓶だけ")
+            ), "")
+            if selected in ("缶", "空き缶", "缶だけ"):
+                bottle = False
+            elif selected in ("びん", "ビン", "瓶", "びんだけ", "瓶だけ"):
+                can = False
+            else:
+                return "捨てるのは缶とびんのどちらですか？"
+        if bottle and not any(word in context for word in ("ふた", "フタ", "キャップ")):
+            if not any(word in context for word in (
+                "飲料", "食料", "食品", "調味料", "しょうゆ", "醤油", "みりん",
+                "料理酒", "ビール", "ワイン", "ラムネ", "牛乳", "ドレッシング",
+            )):
+                return "そのびんは飲料・食料品用ですか？"
+        if can and not any(word in context for word in (
+            "缶詰", "アルミ缶", "スチール缶", "飲料", "ジュース", "お茶",
+            "ビール", "コーヒー", "スプレー缶", "一斗缶", "缶切り",
+            "缶バッジ", "カセットボンベ",
+        )):
+            return "その缶は飲料・缶詰用ですか、それとも別の用途ですか？"
+        return None
 
     @staticmethod
     def _is_valid_follow_up_question(question: str) -> bool:

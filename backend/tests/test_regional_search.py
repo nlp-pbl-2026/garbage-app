@@ -6,6 +6,8 @@ import pytest
 
 from app.services.calendar_service import CalendarService
 from app.services.nakajima_search_service import NakajimaSearchService
+from app.services.nakajima_rule_service import evidence_text as island_evidence_text, resolve_shared_item
+from app.services.item_search_service import ItemMatch
 from app.services.region_registry_service import RegionContext
 from app.services.waste_guide_service import (
     BedrockGateway, ClassificationDecision, ImageInput, RetrievedDocument, UnsupportedRegionError,
@@ -157,3 +159,167 @@ def test_nakajima_prompt_and_evidence_reject_mainland_category():
     prompt = runtime.request["messages"][0]["content"][0]["text"]
     assert "中島地域" in prompt and "分類コードは" in prompt
     assert "戸別申込制を当てはめない" in prompt
+
+
+@pytest.mark.parametrize(("name", "mainland", "note", "expected", "status"), [
+    ("缶詰", "金・ガ", "", "缶", "split_rule"),
+    ("お茶の缶", "金・ガ", "", "缶", "split_rule"),
+    ("しょうゆのびん", "金・ガ", "すすいで出す", "びん", "split_rule"),
+    ("スプレー缶", "金・ガ", "必ず使い切る", "金・ガ", "split_rule"),
+    ("コップ（ガラス製）", "金・ガ", "", "金・ガ", "split_rule"),
+    ("空き缶・空きびん", "金・ガ", "", None, "conditional"),
+    ("マニキュアのびん", "金・ガ", "中身が固まっている場合は「粗大」", None, "conditional"),
+    ("缶（アルミ・スチール）", "金・ガ", "", None, "conditional"),
+    ("いす", "粗大", "", "粗大", "common_rule"),
+    ("木材", "可燃", "袋に入らないものは「粗大」", None, "conditional"),
+    ("対象外", "禁止", "", None, "unverified"),
+])
+def test_nakajima_shared_rule_split_and_uncertainty(name, mainland, note, expected, status):
+    match = ItemMatch("item-1", name, mainland, "", note, .9)
+    result = resolve_shared_item(match)
+    assert (result.category, result.status) == (expected, status)
+    if expected:
+        text = island_evidence_text(match, result)
+        assert "中島地域" in text
+        assert "松山・北条" not in text
+        assert "戸別収集の申し込み" not in text
+
+
+def test_nakajima_retrieval_uses_shared_vectors_without_mainland_notes(monkeypatch):
+    class SharedGateway(FakeGateway):
+        def __init__(self):
+            self.limit = None
+
+        def search_item_candidates(self, query, *, limit=None):
+            self.limit = limit
+            return [
+                ItemMatch("item-can", "缶詰", "金・ガ", "金物・ガラス類",
+                          "松山・北条の金・ガの日に出す", .91),
+                ItemMatch("item-chair", "いす", "粗大", "粗大ごみ",
+                          "戸別収集の申し込みが必要", .88),
+                ItemMatch("item-mixed", "空き缶・空きびん", "金・ガ", "金物・ガラス類", "", .84),
+            ]
+
+    class NoIslandHits:
+        def search(self, query):
+            return []
+
+    monkeypatch.setattr("app.services.waste_guide_service.get_registry", lambda: FakeRegistry())
+    monkeypatch.setattr("app.services.waste_guide_service.NakajimaSearchService", NoIslandHits)
+    gateway = SharedGateway()
+    service = WasteGuideService(gateway=gateway)
+    docs = service.retrieve(rewritten_query="缶詰 いす", municipality_id="38201",
+                            district_id=ISLAND.area_id)
+    assert gateway.limit == 24
+    assert len(docs) == 1  # The chair's mainland collection note needs review.
+    assert docs[0].uri == "nakajima://shared/item-can"
+    assert "分類: 缶類 (缶)" in docs[0].text
+    assert "松山・北条" not in docs[0].text
+
+
+def test_nakajima_retrieval_keeps_official_examples_when_vectors_unavailable(monkeypatch):
+    class MissingGateway(FakeGateway):
+        def search_item_candidates(self, query, *, limit=None):
+            from app.services.waste_guide_service import WasteGuideError
+            raise WasteGuideError("index is unavailable")
+
+    monkeypatch.setattr("app.services.waste_guide_service.get_registry", lambda: FakeRegistry())
+    monkeypatch.setattr("app.services.waste_guide_service.NakajimaSearchService", FakeIslandSearch)
+    service = WasteGuideService(gateway=MissingGateway())
+    docs = service.retrieve(rewritten_query="アルミ缶", municipality_id="38201",
+                            district_id=ISLAND.area_id)
+    assert len(docs) == 1 and docs[0].uri.startswith("nakajima://items/")
+
+
+@pytest.mark.parametrize("image", [None, ImageInput("png", b"sample")])
+def test_nakajima_shared_candidate_can_answer_text_and_image_without_mainland_evidence(monkeypatch, image):
+    class SharedQueryGateway(FakeGateway):
+        def rewrite_query(self, query, clarifications, image=None):
+            return "缶詰"
+
+        def search_item_candidates(self, query, *, limit=None):
+            return [ItemMatch("item-can", "缶詰", "金・ガ", "金物・ガラス類",
+                              "松山・北条の金・ガで出す", .93)]
+
+        def classify(self, query, clarifications, documents, image=None):
+            assert documents and all("松山・北条" not in doc.text for doc in documents)
+            return ClassificationDecision(is_resolved=True, item_name="缶詰",
+                                          category_code="缶", confidence=.96,
+                                          evidence_indexes=(1,))
+
+    class NoIslandHits:
+        def search(self, query):
+            return []
+
+    monkeypatch.setattr("app.services.waste_guide_service.get_registry", lambda: FakeRegistry())
+    monkeypatch.setattr("app.services.waste_guide_service.NakajimaSearchService", NoIslandHits)
+    service = WasteGuideService(
+        gateway=SharedQueryGateway(),
+        calendar=calendar(ISLAND, {"2026-11-02": ["cans"]}),
+        now_provider=lambda: datetime(2026, 10, 30, 9, tzinfo=ZoneInfo("Asia/Tokyo")),
+    )
+    result = service.query(query="缶詰" if image is None else "",
+                           municipality_id="38201", district_id=ISLAND.area_id,
+                           image=image)
+    assert result.status == "answered"
+    assert result.decision.category_code == "缶"
+    assert result.next_collection.date == date(2026, 11, 2)
+    assert all(doc.uri.startswith("nakajima://shared/") for doc in result.sources)
+
+
+def test_nakajima_shared_bulky_item_uses_island_collection_method(monkeypatch):
+    class BulkyGateway(FakeGateway):
+        def search_item_candidates(self, query, *, limit=None):
+            return [ItemMatch("item-chair", "いす", "粗大", "粗大ごみ", "", .91)]
+
+        def classify(self, query, clarifications, documents, image=None):
+            assert "地区別カレンダーの収集日に集積場所" in documents[0].text
+            assert "戸別" not in documents[0].text
+            return ClassificationDecision(is_resolved=True, item_name="いす",
+                                          category_code="粗大", confidence=.95,
+                                          evidence_indexes=(1,))
+
+    class NoIslandHits:
+        def search(self, query):
+            return []
+
+    monkeypatch.setattr("app.services.waste_guide_service.get_registry", lambda: FakeRegistry())
+    monkeypatch.setattr("app.services.waste_guide_service.NakajimaSearchService", NoIslandHits)
+    service = WasteGuideService(gateway=BulkyGateway(),
+        calendar=calendar(ISLAND, {"2026-11-02": ["bulky"]}),
+        now_provider=lambda: datetime(2026, 10, 30, 9, tzinfo=ZoneInfo("Asia/Tokyo")))
+    result = service.query(query="いす", municipality_id="38201", district_id=ISLAND.area_id)
+    assert result.status == "answered"
+    assert result.next_collection.date == date(2026, 11, 2)
+    assert "戸別" not in result.answer
+
+
+@pytest.mark.parametrize(("query", "expected"), [
+    ("缶", "飲料・缶詰用"),
+    ("びん", "飲料・食料品用"),
+    ("空き缶・空きびん", "缶とびんのどちら"),
+])
+def test_nakajima_ambiguous_container_requires_user_confirmation(monkeypatch, query, expected):
+    class NoClassificationGateway(FakeGateway):
+        def classify(self, *args, **kwargs):
+            raise AssertionError("ambiguous use must not reach model classification")
+
+    monkeypatch.setattr("app.services.waste_guide_service.get_registry", lambda: FakeRegistry())
+    service = WasteGuideService(gateway=NoClassificationGateway())
+    result = service.decide(query=query, rewritten_query="缶詰",
+        documents=[RetrievedDocument(text="品目: 缶詰\n分類: 缶類 (缶)",
+                                     uri="nakajima://items/test", score=.99)],
+        municipality_id="38201", district_id=ISLAND.area_id)
+    assert result.status == "needs_clarification"
+    assert expected in result.follow_up_question
+
+
+def test_nakajima_mixed_container_answers_advance_to_use_question():
+    first = WasteGuideService._nakajima_container_question("空き缶・空きびん", [])
+    second = WasteGuideService._nakajima_container_question(
+        "空き缶・空きびん", [{"answer": "缶"}])
+    third = WasteGuideService._nakajima_container_question(
+        "空き缶・空きびん", [{"answer": "缶"}, {"answer": "飲料用"}])
+    assert first == "捨てるのは缶とびんのどちらですか？"
+    assert second == "その缶は飲料・缶詰用ですか、それとも別の用途ですか？"
+    assert third is None
