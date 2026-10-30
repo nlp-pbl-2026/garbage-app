@@ -6,6 +6,12 @@ __pycache__/
 backend/.venv/
 backend/search_logs.jsonl
 backend/garbage_app.db
+# Local FastAPI may also be started from the repository root.
+/search_logs.jsonl
+/garbage_app.db
+/garbage_app.db-shm
+/garbage_app.db-wal
+/garbage_app.db-journal
 backend/dist/
 
 # Evaluation datasets and reports derived from external/public source data
