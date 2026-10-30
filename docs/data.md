@@ -1,6 +1,6 @@
 # 自治体データの配置と検証
 
-松山市の2026年度データは `data/regions/matsuyama/` で管理します。自治体資料とその加工結果は既存のGit除外方針に従い、追跡しません。Gitには地区・カレンダーの対応表、出典URL、ハッシュ、検証記録、生成・検証スクリプトを残します。公式資料の加工・再配布条件は未確認です。公開・配布前に松山市へ確認してください。
+松山市の2026年度データは `data/regions/matsuyama/` で管理します。自治体資料とその加工結果は既存のGit除外方針に従い、追跡しません。Gitには地区・カレンダーの対応表、出典URL、ハッシュ、検証記録、生成・検証スクリプトを残します。市の[一般的な著作権条件](https://www.city.matsuyama.ehime.jp/aboutweb/copyright.html)は無断転用・改変を認めていません。[オープンデータサイトのCC条件](https://www.city.matsuyama.ehime.jp/shisei/opendata/top.html)は同サイト内の対象コンテンツに限定され、今回のカレンダーPDFには自動適用できません。加工した日付データや品目資料をアプリ・Lambdaに同梱して配布できるか、松山市への確認が必要です。
 
 ## 2026年度の構成
 
@@ -8,6 +8,7 @@
 | --- | --- | --- |
 | `registry.json` | 58収集地区、43カレンダー、松山・北条／中島の分別設定、旧地区IDの移行候補、公式URL・適用期間 | 追跡 |
 | `calendar_reviews.json`、`knowledge_reviews.json` | 公式PDF・住所表のハッシュ、照合状態、抽出件数 | 追跡 |
+| `auxiliary_sources.json` | 町名表・分別案内・品目辞典の取得時ハッシュ | 追跡 |
 | `source/` | 公式カレンダーPDF、住所表HTML、分別資料、抽出中間データ | 除外 |
 | `generated/calendar-2026.json` | PDFから整備した収集日共通原本。バックエンドが読む | 除外 |
 | `generated/addresses.json` | 公式町名表から導いた住所候補。境界ポリゴンではない | 除外 |
@@ -24,7 +25,7 @@
 
 公式資料は[2026年度の地区別カレンダー一覧](https://www.city.matsuyama.ehime.jp/kurashi/gomi/dashikata/gomicalender/r8gomicaletikubetu.html)、[松山・北条地域の分別案内](https://www.city.matsuyama.ehime.jp/kurashi/gomi/dashikata/kateigomi_matsuyama.html)、[中島地域の分別案内](https://www.city.matsuyama.ehime.jp/kurashi/gomi/dashikata/kateigomi_nakajima.html)、市の町名別地区検索表です。個別PDFのURLは `registry.json` に記録しています。
 
-リポジトリのルートから実行します。Python環境に `numpy` と `PyMuPDF` が必要です。以下のコマンドはBedrockを呼びません。
+Python 3.12で `cd backend && uv sync --group dev && cd ..` を実行してから、リポジトリのルートで次を実行します。PyMuPDF 2.0.0は開発依存関係に固定しています。以下のコマンドはBedrockを呼びません。
 
 ```bash
 backend/.venv/bin/python scripts/matsuyama_data.py fetch
@@ -34,9 +35,10 @@ backend/.venv/bin/python scripts/matsuyama_data.py restore-legacy
 backend/.venv/bin/python scripts/matsuyama_data.py build
 backend/.venv/bin/python scripts/matsuyama_data.py build-knowledge
 backend/.venv/bin/python scripts/matsuyama_validation.py
+backend/.venv/bin/python scripts/matsuyama_raster_audit.py
 ```
 
-公式PDFの色・凡例・日付セル・例外を `scripts/matsuyama_pdf.py` で読み取り、`calendar_reviews.json` のハッシュと照合します。抽出エラー、PDF更新、レビュー内容との差異があればビルドを停止します。公式データの照合は単体テストとは別のゲートです。検証記録なしに日付を「対応済み」として採用しないでください。`matsuyama_validation.py` は58地区、43カレンダー、15,695日付セル、バックエンドとFlutterの同一性、品目例と住所表の件数を確認します。レビュー記録は自動抽出だけで正確性を保証するものではないため、公式PDFとの目視照合記録と併せて扱います。
+公式PDFの色・凡例・日付セル・例外を `scripts/matsuyama_pdf.py` で読み取り、`calendar_reviews.json` のハッシュと照合します。抽出エラー、PDF更新、レビュー内容との差異があればビルドを停止します。公式データの照合は単体テストとは別のゲートです。検証記録なしに日付を「対応済み」として採用しないでください。`matsuyama_validation.py` は43 PDFを再読取し、生成物と全15,695日付セルを直接比較します。バックエンドとFlutterの同一性、品目例と住所表の件数も確認します。`matsuyama_raster_audit.py` は日付位置に基づく別経路の画像色検査で、通常表示の13,373セルに対応します。日曜文字の1,978セルと縮小表示の344セルは画像色だけで判別できず、PDFの文字と図形による検査のみです。これら2,322セルについて独立した画像色検査を完了したとは主張しません。レビュー記録と自動検査だけでは人手の全日付監査は完了しません。
 
 住所表は710行で40地区に対応します。残る18地区（中島の17地区と泊）は住所のみでの確定に使わず、GPSも推測せず手動選択します。町名が複数地区に対応する場合も候補を提示します。元のGeoJSONは収集地区境界として使用しません。
 

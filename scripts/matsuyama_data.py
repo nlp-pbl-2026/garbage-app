@@ -14,6 +14,7 @@ import hashlib
 import json
 from pathlib import Path
 import subprocess
+import tempfile
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data/regions/matsuyama"
@@ -74,10 +75,16 @@ def fetch_auxiliary():
     base = "https://www.city.matsuyama.ehime.jp/kurashi/gomi/dashikata/"
     urls = [base + "chikukensaku-" + kana + ".html" for kana in ["a", "ka", "sa", "ta", "na", "ha", "ma", "yarawa"]]
     urls += [GUIDE_URL, base + "kateigomi_matsuyama.html", base + "kateigomi_nakajima.html"]
+    expected = read_json(DATA / "auxiliary_sources.json")["sources"]
+    if set(expected) != {url.rsplit("/", 1)[-1] for url in urls}:
+        raise ValueError("Unreviewed auxiliary source list")
     for url in urls:
         target = DATA / "source" / url.rsplit("/", 1)[-1]
+        target.parent.mkdir(parents=True, exist_ok=True)
         if not target.exists():
             subprocess.run(["curl", "-fsSL", "--retry", "2", "--max-time", "45", url, "-o", str(target)], check=True)
+        if sha256(target) != expected[target.name]:
+            raise ValueError(f"Official auxiliary source changed; review required: {target.name}")
     print(f"Checked {len(urls)} official address/rule/dictionary sources")
 
 
@@ -144,25 +151,33 @@ def main():
         build(registry)
     elif args.command == "build-knowledge":
         from matsuyama_knowledge import build_addresses, build_nakajima_items
+        for filename, digest in read_json(DATA / "auxiliary_sources.json")["sources"].items():
+            if sha256(DATA / "source" / filename) != digest:
+                raise ValueError(f"Unreviewed auxiliary source: {filename}")
         address_data = build_addresses(DATA / "source", registry)
-        write_json(DATA / "generated/addresses.json", address_data)
-        write_json(ROOT / "frontend/assets/data/municipality_addresses.json", address_data)
-        manifest = build_nakajima_items(
-            DATA / "source/2026nakajimaoura.pdf",
-            DATA / "generated/nakajima_items.csv", registry)
-        write_json(DATA / "generated/nakajima_items_manifest.json", manifest)
-        write_json(DATA / "knowledge_reviews.json", {
-            "schema_version": 1,
-            "version": registry["version"],
-            "retrieved_on": registry["retrieved_on"],
-            "address_entries": len(address_data["entries"]),
-            "address_area_count": len({row["area_id"] for row in address_data["entries"]}),
-            "address_source_sha256": {name: sha256(DATA / "source" / name)
-                                      for name in [f"chikukensaku-{kana}.html" for kana in
-                                                   ["a", "ka", "sa", "ta", "na", "ha", "ma", "yarawa"]]},
-            "nakajima": manifest,
-            "redistribution_status": "not_confirmed",
-        })
+        with tempfile.TemporaryDirectory() as scratch:
+            draft_items = Path(scratch) / "nakajima_items.csv"
+            manifest = build_nakajima_items(
+                DATA / "source/2026nakajimaoura.pdf", draft_items, registry)
+            review = {
+                "schema_version": 1,
+                "version": registry["version"],
+                "retrieved_on": registry["retrieved_on"],
+                "address_entries": len(address_data["entries"]),
+                "address_area_count": len({row["area_id"] for row in address_data["entries"]}),
+                "address_source_sha256": {name: sha256(DATA / "source" / name)
+                                          for name in [f"chikukensaku-{kana}.html" for kana in
+                                                       ["a", "ka", "sa", "ta", "na", "ha", "ma", "yarawa"]]},
+                "nakajima": manifest,
+                "redistribution_status": "not_confirmed",
+            }
+            if read_json(DATA / "knowledge_reviews.json") != review:
+                raise ValueError("Generated knowledge differs from reviewed metadata; inspect official sources")
+            write_json(DATA / "generated/addresses.json", address_data)
+            write_json(ROOT / "frontend/assets/data/municipality_addresses.json", address_data)
+            output_items = DATA / "generated/nakajima_items.csv"
+            output_items.write_bytes(draft_items.read_bytes())
+            write_json(DATA / "generated/nakajima_items_manifest.json", manifest)
         print(f"Built {len(address_data['entries'])} address rows and {manifest['item_count']} Nakajima evidence rows")
     elif args.command == "extract":
         from matsuyama_pdf import read_calendar

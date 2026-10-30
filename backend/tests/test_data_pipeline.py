@@ -2,6 +2,7 @@
 import importlib.util
 import json
 from pathlib import Path
+import sys
 
 import pytest
 
@@ -12,6 +13,14 @@ def pipeline():
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     return module
+
+
+def validation():
+    scripts = Path(__file__).resolve().parents[2] / "scripts"
+    if str(scripts) not in sys.path:
+        sys.path.insert(0, str(scripts))
+    from matsuyama_validation import check_calendar_record
+    return check_calendar_record
 
 
 def test_build_requires_matching_review_and_emits_identical_bytes(tmp_path, monkeypatch):
@@ -37,3 +46,15 @@ def test_build_requires_matching_review_and_emits_identical_bytes(tmp_path, monk
     p.write_json(p.DATA / "source/extraction-review.json", {"calendars": {"test": record}, "failures": []})
     with pytest.raises(ValueError, match="Review/hash mismatch"):
         p.build(registry)
+
+
+def test_validation_rejects_identically_corrupted_backend_and_flutter_bundles():
+    p = pipeline()
+    check = validation()
+    extracted = {"days": {"2026-04-01": ["paper"]}, "exceptions": {}}
+    review = {"normalized_sha256": p.normalized_hash(extracted)}
+    record = {"days": {"2026-04-01": ["paper"]}, "exceptions": {}}
+    check(record, extracted, review, "test")
+    record["days"]["2026-04-01"] = ["combustible"]
+    with pytest.raises(ValueError, match="differs from reviewed PDF extraction"):
+        check(record, extracted, review, "test")

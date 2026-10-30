@@ -8,6 +8,15 @@ from pathlib import Path
 import sys
 
 from matsuyama_data import DATA, ROOT, read_json, sha256, normalized_hash
+from matsuyama_pdf import read_calendar
+
+
+def check_calendar_record(record: dict, extracted: dict, review: dict, calendar_id: str) -> None:
+    """A copied or jointly edited backend/Flutter bundle is not source verification."""
+    if (record["days"] != extracted["days"]
+            or record["exceptions"] != extracted["exceptions"]
+            or normalized_hash(record) != review["normalized_sha256"]):
+        raise ValueError(f"Generated calendar differs from reviewed PDF extraction: {calendar_id}")
 
 
 def validate() -> dict:
@@ -33,6 +42,10 @@ def validate() -> dict:
         assert record["verification_status"] == review["verification_status"] == "checked"
         assert sha256(DATA / "source" / source["file"]) == source["sha256"] == review["source_sha256"]
         assert normalized_hash(extracted[calendar_id]) == review["normalized_sha256"]
+        check_calendar_record(record, extracted[calendar_id], review, calendar_id)
+        # Re-read the actual PDF, rather than trusting a stored intermediate file.
+        fresh = read_calendar(DATA / "source" / source["file"], source["rule_profile_id"])
+        check_calendar_record(record, fresh, review, calendar_id)
         assert set(record["days"]) == expected
         allowed = {"combustible", "plastic_packaging", "paper", "metal_glass", "landfill", "mercury", "pet_bottle"}
         if source["rule_profile_id"] == "nakajima":
@@ -55,6 +68,8 @@ def validate() -> dict:
             assert expected_dates == actual_dates, (area["name"], code)
     addresses = read_json(DATA / "generated/addresses.json")
     knowledge = read_json(DATA / "knowledge_reviews.json")
+    for filename, digest in read_json(DATA / "auxiliary_sources.json")["sources"].items():
+        assert sha256(DATA / "source" / filename) == digest
     assert addresses == read_json(ROOT / "frontend/assets/data/municipality_addresses.json")
     assert len(addresses["entries"]) == knowledge["address_entries"] == 710
     assert {row["area_id"] for row in addresses["entries"]} <= {area["id"] for area in registry["collection_areas"]}

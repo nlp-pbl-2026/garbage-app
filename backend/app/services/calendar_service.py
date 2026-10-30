@@ -54,7 +54,7 @@ class CollectionDate:
 
 
 class CalendarService:
-    """CSVを一度だけ読み込み、分類コードから次の収集日を返す。"""
+    """確認済みの年度別日付を読み込み、分類コードから次の収集日を返す。"""
 
     def __init__(self, calendar_path: Path | None = None, *, region: RegionContext | None = None,
                  bundle: dict | None = None):
