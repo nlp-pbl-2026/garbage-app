@@ -17,7 +17,7 @@
 
 | 種別 | 用途 |
 | --- | --- |
-| Amazon Bedrock | Nova LiteとTitan Text Embeddings V2による言い換え・意味検索・分類 |
+| Amazon Bedrock | Nova Liteの画像・テキスト理解と、Titan Text Embeddings V2による意味検索・分類 |
 | Amazon S3 / Bedrock Knowledge Base | 比較実験用のRAGデータと検索経路 |
 | AWS Lambda | FastAPIのAIあいまい検索API |
 | Amazon API Gateway | Flutter向けHTTPSエンドポイント |
@@ -43,7 +43,7 @@ Bedrock Managed Knowledge Base
           │ Retrieve API
           ▼
 FastAPI
-  ├─ Nova Lite: 言い換え
+  ├─ Nova Lite: 画像・テキストから検索文へ言い換え
   ├─ ローカル品目CSV: 表層一致検索
   ├─ Managed KB: 意味検索
   ├─ RRF: 2つの検索結果を統合
@@ -55,8 +55,10 @@ FastAPI
 API Gateway HTTP API
           │ HTTPS
           ▼
-Flutter Web / mobile（あいまい検索・管理キー付き分析画面）
+Flutter Web / mobile（テキスト・画像検索、管理キー付き分析画面）
 ```
+
+検索画像はAPIリクエストからNova Liteへ直接渡します。S3やDynamoDBには画像本体を保存せず、分析ログには画像の有無・形式・バイト数だけを記録します。既存のLambda実行ロールが持つNova Liteへの`bedrock:InvokeModel`権限を使用するため、画像検索専用のAWSリソースは追加しません。
 
 S3は公開アクセスをすべて遮断し、バージョニングとSSE-S3（AES-256）を有効にしています。IAMロールは対象バケットの `knowledge/matsuyama/common/` だけを読み取れます。
 

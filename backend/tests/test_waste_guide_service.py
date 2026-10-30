@@ -6,6 +6,7 @@ import pytest
 from app.services.waste_guide_service import (
     BedrockGateway,
     ClassificationDecision,
+    ImageInput,
     RetrievedDocument,
     UnsupportedRegionError,
     WasteGuideService,
@@ -41,8 +42,8 @@ class FakeGateway:
         self.rewrite_calls = []
         self.classify_calls = []
 
-    def rewrite_query(self, query, clarifications):
-        self.rewrite_calls.append((query, clarifications))
+    def rewrite_query(self, query, clarifications, image=None):
+        self.rewrite_calls.append((query, clarifications, image))
         return "ペットボトル 飲料容器"
 
     def retrieve(self, query):
@@ -54,8 +55,8 @@ class FakeGateway:
             )
         ]
 
-    def classify(self, query, clarifications, documents):
-        self.classify_calls.append((query, clarifications, documents))
+    def classify(self, query, clarifications, documents, image=None):
+        self.classify_calls.append((query, clarifications, documents, image))
         return self.decision
 
 
@@ -72,6 +73,90 @@ class FakeEmbeddingSearch:
     def search(self, query, *, limit=None):
         self.queries.append(query)
         return self.matches
+
+
+def test_rewrite_does_not_load_calendar_or_lexical_csv(monkeypatch):
+    def unexpected_initialization():
+        raise AssertionError("rewrite must not load local calendar or item CSV")
+
+    monkeypatch.setattr(
+        "app.services.waste_guide_service.CalendarService",
+        unexpected_initialization,
+    )
+    monkeypatch.setattr(
+        "app.services.waste_guide_service.ItemSearchService",
+        unexpected_initialization,
+    )
+    gateway = FakeGateway(ClassificationDecision(is_resolved=False))
+    service = WasteGuideService(gateway=gateway)
+
+    rewritten = service.rewrite(
+        query="いす",
+        municipality_id="38201",
+        district_id="38201-08",
+    )
+
+    assert rewritten == "ペットボトル 飲料容器"
+
+
+def test_rewrite_with_image_sends_multimodal_content_to_nova():
+    runtime = FakeRuntime({"search_query": "木製のいす"})
+    gateway = BedrockGateway(
+        runtime_client=runtime,
+        agent_runtime_client=object(),
+        embedding_search=FakeEmbeddingSearch(),
+    )
+
+    rewritten = gateway.rewrite_query(
+        "",
+        [],
+        image=ImageInput(format="jpeg", data=b"test-image"),
+    )
+
+    assert rewritten == "木製のいす"
+    content = runtime.request["messages"][0]["content"]
+    assert content[0] == {
+        "image": {
+            "format": "jpeg",
+            "source": {"bytes": b"test-image"},
+        }
+    }
+    assert "（画像のみ）" in content[1]["text"]
+    assert "ペットボトル 飲料用透明ボトル" in content[1]["text"]
+
+
+def test_classify_with_image_sends_multimodal_content_to_nova():
+    runtime = FakeRuntime(
+        {
+            "is_resolved": True,
+            "item_name": "木製のいす",
+            "category_code": "粗大",
+            "confidence": 0.95,
+            "evidence_indexes": [1],
+        }
+    )
+    gateway = BedrockGateway(
+        runtime_client=runtime,
+        agent_runtime_client=object(),
+        embedding_search=FakeEmbeddingSearch(),
+    )
+
+    decision = gateway.classify(
+        "",
+        [],
+        [RetrievedDocument(text="品目: いす\n分類コード: 粗大")],
+        image=ImageInput(format="png", data=b"test-image"),
+    )
+
+    assert decision.is_resolved is True
+    content = runtime.request["messages"][0]["content"]
+    assert content[0] == {
+        "image": {
+            "format": "png",
+            "source": {"bytes": b"test-image"},
+        }
+    }
+    assert "（画像のみ）" in content[1]["text"]
 
 
 def test_managed_knowledge_base_uses_managed_search_configuration(monkeypatch):
@@ -209,6 +294,32 @@ def test_rewrite_removes_material_not_supported_by_user_input():
     )
 
     assert gateway.rewrite_query("汚れたビン", []) == "汚れたびん"
+
+
+def test_rewrite_preserves_katakana_bin_when_model_generalizes_it():
+    gateway = BedrockGateway(
+        runtime_client=FakeRuntime({"search_query": "汚れた容器"}),
+        agent_runtime_client=object(),
+    )
+
+    rewritten = gateway.rewrite_query("汚れたビン", [])
+
+    assert rewritten == "汚れた容器 びん"
+
+
+def test_rewrite_with_image_preserves_explicit_text_features():
+    gateway = BedrockGateway(
+        runtime_client=FakeRuntime({"search_query": "青い飲料容器"}),
+        agent_runtime_client=object(),
+    )
+
+    rewritten = gateway.rewrite_query(
+        "青いボトル",
+        [],
+        image=ImageInput(format="jpeg", data=b"test-image"),
+    )
+
+    assert "ボトル" in rewritten
 
 
 def test_rewrite_keeps_material_from_clarification():

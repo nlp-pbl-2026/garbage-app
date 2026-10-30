@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:http/http.dart' as http;
 
@@ -15,6 +16,25 @@ class WasteGuideException implements Exception {
 
   @override
   String toString() => message;
+}
+
+const int maxSearchImageBytes = 3 * 1024 * 1024;
+
+class SearchImageInput {
+  final Uint8List bytes;
+  final String mediaType;
+  final String fileName;
+
+  const SearchImageInput({
+    required this.bytes,
+    required this.mediaType,
+    required this.fileName,
+  });
+
+  Map<String, dynamic> toJson() => {
+        'media_type': mediaType,
+        'data_base64': base64Encode(bytes),
+      };
 }
 
 enum SearchPipelineStage {
@@ -36,6 +56,7 @@ class WasteGuideService {
   Future<WasteGuideResult> classify({
     required String query,
     required RegionSetting region,
+    SearchImageInput? image,
     List<Map<String, String>> clarifications = const [],
     void Function(SearchPipelineStage stage)? onStageChanged,
   }) async {
@@ -46,6 +67,7 @@ class WasteGuideService {
       'district_id': region.districtId,
       'district_name': region.districtName,
       'clarifications': clarifications,
+      if (image != null) 'image': image.toJson(),
     };
 
     onStageChanged?.call(SearchPipelineStage.rewriting);

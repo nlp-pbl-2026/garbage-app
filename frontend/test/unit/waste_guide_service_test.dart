@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:typed_data';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:garbage_app/models/region.dart';
@@ -130,6 +131,88 @@ void main() {
           .single['answer'],
       '紙です',
     );
+  });
+
+  test('classify supports image-only input and omits image from retrieval',
+      () async {
+    final captured = <String, Map<String, dynamic>>{};
+    final client = MockClient((request) async {
+      captured[request.url.path] =
+          jsonDecode(request.body) as Map<String, dynamic>;
+      if (request.url.path.endsWith('/rewrite')) {
+        return jsonResponse({'rewritten_query': '木製のいす'});
+      }
+      if (request.url.path.endsWith('/retrieve')) {
+        return jsonResponse({'documents': []});
+      }
+      return jsonResponse({
+        'status': 'unable_to_determine',
+        'answer': '分類を確定できませんでした。',
+        'follow_up_question': null,
+        'rewritten_query': '木製のいす',
+        'classification': null,
+        'next_collection': null,
+        'sources': [],
+        'request_id': 'request-image-only',
+      });
+    });
+    final service = WasteGuideService(client: client, baseUrl: 'http://test');
+    final image = SearchImageInput(
+      bytes: Uint8List.fromList([1, 2, 3]),
+      mediaType: 'image/jpeg',
+      fileName: 'chair.jpg',
+    );
+
+    await service.classify(query: '', region: region, image: image);
+
+    expect(captured['/api/search/rewrite']?['query'], '');
+    expect(
+      captured['/api/search/rewrite']?['image'],
+      {'media_type': 'image/jpeg', 'data_base64': 'AQID'},
+    );
+    expect(captured['/api/search/retrieve']!.containsKey('image'), isFalse);
+    expect(
+      captured['/api/search/decide']?['image'],
+      {'media_type': 'image/jpeg', 'data_base64': 'AQID'},
+    );
+  });
+
+  test('classify supports combined image and text input', () async {
+    Map<String, dynamic>? rewriteBody;
+    final client = MockClient((request) async {
+      if (request.url.path.endsWith('/rewrite')) {
+        rewriteBody = jsonDecode(request.body) as Map<String, dynamic>;
+        return jsonResponse({'rewritten_query': '汚れたプラスチック容器'});
+      }
+      if (request.url.path.endsWith('/retrieve')) {
+        return jsonResponse({'documents': []});
+      }
+      return jsonResponse({
+        'status': 'needs_clarification',
+        'answer': null,
+        'follow_up_question': '汚れは取り除けますか？',
+        'rewritten_query': '汚れたプラスチック容器',
+        'classification': null,
+        'next_collection': null,
+        'sources': [],
+        'request_id': 'request-image-text',
+      });
+    });
+    final service = WasteGuideService(client: client, baseUrl: 'http://test');
+
+    await service.classify(
+      query: '汚れています',
+      region: region,
+      image: SearchImageInput(
+        bytes: Uint8List.fromList([4, 5, 6]),
+        mediaType: 'image/png',
+        fileName: 'container.png',
+      ),
+    );
+
+    expect(rewriteBody?['query'], '汚れています');
+    expect(rewriteBody?['image']['media_type'], 'image/png');
+    expect(rewriteBody?['image']['data_base64'], 'BAUG');
   });
 
   test('classify exposes backend detail from any stage', () async {

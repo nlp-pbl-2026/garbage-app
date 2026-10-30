@@ -1,3 +1,4 @@
+import base64
 from datetime import date
 from unittest.mock import patch
 
@@ -179,6 +180,30 @@ async def test_request_rejects_blank_query():
         response = await client.post("/api/search/classify", json={"query": "   "})
 
     assert response.status_code == 422
+
+
+@pytest.mark.asyncio
+async def test_rewrite_endpoint_accepts_image_without_text():
+    with patch("app.routers.search_router.WasteGuideService") as service_class:
+        service_class.return_value.rewrite.return_value = "木製のいす"
+        async with AsyncClient(
+            transport=ASGITransport(app=app), base_url="http://test"
+        ) as client:
+            response = await client.post(
+                "/api/search/rewrite",
+                json={
+                    "query": "",
+                    "image": {
+                        "media_type": "image/jpeg",
+                        "data_base64": base64.b64encode(b"test-image").decode(),
+                    },
+                },
+            )
+
+    assert response.status_code == 200
+    image = service_class.return_value.rewrite.call_args.kwargs["image"]
+    assert image.format == "jpeg"
+    assert image.data == b"test-image"
 
 
 @pytest.mark.asyncio

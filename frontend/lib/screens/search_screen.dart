@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../models/region.dart';
 import '../models/waste_guide_result.dart';
@@ -22,12 +23,14 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
   final TextEditingController _queryController = TextEditingController();
   final FocusNode _queryFocus = FocusNode();
   final WasteGuideService _service = WasteGuideService();
+  final ImagePicker _imagePicker = ImagePicker();
 
   WasteGuideResult? _result;
   String? _error;
   String? _originalQuery;
   String? _pendingQuestion;
   List<Map<String, String>> _clarifications = [];
+  SearchImageInput? _selectedImage;
   bool _isLoading = false;
   SearchPipelineStage _pipelineStage = SearchPipelineStage.idle;
 
@@ -40,7 +43,12 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
 
   Future<void> _submit() async {
     final input = _queryController.text.trim();
-    if (input.isEmpty || _isLoading) return;
+    final isClarification = _pendingQuestion != null && _originalQuery != null;
+    if (_isLoading || (isClarification && input.isEmpty)) return;
+    if (!isClarification && input.isEmpty && _selectedImage == null) {
+      setState(() => _error = '品物について入力するか、画像を追加してください。');
+      return;
+    }
 
     final RegionSetting? region = ref.read(regionSettingProvider).valueOrNull;
     if (region == null) {
@@ -48,7 +56,6 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
       return;
     }
 
-    final isClarification = _pendingQuestion != null && _originalQuery != null;
     final query = isClarification ? _originalQuery! : input;
     final clarifications = isClarification
         ? [
@@ -71,6 +78,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
       final result = await _service.classify(
         query: query,
         region: region,
+        image: _selectedImage,
         clarifications: clarifications,
         onStageChanged: (stage) {
           if (mounted) setState(() => _pipelineStage = stage);
@@ -99,6 +107,66 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
     }
   }
 
+  Future<void> _pickImage() async {
+    try {
+      final file = await _imagePicker.pickImage(
+        source: ImageSource.gallery,
+        maxWidth: 1600,
+        maxHeight: 1600,
+        imageQuality: 85,
+        requestFullMetadata: false,
+      );
+      if (file == null) return;
+
+      final mediaType = _resolveMediaType(file);
+      if (mediaType == null) {
+        if (mounted) {
+          setState(() => _error = 'JPEG、PNG、GIF、WebPの画像を選択してください。');
+        }
+        return;
+      }
+
+      final bytes = await file.readAsBytes();
+      if (bytes.length > maxSearchImageBytes) {
+        if (mounted) {
+          setState(() => _error = '画像は3MB以下にしてください。');
+        }
+        return;
+      }
+      if (!mounted) return;
+      setState(() {
+        _selectedImage = SearchImageInput(
+          bytes: bytes,
+          mediaType: mediaType,
+          fileName: file.name,
+        );
+        _error = null;
+      });
+    } catch (_) {
+      if (mounted) {
+        setState(() => _error = '画像を読み込めませんでした。別の画像をお試しください。');
+      }
+    }
+  }
+
+  String? _resolveMediaType(XFile file) {
+    final declared = file.mimeType?.toLowerCase();
+    if (declared == 'image/jpg' || declared == 'image/jpeg') {
+      return 'image/jpeg';
+    }
+    if (declared == 'image/png' ||
+        declared == 'image/gif' ||
+        declared == 'image/webp') {
+      return declared;
+    }
+    final name = file.name.toLowerCase();
+    if (name.endsWith('.jpg') || name.endsWith('.jpeg')) return 'image/jpeg';
+    if (name.endsWith('.png')) return 'image/png';
+    if (name.endsWith('.gif')) return 'image/gif';
+    if (name.endsWith('.webp')) return 'image/webp';
+    return null;
+  }
+
   void _startNewSearch([String? suggestion]) {
     setState(() {
       _result = null;
@@ -106,6 +174,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
       _originalQuery = null;
       _pendingQuestion = null;
       _clarifications = [];
+      _selectedImage = null;
       _pipelineStage = SearchPipelineStage.idle;
       _queryController.text = suggestion ?? '';
     });
@@ -206,6 +275,10 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
             ],
           ),
           const SizedBox(height: 8),
+          if (!isClarification && _selectedImage != null) ...[
+            _buildSelectedImage(),
+            const SizedBox(height: 10),
+          ],
           Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
@@ -229,6 +302,14 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                           : Icons.search_rounded,
                       color: colors.primary,
                     ),
+                    suffixIcon: isClarification
+                        ? null
+                        : IconButton(
+                            tooltip: '画像を追加',
+                            onPressed: _isLoading ? null : _pickImage,
+                            icon:
+                                const Icon(Icons.add_photo_alternate_outlined),
+                          ),
                   ),
                 ),
               ),
@@ -249,6 +330,75 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                 ),
               ),
             ],
+          ),
+          if (!isClarification) ...[
+            const SizedBox(height: 8),
+            Text(
+              '画像だけでも検索できます（JPEG・PNG・GIF・WebP、3MBまで）',
+              style: TextStyle(
+                color: colors.onSurfaceVariant,
+                fontSize: 12,
+              ),
+            ),
+          ],
+        ],
+      ),
+    );
+  }
+
+  Widget _buildSelectedImage() {
+    final image = _selectedImage!;
+    final colors = Theme.of(context).colorScheme;
+    return Container(
+      padding: const EdgeInsets.all(10),
+      decoration: BoxDecoration(
+        color: colors.surfaceContainerHighest,
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: Row(
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            child: Image.memory(
+              image.bytes,
+              width: 72,
+              height: 72,
+              fit: BoxFit.cover,
+              errorBuilder: (_, __, ___) => SizedBox(
+                width: 72,
+                height: 72,
+                child: Icon(Icons.broken_image_outlined,
+                    color: colors.onSurfaceVariant),
+              ),
+            ),
+          ),
+          const SizedBox(width: 12),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  image.fileName,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: const TextStyle(fontWeight: FontWeight.w700),
+                ),
+                const SizedBox(height: 3),
+                Text(
+                  '${(image.bytes.length / 1024).ceil()} KB・画像を検索に使用',
+                  style: TextStyle(
+                    color: colors.onSurfaceVariant,
+                    fontSize: 12,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          IconButton(
+            tooltip: '画像を削除',
+            onPressed:
+                _isLoading ? null : () => setState(() => _selectedImage = null),
+            icon: const Icon(Icons.close_rounded),
           ),
         ],
       ),

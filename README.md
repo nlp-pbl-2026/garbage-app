@@ -1,6 +1,6 @@
 # ごみサポ
 
-名前が分からないごみも、自然な言葉から分別区分を検索できるFlutterアプリです。
+名前が分からないごみも、自然な言葉や画像から分別区分を検索できるFlutterアプリです。
 
 自治体の分別資料をTitan Embeddingによる意味検索で検索し、分類・出し方・次回収集日を回答します。判定に必要な情報が足りない場合は、素材などを確認する追加質問を返します。
 
@@ -43,6 +43,7 @@ flutter run -d chrome \
 ## 主な機能
 
 - 曖昧な表現からのごみ分類
+- テキストのみ・画像のみ・画像とテキストを組み合わせた検索
 - 対象地域の分別資料を使ったRAG検索
 - 判定に必要な追加質問
 - 地区ごとの次回収集日の表示
@@ -52,9 +53,11 @@ flutter run -d chrome \
 
 品名が分からない曖昧な入力から正解へ到達するため、検索クエリをTitan Text Embeddings V2でベクトル化し、上位候補を判定LLMへ渡します。
 
-1. **クエリ変換**: Amazon Nova Liteが曖昧な入力を検索向けに言い換える。
+1. **クエリ変換**: Amazon Nova Liteがテキストと任意の画像を読み取り、曖昧な入力を検索向けに言い換える。
 2. **意味検索**: Titan Text Embeddings V2でクエリをベクトル化し、Lambda同梱の`item_embeddings.npz`から候補を検索する。
-3. **判定**: Amazon Nova Liteが検索候補から分類を判定し、必要なら追加質問を返す。
+3. **判定**: Amazon Nova Liteが画像と検索候補から分類を判定し、必要なら追加質問を返す。
+
+検索画像はJPEG・PNG・GIF・WebPのいずれか1枚、3MBまでです。画像は検索リクエスト内でNova Liteへ渡し、S3や検索ログには保存しません。
 
 AWS本番は`USE_BEDROCK_KNOWLEDGE_BASE=false`、`LEXICAL_SEARCH_ENABLED=false`でTitan Embedding単体を使用します。Knowledge Base経路と表層一致検索は比較実験用に切り替え可能です。
 

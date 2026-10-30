@@ -27,6 +27,7 @@ from ..services.item_search_service import ItemSearchService
 from ..services.search_log_service import SearchLogService
 from ..services.waste_guide_service import (
     CATEGORY_NAMES,
+    ImageInput,
     RetrievedDocument,
     UnsupportedRegionError,
     WasteGuideError,
@@ -35,6 +36,15 @@ from ..services.waste_guide_service import (
 
 logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/api/search", tags=["search"])
+
+
+def _image_input(request: WasteGuideRequest) -> ImageInput | None:
+    if request.image is None:
+        return None
+    return ImageInput(
+        format=request.image.bedrock_format,
+        data=request.image.decoded_bytes(),
+    )
 
 
 async def _run_step(operation):
@@ -69,6 +79,7 @@ async def rewrite_search_query(request: WasteGuideRequest) -> SearchRewriteRespo
             municipality_id=request.municipality_id,
             district_id=request.district_id,
             clarifications=clarifications,
+            image=_image_input(request),
         )
     )
     return SearchRewriteResponse(rewritten_query=rewritten)
@@ -124,6 +135,7 @@ async def decide_waste(request: SearchDecisionRequest) -> WasteGuideResponse:
             municipality_id=request.municipality_id,
             district_id=request.district_id,
             clarifications=clarification_items,
+            image=_image_input(request),
         )
     )
     return await _build_response_and_log(
@@ -143,10 +155,11 @@ async def classify_waste(request: WasteGuideRequest) -> WasteGuideResponse:
     clarification_items = [item.model_dump() for item in request.clarifications]
     result = await _run_step(
         lambda: service.query(
-                query=request.query,
-                municipality_id=request.municipality_id,
-                district_id=request.district_id,
-                clarifications=clarification_items,
+            query=request.query,
+            municipality_id=request.municipality_id,
+            district_id=request.district_id,
+            clarifications=clarification_items,
+            image=_image_input(request),
         )
     )
     return await _build_response_and_log(
@@ -245,6 +258,13 @@ async def _build_response_and_log(
         "municipality_id": request.municipality_id,
         "district_id": request.district_id,
         "query": request.query,
+        "has_image": request.image is not None,
+        "image_media_type": (
+            request.image.media_type if request.image is not None else None
+        ),
+        "image_size_bytes": (
+            len(request.image.decoded_bytes()) if request.image is not None else 0
+        ),
         "clarifications": clarification_items,
         "rewritten_query": result.rewritten_query,
         "status": result.status,

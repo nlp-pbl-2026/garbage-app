@@ -1,8 +1,11 @@
 """リクエスト/レスポンススキーマ"""
 
+import base64
+import binascii
 from datetime import datetime
+from typing import Literal
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator, model_validator
 
 
 class UserCreate(BaseModel):
@@ -113,7 +116,39 @@ class BulkyWasteItemListResponse(BaseModel):
 
 # --- ごみ検索/RAG スキーマ ---
 
-from pydantic import field_validator
+MAX_SEARCH_IMAGE_BYTES = 3 * 1024 * 1024
+
+
+class SearchImage(BaseModel):
+    """Nova Liteへ渡す1枚の検索画像。"""
+
+    media_type: Literal[
+        "image/jpeg",
+        "image/png",
+        "image/gif",
+        "image/webp",
+    ]
+    data_base64: str = Field(min_length=1, max_length=4_300_000)
+
+    @field_validator("data_base64")
+    @classmethod
+    def validate_image_data(cls, value: str) -> str:
+        try:
+            decoded = base64.b64decode(value, validate=True)
+        except (binascii.Error, ValueError) as error:
+            raise ValueError("image must be valid base64") from error
+        if not decoded:
+            raise ValueError("image must not be empty")
+        if len(decoded) > MAX_SEARCH_IMAGE_BYTES:
+            raise ValueError("image must be 3 MB or smaller")
+        return value
+
+    @property
+    def bedrock_format(self) -> str:
+        return self.media_type.removeprefix("image/").replace("jpg", "jpeg")
+
+    def decoded_bytes(self) -> bytes:
+        return base64.b64decode(self.data_base64, validate=True)
 
 
 class ClarificationExchange(BaseModel):
@@ -126,7 +161,8 @@ class ClarificationExchange(BaseModel):
 class WasteGuideRequest(BaseModel):
     """ごみ分別検索リクエスト。会話履歴は保持せず、必要な補足だけを渡す。"""
 
-    query: str = Field(min_length=1, max_length=500)
+    query: str = Field(default="", max_length=500)
+    image: SearchImage | None = None
     municipality_id: str = "38201"
     municipality_name: str = "松山市"
     district_id: str = "38201-08"
@@ -137,10 +173,14 @@ class WasteGuideRequest(BaseModel):
 
     @field_validator("query")
     @classmethod
-    def query_not_whitespace(cls, v: str) -> str:
-        if not v.strip():
-            raise ValueError("query must not be empty or whitespace only")
-        return v
+    def normalize_query(cls, value: str) -> str:
+        return value.strip()
+
+    @model_validator(mode="after")
+    def require_text_or_image(self):
+        if not self.query and self.image is None:
+            raise ValueError("query or image is required")
+        return self
 
 
 class GuideSource(BaseModel):

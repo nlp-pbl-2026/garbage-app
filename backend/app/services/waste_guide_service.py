@@ -51,6 +51,14 @@ class RetrievedDocument:
 
 
 @dataclass(frozen=True)
+class ImageInput:
+    """Bedrock Converse APIへ渡す検証済み画像。"""
+
+    format: str
+    data: bytes
+
+
+@dataclass(frozen=True)
 class ClassificationDecision:
     is_resolved: bool
     item_name: str = ""
@@ -92,7 +100,12 @@ class BedrockGateway:
             runtime_client=self._runtime
         )
 
-    def rewrite_query(self, query: str, clarifications: list[dict]) -> str:
+    def rewrite_query(
+        self,
+        query: str,
+        clarifications: list[dict],
+        image: ImageInput | None = None,
+    ) -> str:
         clarification_text = "\n".join(
             f"追加質問: {item['question']}\n回答: {item['answer']}"
             for item in clarifications
@@ -105,9 +118,17 @@ class BedrockGateway:
 「弁当・惣菜の透明なプラスチック製容器のふた」として検索してください。
 複数の解釈が現実的に残る場合は、推測で情報を追加しないでください。
 「松山市」「清水地区」「ごみ分別」のような検索対象側で既知の語は追加しないでください。
+画像が添付されている場合は、写っている品物、用途、形状、表示、見た目から確認できる素材だけを
+検索文へ含めてください。画像で確認できない素材や大きさを推測してはいけません。
+利用者の文章は画像より優先し、文章に明記された品物・部位・素材・状態を落とさないでください。
+画像が不鮮明な場合は特定の商品名を推測せず、見える形状や用途を一般的な語で表してください。
+検索文は「一般的な品目名、品目辞典に載りそうな同義語、画像で確認できる特徴」の順にしてください。
+たとえば、透明でねじ式キャップの飲料ボトルだと明確に確認できる場合は、単なる
+「プラスチックボトル」ではなく「ペットボトル 飲料用透明ボトル」としてください。
+飲料用か確認できない洗剤・化粧品などのボトルを、ペットボトルと推測してはいけません。
 
 利用者の質問:
-{query}
+{query or '（画像のみ）'}
 
 補足:
 {clarification_text or 'なし'}
@@ -115,20 +136,25 @@ class BedrockGateway:
 次のJSONだけを返してください。
 {{"search_query":"検索文"}}
 """.strip()
-        payload = self._converse_json(prompt, max_tokens=200)
+        payload = self._converse_json(prompt, max_tokens=200, image=image)
         rewritten = str(payload.get("search_query", "")).strip()
         cleaned = self._clean_rewritten_query(rewritten)
-        cleaned = self._remove_unsupported_materials(
-            cleaned,
-            query=query,
-            clarifications=clarifications,
-        )
+        if image is None:
+            cleaned = self._remove_unsupported_materials(
+                cleaned,
+                query=query,
+                clarifications=clarifications,
+            )
+        # 利用者が文章で明示した特徴は、画像の有無にかかわらず優先する。
         cleaned = self._preserve_explicit_features(
             cleaned,
             query=query,
             clarifications=clarifications,
         )
-        return self._normalize_search_spelling(cleaned) or query.strip()
+        result = self._normalize_search_spelling(cleaned) or query.strip()
+        if not result:
+            raise WasteGuideError("Bedrock could not identify the image")
+        return result
 
     @staticmethod
     def _clean_rewritten_query(value: str) -> str:
@@ -203,7 +229,10 @@ class BedrockGateway:
                 + [str(item.get("answer", "")) for item in clarifications]
             ),
         ).lower()
-        cleaned = unicodedata.normalize("NFKC", value)
+        source = BedrockGateway._normalize_search_spelling(source)
+        cleaned = BedrockGateway._normalize_search_spelling(
+            unicodedata.normalize("NFKC", value)
+        )
         normalized_cleaned = cleaned.lower()
         feature_groups = (
             (("紙製", "紙の", "紙箱", "紙パック"), "紙製"),
@@ -299,7 +328,11 @@ class BedrockGateway:
         return documents
 
     def classify(
-        self, query: str, clarifications: list[dict], documents: list[RetrievedDocument]
+        self,
+        query: str,
+        clarifications: list[dict],
+        documents: list[RetrievedDocument],
+        image: ImageInput | None = None,
     ) -> ClassificationDecision:
         evidence = "\n\n".join(
             f"根拠{i + 1}: {document.text}" for i, document in enumerate(documents)
@@ -312,6 +345,9 @@ class BedrockGateway:
 あなたは松山市のごみ分別判定器です。検索根拠だけを使い、品目の分類を判定してください。
 人間や人物など、ごみとして扱えない対象について分別の追加質問を生成してはいけません。
 分類コードは 可燃, 埋立, 金・ガ, 紙類, ペット, プラ, 水銀, 粗大, 禁止 のいずれかです。
+添付画像がある場合、画像は利用者が捨てたい対象です。画像から直接確認できる品物、形状、表示、
+汚れなどは判定に使えますが、画像で見えない素材、大きさ、中身を推測してはいけません。
+分類コードと出し方は必ず検索根拠で裏付けてください。
 
 次の判定手順を順番に実行してください。
 1. 利用者の質問と補足だけから、実物について判明している情報を整理する。
@@ -390,7 +426,7 @@ class BedrockGateway:
 確定する場合は、使用した根拠番号を evidence_indexes に必ず1件以上入れてください。
 
 利用者の質問:
-{query}
+{query or '（画像のみ）'}
 
 補足:
 {clarification_text or 'なし'}
@@ -409,7 +445,7 @@ class BedrockGateway:
   "evidence_indexes": [1]
 }}
 """.strip()
-        payload = self._converse_json(prompt, max_tokens=600)
+        payload = self._converse_json(prompt, max_tokens=600, image=image)
         category_code = str(payload.get("category_code", "")).strip()
         confidence = float(payload.get("confidence", 0.0) or 0.0)
         is_resolved = bool(payload.get("is_resolved", False))
@@ -455,11 +491,28 @@ class BedrockGateway:
         category_name = CATEGORY_NAMES.get(category_code, "")
         return category_code in text or (category_name and category_name in text)
 
-    def _converse_json(self, prompt: str, *, max_tokens: int) -> dict:
+    def _converse_json(
+        self,
+        prompt: str,
+        *,
+        max_tokens: int,
+        image: ImageInput | None = None,
+    ) -> dict:
+        content: list[dict] = []
+        if image is not None:
+            content.append(
+                {
+                    "image": {
+                        "format": image.format,
+                        "source": {"bytes": image.data},
+                    }
+                }
+            )
+        content.append({"text": prompt})
         try:
             response = self._runtime.converse(
                 modelId=config.BEDROCK_MODEL_ID,
-                messages=[{"role": "user", "content": [{"text": prompt}]}],
+                messages=[{"role": "user", "content": content}],
                 inferenceConfig={
                     "maxTokens": max_tokens,
                     "temperature": 0,
@@ -493,8 +546,10 @@ class WasteGuideService:
         today_provider=None,
     ):
         self._gateway = gateway or BedrockGateway()
-        self._calendar = calendar or CalendarService()
-        self._item_search = item_search or ItemSearchService()
+        # 言い換え処理ではカレンダーも表層検索CSVも不要。ローカルでそれらの
+        # Git管理外データが未配置でも、必要な段階までは初期化しない。
+        self._calendar = calendar
+        self._item_search = item_search
         # today_providerは既存呼び出しとの互換用。新規コードは時刻を含むnow_providerを使う。
         self._now_provider = now_provider
         self._today_provider = today_provider
@@ -506,6 +561,7 @@ class WasteGuideService:
         municipality_id: str,
         district_id: str,
         clarifications: list[dict] | None = None,
+        image: ImageInput | None = None,
     ) -> WasteGuideResult:
         clarification_items = clarifications or []
         rewritten_query = self.rewrite(
@@ -513,6 +569,7 @@ class WasteGuideService:
             municipality_id=municipality_id,
             district_id=district_id,
             clarifications=clarification_items,
+            image=image,
         )
         documents = self.retrieve(
             rewritten_query=rewritten_query,
@@ -526,6 +583,7 @@ class WasteGuideService:
             municipality_id=municipality_id,
             district_id=district_id,
             clarifications=clarification_items,
+            image=image,
         )
 
     def rewrite(
@@ -535,11 +593,16 @@ class WasteGuideService:
         municipality_id: str,
         district_id: str,
         clarifications: list[dict] | None = None,
+        image: ImageInput | None = None,
     ) -> str:
         """利用者の表現を、地域資料を探すための検索文へ言い換える。"""
 
         self._validate_region(municipality_id, district_id)
-        return self._gateway.rewrite_query(query, clarifications or [])
+        return self._gateway.rewrite_query(
+            query,
+            clarifications or [],
+            image=image,
+        )
 
     def retrieve(
         self,
@@ -554,6 +617,8 @@ class WasteGuideService:
         # 既定は意味検索(Embedding)単体。表層一致は設定で併用可能。
         lexical_documents: list[RetrievedDocument] = []
         if config.LEXICAL_SEARCH_ENABLED:
+            if self._item_search is None:
+                self._item_search = ItemSearchService()
             lexical_documents = [
                 RetrievedDocument(
                     text=match.evidence_text,
@@ -621,6 +686,7 @@ class WasteGuideService:
         municipality_id: str,
         district_id: str,
         clarifications: list[dict] | None = None,
+        image: ImageInput | None = None,
     ) -> WasteGuideResult:
         """検索根拠から分類を決め、回答または追加質問を組み立てる。"""
 
@@ -655,14 +721,22 @@ class WasteGuideService:
                 ),
                 decision=ClassificationDecision(is_resolved=False),
             )
-        decision = self._gateway.classify(query, clarification_items, documents)
+        decision = self._gateway.classify(
+            query,
+            clarification_items,
+            documents,
+            image=image,
+        )
+        detail_query = " ".join(
+            part for part in (query, rewritten_query) if part.strip()
+        )
         ambiguity_question = self._missing_detail_question(
-            query=query,
+            query=detail_query,
             clarifications=clarification_items,
             documents=documents,
         )
         conditional_question = self._conditional_evidence_question(
-            query=query,
+            query=detail_query,
             clarifications=clarification_items,
             documents=documents,
         )
@@ -737,6 +811,8 @@ class WasteGuideService:
                 sources=sources,
             )
 
+        if self._calendar is None:
+            self._calendar = CalendarService()
         if self._now_provider is not None:
             next_collection = self._calendar.next_collection(
                 decision.category_code, at=self._now_provider()
