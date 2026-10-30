@@ -152,6 +152,20 @@ class BulkyWasteRepository {
     );
   }
 
+  static MunicipalityConfig nakajimaConfig() => MunicipalityConfig(
+    municipalityId: '38201', municipalityName: '松山市・中島地域',
+    collectionFrequency: '地区別の2026年度公式カレンダーによる',
+    receptionHours: '事前申込みなし',
+    collectionRules: '地区別カレンダーの粗大ごみ収集日に出します。小さな粗大ごみは45L以下の無色透明袋に入れ、袋を二重にしないでください。対象外の品目は市の公式資料で確認してください。',
+    feeStructureType: FeeStructureType.fixed,
+    applicationMethod: ApplicationMethod.none,
+    webFormUrl: 'https://www.city.matsuyama.ehime.jp/kurashi/gomi/dashikata/kateigomi_nakajima.html', phoneNumber: null,
+    steps: [ApplicationStep(stepNumber: 1, title: '地区の収集日を確認',
+      description: '中島地域の地区別カレンダーで粗大ごみの収集日を確認します。'),
+      ApplicationStep(stepNumber: 2, title: '品目と出し方を確認',
+      description: '公式カレンダーの粗大ごみ欄で収集対象と出し方を確認します。')],
+  );
+
   /// [BulkyWasteRepository] を生成する。
   ///
   /// [client] HTTP クライアント（テスト時にモック注入可能）
@@ -225,10 +239,15 @@ class BulkyWasteRepository {
   /// キャッシュも存在しない場合は null を返す。
   Future<CachedResult<BulkyWasteItemList>?> getItems(
     String municipalityId, {
+    String? districtId,
+    bool isNakajima = false,
     String? search,
     SortBy? sortBy,
     SortOrder? sortOrder,
   }) async {
+    if (isNakajima) {
+      return _getCatalogItems(municipalityId, search: search, districtId: districtId);
+    }
     try {
       final queryParams = <String, String>{};
       if (search != null && search.isNotEmpty) {
@@ -259,7 +278,7 @@ class BulkyWasteRepository {
       }
 
       if (response.statusCode == 404) {
-        return _getCatalogItems(
+        return await _getCatalogItems(
           municipalityId,
           search: search,
         );
@@ -277,9 +296,11 @@ class BulkyWasteRepository {
   Future<CachedResult<BulkyWasteItemList>?> _getCatalogItems(
     String municipalityId, {
     String? search,
+    String? districtId,
   }) async {
     try {
       final queryParams = <String, String>{'category': '粗大'};
+      if (districtId != null) queryParams['district_id'] = districtId;
       if (search != null && search.isNotEmpty) {
         queryParams['search'] = search;
       }
@@ -292,15 +313,15 @@ class BulkyWasteRepository {
         final json = jsonDecode(response.body) as Map<String, dynamic>;
         final itemList = BulkyWasteItemList.fromJson(json);
         if (search == null || search.isEmpty) {
-          await _cacheItems(municipalityId, itemList);
+          await _cacheItems(districtId == null ? municipalityId : '$municipalityId:$districtId', itemList);
         }
         return CachedResult(data: itemList, isStale: false);
       }
-      return _getCachedItemsResult(municipalityId);
+      return _getCachedItemsResult(districtId == null ? municipalityId : '$municipalityId:$districtId');
     } on TimeoutException {
-      return _getCachedItemsResult(municipalityId);
+      return _getCachedItemsResult(districtId == null ? municipalityId : '$municipalityId:$districtId');
     } catch (_) {
-      return _getCachedItemsResult(municipalityId);
+      return _getCachedItemsResult(districtId == null ? municipalityId : '$municipalityId:$districtId');
     }
   }
 

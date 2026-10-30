@@ -2,6 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../models/region.dart';
 import '../services/multi_region_service.dart';
+import '../services/municipality_data_service.dart';
 import '../services/notification_service.dart';
 import 'region_provider.dart';
 import 'settings_provider.dart';
@@ -99,6 +100,22 @@ class MultiRegionNotifier extends StateNotifier<AsyncValue<List<SavedRegion>>> {
   /// regionSettingProviderを更新し、通知スケジュールを再計算する。
   Future<void> setActiveRegion(String id) async {
     try {
+      final saved = (await _service.getSavedRegions()).where((region) => region.id == id).firstOrNull;
+      final area = saved == null ? null :
+          await MunicipalityDataService().area(saved.setting.districtId);
+      if (saved == null || area == null) {
+        throw StateError('保存された収集地区を再選択してください。');
+      }
+      if (area['id'] != saved.setting.districtId) {
+        await _service.replaceRegionSetting(id, RegionSetting(
+          prefectureId: saved.setting.prefectureId,
+          prefectureName: saved.setting.prefectureName,
+          municipalityId: saved.setting.municipalityId,
+          municipalityName: saved.setting.municipalityName,
+          districtId: area['id'] as String,
+          districtName: area['name'] as String,
+        ));
+      }
       final activeRegion = await _service.setActiveRegion(id);
       if (activeRegion != null) {
         await _applyActiveRegion(activeRegion.setting);
@@ -107,6 +124,12 @@ class MultiRegionNotifier extends StateNotifier<AsyncValue<List<SavedRegion>>> {
     } catch (e, st) {
       state = AsyncValue.error(e, st);
     }
+  }
+
+  Future<void> replaceRegionSetting(String id, RegionSetting setting) async {
+    final updated = await _service.replaceRegionSetting(id, setting);
+    if (updated?.isActive == true) await _applyActiveRegion(setting);
+    await loadRegions();
   }
 
   /// アクティブ地区の設定をregionSettingProviderと通知に反映する

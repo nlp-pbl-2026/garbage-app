@@ -16,6 +16,7 @@ import '../services/ical_export_service.dart';
 import '../widgets/calendar_day_marker.dart';
 import '../widgets/memo_dialog.dart';
 import '../widgets/region_header.dart';
+import '../utils/japan_time.dart';
 import 'region_selection_screen.dart';
 
 /// カレンダー画面
@@ -86,7 +87,7 @@ class CalendarScreen extends ConsumerWidget {
                   ),
 
                   // 色凡例
-                  _buildColorLegend(),
+                  _buildColorLegend(ref),
 
                   const Divider(height: 1),
 
@@ -177,6 +178,7 @@ class CalendarScreen extends ConsumerWidget {
 
     final scheduleService = ref.watch(scheduleServiceProvider);
     final districtId = regionSetting.districtId;
+    final profile = ref.watch(ruleProfileProvider(districtId)).valueOrNull;
 
     return Container(
       width: double.infinity,
@@ -197,7 +199,7 @@ class CalendarScreen extends ConsumerWidget {
             ),
           ),
           const SizedBox(height: 8),
-          ...GarbageCategory.values.map(
+          ...CategoryColors.forRuleProfile(profile).map(
             (category) => _buildCategoryNextDate(
               scheduleService,
               districtId,
@@ -230,7 +232,7 @@ class CalendarScreen extends ConsumerWidget {
         if (snapshot.connectionState == ConnectionState.done &&
             snapshot.data != null) {
           final nextDate = snapshot.data!;
-          final now = DateTime.now();
+          final now = japanWallTime(DateTime.now());
           final today = DateTime(now.year, now.month, now.day);
           final diff = nextDate.difference(today).inDays;
 
@@ -726,12 +728,15 @@ class CalendarScreen extends ConsumerWidget {
   }
 
   /// 色凡例を構築する
-  Widget _buildColorLegend() {
+  Widget _buildColorLegend(WidgetRef ref) {
+    final districtId = ref.watch(regionSettingProvider).valueOrNull?.districtId;
+    final profile = districtId == null ? null : ref.watch(ruleProfileProvider(districtId)).valueOrNull;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: GarbageCategory.values.map((category) {
+      child: Wrap(
+        spacing: 12,
+        runSpacing: 8,
+        children: CategoryColors.forRuleProfile(profile).map((category) {
           return Row(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -768,6 +773,20 @@ class CalendarScreen extends ConsumerWidget {
         return 'ペット';
       case GarbageCategory.hazardous:
         return '危険';
+      case GarbageCategory.paper:
+        return '紙類';
+      case GarbageCategory.metalGlass:
+        return '金・ガ';
+      case GarbageCategory.landfill:
+        return '埋立';
+      case GarbageCategory.mercury:
+        return '水銀';
+      case GarbageCategory.cans:
+        return '缶';
+      case GarbageCategory.bottles:
+        return 'びん';
+      case GarbageCategory.bulky:
+        return '粗大';
     }
   }
 
@@ -1048,6 +1067,20 @@ class CalendarScreen extends ConsumerWidget {
         return Icons.water_drop_outlined;
       case GarbageCategory.hazardous:
         return Icons.warning_amber;
+      case GarbageCategory.paper:
+        return Icons.article_outlined;
+      case GarbageCategory.metalGlass:
+        return Icons.recycling;
+      case GarbageCategory.landfill:
+        return Icons.delete_outline;
+      case GarbageCategory.mercury:
+        return Icons.warning_amber;
+      case GarbageCategory.cans:
+        return Icons.local_drink_outlined;
+      case GarbageCategory.bottles:
+        return Icons.wine_bar_outlined;
+      case GarbageCategory.bulky:
+        return Icons.chair_outlined;
     }
   }
 

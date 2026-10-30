@@ -48,7 +48,7 @@ class _BulkyWasteScreenState extends ConsumerState<BulkyWasteScreen>
           controller: _tabController,
           tabs: const [
             Tab(text: '品目一覧'),
-            Tab(text: '申し込みガイド'),
+            Tab(text: '出し方ガイド'),
             Tab(text: '状況追跡'),
           ],
         ),
@@ -151,7 +151,7 @@ class _BulkyWasteScreenState extends ConsumerState<BulkyWasteScreen>
                 config: cachedResult.data,
                 useOfficialInfoFallback: cachedResult.isBundledFallback,
               ),
-              const StatusTrackerView(),
+              StatusTrackerView(isNakajima: cachedResult.data.applicationMethod == ApplicationMethod.none),
             ],
           ),
         ),

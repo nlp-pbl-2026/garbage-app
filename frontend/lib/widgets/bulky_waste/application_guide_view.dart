@@ -36,7 +36,9 @@ class ApplicationGuideView extends StatelessWidget {
         children: [
           // ヘッダー
           Text(
-            '${config.municipalityName}の粗大ごみ申し込み手順',
+            config.applicationMethod == ApplicationMethod.none
+                ? '${config.municipalityName}の粗大ごみの出し方'
+                : '${config.municipalityName}の粗大ごみ申し込み手順',
             style: Theme.of(context).textTheme.titleLarge?.copyWith(
                   fontWeight: FontWeight.bold,
                 ),
@@ -49,10 +51,11 @@ class ApplicationGuideView extends StatelessWidget {
               )),
           const SizedBox(height: 24),
           // 外部申し込み窓口セクション
-          _ExternalLinkSection(
-            config: config,
-            useOfficialInfoFallback: useOfficialInfoFallback,
-          ),
+          if (config.applicationMethod != ApplicationMethod.none)
+            _ExternalLinkSection(
+              config: config,
+              useOfficialInfoFallback: useOfficialInfoFallback,
+            ),
         ],
       ),
     );

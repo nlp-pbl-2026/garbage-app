@@ -115,6 +115,19 @@ class MultiRegionService {
     return activeRegion;
   }
 
+  Future<SavedRegion?> replaceRegionSetting(String id, RegionSetting setting) async {
+    final prefs = await SharedPreferences.getInstance();
+    final regions = await getSavedRegions();
+    SavedRegion? updated;
+    final changed = regions.map((region) {
+      if (region.id != id) return region;
+      updated = region.copyWith(setting: setting);
+      return updated!;
+    }).toList();
+    if (updated != null) await _saveRegions(prefs, changed);
+    return updated;
+  }
+
   /// 現在のアクティブ地区を取得する
   ///
   /// アクティブな地区がない場合は null を返す。

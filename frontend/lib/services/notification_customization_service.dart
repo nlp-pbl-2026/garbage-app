@@ -1,6 +1,7 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../models/garbage_item.dart';
+import '../models/garbage_category.dart';
 import '../models/category_notification_setting.dart';
 import '../models/notification_timing_type.dart';
 
@@ -31,12 +32,15 @@ class NotificationCustomizationService {
   Future<Map<GarbageCategory, CategoryNotificationSetting>> loadAllSettings() async {
     final Map<GarbageCategory, CategoryNotificationSetting> settings = {};
 
-    for (final category in GarbageCategory.values) {
+    for (final category in CategoryColors.collectionCategories) {
       final eveningKey = _buildKey(category, NotificationTimingType.evening);
       final morningKey = _buildKey(category, NotificationTimingType.morning);
 
-      final eveningEnabled = _prefs.getBool(eveningKey) ?? true;
-      final morningEnabled = _prefs.getBool(morningKey) ?? true;
+      final legacy = _legacyCategory(category);
+      final eveningEnabled = _prefs.getBool(eveningKey) ??
+          (legacy == null ? null : _prefs.getBool(_buildKey(legacy, NotificationTimingType.evening))) ?? true;
+      final morningEnabled = _prefs.getBool(morningKey) ??
+          (legacy == null ? null : _prefs.getBool(_buildKey(legacy, NotificationTimingType.morning))) ?? true;
 
       settings[category] = CategoryNotificationSetting(
         category: category,
@@ -69,14 +73,32 @@ class NotificationCustomizationService {
   ) async {
     final List<GarbageCategory> enabledCategories = [];
 
-    for (final category in GarbageCategory.values) {
+    for (final category in CategoryColors.collectionCategories) {
       final key = _buildKey(category, timing);
-      final enabled = _prefs.getBool(key) ?? true;
+      final legacy = _legacyCategory(category);
+      final enabled = _prefs.getBool(key) ??
+          (legacy == null ? null : _prefs.getBool(_buildKey(legacy, timing))) ?? true;
       if (enabled) {
         enabledCategories.add(category);
       }
     }
 
     return enabledCategories;
+  }
+
+  GarbageCategory? _legacyCategory(GarbageCategory category) {
+    switch (category) {
+      case GarbageCategory.paper:
+      case GarbageCategory.metalGlass:
+      case GarbageCategory.cans:
+      case GarbageCategory.bottles:
+        return GarbageCategory.recyclable;
+      case GarbageCategory.landfill:
+      case GarbageCategory.mercury:
+      case GarbageCategory.bulky:
+        return GarbageCategory.hazardous;
+      default:
+        return null;
+    }
   }
 }

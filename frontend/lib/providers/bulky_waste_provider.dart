@@ -5,8 +5,12 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../models/bulky_waste.dart';
+import '../models/garbage_item.dart';
 import '../repositories/bulky_waste_repository.dart';
 import '../services/bulky_waste_notification_service.dart';
+import '../services/municipality_data_service.dart';
+import '../services/schedule_service.dart';
+import '../utils/japan_time.dart';
 import 'region_provider.dart';
 
 /// SharedPreferencesのプロバイダー
@@ -49,6 +53,13 @@ final municipalityConfigProvider =
 
   if (regionSetting == null) return null;
 
+  final area = await MunicipalityDataService().area(regionSetting.districtId);
+  if (area == null) return null;
+  if (area['rule_profile_id'] == 'nakajima') {
+    return CachedResult(data: BulkyWasteRepository.nakajimaConfig(),
+        isStale: false, isBundledFallback: true);
+  }
+
   final repo = ref.watch(bulkyWasteRepositoryProvider);
   return repo.getMunicipalityConfig(regionSetting.municipalityId);
 });
@@ -60,6 +71,7 @@ final municipalityConfigProvider =
 class BulkyWasteQuery {
   /// 自治体ID（5桁コード）
   final String municipalityId;
+  final String? districtId;
 
   /// 検索キーワード（品目名・カテゴリの部分一致）
   final String? search;
@@ -72,6 +84,7 @@ class BulkyWasteQuery {
 
   const BulkyWasteQuery({
     required this.municipalityId,
+    this.districtId,
     this.search,
     this.sortBy,
     this.sortOrder,
@@ -83,6 +96,7 @@ class BulkyWasteQuery {
       other is BulkyWasteQuery &&
           runtimeType == other.runtimeType &&
           municipalityId == other.municipalityId &&
+          districtId == other.districtId &&
           search == other.search &&
           sortBy == other.sortBy &&
           sortOrder == other.sortOrder;
@@ -90,6 +104,7 @@ class BulkyWasteQuery {
   @override
   int get hashCode =>
       municipalityId.hashCode ^
+      districtId.hashCode ^
       search.hashCode ^
       sortBy.hashCode ^
       sortOrder.hashCode;
@@ -109,8 +124,12 @@ final bulkyWasteItemsProvider =
     FutureProvider.family<CachedResult<BulkyWasteItemList>?, BulkyWasteQuery>(
         (ref, query) async {
   final repo = ref.watch(bulkyWasteRepositoryProvider);
+  final area = query.districtId == null ? null :
+      await MunicipalityDataService().area(query.districtId!);
   return repo.getItems(
     query.municipalityId,
+    districtId: query.districtId,
+    isNakajima: area?['rule_profile_id'] == 'nakajima',
     search: query.search,
     sortBy: query.sortBy,
     sortOrder: query.sortOrder,
@@ -126,13 +145,33 @@ final bulkyWasteItemsProvider =
 class ApplicationRecordNotifier extends StateNotifier<List<ApplicationRecord>> {
   final SharedPreferences _prefs;
   final BulkyWasteNotificationService _notificationService;
+  final String _districtId;
+  final Future<String?> Function(String, DateTime) _validateCollectionDate;
+  List<ApplicationRecord> _allRecords = [];
 
   /// SharedPreferences保存キー
   static const String _storageKey = 'application_records';
 
-  ApplicationRecordNotifier(this._prefs, this._notificationService)
-      : super([]) {
+  ApplicationRecordNotifier(this._prefs, this._notificationService,
+      {String districtId = '38201-08',
+       Future<String?> Function(String, DateTime)? validateCollectionDate})
+      : _districtId = districtId,
+      _validateCollectionDate = validateCollectionDate ?? _validateOfficialIslandDate,
+      super([]) {
     _loadRecords();
+  }
+
+  static Future<String?> _validateOfficialIslandDate(String districtId, DateTime date) async {
+    try {
+      final area = await MunicipalityDataService().area(districtId);
+      if (area == null) return '収集地区を選び直してください';
+      if (area['rule_profile_id'] != 'nakajima') return null;
+      final entries = await ScheduleService().getScheduleForDate(districtId, date);
+      return entries.any((entry) => entry.category == GarbageCategory.bulky)
+          ? null : '中島地域の粗大ごみ収集日をカレンダーから選んでください';
+    } catch (_) {
+      return '公式カレンダーデータを確認できませんでした';
+    }
   }
 
   /// SharedPreferencesから記録を読み込む
@@ -144,9 +183,10 @@ class ApplicationRecordNotifier extends StateNotifier<List<ApplicationRecord>> {
     }
     try {
       final jsonList = jsonDecode(jsonString) as List<dynamic>;
-      state = jsonList
+      _allRecords = jsonList
           .map((e) => ApplicationRecord.fromJson(e as Map<String, dynamic>))
           .toList();
+      state = _allRecords.where((record) => record.districtId == _districtId).toList();
     } catch (_) {
       state = [];
     }
@@ -154,7 +194,7 @@ class ApplicationRecordNotifier extends StateNotifier<List<ApplicationRecord>> {
 
   /// 記録をSharedPreferencesに永続化する
   Future<void> _saveRecords() async {
-    final jsonList = state.map((e) => e.toJson()).toList();
+    final jsonList = _allRecords.map((e) => e.toJson()).toList();
     await _prefs.setString(_storageKey, jsonEncode(jsonList));
   }
 
@@ -181,7 +221,7 @@ class ApplicationRecordNotifier extends StateNotifier<List<ApplicationRecord>> {
     }
 
     // バリデーション: 収集予定日（今日以降）
-    final today = DateTime.now();
+    final today = japanWallTime(DateTime.now());
     final todayDateOnly = DateTime(today.year, today.month, today.day);
     final collectionDateOnly = DateTime(
       collectionDate.year,
@@ -191,6 +231,8 @@ class ApplicationRecordNotifier extends StateNotifier<List<ApplicationRecord>> {
     if (collectionDateOnly.isBefore(todayDateOnly)) {
       return '収集予定日は今日以降の日付を選択してください';
     }
+    final dateError = await _validateCollectionDate(_districtId, collectionDateOnly);
+    if (dateError != null) return dateError;
 
     // 記録作成
     final now = DateTime.now();
@@ -201,9 +243,11 @@ class ApplicationRecordNotifier extends StateNotifier<List<ApplicationRecord>> {
       status: ApplicationStatus.applied,
       createdAt: now,
       updatedAt: now,
+      districtId: _districtId,
     );
 
     state = [...state, record];
+    _allRecords = [..._allRecords, record];
     await _saveRecords();
 
     // 通知をスケジュール
@@ -225,6 +269,7 @@ class ApplicationRecordNotifier extends StateNotifier<List<ApplicationRecord>> {
     final newState = [...state];
     newState[index] = updatedRecord;
     state = newState;
+    _allRecords = _allRecords.map((record) => record.id == id ? updatedRecord : record).toList();
     await _saveRecords();
 
     // completed の場合は通知をキャンセル、それ以外は再スケジュール
@@ -255,7 +300,7 @@ class ApplicationRecordNotifier extends StateNotifier<List<ApplicationRecord>> {
   /// アプリ起動時や設定変更時に呼び出す。
   /// completed 以外の記録に対して通知をスケジュールし直す。
   Future<void> rescheduleAllNotifications() async {
-    await _notificationService.rescheduleAll(state);
+    await _notificationService.rescheduleAll(_allRecords);
   }
 
   /// ユニークIDを生成する
@@ -287,6 +332,7 @@ final applicationRecordsProvider =
     final prefs = ref.watch(sharedPreferencesProvider);
     final notificationService =
         ref.watch(bulkyWasteNotificationServiceProvider);
-    return ApplicationRecordNotifier(prefs, notificationService);
+    final districtId = ref.watch(regionSettingProvider).valueOrNull?.districtId ?? '38201-08';
+    return ApplicationRecordNotifier(prefs, notificationService, districtId: districtId);
   },
 );

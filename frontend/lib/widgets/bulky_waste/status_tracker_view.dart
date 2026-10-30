@@ -17,7 +17,8 @@ import '../../providers/bulky_waste_provider.dart';
 /// 要件7.6: 品目名空/過去日付のバリデーション
 /// 要件7.7: 収集日超過の未完了レコードに「期限超過」表示
 class StatusTrackerView extends ConsumerWidget {
-  const StatusTrackerView({super.key});
+  const StatusTrackerView({super.key, this.isNakajima = false});
+  final bool isNakajima;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -32,11 +33,12 @@ class StatusTrackerView extends ConsumerWidget {
     return Stack(
       children: [
         activeRecords.isEmpty && archivedRecords.isEmpty
-            ? _EmptyState(onAdd: () => _showAddRecordDialog(context, notifier))
+            ? _EmptyState(onAdd: () => _showAddRecordDialog(context, notifier), isNakajima: isNakajima)
             : _RecordListBody(
                 activeRecords: activeRecords,
                 archivedRecords: archivedRecords,
                 notifier: notifier,
+                isNakajima: isNakajima,
               ),
         Positioned(
           right: 16,
@@ -62,7 +64,7 @@ class StatusTrackerView extends ConsumerWidget {
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
       ),
-      builder: (context) => _AddRecordSheet(notifier: notifier),
+      builder: (context) => _AddRecordSheet(notifier: notifier, isNakajima: isNakajima),
     );
   }
 }
@@ -70,8 +72,9 @@ class StatusTrackerView extends ConsumerWidget {
 /// 記録が空のときの表示
 class _EmptyState extends StatelessWidget {
   final VoidCallback onAdd;
+  final bool isNakajima;
 
-  const _EmptyState({required this.onAdd});
+  const _EmptyState({required this.onAdd, required this.isNakajima});
 
   @override
   Widget build(BuildContext context) {
@@ -86,7 +89,7 @@ class _EmptyState extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           Text(
-            '申し込み記録がありません',
+            isNakajima ? '収集予定の記録がありません' : '申し込み記録がありません',
             style: Theme.of(context).textTheme.titleMedium?.copyWith(
                   color: Colors.grey[600],
                 ),
@@ -109,11 +112,13 @@ class _RecordListBody extends StatelessWidget {
   final List<ApplicationRecord> activeRecords;
   final List<ApplicationRecord> archivedRecords;
   final ApplicationRecordNotifier notifier;
+  final bool isNakajima;
 
   const _RecordListBody({
     required this.activeRecords,
     required this.archivedRecords,
     required this.notifier,
+    required this.isNakajima,
   });
 
   @override
@@ -129,7 +134,7 @@ class _RecordListBody extends StatelessWidget {
         // アクティブ記録セクション
         if (activeRecords.isNotEmpty) ...[
           Text(
-            '進行中の申し込み',
+            isNakajima ? '収集予定の記録' : '進行中の申し込み',
             style: Theme.of(context).textTheme.titleMedium?.copyWith(
                   fontWeight: FontWeight.bold,
                 ),
@@ -139,6 +144,7 @@ class _RecordListBody extends StatelessWidget {
             (record) => _ActiveRecordCard(
               record: record,
               notifier: notifier,
+              isNakajima: isNakajima,
               locale: Localizations.localeOf(context).languageCode,
             ),
           ),
@@ -163,11 +169,13 @@ class _ActiveRecordCard extends StatelessWidget {
   final ApplicationRecord record;
   final ApplicationRecordNotifier notifier;
   final String locale;
+  final bool isNakajima;
 
   const _ActiveRecordCard({
     required this.record,
     required this.notifier,
     required this.locale,
+    required this.isNakajima,
   });
 
   /// 収集日が過去かどうか判定する
@@ -211,7 +219,7 @@ class _ActiveRecordCard extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: 8),
-                _StatusBadge(status: record.status),
+                _StatusBadge(status: record.status, isNakajima: isNakajima),
                 if (_isOverdue) ...[
                   const SizedBox(width: 6),
                   _OverdueBadge(),
@@ -243,6 +251,7 @@ class _ActiveRecordCard extends StatelessWidget {
                 Expanded(
                   child: _StatusDropdown(
                     currentStatus: record.status,
+                    isNakajima: isNakajima,
                     onChanged: (newStatus) {
                       notifier.updateStatus(record.id, newStatus);
                     },
@@ -280,8 +289,9 @@ class _ActiveRecordCard extends StatelessWidget {
 /// applied=青、ticketPurchased（収集日通知済）=橙、awaitingCollection=緑で表示する。
 class _StatusBadge extends StatelessWidget {
   final ApplicationStatus status;
+  final bool isNakajima;
 
-  const _StatusBadge({required this.status});
+  const _StatusBadge({required this.status, required this.isNakajima});
 
   @override
   Widget build(BuildContext context) {
@@ -308,9 +318,9 @@ class _StatusBadge extends StatelessWidget {
   (String, Color) _statusInfo(ApplicationStatus status) {
     switch (status) {
       case ApplicationStatus.applied:
-        return ('申し込み済', Colors.blue);
+        return (isNakajima ? '記録済' : '申し込み済', Colors.blue);
       case ApplicationStatus.ticketPurchased:
-        return ('収集日通知済', Colors.orange);
+        return (isNakajima ? '収集日確認済' : '収集日通知済', Colors.orange);
       case ApplicationStatus.awaitingCollection:
         return ('収集待ち', Colors.green);
       case ApplicationStatus.completed:
@@ -348,10 +358,12 @@ class _OverdueBadge extends StatelessWidget {
 class _StatusDropdown extends StatelessWidget {
   final ApplicationStatus currentStatus;
   final ValueChanged<ApplicationStatus> onChanged;
+  final bool isNakajima;
 
   const _StatusDropdown({
     required this.currentStatus,
     required this.onChanged,
+    required this.isNakajima,
   });
 
   @override
@@ -394,9 +406,9 @@ class _StatusDropdown extends StatelessWidget {
   (String, Color) _statusLabel(ApplicationStatus status) {
     switch (status) {
       case ApplicationStatus.applied:
-        return ('申し込み済', Colors.blue);
+        return (isNakajima ? '記録済' : '申し込み済', Colors.blue);
       case ApplicationStatus.ticketPurchased:
-        return ('収集日通知済', Colors.orange);
+        return (isNakajima ? '収集日確認済' : '収集日通知済', Colors.orange);
       case ApplicationStatus.awaitingCollection:
         return ('収集待ち', Colors.green);
       case ApplicationStatus.completed:
@@ -482,8 +494,9 @@ class _ArchivedRecordTile extends StatelessWidget {
 /// 品目名（最大50文字）と収集予定日（今日以降）を入力し、記録を作成する。
 class _AddRecordSheet extends StatefulWidget {
   final ApplicationRecordNotifier notifier;
+  final bool isNakajima;
 
-  const _AddRecordSheet({required this.notifier});
+  const _AddRecordSheet({required this.notifier, required this.isNakajima});
 
   @override
   State<_AddRecordSheet> createState() => _AddRecordSheetState();
@@ -522,7 +535,7 @@ class _AddRecordSheetState extends State<_AddRecordSheet> {
           children: [
             // タイトル
             Text(
-              '新規申し込み記録',
+              widget.isNakajima ? '新規収集予定メモ' : '新規申し込み記録',
               style: theme.textTheme.titleLarge?.copyWith(
                 fontWeight: FontWeight.bold,
               ),

@@ -4,12 +4,15 @@ import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../models/region.dart';
+import 'municipality_data_service.dart';
 
 /// 地域データの読み込みと地域設定の永続化を管理するサービス。
 ///
 /// assets/data/ 配下のJSONファイルから都道府県・市区町村・地区データを読み込み、
 /// SharedPreferencesを使用して選択された地域設定を保存・復元する。
 class RegionService {
+  RegionService({MunicipalityDataService? data}) : _data = data ?? MunicipalityDataService();
+  final MunicipalityDataService _data;
   /// SharedPreferencesに地域設定を保存する際のキー
   static const String _regionSettingKey = 'region_setting';
 
@@ -46,15 +49,12 @@ class RegionService {
   /// assets/data/districts.json からデータを読み込み、
   /// [municipalityId] でフィルタリングした結果を返す。
   Future<List<District>> getDistricts(String municipalityId) async {
-    final jsonString =
-        await rootBundle.loadString('assets/data/districts.json');
-    final List<dynamic> jsonList = json.decode(jsonString) as List<dynamic>;
-    final allDistricts = jsonList
-        .map((item) => District.fromJson(item as Map<String, dynamic>))
-        .toList();
-    return allDistricts
-        .where((d) => d.municipalityId == municipalityId)
-        .toList();
+    if (municipalityId != '38201') return [];
+    return (await _data.getAreas()).map((entry) => District(
+      id: entry['id'] as String,
+      municipalityId: municipalityId,
+      name: entry['name'] as String,
+    )).toList();
   }
 
   /// 地域設定をSharedPreferencesに保存する。
@@ -77,6 +77,16 @@ class RegionService {
     }
     final Map<String, dynamic> jsonMap =
         json.decode(jsonString) as Map<String, dynamic>;
-    return RegionSetting.fromJson(jsonMap);
+    final old = RegionSetting.fromJson(jsonMap);
+    final area = await _data.area(old.districtId);
+    if (area == null) return null; // Ambiguous/unknown legacy ID requires selection.
+    if (area['id'] == old.districtId && area['name'] == old.districtName) return old;
+    final migrated = RegionSetting(
+      prefectureId: old.prefectureId, prefectureName: old.prefectureName,
+      municipalityId: old.municipalityId, municipalityName: old.municipalityName,
+      districtId: area['id'] as String, districtName: area['name'] as String,
+    );
+    await saveRegionSetting(migrated);
+    return migrated;
   }
 }

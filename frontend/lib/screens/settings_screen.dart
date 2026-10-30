@@ -13,6 +13,7 @@ import '../providers/region_provider.dart';
 import '../providers/settings_provider.dart';
 import '../providers/theme_provider.dart';
 import '../services/notification_service.dart';
+import '../services/municipality_data_service.dart';
 import '../widgets/notification_customization_widget.dart';
 import '../widgets/region_header.dart';
 import 'faq_screen.dart';
@@ -42,6 +43,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
 
     // GPS判定結果をリッスンし、成功時に確認ダイアログ、エラー時にSnackBarを表示
     ref.listen<GpsDetectionState>(gpsDetectionProvider, (previous, next) {
+      if (ModalRoute.of(context)?.isCurrent != true) return;
       if (next is GpsDetectionSuccess) {
         _showGpsConfirmationDialog(next.result);
       } else if (next is GpsDetectionError) {
@@ -303,9 +305,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             trailing: const Icon(Icons.chevron_right),
             onTap: isGpsLoading
                 ? null
-                : () {
-                    ref.read(gpsDetectionProvider.notifier).detectDistrict();
-                  },
+                : () => _navigateToRegionSelectionWithAutoDetect(context, ref),
           ),
           const Divider(height: 1, indent: 56),
           ListTile(
@@ -314,13 +314,6 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             title: const Text('地域を変更'),
             trailing: const Icon(Icons.chevron_right),
             onTap: () => _navigateToRegionSelection(context, ref),
-          ),
-          const Divider(height: 1, indent: 56),
-          ListTile(
-            leading: const Icon(Icons.my_location, color: AppColors.primary),
-            title: const Text('現在地から再設定'),
-            trailing: const Icon(Icons.chevron_right),
-            onTap: () => _navigateToRegionSelectionWithAutoDetect(context, ref),
           ),
         ],
       ),
@@ -789,9 +782,13 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             fontWeight: region.isActive ? FontWeight.bold : FontWeight.normal,
           ),
         ),
-        subtitle: Text(
-          '${region.setting.municipalityName} ${region.setting.districtName}',
-          style: const TextStyle(fontSize: 12, color: Colors.grey),
+        subtitle: FutureBuilder<Map<String, dynamic>?>(
+          future: MunicipalityDataService().area(region.setting.districtId),
+          builder: (context, snapshot) => Text(
+            '${region.setting.municipalityName} ${region.setting.districtName}'
+            '${snapshot.connectionState == ConnectionState.done && snapshot.data == null ? '（収集地区の再選択が必要）' : ''}',
+            style: const TextStyle(fontSize: 12, color: Colors.grey),
+          ),
         ),
         trailing: Row(
           mainAxisSize: MainAxisSize.min,
@@ -819,13 +816,14 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               ),
           ],
         ),
-        onTap: region.isActive
-            ? null
-            : () {
-                ref
-                    .read(multiRegionProvider.notifier)
-                    .setActiveRegion(region.id);
-              },
+        onTap: () async {
+          final area = await MunicipalityDataService().area(region.setting.districtId);
+          if (area == null) {
+            if (context.mounted) _navigateToReplaceRegion(context, ref, region);
+          } else if (!region.isActive) {
+            await ref.read(multiRegionProvider.notifier).setActiveRegion(region.id);
+          }
+        },
       ),
     );
   }
@@ -998,7 +996,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                   prefectureName: '愛媛県',
                   municipalityId: '38201',
                   municipalityName: '松山市',
-                  districtId: '38201-${result.districtNumber}',
+                  districtId: result.collectionAreaId ?? '38201-${result.districtNumber.toString().padLeft(2, '0')}',
                   districtName: result.districtName,
                 );
                 await ref
@@ -1077,21 +1075,28 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
   ///
   /// ユーザーが地域を選択したら、その設定を指定ラベルで保存地区に追加する。
   void _navigateToAddRegion(BuildContext context, WidgetRef ref, String label) {
+    final previousActive = ref.read(multiRegionProvider).valueOrNull
+        ?.where((region) => region.isActive).firstOrNull;
     Navigator.push<bool>(
       context,
       MaterialPageRoute(
         builder: (_) => RegionSelectionScreen(
+          updateActiveSavedRegion: false,
           onRegionSelected: () {
             Navigator.of(context).pop(true);
           },
         ),
       ),
-    ).then((result) {
+    ).then((result) async {
       if (result == true && context.mounted) {
         // 地域選択が完了した → 選択された地域を指定ラベルで保存
         final newSetting = ref.read(regionSettingProvider).valueOrNull;
         if (newSetting != null) {
-          ref.read(multiRegionProvider.notifier).addRegion(label, newSetting);
+          await ref.read(multiRegionProvider.notifier).addRegion(label, newSetting);
+          if (previousActive != null) {
+            await ref.read(multiRegionProvider.notifier).setActiveRegion(previousActive.id);
+          }
+          if (!context.mounted) return;
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text('「$label」を追加しました'),
@@ -1099,6 +1104,25 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               behavior: SnackBarBehavior.floating,
             ),
           );
+        }
+      }
+    });
+  }
+
+  void _navigateToReplaceRegion(BuildContext context, WidgetRef ref, SavedRegion saved) {
+    final previousActive = ref.read(multiRegionProvider).valueOrNull
+        ?.where((region) => region.isActive).firstOrNull;
+    Navigator.push<bool>(context, MaterialPageRoute(
+      builder: (_) => RegionSelectionScreen(updateActiveSavedRegion: false, onRegionSelected: () {
+        Navigator.of(context).pop(true);
+      }),
+    )).then((selected) async {
+      if (selected != true) return;
+      final setting = ref.read(regionSettingProvider).valueOrNull;
+      if (setting != null) {
+        await ref.read(multiRegionProvider.notifier).replaceRegionSetting(saved.id, setting);
+        if (previousActive != null && previousActive.id != saved.id) {
+          await ref.read(multiRegionProvider.notifier).setActiveRegion(previousActive.id);
         }
       }
     });

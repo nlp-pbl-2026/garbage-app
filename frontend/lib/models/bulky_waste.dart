@@ -47,6 +47,8 @@ extension FeeStructureTypeExtension on FeeStructureType {
 
 /// 申し込み方法の種別
 enum ApplicationMethod {
+  /// Collection by the district calendar; no advance application.
+  none,
   /// Webフォーム
   webForm,
 
@@ -62,6 +64,8 @@ extension ApplicationMethodExtension on ApplicationMethod {
   /// enum値をJSON文字列に変換
   String toJsonString() {
     switch (this) {
+      case ApplicationMethod.none:
+        return 'none';
       case ApplicationMethod.webForm:
         return 'web_form';
       case ApplicationMethod.phone:
@@ -74,6 +78,8 @@ extension ApplicationMethodExtension on ApplicationMethod {
   /// JSON文字列からenum値に変換
   static ApplicationMethod fromString(String value) {
     switch (value) {
+      case 'none':
+        return ApplicationMethod.none;
       case 'web_form':
         return ApplicationMethod.webForm;
       case 'phone':
@@ -347,6 +353,7 @@ class ApplicationRecord {
   final ApplicationStatus status;
   final DateTime createdAt;
   final DateTime updatedAt;
+  final String districtId;
 
   /// itemNameの最大文字数
   static const int maxItemNameLength = 50;
@@ -358,6 +365,7 @@ class ApplicationRecord {
     required this.status,
     required this.createdAt,
     required this.updatedAt,
+    this.districtId = '38201-08',
   }) : assert(itemName.length <= maxItemNameLength,
             'itemName must be at most $maxItemNameLength characters');
 
@@ -369,6 +377,7 @@ class ApplicationRecord {
       status: ApplicationStatusExtension.fromString(json['status'] as String),
       createdAt: DateTime.parse(json['created_at'] as String),
       updatedAt: DateTime.parse(json['updated_at'] as String),
+      districtId: json['district_id'] as String? ?? '38201-08',
     );
   }
 
@@ -380,6 +389,7 @@ class ApplicationRecord {
       'status': status.toJsonString(),
       'created_at': createdAt.toIso8601String(),
       'updated_at': updatedAt.toIso8601String(),
+      'district_id': districtId,
     };
   }
 
@@ -392,6 +402,7 @@ class ApplicationRecord {
       status: newStatus,
       createdAt: createdAt,
       updatedAt: DateTime.now(),
+      districtId: districtId,
     );
   }
 

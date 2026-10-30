@@ -33,6 +33,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
   SearchImageInput? _selectedImage;
   bool _isLoading = false;
   SearchPipelineStage _pipelineStage = SearchPipelineStage.idle;
+  int _requestEpoch = 0;
 
   @override
   void dispose() {
@@ -73,6 +74,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
         _clarifications = [];
       }
     });
+    final epoch = _requestEpoch;
 
     try {
       final result = await _service.classify(
@@ -81,10 +83,10 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
         image: _selectedImage,
         clarifications: clarifications,
         onStageChanged: (stage) {
-          if (mounted) setState(() => _pipelineStage = stage);
+          if (mounted && epoch == _requestEpoch) setState(() => _pipelineStage = stage);
         },
       );
-      if (!mounted) return;
+      if (!mounted || epoch != _requestEpoch) return;
       setState(() {
         _result = result;
         _pendingQuestion =
@@ -98,7 +100,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
         _queryFocus.requestFocus();
       }
     } on WasteGuideException catch (error) {
-      if (!mounted) return;
+      if (!mounted || epoch != _requestEpoch) return;
       setState(() {
         _error = error.message;
         _isLoading = false;
@@ -168,6 +170,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
   }
 
   void _startNewSearch([String? suggestion]) {
+    _requestEpoch++;
     setState(() {
       _result = null;
       _error = null;
@@ -175,6 +178,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
       _pendingQuestion = null;
       _clarifications = [];
       _selectedImage = null;
+      _isLoading = false;
       _pipelineStage = SearchPipelineStage.idle;
       _queryController.text = suggestion ?? '';
     });
@@ -183,6 +187,11 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
 
   @override
   Widget build(BuildContext context) {
+    ref.listen<AsyncValue<RegionSetting?>>(regionSettingProvider, (previous, next) {
+      if (previous?.valueOrNull?.districtId != next.valueOrNull?.districtId) {
+        _startNewSearch();
+      }
+    });
     final colors = Theme.of(context).colorScheme;
     return Scaffold(
       backgroundColor: colors.surface,

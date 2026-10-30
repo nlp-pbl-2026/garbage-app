@@ -21,6 +21,13 @@ enum GarbageCategory {
 
   /// 危険ごみ - 赤
   hazardous,
+  paper,
+  metalGlass,
+  landfill,
+  mercury,
+  cans,
+  bottles,
+  bulky,
 }
 
 /// GarbageCategoryの文字列変換ヘルパー
@@ -38,6 +45,20 @@ extension GarbageCategoryExtension on GarbageCategory {
         return 'petBottle';
       case GarbageCategory.hazardous:
         return 'hazardous';
+      case GarbageCategory.paper:
+        return 'paper';
+      case GarbageCategory.metalGlass:
+        return 'metal_glass';
+      case GarbageCategory.landfill:
+        return 'landfill';
+      case GarbageCategory.mercury:
+        return 'mercury';
+      case GarbageCategory.cans:
+        return 'cans';
+      case GarbageCategory.bottles:
+        return 'bottles';
+      case GarbageCategory.bulky:
+        return 'bulky';
     }
   }
 
@@ -54,6 +75,26 @@ extension GarbageCategoryExtension on GarbageCategory {
         return GarbageCategory.petBottle;
       case 'hazardous':
         return GarbageCategory.hazardous;
+      case 'combustible':
+        return GarbageCategory.burnable;
+      case 'plastic_packaging':
+        return GarbageCategory.plastic;
+      case 'pet_bottle':
+        return GarbageCategory.petBottle;
+      case 'paper':
+        return GarbageCategory.paper;
+      case 'metal_glass':
+        return GarbageCategory.metalGlass;
+      case 'landfill':
+        return GarbageCategory.landfill;
+      case 'mercury':
+        return GarbageCategory.mercury;
+      case 'cans':
+        return GarbageCategory.cans;
+      case 'bottles':
+        return GarbageCategory.bottles;
+      case 'bulky':
+        return GarbageCategory.bulky;
       default:
         throw ArgumentError('Unknown GarbageCategory: $value');
     }

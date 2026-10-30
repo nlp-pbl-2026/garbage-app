@@ -4,11 +4,11 @@ import '../models/gps_detection.dart';
 import '../services/abstract_district_matcher.dart';
 import '../services/abstract_location_service.dart';
 import '../services/abstract_reverse_geocoder.dart';
-import '../services/district_matcher_service.dart';
 import '../services/geocoding_cache.dart';
 import '../services/geojson_resolver.dart';
 import '../services/gps_location_service.dart';
 import '../services/reverse_geocoding_service.dart';
+import '../services/official_collection_matcher.dart';
 
 // ---------------------------------------------------------------------------
 // State
@@ -76,7 +76,7 @@ final reverseGeocodingServiceProvider =
 
 /// AbstractDistrictMatcherのプロバイダー（テスト時にoverrideWithValue可能）
 final districtMatcherServiceProvider =
-    Provider<AbstractDistrictMatcher>((ref) => DistrictMatcherService());
+    Provider<AbstractDistrictMatcher>((ref) => OfficialCollectionMatcher());
 
 /// GeoJsonResolverのプロバイダー（テスト時にoverrideWithValue可能）
 final geoJsonResolverProvider =
@@ -104,14 +104,13 @@ class GpsDetectionNotifier extends StateNotifier<GpsDetectionState> {
   final AbstractLocationService _locationService;
   final AbstractReverseGeocoder _reverseGeocodingService;
   final AbstractDistrictMatcher _districtMatcherService;
-  final GeoJsonResolver _geoJsonResolver;
   final GeocodingCache _geocodingCache;
 
   GpsDetectionNotifier(
     this._locationService,
     this._reverseGeocodingService,
     this._districtMatcherService,
-    this._geoJsonResolver,
+    GeoJsonResolver geoJsonResolver,
     this._geocodingCache,
   ) : super(const GpsDetectionIdle());
 
@@ -138,19 +137,9 @@ class GpsDetectionNotifier extends StateNotifier<GpsDetectionState> {
       // Step 1: GPS座標を取得（権限確認・リクエスト・精度バリデーション含む）
       final coordinate = await _locationService.getCurrentPosition();
 
-      // Step 2: GeoJsonResolverでオフライン判定を試行（Req 6.2, 6.6）
-      if (_geoJsonResolver.isLoaded) {
-        final geoJsonResult = _geoJsonResolver.resolveDistrict(
-          coordinate.latitude,
-          coordinate.longitude,
-        );
-        if (geoJsonResult != null) {
-          // GeoJSON判定成功: APIをスキップ (Req 6.3)
-          state = GpsDetectionSuccess(geoJsonResult);
-          return;
-        }
-      }
-      // GeoJSON判定失敗またはisLoaded==false: 従来フローにフォールバック (Req 6.4, 6.6)
+      // The bundled GeoJSON describes administrative approximations, not
+      // official collection boundaries; always use reverse geocoding and the
+      // city's collection-area address table, followed by user confirmation.
 
       // Step 3: GeocodingCache確認 → 逆ジオコーディング (Req 5.2)
       GeocodedAddress address;
@@ -208,6 +197,7 @@ class GpsDetectionNotifier extends StateNotifier<GpsDetectionState> {
               districtNumber: candidate.districtNumber,
               districtName: candidate.districtName,
               matchedTown: candidate.townName,
+              collectionAreaId: candidate.collectionAreaId,
             ),
           );
         } else {
