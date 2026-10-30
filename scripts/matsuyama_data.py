@@ -131,7 +131,7 @@ def fetch_sources(registry):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("command", choices=["fetch", "fetch-aux", "extract", "restore-legacy", "build"])
+    parser.add_argument("command", choices=["fetch", "fetch-aux", "extract", "restore-legacy", "build", "build-knowledge"])
     args = parser.parse_args()
     registry = read_json(REGISTRY)
     if args.command == "fetch":
@@ -142,6 +142,28 @@ def main():
         restore_legacy()
     elif args.command == "build":
         build(registry)
+    elif args.command == "build-knowledge":
+        from matsuyama_knowledge import build_addresses, build_nakajima_items
+        address_data = build_addresses(DATA / "source", registry)
+        write_json(DATA / "generated/addresses.json", address_data)
+        write_json(ROOT / "frontend/assets/data/municipality_addresses.json", address_data)
+        manifest = build_nakajima_items(
+            DATA / "source/2026nakajimaoura.pdf",
+            DATA / "generated/nakajima_items.csv", registry)
+        write_json(DATA / "generated/nakajima_items_manifest.json", manifest)
+        write_json(DATA / "knowledge_reviews.json", {
+            "schema_version": 1,
+            "version": registry["version"],
+            "retrieved_on": registry["retrieved_on"],
+            "address_entries": len(address_data["entries"]),
+            "address_area_count": len({row["area_id"] for row in address_data["entries"]}),
+            "address_source_sha256": {name: sha256(DATA / "source" / name)
+                                      for name in [f"chikukensaku-{kana}.html" for kana in
+                                                   ["a", "ka", "sa", "ta", "na", "ha", "ma", "yarawa"]]},
+            "nakajima": manifest,
+            "redistribution_status": "not_confirmed",
+        })
+        print(f"Built {len(address_data['entries'])} address rows and {manifest['item_count']} Nakajima evidence rows")
     elif args.command == "extract":
         from matsuyama_pdf import read_calendar
         records, failures = {}, []

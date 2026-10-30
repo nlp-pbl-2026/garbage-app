@@ -208,14 +208,14 @@
       "rule_profile_id": "matsuyama_hojo"
     },
     {
-      "id": "38201-ca-nakajima-awai",
+      "id": "38201-ca-nk-awai",
       "name": "中島粟井",
       "municipality_id": "38201",
       "calendar_id": "yoshiki_nyo_hatari_nakajimaawai",
       "rule_profile_id": "nakajima"
     },
     {
-      "id": "38201-ca-nakajima-oura",
+      "id": "38201-ca-nk-oura",
       "name": "中島大浦",
       "municipality_id": "38201",
       "calendar_id": "nakajimaoura",
@@ -892,7 +892,7 @@
       "38201-ca-nogutsuna"
     ],
     "38201-82": [
-      "38201-ca-nakajima-oura",
+      "38201-ca-nk-oura",
       "38201-ca-obama",
       "38201-ca-nagashi",
       "38201-ca-miyano",
@@ -904,7 +904,7 @@
       "38201-ca-yoshiki",
       "38201-ca-nyo",
       "38201-ca-hatari",
-      "38201-ca-nakajima-awai"
+      "38201-ca-nk-awai"
     ],
     "38201-84": [
       "38201-ca-kami-nuwa",
