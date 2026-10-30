@@ -1,0 +1,270 @@
+{
+  "reviewed_on": "2026-10-30",
+  "reviewer": "Codex",
+  "method": [
+    "all 365 printed dates and weekday positions checked",
+    "printed labels independently matched to vector fill colors",
+    "43 calendar overviews visually inspected, including legends and stop/transfer markings"
+  ],
+  "limits": "Visual overview plus mechanical cell verification; not a municipality endorsement or a second human audit.",
+  "calendars": {
+    "asanami_namba_masaoka": {
+      "source_sha256": "3b1f5f1aa38938e8d0b700e05b339aef0f2cc180c3d557d9fdc7592a3edb281c",
+      "normalized_sha256": "d1f5ddb1de13ec583a68b0cde83d915ad09c8df060c390000931abbb1160899a",
+      "verification_status": "checked",
+      "printed_days": 365
+    },
+    "aratama": {
+      "source_sha256": "a21d701f231e29a188252991325df6251b2f39f2342125aaba65ff1f5faeb496",
+      "normalized_sha256": "bd74e8713b635d26ce694d1c2fb0ff9a19d6351291f8a3a20abdcfced6a1e241",
+      "verification_status": "checked",
+      "printed_days": 365
+    },
+    "awai_kono": {
+      "source_sha256": "4ede25a22b85346f503cc36642f7ab032e940235f40b1b1899ef29c2cbd76285",
+      "normalized_sha256": "20f03c25b909f9f1e02ceb64f60dfd202177e24d789e2e7b2a3ae50d221dd864",
+      "verification_status": "checked",
+      "printed_days": 365
+    },
+    "ishiinishi": {
+      "source_sha256": "dbb08dfadb1573a6f5ea0218b652c7cd6cf91ff08f79daab5c5b5827939bb9d0",
+      "normalized_sha256": "82545edaac30ce1fe98533caea0dd205a86bada12ad4cd82d3427191772c3d61",
+      "verification_status": "checked",
+      "printed_days": 365
+    },
+    "ishiihigashi": {
+      "source_sha256": "f11d05a8f486eaaec1ab032b1e79a590af85613d4c83a150a43c078603c288ce",
+      "normalized_sha256": "aada5db703c72f364a4b7d3fbce765c839cebbf8de8b1ce4ee23c7c1dae95457",
+      "verification_status": "checked",
+      "printed_days": 365
+    },
+    "idai": {
+      "source_sha256": "aa2dadc71cd9a59932e22dd297ca49cd7582c9476334c23746ab0a9cd71a1874",
+      "normalized_sha256": "48a74cdb0268c389714c496d5aa25db62682edf09898602b4015e4930803a891",
+      "verification_status": "checked",
+      "printed_days": 365
+    },
+    "ukena": {
+      "source_sha256": "c0c5c3cd76ede056ad0845e196d0214fc2f468c3bd03eef1fe9bff7581221026",
+      "normalized_sha256": "13eff9d075bccded49eb275c82d7387f8878338928d633e9527eb4d463761c41",
+      "verification_status": "checked",
+      "printed_days": 365
+    },
+    "uwama_kumata": {
+      "source_sha256": "8ff56b523dd53c299cb408fa1ed897437c5f36f9c6ed5fcb116ac8c2b28eee18",
+      "normalized_sha256": "45d90457eecd5bf758e388a71892e13eb36f0f534ce009e3b3afa3279ed04008",
+      "verification_status": "checked",
+      "printed_days": 365
+    },
+    "ono": {
+      "source_sha256": "1f2433422144354694c88fe22890e6bac327ef4422704f9588c1c60fe4c14d41",
+      "normalized_sha256": "f8b5da8fe6b1345bfd2a50516e5176c178e04e54c5284e0a9a82f655bc0f40cc",
+      "verification_status": "checked",
+      "printed_days": 365
+    },
+    "obama": {
+      "source_sha256": "19f6c1f927d28908f38493f915ca797cdac9a2b6b4de4b440c6fa69cf54253a6",
+      "normalized_sha256": "b4ebdf5cdc6a6db578c5c09f0ba975f7a9829314bca7b23bf16cd3b301ee1456",
+      "verification_status": "checked",
+      "printed_days": 365
+    },
+    "kaminuwa_motonuwa": {
+      "source_sha256": "99a019e567a5c606b99c800ad1ed05bd0acebb48ac87d9055e80d99a9a3a2a2e",
+      "normalized_sha256": "5003adb86266da985959a2b9f8d7f9b7c35bb787a374f9c9ba9ab33d194c36f5",
+      "verification_status": "checked",
+      "printed_days": 365
+    },
+    "kutani": {
+      "source_sha256": "99412c0adb97aba1c29ff35bf0fda6f0f967faf32b09e62cdd04fc2e3f2e69b3",
+      "normalized_sha256": "a4a18b12891c066857313df8e823b24f280086b11b6307760533a6df157ce58b",
+      "verification_status": "checked",
+      "printed_days": 365
+    },
+    "kume": {
+      "source_sha256": "6be4f491944d3dfadf084b1729ec5a03abbfd60bb4467742914e0c894129c0db",
+      "normalized_sha256": "0d62f939110e431116da63169a506edbfd19f74eb86b4d332b087bfd77ec3f95",
+      "verification_status": "checked",
+      "printed_days": 365
+    },
+    "kuwabara": {
+      "source_sha256": "4b48b65c0ed1b8c30c04bee3a40241246524b56a98c63de9fc584ee18d037dd3",
+      "normalized_sha256": "3446b7564f2c9750e82184ea396f9e970efe10aa5f610f55db42478c0c26cb83",
+      "verification_status": "checked",
+      "printed_days": 365
+    },
+    "nagashi_miyano_kounoura": {
+      "source_sha256": "22023be7aa41f5fed89e39fa8d4626103600c64055e4016f53d9003d11933d7b",
+      "normalized_sha256": "8c3560465468f610feaad68ed2124bfc6ab99b3496c862d499e5379c37123641",
+      "verification_status": "checked",
+      "printed_days": 365
+    },
+    "hiura_gomyo": {
+      "source_sha256": "0f540b6a15645996ec297c089fd41ac21918f5c8c816328fcf0cbc9065550e11",
+      "normalized_sha256": "5a5ee374f2d3aae328d5e2f951ed9c71a5ac1c4ff47912065f867798ba448d45",
+      "verification_status": "checked",
+      "printed_days": 365
+    },
+    "shiomi": {
+      "source_sha256": "1b5f6bf1cec36d1bbdb1931b1033babf7f4e6ea7342f8d490b23465ba28b5143",
+      "normalized_sha256": "07d20e63096502a04bb6f31364eddc51e45dc20dc8f411002e15afb97f30acb9",
+      "verification_status": "checked",
+      "printed_days": 365
+    },
+    "shinonome": {
+      "source_sha256": "32bff6ead304ade904cf912b9367960d6ebc2d722e5b8950fe3ab32e4542a62b",
+      "normalized_sha256": "1aaf7ece184d0c1bf6df4e25606882e41d33e16d674013c68501fbf818072752",
+      "verification_status": "checked",
+      "printed_days": 365
+    },
+    "shimizu": {
+      "source_sha256": "a1a5d76f3e1bd18ccd5cdc0cf8e521ee55b2114b947adc0d14f8b5da8915ed38",
+      "normalized_sha256": "315b77f1cdb0cdfd0eca7fbfca24323feb5f92564c6c5e7f966e1ee1ff91d200",
+      "verification_status": "checked",
+      "printed_days": 365
+    },
+    "shoseki": {
+      "source_sha256": "249b5387b67e62befec29d66bcdb1b02a8416cb543c1330b7ec27b2a8c74491a",
+      "normalized_sha256": "36d745e5dd9e1b2a5bad28840523fb4c0d8090ef1f899c8d3b4697af9044dac0",
+      "verification_status": "checked",
+      "printed_days": 365
+    },
+    "soga": {
+      "source_sha256": "609d714f0c4628e186164134317c9dd11b2f27cd84df63f032028ac8c266215e",
+      "normalized_sha256": "b045ce2b0e3d03d059ba2924d600500448785165f0e45726a29ba971a7584705",
+      "verification_status": "checked",
+      "printed_days": 365
+    },
+    "takahama_mitsuhama": {
+      "source_sha256": "f23120b0451b3a2eb76a003d1c0f861548a2d26b61006a7c990958c9f5ac2bf9",
+      "normalized_sha256": "138a00cd9b7b8f541c9fbcbe51d56938062940fee09e4f6e92410299d2bd6031",
+      "verification_status": "checked",
+      "printed_days": 365
+    },
+    "hojo_tateiwa": {
+      "source_sha256": "c34943084fa66aa6acbcdcff270c4d78bc749640b46871d4690e84a9b64c9719",
+      "normalized_sha256": "d5fee41989410355d302dcd59a77f5c13e19eec821373bcef2fcec052fa5d94d",
+      "verification_status": "checked",
+      "printed_days": 365
+    },
+    "tsuwaji": {
+      "source_sha256": "113aa84bd974d7830fff9119b0708f39a882a74848fb5c297af4606a7d2d4e6f",
+      "normalized_sha256": "99a7eb2e82134753524f6d48d76f0140c5794bdb4362b79dcdccc1864146f59f",
+      "verification_status": "checked",
+      "printed_days": 365
+    },
+    "dogo_yuzuki": {
+      "source_sha256": "f807fe6b4947fb92844a1dddd586375b89ffe6031dfd98adae269471a79c087d",
+      "normalized_sha256": "0309c94112e28ac92f0d3653753138f6272828b26a4642ee7aead252b10efd81",
+      "verification_status": "checked",
+      "printed_days": 365
+    },
+    "yura_tomari": {
+      "source_sha256": "ed22493beda5114fbdc59c2703d9a9747c9aa34588d6e504a0a24ad4108acecf",
+      "normalized_sha256": "8b6f7b725ab0eeea56666a04c611e8b798a00b160f728e6d4d9902a949f81d98",
+      "verification_status": "checked",
+      "printed_days": 365
+    },
+    "yoshiki_nyo_hatari_nakajimaawai": {
+      "source_sha256": "978715bb148da27748c8816e995abfdd9d0ba27617602294322478f49d3a32a4",
+      "normalized_sha256": "8cb583e88b33935b863774873d6eac6ee34289cd577705d98e50905d9433f37c",
+      "verification_status": "checked",
+      "printed_days": 365
+    },
+    "nakajimaoura": {
+      "source_sha256": "2f53572251a9af5404fe8eb01927c53224cf46eb4a1bd032ed4623e54eb0f3ba",
+      "normalized_sha256": "2481ae1ceacee18033ce875175656898d8aba472b58799f34c426dd9bce685d8",
+      "verification_status": "checked",
+      "printed_days": 365
+    },
+    "nogutsuna": {
+      "source_sha256": "c3c8c44645389a2b0ba6155d80f17db152328e9118510bf18f4d608ee9ddaf57",
+      "normalized_sha256": "e25782b92af780d568e4f713c278e71f9d8fee5ea2fe7c25bdb232fb7cf9d84f",
+      "verification_status": "checked",
+      "printed_days": 365
+    },
+    "habu": {
+      "source_sha256": "f9e071ec089ac24586028041cb0f08f61bf0cfbcab1bdf6e3d332a91540c336e",
+      "normalized_sha256": "15f7ae0fe9d86a63584719cf75560e3905b9b49b4f1a615856c9e1ec8238fa38",
+      "verification_status": "checked",
+      "printed_days": 365
+    },
+    "bancho": {
+      "source_sha256": "66de4ad70ab152739100dfc07818f1de4512a58c613f329eff532d4d1d130191",
+      "normalized_sha256": "2629e0f110a9fd3f55c8f9698049538a8713a7e1d6856684cbef23803ffcd34d",
+      "verification_status": "checked",
+      "printed_days": 365
+    },
+    "hisaeda": {
+      "source_sha256": "4f81d2b290132302357f6b760213b8424dbb4820d777a23b5277183ae2e7645f",
+      "normalized_sha256": "c2dddd5fdf9c0b04db358a0920736fb6e468435ca29a1dabac679aa6cb52898a",
+      "verification_status": "checked",
+      "printed_days": 365
+    },
+    "futagami": {
+      "source_sha256": "5866e4663dcae75c8015e73a6eaae593d4fa974f1fec4974d862d62df7b76602",
+      "normalized_sha256": "1276aec6466711f26303987973bad53da58d884b7fc9d0cd1ba8758e32f8ec97",
+      "verification_status": "checked",
+      "printed_days": 365
+    },
+    "horie": {
+      "source_sha256": "3935d66a2718f75d46ab4690428c9ee63b6533b2fbacf9b93fb816d62796706c",
+      "normalized_sha256": "9f05363db9e357d0b26dcf86084fa5066bd6beed0c83922de1d0a3b15ef5fa35",
+      "verification_status": "checked",
+      "printed_days": 365
+    },
+    "misake": {
+      "source_sha256": "afb4fd4789db5db1333a0a6e526e415d3b4784da9f20737c82cd908367874a4c",
+      "normalized_sha256": "88128945d4aee501c6d1cf3e1d869ec0642106bda45854dfc219c82d5cfeeac3",
+      "verification_status": "checked",
+      "printed_days": 365
+    },
+    "mibu": {
+      "source_sha256": "f1745a485a52bf52058fa5671f3ac098a2e0aff8b57e7a4544059ac7a10bae06",
+      "normalized_sha256": "26fb615f1851f9fbc08eae5388c795ebc2a1329f35f30f1e1a8b27b893b12b25",
+      "verification_status": "checked",
+      "printed_days": 365
+    },
+    "miyamae": {
+      "source_sha256": "c74cc1d6f98d4ed53507907c38603dbb162c9d42a75cdb6df7e8439a4d699891",
+      "normalized_sha256": "e474b37e3130ec72c40ca62ccc745d4a627b6a003b8580ea031d14e4223d2640",
+      "verification_status": "checked",
+      "printed_days": 365
+    },
+    "muzuki": {
+      "source_sha256": "f26524e204283789bf1bd53d46acf8cfb2dc73389c437f7e3cf998d536bb38dc",
+      "normalized_sha256": "8f1be1fa8ce093670a8b5854b8982b76d7ff9a26418efe258c71358273c37973",
+      "verification_status": "checked",
+      "printed_days": 365
+    },
+    "yasaka": {
+      "source_sha256": "933119c3ebdb52064862c4e8a44aa83446c1ed5e9ce7c02a2fa15af7216e9273",
+      "normalized_sha256": "9a8678fd1462c3e1958a6542bf244443fbe03eed824a9e980b9cd79ac2176804",
+      "verification_status": "checked",
+      "printed_days": 365
+    },
+    "yugun": {
+      "source_sha256": "da39fce8e4adbccdcf5560d695e65a843a46bb9192427e7193a4b9bfbe2e6674",
+      "normalized_sha256": "99c050ec1bf6e3c5616c11731644384914e8b2564741f4e4ed2cf81f215cd8aa",
+      "verification_status": "checked",
+      "printed_days": 365
+    },
+    "yuyama": {
+      "source_sha256": "5d43e0a685c788e4384e4da14f1a78ead34e7ded5f4e27e9490b87d44e2c9eaa",
+      "normalized_sha256": "317bf269c61c18b1137e6332d5ac70aaf281990efca9e06afa49e964b3be34a1",
+      "verification_status": "checked",
+      "printed_days": 365
+    },
+    "yodo": {
+      "source_sha256": "6a19231fa2889159a9a053348ce0715555249b29aee12065a537776e33c18d92",
+      "normalized_sha256": "9b57ef562652c5d53acf3aac862cb80ed5bd90b9d711770046b2fa5c192b5747",
+      "verification_status": "checked",
+      "printed_days": 365
+    },
+    "wake": {
+      "source_sha256": "50e2cd0f69e041775ca83bf6576d40a20db40ec2e5f1e83d6463f9200b5d8069",
+      "normalized_sha256": "b93b7ea4c069e0d74787b7dc04af1558374f1e952f456fcd1bf25f33c1c88ced",
+      "verification_status": "checked",
+      "printed_days": 365
+    }
+  }
+}

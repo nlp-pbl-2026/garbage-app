@@ -1,0 +1,916 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38201",
+  "municipality_name": "松山市",
+  "version": "matsuyama-2026.1",
+  "fiscal_year": 2026,
+  "valid_from": "2026-04-01",
+  "valid_to": "2027-03-31",
+  "timezone": "Asia/Tokyo",
+  "source_directory_url": "https://www.city.matsuyama.ehime.jp/kurashi/gomi/dashikata/gomicalender/r8gomicaletikubetu.html",
+  "retrieved_on": "2026-10-30",
+  "redistribution_status": "not_confirmed",
+  "collection_areas": [
+    {
+      "id": "38201-61",
+      "name": "浅海",
+      "municipality_id": "38201",
+      "calendar_id": "asanami_namba_masaoka",
+      "rule_profile_id": "matsuyama_hojo"
+    },
+    {
+      "id": "38201-06",
+      "name": "新玉",
+      "municipality_id": "38201",
+      "calendar_id": "aratama",
+      "rule_profile_id": "matsuyama_hojo"
+    },
+    {
+      "id": "38201-67",
+      "name": "粟井",
+      "municipality_id": "38201",
+      "calendar_id": "awai_kono",
+      "rule_profile_id": "matsuyama_hojo"
+    },
+    {
+      "id": "38201-ca-ishii-west",
+      "name": "石井西",
+      "municipality_id": "38201",
+      "calendar_id": "ishiinishi",
+      "rule_profile_id": "matsuyama_hojo"
+    },
+    {
+      "id": "38201-ca-ishii-east",
+      "name": "石井東",
+      "municipality_id": "38201",
+      "calendar_id": "ishiihigashi",
+      "rule_profile_id": "matsuyama_hojo"
+    },
+    {
+      "id": "38201-27",
+      "name": "伊台",
+      "municipality_id": "38201",
+      "calendar_id": "idai",
+      "rule_profile_id": "matsuyama_hojo"
+    },
+    {
+      "id": "38201-30",
+      "name": "浮穴",
+      "municipality_id": "38201",
+      "calendar_id": "ukena",
+      "rule_profile_id": "matsuyama_hojo"
+    },
+    {
+      "id": "38201-ca-uwama",
+      "name": "宇和間",
+      "municipality_id": "38201",
+      "calendar_id": "uwama_kumata",
+      "rule_profile_id": "nakajima"
+    },
+    {
+      "id": "38201-29",
+      "name": "小野",
+      "municipality_id": "38201",
+      "calendar_id": "ono",
+      "rule_profile_id": "matsuyama_hojo"
+    },
+    {
+      "id": "38201-ca-obama",
+      "name": "小浜",
+      "municipality_id": "38201",
+      "calendar_id": "obama",
+      "rule_profile_id": "nakajima"
+    },
+    {
+      "id": "38201-ca-kami-nuwa",
+      "name": "上怒和",
+      "municipality_id": "38201",
+      "calendar_id": "kaminuwa_motonuwa",
+      "rule_profile_id": "nakajima"
+    },
+    {
+      "id": "38201-ca-kutani",
+      "name": "久谷",
+      "municipality_id": "38201",
+      "calendar_id": "kutani",
+      "rule_profile_id": "matsuyama_hojo"
+    },
+    {
+      "id": "38201-ca-kumata",
+      "name": "熊田",
+      "municipality_id": "38201",
+      "calendar_id": "uwama_kumata",
+      "rule_profile_id": "nakajima"
+    },
+    {
+      "id": "38201-24",
+      "name": "久米",
+      "municipality_id": "38201",
+      "calendar_id": "kume",
+      "rule_profile_id": "matsuyama_hojo"
+    },
+    {
+      "id": "38201-09",
+      "name": "桑原",
+      "municipality_id": "38201",
+      "calendar_id": "kuwabara",
+      "rule_profile_id": "matsuyama_hojo"
+    },
+    {
+      "id": "38201-66",
+      "name": "河野",
+      "municipality_id": "38201",
+      "calendar_id": "awai_kono",
+      "rule_profile_id": "matsuyama_hojo"
+    },
+    {
+      "id": "38201-ca-konoura",
+      "name": "神浦",
+      "municipality_id": "38201",
+      "calendar_id": "nagashi_miyano_kounoura",
+      "rule_profile_id": "nakajima"
+    },
+    {
+      "id": "38201-28",
+      "name": "五明",
+      "municipality_id": "38201",
+      "calendar_id": "hiura_gomyo",
+      "rule_profile_id": "matsuyama_hojo"
+    },
+    {
+      "id": "38201-18",
+      "name": "潮見",
+      "municipality_id": "38201",
+      "calendar_id": "shiomi",
+      "rule_profile_id": "matsuyama_hojo"
+    },
+    {
+      "id": "38201-02",
+      "name": "東雲",
+      "municipality_id": "38201",
+      "calendar_id": "shinonome",
+      "rule_profile_id": "matsuyama_hojo"
+    },
+    {
+      "id": "38201-08",
+      "name": "清水",
+      "municipality_id": "38201",
+      "calendar_id": "shimizu",
+      "rule_profile_id": "matsuyama_hojo"
+    },
+    {
+      "id": "38201-12",
+      "name": "生石",
+      "municipality_id": "38201",
+      "calendar_id": "shoseki",
+      "rule_profile_id": "matsuyama_hojo"
+    },
+    {
+      "id": "38201-04",
+      "name": "素鵞",
+      "municipality_id": "38201",
+      "calendar_id": "soga",
+      "rule_profile_id": "matsuyama_hojo"
+    },
+    {
+      "id": "38201-16",
+      "name": "高浜",
+      "municipality_id": "38201",
+      "calendar_id": "takahama_mitsuhama",
+      "rule_profile_id": "matsuyama_hojo"
+    },
+    {
+      "id": "38201-62",
+      "name": "立岩",
+      "municipality_id": "38201",
+      "calendar_id": "hojo_tateiwa",
+      "rule_profile_id": "matsuyama_hojo"
+    },
+    {
+      "id": "38201-ca-tsuwaji",
+      "name": "津和地",
+      "municipality_id": "38201",
+      "calendar_id": "tsuwaji",
+      "rule_profile_id": "nakajima"
+    },
+    {
+      "id": "38201-ca-dogo",
+      "name": "道後",
+      "municipality_id": "38201",
+      "calendar_id": "dogo_yuzuki",
+      "rule_profile_id": "matsuyama_hojo"
+    },
+    {
+      "id": "38201-23",
+      "name": "泊",
+      "municipality_id": "38201",
+      "calendar_id": "yura_tomari",
+      "rule_profile_id": "matsuyama_hojo"
+    },
+    {
+      "id": "38201-ca-nakajima-awai",
+      "name": "中島粟井",
+      "municipality_id": "38201",
+      "calendar_id": "yoshiki_nyo_hatari_nakajimaawai",
+      "rule_profile_id": "nakajima"
+    },
+    {
+      "id": "38201-ca-nakajima-oura",
+      "name": "中島大浦",
+      "municipality_id": "38201",
+      "calendar_id": "nakajimaoura",
+      "rule_profile_id": "nakajima"
+    },
+    {
+      "id": "38201-ca-nagashi",
+      "name": "長師",
+      "municipality_id": "38201",
+      "calendar_id": "nagashi_miyano_kounoura",
+      "rule_profile_id": "nakajima"
+    },
+    {
+      "id": "38201-63",
+      "name": "難波",
+      "municipality_id": "38201",
+      "calendar_id": "asanami_namba_masaoka",
+      "rule_profile_id": "matsuyama_hojo"
+    },
+    {
+      "id": "38201-ca-nyo",
+      "name": "饒",
+      "municipality_id": "38201",
+      "calendar_id": "yoshiki_nyo_hatari_nakajimaawai",
+      "rule_profile_id": "nakajima"
+    },
+    {
+      "id": "38201-ca-nogutsuna",
+      "name": "野忽那",
+      "municipality_id": "38201",
+      "calendar_id": "nogutsuna",
+      "rule_profile_id": "nakajima"
+    },
+    {
+      "id": "38201-ca-hatari",
+      "name": "畑里",
+      "municipality_id": "38201",
+      "calendar_id": "yoshiki_nyo_hatari_nakajimaawai",
+      "rule_profile_id": "nakajima"
+    },
+    {
+      "id": "38201-13",
+      "name": "垣生",
+      "municipality_id": "38201",
+      "calendar_id": "habu",
+      "rule_profile_id": "matsuyama_hojo"
+    },
+    {
+      "id": "38201-01",
+      "name": "番町",
+      "municipality_id": "38201",
+      "calendar_id": "bancho",
+      "rule_profile_id": "matsuyama_hojo"
+    },
+    {
+      "id": "38201-26",
+      "name": "日浦",
+      "municipality_id": "38201",
+      "calendar_id": "hiura_gomyo",
+      "rule_profile_id": "matsuyama_hojo"
+    },
+    {
+      "id": "38201-17",
+      "name": "久枝",
+      "municipality_id": "38201",
+      "calendar_id": "hisaeda",
+      "rule_profile_id": "matsuyama_hojo"
+    },
+    {
+      "id": "38201-ca-futagami",
+      "name": "二神",
+      "municipality_id": "38201",
+      "calendar_id": "futagami",
+      "rule_profile_id": "nakajima"
+    },
+    {
+      "id": "38201-65",
+      "name": "北条",
+      "municipality_id": "38201",
+      "calendar_id": "hojo_tateiwa",
+      "rule_profile_id": "matsuyama_hojo"
+    },
+    {
+      "id": "38201-20",
+      "name": "堀江",
+      "municipality_id": "38201",
+      "calendar_id": "horie",
+      "rule_profile_id": "matsuyama_hojo"
+    },
+    {
+      "id": "38201-64",
+      "name": "正岡",
+      "municipality_id": "38201",
+      "calendar_id": "asanami_namba_masaoka",
+      "rule_profile_id": "matsuyama_hojo"
+    },
+    {
+      "id": "38201-07",
+      "name": "味酒",
+      "municipality_id": "38201",
+      "calendar_id": "misake",
+      "rule_profile_id": "matsuyama_hojo"
+    },
+    {
+      "id": "38201-15",
+      "name": "三津浜",
+      "municipality_id": "38201",
+      "calendar_id": "takahama_mitsuhama",
+      "rule_profile_id": "matsuyama_hojo"
+    },
+    {
+      "id": "38201-11",
+      "name": "味生",
+      "municipality_id": "38201",
+      "calendar_id": "mibu",
+      "rule_profile_id": "matsuyama_hojo"
+    },
+    {
+      "id": "38201-ca-miyano",
+      "name": "宮野",
+      "municipality_id": "38201",
+      "calendar_id": "nagashi_miyano_kounoura",
+      "rule_profile_id": "nakajima"
+    },
+    {
+      "id": "38201-14",
+      "name": "宮前",
+      "municipality_id": "38201",
+      "calendar_id": "miyamae",
+      "rule_profile_id": "matsuyama_hojo"
+    },
+    {
+      "id": "38201-ca-mutsuki",
+      "name": "睦月",
+      "municipality_id": "38201",
+      "calendar_id": "muzuki",
+      "rule_profile_id": "nakajima"
+    },
+    {
+      "id": "38201-ca-moto-nuwa",
+      "name": "元怒和",
+      "municipality_id": "38201",
+      "calendar_id": "kaminuwa_motonuwa",
+      "rule_profile_id": "nakajima"
+    },
+    {
+      "id": "38201-03",
+      "name": "八坂",
+      "municipality_id": "38201",
+      "calendar_id": "yasaka",
+      "rule_profile_id": "matsuyama_hojo"
+    },
+    {
+      "id": "38201-05",
+      "name": "雄郡",
+      "municipality_id": "38201",
+      "calendar_id": "yugun",
+      "rule_profile_id": "matsuyama_hojo"
+    },
+    {
+      "id": "38201-ca-yuzuki",
+      "name": "湯築",
+      "municipality_id": "38201",
+      "calendar_id": "dogo_yuzuki",
+      "rule_profile_id": "matsuyama_hojo"
+    },
+    {
+      "id": "38201-25",
+      "name": "湯山",
+      "municipality_id": "38201",
+      "calendar_id": "yuyama",
+      "rule_profile_id": "matsuyama_hojo"
+    },
+    {
+      "id": "38201-22",
+      "name": "由良",
+      "municipality_id": "38201",
+      "calendar_id": "yura_tomari",
+      "rule_profile_id": "matsuyama_hojo"
+    },
+    {
+      "id": "38201-ca-yoshiki",
+      "name": "吉木",
+      "municipality_id": "38201",
+      "calendar_id": "yoshiki_nyo_hatari_nakajimaawai",
+      "rule_profile_id": "nakajima"
+    },
+    {
+      "id": "38201-21",
+      "name": "余土",
+      "municipality_id": "38201",
+      "calendar_id": "yodo",
+      "rule_profile_id": "matsuyama_hojo"
+    },
+    {
+      "id": "38201-19",
+      "name": "和気",
+      "municipality_id": "38201",
+      "calendar_id": "wake",
+      "rule_profile_id": "matsuyama_hojo"
+    }
+  ],
+  "calendars": [
+    {
+      "id": "asanami_namba_masaoka",
+      "file": "2026asanami_namba_masaoka.pdf",
+      "url": "https://www.city.matsuyama.ehime.jp/kurashi/gomi/dashikata/gomicalender/r8gomicaletikubetu.files/2026asanami_namba_masaoka.pdf",
+      "rule_profile_id": "matsuyama_hojo",
+      "verification_status": "checked",
+      "sha256": "3b1f5f1aa38938e8d0b700e05b339aef0f2cc180c3d557d9fdc7592a3edb281c"
+    },
+    {
+      "id": "aratama",
+      "file": "2026aratama.pdf",
+      "url": "https://www.city.matsuyama.ehime.jp/kurashi/gomi/dashikata/gomicalender/r8gomicaletikubetu.files/2026aratama.pdf",
+      "rule_profile_id": "matsuyama_hojo",
+      "verification_status": "checked",
+      "sha256": "a21d701f231e29a188252991325df6251b2f39f2342125aaba65ff1f5faeb496"
+    },
+    {
+      "id": "awai_kono",
+      "file": "2026awai_kono.pdf",
+      "url": "https://www.city.matsuyama.ehime.jp/kurashi/gomi/dashikata/gomicalender/r8gomicaletikubetu.files/2026awai_kono.pdf",
+      "rule_profile_id": "matsuyama_hojo",
+      "verification_status": "checked",
+      "sha256": "4ede25a22b85346f503cc36642f7ab032e940235f40b1b1899ef29c2cbd76285"
+    },
+    {
+      "id": "ishiinishi",
+      "file": "2026ishiinishi.pdf",
+      "url": "https://www.city.matsuyama.ehime.jp/kurashi/gomi/dashikata/gomicalender/r8gomicaletikubetu.files/2026ishiinishi.pdf",
+      "rule_profile_id": "matsuyama_hojo",
+      "verification_status": "checked",
+      "sha256": "dbb08dfadb1573a6f5ea0218b652c7cd6cf91ff08f79daab5c5b5827939bb9d0"
+    },
+    {
+      "id": "ishiihigashi",
+      "file": "2026ishiihigashi.pdf",
+      "url": "https://www.city.matsuyama.ehime.jp/kurashi/gomi/dashikata/gomicalender/r8gomicaletikubetu.files/2026ishiihigashi.pdf",
+      "rule_profile_id": "matsuyama_hojo",
+      "verification_status": "checked",
+      "sha256": "f11d05a8f486eaaec1ab032b1e79a590af85613d4c83a150a43c078603c288ce"
+    },
+    {
+      "id": "idai",
+      "file": "2026idai.pdf",
+      "url": "https://www.city.matsuyama.ehime.jp/kurashi/gomi/dashikata/gomicalender/r8gomicaletikubetu.files/2026idai.pdf",
+      "rule_profile_id": "matsuyama_hojo",
+      "verification_status": "checked",
+      "sha256": "aa2dadc71cd9a59932e22dd297ca49cd7582c9476334c23746ab0a9cd71a1874"
+    },
+    {
+      "id": "ukena",
+      "file": "2026ukena.pdf",
+      "url": "https://www.city.matsuyama.ehime.jp/kurashi/gomi/dashikata/gomicalender/r8gomicaletikubetu.files/2026ukena.pdf",
+      "rule_profile_id": "matsuyama_hojo",
+      "verification_status": "checked",
+      "sha256": "c0c5c3cd76ede056ad0845e196d0214fc2f468c3bd03eef1fe9bff7581221026"
+    },
+    {
+      "id": "uwama_kumata",
+      "file": "2026uwama_kumata.pdf",
+      "url": "https://www.city.matsuyama.ehime.jp/kurashi/gomi/dashikata/gomicalender/r8gomicaletikubetu.files/2026uwama_kumata.pdf",
+      "rule_profile_id": "nakajima",
+      "verification_status": "checked",
+      "sha256": "8ff56b523dd53c299cb408fa1ed897437c5f36f9c6ed5fcb116ac8c2b28eee18"
+    },
+    {
+      "id": "ono",
+      "file": "2026ono.pdf",
+      "url": "https://www.city.matsuyama.ehime.jp/kurashi/gomi/dashikata/gomicalender/r8gomicaletikubetu.files/2026ono.pdf",
+      "rule_profile_id": "matsuyama_hojo",
+      "verification_status": "checked",
+      "sha256": "1f2433422144354694c88fe22890e6bac327ef4422704f9588c1c60fe4c14d41"
+    },
+    {
+      "id": "obama",
+      "file": "2026obama.pdf",
+      "url": "https://www.city.matsuyama.ehime.jp/kurashi/gomi/dashikata/gomicalender/r8gomicaletikubetu.files/2026obama.pdf",
+      "rule_profile_id": "nakajima",
+      "verification_status": "checked",
+      "sha256": "19f6c1f927d28908f38493f915ca797cdac9a2b6b4de4b440c6fa69cf54253a6"
+    },
+    {
+      "id": "kaminuwa_motonuwa",
+      "file": "2026kaminuwa_motonuwa.pdf",
+      "url": "https://www.city.matsuyama.ehime.jp/kurashi/gomi/dashikata/gomicalender/r8gomicaletikubetu.files/2026kaminuwa_motonuwa.pdf",
+      "rule_profile_id": "nakajima",
+      "verification_status": "checked",
+      "sha256": "99a019e567a5c606b99c800ad1ed05bd0acebb48ac87d9055e80d99a9a3a2a2e"
+    },
+    {
+      "id": "kutani",
+      "file": "2026kutani.pdf",
+      "url": "https://www.city.matsuyama.ehime.jp/kurashi/gomi/dashikata/gomicalender/r8gomicaletikubetu.files/2026kutani.pdf",
+      "rule_profile_id": "matsuyama_hojo",
+      "verification_status": "checked",
+      "sha256": "99412c0adb97aba1c29ff35bf0fda6f0f967faf32b09e62cdd04fc2e3f2e69b3"
+    },
+    {
+      "id": "kume",
+      "file": "2026kume.pdf",
+      "url": "https://www.city.matsuyama.ehime.jp/kurashi/gomi/dashikata/gomicalender/r8gomicaletikubetu.files/2026kume.pdf",
+      "rule_profile_id": "matsuyama_hojo",
+      "verification_status": "checked",
+      "sha256": "6be4f491944d3dfadf084b1729ec5a03abbfd60bb4467742914e0c894129c0db"
+    },
+    {
+      "id": "kuwabara",
+      "file": "2026kuwabara.pdf",
+      "url": "https://www.city.matsuyama.ehime.jp/kurashi/gomi/dashikata/gomicalender/r8gomicaletikubetu.files/2026kuwabara.pdf",
+      "rule_profile_id": "matsuyama_hojo",
+      "verification_status": "checked",
+      "sha256": "4b48b65c0ed1b8c30c04bee3a40241246524b56a98c63de9fc584ee18d037dd3"
+    },
+    {
+      "id": "nagashi_miyano_kounoura",
+      "file": "2026nagashi_miyano_kounoura.pdf",
+      "url": "https://www.city.matsuyama.ehime.jp/kurashi/gomi/dashikata/gomicalender/r8gomicaletikubetu.files/2026nagashi_miyano_kounoura.pdf",
+      "rule_profile_id": "nakajima",
+      "verification_status": "checked",
+      "sha256": "22023be7aa41f5fed89e39fa8d4626103600c64055e4016f53d9003d11933d7b"
+    },
+    {
+      "id": "hiura_gomyo",
+      "file": "2026hiura_gomyo.pdf",
+      "url": "https://www.city.matsuyama.ehime.jp/kurashi/gomi/dashikata/gomicalender/r8gomicaletikubetu.files/2026hiura_gomyo.pdf",
+      "rule_profile_id": "matsuyama_hojo",
+      "verification_status": "checked",
+      "sha256": "0f540b6a15645996ec297c089fd41ac21918f5c8c816328fcf0cbc9065550e11"
+    },
+    {
+      "id": "shiomi",
+      "file": "2026shiomi.pdf",
+      "url": "https://www.city.matsuyama.ehime.jp/kurashi/gomi/dashikata/gomicalender/r8gomicaletikubetu.files/2026shiomi.pdf",
+      "rule_profile_id": "matsuyama_hojo",
+      "verification_status": "checked",
+      "sha256": "1b5f6bf1cec36d1bbdb1931b1033babf7f4e6ea7342f8d490b23465ba28b5143"
+    },
+    {
+      "id": "shinonome",
+      "file": "2026shinonome.pdf",
+      "url": "https://www.city.matsuyama.ehime.jp/kurashi/gomi/dashikata/gomicalender/r8gomicaletikubetu.files/2026shinonome.pdf",
+      "rule_profile_id": "matsuyama_hojo",
+      "verification_status": "checked",
+      "sha256": "32bff6ead304ade904cf912b9367960d6ebc2d722e5b8950fe3ab32e4542a62b"
+    },
+    {
+      "id": "shimizu",
+      "file": "2026shimizu.pdf",
+      "url": "https://www.city.matsuyama.ehime.jp/kurashi/gomi/dashikata/gomicalender/r8gomicaletikubetu.files/2026shimizu.pdf",
+      "rule_profile_id": "matsuyama_hojo",
+      "verification_status": "checked",
+      "sha256": "a1a5d76f3e1bd18ccd5cdc0cf8e521ee55b2114b947adc0d14f8b5da8915ed38"
+    },
+    {
+      "id": "shoseki",
+      "file": "2026shoseki.pdf",
+      "url": "https://www.city.matsuyama.ehime.jp/kurashi/gomi/dashikata/gomicalender/r8gomicaletikubetu.files/2026shoseki.pdf",
+      "rule_profile_id": "matsuyama_hojo",
+      "verification_status": "checked",
+      "sha256": "249b5387b67e62befec29d66bcdb1b02a8416cb543c1330b7ec27b2a8c74491a"
+    },
+    {
+      "id": "soga",
+      "file": "2026soga.pdf",
+      "url": "https://www.city.matsuyama.ehime.jp/kurashi/gomi/dashikata/gomicalender/r8gomicaletikubetu.files/2026soga.pdf",
+      "rule_profile_id": "matsuyama_hojo",
+      "verification_status": "checked",
+      "sha256": "609d714f0c4628e186164134317c9dd11b2f27cd84df63f032028ac8c266215e"
+    },
+    {
+      "id": "takahama_mitsuhama",
+      "file": "2026takahama_mitsuhama.pdf",
+      "url": "https://www.city.matsuyama.ehime.jp/kurashi/gomi/dashikata/gomicalender/r8gomicaletikubetu.files/2026takahama_mitsuhama.pdf",
+      "rule_profile_id": "matsuyama_hojo",
+      "verification_status": "checked",
+      "sha256": "f23120b0451b3a2eb76a003d1c0f861548a2d26b61006a7c990958c9f5ac2bf9"
+    },
+    {
+      "id": "hojo_tateiwa",
+      "file": "2026hojo_tateiwa.pdf",
+      "url": "https://www.city.matsuyama.ehime.jp/kurashi/gomi/dashikata/gomicalender/r8gomicaletikubetu.files/2026hojo_tateiwa.pdf",
+      "rule_profile_id": "matsuyama_hojo",
+      "verification_status": "checked",
+      "sha256": "c34943084fa66aa6acbcdcff270c4d78bc749640b46871d4690e84a9b64c9719"
+    },
+    {
+      "id": "tsuwaji",
+      "file": "2026tsuwaji.pdf",
+      "url": "https://www.city.matsuyama.ehime.jp/kurashi/gomi/dashikata/gomicalender/r8gomicaletikubetu.files/2026tsuwaji.pdf",
+      "rule_profile_id": "nakajima",
+      "verification_status": "checked",
+      "sha256": "113aa84bd974d7830fff9119b0708f39a882a74848fb5c297af4606a7d2d4e6f"
+    },
+    {
+      "id": "dogo_yuzuki",
+      "file": "2026dogo_yuzuki.pdf",
+      "url": "https://www.city.matsuyama.ehime.jp/kurashi/gomi/dashikata/gomicalender/r8gomicaletikubetu.files/2026dogo_yuzuki.pdf",
+      "rule_profile_id": "matsuyama_hojo",
+      "verification_status": "checked",
+      "sha256": "f807fe6b4947fb92844a1dddd586375b89ffe6031dfd98adae269471a79c087d"
+    },
+    {
+      "id": "yura_tomari",
+      "file": "2026yura_tomari.pdf",
+      "url": "https://www.city.matsuyama.ehime.jp/kurashi/gomi/dashikata/gomicalender/r8gomicaletikubetu.files/2026yura_tomari.pdf",
+      "rule_profile_id": "matsuyama_hojo",
+      "verification_status": "checked",
+      "sha256": "ed22493beda5114fbdc59c2703d9a9747c9aa34588d6e504a0a24ad4108acecf"
+    },
+    {
+      "id": "yoshiki_nyo_hatari_nakajimaawai",
+      "file": "2026yoshiki_nyo_hatari_nakajimaawai.pdf",
+      "url": "https://www.city.matsuyama.ehime.jp/kurashi/gomi/dashikata/gomicalender/r8gomicaletikubetu.files/2026yoshiki_nyo_hatari_nakajimaawai.pdf",
+      "rule_profile_id": "nakajima",
+      "verification_status": "checked",
+      "sha256": "978715bb148da27748c8816e995abfdd9d0ba27617602294322478f49d3a32a4"
+    },
+    {
+      "id": "nakajimaoura",
+      "file": "2026nakajimaoura.pdf",
+      "url": "https://www.city.matsuyama.ehime.jp/kurashi/gomi/dashikata/gomicalender/r8gomicaletikubetu.files/2026nakajimaoura.pdf",
+      "rule_profile_id": "nakajima",
+      "verification_status": "checked",
+      "sha256": "2f53572251a9af5404fe8eb01927c53224cf46eb4a1bd032ed4623e54eb0f3ba"
+    },
+    {
+      "id": "nogutsuna",
+      "file": "2026nogutsuna.pdf",
+      "url": "https://www.city.matsuyama.ehime.jp/kurashi/gomi/dashikata/gomicalender/r8gomicaletikubetu.files/2026nogutsuna.pdf",
+      "rule_profile_id": "nakajima",
+      "verification_status": "checked",
+      "sha256": "c3c8c44645389a2b0ba6155d80f17db152328e9118510bf18f4d608ee9ddaf57"
+    },
+    {
+      "id": "habu",
+      "file": "2026habu.pdf",
+      "url": "https://www.city.matsuyama.ehime.jp/kurashi/gomi/dashikata/gomicalender/r8gomicaletikubetu.files/2026habu.pdf",
+      "rule_profile_id": "matsuyama_hojo",
+      "verification_status": "checked",
+      "sha256": "f9e071ec089ac24586028041cb0f08f61bf0cfbcab1bdf6e3d332a91540c336e"
+    },
+    {
+      "id": "bancho",
+      "file": "2026bancho.pdf",
+      "url": "https://www.city.matsuyama.ehime.jp/kurashi/gomi/dashikata/gomicalender/r8gomicaletikubetu.files/2026bancho.pdf",
+      "rule_profile_id": "matsuyama_hojo",
+      "verification_status": "checked",
+      "sha256": "66de4ad70ab152739100dfc07818f1de4512a58c613f329eff532d4d1d130191"
+    },
+    {
+      "id": "hisaeda",
+      "file": "2026hisaeda.pdf",
+      "url": "https://www.city.matsuyama.ehime.jp/kurashi/gomi/dashikata/gomicalender/r8gomicaletikubetu.files/2026hisaeda.pdf",
+      "rule_profile_id": "matsuyama_hojo",
+      "verification_status": "checked",
+      "sha256": "4f81d2b290132302357f6b760213b8424dbb4820d777a23b5277183ae2e7645f"
+    },
+    {
+      "id": "futagami",
+      "file": "2026futagami.pdf",
+      "url": "https://www.city.matsuyama.ehime.jp/kurashi/gomi/dashikata/gomicalender/r8gomicaletikubetu.files/2026futagami.pdf",
+      "rule_profile_id": "nakajima",
+      "verification_status": "checked",
+      "sha256": "5866e4663dcae75c8015e73a6eaae593d4fa974f1fec4974d862d62df7b76602"
+    },
+    {
+      "id": "horie",
+      "file": "2026horie.pdf",
+      "url": "https://www.city.matsuyama.ehime.jp/kurashi/gomi/dashikata/gomicalender/r8gomicaletikubetu.files/2026horie.pdf",
+      "rule_profile_id": "matsuyama_hojo",
+      "verification_status": "checked",
+      "sha256": "3935d66a2718f75d46ab4690428c9ee63b6533b2fbacf9b93fb816d62796706c"
+    },
+    {
+      "id": "misake",
+      "file": "2026misake.pdf",
+      "url": "https://www.city.matsuyama.ehime.jp/kurashi/gomi/dashikata/gomicalender/r8gomicaletikubetu.files/2026misake.pdf",
+      "rule_profile_id": "matsuyama_hojo",
+      "verification_status": "checked",
+      "sha256": "afb4fd4789db5db1333a0a6e526e415d3b4784da9f20737c82cd908367874a4c"
+    },
+    {
+      "id": "mibu",
+      "file": "2026mibu.pdf",
+      "url": "https://www.city.matsuyama.ehime.jp/kurashi/gomi/dashikata/gomicalender/r8gomicaletikubetu.files/2026mibu.pdf",
+      "rule_profile_id": "matsuyama_hojo",
+      "verification_status": "checked",
+      "sha256": "f1745a485a52bf52058fa5671f3ac098a2e0aff8b57e7a4544059ac7a10bae06"
+    },
+    {
+      "id": "miyamae",
+      "file": "2026miyamae.pdf",
+      "url": "https://www.city.matsuyama.ehime.jp/kurashi/gomi/dashikata/gomicalender/r8gomicaletikubetu.files/2026miyamae.pdf",
+      "rule_profile_id": "matsuyama_hojo",
+      "verification_status": "checked",
+      "sha256": "c74cc1d6f98d4ed53507907c38603dbb162c9d42a75cdb6df7e8439a4d699891"
+    },
+    {
+      "id": "muzuki",
+      "file": "2026muzuki.pdf",
+      "url": "https://www.city.matsuyama.ehime.jp/kurashi/gomi/dashikata/gomicalender/r8gomicaletikubetu.files/2026muzuki.pdf",
+      "rule_profile_id": "nakajima",
+      "verification_status": "checked",
+      "sha256": "f26524e204283789bf1bd53d46acf8cfb2dc73389c437f7e3cf998d536bb38dc"
+    },
+    {
+      "id": "yasaka",
+      "file": "2026yasaka.pdf",
+      "url": "https://www.city.matsuyama.ehime.jp/kurashi/gomi/dashikata/gomicalender/r8gomicaletikubetu.files/2026yasaka.pdf",
+      "rule_profile_id": "matsuyama_hojo",
+      "verification_status": "checked",
+      "sha256": "933119c3ebdb52064862c4e8a44aa83446c1ed5e9ce7c02a2fa15af7216e9273"
+    },
+    {
+      "id": "yugun",
+      "file": "2026yugun.pdf",
+      "url": "https://www.city.matsuyama.ehime.jp/kurashi/gomi/dashikata/gomicalender/r8gomicaletikubetu.files/2026yugun.pdf",
+      "rule_profile_id": "matsuyama_hojo",
+      "verification_status": "checked",
+      "sha256": "da39fce8e4adbccdcf5560d695e65a843a46bb9192427e7193a4b9bfbe2e6674"
+    },
+    {
+      "id": "yuyama",
+      "file": "2026yuyama.pdf",
+      "url": "https://www.city.matsuyama.ehime.jp/kurashi/gomi/dashikata/gomicalender/r8gomicaletikubetu.files/2026yuyama.pdf",
+      "rule_profile_id": "matsuyama_hojo",
+      "verification_status": "checked",
+      "sha256": "5d43e0a685c788e4384e4da14f1a78ead34e7ded5f4e27e9490b87d44e2c9eaa"
+    },
+    {
+      "id": "yodo",
+      "file": "2026yodo.pdf",
+      "url": "https://www.city.matsuyama.ehime.jp/kurashi/gomi/dashikata/gomicalender/r8gomicaletikubetu.files/2026yodo.pdf",
+      "rule_profile_id": "matsuyama_hojo",
+      "verification_status": "checked",
+      "sha256": "6a19231fa2889159a9a053348ce0715555249b29aee12065a537776e33c18d92"
+    },
+    {
+      "id": "wake",
+      "file": "2026wake.pdf",
+      "url": "https://www.city.matsuyama.ehime.jp/kurashi/gomi/dashikata/gomicalender/r8gomicaletikubetu.files/2026wake.pdf",
+      "rule_profile_id": "matsuyama_hojo",
+      "verification_status": "checked",
+      "sha256": "50e2cd0f69e041775ca83bf6576d40a20db40ec2e5f1e83d6463f9200b5d8069"
+    }
+  ],
+  "legacy_district_candidates": {
+    "38201-01": [
+      "38201-01"
+    ],
+    "38201-02": [
+      "38201-02"
+    ],
+    "38201-03": [
+      "38201-03"
+    ],
+    "38201-04": [
+      "38201-04"
+    ],
+    "38201-05": [
+      "38201-05"
+    ],
+    "38201-06": [
+      "38201-06"
+    ],
+    "38201-07": [
+      "38201-07"
+    ],
+    "38201-08": [
+      "38201-08"
+    ],
+    "38201-09": [
+      "38201-09"
+    ],
+    "38201-11": [
+      "38201-11"
+    ],
+    "38201-12": [
+      "38201-12"
+    ],
+    "38201-13": [
+      "38201-13"
+    ],
+    "38201-14": [
+      "38201-14"
+    ],
+    "38201-15": [
+      "38201-15"
+    ],
+    "38201-16": [
+      "38201-16"
+    ],
+    "38201-17": [
+      "38201-17"
+    ],
+    "38201-18": [
+      "38201-18"
+    ],
+    "38201-19": [
+      "38201-19"
+    ],
+    "38201-20": [
+      "38201-20"
+    ],
+    "38201-21": [
+      "38201-21"
+    ],
+    "38201-22": [
+      "38201-22"
+    ],
+    "38201-23": [
+      "38201-23"
+    ],
+    "38201-24": [
+      "38201-24"
+    ],
+    "38201-25": [
+      "38201-25"
+    ],
+    "38201-26": [
+      "38201-26"
+    ],
+    "38201-27": [
+      "38201-27"
+    ],
+    "38201-28": [
+      "38201-28"
+    ],
+    "38201-29": [
+      "38201-29"
+    ],
+    "38201-30": [
+      "38201-30"
+    ],
+    "38201-61": [
+      "38201-61"
+    ],
+    "38201-62": [
+      "38201-62"
+    ],
+    "38201-63": [
+      "38201-63"
+    ],
+    "38201-64": [
+      "38201-64"
+    ],
+    "38201-65": [
+      "38201-65"
+    ],
+    "38201-66": [
+      "38201-66"
+    ],
+    "38201-67": [
+      "38201-67"
+    ],
+    "38201-10": [
+      "38201-ca-dogo",
+      "38201-ca-yuzuki"
+    ],
+    "38201-31": [
+      "38201-ca-ishii-east",
+      "38201-ca-ishii-west"
+    ],
+    "38201-32": [
+      "38201-ca-kutani"
+    ],
+    "38201-33": [
+      "38201-ca-kutani"
+    ],
+    "38201-81": [
+      "38201-ca-mutsuki",
+      "38201-ca-nogutsuna"
+    ],
+    "38201-82": [
+      "38201-ca-nakajima-oura",
+      "38201-ca-obama",
+      "38201-ca-nagashi",
+      "38201-ca-miyano",
+      "38201-ca-konoura"
+    ],
+    "38201-83": [
+      "38201-ca-uwama",
+      "38201-ca-kumata",
+      "38201-ca-yoshiki",
+      "38201-ca-nyo",
+      "38201-ca-hatari",
+      "38201-ca-nakajima-awai"
+    ],
+    "38201-84": [
+      "38201-ca-kami-nuwa",
+      "38201-ca-moto-nuwa",
+      "38201-ca-tsuwaji",
+      "38201-ca-futagami"
+    ]
+  }
+}
