@@ -50,7 +50,9 @@ class RegionContext:
 
 class RegionRegistry:
     def __init__(self, path: Path | None = None):
-        default = Path(__file__).resolve().parents[3] / "data/regions/matsuyama/registry.json"
+        relative = Path("data/regions/matsuyama/registry.json")
+        candidates = [Path(__file__).resolve().parents[level] / relative for level in (3, 2)]
+        default = next((candidate for candidate in candidates if candidate.exists()), candidates[0])
         self.path = path or Path(os.getenv("REGION_REGISTRY_PATH", str(default)))
         self.data = json.loads(self.path.read_text(encoding="utf-8"))
         areas = self.data["collection_areas"]

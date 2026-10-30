@@ -26,16 +26,24 @@ cp "${PROJECT_ROOT}/backend/app/services/calendar_service.py" "${BUILD_DIR}/app/
 cp "${PROJECT_ROOT}/backend/app/services/search_log_service.py" "${BUILD_DIR}/app/services/"
 cp "${PROJECT_ROOT}/backend/app/services/item_search_service.py" "${BUILD_DIR}/app/services/"
 cp "${PROJECT_ROOT}/backend/app/services/embedding_search_service.py" "${BUILD_DIR}/app/services/"
+cp "${PROJECT_ROOT}/backend/app/services/region_registry_service.py" "${BUILD_DIR}/app/services/"
+cp "${PROJECT_ROOT}/backend/app/services/nakajima_search_service.py" "${BUILD_DIR}/app/services/"
 cp "${PROJECT_ROOT}/backend/app/services/waste_guide_service.py" "${BUILD_DIR}/app/services/"
 
-mkdir -p "${BUILD_DIR}/data/regions/matsuyama/shimizu/calendar"
-cp "${PROJECT_ROOT}/data/regions/matsuyama/shimizu/calendar/2026.csv" \
-  "${BUILD_DIR}/data/regions/matsuyama/shimizu/calendar/"
+mkdir -p "${BUILD_DIR}/data/regions/matsuyama/generated"
+cp "${PROJECT_ROOT}/data/regions/matsuyama/registry.json" \
+  "${BUILD_DIR}/data/regions/matsuyama/"
+cp "${PROJECT_ROOT}/data/regions/matsuyama/generated/calendar-2026.json" \
+  "${BUILD_DIR}/data/regions/matsuyama/generated/"
+cp "${PROJECT_ROOT}/data/regions/matsuyama/generated/nakajima_items.csv" \
+  "${BUILD_DIR}/data/regions/matsuyama/generated/"
 mkdir -p "${BUILD_DIR}/data/regions/matsuyama/common/knowledge"
 cp "${PROJECT_ROOT}/data/regions/matsuyama/common/knowledge/items.csv" \
   "${BUILD_DIR}/data/regions/matsuyama/common/knowledge/"
 # 自前Embeddingインデックス（意味検索用の事前計算ベクトル）。
 cp "${PROJECT_ROOT}/data/regions/matsuyama/common/knowledge/item_embeddings.npz" \
+  "${BUILD_DIR}/data/regions/matsuyama/common/knowledge/"
+cp "${PROJECT_ROOT}/data/regions/matsuyama/common/knowledge/index_manifest.json" \
   "${BUILD_DIR}/data/regions/matsuyama/common/knowledge/"
 
 (cd "${BUILD_DIR}" && zip -q -r "${ZIP_PATH}" .)
