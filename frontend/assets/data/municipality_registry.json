@@ -9,7 +9,7 @@
   "timezone": "Asia/Tokyo",
   "source_directory_url": "https://www.city.matsuyama.ehime.jp/kurashi/gomi/dashikata/gomicalender/r8gomicaletikubetu.html",
   "retrieved_on": "2026-10-30",
-  "redistribution_status": "not_confirmed",
+  "redistribution_status": "confirmed_by_project",
   "collection_areas": [
     {
       "id": "38201-61",

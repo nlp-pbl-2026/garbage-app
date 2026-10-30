@@ -1,6 +1,6 @@
 # 自治体データの配置と検証
 
-松山市の2026年度データは `data/regions/matsuyama/` で管理します。自治体資料とその加工結果は既存のGit除外方針に従い、追跡しません。Gitには地区・カレンダーの対応表、出典URL、ハッシュ、検証記録、生成・検証スクリプトを残します。市の[一般的な著作権条件](https://www.city.matsuyama.ehime.jp/aboutweb/copyright.html)は無断転用・改変を認めていません。[オープンデータサイトのCC条件](https://www.city.matsuyama.ehime.jp/shisei/opendata/top.html)は同サイト内の対象コンテンツに限定され、今回のカレンダーPDFには自動適用できません。加工した日付データや品目資料をアプリ・Lambdaに同梱して配布できるか、松山市への確認が必要です。
+松山市の2026年度データは `data/regions/matsuyama/` で管理します。公式PDF・加工CSV・生成カレンダーは既存のGit除外方針に従い、追跡しません。Gitには地区・カレンダーの対応表、出典URL、ハッシュ、検証記録、生成・検証スクリプトと既存のEmbedding索引を残します。公開に関する利用条件はプロジェクトで確認済みです。確認内容の詳細はこのリポジトリには含めていません。
 
 ## 2026年度の構成
 
@@ -14,7 +14,7 @@
 | `generated/addresses.json` | 公式町名表から導いた住所候補。境界ポリゴンではない | 除外 |
 | `generated/nakajima_items.csv` | 中島カレンダーに記載された分別例。網羅的な品目辞典ではない | 除外 |
 | `common/knowledge/items.csv` | 松山・北条の既存1,756品目 | 除外 |
-| `common/knowledge/item_embeddings.npz` | 既存のTitan Text Embeddings V2索引 | 除外 |
+| `common/knowledge/item_embeddings.npz` | 既存のTitan Text Embeddings V2索引 | 追跡 |
 | `common/knowledge/index_manifest.json` | CSV・索引のハッシュと整合性確認結果 | 追跡 |
 
 `scripts/matsuyama_data.py build` は共通原本を `frontend/assets/data/municipality_calendar.json` にバイト単位で複製します。住所表も `frontend/assets/data/municipality_addresses.json` に生成します。Flutterへの組み込み前に必ず生成してください。`frontend/assets/data/municipality_registry.json` は `registry.json` の複製です。カレンダーは2026年4月1日から2027年3月31日までのみ有効で、翌年度へ繰り返しません。
@@ -58,8 +58,8 @@ backend/.venv/bin/python scripts/matsuyama_raster_audit.py
 
 自治体を追加する場合は、独立した地区台帳、適用期間、分別設定、カレンダー原本、出典・検証記録を用意し、対応する検索索引を分けてください。現時点のAPIは松山市のみを受け付けます。松山市でも2027年度は別バージョンの公式資料を取得・検証してから公開してください。
 
-旧Knowledge Base連携・比較実験の入力形式は `infra/scripts/build_knowledge_records.py` と `backend/evaluation/README.md` を参照してください。現在の松山・北条の本番検索経路はLambda同梱のTitan索引です。
+Knowledge Base連携・比較実験の入力形式は `infra/scripts/build_knowledge_records.py` と `backend/evaluation/README.md` を参照してください。現在の通常検索経路は両地域ともLambda同梱のTitan索引を候補取得に使います。中島の分類根拠は地域別ルールに切り替えます。
 
 ## AWS・アプリ反映前
 
-公式資料の利用条件を確認し、上記の取得・生成・照合を済ませてから、`scripts/package_backend.sh` でLambda成果物を作成します。このスクリプトはバックエンドとFlutterのカレンダー原本のバイト一致も確認します。Terraformの `REGION_REGISTRY_PATH`、`CALENDAR_BUNDLE_PATH`、`NAKAJIMA_ITEMS_PATH` は同梱先を指す設定です。Terraform planとAPI回帰確認を行い、バックエンドの更新後に同じバージョンのFlutterをビルドして配布してください。APIとFlutterが別バージョンになる期間は地区・日付の不一致が起き得ます。公開環境への反映、Terraform apply、Bedrockの有償処理はこの手順の自動実行には含めません。
+上記の取得・生成・照合を済ませてから、`scripts/package_backend.sh` でLambda成果物を作成します。このスクリプトはバックエンドとFlutterのカレンダー原本のバイト一致も確認します。Terraformの `REGION_REGISTRY_PATH`、`CALENDAR_BUNDLE_PATH`、`NAKAJIMA_ITEMS_PATH` は同梱先を指す設定です。Terraform planとAPI回帰確認を行い、バックエンドの更新後に同じバージョンのFlutterをビルドして配布してください。APIとFlutterが別バージョンになる期間は地区・日付の不一致が起き得ます。公開環境への反映、Terraform apply、Bedrockの有償処理はこの手順の自動実行には含めません。

@@ -169,7 +169,7 @@ def main():
                                           for name in [f"chikukensaku-{kana}.html" for kana in
                                                        ["a", "ka", "sa", "ta", "na", "ha", "ma", "yarawa"]]},
                 "nakajima": manifest,
-                "redistribution_status": "not_confirmed",
+                "redistribution_status": "confirmed_by_project",
             }
             if read_json(DATA / "knowledge_reviews.json") != review:
                 raise ValueError("Generated knowledge differs from reviewed metadata; inspect official sources")

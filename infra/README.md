@@ -13,11 +13,11 @@
 | AWS Provider | `~> 6.60` |
 | 管理タグ | Terraform変数で指定 |
 
-作成済みリソース:
+Terraformで管理するリソース（実環境への今回の反映は未実施）:
 
 | 種別 | 用途 |
 | --- | --- |
-| Amazon Bedrock | Nova Liteの画像・テキスト理解と、Titan Text Embeddings V2による意味検索・分類 |
+| Amazon Bedrock | Nova Liteの画像・テキスト理解と分類、Titan Text Embeddings V2による検索文のベクトル化 |
 | Amazon S3 / Bedrock Knowledge Base | 比較実験用のRAGデータと検索経路 |
 | AWS Lambda | FastAPIのAIあいまい検索API |
 | Amazon API Gateway | Flutter向けHTTPSエンドポイント |
@@ -30,33 +30,23 @@ Backend API URLとAWSリソースIDはGitに固定値を記録せず、
 ## アーキテクチャ
 
 ```text
-data/regions/matsuyama/common/knowledge
-  ├─ items.csv
-  ├─ category_rules.csv
-  └─ general_rules.csv
-          │ terraform apply
-          ▼
-Private S3 bucket
-          │ managed S3 connector / ingestion job
-          ▼
-Bedrock Managed Knowledge Base
-          │ Retrieve API
-          ▼
-FastAPI
-  ├─ Nova Lite: 画像・テキストから検索文へ言い換え
-  ├─ ローカル品目CSV: 表層一致検索
-  ├─ Managed KB: 意味検索
-  ├─ RRF: 2つの検索結果を統合
-  ├─ Nova Lite: 分類または追加質問
-  ├─ 同梱した2026年度カレンダー: 選択地区の次回収集日（可燃7時、ほか8時締切）
-  └─ DynamoDB: 検索分析ログ（90日TTL）
-          │ HTTP
-          ▼
-API Gateway HTTP API
+Flutter Web / mobile（選択した収集地区、テキスト・画像、追加質問）
           │ HTTPS
           ▼
-Flutter Web / mobile（テキスト・画像検索、管理キー付き分析画面）
+API Gateway HTTP API → Lambda / FastAPI
+  ├─ Nova Lite: 画像・テキストから検索文へ言い換え
+  ├─ Titan Text Embeddings V2: 検索文をベクトル化
+  ├─ 同梱した1,756品目のEmbedding索引: 両地域の候補を検索
+  │    ├─ 松山・北条: 品目辞典の分類・注意書き
+  │    └─ 中島: 公式79行を優先し、共通候補には中島の分別ルールを適用
+  ├─ Nova Lite: 地域別の根拠から分類または追加質問
+  ├─ 同梱した地区台帳・2026年度カレンダー: 次回収集日（可燃7時、ほか8時締切）
+  └─ DynamoDB: 検索分析ログ（90日TTL）
+
+別経路: S3 → Bedrock Managed Knowledge Base（比較実験用）
 ```
+
+通常の検索では `USE_BEDROCK_KNOWLEDGE_BASE=false`、`LEXICAL_SEARCH_ENABLED=false` とし、Knowledge Base検索、表層一致検索、RRF統合は使いません。中島の共通索引は候補取得に限り、松山・北条の分類や注意書きをそのまま回答根拠にしません。根拠が不足する場合は追加質問または判定保留にします。Flutterの地区台帳・カレンダーは同じ原本から生成したアセットを使用します。
 
 検索画像はAPIリクエストからNova Liteへ直接渡します。S3やDynamoDBには画像本体を保存せず、分析ログには画像の有無・形式・バイト数だけを記録します。既存のLambda実行ロールが持つNova Liteへの`bedrock:InvokeModel`権限を使用するため、画像検索専用のAWSリソースは追加しません。
 
@@ -88,7 +78,7 @@ Terraform変数とリソース名をその環境に合わせてください。�
 
 ## ルートから構築・削除
 
-通常はプロジェクトルートで次だけを実行します。
+以下のスクリプトを実行するとAWS環境が変更されます。更新前にデータ検証・Lambdaパッケージの内容・Terraform planを確認してください。
 
 ```bash
 ./scripts/aws-up.sh
@@ -96,6 +86,7 @@ Terraform変数とリソース名をその環境に合わせてください。�
 ```
 
 `scripts/aws-up.sh` は権限が揃っている場合、Lambda packageを作成し、Terraformで全AWSリソースを作成・更新して、Knowledge Baseの取り込み完了まで待ちます。
+Knowledge Baseは通常検索で使いませんが、このスクリプトは比較実験用データの同期と取り込みも実行します。
 
 `iam:GetPolicyVersion`または`iam:ListPolicyVersions`が不足していても、環境変数で指定した既存Lambdaを確認できる場合は、
 制限モードでそのコードだけを`UpdateFunctionCode`で更新します。Terraform、Knowledge Base、S3は変更しません。
@@ -163,7 +154,7 @@ export LEXICAL_SEARCH_ENABLED="false"
 
 AWS上ではこれらの値をTerraformがLambda環境変数へ設定し、Bedrock・DynamoDBへの認証はLambda実行ロールが担当します。アクセスキーの `.env` 保存は不要です。FlutterはAWS認証情報を持たず、次のAPI URLだけを受け取ります。
 
-本番の意味検索は、LambdaがTitan Text Embeddings V2を直接呼び出し、同梱した`item_embeddings.npz`を検索します。Managed Knowledge Baseと表層一致検索は比較実験用として残しています。
+通常の意味検索は、LambdaがTitan Text Embeddings V2を直接呼び出し、同梱した`item_embeddings.npz`を両地域の候補取得に使います。中島では公式79行と地域別ルールにより判定根拠を構成します。Managed Knowledge Baseと表層一致検索は比較実験用として残しています。今回の全地区対応が既存AWS環境で動くかは、デプロイ後のAPI確認が必要です。
 
 ```bash
 API_BASE_URL="$(terraform -chdir=infra/terraform output -raw backend_api_url)"
@@ -220,7 +211,7 @@ aws bedrock-agent list-ingestion-jobs \
 | Lambda / API Gateway | リクエストがなければ実行・APIリクエスト課金は原則発生しない | 呼び出し回数と実行時間に応じて課金 |
 | DynamoDB | PAY_PER_REQUESTのため予約容量課金なし。ログ保存量の課金は残る | 読み書きと保存量に応じて課金 |
 
-2026-08-24時点のManaged Knowledge Base公式単価は、index storageがraw data 1 GBあたり月額USD 5、標準Retrieveが1,000 API callsあたりUSD 1です。managed parser、managed embedding、managed rerankerは追加料金なしです。現在のRAG原本は約320 KBなので保存費は小さいものの、Knowledge Baseを残す限りゼロとは限りません。
+料金は変更され得るため、デプロイ前に下記の公式料金表で確認してください。通常検索ではKnowledge BaseのRetrieveを使いませんが、`aws-up.sh` は比較実験用Knowledge Baseの取り込みジョブを開始します。Knowledge Baseを残す限り保存費が発生し得ます。
 
 - [Amazon Bedrock pricing](https://aws.amazon.com/bedrock/pricing/)
 - [Managed Knowledge Baseの仕組み](https://docs.aws.amazon.com/bedrock/latest/userguide/kb-build-managed.html)
@@ -229,7 +220,7 @@ aws bedrock-agent list-ingestion-jobs \
 
 ### 短期間使わない場合
 
-Flutterを終了してください。Lambdaは常時起動ではないため停止操作は不要で、Nova Liteの推論とRetrieve呼び出しも止まります。Knowledge Baseのindex保存費、S3保存費、DynamoDBのログ保存費は残ります。Managed Knowledge BaseにはEC2のような「停止」状態はありません。
+Flutterを終了し、他のAPI利用がないことを確認してください。Lambdaは常時起動ではないため停止操作は不要です。検索リクエストがなければNova Lite・Titanの呼び出しは発生しません。Knowledge Baseのindex保存費、S3保存費、DynamoDBのログ保存費は残ります。Managed Knowledge BaseにはEC2のような「停止」状態はありません。
 
 ### 長期間使わない場合
 
