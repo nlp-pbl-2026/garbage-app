@@ -252,10 +252,14 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                           fontWeight: FontWeight.w600,
                         ),
                       ),
+                      const SizedBox(height: 4),
+                      const Text(
+                        '変更は下の「地域を変更」から',
+                        style: TextStyle(fontSize: 12, color: Colors.grey),
+                      ),
                     ],
                   ),
                 ),
-                const Icon(Icons.chevron_right, color: Colors.grey),
               ],
             ),
           );
@@ -577,6 +581,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
   /// テーマ設定カード
   Widget _buildThemeCard(BuildContext context, WidgetRef ref) {
     final currentMode = ref.watch(themeModeProvider);
+    final systemBrightness = MediaQuery.platformBrightnessOf(context);
 
     return Card(
       elevation: 1,
@@ -590,6 +595,8 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               ref,
               icon: Icons.settings_suggest,
               label: 'システム設定',
+              subtitle:
+                  '端末の設定に合わせる（現在: ${systemBrightness == Brightness.dark ? 'ダーク' : 'ライト'}）',
               mode: ThemeMode.system,
               currentMode: currentMode,
             ),
@@ -623,6 +630,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
     WidgetRef ref, {
     required IconData icon,
     required String label,
+    String? subtitle,
     required ThemeMode mode,
     required ThemeMode currentMode,
   }) {
@@ -634,6 +642,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
         color: isSelected ? AppColors.primary : Colors.grey,
       ),
       title: Text(label),
+      subtitle: subtitle == null ? null : Text(subtitle),
       trailing:
           isSelected ? const Icon(Icons.check, color: AppColors.primary) : null,
       onTap: () {
