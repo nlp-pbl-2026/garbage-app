@@ -22,6 +22,37 @@ MunicipalityConfig _config(bool island) => island
 
 void main() {
   for (final island in [false, true]) {
+    testWidgets('fallback notice uses regional official guidance (island: $island)',
+        (tester) async {
+      SharedPreferences.setMockInitialValues({});
+      final prefs = await SharedPreferences.getInstance();
+      await tester.pumpWidget(ProviderScope(
+        overrides: [
+          sharedPreferencesProvider.overrideWithValue(prefs),
+          municipalityConfigProvider.overrideWith((ref) async => CachedResult(
+                data: _config(island),
+                isStale: true,
+                isBundledFallback: true,
+              )),
+          bulkyWasteItemsProvider.overrideWith((ref, query) async => const CachedResult(
+                data: BulkyWasteItemList(
+                    items: [], totalCount: 0, municipalityName: '松山市'),
+                isStale: false,
+              )),
+        ],
+        child: const MaterialApp(home: BulkyWasteScreen()),
+      ));
+      await tester.pump();
+      await tester.pump(const Duration(milliseconds: 100));
+
+      expect(find.textContaining('松山市の分別資料をもとにした参考情報'), findsOneWidget);
+      expect(find.textContaining('AWS'), findsNothing);
+      expect(find.textContaining(island ? '地区別の公式カレンダー' : '申込条件、受付期間'),
+          findsOneWidget);
+    });
+  }
+
+  for (final island in [false, true]) {
     testWidgets('record tab explains local-only management (island: $island)',
         (tester) async {
       SharedPreferences.setMockInitialValues({});

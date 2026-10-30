@@ -169,7 +169,9 @@ class _BulkyWasteScreenState extends ConsumerState<BulkyWasteScreen>
   /// キャッシュデータ使用時の警告バナー
   Widget _buildDataNotice(CachedResult<MunicipalityConfig> result) {
     final message = result.isBundledFallback
-        ? '品目一覧はAWSの分別データを表示しています。申込条件や受付期間は松山市公式サイトで確認してください。'
+        ? result.data.applicationMethod == ApplicationMethod.none
+            ? '品目一覧は松山市の分別資料をもとにした参考情報です。中島地域の収集日と出し方は、地区別の公式カレンダーで確認してください。'
+            : '品目一覧は松山市の分別資料をもとにした参考情報です。収集対象や申込条件、受付期間は松山市公式サイトで確認してください。'
         : '表示されているデータは以前の取得結果です。最新情報を反映していない可能性があります。';
     return MaterialBanner(
       content: Text(
