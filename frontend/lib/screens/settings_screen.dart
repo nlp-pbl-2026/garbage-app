@@ -1092,9 +1092,12 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
         // 地域選択が完了した → 選択された地域を指定ラベルで保存
         final newSetting = ref.read(regionSettingProvider).valueOrNull;
         if (newSetting != null) {
-          await ref.read(multiRegionProvider.notifier).addRegion(label, newSetting);
+          final added = await ref.read(multiRegionProvider.notifier).addRegion(label, newSetting);
+          if (added == null) return;
           if (previousActive != null) {
-            await ref.read(multiRegionProvider.notifier).setActiveRegion(previousActive.id);
+            final previousArea = await MunicipalityDataService().area(previousActive.setting.districtId);
+            await ref.read(multiRegionProvider.notifier).setActiveRegion(
+                previousArea == null ? added.id : previousActive.id);
           }
           if (!context.mounted) return;
           ScaffoldMessenger.of(context).showSnackBar(
@@ -1122,7 +1125,9 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
       if (setting != null) {
         await ref.read(multiRegionProvider.notifier).replaceRegionSetting(saved.id, setting);
         if (previousActive != null && previousActive.id != saved.id) {
-          await ref.read(multiRegionProvider.notifier).setActiveRegion(previousActive.id);
+          final previousArea = await MunicipalityDataService().area(previousActive.setting.districtId);
+          await ref.read(multiRegionProvider.notifier).setActiveRegion(
+              previousArea == null ? saved.id : previousActive.id);
         }
       }
     });

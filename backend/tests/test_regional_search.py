@@ -5,9 +5,10 @@ from zoneinfo import ZoneInfo
 import pytest
 
 from app.services.calendar_service import CalendarService
+from app.services.nakajima_search_service import NakajimaSearchService
 from app.services.region_registry_service import RegionContext
 from app.services.waste_guide_service import (
-    BedrockGateway, ClassificationDecision, RetrievedDocument, UnsupportedRegionError,
+    BedrockGateway, ClassificationDecision, ImageInput, RetrievedDocument, UnsupportedRegionError,
     WasteGuideService,
 )
 import json
@@ -76,6 +77,27 @@ def test_nakajima_uses_only_island_evidence(monkeypatch):
         service.decide(query="アルミ缶", rewritten_query="アルミ缶",
                        documents=[RetrievedDocument(text="分類: 金・ガ", uri="local://items/main")],
                        municipality_id="38201", district_id=ISLAND.area_id)
+
+
+def test_nakajima_unknown_text_or_image_fails_closed_without_mainland_fallback(tmp_path, monkeypatch):
+    import csv
+    source = tmp_path / "nakajima_items.csv"
+    with source.open("w", encoding="utf-8", newline="") as stream:
+        writer = csv.DictWriter(stream, fieldnames=["item_id", "item", "category",
+                                                    "category_display", "note"])
+        writer.writeheader()
+        writer.writerow({"item_id": "nk-item-can", "item": "アルミ缶", "category": "缶",
+                         "category_display": "缶類", "note": "飲料缶"})
+    monkeypatch.setattr("app.services.waste_guide_service.get_registry", lambda: FakeRegistry())
+    monkeypatch.setattr("app.services.nakajima_search_service.config.NAKAJIMA_ITEMS_PATH", str(source))
+    assert NakajimaSearchService().search("アルミ缶")[0]["category"] == "缶"
+    assert NakajimaSearchService().search("未知の電化製品") == []
+    service = WasteGuideService(gateway=FakeGateway())
+    for image in (None, ImageInput("png", b"test")):
+        result = service.query(query="未知の電化製品" if image is None else "",
+                               municipality_id="38201", district_id=ISLAND.area_id, image=image)
+        assert result.status == "needs_clarification"
+        assert not result.sources
 
 
 def test_mainland_rejects_island_evidence(monkeypatch):

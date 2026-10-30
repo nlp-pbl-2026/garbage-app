@@ -66,6 +66,11 @@ class RegionService {
     await prefs.setString(_regionSettingKey, jsonString);
   }
 
+  Future<void> clearRegionSetting() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.remove(_regionSettingKey);
+  }
+
   /// SharedPreferencesから保存済みの地域設定を取得する。
   ///
   /// 地域設定が保存されていない場合は null を返す。

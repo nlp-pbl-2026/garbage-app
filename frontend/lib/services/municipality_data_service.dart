@@ -50,7 +50,9 @@ class MunicipalityDataService {
     final bundle = await calendar;
     if (bundle['version'] != catalog['version'] ||
         bundle['valid_from'] != catalog['valid_from'] ||
-        bundle['valid_to'] != catalog['valid_to']) return null;
+        bundle['valid_to'] != catalog['valid_to']) {
+      return null;
+    }
     final record = (bundle['calendars'] as Map<String, dynamic>)[entry['calendar_id']];
     if (record is! Map<String, dynamic> || record['verification_status'] != 'checked') {
       return null;

@@ -12,6 +12,10 @@ final multiRegionServiceProvider = Provider<MultiRegionService>((ref) {
   return MultiRegionService();
 });
 
+final municipalityDataProvider = Provider<MunicipalityDataService>((ref) {
+  return MunicipalityDataService();
+});
+
 /// 複数地区管理のStateNotifierProvider
 ///
 /// SavedRegionリストを管理し、地区の追加・削除・切り替えを提供する。
@@ -21,7 +25,8 @@ final multiRegionProvider =
   (ref) {
     final service = ref.watch(multiRegionServiceProvider);
     final notificationService = ref.watch(notificationServiceProvider);
-    return MultiRegionNotifier(ref, service, notificationService);
+    final municipalityData = ref.watch(municipalityDataProvider);
+    return MultiRegionNotifier(ref, service, notificationService, municipalityData);
   },
 );
 
@@ -30,8 +35,9 @@ class MultiRegionNotifier extends StateNotifier<AsyncValue<List<SavedRegion>>> {
   final Ref _ref;
   final MultiRegionService _service;
   final NotificationService _notificationService;
+  final MunicipalityDataService _municipalityData;
 
-  MultiRegionNotifier(this._ref, this._service, this._notificationService)
+  MultiRegionNotifier(this._ref, this._service, this._notificationService, this._municipalityData)
       : super(const AsyncValue.loading()) {
     loadRegions();
   }
@@ -54,15 +60,17 @@ class MultiRegionNotifier extends StateNotifier<AsyncValue<List<SavedRegion>>> {
   ///
   /// 追加後に地区リストを再読み込みする。
   /// 最初の地区の場合はregionSettingProviderも更新する。
-  Future<void> addRegion(String label, RegionSetting setting) async {
+  Future<SavedRegion?> addRegion(String label, RegionSetting setting) async {
     try {
       final newRegion = await _service.addRegion(label, setting);
       if (newRegion.isActive) {
         await _applyActiveRegion(newRegion.setting);
       }
       await loadRegions();
+      return newRegion;
     } catch (e, st) {
       state = AsyncValue.error(e, st);
+      return null;
     }
   }
 
@@ -83,9 +91,20 @@ class MultiRegionNotifier extends StateNotifier<AsyncValue<List<SavedRegion>>> {
 
       // アクティブ地区が削除された場合、新しいアクティブ地区を適用
       if (wasActive) {
-        final activeRegion = await _service.getActiveRegion();
-        if (activeRegion != null) {
-          await _applyActiveRegion(activeRegion.setting);
+        SavedRegion? fallback;
+        for (final candidate in await _service.getSavedRegions()) {
+          if (await _municipalityData.area(candidate.setting.districtId) != null) {
+            fallback = candidate;
+            break;
+          }
+        }
+        if (fallback != null) {
+          await setActiveRegion(fallback.id);
+        } else {
+          await _service.clearActiveRegion();
+          await loadRegions();
+          await _ref.read(regionSettingProvider.notifier).clearSetting();
+          await _notificationService.updateDistrict('');
         }
       }
     } catch (e, st) {
@@ -102,7 +121,7 @@ class MultiRegionNotifier extends StateNotifier<AsyncValue<List<SavedRegion>>> {
     try {
       final saved = (await _service.getSavedRegions()).where((region) => region.id == id).firstOrNull;
       final area = saved == null ? null :
-          await MunicipalityDataService().area(saved.setting.districtId);
+          await _municipalityData.area(saved.setting.districtId);
       if (saved == null || area == null) {
         throw StateError('保存された収集地区を再選択してください。');
       }

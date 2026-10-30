@@ -115,6 +115,13 @@ class MultiRegionService {
     return activeRegion;
   }
 
+  /// 有効な収集地区が残っていない場合、選択状態だけを解除する。
+  Future<void> clearActiveRegion() async {
+    final prefs = await SharedPreferences.getInstance();
+    final regions = await getSavedRegions();
+    await _saveRegions(prefs, regions.map((r) => r.copyWith(isActive: false)).toList());
+  }
+
   Future<SavedRegion?> replaceRegionSetting(String id, RegionSetting setting) async {
     final prefs = await SharedPreferences.getInstance();
     final regions = await getSavedRegions();
@@ -136,7 +143,7 @@ class MultiRegionService {
     try {
       return regions.firstWhere((r) => r.isActive);
     } catch (_) {
-      return regions.isNotEmpty ? regions.first : null;
+      return null;
     }
   }
 

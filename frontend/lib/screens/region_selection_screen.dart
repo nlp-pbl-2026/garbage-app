@@ -622,7 +622,7 @@ class _RegionSelectionScreenState extends ConsumerState<RegionSelectionScreen> {
     showDialog<void>(
       context: context,
       builder: (dialogContext) => AlertDialog(
-        icon: Icon(
+        icon: const Icon(
           Icons.location_on_rounded,
         ),
         title: const Text('収集地区を確認してください'),

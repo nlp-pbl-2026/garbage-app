@@ -271,8 +271,13 @@ class BedrockGateway:
         return self._retrieve_from_knowledge_base(query)
 
     def _retrieve_by_embedding(self, query: str) -> list[RetrievedDocument]:
-        if self._embedding_search is None:
-            self._embedding_search = EmbeddingSearchService(runtime_client=self._runtime)
+        try:
+            if self._embedding_search is None:
+                self._embedding_search = EmbeddingSearchService(runtime_client=self._runtime)
+        except (OSError, ValueError, KeyError) as error:
+            raise WasteGuideError("Verified Matsuyama item index is unavailable") from error
+        if not getattr(self._embedding_search, "is_ready", True):
+            raise WasteGuideError("Verified Matsuyama item index is unavailable")
         return [
             RetrievedDocument(
                 text=match.evidence_text,
