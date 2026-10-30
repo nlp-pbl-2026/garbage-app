@@ -5,6 +5,12 @@ PROJECT_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 BUILD_DIR="${PROJECT_ROOT}/backend/dist/lambda-build"
 ZIP_PATH="${PROJECT_ROOT}/backend/dist/backend-lambda.zip"
 
+# Both clients must ship the same reviewed dates, even if assets were edited
+# after the last data build. The full official-source gate is documented in
+# docs/data.md and must be run before packaging.
+cmp "${PROJECT_ROOT}/data/regions/matsuyama/generated/calendar-2026.json" \
+    "${PROJECT_ROOT}/frontend/assets/data/municipality_calendar.json"
+
 rm -rf "${BUILD_DIR}" "${ZIP_PATH}"
 mkdir -p "${BUILD_DIR}/app/routers" "${BUILD_DIR}/app/services"
 
