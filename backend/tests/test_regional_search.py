@@ -323,3 +323,115 @@ def test_nakajima_mixed_container_answers_advance_to_use_question():
     assert first == "捨てるのは缶とびんのどちらですか？"
     assert second == "その缶は飲料・缶詰用ですか、それとも別の用途ですか？"
     assert third is None
+
+
+def test_nakajima_furniture_example_matches_natural_phrase(tmp_path):
+    import csv
+    source = tmp_path / "nakajima_items.csv"
+    with source.open("w", encoding="utf-8", newline="") as stream:
+        writer = csv.DictWriter(stream, fieldnames=[
+            "item_id", "item", "category", "category_display", "note",
+        ])
+        writer.writeheader()
+        writer.writerow({"item_id": "nk-item-furniture", "item": "家具類",
+                         "category": "粗大", "category_display": "粗大ごみ",
+                         "note": "中島の公式カレンダーに家具類が掲載"})
+        writer.writerow({"item_id": "nk-item-network", "item": "ネット類",
+                         "category": "プラ", "category_display": "プラスチック製容器包装",
+                         "note": "包装用ネット"})
+
+    service = NakajimaSearchService(path=source)
+    assert service.search("大きな壊れた家具")[0]["item"] == "家具類"
+    assert service.search("大きな壊れた木製家具")[0]["category"] == "粗大"
+    assert service.search("漁業用ネット") == []  # Other *類 examples are not stemmed.
+    assert service.search("スプリングマットレス付き家具") == []
+
+
+def test_nakajima_food_bottle_accepts_context_and_yes_answer():
+    question = "そのびんは飲料・食料品用ですか？"
+    assert WasteGuideService._nakajima_container_question(
+        "ジャムが入っていたガラスびん", []) is None
+    assert WasteGuideService._nakajima_container_question(
+        "ガラスびん", []) == question
+    assert WasteGuideService._nakajima_container_question(
+        "ガラスびん", [{"question": question, "answer": "はい"}]) is None
+    assert WasteGuideService._nakajima_container_question(
+        "ガラスびん", [{"question": "飲料・食料用品ですか？", "answer": "はい"}]) is None
+    assert WasteGuideService._nakajima_container_question(
+        "ガラスびん", [{"question": question, "answer": "飲料・食料品用です"}]) is None
+    assert WasteGuideService._nakajima_container_question(
+        "ガラスびん", [{"question": "ガラス製ですか？", "answer": "はい"}]) == question
+    assert WasteGuideService._nakajima_container_question(
+        "ガラスびん", [{"question": question, "answer": "はい"},
+                     {"question": question, "answer": "いいえ"}]) == question
+
+
+@pytest.mark.parametrize(("query", "clarifications", "category", "item"), [
+    ("大きな壊れた家具", [], "粗大", "家具類"),
+    ("大きな壊れた家具", [{"question": "素材は何ですか？", "answer": "木材"}], "粗大", "家具類"),
+    ("ジャムが入っていたガラスびん", [], "びん", "びん類"),
+    ("ガラスびん", [{"question": "そのびんは飲料・食料品用ですか？", "answer": "はい"}], "びん", "びん類"),
+])
+def test_reported_nakajima_search_flows_keep_official_evidence(
+    tmp_path, monkeypatch, query, clarifications, category, item,
+):
+    import csv
+    source = tmp_path / "nakajima_items.csv"
+    with source.open("w", encoding="utf-8", newline="") as stream:
+        writer = csv.DictWriter(stream, fieldnames=[
+            "item_id", "item", "category", "category_display", "note",
+        ])
+        writer.writeheader()
+        writer.writerow({"item_id": "nk-item-furniture", "item": "家具類",
+                         "category": "粗大", "category_display": "粗大ごみ",
+                         "note": "公式カレンダーに家具類が粗大ごみとして掲載"})
+        writer.writerow({"item_id": "nk-rule-bottle", "item": "びん類",
+                         "category": "びん", "category_display": "びん類",
+                         "note": "飲料・食料品用のびんを収集"})
+
+    class DecisionGateway(FakeGateway):
+        def classify(self, query, clarifications, documents, image=None):
+            assert documents[0].uri.startswith("nakajima://items/")
+            assert f"品目: {item}" in documents[0].text
+            return ClassificationDecision(is_resolved=True, item_name=item,
+                                          category_code=category, confidence=.96,
+                                          evidence_indexes=(1,))
+
+    monkeypatch.setattr("app.services.waste_guide_service.get_registry", lambda: FakeRegistry())
+    monkeypatch.setattr("app.services.nakajima_search_service.config.NAKAJIMA_ITEMS_PATH", str(source))
+    collection_type = "bulky" if category == "粗大" else "bottles"
+    service = WasteGuideService(gateway=DecisionGateway(),
+        calendar=calendar(ISLAND, {"2026-11-02": [collection_type]}),
+        now_provider=lambda: datetime(2026, 10, 30, 9, tzinfo=ZoneInfo("Asia/Tokyo")))
+    result = service.query(query=query, municipality_id="38201", district_id=ISLAND.area_id,
+                           clarifications=clarifications)
+    assert result.status == "answered"
+    assert result.decision.category_code == category
+    assert result.next_collection.date == date(2026, 11, 2)
+
+
+@pytest.mark.parametrize("rewritten", ["大きな壊れた家具", "ジャム用ガラスびん 飲料・食料品用"])
+def test_verified_nakajima_rule_precedes_shared_index(tmp_path, monkeypatch, rewritten):
+    import csv
+    source = tmp_path / "nakajima_items.csv"
+    with source.open("w", encoding="utf-8", newline="") as stream:
+        writer = csv.DictWriter(stream, fieldnames=[
+            "item_id", "item", "category", "category_display", "note",
+        ])
+        writer.writeheader()
+        writer.writerow({"item_id": "nk-item-furniture", "item": "家具類",
+                         "category": "粗大", "category_display": "粗大ごみ", "note": "公式例"})
+        writer.writerow({"item_id": "nk-rule-bottle", "item": "びん類",
+                         "category": "びん", "category_display": "びん類",
+                         "note": "飲料・食料品用のびん"})
+
+    class IndexMustNotRun(FakeGateway):
+        def search_item_candidates(self, query, *, limit=None):
+            raise AssertionError("The official rule already supplies evidence")
+
+    monkeypatch.setattr("app.services.waste_guide_service.get_registry", lambda: FakeRegistry())
+    monkeypatch.setattr("app.services.nakajima_search_service.config.NAKAJIMA_ITEMS_PATH", str(source))
+    service = WasteGuideService(gateway=IndexMustNotRun())
+    docs = service.retrieve(rewritten_query=rewritten, municipality_id="38201",
+                            district_id=ISLAND.area_id)
+    assert len(docs) == 1 and docs[0].uri.startswith("nakajima://items/")

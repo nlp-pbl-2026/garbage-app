@@ -625,6 +625,21 @@ class WasteGuideService:
                 score=row['score'], uri=f"nakajima://items/{row['item_id']}",
                 title="中島地域 2026年度ごみカレンダー（公式）",
             ) for row in matches]
+            normalized_query = unicodedata.normalize("NFKC", rewritten_query).lower()
+            documented_example = any(
+                row["item_id"].startswith("nk-item-") and row["score"] >= .9
+                for row in matches
+            )
+            food_bottle_rule = (
+                any(row["item_id"].startswith("nk-rule-") and row["category"] == "びん"
+                    for row in matches)
+                and any(word in normalized_query for word in (
+                    "ジャム", "食品", "食料", "飲料", "調味料", "しょうゆ", "醤油",
+                    "みりん", "料理酒", "ビール", "ワイン", "ラムネ", "牛乳",
+                ))
+            )
+            if documented_example or food_bottle_rule:
+                return documents
             # Search the existing 1,756 vectors once, then replace the mainland
             # category/note with an independently sourced Nakajima rule.  The
             # broader candidate pool compensates for unresolved conditional rows.
@@ -928,6 +943,16 @@ class WasteGuideService:
         context = unicodedata.normalize(
             "NFKC", " ".join([query] + [str(item.get("answer", "")) for item in clarifications])
         ).lower()
+        food_use_answer = next((
+            unicodedata.normalize("NFKC", str(item.get("answer", ""))).strip().lower()
+            for item in reversed(clarifications)
+            if "飲料" in unicodedata.normalize("NFKC", str(item.get("question", "")))
+            and any(word in unicodedata.normalize("NFKC", str(item.get("question", "")))
+                    for word in ("食料品", "食料用品", "食品"))
+        ), "")
+        confirmed_food_bottle = food_use_answer in (
+            "はい", "ええ", "そうです", "そのとおりです", "yes",
+        )
         bottle = any(word in context for word in ("びん", "ビン", "瓶"))
         can = "缶" in context
         if can and bottle:
@@ -944,8 +969,8 @@ class WasteGuideService:
             else:
                 return "捨てるのは缶とびんのどちらですか？"
         if bottle and not any(word in context for word in ("ふた", "フタ", "キャップ")):
-            if not any(word in context for word in (
-                "飲料", "食料", "食品", "調味料", "しょうゆ", "醤油", "みりん",
+            if not confirmed_food_bottle and not any(word in context for word in (
+                "飲料", "食料", "食品", "調味料", "ジャム", "しょうゆ", "醤油", "みりん",
                 "料理酒", "ビール", "ワイン", "ラムネ", "牛乳", "ドレッシング",
             )):
                 return "そのびんは飲料・食料品用ですか？"

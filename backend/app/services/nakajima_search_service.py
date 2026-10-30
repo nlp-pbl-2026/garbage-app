@@ -12,6 +12,9 @@ def _norm(value: str) -> str:
     return re.sub(r"\s+", "", unicodedata.normalize("NFKC", value)).lower()
 
 
+_OFFICIAL_EXAMPLE_STEMS = {"家具類": "家具"}
+
+
 class NakajimaSearchService:
     def __init__(self, path: Path | None = None):
         relative = Path("data/regions/matsuyama/generated/nakajima_items.csv")
@@ -29,13 +32,22 @@ class NakajimaSearchService:
         ranked = []
         for row in self.rows:
             name = _norm(row["item"])
+            if row["item"] == "家具類" and "スプリングマットレス" in normalized_query:
+                # The same official calendar explicitly excludes this item.
+                continue
             if row["item_id"].startswith("nk-rule-"):
                 # A broad category section is not evidence for an unrelated item.
                 code = _norm(row["category"])
                 score = .8 if (name in normalized_query or
                                  (len(code) >= 2 and code in normalized_query)) else 0
             else:
-                score = 1.0 if name in normalized_query else sum(.15 for word in words if word in name)
+                # The official example is "家具類"; ordinary queries say "家具".
+                # Keep this alias specific to that verified example so broad
+                # suffix stripping cannot mislabel unrelated plastic "ネット類".
+                stem = _OFFICIAL_EXAMPLE_STEMS.get(row["item"], "")
+                score = (1.0 if name in normalized_query else
+                         .9 if stem and stem in normalized_query else
+                         sum(.15 for word in words if word in name))
             if score:
                 ranked.append((min(score, 1.0), row))
         ranked.sort(key=lambda item: (-item[0], item[1]["item_id"]))
