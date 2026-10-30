@@ -15,6 +15,10 @@ infra/generated/
 
 # Municipality source data must be supplied separately under the documented paths
 data/regions/**/*.csv
+# Official documents and derived municipality data are supplied/generated locally.
+data/regions/*/source/
+data/regions/*/generated/
+frontend/assets/data/municipality_calendar.json
 
 # Environment variables
 .env
