@@ -40,6 +40,10 @@ final districtsProvider =
   return service.getDistricts(municipalityId);
 });
 
+final regionCoverageNoticeProvider = FutureProvider.family<String?, String>((ref, municipalityId) {
+  return ref.watch(regionServiceProvider).getCoverageNotice(municipalityId);
+});
+
 /// 地域設定のStateNotifier
 ///
 /// 地域設定の読み込み・保存・バリデーションを管理する。

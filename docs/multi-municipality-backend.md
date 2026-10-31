@@ -1,6 +1,6 @@
 # 複数自治体バックエンドのデータ契約
 
-標準の `data/regions/catalog.json` に登録している実自治体は松山市だけです。
+標準の `data/regions/catalog.json` に登録している実自治体は松山市と八幡浜市です。八幡浜市の対応範囲は[データガイド](yawatahama-data.md)を参照してください。
 バックエンドは登録された自治体の台帳・分類・品目CSV・NPZ索引・実日付カレンダーを
 切り替えられます。Flutterも同じ台帳から生成したオフラインカタログで自治体を切り替えます
 （[Flutterのデータ契約](multi-municipality-flutter.md)）。新しい自治体の公式データ整備と
@@ -79,7 +79,9 @@
 ## 品目・索引・検索
 
 CSVは既存の `item_id,item,category,category_display,note` を基本とし、必要に応じて
-`reading,search_text` を追加できます。NPZは `vectors,item_ids,model_id,dimensions` を
+`reading,search_text` を追加できます。`disposal_instructions` は区分共通の出し方を回答根拠に追加する任意列で、Embeddingテキストには含めません。
+条件付き分類には `category_options`（分類コード配列のJSON文字列）を任意で指定できます。
+これは注記の条件を満たしたときの候補であり、自動的な分類確定ではありません。松山市の従来の根拠チェックは変更しません。NPZは `vectors,item_ids,model_id,dimensions` を
 保持します。`items.csv` の隣に `index_manifest.json` が必要です。
 
 ```json

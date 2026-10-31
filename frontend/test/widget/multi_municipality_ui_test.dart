@@ -172,8 +172,11 @@ void main() {
     tester.view.devicePixelRatio = 1;
     addTearDown(tester.view.resetPhysicalSize);
     addTearDown(tester.view.resetDevicePixelRatio);
-    final data = MunicipalityDataService(
-        bundle: MunicipalityBundle(multiMunicipalityAssets()));
+    final assets = multiMunicipalityAssets();
+    final registry = jsonDecode(assets['90002-registry']!);
+    registry['coverage_notice'] = '確認できていない住所は選択対象外です';
+    assets['90002-registry'] = jsonEncode(registry);
+    final data = MunicipalityDataService(bundle: MunicipalityBundle(assets));
     final selected = SelectedRegion();
     final notifications = LocalNotifications();
     await tester.pumpWidget(ProviderScope(
@@ -196,6 +199,7 @@ void main() {
     expect(find.text('松山市'), findsNothing);
     await tester.tap(find.text('試験町B'));
     await tester.pumpAndSettle();
+    expect(find.text('確認できていない住所は選択対象外です'), findsOneWidget);
     await tester.tap(find.byKey(const Key('district-selector')));
     await tester.pumpAndSettle();
     await tester.tap(find.text('試験町B地区'));

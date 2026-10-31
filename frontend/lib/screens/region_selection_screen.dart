@@ -546,6 +546,8 @@ class _RegionSelectionScreenState extends ConsumerState<RegionSelectionScreen> {
         ? null
         : ref.watch(districtsProvider(_selectedMunicipality!.id));
 
+    final notice = _selectedMunicipality == null ? null
+        : ref.watch(regionCoverageNoticeProvider(_selectedMunicipality!.id)).asData?.value;
     return Container(
       decoration: BoxDecoration(
         color: colors.surfaceContainerLow,
@@ -585,6 +587,10 @@ class _RegionSelectionScreenState extends ConsumerState<RegionSelectionScreen> {
             error: _validationResult?.districtError,
             enabled: districts?.hasValue ?? false,
             onTap: _showDistrictSelector,
+          ),
+          if (notice != null) Padding(
+            padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+            child: Text(notice, style: TextStyle(fontSize: 12, color: colors.onSurfaceVariant)),
           ),
         ],
       ),

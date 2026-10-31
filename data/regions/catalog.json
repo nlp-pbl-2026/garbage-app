@@ -4,6 +4,10 @@
     {
       "id": "38201",
       "registry_path": "matsuyama/registry.json"
+    },
+    {
+      "id": "38204",
+      "registry_path": "yawatahama/registry.json"
     }
   ]
 }
