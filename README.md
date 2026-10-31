@@ -76,6 +76,8 @@ flutter run -d chrome \
 
 自治体の分別資料から作成したCSVと生成カレンダーはGitに含めていません。既存のEmbedding索引は追跡しています。バックエンドの再構築・再デプロイや精度評価を行う場合は、[`docs/data.md`](docs/data.md)に従って必要なデータを取得・生成してください。
 
+バックエンドの自治体別データ読み込み形式は[複数自治体バックエンドのデータ契約](docs/multi-municipality-backend.md)を参照してください。標準カタログに登録済みの実自治体とFlutterの対応範囲は、現在も松山市のみです。
+
 ## AWS環境の管理
 
 審査用APIは認証不要ですが、API Gatewayで5 req/s、burst 10に制限しています。URLは審査関係者だけに共有し、FlutterへAWS認証情報や分析キーを埋め込まないでください。
