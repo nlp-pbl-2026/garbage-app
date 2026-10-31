@@ -54,7 +54,10 @@ class ItemSearchService:
         "出し方",
     )
 
-    def __init__(self, items_path: Path | None = None):
+    def __init__(self, items_path: Path | None = None, *, municipality_id: str = "38201"):
+        if municipality_id != "38201" and items_path is None:
+            raise ValueError("An explicit regional item CSV is required")
+        self._municipality_id = municipality_id
         configured = (
             Path(config.KNOWLEDGE_ITEMS_PATH) if config.KNOWLEDGE_ITEMS_PATH else None
         )
@@ -69,7 +72,12 @@ class ItemSearchService:
 
     def _load_items(self) -> list[dict[str, str]]:
         with self._items_path.open(encoding="utf-8-sig", newline="") as file:
-            return list(csv.DictReader(file))
+            reader = csv.DictReader(file)
+            if self._municipality_id != "38201":
+                required = {"item_id", "item", "category", "category_display", "note"}
+                if not required.issubset(reader.fieldnames or []):
+                    raise ValueError("Regional item CSV columns are missing")
+            return list(reader)
 
     def search(self, query: str, *, limit: int = 5) -> list[ItemMatch]:
         normalized_query = self._normalize(query)
@@ -105,7 +113,7 @@ class ItemSearchService:
             if "ふた" in normalized_query and "ふた" in normalized_item:
                 score += 0.08
             if all(marker in normalized_query for marker in ("弁当", "ふた")):
-                if "容器" in normalized_item and row.get("category") == "プラ":
+                if self._municipality_id == "38201" and "容器" in normalized_item and row.get("category") == "プラ":
                     score += 0.3
             # 「カメラのフィルムが入っていた箱」などは、本体名よりも
             # 捨てる対象として明示された部品・包装語を優先する。
@@ -133,7 +141,7 @@ class ItemSearchService:
             # 使い捨ての弁当・惣菜容器の透明なふたを指す。弁当箱と容器が
             # 同点になると分類が不必要に曖昧になるため、用途・外見を使って
             # 地域資料内のより具体的な候補を優先する。
-            if all(
+            if self._municipality_id == "38201" and all(
                 marker in normalized_query for marker in ("弁当", "透明", "ふた")
             ):
                 if "容器" in normalized_item and row.get("category") == "プラ":

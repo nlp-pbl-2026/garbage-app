@@ -25,7 +25,9 @@ from ..schemas import (
 )
 from ..services.item_search_service import ItemSearchService
 from ..services.nakajima_search_service import NakajimaSearchService
-from ..services.region_registry_service import RegionResolutionError, get_registry
+from ..services.region_registry_service import (
+    RegionResolutionError, RegionalDataError, UnsupportedMunicipalityError, get_registry,
+)
 from ..services.search_log_service import SearchLogService
 from ..services.waste_guide_service import (
     CATEGORY_NAMES,
@@ -91,7 +93,7 @@ async def rewrite_search_query(request: WasteGuideRequest) -> SearchRewriteRespo
 async def retrieve_regional_documents(
     request: SearchRetrieveRequest,
 ) -> SearchRetrieveResponse:
-    """選択した松山市の地域に対応する根拠を取得する。"""
+    """選択した自治体・分別設定の根拠を取得する。"""
 
     documents = await _run_step(
         lambda: WasteGuideService().retrieve(
@@ -183,12 +185,17 @@ async def list_waste_items(
 ) -> BulkyWasteItemListResponse:
     """あいまい検索と同じ品目辞典から、分類別の品目一覧を返す。"""
 
-    if municipality_id != "38201":
-        raise HTTPException(status_code=404, detail="指定された自治体は未対応です。")
     try:
-        region = get_registry().resolve(municipality_id, district_id or "38201-08")
+        region = get_registry().resolve(
+            municipality_id, district_id or ("38201-08" if municipality_id == "38201" else ""))
+    except UnsupportedMunicipalityError as error:
+        raise HTTPException(status_code=404, detail=str(error)) from error
     except RegionResolutionError as error:
         raise HTTPException(status_code=422, detail=str(error)) from error
+    except RegionalDataError as error:
+        raise HTTPException(status_code=503, detail="自治体のデータを確認できません。") from error
+    if municipality_id != "38201" and category not in region.category_codes:
+        raise HTTPException(status_code=422, detail="指定された分別区分は未対応です。")
     if region.is_nakajima:
         try:
             rows = [row for row in NakajimaSearchService().rows
@@ -203,11 +210,12 @@ async def list_waste_items(
             total_count=len(rows), municipality_name="松山市・中島地域",
         )
 
-    matches = ItemSearchService().list_items(
-        category=category,
-        query=search,
-        limit=None,
-    )
+    try:
+        item_search = (ItemSearchService() if municipality_id == "38201" else
+                       ItemSearchService(items_path=region.asset_path("items_path"), municipality_id=municipality_id))
+        matches = item_search.list_items(category=category, query=search, limit=None)
+    except (OSError, ValueError, KeyError) as error:
+        raise HTTPException(status_code=503, detail="自治体の品目資料を確認できません。") from error
     return BulkyWasteItemListResponse(
         items=[
             BulkyWasteItemResponse(
@@ -215,7 +223,7 @@ async def list_waste_items(
                 item_name=match.item,
                 category=(
                     match.category_display
-                    or CATEGORY_NAMES.get(match.category, match.category)
+                    or region.category_names.get(match.category, match.category)
                 ),
                 fee_amount=0,
                 notes=match.note or None,
@@ -223,7 +231,7 @@ async def list_waste_items(
             for index, match in enumerate(matches, start=1)
         ],
         total_count=len(matches),
-        municipality_name="松山市",
+        municipality_name=region.municipality_label,
     )
 
 
@@ -249,7 +257,7 @@ async def _build_response_and_log(
         classification = WasteClassification(
             item_name=result.decision.item_name,
             category_code=result.decision.category_code,
-            category_name=CATEGORY_NAMES[result.decision.category_code],
+            category_name=result.category_name or CATEGORY_NAMES[result.decision.category_code],
             disposal_instructions=result.decision.disposal_instructions,
             confidence=result.decision.confidence,
         )
@@ -292,7 +300,7 @@ async def _build_response_and_log(
         "follow_up_question": result.follow_up_question,
         "category_code": result.decision.category_code if result.decision else None,
         "category_name": (
-            CATEGORY_NAMES.get(result.decision.category_code)
+            result.category_name or CATEGORY_NAMES.get(result.decision.category_code)
             if result.decision
             else None
         ),

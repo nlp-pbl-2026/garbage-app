@@ -33,7 +33,11 @@ class EmbeddingSearchService:
         runtime_client=None,
         model_id: str | None = None,
         dimensions: int | None = None,
+        municipality_id: str | None = None,
+        profile_id: str | None = None,
     ):
+        if municipality_id and municipality_id != "38201" and (items_path is None or embeddings_path is None):
+            raise ValueError("Explicit regional item and embedding paths are required")
         self._embeddings_path = embeddings_path or self._detect_path(
             config.EMBEDDING_INDEX_PATH,
             "data/regions/matsuyama/common/knowledge/item_embeddings.npz",
@@ -45,6 +49,8 @@ class EmbeddingSearchService:
         self._model_id = model_id or config.BEDROCK_EMBEDDING_MODEL_ID
         self._dimensions = dimensions or config.EMBEDDING_DIMENSIONS
         self._runtime = runtime_client
+        self._municipality_id = municipality_id
+        self._profile_id = profile_id
         self._vectors: np.ndarray | None = None
         self._item_ids: list[str] = []
         self._meta: dict[str, dict[str, str]] = {}
@@ -80,6 +86,14 @@ class EmbeddingSearchService:
         if not manifest_path.exists():
             raise FileNotFoundError(f"Item/index verification manifest is missing: {manifest_path}")
         manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        if self._municipality_id:
+            declared_city = manifest.get("municipality_id")
+            city_mismatch = ((declared_city is not None or self._municipality_id != "38201")
+                             and declared_city != self._municipality_id)
+            profile_mismatch = (self._profile_id is not None
+                                and manifest.get("profile_id") != self._profile_id)
+            if city_mismatch or profile_mismatch:
+                raise ValueError("Embedding index belongs to another municipality or profile")
         source_hash = hashlib.sha256(self._items_path.read_bytes()).hexdigest()
         index_hash = hashlib.sha256(self._embeddings_path.read_bytes()).hexdigest()
         if (source_hash != manifest["source_sha256"]
@@ -95,11 +109,16 @@ class EmbeddingSearchService:
         if not self._items_path.exists():
             return {}
         with self._items_path.open(encoding="utf-8-sig", newline="") as file:
-            return {
-                row["item_id"]: row
-                for row in csv.DictReader(file)
-                if row.get("item_id")
-            }
+            reader = csv.DictReader(file)
+            if self._municipality_id and self._municipality_id != "38201":
+                required = {"item_id", "item", "category", "category_display", "note"}
+                if not required.issubset(reader.fieldnames or []):
+                    raise ValueError("Regional item CSV columns are missing")
+            rows = [row for row in reader if row.get("item_id")]
+            meta = {row["item_id"]: row for row in rows}
+            if len(rows) != len(meta):
+                raise ValueError("Duplicate item IDs")
+            return meta
 
     @property
     def is_ready(self) -> bool:

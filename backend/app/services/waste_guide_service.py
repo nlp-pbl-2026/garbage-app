@@ -16,12 +16,14 @@ from .calendar_service import CalendarService, CollectionDate
 from .embedding_search_service import EmbeddingSearchService
 from .item_search_service import ItemSearchService
 from .nakajima_search_service import NakajimaSearchService
+from .matsuyama_prompt_rules import classification_guidance
 from .nakajima_rule_service import evidence_text as island_evidence_text, resolve_shared_item
-from .region_registry_service import CATEGORY_DEFINITIONS, RegionContext, RegionResolutionError, get_registry
+from .region_registry_service import (
+    CATEGORY_DEFINITIONS, RegionContext, RegionResolutionError, RegionalDataError, get_registry,
+)
 
 logger = logging.getLogger(__name__)
 
-SUPPORTED_MUNICIPALITY_ID = "38201"
 CATEGORY_NAMES = {code: label for code, (_, label) in CATEGORY_DEFINITIONS.items()}
 
 
@@ -69,6 +71,7 @@ class WasteGuideResult:
     decision: ClassificationDecision | None = None
     next_collection: CollectionDate | None = None
     sources: list[RetrievedDocument] = field(default_factory=list)
+    category_name: str | None = None
 
 
 class BedrockGateway:
@@ -88,6 +91,7 @@ class BedrockGateway:
         )
         # 自前Embedding検索はクエリのEmbeddingに同じRuntimeを使い回す。
         self._embedding_search = embedding_search
+        self._regional_embedding_searches: dict[tuple, EmbeddingSearchService] = {}
 
     def rewrite_query(
         self,
@@ -101,13 +105,13 @@ class BedrockGateway:
             for item in clarifications
         )
         prompt = f"""
-松山市{region.area_name if region else '清水'}地区のごみ分別データを検索するため、利用者の表現を短い検索文に言い換えてください。
+{region.municipality_label if region else '松山市'}{region.area_name if region else '清水'}地区のごみ分別データを検索するため、利用者の表現を短い検索文に言い換えてください。
 品目、素材、大きさ、用途、汚れの状態など、分類に必要な語を残してください。
 利用者の表現から社会通念上ほぼ一意に判断できる特徴は、検索に必要な範囲で補って構いません。
 例えば「お弁当の透明なフタ」は、繰り返し使う弁当箱ではなく、一般的な使い捨ての
 「弁当・惣菜の透明なプラスチック製容器のふた」として検索してください。
 複数の解釈が現実的に残る場合は、推測で情報を追加しないでください。
-「松山市」「清水地区」「ごみ分別」のような検索対象側で既知の語は追加しないでください。
+「{region.municipality_label if region else '松山市'}」「{region.area_name if region else '清水'}地区」「ごみ分別」のような検索対象側で既知の語は追加しないでください。
 画像が添付されている場合は、写っている品物、用途、形状、表示、見た目から確認できる素材だけを
 検索文へ含めてください。画像で確認できない素材や大きさを推測してはいけません。
 利用者の文章は画像より優先し、文章に明記された品物・部位・素材・状態を落とさないでください。
@@ -128,7 +132,7 @@ class BedrockGateway:
 """.strip()
         payload = self._converse_json(prompt, max_tokens=200, image=image)
         rewritten = str(payload.get("search_query", "")).strip()
-        cleaned = self._clean_rewritten_query(rewritten)
+        cleaned = self._clean_rewritten_query(rewritten, region=region)
         if image is None:
             cleaned = self._remove_unsupported_materials(
                 cleaned,
@@ -147,12 +151,14 @@ class BedrockGateway:
         return result
 
     @staticmethod
-    def _clean_rewritten_query(value: str) -> str:
+    def _clean_rewritten_query(value: str, region: RegionContext | None = None) -> str:
         cleaned = value
+        municipality = region.municipality_label if region else "松山市"
+        area = region.area_name if region else "清水"
         for phrase in (
-            "松山市清水地区",
-            "松山市",
-            "清水地区",
+            f"{municipality}{area}地区",
+            municipality,
+            f"{area}地区",
             "ごみ分別データ",
             "ゴミ分別データ",
             "ごみ分別",
@@ -264,41 +270,63 @@ class BedrockGateway:
                 additions.append(marker)
         return " ".join([cleaned, *dict.fromkeys(additions)]).strip()
 
-    def retrieve(self, query: str) -> list[RetrievedDocument]:
+    def retrieve(self, query: str, *, region: RegionContext | None = None) -> list[RetrievedDocument]:
         """クエリの意味検索。既定は自前Embedding、任意でマネージドKBを併用。"""
 
         if not config.USE_BEDROCK_KNOWLEDGE_BASE:
-            return self._retrieve_by_embedding(query)
-        return self._retrieve_from_knowledge_base(query)
+            return self._retrieve_by_embedding(query, region=region)
+        return self._retrieve_from_knowledge_base(query, region=region)
 
-    def _retrieve_by_embedding(self, query: str) -> list[RetrievedDocument]:
+    def _retrieve_by_embedding(self, query: str, *, region: RegionContext | None = None) -> list[RetrievedDocument]:
         return [
             RetrievedDocument(
                 text=match.evidence_text,
                 score=match.score,
-                uri=f"local://items/{match.item_id}",
-                title="松山市ごみ分別辞典（意味検索）",
+                uri=(f"{region.evidence_prefix}items/{match.item_id}"
+                     if region and region.municipality_id != "38201" else f"local://items/{match.item_id}"),
+                title=(region.rules.knowledge_title or f"{region.municipality_label}ごみ分別辞典") + "（意味検索）"
+                      if region else "松山市ごみ分別辞典（意味検索）",
             )
-            for match in self.search_item_candidates(query)
+            for match in self.search_item_candidates(query, region=region)
         ]
 
-    def search_item_candidates(self, query: str, *, limit: int | None = None):
+    def search_item_candidates(self, query: str, *, limit: int | None = None,
+                               region: RegionContext | None = None):
         """Return shared item identities; callers choose regional evidence."""
         try:
-            if self._embedding_search is None:
-                self._embedding_search = EmbeddingSearchService(runtime_client=self._runtime)
+            if region is None or (region.municipality_id == "38201" and self._embedding_search is not None):
+                if self._embedding_search is None:
+                    self._embedding_search = EmbeddingSearchService(runtime_client=self._runtime)
+                search = self._embedding_search
+            else:
+                key = (region.municipality_id, region.rule_profile_id, region.version,
+                       region.asset_path("items_path"), region.asset_path("embedding_index_path"))
+                if key not in self._regional_embedding_searches:
+                    self._regional_embedding_searches[key] = EmbeddingSearchService(
+                        items_path=region.asset_path("items_path"),
+                        embeddings_path=region.asset_path("embedding_index_path"),
+                        runtime_client=self._runtime, municipality_id=region.municipality_id,
+                        profile_id=region.rules.index_profile_id,
+                    )
+                search = self._regional_embedding_searches[key]
         except (OSError, ValueError, KeyError) as error:
-            raise WasteGuideError("Verified Matsuyama item index is unavailable") from error
-        if not getattr(self._embedding_search, "is_ready", True):
-            raise WasteGuideError("Verified Matsuyama item index is unavailable")
-        return self._embedding_search.search(query, limit=limit)
+            raise WasteGuideError("Verified regional item index is unavailable") from error
+        if not getattr(search, "is_ready", True):
+            raise WasteGuideError("Verified regional item index is unavailable")
+        matches = search.search(query, limit=limit)
+        if region and region.municipality_id != "38201" and any(
+                match.category and match.category not in region.category_codes for match in matches):
+            raise WasteGuideError("Item data contains an unknown regional category")
+        return matches
 
-    def _retrieve_from_knowledge_base(self, query: str) -> list[RetrievedDocument]:
-        if not config.BEDROCK_KNOWLEDGE_BASE_ID:
+    def _retrieve_from_knowledge_base(self, query: str, *, region: RegionContext | None = None) -> list[RetrievedDocument]:
+        knowledge_base_id = (region.rules.knowledge_base_id if region and region.municipality_id != "38201"
+                             else config.BEDROCK_KNOWLEDGE_BASE_ID)
+        if not knowledge_base_id:
             raise WasteGuideError("BEDROCK_KNOWLEDGE_BASE_ID is not configured")
         try:
             response = self._agent_runtime.retrieve(
-                knowledgeBaseId=config.BEDROCK_KNOWLEDGE_BASE_ID,
+                knowledgeBaseId=knowledge_base_id,
                 retrievalQuery={"text": query},
                 retrievalConfiguration={
                     "managedSearchConfiguration": {
@@ -322,7 +350,8 @@ class BedrockGateway:
                 RetrievedDocument(
                     text=content.get("text", ""),
                     score=result.get("score"),
-                    uri=uri,
+                    uri=(f"{region.evidence_prefix}kb/{len(documents)}"
+                         if region and region.municipality_id != "38201" else uri),
                     title=title,
                 )
             )
@@ -345,26 +374,20 @@ class BedrockGateway:
         )
         island = region is not None and region.is_nakajima
         category_list = ", ".join(region.category_codes if region else CATEGORY_NAMES)
-        profile_note = ("中島地域の公式資料に基づく共通区分・例外ルールだけで判定してください。"
-                        "共通索引の品目名は検索候補であり、松山・北条地域の分類や注意書きは適用しないでください。"
-                        "中島では缶類とびん類を別に扱い、粗大ごみは地区別カレンダーの収集日に出します。"
-                        if island else "松山・北条地域の公式資料に記載された根拠だけを使ってください。")
-        mainland_examples = """品目種別ごとの分類原則:
-- 木材と木製家具は別品目として扱い、家具の分類を木材の行から決めない。
-- プラスチック製容器包装は商品を包んでいた容器・包装に限る。プラスチック製品は根拠を確認する。
-- 乾電池・アルカリ電池は「埋立」、ボタン型電池は「水銀」、充電式・リチウムイオンは「禁止」。
-- 土・砂・粘土・石・陶器などは「埋立」。公式資料の対象条件を必ず確認する。
-- 市が収集しない品目は大型でも「粗大」にしない。"""
-        island_examples = """中島地域の分類原則:
-- 飲料缶・缶詰は「缶」、飲料・食料品用のびんは「びん」。用途が不明な容器は確認する。
-- スプレー缶、一斗缶、金属製のびんのキャップなどは「金・ガ」。
-- 粗大ごみは地区別カレンダーに収集日がある。松山・北条地域の戸別申込制を当てはめない。
-- 共通索引の候補には、中島の公式計画で共通と確認できた区分だけを適用する。用途・材質・大きさ等の条件が足りない場合は確定しない。
-- 中島の資料に区分や条件の根拠がない場合は分類を確定しない。"""
-        size_example = ("中島地域では透明袋45L以下か、粗大ごみとして出す大きさかを公式根拠で確認する。"
-                        if island else "袋に入らないものは該当根拠に従って粗大ごみとして扱う。")
+        if region is None or region.municipality_id == "38201":
+            profile_note, examples, size_example = classification_guidance(island)
+        else:
+            profile_note = "選択した自治体・分別設定の公式資料に記載された根拠だけを使ってください。"
+            examples = region.rules.classification_rules
+            size_example = "大きさによる分岐は該当地域の検索根拠に従ってください。"
+        condition_examples = (
+            "根拠の「金属製のものは『金・ガ』」「袋に入らないものは『粗大』」"
+            "「プラマークがあれば『プラ』」「事業用は排出禁止」等は、注意書きではなく分類の分岐条件である。"
+            if region is None or region.municipality_id == "38201" else
+            "根拠にある素材・大きさ・表示・排出元による分類の変更は、注意書きではなく分岐条件である。"
+        )
         prompt = f"""
-あなたは松山市のごみ分別判定器です。検索根拠だけを使い、品目の分類を判定してください。
+あなたは{region.municipality_label if region else '松山市'}のごみ分別判定器です。検索根拠だけを使い、品目の分類を判定してください。
 人間や人物など、ごみとして扱えない対象について分別の追加質問を生成してはいけません。
 分類コードは {category_list} のいずれかです。{profile_note}
 添付画像がある場合、画像は利用者が捨てたい対象です。画像から直接確認できる品物、形状、表示、
@@ -390,14 +413,13 @@ class BedrockGateway:
    clarifying_question に入れる。質問は利用者が見て答えられる具体的な日本語にする。
 
 条件付き根拠の扱い:
-- 根拠の「金属製のものは『金・ガ』」「袋に入らないものは『粗大』」
-  「プラマークがあれば『プラ』」「事業用は排出禁止」等は、注意書きではなく分類の分岐条件である。
+- {condition_examples}
 - 分岐条件に必要な情報が質問・補足にない場合、行に記載された既定の分類コードだけを採用してはいけない。
 - 素材や大きさで分類が分かれる場合だけ、利用者に確認する。{size_example}
 - 一方、「すすいで出す」「電池は外す」「危なくないように包む」のように分類コードが変わらない記述は、
   追加質問の理由にせず disposal_instructions で案内する。
 
-{island_examples if island else mainland_examples}
+{examples}
 
 追加質問の規則:
 - 一度に質問する論点は一つだけにし、可能なら根拠に存在する選択肢を短く示す。
@@ -459,7 +481,7 @@ class BedrockGateway:
         if confidence < config.CLASSIFICATION_CONFIDENCE_THRESHOLD:
             is_resolved = False
         if is_resolved and not any(
-            self._document_supports_category(documents[index - 1], category_code)
+            self._document_supports_category(documents[index - 1], category_code, region=region)
             for index in evidence_indexes
         ):
             logger.warning(
@@ -484,14 +506,15 @@ class BedrockGateway:
 
     @staticmethod
     def _document_supports_category(
-        document: RetrievedDocument, category_code: str
+        document: RetrievedDocument, category_code: str, *, region: RegionContext | None = None
     ) -> bool:
+        names = region.category_names if region else CATEGORY_NAMES
         text = unicodedata.normalize("NFKC", document.text)
         structured = re.search(r"^分類(?:コード)?:\s*([^\n]+)", text, re.MULTILINE)
         if structured:
-            label = CATEGORY_NAMES.get(category_code, "")
+            label = names.get(category_code, "")
             return structured.group(1).strip() in (category_code, label, f"{label} ({category_code})")
-        category_name = CATEGORY_NAMES.get(category_code, "")
+        category_name = names.get(category_code, "")
         return category_code in text or (category_name and category_name in text)
 
     def _converse_json(
@@ -548,11 +571,12 @@ class WasteGuideService:
         now_provider=None,
         today_provider=None,
     ):
-        self._gateway = gateway or BedrockGateway()
+        self._gateway = gateway
         # 言い換え処理ではカレンダーも表層検索CSVも不要。ローカルでそれらの
         # Git管理外データが未配置でも、必要な段階までは初期化しない。
         self._calendar = calendar
         self._item_search = item_search
+        self._regional_item_searches: dict[tuple, ItemSearchService] = {}
         # today_providerは既存呼び出しとの互換用。新規コードは時刻を含むnow_providerを使う。
         self._now_provider = now_provider
         self._today_provider = today_provider
@@ -601,6 +625,8 @@ class WasteGuideService:
         """利用者の表現を、地域資料を探すための検索文へ言い換える。"""
 
         region = self._validate_region(municipality_id, district_id)
+        if self._gateway is None:
+            self._gateway = BedrockGateway()
         if isinstance(self._gateway, BedrockGateway):
             return self._gateway.rewrite_query(query, clarifications or [], image=image, region=region)
         return self._gateway.rewrite_query(query, clarifications or [], image=image)
@@ -615,6 +641,8 @@ class WasteGuideService:
         """言い換え済み検索文で地域別Knowledge Baseを検索する。"""
 
         region = self._validate_region(municipality_id, district_id)
+        if self._gateway is None:
+            self._gateway = BedrockGateway()
         if region.is_nakajima:
             try:
                 matches = NakajimaSearchService().search(rewritten_query)
@@ -647,7 +675,9 @@ class WasteGuideService:
             if search_candidates is None:
                 return documents  # Test gateways without a vector adapter.
             try:
-                candidates = search_candidates(rewritten_query, limit=24)
+                candidates = (search_candidates(rewritten_query, limit=24, region=region)
+                              if isinstance(self._gateway, BedrockGateway) else
+                              search_candidates(rewritten_query, limit=24))
             except WasteGuideError:
                 # The previously supported 79 official rows remain available
                 # when a local installation has no shared vector bundle.
@@ -676,20 +706,31 @@ class WasteGuideService:
         # 既定は意味検索(Embedding)単体。表層一致は設定で併用可能。
         lexical_documents: list[RetrievedDocument] = []
         if config.LEXICAL_SEARCH_ENABLED:
-            if self._item_search is None:
-                self._item_search = ItemSearchService()
+            try:
+                if municipality_id == "38201" and self._item_search is not None:
+                    search = self._item_search
+                else:
+                    key = (municipality_id, region.rule_profile_id, region.version, region.asset_path("items_path"))
+                    if key not in self._regional_item_searches:
+                        self._regional_item_searches[key] = ItemSearchService(
+                            items_path=region.asset_path("items_path"), municipality_id=municipality_id)
+                    search = self._regional_item_searches[key]
+            except (OSError, ValueError, KeyError) as error:
+                raise WasteGuideError("Regional item data is unavailable") from error
             lexical_documents = [
                 RetrievedDocument(
                     text=match.evidence_text,
                     score=match.score,
-                    uri=f"local://items/{match.item_id}",
-                    title="松山市ごみ分別辞典（品目検索）",
+                    uri=(f"local://items/{match.item_id}" if municipality_id == "38201"
+                         else f"{region.evidence_prefix}items/{match.item_id}"),
+                    title=(region.rules.knowledge_title or f"{region.municipality_label}ごみ分別辞典") + "（品目検索）",
                 )
-                for match in self._item_search.search(
+                for match in search.search(
                     rewritten_query, limit=config.LEXICAL_SEARCH_TOP_K
                 )
             ]
-        vector_documents = self._gateway.retrieve(rewritten_query)
+        vector_documents = (self._gateway.retrieve(rewritten_query, region=region)
+                            if isinstance(self._gateway, BedrockGateway) else self._gateway.retrieve(rewritten_query))
         return self._fuse_documents(lexical_documents, vector_documents)
 
     @staticmethod
@@ -750,6 +791,11 @@ class WasteGuideService:
         """検索根拠から分類を決め、回答または追加質問を組み立てる。"""
 
         region = self._validate_region(municipality_id, district_id)
+        if municipality_id != "38201" and any(
+                not (doc.uri or "").startswith(region.evidence_prefix) for doc in documents):
+            raise UnsupportedRegionError("指定された自治体・分別設定・データ版以外の検索根拠は使用できません。")
+        if municipality_id == "38201" and any((doc.uri or "").startswith("regional://") for doc in documents):
+            raise UnsupportedRegionError("他の自治体の検索根拠は使用できません。")
         if region.is_nakajima and any(not (doc.uri or "").startswith("nakajima://") for doc in documents):
             raise UnsupportedRegionError("中島地域以外の検索根拠を使用できません。")
         if not region.is_nakajima and any((doc.uri or "").startswith("nakajima://") for doc in documents):
@@ -771,7 +817,7 @@ class WasteGuideService:
                     status="unable_to_determine",
                     rewritten_query=rewritten_query,
                     answer=(
-                        "いただいた情報は反映しましたが、松山市の公開資料から分類を"
+                        f"いただいた情報は反映しましたが、{region.municipality_label}の公開資料から分類を"
                         "確認できませんでした。品目名や用途を変えて、もう一度検索してください。"
                     ),
                     decision=ClassificationDecision(is_resolved=False),
@@ -806,6 +852,8 @@ class WasteGuideService:
                     decision=ClassificationDecision(is_resolved=False),
                     sources=documents[:3],
                 )
+        if self._gateway is None:
+            self._gateway = BedrockGateway()
         if isinstance(self._gateway, BedrockGateway):
             decision = self._gateway.classify(query, clarification_items, documents,
                                               image=image, region=region)
@@ -845,6 +893,7 @@ class WasteGuideService:
         elif (
             not decision.is_resolved
             and len(clarification_items) >= config.MAX_CLARIFICATION_TURNS
+            and municipality_id == "38201"
         ):
             structured_decision = self._resolve_answered_structured_conditions(
                 query=query,
@@ -883,7 +932,7 @@ class WasteGuideService:
                     status="unable_to_determine",
                     rewritten_query=rewritten_query,
                     answer=(
-                        "いただいた情報は反映しましたが、松山市の公開資料から分類を"
+                        f"いただいた情報は反映しましたが、{region.municipality_label}の公開資料から分類を"
                         "確定できませんでした。品目名や用途、汚れの状態を含めて、"
                         "別の言い方でもう一度検索してください。"
                     ),
@@ -898,8 +947,11 @@ class WasteGuideService:
                 sources=sources,
             )
 
-        if self._calendar is None or self._calendar.region.area_id != region.area_id:
-            self._calendar = CalendarService(region=region)
+        if self._calendar is None or self._calendar.region != region:
+            try:
+                self._calendar = CalendarService(region=region)
+            except (OSError, ValueError, KeyError) as error:
+                raise WasteGuideError("Regional calendar data is invalid") from error
         if self._now_provider is not None:
             next_collection = self._calendar.next_collection(
                 decision.category_code, at=self._now_provider()
@@ -921,6 +973,7 @@ class WasteGuideService:
             decision=decision,
             next_collection=next_collection,
             sources=sources,
+            category_name=region.category_names[decision.category_code],
         )
 
     @staticmethod
@@ -1139,8 +1192,7 @@ class WasteGuideService:
             "センチ",
         )
         if size_branch and not any(answer in context for answer in size_answers):
-            return ("中島地域の45L以下の透明袋に入る大きさですか？"
-                    if region and region.is_nakajima else "松山市の指定ごみ袋に入る大きさですか？")
+            return region.rules.size_question if region else "松山市の指定ごみ袋に入る大きさですか？"
 
         explicitly_non_plastic = any(
             marker in context
@@ -1247,13 +1299,16 @@ class WasteGuideService:
             return get_registry().resolve(municipality_id, district_id)
         except RegionResolutionError as error:
             raise UnsupportedRegionError(str(error)) from error
+        except RegionalDataError as error:
+            raise WasteGuideError(str(error)) from error
 
     @staticmethod
     def _build_answer(
         decision: ClassificationDecision, next_collection: CollectionDate | None,
         *, region: RegionContext | None = None,
     ) -> str:
-        category_name = CATEGORY_NAMES[decision.category_code]
+        names = region.category_names if region else CATEGORY_NAMES
+        category_name = names[decision.category_code]
         lines = [f"{decision.item_name}は「{category_name}」です。"]
         if decision.disposal_instructions:
             lines.append(decision.disposal_instructions)
@@ -1261,9 +1316,11 @@ class WasteGuideService:
             lines.append(
                 f"{region.area_name if region else '清水'}地区の次回収集日は{next_collection.display_date}です。"
             )
-        elif decision.category_code == "粗大" and not (region and region.is_nakajima):
+        elif region and region.rules.categories[decision.category_code].answer_note:
+            lines.append(region.rules.categories[decision.category_code].answer_note)
+        elif region is None and decision.category_code == "粗大":
             lines.append("粗大ごみは戸別収集の申し込みが必要です。")
-        elif decision.category_code == "禁止":
+        elif region is None and decision.category_code == "禁止":
             lines.append("松山市のごみ集積場所には出せません。")
         else:
             lines.append("公開済みカレンダーの範囲では次回収集日を確認できません。")

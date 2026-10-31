@@ -8,35 +8,7 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 from .. import config
-from .region_registry_service import CATEGORY_DEFINITIONS, RegionContext, get_registry
-
-
-CATEGORY_TO_COLLECTION_TYPE = {
-    "可燃": "combustible",
-    "埋立": "landfill",
-    "金・ガ": "metal_glass",
-    "紙類": "paper",
-    "ペット": "pet_bottle",
-    "プラ": "plastic_packaging",
-    "水銀": "mercury",
-    "缶": "cans",
-    "びん": "bottles",
-    "粗大": "bulky",
-}
-
-# 松山市「ごみ分別はやわかり帳」の分類別搬出期限。
-CATEGORY_COLLECTION_CUTOFF_HOURS = {
-    "可燃": 7,
-    "埋立": 8,
-    "金・ガ": 8,
-    "紙類": 8,
-    "ペット": 8,
-    "プラ": 8,
-    "水銀": 8,
-    "缶": 8,
-    "びん": 8,
-    "粗大": 8,
-}
+from .region_registry_service import RegionContext, get_registry
 
 
 @dataclass(frozen=True)
@@ -69,29 +41,34 @@ class CalendarService:
             self._calendar_path = calendar_path
             self._dates = self._load_dates()
             return
-        relative = Path("data/regions/matsuyama/generated/calendar-2026.json")
-        candidates = [Path(__file__).resolve().parents[level] / relative for level in (3, 2)]
-        default = next((candidate for candidate in candidates if candidate.exists()), candidates[0])
-        self._calendar_path = calendar_path or Path(config.CALENDAR_BUNDLE_PATH or default)
+        self._calendar_path = calendar_path or self.region.asset_path("calendar_path")
         if bundle is None:
             if not self._calendar_path.exists():
                 self.availability = "missing_data"
                 return
             bundle = json.loads(self._calendar_path.read_text(encoding="utf-8"))
-        record = bundle.get("calendars", {}).get(self.region.calendar_id)
-        if (bundle.get("version") != self.region.version or not record
+        if not isinstance(bundle, dict) or not isinstance(bundle.get("calendars"), dict):
+            raise ValueError("Invalid calendar bundle")
+        record = bundle["calendars"].get(self.region.calendar_id)
+        if (bundle.get("version") != self.region.version or not isinstance(record, dict)
+                or (bundle.get("municipality_id") != self.region.municipality_id
+                    and not (self.region.municipality_id == "38201" and "municipality_id" not in bundle))
                 or record.get("verification_status") != "checked"
                 or bundle.get("valid_from") != self.region.valid_from
                 or bundle.get("valid_to") != self.region.valid_to):
             self.availability = "unverified_data"
             return
+        if not isinstance(record.get("days"), dict):
+            raise ValueError("Invalid calendar days")
         for raw_date, categories in record["days"].items():
+            if not isinstance(categories, list) or any(not isinstance(value, str) for value in categories):
+                raise ValueError("Invalid calendar collection types")
             parsed = date.fromisoformat(raw_date)
             if not self._valid_from <= parsed <= self._valid_to:
                 raise ValueError("Calendar date outside its official validity")
             for category_id in categories:
-                label = next((label for _, (identifier, label) in CATEGORY_DEFINITIONS.items()
-                              if identifier == category_id), None)
+                label = next((definition.name for definition in self.region.rules.categories.values()
+                              if definition.collection_type_id == category_id), None)
                 if label is None:
                     raise ValueError(f"Unknown collection category: {category_id}")
                 self._dates.setdefault(category_id, []).append(CollectionDate(parsed, label))
@@ -128,22 +105,22 @@ class CalendarService:
         at: datetime | None = None,
         cutoff_hour: int | None = None,
     ) -> CollectionDate | None:
-        collection_type_id = CATEGORY_TO_COLLECTION_TYPE.get(category_code)
+        definition = self.region.rules.categories.get(category_code)
+        collection_type_id = definition.collection_type_id if definition else None
         if collection_type_id is None or self.availability != "available":
-            return None
-        if category_code == "粗大" and not self.region.is_nakajima:
             return None
         target_date = from_date or datetime.now(ZoneInfo(config.TIMEZONE)).date()
         if at is not None:
             local_now = at.astimezone(ZoneInfo(config.TIMEZONE))
             target_date = local_now.date()
-            effective_cutoff = cutoff_hour if cutoff_hour is not None else CATEGORY_COLLECTION_CUTOFF_HOURS[category_code]
-            collection_cutoff = time(hour=effective_cutoff)
+            collection_cutoff = time(hour=cutoff_hour) if cutoff_hour is not None else definition.cutoff
+            if collection_cutoff is None:
+                return None
             if local_now.time() >= collection_cutoff:
                 target_date += timedelta(days=1)
         if not self._valid_from <= target_date <= self._valid_to:
             return None
-        return next(
+        result = next(
             (
                 item
                 for item in self._dates.get(collection_type_id, [])
@@ -151,3 +128,4 @@ class CalendarService:
             ),
             None,
         )
+        return CollectionDate(result.date, definition.name) if result else None
