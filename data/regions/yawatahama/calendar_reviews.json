@@ -1,0 +1,193 @@
+{
+  "schema_version": 1,
+  "version": "yawatahama-2026.1",
+  "calendars": {
+    "yh-01": {
+      "source_sha256": "9ac6108b307cefe6aa2ae7261ff824a5a09dbe5669836e19eadd227f4765a976",
+      "days_sha256": "b65823e776fe3d759a7ff2b43f35f91132508e0bfc09e58381f285e7b1e74915",
+      "symbol_count": 244,
+      "date_cells": 365,
+      "compressed_date_cells": 8,
+      "render_scale": 2,
+      "source_url": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/file_contents/R8_Part1.pdf"
+    },
+    "yh-02": {
+      "source_sha256": "b6e86810dac12de39378111e9f3545a6d5d8677df2b8669b99eadbfc3ee5592e",
+      "days_sha256": "bb0394b0bd9eeef45d9ec64f9582c4b74a2441d9f1cbbd4dca6583cd06db502f",
+      "symbol_count": 244,
+      "date_cells": 365,
+      "compressed_date_cells": 8,
+      "render_scale": 2,
+      "source_url": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/file_contents/R8_Part2.pdf"
+    },
+    "yh-03": {
+      "source_sha256": "9f5efd50dd8b6d945afb4b14d6c23d60e5e9ac2e6baf5cca7a4cf50f3ce7f3bb",
+      "days_sha256": "51123e6e86e09e6e00d690a04f4de4349dac9155a0c6ff2349e212c61b253a4b",
+      "symbol_count": 243,
+      "date_cells": 365,
+      "compressed_date_cells": 8,
+      "render_scale": 2,
+      "source_url": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/file_contents/R8_Part3.pdf"
+    },
+    "yh-04": {
+      "source_sha256": "811941a54c3c0e8ffdf3a79c95315f9e5e22e90a28012a106b6259bbfc119dc6",
+      "days_sha256": "e639b08dbf4580ad740039b19feed0968ad594c8edfe81bf1de239dca33a5a0e",
+      "symbol_count": 241,
+      "date_cells": 365,
+      "compressed_date_cells": 8,
+      "render_scale": 2,
+      "source_url": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/file_contents/R8_Part4.pdf"
+    },
+    "yh-05": {
+      "source_sha256": "18538002002490a1933191fe39b94e72543e2d565bbd583bdaab07c2474e31fa",
+      "days_sha256": "725290c1aeca621b8285eca1253a91078b946659f373617f5c6bed3b5d436bc7",
+      "symbol_count": 242,
+      "date_cells": 365,
+      "compressed_date_cells": 8,
+      "render_scale": 2,
+      "source_url": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/file_contents/R8_Part5.pdf"
+    },
+    "yh-06": {
+      "source_sha256": "18f56e85325e4b2a667b75597b7d34328c17595c656a11dd134fde37ad820aba",
+      "days_sha256": "c0f46cca241d31da3b07ba3e5c7658d4e0ce9d2ed82ae6786f984d17d30d2dad",
+      "symbol_count": 243,
+      "date_cells": 365,
+      "compressed_date_cells": 8,
+      "render_scale": 2,
+      "source_url": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/file_contents/R8_Part6.pdf"
+    },
+    "yh-07": {
+      "source_sha256": "61ef9dd0831828914cd53d12b5cfa79fa46df215be666d7e5fa39681b4b05235",
+      "days_sha256": "f0e8d5128a706a294ce5a17fb5994e16cb97b383fc2ba1a665eea48515c90d91",
+      "symbol_count": 242,
+      "date_cells": 365,
+      "compressed_date_cells": 8,
+      "render_scale": 2,
+      "source_url": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/file_contents/R8_Part7.pdf"
+    },
+    "yh-08": {
+      "source_sha256": "58beb6ad1c1db3796d5c4854007352496b04a4d562756eff2d838214855eff0c",
+      "days_sha256": "7c35a2f942d16449e4057fbdd0c9b58b9d267e014fc58d703aef3e76a16030d0",
+      "symbol_count": 243,
+      "date_cells": 365,
+      "compressed_date_cells": 8,
+      "render_scale": 2,
+      "source_url": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/file_contents/R8_Part8.pdf"
+    },
+    "yh-09": {
+      "source_sha256": "ac6691d1662667d32ef5837c1ee972cfc4c7ea41926a4d3f09c87446ad6ead8d",
+      "days_sha256": "e5dfadf3ebc1c3d9e2992cc17b9ca97cf237f84fbc69f1a68df6b70ce563c584",
+      "symbol_count": 241,
+      "date_cells": 365,
+      "compressed_date_cells": 8,
+      "render_scale": 2,
+      "source_url": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/file_contents/R8_Part9.pdf"
+    },
+    "yh-10": {
+      "source_sha256": "5c3304835d93d77a62d967c4e01240b292654ac926f08d20962d63adea317d36",
+      "days_sha256": "ff6d6af6eaf08d44b3cac66e58ed2870abd78efe46ac42f735bd0c0b3048bf9a",
+      "symbol_count": 242,
+      "date_cells": 365,
+      "compressed_date_cells": 8,
+      "render_scale": 2,
+      "source_url": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/file_contents/R8_Part10.pdf"
+    },
+    "yh-11": {
+      "source_sha256": "aa0b213dc41a6cd025f5dfb8b36a3243f11730d5e650d7a7158ad4faa367afd5",
+      "days_sha256": "1cdf0ddfded6c2c2f671bc53a58c78f8f91e5ab22c5c2a6dd7955a43e6422c65",
+      "symbol_count": 242,
+      "date_cells": 365,
+      "compressed_date_cells": 8,
+      "render_scale": 2,
+      "source_url": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/file_contents/R8_Part11.pdf"
+    },
+    "yh-12": {
+      "source_sha256": "d2c8a3a18e21224cde3450fc13a09be0b7d2c58468f05443c45849aa019abdce",
+      "days_sha256": "cfcfc22447c139d9f80afd498cfc2f458f681039e787fab068711db82e807bbe",
+      "symbol_count": 243,
+      "date_cells": 365,
+      "compressed_date_cells": 8,
+      "render_scale": 2,
+      "source_url": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/file_contents/R8_Part12.pdf"
+    },
+    "yh-13": {
+      "source_sha256": "dec68ae326a9f41a130c95b3642839a269af388c6e6452032854cb5b294e2a26",
+      "days_sha256": "d457f7d1bd1bbe4f481dc283e580d0664d9ad9b979641c0375d48b693f9ff495",
+      "symbol_count": 289,
+      "date_cells": 365,
+      "compressed_date_cells": 8,
+      "render_scale": 2,
+      "source_url": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/file_contents/R8_Part13.pdf"
+    },
+    "yh-14": {
+      "source_sha256": "02888ce2197d8a33c682eba13f57c15faecaf043a7b7cdf127c09384dc4dc890",
+      "days_sha256": "c9620a82ed48a40dd1a5bdaf43027a99a385c10697675d0cd4ac4db70c947ea4",
+      "symbol_count": 242,
+      "date_cells": 365,
+      "compressed_date_cells": 8,
+      "render_scale": 2,
+      "source_url": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/file_contents/R8_Part14.pdf"
+    },
+    "yh-15": {
+      "source_sha256": "3ee33a8b50927b3a380dcc5210177083e6f257ec344b869fa330f33d3af784b3",
+      "days_sha256": "0e4545c59797287c39fd2c7f554216ca2d0605f0c57c636d048d506141616bb6",
+      "symbol_count": 290,
+      "date_cells": 365,
+      "compressed_date_cells": 8,
+      "render_scale": 2,
+      "source_url": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/file_contents/R8_Part15.pdf"
+    },
+    "yh-16": {
+      "source_sha256": "285055796113a14f0545353ef18e18509de6205ea80a42b08237ba91d7fdd26a",
+      "days_sha256": "e0bb72e469faf5e2a50e12145585304bc6fdb250bf92064ced41904e48095e50",
+      "symbol_count": 241,
+      "date_cells": 365,
+      "compressed_date_cells": 8,
+      "render_scale": 2,
+      "source_url": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/file_contents/R8_Part16.pdf"
+    },
+    "yh-17": {
+      "source_sha256": "55e980940ba8a8d85f79a7de3864efcaedf49f4cb616e3492429fc1d85eb6d2b",
+      "days_sha256": "78a2a8c9fd516d1465f590a809f9d26d7cbc45b9b2ecc1b112003fed84133c05",
+      "symbol_count": 244,
+      "date_cells": 365,
+      "compressed_date_cells": 8,
+      "render_scale": 2,
+      "source_url": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/file_contents/R8_Part17.pdf"
+    },
+    "yh-18": {
+      "source_sha256": "a5d9fb448676c1dee04025baa41886aa8d4130a0d56b57f17815d6ef3252af53",
+      "days_sha256": "9083ef8f871280febc70ce97ba593bf7b202e10f6e470dd324ef162db1adbc29",
+      "symbol_count": 243,
+      "date_cells": 365,
+      "compressed_date_cells": 8,
+      "render_scale": 2,
+      "source_url": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/file_contents/R8_Part18.pdf"
+    },
+    "yh-19": {
+      "source_sha256": "19353b92fde2fdd2d3922dcb5c2b46981f4abb1470f976f3be8a00af82b1d827",
+      "days_sha256": "de1261836bb3b2308a1f8e0c00e2087c875417ab8499272b9ee75442a27f6ac2",
+      "symbol_count": 324,
+      "date_cells": 365,
+      "compressed_date_cells": 8,
+      "render_scale": 2,
+      "source_url": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/file_contents/R8_Part19.pdf"
+    },
+    "yh-20": {
+      "source_sha256": "a1d999e9d1c271c1929440dc09373e54b3c88843bfcff38100dcc00f6ce25850",
+      "days_sha256": "2e168c8151d3f60f0d49a7794ca517f02e9bd27a190f7c419a77c09b8f01510d",
+      "symbol_count": 322,
+      "date_cells": 365,
+      "compressed_date_cells": 8,
+      "render_scale": 2,
+      "source_url": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/file_contents/R8_Part20.pdf"
+    }
+  },
+  "verification": {
+    "method": "PDF date labels + vector collection icons independently compared with rendered pastel backgrounds at Gregorian grid positions",
+    "coverage": "20 PDFs x 365 dates = 7300 dated cells, including blank days and 160 shared sixth-week dates",
+    "legend_review": "official named legends in calendars 1 and 19; standard vs Oshima grouped-paper handling",
+    "limitations": "No human audit of every date; weather/emergency changes announced after the annual calendar are not inferred",
+    "reviewed_at": "2026-11-01"
+  }
+}

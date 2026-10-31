@@ -1,0 +1,749 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38204",
+  "municipality_name": "八幡浜市",
+  "prefecture_id": "38",
+  "prefecture_name": "愛媛県",
+  "version": "yawatahama-2026.1",
+  "valid_from": "2026-04-01",
+  "valid_to": "2027-03-31",
+  "collection_areas": [
+    {
+      "id": "38204-01",
+      "name": "1：愛宕、大平（愛宕山道路沿い）、片山町、幸町（愛宕山道路沿い）、清水町花小路、大正町、大門、（花小路）、浜田町、東新川、松蔭町、松本町（愛宕山道路沿い）、矢野町2～4",
+      "calendar_id": "yh-01",
+      "rule_profile_id": "standard",
+      "official_calendar_number": 1,
+      "official_pdf_area_heading": "松蔭町、清水町花小路、矢野町二・三・四丁目、東新川、大正町、浜田町、愛宕､愛宕山団地、片山町、大門",
+      "address_labels": [
+        "愛宕",
+        "大平（愛宕山道路沿い）",
+        "片山町",
+        "幸町（愛宕山道路沿い）",
+        "清水町花小路",
+        "大正町",
+        "大門",
+        "（花小路）",
+        "浜田町",
+        "東新川",
+        "松蔭町",
+        "松本町（愛宕山道路沿い）",
+        "矢野町2～4"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/"
+    },
+    {
+      "id": "38204-02",
+      "name": "2：海老崎、戎町、旧役場前通、琴平町、（下道）、新栄町、新町、新港、須崎、船場通、大黒町（清水ビル）、中央、千代田町、天神通1、仲之町、浜之町、本町、港町、矢野町5～7、横町",
+      "calendar_id": "yh-02",
+      "rule_profile_id": "standard",
+      "official_calendar_number": 2,
+      "official_pdf_area_heading": "矢野町五・六・七丁目(旧役場前通含む)､須崎、本町、横町、海老崎、新栄町､船場通、浜之町、中央、天神通一丁目､千代田町、新港戎町、仲之町、新町(下道含む)、琴平町、港町",
+      "address_labels": [
+        "海老崎",
+        "戎町",
+        "旧役場前通",
+        "琴平町",
+        "（下道）",
+        "新栄町",
+        "新町",
+        "新港",
+        "須崎",
+        "船場通",
+        "大黒町（清水ビル）",
+        "中央",
+        "千代田町",
+        "天神通1",
+        "仲之町",
+        "浜之町",
+        "本町",
+        "港町",
+        "矢野町5～7",
+        "横町"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/"
+    },
+    {
+      "id": "38204-03",
+      "name": "3：近江屋町、大平（愛宕山道路沿いを除く）、海望園、喜多町、旧港、琴平町（池上マンション・コーポ池上）、裁判所通、幸町、白浜通、津羽井、花園町、松本町、緑ヶ丘、向灘（大内浦・勘定・高城・杖之浦・中浦）",
+      "calendar_id": "yh-03",
+      "rule_profile_id": "standard",
+      "official_calendar_number": 3,
+      "official_pdf_area_heading": "旧港、海望園、松本町、幸町、近江屋町、白浜通、喜多町、裁判所通､花園町、大平、緑ケ丘、津羽井､高城、中浦、大内浦、杖之浦、勘定",
+      "address_labels": [
+        "近江屋町",
+        "大平",
+        "海望園",
+        "喜多町",
+        "旧港",
+        "琴平町（池上マンション・コーポ池上）",
+        "裁判所通",
+        "幸町",
+        "白浜通",
+        "津羽井",
+        "花園町",
+        "松本町",
+        "緑ヶ丘",
+        "向灘（大内浦・勘定・高城・杖之浦・中浦）"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/"
+    },
+    {
+      "id": "38204-04",
+      "name": "4：古町2、八代（王子※・野中・人加志・水の元・八代一丁目）",
+      "calendar_id": "yh-04",
+      "rule_profile_id": "standard",
+      "official_calendar_number": 4,
+      "official_pdf_area_heading": "古町二丁目、八代一丁目、八代王子、八代人加志、八代野中、八代水の元",
+      "address_labels": [
+        "古町2",
+        "八代（王子※・野中・人加志・水の元・八代一丁目）"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/"
+    },
+    {
+      "id": "38204-05",
+      "name": "5：穴井、川上町、合田、舌間、真網代",
+      "calendar_id": "yh-05",
+      "rule_profile_id": "standard",
+      "official_calendar_number": 5,
+      "official_pdf_area_heading": "舌田地区、川上地区、真穴地区",
+      "address_labels": [
+        "穴井",
+        "川上町",
+        "合田",
+        "舌間",
+        "真網代"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/"
+    },
+    {
+      "id": "38204-06",
+      "name": "6：稲ケ市、釜倉、川之内下、木多町、郷・中央（郷一木地区・旧道沿いは対象外）、郷・横畑、新開町、末広（大下地区）、末広西、千丈駅前、谷、中津川、布喜川、松尾、横平、若山",
+      "calendar_id": "yh-06",
+      "rule_profile_id": "standard",
+      "official_calendar_number": 6,
+      "official_pdf_area_heading": "松尾、稲ヶ市、木多町、千丈駅前､末広西、新開町、郷中央、郷横畑､川之内下、若山、釜倉、布喜川､谷、横平、中津川",
+      "address_labels": [
+        "稲ケ市",
+        "釜倉",
+        "川之内下",
+        "木多町",
+        "郷・中央",
+        "郷・横畑",
+        "新開町",
+        "末広（大下地区）",
+        "末広西",
+        "千丈駅前",
+        "谷",
+        "中津川",
+        "布喜川",
+        "松尾",
+        "横平",
+        "若山"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/"
+    },
+    {
+      "id": "38204-07",
+      "name": "7：駅前、江戸岡1、大谷口、栗野浦、神宮通、神宮前、東矢野町、広瀬、古町1、矢野町1",
+      "calendar_id": "yh-07",
+      "rule_profile_id": "standard",
+      "official_calendar_number": 7,
+      "official_pdf_area_heading": "駅前、神宮前、東矢野町、神宮通、江戸岡一丁目、矢野町一丁目、栗野浦、大谷口、広瀬、古町一丁目",
+      "address_labels": [
+        "駅前",
+        "江戸岡1",
+        "大谷口",
+        "栗野浦",
+        "神宮通",
+        "神宮前",
+        "東矢野町",
+        "広瀬",
+        "古町1",
+        "矢野町1"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/"
+    },
+    {
+      "id": "38204-08",
+      "name": "8：江戸岡2、国木県営住宅及び周辺、五反田・湯島、産業通、新和田町、徳雲坊、日の浦団地、山越",
+      "calendar_id": "yh-08",
+      "rule_profile_id": "standard",
+      "official_calendar_number": 8,
+      "official_pdf_area_heading": "江戸岡二丁目、山越、新和田町、産業通、徳雲坊、湯島、日の浦団地",
+      "address_labels": [
+        "江戸岡2",
+        "国木県営住宅及び周辺",
+        "五反田・湯島",
+        "産業通",
+        "新和田町",
+        "徳雲坊",
+        "日の浦団地",
+        "山越"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/"
+    },
+    {
+      "id": "38204-09",
+      "name": "9：清滝、清滝下、五反田（川筋・川舞※・鯨・下大峠・新道・千畳・元井）、元城団地、八代・王子（伊予銀行王子の森寮沿い・森ビル第3）、八代（迫田）",
+      "calendar_id": "yh-09",
+      "rule_profile_id": "standard",
+      "official_calendar_number": 9,
+      "official_pdf_area_heading": "清滝、鯨、川筋、千畳、元井、元城団地、新道、八代迫田、川舞（三本木・神田除く）、下大峠",
+      "address_labels": [
+        "清滝",
+        "清滝下",
+        "五反田（川筋・川舞※・鯨・下大峠・新道・千畳・元井）",
+        "元城団地",
+        "八代・王子（伊予銀行王子の森寮沿い・森ビル第3）",
+        "八代（迫田）"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/"
+    },
+    {
+      "id": "38204-10",
+      "name": "10：日土町",
+      "calendar_id": "yh-10",
+      "rule_profile_id": "standard",
+      "official_calendar_number": 10,
+      "official_pdf_area_heading": "下河原、出の奥、防川、新堂、続藪、中当､川辻、樫ノ木、久保田下、尾之花（下河原～尾之花までの県道大洲・保内線沿線）､福岡、筵田、野地、瀬田、榎野、森山、小坂､横尾地、梶谷岡、松岡、久保田上",
+      "address_labels": [
+        "日土町"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/"
+    },
+    {
+      "id": "38204-11",
+      "name": "11：旭町、昭和通、新川、大黒町（元バスラーメン～モビーディック）、千代田町（新川ハイツ）、天神通2",
+      "calendar_id": "yh-11",
+      "rule_profile_id": "standard",
+      "official_calendar_number": 11,
+      "official_pdf_area_heading": "新川、昭和通、旭町、天神通二丁目",
+      "address_labels": [
+        "旭町",
+        "昭和通",
+        "新川",
+        "大黒町（元バスラーメン～モビーディック）",
+        "千代田町（新川ハイツ）",
+        "天神通2"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/"
+    },
+    {
+      "id": "38204-12",
+      "name": "12：入寺、桧谷、松柏1～7、南柏",
+      "calendar_id": "yh-12",
+      "rule_profile_id": "standard",
+      "official_calendar_number": 12,
+      "official_pdf_area_heading": "桧谷、南柏、松柏1～7",
+      "address_labels": [
+        "入寺",
+        "桧谷",
+        "松柏1～7",
+        "南柏"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/"
+    },
+    {
+      "id": "38204-13-tu",
+      "name": "13（紙類は火曜）：末広、田浪、高野地、古谷",
+      "calendar_id": "yh-13-tu",
+      "rule_profile_id": "standard",
+      "official_calendar_number": 13,
+      "official_pdf_area_heading": "末広、田浪、高野地、古谷、郷梨尾、上郷、南裏、川之内上、古藪の地区の紙類は、火曜のみの地区の紙類は、金曜のみ",
+      "address_labels": [
+        "末広",
+        "田浪",
+        "高野地",
+        "古谷"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/"
+    },
+    {
+      "id": "38204-13-fr",
+      "name": "13（紙類は金曜）：郷・梨尾、上郷、南裏、川之内上、古薮",
+      "calendar_id": "yh-13-fr",
+      "rule_profile_id": "standard",
+      "official_calendar_number": 13,
+      "official_pdf_area_heading": "末広、田浪、高野地、古谷、郷梨尾、上郷、南裏、川之内上、古藪の地区の紙類は、火曜のみの地区の紙類は、金曜のみ",
+      "address_labels": [
+        "郷・梨尾",
+        "上郷",
+        "南裏",
+        "川之内上",
+        "古薮"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/"
+    },
+    {
+      "id": "38204-14",
+      "name": "14：朝潮橋、北浜、大黒町",
+      "calendar_id": "yh-14",
+      "rule_profile_id": "standard",
+      "official_calendar_number": 14,
+      "official_pdf_area_heading": "大黒町、朝潮橋、北浜一丁目",
+      "address_labels": [
+        "朝潮橋",
+        "北浜",
+        "大黒町"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/"
+    },
+    {
+      "id": "38204-15-th",
+      "name": "15（紙類は木曜）：日土町（神明・今出）",
+      "calendar_id": "yh-15-th",
+      "rule_profile_id": "standard",
+      "official_calendar_number": 15,
+      "official_pdf_area_heading": "日土町神明、今出日土町田之窪の地区の紙類は、木曜のみの地区の紙類は、月曜のみ",
+      "address_labels": [
+        "日土町（神明・今出）"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/"
+    },
+    {
+      "id": "38204-15-mo",
+      "name": "15（紙類は月曜）：日土町（田之窪）",
+      "calendar_id": "yh-15-mo",
+      "rule_profile_id": "standard",
+      "official_calendar_number": 15,
+      "official_pdf_area_heading": "日土町神明、今出日土町田之窪の地区の紙類は、木曜のみの地区の紙類は、月曜のみ",
+      "address_labels": [
+        "日土町（田之窪）"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/"
+    },
+    {
+      "id": "38204-16",
+      "name": "16：牛名、国木（県営住宅及び周辺を除く）、五反田・上大峠、五反田・川舞（三本木・神田）",
+      "calendar_id": "yh-16",
+      "rule_profile_id": "standard",
+      "official_calendar_number": 16,
+      "official_pdf_area_heading": "上大峠、国木、牛名、川舞三本木・神田",
+      "address_labels": [
+        "牛名",
+        "国木",
+        "五反田・上大峠",
+        "五反田・川舞（三本木・神田）"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/"
+    },
+    {
+      "id": "38204-17",
+      "name": "17：保内町（喜須木・宮内）",
+      "calendar_id": "yh-17",
+      "rule_profile_id": "standard",
+      "official_calendar_number": 17,
+      "official_pdf_area_heading": "喜須来地区神越、城高、喜木町、磯岡、須川里､日之地、奥宮内地区清水町、駄場、西之河内、鼓尾、枇杷谷､両家、宮内里、舟来谷、大竹",
+      "address_labels": [
+        "保内町（喜須木・宮内）"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/"
+    },
+    {
+      "id": "38204-18",
+      "name": "18：保内町（川之石・磯津）",
+      "calendar_id": "yh-18",
+      "rule_profile_id": "standard",
+      "official_calendar_number": 18,
+      "official_pdf_area_heading": "川之石地区琴平、本町、赤網代、内之浦、雨井、西町、楠町、和田町磯津地区磯崎、喜木津、広早",
+      "address_labels": [
+        "保内町（川之石・磯津）"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/"
+    },
+    {
+      "id": "38204-19",
+      "name": "19：大島（1・2分団）",
+      "calendar_id": "yh-19",
+      "rule_profile_id": "oshima",
+      "official_calendar_number": 19,
+      "official_pdf_area_heading": "大島（1分団・2分団）ル",
+      "address_labels": [
+        "大島（1・2分団）"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/"
+    },
+    {
+      "id": "38204-20",
+      "name": "20：大島（3・4分団）",
+      "calendar_id": "yh-20",
+      "rule_profile_id": "oshima",
+      "official_calendar_number": 20,
+      "official_pdf_area_heading": "大島（3分団・4分団）ル",
+      "address_labels": [
+        "大島（3・4分団）"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/"
+    }
+  ],
+  "calendars": [
+    {
+      "id": "yh-01",
+      "rule_profile_id": "standard"
+    },
+    {
+      "id": "yh-02",
+      "rule_profile_id": "standard"
+    },
+    {
+      "id": "yh-03",
+      "rule_profile_id": "standard"
+    },
+    {
+      "id": "yh-04",
+      "rule_profile_id": "standard"
+    },
+    {
+      "id": "yh-05",
+      "rule_profile_id": "standard"
+    },
+    {
+      "id": "yh-06",
+      "rule_profile_id": "standard"
+    },
+    {
+      "id": "yh-07",
+      "rule_profile_id": "standard"
+    },
+    {
+      "id": "yh-08",
+      "rule_profile_id": "standard"
+    },
+    {
+      "id": "yh-09",
+      "rule_profile_id": "standard"
+    },
+    {
+      "id": "yh-10",
+      "rule_profile_id": "standard"
+    },
+    {
+      "id": "yh-11",
+      "rule_profile_id": "standard"
+    },
+    {
+      "id": "yh-12",
+      "rule_profile_id": "standard"
+    },
+    {
+      "id": "yh-13-tu",
+      "rule_profile_id": "standard"
+    },
+    {
+      "id": "yh-13-fr",
+      "rule_profile_id": "standard"
+    },
+    {
+      "id": "yh-14",
+      "rule_profile_id": "standard"
+    },
+    {
+      "id": "yh-15-th",
+      "rule_profile_id": "standard"
+    },
+    {
+      "id": "yh-15-mo",
+      "rule_profile_id": "standard"
+    },
+    {
+      "id": "yh-16",
+      "rule_profile_id": "standard"
+    },
+    {
+      "id": "yh-17",
+      "rule_profile_id": "standard"
+    },
+    {
+      "id": "yh-18",
+      "rule_profile_id": "standard"
+    },
+    {
+      "id": "yh-19",
+      "rule_profile_id": "oshima"
+    },
+    {
+      "id": "yh-20",
+      "rule_profile_id": "oshima"
+    }
+  ],
+  "rule_profiles": {
+    "standard": {
+      "items_path": "knowledge/items.csv",
+      "embedding_index_path": "knowledge/item_embeddings.npz",
+      "index_profile_id": "citywide",
+      "calendar_path": "generated/calendar-2026.json",
+      "classification_rules": "八幡浜市公式品目表と2023年版ごみ分別ガイドブック（2026年度ページからも案内されている資料）に従う。\n「可燃ごみ」は「燃やすごみ」、「不燃ごみ」は「燃やさないごみ」を指す。\n分類が「素材で判断」「マークで判断」の行は最終分類ではない。注記に明示された素材・識別表示・汚れ・大きさなどの条件を確認する。条件付き分類コードは候補であり、条件を満たしたことが質問や補足から確認できた場合だけ確定する。公式根拠にない素材条件は補わない。\n指定ごみ袋に入りきらない大きさの家具、布団、マットレス、カーペット、自転車、家電などは粗大ごみ。ただしテレビ・エアコン・冷蔵庫・冷凍庫・洗濯機・衣類乾燥機など市で処理できないものを粗大ごみに変更しない。\n粗大ごみの定期収集はない。環境センターへ直接搬入、地域の回収（実施の有無を公民館・地区長に確認）、または電話予約収集を案内する。予約は0894-23-0053、月～金8:30～17:15、料金と日程は予約時に確認する。室内からの搬出作業は行わない。\nプラスチック製の製品と、商品の容器・包装を区別する。材質名だけでプラスチック製容器包装へ分類しない。容器包装は実物のプラマーク・紙マークを確認し、汚れが落ちない場合は公式品目表の条件に従う。\nびん類は飲み物・食べ物・調味料が入っていたもの。ガラスコップ、哺乳びん、農薬びんを資源のびん類と推測しない。かん類の汚れが落ちないものは燃やさないごみ。スプレー缶は品目表・ガイドブックのガス抜き等の指示に従う。\n紙類は段ボール・新聞・雑誌・紙製容器包装を区別する。広告チラシは雑誌。大島ではこれらの収集日が紙類としてまとまるが、品目の分類名やそれぞれの出し方は変えない。\n「持込み」は品目ごとに相談先が異なる。販売店相談や拠点回収と書かれたものを、根拠なく環境センターへ持ち込めると回答しない。\n家庭ごみの定期収集は午前8時まで・一度に3袋まで。収集日は地区別2026年度カレンダーを使い、粗大・持込み・処理不可には定期収集日を付けない。\nペットボトルのラベルは付いたままでもよい。外した場合はプラスチック製容器包装へ。松山市のラベルを必ず外すルールを適用しない。\n指定袋に入らない大きさでも、傘・蛍光灯など品目表で例外が指定されたものは、その品目の公式条件を優先する。\n品目表に「持込み」「市で処理できないもの」等の個別指定がある場合、一般的な大きさによる粗大ごみ規則よりもその指定を優先する。\n例外条件は、利用者の文章・補足や画像で直接確認できる場合に限って適用する。画像の色や模様、印刷、つぶれを、汚れが落ちない証拠にしてはいけない。文章で明示された品目・用途・状態を、画像からの推測で上書きしない。\nとくに、飲料・食品の缶を「中を洗った」と明示し「汚れが落ちない」とは述べられていない場合は、かん類（cans）の通常条件である。洗っても汚れが落ちないことが確認された場合だけ燃やさないごみ（non_burnable）の例外へ変更する。確認が必要な場合は質問し、例外を推測して確定しない。\n「PETマーク付きの空のペットボトル」は本体が対象であり、取り外すふたやラベルの分類を本体へ適用しない。注記に別分類が現れるだけで、その分類が対象品目本体に適用できると解釈しない。",
+      "size_question": "八幡浜市の指定ごみ袋に入る大きさですか？",
+      "knowledge_title": "八幡浜市公式ごみ分別品目一覧・ガイドブック",
+      "categories": {
+        "burnable": {
+          "name": "燃やすごみ",
+          "collection_type_id": "burnable",
+          "cutoff": "08:00",
+          "color": "#F2A900"
+        },
+        "non_burnable": {
+          "name": "燃やさないごみ",
+          "collection_type_id": "non_burnable",
+          "cutoff": "08:00",
+          "color": "#499ACD"
+        },
+        "bottles": {
+          "name": "びん類",
+          "collection_type_id": "bottles",
+          "cutoff": "08:00",
+          "color": "#F4D43F"
+        },
+        "cans": {
+          "name": "かん類",
+          "collection_type_id": "cans",
+          "cutoff": "08:00",
+          "color": "#E866B2"
+        },
+        "pet_bottles": {
+          "name": "ペットボトル",
+          "collection_type_id": "pet_bottles",
+          "cutoff": "08:00",
+          "color": "#43AF69"
+        },
+        "plastic_packaging": {
+          "name": "プラスチック製容器包装",
+          "collection_type_id": "plastic_packaging",
+          "cutoff": "08:00",
+          "color": "#8C79BE"
+        },
+        "paper_packaging": {
+          "name": "紙製容器包装",
+          "collection_type_id": "paper_packaging",
+          "cutoff": "08:00",
+          "color": "#F4A7B9"
+        },
+        "cardboard": {
+          "name": "段ボール",
+          "collection_type_id": "cardboard",
+          "cutoff": "08:00",
+          "color": "#C8A66D"
+        },
+        "newspaper": {
+          "name": "新聞",
+          "collection_type_id": "newspaper",
+          "cutoff": "08:00",
+          "color": "#9BA2A7"
+        },
+        "magazines": {
+          "name": "雑誌",
+          "collection_type_id": "magazines",
+          "cutoff": "08:00",
+          "color": "#A871B0"
+        },
+        "bulky": {
+          "name": "粗大ごみ",
+          "answer_note": "粗大ごみの定期収集はありません。環境センターへの直接搬入、地域の回収（実施の有無を地区に確認）、環境センターへの電話予約収集のいずれかを利用してください。料金と収集日は環境センター（0894-23-0053）で確認してください。"
+        },
+        "bring_in": {
+          "name": "持込み",
+          "answer_note": "定期収集の対象外です。品目別の注意に従い、搬入可否・持込先・量を環境センター（0894-23-0053）または販売店で確認してください。"
+        },
+        "not_collected": {
+          "name": "市で処理できないもの",
+          "answer_note": "市の定期収集・環境センターでは処理できません。販売店・メーカー・許可業者など、公式資料に記載された処理先に相談してください。"
+        }
+      },
+      "bulky_waste": {
+        "category_code": "bulky",
+        "config": {
+          "municipality_id": "38204",
+          "municipality_name": "八幡浜市",
+          "collection_frequency": "定期収集なし。直接搬入・地域の回収・電話予約収集",
+          "reception_hours": "予約受付：月～金 8:30～17:15",
+          "collection_rules": "指定ごみ袋に入りきらない家具等が対象です。テレビ・冷蔵庫等の対象外品目に注意してください。環境センターへの直接搬入、地域の粗大ごみ回収（実施の有無を公民館・地区長に確認）、環境センターへの電話予約収集を利用できます。料金と日程は予約時に確認してください。",
+          "fee_structure_type": "fixed",
+          "application_method": "phone",
+          "phone_number": "0894-23-0053",
+          "web_form_url": null,
+          "information_url": "https://www.city.yawatahama.ehime.jp/doc/2021022400010/file_contents/2023-11.pdf",
+          "steps": [
+            {
+              "step_number": 1,
+              "title": "対象品目と出し方を確認",
+              "description": "指定ごみ袋に入りきらない家具等が対象です。市で処理できないものは販売店等へ相談してください。"
+            },
+            {
+              "step_number": 2,
+              "title": "持込み・地域の回収・予約収集から選ぶ",
+              "description": "直接搬入の条件を環境センターで確認するか、地域で回収を実施しているか公民館・地区長に確認します。"
+            },
+            {
+              "step_number": 3,
+              "title": "予約収集は環境センターへ電話",
+              "description": "0894-23-0053へ品目・量・住所を伝え、料金と収集日を確認してください。受付は月～金8:30～17:15です。"
+            },
+            {
+              "step_number": 4,
+              "title": "収集日までに搬出",
+              "description": "収集のみの対応です。あらかじめ玄関先などへ出してください。室内からの搬出・片付けが必要な場合は許可業者へ相談してください。"
+            }
+          ]
+        }
+      }
+    },
+    "oshima": {
+      "items_path": "knowledge/items.csv",
+      "embedding_index_path": "knowledge/item_embeddings.npz",
+      "index_profile_id": "citywide",
+      "calendar_path": "generated/calendar-2026.json",
+      "classification_rules": "八幡浜市公式品目表と2023年版ごみ分別ガイドブック（2026年度ページからも案内されている資料）に従う。\n「可燃ごみ」は「燃やすごみ」、「不燃ごみ」は「燃やさないごみ」を指す。\n分類が「素材で判断」「マークで判断」の行は最終分類ではない。注記に明示された素材・識別表示・汚れ・大きさなどの条件を確認する。条件付き分類コードは候補であり、条件を満たしたことが質問や補足から確認できた場合だけ確定する。公式根拠にない素材条件は補わない。\n指定ごみ袋に入りきらない大きさの家具、布団、マットレス、カーペット、自転車、家電などは粗大ごみ。ただしテレビ・エアコン・冷蔵庫・冷凍庫・洗濯機・衣類乾燥機など市で処理できないものを粗大ごみに変更しない。\n粗大ごみの定期収集はない。環境センターへ直接搬入、地域の回収（実施の有無を公民館・地区長に確認）、または電話予約収集を案内する。予約は0894-23-0053、月～金8:30～17:15、料金と日程は予約時に確認する。室内からの搬出作業は行わない。\nプラスチック製の製品と、商品の容器・包装を区別する。材質名だけでプラスチック製容器包装へ分類しない。容器包装は実物のプラマーク・紙マークを確認し、汚れが落ちない場合は公式品目表の条件に従う。\nびん類は飲み物・食べ物・調味料が入っていたもの。ガラスコップ、哺乳びん、農薬びんを資源のびん類と推測しない。かん類の汚れが落ちないものは燃やさないごみ。スプレー缶は品目表・ガイドブックのガス抜き等の指示に従う。\n紙類は段ボール・新聞・雑誌・紙製容器包装を区別する。広告チラシは雑誌。大島ではこれらの収集日が紙類としてまとまるが、品目の分類名やそれぞれの出し方は変えない。\n「持込み」は品目ごとに相談先が異なる。販売店相談や拠点回収と書かれたものを、根拠なく環境センターへ持ち込めると回答しない。\n家庭ごみの定期収集は午前8時まで・一度に3袋まで。収集日は地区別2026年度カレンダーを使い、粗大・持込み・処理不可には定期収集日を付けない。\nペットボトルのラベルは付いたままでもよい。外した場合はプラスチック製容器包装へ。松山市のラベルを必ず外すルールを適用しない。\n指定袋に入らない大きさでも、傘・蛍光灯など品目表で例外が指定されたものは、その品目の公式条件を優先する。\n品目表に「持込み」「市で処理できないもの」等の個別指定がある場合、一般的な大きさによる粗大ごみ規則よりもその指定を優先する。\n例外条件は、利用者の文章・補足や画像で直接確認できる場合に限って適用する。画像の色や模様、印刷、つぶれを、汚れが落ちない証拠にしてはいけない。文章で明示された品目・用途・状態を、画像からの推測で上書きしない。\nとくに、飲料・食品の缶を「中を洗った」と明示し「汚れが落ちない」とは述べられていない場合は、かん類（cans）の通常条件である。洗っても汚れが落ちないことが確認された場合だけ燃やさないごみ（non_burnable）の例外へ変更する。確認が必要な場合は質問し、例外を推測して確定しない。\n「PETマーク付きの空のペットボトル」は本体が対象であり、取り外すふたやラベルの分類を本体へ適用しない。注記に別分類が現れるだけで、その分類が対象品目本体に適用できると解釈しない。",
+      "size_question": "八幡浜市の指定ごみ袋に入る大きさですか？",
+      "knowledge_title": "八幡浜市公式ごみ分別品目一覧・ガイドブック",
+      "categories": {
+        "burnable": {
+          "name": "燃やすごみ",
+          "collection_type_id": "burnable",
+          "cutoff": "08:00",
+          "color": "#F2A900"
+        },
+        "non_burnable": {
+          "name": "燃やさないごみ",
+          "collection_type_id": "non_burnable",
+          "cutoff": "08:00",
+          "color": "#499ACD"
+        },
+        "bottles": {
+          "name": "びん類",
+          "collection_type_id": "bottles",
+          "cutoff": "08:00",
+          "color": "#F4D43F"
+        },
+        "cans": {
+          "name": "かん類",
+          "collection_type_id": "cans",
+          "cutoff": "08:00",
+          "color": "#E866B2"
+        },
+        "pet_bottles": {
+          "name": "ペットボトル",
+          "collection_type_id": "pet_bottles",
+          "cutoff": "08:00",
+          "color": "#43AF69"
+        },
+        "plastic_packaging": {
+          "name": "プラスチック製容器包装",
+          "collection_type_id": "plastic_packaging",
+          "cutoff": "08:00",
+          "color": "#8C79BE"
+        },
+        "paper_packaging": {
+          "name": "紙製容器包装",
+          "collection_type_id": "paper_all",
+          "cutoff": "08:00",
+          "color": "#F4A7B9",
+          "collection_name": "紙類（段ボール・新聞・雑誌・紙製容器包装）"
+        },
+        "cardboard": {
+          "name": "段ボール",
+          "collection_type_id": "paper_all",
+          "cutoff": "08:00",
+          "color": "#F4A7B9",
+          "collection_name": "紙類（段ボール・新聞・雑誌・紙製容器包装）"
+        },
+        "newspaper": {
+          "name": "新聞",
+          "collection_type_id": "paper_all",
+          "cutoff": "08:00",
+          "color": "#F4A7B9",
+          "collection_name": "紙類（段ボール・新聞・雑誌・紙製容器包装）"
+        },
+        "magazines": {
+          "name": "雑誌",
+          "collection_type_id": "paper_all",
+          "cutoff": "08:00",
+          "color": "#F4A7B9",
+          "collection_name": "紙類（段ボール・新聞・雑誌・紙製容器包装）"
+        },
+        "bulky": {
+          "name": "粗大ごみ",
+          "answer_note": "粗大ごみの定期収集はありません。環境センターへの直接搬入、地域の回収（実施の有無を地区に確認）、環境センターへの電話予約収集のいずれかを利用してください。料金と収集日は環境センター（0894-23-0053）で確認してください。"
+        },
+        "bring_in": {
+          "name": "持込み",
+          "answer_note": "定期収集の対象外です。品目別の注意に従い、搬入可否・持込先・量を環境センター（0894-23-0053）または販売店で確認してください。"
+        },
+        "not_collected": {
+          "name": "市で処理できないもの",
+          "answer_note": "市の定期収集・環境センターでは処理できません。販売店・メーカー・許可業者など、公式資料に記載された処理先に相談してください。"
+        }
+      },
+      "bulky_waste": {
+        "category_code": "bulky",
+        "config": {
+          "municipality_id": "38204",
+          "municipality_name": "八幡浜市",
+          "collection_frequency": "定期収集なし。直接搬入・地域の回収・電話予約収集",
+          "reception_hours": "予約受付：月～金 8:30～17:15",
+          "collection_rules": "指定ごみ袋に入りきらない家具等が対象です。テレビ・冷蔵庫等の対象外品目に注意してください。環境センターへの直接搬入、地域の粗大ごみ回収（実施の有無を公民館・地区長に確認）、環境センターへの電話予約収集を利用できます。料金と日程は予約時に確認してください。",
+          "fee_structure_type": "fixed",
+          "application_method": "phone",
+          "phone_number": "0894-23-0053",
+          "web_form_url": null,
+          "information_url": "https://www.city.yawatahama.ehime.jp/doc/2021022400010/file_contents/2023-11.pdf",
+          "steps": [
+            {
+              "step_number": 1,
+              "title": "対象品目と出し方を確認",
+              "description": "指定ごみ袋に入りきらない家具等が対象です。市で処理できないものは販売店等へ相談してください。"
+            },
+            {
+              "step_number": 2,
+              "title": "持込み・地域の回収・予約収集から選ぶ",
+              "description": "直接搬入の条件を環境センターで確認するか、地域で回収を実施しているか公民館・地区長に確認します。"
+            },
+            {
+              "step_number": 3,
+              "title": "予約収集は環境センターへ電話",
+              "description": "0894-23-0053へ品目・量・住所を伝え、料金と収集日を確認してください。受付は月～金8:30～17:15です。"
+            },
+            {
+              "step_number": 4,
+              "title": "収集日までに搬出",
+              "description": "収集のみの対応です。あらかじめ玄関先などへ出してください。室内からの搬出・片付けが必要な場合は許可業者へ相談してください。"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "coverage_notice": "郷・中央（郷一木地区・旧道沿い）は、紙類の収集曜日を確認できていないため選択対象に含めていません。該当する場合は市の公式カレンダーと生活環境課で確認してください。",
+  "excluded_address_labels": [
+    {
+      "label": "郷・中央（郷一木地区・旧道沿い）",
+      "calendar_number": 13,
+      "reason": "公式HTML索引にはあるが、PDFの紙類曜日を分ける住所枠との対応を一意に確認できない",
+      "status": "excluded_pending_official_confirmation",
+      "decision": "利用者の承認により選択対象から除外。2026-11-01"
+    }
+  ]
+}
