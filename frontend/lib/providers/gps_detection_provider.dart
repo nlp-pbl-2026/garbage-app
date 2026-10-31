@@ -9,6 +9,7 @@ import '../services/geojson_resolver.dart';
 import '../services/gps_location_service.dart';
 import '../services/reverse_geocoding_service.dart';
 import '../services/official_collection_matcher.dart';
+import 'municipality_provider.dart';
 
 // ---------------------------------------------------------------------------
 // State
@@ -75,8 +76,9 @@ final reverseGeocodingServiceProvider =
     Provider<AbstractReverseGeocoder>((ref) => ReverseGeocodingService());
 
 /// AbstractDistrictMatcherのプロバイダー（テスト時にoverrideWithValue可能）
-final districtMatcherServiceProvider =
-    Provider<AbstractDistrictMatcher>((ref) => OfficialCollectionMatcher());
+final districtMatcherServiceProvider = Provider<AbstractDistrictMatcher>(
+    (ref) =>
+        OfficialCollectionMatcher(data: ref.watch(municipalityDataProvider)));
 
 /// GeoJsonResolverのプロバイダー（テスト時にoverrideWithValue可能）
 final geoJsonResolverProvider =
@@ -92,14 +94,14 @@ final geocodingCacheProvider =
 
 /// GPS地区判定の状態管理Notifier。
 ///
-/// 権限確認→GPS座標取得→GeoJSON判定→逆ジオコーディング→地区マッチングの
+/// 権限確認→GPS座標取得→逆ジオコーディング→公式町名表の候補照合の
 /// 一連のフローを実行し、結果に応じて状態を更新する。
 ///
 /// 判定フロー:
-/// 1. GeoJsonResolverでオフライン判定を試行（isLoaded時のみ）
-/// 2. 失敗時はGeocodingCacheを確認
-/// 3. キャッシュミス時はReverseGeocoderでAPI呼び出し→結果をキャッシュ
-/// 4. DistrictMatcherで地区マッチング（単一/複数候補）
+/// 1. GeocodingCacheを確認
+/// 2. キャッシュミス時はReverseGeocoderで住所取得→結果をキャッシュ
+/// 3. 公式町名表から単一/複数候補を提示し、利用者に確認する。
+/// GeoJSONは収集地区境界として使用しない。
 class GpsDetectionNotifier extends StateNotifier<GpsDetectionState> {
   final AbstractLocationService _locationService;
   final AbstractReverseGeocoder _reverseGeocodingService;
@@ -119,9 +121,8 @@ class GpsDetectionNotifier extends StateNotifier<GpsDetectionState> {
   /// 処理フロー:
   /// 1. 状態を Loading に遷移
   /// 2. GPS座標を取得（権限確認・リクエスト含む）
-  /// 3. GeoJsonResolverでオフラインポリゴン判定を試行（isLoaded時のみ）
-  ///    - 成功時: Success に遷移して早期リターン
-  /// 4. GeoJSON失敗/null時: GeocodingCacheを確認
+  /// 3. GeoJSONによる地区確定は行わない
+  /// 4. GeocodingCacheを確認
   ///    - キャッシュヒット: キャッシュされた住所を使用（APIスキップ）
   ///    - キャッシュミス: ReverseGeocoder呼び出し→結果をキャッシュ
   /// 5. DistrictMatcher.matchDistrict(address) を呼び出し
@@ -165,7 +166,7 @@ class GpsDetectionNotifier extends StateNotifier<GpsDetectionState> {
         );
       }
 
-      // Step 4: choumei.csv データを読み込み（キャッシュ済みの場合はスキップ）
+      // Step 4: 自治体別の公式町名対応表を読み込み
       await _districtMatcherService.loadChoumeiData();
 
       // Step 5: 地区マッチング（単一結果を試行）
@@ -198,6 +199,7 @@ class GpsDetectionNotifier extends StateNotifier<GpsDetectionState> {
               districtName: candidate.districtName,
               matchedTown: candidate.townName,
               collectionAreaId: candidate.collectionAreaId,
+              region: candidate.region,
             ),
           );
         } else {

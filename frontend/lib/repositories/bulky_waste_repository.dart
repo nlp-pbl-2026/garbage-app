@@ -207,6 +207,9 @@ class BulkyWasteRepository {
       if (response.statusCode == 200) {
         final json = jsonDecode(response.body) as Map<String, dynamic>;
         final config = MunicipalityConfig.fromJson(json);
+        if (config.municipalityId != municipalityId) {
+          throw const FormatException('Bulky configuration municipality mismatch');
+        }
         await _cacheConfig(municipalityId, config);
         return CachedResult(data: config, isStale: false);
       }
@@ -241,15 +244,20 @@ class BulkyWasteRepository {
     String municipalityId, {
     String? districtId,
     bool isNakajima = false,
+    String? categoryCode,
     String? search,
     SortBy? sortBy,
     SortOrder? sortOrder,
   }) async {
-    if (isNakajima) {
-      return _getCatalogItems(municipalityId, search: search, districtId: districtId);
+    if (categoryCode != null || (municipalityId == '38201' && isNakajima)) {
+      return _getCatalogItems(municipalityId,
+          search: search, districtId: districtId, categoryCode: categoryCode);
     }
+    final cacheKey =
+        districtId == null ? municipalityId : '$municipalityId:$districtId';
     try {
       final queryParams = <String, String>{};
+      if (districtId != null) queryParams['district_id'] = districtId;
       if (search != null && search.isNotEmpty) {
         queryParams['search'] = search;
       }
@@ -272,7 +280,7 @@ class BulkyWasteRepository {
         final itemList = BulkyWasteItemList.fromJson(json);
         // 検索なしの場合のみキャッシュに保存（ベースデータのみ）
         if (search == null || search.isEmpty) {
-          await _cacheItems(municipalityId, itemList);
+          await _cacheItems(cacheKey, itemList);
         }
         return CachedResult(data: itemList, isStale: false);
       }
@@ -281,14 +289,16 @@ class BulkyWasteRepository {
         return await _getCatalogItems(
           municipalityId,
           search: search,
+          districtId: districtId,
+          categoryCode: categoryCode,
         );
       }
 
-      return _getCachedItemsResult(municipalityId);
+      return _getCachedItemsResult(cacheKey);
     } on TimeoutException {
-      return _getCachedItemsResult(municipalityId);
+      return _getCachedItemsResult(cacheKey);
     } catch (_) {
-      return _getCachedItemsResult(municipalityId);
+      return _getCachedItemsResult(cacheKey);
     }
   }
 
@@ -297,9 +307,11 @@ class BulkyWasteRepository {
     String municipalityId, {
     String? search,
     String? districtId,
+    String? categoryCode,
   }) async {
+    if (categoryCode == null && municipalityId != '38201') return null;
     try {
-      final queryParams = <String, String>{'category': '粗大'};
+      final queryParams = <String, String>{'category': categoryCode ?? '粗大'};
       if (districtId != null) queryParams['district_id'] = districtId;
       if (search != null && search.isNotEmpty) {
         queryParams['search'] = search;
@@ -405,7 +417,8 @@ class BulkyWasteRepository {
     if (jsonString == null) return null;
     try {
       final json = jsonDecode(jsonString) as Map<String, dynamic>;
-      return MunicipalityConfig.fromJson(json);
+      final config = MunicipalityConfig.fromJson(json);
+      return config.municipalityId == municipalityId ? config : null;
     } catch (_) {
       return null;
     }

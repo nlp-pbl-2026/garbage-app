@@ -22,5 +22,6 @@ final weatherForecastProvider =
   }
 
   final service = ref.watch(weatherServiceProvider);
-  return service.getForecast(regionSetting.districtId);
+  return service.getForecast(regionSetting.districtId,
+      municipalityId: regionSetting.municipalityId);
 });

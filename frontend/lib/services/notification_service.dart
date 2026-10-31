@@ -4,6 +4,7 @@
 /// ゴミ収集日の前日20:00と当日朝6:00にローカル通知を配信する。
 /// 地区のスケジュールに基づき、翌日/当日の収集カテゴリを通知内容に含める。
 
+import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -16,6 +17,7 @@ import '../models/garbage_item.dart';
 import '../models/notification_timing_type.dart';
 import 'notification_customization_service.dart';
 import 'schedule_service.dart';
+import 'municipality_data_service.dart';
 import '../utils/japan_time.dart';
 
 /// リマインダー有効化の結果
@@ -108,6 +110,7 @@ class PlannedNotification {
 /// リマインダー通知設定のキー
 const String _reminderEnabledKey = 'reminder_enabled';
 const String _districtIdKey = 'notification_district_id';
+const String _municipalityIdKey = 'notification_municipality_id';
 const String _eveningHourKey = 'notification_evening_hour';
 const String _eveningMinuteKey = 'notification_evening_minute';
 const String _morningHourKey = 'notification_morning_hour';
@@ -133,9 +136,11 @@ class NotificationService {
   /// テスト時に固定時刻を注入し、過去時刻スキップ（要件3.5）などを
   /// 決定的に検証できるようにする。既定では `DateTime.now` を使用する。
   final DateTime Function() _now;
+  final MunicipalityDataService _data;
 
   /// [now] に現在時刻を返す関数を注入できる。省略時は `DateTime.now`。
-  NotificationService({DateTime Function()? now}) : _now = now ?? DateTime.now;
+  NotificationService({DateTime Function()? now, MunicipalityDataService? data})
+      : _now = now ?? DateTime.now, _data = data ?? MunicipalityDataService();
 
   /// 通知プラグインを初期化する
   ///
@@ -182,10 +187,13 @@ class NotificationService {
   /// - [PermissionOutcome.granted]: ReminderEnabledFlag=true と District_ID を保存し、
   ///   ScheduleWindow 内の通知をスケジュールして [EnableResult.success] を返す
   ///   （要件 1.1, 1.2, 2.3）。
-  Future<EnableResult> enableReminder(String districtId) async {
+  Future<EnableResult> enableReminder(String districtId,
+      {String municipalityId = '38201'}) async {
+    final epoch = _scheduleEpoch;
     await initialize();
 
     final outcome = await _requestPermission();
+    if (epoch != _scheduleEpoch) return EnableResult.requestFailed;
     switch (outcome) {
       case PermissionOutcome.requestError:
         // リクエスト送信失敗。有効化を中止し flag は false のまま（要件 2.2）。
@@ -199,8 +207,11 @@ class NotificationService {
         // 付与された場合のみ flag=true と districtId を保存しスケジュールする（要件 1.1, 1.2, 2.3）。
         await _writeReminderEnabled(true);
         await _writeDistrictId(districtId);
+        await (await SharedPreferences.getInstance())
+            .setString(_municipalityIdKey, municipalityId);
 
-        await scheduleWeeklyNotifications(districtId);
+        await scheduleWeeklyNotifications(districtId,
+            municipalityId: municipalityId);
         debugPrint('[NotificationService] リマインダー通知を有効化しました');
         return EnableResult.success;
     }
@@ -208,8 +219,10 @@ class NotificationService {
 
   /// リマインダー通知を無効化し、スケジュール済み通知をキャンセルする
   Future<void> disableReminder() async {
+    _scheduleEpoch++;
     await _writeReminderEnabled(false);
 
+    await _scheduleQueue;
     await _plugin.cancelAll();
     debugPrint('[NotificationService] リマインダー通知を無効化しました');
   }
@@ -408,6 +421,7 @@ class NotificationService {
   /// - ペイロードには対象収集日の ISO8601 文字列を格納する。
   static Future<List<PlannedNotification>> computeScheduleWindow({
     required String districtId,
+    String? municipalityId,
     required DateTime now,
     required ({int hour, int minute}) eveningTime,
     required ({int hour, int minute}) morningTime,
@@ -442,11 +456,18 @@ class NotificationService {
       // 収集予定が空の日は通知を生成しない（要件3.6）。
       if (entries.isEmpty) continue;
 
-      final payload = DateTime(
+      final datePayload = DateTime(
         targetDate.year,
         targetDate.month,
         targetDate.day,
       ).toIso8601String();
+      final payload = municipalityId == null
+          ? datePayload
+          : jsonEncode({
+              'date': datePayload,
+              'municipality_id': municipalityId,
+              'district_id': districtId,
+            });
 
       // --- EveningNotification（前日 + eveningTime） ---
       // 先頭日 i == 0 は前日が ScheduleWindow 範囲外のため対象外。
@@ -489,8 +510,10 @@ class NotificationService {
 
       // --- MorningNotification（当日 + morningTime） ---
       final morningEntries = entries
-          .where((e) => morningEnabledCategories.contains(e.category) &&
-              morningTime.hour < (e.category == GarbageCategory.burnable ? 7 : 8))
+          .where((e) =>
+              morningEnabledCategories.contains(e.category) &&
+              morningTime.hour * 60 + morningTime.minute <
+                  e.category.cutoffMinutes)
           .toList();
 
       if (morningEntries.isNotEmpty) {
@@ -536,11 +559,29 @@ class NotificationService {
   ///
   /// ScheduleWindow の計算は純粋関数 [computeScheduleWindow] に委譲し、
   /// 本メソッドは `cancelAll` と `zonedSchedule` の副作用のみを担う。
-  Future<void> scheduleWeeklyNotifications(String districtId) async {
+  int _scheduleEpoch = 0;
+  Future<void> _scheduleQueue = Future<void>.value();
+
+  Future<void> scheduleWeeklyNotifications(String districtId,
+      {String municipalityId = '38201'}) {
+    final epoch = ++_scheduleEpoch;
+    final operation = _scheduleQueue.then((_) =>
+        _scheduleWeekly(districtId, municipalityId, epoch));
+    _scheduleQueue = operation.then<void>((_) {}, onError: (Object error, StackTrace stack) {
+      debugPrint('[NotificationService] 通知の再設定に失敗: $error');
+    });
+    return operation;
+  }
+
+  Future<void> _scheduleWeekly(String districtId, String municipalityId, int epoch) async {
+    if (epoch != _scheduleEpoch) return;
     await initialize();
     await _plugin.cancelAll();
 
-    final scheduleService = ScheduleService();
+    final scheduleService =
+        ScheduleService(data: _data, municipalityId: municipalityId);
+    final categories =
+        await _data.categories(districtId, municipalityId: municipalityId);
 
     // 保存済みの通知時刻を取得
     final eveningTime = await getEveningTime();
@@ -552,14 +593,17 @@ class NotificationService {
     final eveningEnabledCategories =
         await customizationService.getEnabledCategories(
       NotificationTimingType.evening,
+      categories: categories,
     );
     final morningEnabledCategories =
         await customizationService.getEnabledCategories(
       NotificationTimingType.morning,
+      categories: categories,
     );
 
     final planned = await computeScheduleWindow(
       districtId: districtId,
+      municipalityId: municipalityId,
       now: japanWallTime(_now()),
       eveningTime: eveningTime,
       morningTime: morningTime,
@@ -568,8 +612,10 @@ class NotificationService {
       entriesForDate: scheduleService.getScheduleForDate,
     );
 
+    if (epoch != _scheduleEpoch) return;
     int notificationId = 0;
     for (final notification in planned) {
+      if (epoch != _scheduleEpoch) return;
       await _scheduleNotification(
         id: notificationId++,
         title: notification.title,
@@ -636,7 +682,10 @@ class NotificationService {
     final districtId = await _readDistrictId();
     if (districtId == null) return;
 
-    await scheduleWeeklyNotifications(districtId);
+    await scheduleWeeklyNotifications(districtId,
+        municipalityId: (await SharedPreferences.getInstance())
+                .getString(_municipalityIdKey) ??
+            '38201');
   }
 
   /// 起動時に保存済みの通知設定を読み込み、必要に応じて再スケジュールする（要件 6.2〜6.5）。
@@ -670,7 +719,10 @@ class NotificationService {
 
     // 再スケジュール失敗時も flag=true を保持する（要件 6.4）。
     try {
-      await scheduleWeeklyNotifications(districtId);
+      await scheduleWeeklyNotifications(districtId,
+          municipalityId: (await SharedPreferences.getInstance())
+                  .getString(_municipalityIdKey) ??
+              '38201');
       debugPrint('[NotificationService] 起動時の再スケジュールが完了しました');
     } catch (e) {
       // 例外を捕捉し flag は true のまま保持する。次回起動等で再試行可能（要件 6.4）。
@@ -684,7 +736,11 @@ class NotificationService {
   /// 保存したうえで [refreshNotifications] を実行する。ReminderEnabledFlag が
   /// false の場合、保存は行うが通知はスケジュールされない（要件 1.5）。これにより、
   /// 再スケジュールは常に「現在の設定 + 現在時刻」から全通知を再計算する。
-  Future<void> updateDistrict(String districtId) async {
+  Future<void> updateDistrict(String districtId,
+      {String municipalityId = '38201'}) async {
+    _scheduleEpoch++;
+    await (await SharedPreferences.getInstance())
+        .setString(_municipalityIdKey, municipalityId);
     await _writeDistrictId(districtId);
     await refreshNotifications();
   }

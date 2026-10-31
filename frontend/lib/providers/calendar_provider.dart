@@ -1,25 +1,46 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../models/collection_schedule.dart';
+import '../models/garbage_item.dart';
+import 'municipality_provider.dart';
 import '../services/schedule_service.dart';
-import '../services/municipality_data_service.dart';
 import '../utils/japan_time.dart';
 import 'region_provider.dart';
 
 /// ScheduleServiceのプロバイダー
-final scheduleServiceProvider =
-    Provider<ScheduleService>((ref) => ScheduleService());
+final scheduleServiceProvider = Provider<ScheduleService>((ref) {
+  final region = ref.watch(regionSettingProvider).valueOrNull;
+  return ScheduleService(
+      data: ref.watch(municipalityDataProvider),
+      municipalityId: region?.municipalityId ?? '');
+});
 
-final ruleProfileProvider = FutureProvider.family<String?, String>((ref, districtId) async {
-  final area = await MunicipalityDataService().area(districtId);
-  return area?['rule_profile_id'] as String?;
+final collectionCategoriesProvider =
+    FutureProvider<List<GarbageCategory>>((ref) async {
+  final region = ref.watch(regionSettingProvider).valueOrNull;
+  if (region == null) return [];
+  return ref
+      .watch(municipalityDataProvider)
+      .categories(region.districtId, municipalityId: region.municipalityId);
+});
+
+final calendarValidityProvider = FutureProvider<({DateTime start, DateTime end})?>((ref) async {
+  final region = ref.watch(regionSettingProvider).valueOrNull;
+  if (region == null) return null;
+  final registry = await ref.watch(municipalityDataProvider).registryFor(region.municipalityId);
+  return (start: DateTime.parse(registry['valid_from'] as String),
+      end: DateTime.parse(registry['valid_to'] as String));
 });
 
 /// 選択中の日付のStateProvider
 ///
 /// カレンダー画面で選択された日付を保持する。
 /// 初期値はnull（未選択状態）。
-final selectedDayProvider = StateProvider<DateTime?>((ref) => null);
+final selectedDayProvider = StateProvider<DateTime?>((ref) {
+  ref.watch(regionSettingProvider.select((value) =>
+      (value.valueOrNull?.municipalityId, value.valueOrNull?.districtId)));
+  return null;
+});
 
 /// 表示中の月のStateProvider
 ///

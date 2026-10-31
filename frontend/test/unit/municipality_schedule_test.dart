@@ -1,5 +1,5 @@
+import '../helpers/municipality_assets.dart';
 import 'dart:convert';
-import 'dart:typed_data';
 
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -25,7 +25,10 @@ class MemoryAssetBundle extends CachingAssetBundle {
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
   final registry = jsonEncode({
-    'version': 'test-v1', 'valid_from': '2026-04-01', 'valid_to': '2027-03-31',
+    'municipality_id': '38201',
+    'version': 'test-v1',
+    'valid_from': '2026-04-01',
+    'valid_to': '2027-03-31',
     'collection_areas': [
       {'id': '38201-08', 'name': '清水', 'calendar_id': 'shared', 'rule_profile_id': 'matsuyama_hojo'},
       {'id': '38201-11', 'name': '試験', 'calendar_id': 'shared', 'rule_profile_id': 'matsuyama_hojo'},
@@ -33,21 +36,27 @@ void main() {
     'legacy_district_candidates': {'old-ambiguous': ['38201-08', '38201-11']},
   });
   final calendar = jsonEncode({
-    'version': 'test-v1', 'valid_from': '2026-04-01', 'valid_to': '2027-03-31',
-    'calendars': {'shared': {
-      'verification_status': 'checked',
-      'days': {
-        '2026-10-30': ['combustible', 'paper'],
-        '2026-11-06': ['combustible'],
-        '2027-03-31': ['mercury'],
-      },
-    }},
+    'municipality_id': '38201',
+    'version': 'test-v1',
+    'valid_from': '2026-04-01',
+    'valid_to': '2027-03-31',
+    'calendars': {
+      'shared': {
+        'verification_status': 'checked',
+        'days': {
+          '2026-10-30': ['combustible', 'paper'],
+          '2026-11-06': ['combustible'],
+          '2027-03-31': ['mercury'],
+        },
+      }
+    },
   });
 
-  MunicipalityDataService data() => MunicipalityDataService(bundle: MemoryAssetBundle({
-    'assets/data/municipality_registry.json': registry,
-    'assets/data/municipality_calendar.json': calendar,
-  }));
+  MunicipalityDataService data() => MunicipalityDataService(
+          bundle: MemoryAssetBundle(withMatsuyamaCatalog({
+        'assets/data/municipality_registry.json': registry,
+        'assets/data/municipality_calendar.json': calendar,
+      })));
 
   test('shared calendar, same-day categories, and 7/8 o’clock cutoff', () async {
     final service = ScheduleService(data: data(),

@@ -113,6 +113,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
   }
 
   Future<void> _pickImage() async {
+    final epoch = _requestEpoch;
     try {
       final file = await _imagePicker.pickImage(
         source: ImageSource.gallery,
@@ -121,7 +122,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
         imageQuality: 85,
         requestFullMetadata: false,
       );
-      if (file == null) return;
+      if (file == null || !mounted || epoch != _requestEpoch) return;
 
       final mediaType = _resolveMediaType(file);
       if (mediaType == null) {
@@ -138,7 +139,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
         }
         return;
       }
-      if (!mounted) return;
+      if (!mounted || epoch != _requestEpoch) return;
       setState(() {
         _selectedImage = SearchImageInput(
           bytes: bytes,
@@ -148,7 +149,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
         _error = null;
       });
     } catch (_) {
-      if (mounted) {
+      if (mounted && epoch == _requestEpoch) {
         setState(() => _error = '画像を読み込めませんでした。別の画像をお試しください。');
       }
     }
@@ -192,7 +193,9 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
   Widget build(BuildContext context) {
     ref.listen<AsyncValue<RegionSetting?>>(regionSettingProvider,
         (previous, next) {
-      if (previous?.valueOrNull?.districtId != next.valueOrNull?.districtId) {
+      if (previous?.valueOrNull?.municipalityId !=
+              next.valueOrNull?.municipalityId ||
+          previous?.valueOrNull?.districtId != next.valueOrNull?.districtId) {
         _startNewSearch();
       }
     });
@@ -669,7 +672,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                             contentPadding: EdgeInsets.zero,
                             leading: const Icon(Icons.description_outlined,
                                 size: 19),
-                            title: Text(source.title ?? '松山市ごみ分別資料'),
+                            title: Text(source.title ?? 'ごみ分別資料'),
                             subtitle: source.snippet == null
                                 ? null
                                 : Text(

@@ -9,10 +9,6 @@ import '../models/weather.dart';
 /// APIキー不要で最大16日分の日次天気予報を取得する。
 /// 愛媛県の各市町村の代表座標をもとに予報を取得する。
 class WeatherService {
-  /// 愛媛県のデフォルト座標（松山市）
-  static const double _defaultLatitude = 33.8416;
-  static const double _defaultLongitude = 132.7657;
-
   /// 市区町村IDに対応する座標マップ
   static const Map<String, List<double>> _coordinates = {
     '38201': [33.8416, 132.7657], // 松山市
@@ -47,10 +43,11 @@ class WeatherService {
   ///
   /// [districtId] 地区ID（例: "38201-01"）
   /// 返り値: 日付→DailyWeatherのMap
-  Future<Map<DateTime, DailyWeather>> getForecast(String districtId) async {
-    final municipalityId = _getMunicipalityId(districtId);
-    final coords = _coordinates[municipalityId] ??
-        [_defaultLatitude, _defaultLongitude];
+  Future<Map<DateTime, DailyWeather>> getForecast(String districtId,
+      {String? municipalityId}) async {
+    final coords =
+        _coordinates[municipalityId ?? _getMunicipalityId(districtId)];
+    if (coords == null) return {};
     final latitude = coords[0];
     final longitude = coords[1];
 

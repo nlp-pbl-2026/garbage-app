@@ -1,5 +1,5 @@
+import '../helpers/municipality_assets.dart';
 import 'dart:convert';
-import 'dart:typed_data';
 
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -15,18 +15,33 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class _Bundle extends CachingAssetBundle {
   @override
-  Future<ByteData> load(String key) async => ByteData.sublistView(Uint8List.fromList(utf8.encode(jsonEncode({
-    'collection_areas': [
-      {'id': '38201-08', 'name': '清水', 'calendar_id': 'c', 'rule_profile_id': 'matsuyama_hojo'},
-    ],
-    'legacy_district_candidates': {'old-ambiguous': ['38201-08', 'other']},
-  }))));
+  Future<ByteData> load(String key) async =>
+      ByteData.sublistView(Uint8List.fromList(
+          utf8.encode(jsonEncode(key.endsWith('municipality_catalog.json')
+              ? matsuyamaCatalog()
+              : {
+                  'municipality_id': '38201',
+                  'version': 'test-v1',
+                  'collection_areas': [
+                    {
+                      'id': '38201-08',
+                      'name': '清水',
+                      'calendar_id': 'c',
+                      'rule_profile_id': 'matsuyama_hojo'
+                    },
+                  ],
+                  'legacy_district_candidates': {
+                    'old-ambiguous': ['38201-08', 'other']
+                  },
+                }))));
 }
 
 class _Notifications extends NotificationService {
   final updated = <String>[];
   @override
-  Future<void> updateDistrict(String districtId) async => updated.add(districtId);
+  Future<void> updateDistrict(String districtId,
+          {String municipalityId = '38201'}) async =>
+      updated.add(districtId);
 }
 
 void main() {

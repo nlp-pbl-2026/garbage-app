@@ -59,16 +59,27 @@ class IcalExportService {
   void _writeVEvent(StringBuffer buffer, ScheduleEntry entry) {
     final label = CategoryColors.getLabel(entry.category);
     final dateStr = _formatDate(entry.date);
-    final uid = '${entry.districtId}-$dateStr-${entry.category.toJsonString()}@garbageapp';
-    final deadline = entry.category == GarbageCategory.burnable ? '7時' : '8時';
+    final scope = _scheduleService.municipalityId == '38201'
+        ? ''
+        : '${_scheduleService.municipalityId}-';
+    final uid =
+        '$scope${entry.districtId}-$dateStr-${entry.category.toJsonString()}@garbageapp';
+    final deadline = entry.category.deadlineLabel;
 
     buffer.writeln('BEGIN:VEVENT');
     buffer.writeln('DTSTART;VALUE=DATE:$dateStr');
-    buffer.writeln('SUMMARY:${label}の日');
-    buffer.writeln('DESCRIPTION:今日は${label}の収集日です。$deadlineまでに出してください。');
+    buffer.writeln('SUMMARY:${_escape(label)}の日');
+    buffer
+        .writeln('DESCRIPTION:今日は${_escape(label)}の収集日です。$deadlineまでに出してください。');
     buffer.writeln('UID:$uid');
     buffer.writeln('END:VEVENT');
   }
+
+  String _escape(String value) => value
+      .replaceAll('\\', r'\\')
+      .replaceAll('\n', r'\n')
+      .replaceAll(',', r'\,')
+      .replaceAll(';', r'\;');
 
   String _formatDate(DateTime date) {
     final year = date.year.toString().padLeft(4, '0');

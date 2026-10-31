@@ -299,8 +299,9 @@ class _ExternalLinkSection extends StatelessWidget {
               applicationMethod: config.applicationMethod,
               webFormUrl: config.webFormUrl,
               phoneNumber: config.phoneNumber,
-              webButtonLabel:
-                  useOfficialInfoFallback ? '松山市公式サイトで確認' : 'Webで申し込む',
+              webButtonLabel: useOfficialInfoFallback
+                  ? '${config.municipalityName}公式サイトで確認'
+                  : 'Webで申し込む',
             ),
           ],
         ),

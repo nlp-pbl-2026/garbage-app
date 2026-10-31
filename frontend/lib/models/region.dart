@@ -109,6 +109,8 @@ class District {
     required this.name,
   });
 
+  String get displayName => municipalityId == '38201' && !name.endsWith('地区') ? '$name地区' : name;
+
   factory District.fromJson(Map<String, dynamic> json) {
     return District(
       id: json['id'] as String,

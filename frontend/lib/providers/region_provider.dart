@@ -2,9 +2,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../models/region.dart';
 import '../services/region_service.dart';
+import 'municipality_provider.dart';
 
 /// RegionServiceのプロバイダー
-final regionServiceProvider = Provider<RegionService>((ref) => RegionService());
+final regionServiceProvider = Provider<RegionService>(
+    (ref) => RegionService(data: ref.watch(municipalityDataProvider)));
 
 /// 地域設定の状態管理プロバイダー
 ///
@@ -43,6 +45,7 @@ final districtsProvider =
 /// 地域設定の読み込み・保存・バリデーションを管理する。
 class RegionSettingNotifier extends StateNotifier<AsyncValue<RegionSetting?>> {
   final RegionService _service;
+  int _changeEpoch = 0;
 
   RegionSettingNotifier(this._service) : super(const AsyncValue.loading()) {
     loadSetting();
@@ -50,31 +53,34 @@ class RegionSettingNotifier extends StateNotifier<AsyncValue<RegionSetting?>> {
 
   /// SharedPreferencesから地域設定を読み込む
   Future<void> loadSetting() async {
+    final epoch = ++_changeEpoch;
     state = const AsyncValue.loading();
     try {
       final setting = await _service.getRegionSetting();
-      state = AsyncValue.data(setting);
+      if (mounted && epoch == _changeEpoch) state = AsyncValue.data(setting);
     } catch (e, st) {
-      state = AsyncValue.error(e, st);
+      if (mounted && epoch == _changeEpoch) state = AsyncValue.error(e, st);
     }
   }
 
   /// 地域設定を保存し、状態を更新する
   Future<void> saveSetting(RegionSetting setting) async {
+    final epoch = ++_changeEpoch;
     try {
       await _service.saveRegionSetting(setting);
-      state = AsyncValue.data(setting);
+      if (mounted && epoch == _changeEpoch) state = AsyncValue.data(setting);
     } catch (e, st) {
-      state = AsyncValue.error(e, st);
+      if (mounted && epoch == _changeEpoch) state = AsyncValue.error(e, st);
     }
   }
 
   Future<void> clearSetting() async {
+    final epoch = ++_changeEpoch;
     try {
       await _service.clearRegionSetting();
-      state = const AsyncValue.data(null);
+      if (mounted && epoch == _changeEpoch) state = const AsyncValue.data(null);
     } catch (e, st) {
-      state = AsyncValue.error(e, st);
+      if (mounted && epoch == _changeEpoch) state = AsyncValue.error(e, st);
     }
   }
 
