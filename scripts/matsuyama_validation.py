@@ -8,7 +8,7 @@ import json
 from pathlib import Path
 import sys
 
-from matsuyama_data import DATA, ROOT, read_json, sha256, normalized_hash
+from matsuyama_data import DATA, ROOT, read_json, sha256, normalized_hash, check_auxiliary_source
 from matsuyama_pdf import read_calendar
 
 
@@ -70,7 +70,7 @@ def validate() -> dict:
     addresses = read_json(DATA / "generated/addresses.json")
     knowledge = read_json(DATA / "knowledge_reviews.json")
     for filename, digest in read_json(DATA / "auxiliary_sources.json")["sources"].items():
-        assert sha256(DATA / "source" / filename) == digest
+        check_auxiliary_source(DATA / "source" / filename, digest)
     assert addresses == read_json(ROOT / "frontend/assets/data/municipality_addresses.json")
     assert len(addresses["entries"]) == knowledge["address_entries"] == 710
     assert {row["area_id"] for row in addresses["entries"]} <= {area["id"] for area in registry["collection_areas"]}
