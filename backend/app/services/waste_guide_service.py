@@ -315,7 +315,8 @@ class BedrockGateway:
             raise WasteGuideError("Verified regional item index is unavailable")
         matches = search.search(query, limit=limit)
         if region and region.municipality_id != "38201" and any(
-                match.category and match.category not in region.category_codes for match in matches):
+                (match.category and match.category not in region.category_codes) or
+                any(code not in region.category_codes for code in match.category_options) for match in matches):
             raise WasteGuideError("Item data contains an unknown regional category")
         return matches
 
@@ -513,7 +514,20 @@ class BedrockGateway:
         structured = re.search(r"^分類(?:コード)?:\s*([^\n]+)", text, re.MULTILINE)
         if structured:
             label = names.get(category_code, "")
-            return structured.group(1).strip() in (category_code, label, f"{label} ({category_code})")
+            if structured.group(1).strip() in (category_code, label, f"{label} ({category_code})"):
+                return True
+            # Opt-in, explicit alternatives for conditional official rows. Preserve
+            # Matsuyama's established decision path and never infer codes from notes.
+            if region and region.municipality_id != "38201":
+                alternative = re.search(r"^条件付き分類コード:\s*(\[[^\n]*\])", text, re.MULTILINE)
+                if alternative:
+                    try:
+                        options = json.loads(alternative.group(1))
+                        return isinstance(options, list) and category_code in options and all(
+                            code in region.category_codes for code in options)
+                    except (ValueError, TypeError):
+                        return False
+            return False
         category_name = names.get(category_code, "")
         return category_code in text or (category_name and category_name in text)
 
@@ -868,6 +882,7 @@ class WasteGuideService:
             query=query,
             clarifications=clarification_items,
             documents=documents,
+            region=region,
         )
         conditional_question = self._conditional_evidence_question(
             query=detail_query,
@@ -1057,6 +1072,7 @@ class WasteGuideService:
         query: str,
         clarifications: list[dict],
         documents: list[RetrievedDocument],
+        region: RegionContext | None = None,
     ) -> str | None:
         """一般名詞だけの入力を、検索候補だけで確定しないための最終ガード。"""
 
@@ -1070,6 +1086,14 @@ class WasteGuideService:
                 ]
             ),
         ).lower()
+        # A positively identified packaging mark already supplies the material.
+        # Keep the established Matsuyama guard unchanged. Uncertain/negative
+        # statements still require the normal evidence/model checks.
+        if region and region.municipality_id != "38201" and re.search(
+            r"(?:プラ|紙)マーク(?:付き(?!では|じゃ|でない|か|とは)|が付いて(?:います|いる)|あり(?!ません))",
+            text,
+        ):
+            return None
         material_markers = (
             "プラスチック",
             "樹脂",

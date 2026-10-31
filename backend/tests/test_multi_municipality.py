@@ -356,3 +356,46 @@ def test_package_refuses_incomplete_data_before_copying(municipalities):
     with pytest.raises(FileNotFoundError):
         packaging_module().stage_data(destination, municipalities / "catalog.json")
     assert not destination.exists()
+
+
+def test_explicit_conditional_codes_can_support_a_different_final_classification(municipalities):
+    from app.services.item_search_service import ItemMatch
+    region = MunicipalityCatalog(municipalities / "catalog.json").resolve('90001', 'same-area')
+    match = ItemMatch(item_id='test', item='試験品', category='可燃', category_display='試験市A回収物',
+        note='小さいものは回収、大きいものは専用持込', score=.9, category_options=('X',))
+    document = RetrievedDocument(text=match.evidence_text, uri=region.evidence_prefix+'items/test')
+    assert BedrockGateway._document_supports_category(document, '可燃', region=region)
+    assert BedrockGateway._document_supports_category(document, 'X', region=region)
+    unverified = RetrievedDocument(text=match.evidence_text.replace('条件付き分類コード: ["X"]\n', ''))
+    assert not BedrockGateway._document_supports_category(unverified, 'X', region=region)
+
+
+@pytest.mark.parametrize('options', ['["X", "unknown"]', '"X"', '{"X": true}', '[null]'])
+def test_unknown_or_malformed_conditional_codes_never_support_a_decision(municipalities, options):
+    region = MunicipalityCatalog(municipalities / "catalog.json").resolve('90001', 'same-area')
+    document = RetrievedDocument(text='分類コード: 可燃\n分類: 回収物\n条件付き分類コード: '+options)
+    assert not BedrockGateway._document_supports_category(document, 'X', region=region)
+
+
+def test_explicit_packaging_mark_avoids_duplicate_material_question(municipalities):
+    region = MunicipalityCatalog(municipalities / 'catalog.json').resolve('90001', 'same-area')
+    options = dict(clarifications=[], documents=[], region=region)
+    assert WasteGuideService._missing_detail_question(
+        query='洗っても汚れが落ちないプラマーク付き弁当容器', **options) is None
+    assert WasteGuideService._missing_detail_question(
+        query='プラマーク付きではない容器', **options) is not None
+    # The legacy path remains identical, including its established limitation.
+    assert WasteGuideService._missing_detail_question(
+        query='プラマーク付き容器', clarifications=[], documents=[]) is not None
+
+
+def test_packaging_mark_decision_keeps_resolved_model_result_and_collection_date(municipalities):
+    region = get_registry().resolve('90001', 'same-area')
+    service = guide(Runtime())
+    result = service.decide(query='洗っても汚れが落ちないプラマーク付き弁当容器',
+        rewritten_query='弁当容器 プラマークあり', municipality_id='90001', district_id='same-area',
+        documents=[RetrievedDocument('品目: 弁当容器\n分類コード: 可燃\n出し方・注意: プラマークを確認。汚れが落ちないものは可燃',
+            score=.95, uri=region.evidence_prefix+'items/test')])
+    assert result.status == 'answered'
+    assert result.decision.category_code == '可燃'
+    assert result.next_collection is not None

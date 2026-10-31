@@ -45,6 +45,11 @@ def runtime_files(catalog_path: Path) -> set[Path]:
             if municipality_id != "38201" and any(
                     row.get("category") and row["category"] not in profile.categories for row in rows):
                 raise ValueError("Unknown regional item category")
+            if municipality_id != "38201":
+                for row in rows:
+                    options = json.loads(row.get("category_options") or "[]")
+                    if not isinstance(options, list) or any(code not in profile.categories for code in options):
+                        raise ValueError("Unknown conditional item category")
             if municipality_id != "38201" and (
                     manifest.get("municipality_id") != municipality_id
                     or manifest.get("profile_id") != profile.index_profile_id):
