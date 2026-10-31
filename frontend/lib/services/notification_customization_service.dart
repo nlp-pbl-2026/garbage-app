@@ -19,20 +19,23 @@ class NotificationCustomizationService {
 
   /// 指定カテゴリ・タイミングの設定キーを生成する
   ///
-  /// 形式: `notification_category_{category}_{timing}`
+  /// 松山市は旧キー、その他は自治体ID・分別設定IDを含むキーを使う。
   /// 例: `notification_category_burnable_evening`
   String _buildKey(GarbageCategory category, NotificationTimingType timing) {
-    return '${_keyPrefix}${category.toJsonString()}_${timing.name}';
+    final scope = category.scope == null ? '' : '${category.scope}/';
+    return '$_keyPrefix$scope${category.toJsonString()}_${timing.name}';
   }
 
   /// 全カテゴリの通知設定を読み込む
   ///
   /// SharedPreferencesにキーが存在しない場合はデフォルトtrue（ON）を返す。
-  /// 5カテゴリ × 2タイミング = 10個の設定値を読み込む。
-  Future<Map<GarbageCategory, CategoryNotificationSetting>> loadAllSettings() async {
+  /// 対象地域の収集区分ごとに前日・当日の設定を読み込む。
+  Future<Map<GarbageCategory, CategoryNotificationSetting>> loadAllSettings(
+      {List<GarbageCategory> categories =
+          CategoryColors.collectionCategories}) async {
     final Map<GarbageCategory, CategoryNotificationSetting> settings = {};
 
-    for (final category in CategoryColors.collectionCategories) {
+    for (final category in categories) {
       final eveningKey = _buildKey(category, NotificationTimingType.evening);
       final morningKey = _buildKey(category, NotificationTimingType.morning);
 
@@ -69,11 +72,12 @@ class NotificationCustomizationService {
   /// 該当タイミングでONに設定されているカテゴリのみを返す。
   /// キーが存在しない場合はデフォルトtrue（ON）として扱う。
   Future<List<GarbageCategory>> getEnabledCategories(
-    NotificationTimingType timing,
-  ) async {
+    NotificationTimingType timing, {
+    List<GarbageCategory> categories = CategoryColors.collectionCategories,
+  }) async {
     final List<GarbageCategory> enabledCategories = [];
 
-    for (final category in CategoryColors.collectionCategories) {
+    for (final category in categories) {
       final key = _buildKey(category, timing);
       final legacy = _legacyCategory(category);
       final enabled = _prefs.getBool(key) ??
@@ -87,6 +91,7 @@ class NotificationCustomizationService {
   }
 
   GarbageCategory? _legacyCategory(GarbageCategory category) {
+    if (category.scope != null) return null;
     switch (category) {
       case GarbageCategory.paper:
       case GarbageCategory.metalGlass:

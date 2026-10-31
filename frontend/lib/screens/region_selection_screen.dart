@@ -12,7 +12,7 @@ import '../widgets/candidate_bottom_sheet.dart';
 
 /// 初回起動時と設定変更時に使う地域選択画面。
 ///
-/// 清水地区へのショートカットと、松山市の全収集地区からの手動選択を提供する。
+/// 清水地区へのショートカットと、対応自治体・収集地区の手動選択を提供する。
 class RegionSelectionScreen extends ConsumerStatefulWidget {
   final VoidCallback? onRegionSelected;
   final bool autoDetect;
@@ -86,7 +86,9 @@ class _RegionSelectionScreenState extends ConsumerState<RegionSelectionScreen> {
     }
     try {
       if (!notificationUpdated) {
-        await ref.read(notificationServiceProvider).updateDistrict(district.id);
+        await ref
+            .read(notificationServiceProvider)
+            .updateDistrict(district.id, municipalityId: municipality.id);
       }
     } catch (_) {
       if (mounted) {
@@ -234,7 +236,7 @@ class _RegionSelectionScreenState extends ConsumerState<RegionSelectionScreen> {
     ref.read(municipalitiesProvider(prefecture.id)).when(
           data: (items) => _showSelectionSheet<Municipality>(
             title: '市区町村を選択',
-            items: items.where((item) => item.id == _matsuyama.id).toList(),
+            items: items,
             nameOf: (item) => item.displayName,
             onSelected: _selectMunicipality,
           ),
@@ -250,7 +252,7 @@ class _RegionSelectionScreenState extends ConsumerState<RegionSelectionScreen> {
           data: (items) => _showSelectionSheet<District>(
             title: '地区を選択',
             items: items,
-            nameOf: (item) => '${item.name}地区',
+            nameOf: (item) => item.displayName,
             onSelected: _selectDistrict,
           ),
           loading: () {},
@@ -290,6 +292,12 @@ class _RegionSelectionScreenState extends ConsumerState<RegionSelectionScreen> {
     final canPop = Navigator.of(context).canPop();
     final colors = Theme.of(context).colorScheme;
     final gpsState = ref.watch(gpsDetectionProvider);
+    final supportsShimizu = ref
+            .watch(districtsProvider(_matsuyama.id))
+            .asData
+            ?.value
+            .any((district) => district.id == _shimizu.id) ??
+        false;
 
     return Scaffold(
       appBar: canPop
@@ -316,8 +324,10 @@ class _RegionSelectionScreenState extends ConsumerState<RegionSelectionScreen> {
                   if (!canPop) const SizedBox(height: 6),
                   _buildHeader(colors),
                   const SizedBox(height: 18),
-                  _buildRecommendedCard(colors),
-                  const SizedBox(height: 16),
+                  if (supportsShimizu) ...[
+                    _buildRecommendedCard(colors),
+                    const SizedBox(height: 16),
+                  ],
                   OutlinedButton.icon(
                     onPressed: gpsState is GpsDetectionLoading
                         ? null
@@ -570,9 +580,7 @@ class _RegionSelectionScreenState extends ConsumerState<RegionSelectionScreen> {
             key: const Key('district-selector'),
             icon: Icons.home_work_outlined,
             label: '地区',
-            value: _selectedDistrict == null
-                ? null
-                : '${_selectedDistrict!.name}地区',
+            value: _selectedDistrict?.displayName,
             loading: districts?.isLoading ?? false,
             error: _validationResult?.districtError,
             enabled: districts?.hasValue ?? false,
@@ -617,8 +625,20 @@ class _RegionSelectionScreenState extends ConsumerState<RegionSelectionScreen> {
     );
   }
 
+  Future<void> _saveDetectedRegion(RegionSetting region) => _saveRegion(
+      Prefecture(id: region.prefectureId, name: region.prefectureName),
+      Municipality(
+          id: region.municipalityId,
+          prefectureId: region.prefectureId,
+          name: region.municipalityName),
+      District(
+          id: region.districtId,
+          municipalityId: region.municipalityId,
+          name: region.districtName));
+
   void _showGpsConfirmationDialog(DistrictMatchResult result) {
-    final areaId = result.collectionAreaId ?? '38201-${result.districtNumber.toString().padLeft(2, '0')}';
+    final region = result.region;
+    if (region == null) return;
     showDialog<void>(
       context: context,
       builder: (dialogContext) => AlertDialog(
@@ -626,7 +646,8 @@ class _RegionSelectionScreenState extends ConsumerState<RegionSelectionScreen> {
           Icons.location_on_rounded,
         ),
         title: const Text('収集地区を確認してください'),
-        content: Text('住所「${result.matchedTown}」の候補は松山市 ${result.districtName}地区です。収集地区を確認して設定してください。'),
+        content: Text(
+            '住所「${result.matchedTown}」の候補は${region.municipalityName} ${region.districtName}です。収集地区を確認して設定してください。'),
         actions: [
           TextButton(
             onPressed: () {
@@ -636,14 +657,13 @@ class _RegionSelectionScreenState extends ConsumerState<RegionSelectionScreen> {
             child: const Text('キャンセル'),
           ),
           FilledButton(
-              onPressed: () async {
-                Navigator.of(dialogContext).pop();
-                ref.read(gpsDetectionProvider.notifier).reset();
-                await _saveRegion(_ehime, _matsuyama, District(
-                  id: areaId, municipalityId: '38201', name: result.districtName));
-              },
-              child: const Text('この地域で設定'),
-            ),
+            onPressed: () async {
+              Navigator.of(dialogContext).pop();
+              ref.read(gpsDetectionProvider.notifier).reset();
+              await _saveDetectedRegion(region);
+            },
+            child: const Text('この地域で設定'),
+          ),
         ],
       ),
     );
@@ -659,10 +679,7 @@ class _RegionSelectionScreenState extends ConsumerState<RegionSelectionScreen> {
     );
     if (!mounted) return;
 
-    if (selected != null && selected.collectionAreaId != null) {
-      await _saveRegion(_ehime, _matsuyama, District(
-        id: selected.collectionAreaId!, municipalityId: '38201', name: selected.districtName));
-    }
+    if (selected?.region != null) await _saveDetectedRegion(selected!.region!);
     ref.read(gpsDetectionProvider.notifier).reset();
   }
 }

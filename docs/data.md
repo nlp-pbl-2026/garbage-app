@@ -58,6 +58,17 @@ backend/.venv/bin/python scripts/matsuyama_raster_audit.py
 
 自治体を追加する場合は、独立した地区台帳、適用期間、分別設定、カレンダー原本、出典・検証記録を用意し、対応する検索索引を分けてください。バックエンドは `data/regions/catalog.json` で自治体ごとのデータを読み分けますが、標準カタログに登録済みの実自治体は松山市だけです。追加する台帳・分類・索引の形式は[複数自治体バックエンドのデータ契約](multi-municipality-backend.md)を参照してください。松山市でも2027年度は別バージョンの公式資料を取得・検証してから公開してください。
 
+Flutterの自治体カタログ・分別表示設定を更新する場合は、公式データの整備後に次を実行します。
+既存の松山市CSV・Embeddingは読み替え・再生成しません。
+
+```bash
+backend/.venv/bin/python scripts/generate_frontend_data.py
+```
+
+生成されるカタログと自治体別台帳はメタデータ、カレンダー・住所表は従来どおりGit管理外です。
+新自治体の色・粗大ごみ案内などの追加項目と検証手順は
+[Flutterの自治体データ契約](multi-municipality-flutter.md)を参照してください。
+
 Knowledge Base連携・比較実験の入力形式は `infra/scripts/build_knowledge_records.py` と `backend/evaluation/README.md` を参照してください。現在の通常検索経路は両地域ともLambda同梱のTitan索引を候補取得に使います。中島の分類根拠は地域別ルールに切り替えます。
 
 ## AWS・アプリ反映前

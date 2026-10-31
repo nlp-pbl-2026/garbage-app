@@ -226,15 +226,17 @@ class _ItemListViewState extends ConsumerState<ItemListView> {
                   const SizedBox(height: 12),
                   Text(
                     widget.config.applicationMethod == ApplicationMethod.none
-                        ? '中島地域の粗大ごみ収集日と出し方は公式カレンダーで確認してください。'
-                        : '粗大ごみとして収集できるか、申込区分、受付期間は松山市公式サイトで確認してください。料金はかかりません。',
+                        ? '${widget.config.municipalityName}の粗大ごみ収集日と出し方は公式カレンダーで確認してください。'
+                        : widget.config.municipalityId == '38201'
+                            ? '粗大ごみとして収集できるか、申込区分、受付期間は松山市公式サイトで確認してください。料金はかかりません。'
+                            : '収集対象、申込条件、料金は自治体の公式サイトで確認してください。',
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(height: 20),
                   ExternalLinkHandler(
                     applicationMethod: ApplicationMethod.webForm,
                     webFormUrl: widget.config.webFormUrl,
-                    webButtonLabel: '松山市公式サイトで確認',
+                    webButtonLabel: '${widget.config.municipalityName}公式サイトで確認',
                   ),
                   const SizedBox(height: 12),
                   OutlinedButton.icon(

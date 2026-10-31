@@ -18,6 +18,8 @@
 /// - UI 準備完了後（最初のフレーム後）に [handleAppLaunchDetails] を呼ぶ。
 library;
 
+import 'dart:convert';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
@@ -42,6 +44,7 @@ class NotificationNavigationHandler {
   /// 「カレンダーの該当日を選択状態で開く」具体的な処理（Riverpod の状態更新・
   /// MainScreen のタブ切替）はアプリ側に依存するため、配線時（task 9.3）に注入する。
   final NavigateToCollectionDay onNavigateToCollectionDay;
+  final bool Function(String municipalityId, String? districtId)? isCurrentRegion;
 
   /// 通知プラグイン。コールドスタート起動要因の確認に用いる。
   ///
@@ -51,6 +54,7 @@ class NotificationNavigationHandler {
 
   NotificationNavigationHandler({
     required this.onNavigateToCollectionDay,
+    this.isCurrentRegion,
     GlobalKey<NavigatorState>? navigatorKey,
     FlutterLocalNotificationsPlugin? plugin,
   })  : navigatorKey = navigatorKey ?? GlobalKey<NavigatorState>(),
@@ -62,6 +66,7 @@ class NotificationNavigationHandler {
   /// コールバックへ接続する想定。ペイロード（ISO8601 収集日）を解釈し
   /// [navigateToCollectionDay] を呼ぶ。
   void onNotificationResponse(NotificationResponse response) {
+    if (!_matchesRegion(response.payload)) return;
     final targetDate = _parsePayload(response.payload);
     navigateToCollectionDay(targetDate);
   }
@@ -101,7 +106,9 @@ class NotificationNavigationHandler {
     // コールドスタートでは UI がまだ準備できていない可能性があるため、
     // 最初のフレーム後に遷移する（要件 5.2）。
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      navigateToCollectionDay(targetDate);
+      if (_matchesRegion(details?.notificationResponse?.payload)) {
+        navigateToCollectionDay(targetDate);
+      }
     });
   }
 
@@ -116,12 +123,33 @@ class NotificationNavigationHandler {
     onNavigateToCollectionDay(normalized);
   }
 
+  bool _matchesRegion(String? payload) {
+    if (payload == null || !payload.startsWith('{')) {
+      // Old payloads were only emitted for Matsuyama.
+      return isCurrentRegion?.call('38201', null) ?? true;
+    }
+    try {
+      final value = jsonDecode(payload) as Map<String, dynamic>;
+      return isCurrentRegion?.call(value['municipality_id'] as String,
+          value['district_id'] as String) ?? true;
+    } catch (_) {
+      return false;
+    }
+  }
+
   /// ペイロード（ISO8601 収集日文字列）を [DateTime] に解釈する。
   ///
   /// null・空文字・解釈不能な文字列の場合は null を返す（安全側）。
   DateTime? _parsePayload(String? payload) {
     if (payload == null || payload.isEmpty) {
       return null;
+    }
+    if (payload.startsWith('{')) {
+      try {
+        payload = (jsonDecode(payload) as Map<String, dynamic>)['date'] as String;
+      } catch (_) {
+        return null;
+      }
     }
     final parsed = DateTime.tryParse(payload);
     if (parsed == null) {

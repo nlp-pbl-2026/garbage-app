@@ -5,7 +5,6 @@ import '../models/garbage_category.dart';
 import '../models/notification_timing_type.dart';
 import '../providers/notification_customization_provider.dart';
 import '../providers/calendar_provider.dart';
-import '../providers/region_provider.dart';
 import '../providers/settings_provider.dart';
 
 /// 種別ごとの通知カスタマイズウィジェット
@@ -68,11 +67,8 @@ class NotificationCustomizationWidget extends ConsumerWidget {
             ),
           ),
         ),
-        ...CategoryColors.forRuleProfile(
-          ref.watch(ruleProfileProvider(
-            ref.watch(regionSettingProvider).valueOrNull?.districtId ?? '38201-08',
-          )).valueOrNull,
-        ).map((category) {
+        ...(ref.watch(collectionCategoriesProvider).asData?.value ?? [])
+            .map((category) {
           final setting = settings[category];
           if (setting == null) return const SizedBox.shrink();
 

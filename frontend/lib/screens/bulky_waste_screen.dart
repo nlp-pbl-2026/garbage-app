@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../constants/colors.dart';
 import '../models/bulky_waste.dart';
 import '../providers/bulky_waste_provider.dart';
+import '../providers/region_provider.dart';
 import '../repositories/bulky_waste_repository.dart';
 import '../widgets/bulky_waste/application_guide_view.dart';
 import '../widgets/bulky_waste/item_list_view.dart';
@@ -40,7 +41,8 @@ class _BulkyWasteScreenState extends ConsumerState<BulkyWasteScreen>
   @override
   Widget build(BuildContext context) {
     final configAsync = ref.watch(municipalityConfigProvider);
-    final recordTabLabel = switch (configAsync.valueOrNull?.data.applicationMethod) {
+    final recordTabLabel =
+        switch (configAsync.asData?.value?.data.applicationMethod) {
       ApplicationMethod.none => '収集予定メモ',
       null => '記録',
       _ => '申込記録',
@@ -63,7 +65,10 @@ class _BulkyWasteScreenState extends ConsumerState<BulkyWasteScreen>
           if (cachedResult == null) {
             return _buildNoDataMessage();
           }
-          return _buildContent(cachedResult);
+          final region = ref.watch(regionSettingProvider).valueOrNull;
+          return KeyedSubtree(
+              key: ValueKey('${region?.municipalityId}/${region?.districtId}'),
+              child: _buildContent(cachedResult));
         },
         loading: () => const Center(child: CircularProgressIndicator()),
         error: (error, _) => _buildErrorState(error),
@@ -77,7 +82,7 @@ class _BulkyWasteScreenState extends ConsumerState<BulkyWasteScreen>
   /// ローディング中やデータ未取得の場合は「粗大ごみ」のみ表示する。
   Widget _buildAppBarTitle(
       AsyncValue<CachedResult<MunicipalityConfig>?> configAsync) {
-    final config = configAsync.valueOrNull?.data;
+    final config = configAsync.asData?.value?.data;
     if (config != null) {
       return Text('粗大ごみ - ${config.municipalityName}');
     }
@@ -157,6 +162,7 @@ class _BulkyWasteScreenState extends ConsumerState<BulkyWasteScreen>
                 useOfficialInfoFallback: cachedResult.isBundledFallback,
               ),
               StatusTrackerView(
+                  municipalityName: cachedResult.data.municipalityName,
                   isNakajima: cachedResult.data.applicationMethod ==
                       ApplicationMethod.none),
             ],
@@ -170,8 +176,8 @@ class _BulkyWasteScreenState extends ConsumerState<BulkyWasteScreen>
   Widget _buildDataNotice(CachedResult<MunicipalityConfig> result) {
     final message = result.isBundledFallback
         ? result.data.applicationMethod == ApplicationMethod.none
-            ? '品目一覧は松山市の分別資料をもとにした参考情報です。中島地域の収集日と出し方は、地区別の公式カレンダーで確認してください。'
-            : '品目一覧は松山市の分別資料をもとにした参考情報です。収集対象や申込条件、受付期間は松山市公式サイトで確認してください。'
+            ? '品目一覧は${result.data.municipalityId == '38201' ? '松山市' : result.data.municipalityName}の分別資料をもとにした参考情報です。収集日と出し方は、地区別の公式カレンダーで確認してください。'
+            : '品目一覧は${result.data.municipalityId == '38201' ? '松山市' : result.data.municipalityName}の分別資料をもとにした参考情報です。収集対象や申込条件、受付期間は自治体の公式サイトで確認してください。'
         : '表示されているデータは以前の取得結果です。最新情報を反映していない可能性があります。';
     return MaterialBanner(
       content: Text(

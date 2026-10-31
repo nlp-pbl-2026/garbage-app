@@ -3,66 +3,77 @@
 /// ゴミ分類カテゴリ（GarbageCategory）とゴミ品目（GarbageItem）を定義する。
 /// JSONデータからの読み込みと書き出しに対応する。
 
-/// ゴミ分類カテゴリ
-///
-/// 各カテゴリは固定の色とラベルが割り当てられる。
-enum GarbageCategory {
-  /// 可燃ごみ - ピンク
-  burnable,
+/// A collection stream. Legacy constants retain Matsuyama's saved preference keys.
+/// Other municipalities use scoped values; identical stream IDs never imply identical rules.
+class GarbageCategory {
+  final String id;
+  final String? scope;
+  final String? displayName;
+  final int? colorValue;
+  final String cutoff;
+  const GarbageCategory._(this.id, {this.cutoff = '08:00'})
+      : scope = null,
+        displayName = null,
+        colorValue = null;
+  const GarbageCategory.regional(
+      {required this.id,
+      required this.scope,
+      required this.displayName,
+      required this.cutoff,
+      this.colorValue});
 
-  /// 資源ごみ - 緑
-  recyclable,
+  static const burnable = GarbageCategory._('burnable', cutoff: '07:00');
+  static const recyclable = GarbageCategory._('recyclable');
+  static const plastic = GarbageCategory._('plastic');
+  static const petBottle = GarbageCategory._('petBottle');
+  static const hazardous = GarbageCategory._('hazardous');
+  static const paper = GarbageCategory._('paper');
+  static const metalGlass = GarbageCategory._('metal_glass');
+  static const landfill = GarbageCategory._('landfill');
+  static const mercury = GarbageCategory._('mercury');
+  static const cans = GarbageCategory._('cans');
+  static const bottles = GarbageCategory._('bottles');
+  static const bulky = GarbageCategory._('bulky');
+  static const values = [
+    burnable,
+    recyclable,
+    plastic,
+    petBottle,
+    hazardous,
+    paper,
+    metalGlass,
+    landfill,
+    mercury,
+    cans,
+    bottles,
+    bulky
+  ];
 
-  /// プラスチック製容器包装 - オレンジ
-  plastic,
+  int get cutoffMinutes {
+    final parts = cutoff.split(':');
+    return int.parse(parts[0]) * 60 + int.parse(parts[1]);
+  }
 
-  /// ペットボトル - 青
-  petBottle,
+  String get deadlineLabel {
+    final parts = cutoff.split(':');
+    return '${int.parse(parts[0])}時${parts[1] == '00' ? '' : '${int.parse(parts[1])}分'}';
+  }
 
-  /// 危険ごみ - 赤
-  hazardous,
-  paper,
-  metalGlass,
-  landfill,
-  mercury,
-  cans,
-  bottles,
-  bulky,
+  @override
+  bool operator ==(Object other) =>
+      other is GarbageCategory && id == other.id && scope == other.scope;
+  @override
+  int get hashCode => Object.hash(id, scope);
 }
 
 /// GarbageCategoryの文字列変換ヘルパー
 extension GarbageCategoryExtension on GarbageCategory {
-  /// enum値をJSON文字列に変換
+  /// 保存用のカテゴリID文字列に変換
   String toJsonString() {
-    switch (this) {
-      case GarbageCategory.burnable:
-        return 'burnable';
-      case GarbageCategory.recyclable:
-        return 'recyclable';
-      case GarbageCategory.plastic:
-        return 'plastic';
-      case GarbageCategory.petBottle:
-        return 'petBottle';
-      case GarbageCategory.hazardous:
-        return 'hazardous';
-      case GarbageCategory.paper:
-        return 'paper';
-      case GarbageCategory.metalGlass:
-        return 'metal_glass';
-      case GarbageCategory.landfill:
-        return 'landfill';
-      case GarbageCategory.mercury:
-        return 'mercury';
-      case GarbageCategory.cans:
-        return 'cans';
-      case GarbageCategory.bottles:
-        return 'bottles';
-      case GarbageCategory.bulky:
-        return 'bulky';
-    }
+    return id;
   }
 
-  /// JSON文字列からenum値に変換
+  /// 松山市の保存済みIDと収集区分IDを互換読み込みする
   static GarbageCategory fromString(String value) {
     switch (value) {
       case 'burnable':

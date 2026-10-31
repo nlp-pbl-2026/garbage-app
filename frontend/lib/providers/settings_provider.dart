@@ -40,6 +40,11 @@ final notificationNavigationHandlerProvider =
   final navigatorKey = ref.watch(navigatorKeyProvider);
   return NotificationNavigationHandler(
     navigatorKey: navigatorKey,
+    isCurrentRegion: (city, district) {
+      final region = ref.read(regionSettingProvider).valueOrNull;
+      return region?.municipalityId == city &&
+          (district == null || region?.districtId == district);
+    },
     onNavigateToCollectionDay: (targetDate) {
       // 対象日が復元できた場合はカレンダーの選択日・表示月を更新する。
       if (targetDate != null) {
@@ -61,7 +66,8 @@ final reminderEnabledProvider =
     StateNotifierProvider<ReminderNotifier, AsyncValue<bool>>((ref) {
   final notificationService = ref.watch(notificationServiceProvider);
   final regionSetting = ref.watch(regionSettingProvider).valueOrNull;
-  return ReminderNotifier(notificationService, regionSetting?.districtId);
+  return ReminderNotifier(notificationService, regionSetting?.districtId,
+      municipalityId: regionSetting?.municipalityId ?? '');
 });
 
 /// リマインダー通知状態を管理するStateNotifier
@@ -72,9 +78,12 @@ final reminderEnabledProvider =
 class ReminderNotifier extends StateNotifier<AsyncValue<bool>> {
   final NotificationService _notificationService;
   final String? _districtId;
+  final String _municipalityId;
 
-  ReminderNotifier(this._notificationService, this._districtId)
-      : super(const AsyncValue.loading()) {
+  ReminderNotifier(this._notificationService, this._districtId,
+      {String municipalityId = '38201'})
+      : _municipalityId = municipalityId,
+        super(const AsyncValue.loading()) {
     loadState();
   }
 
@@ -82,9 +91,9 @@ class ReminderNotifier extends StateNotifier<AsyncValue<bool>> {
   Future<void> loadState() async {
     try {
       final enabled = await _notificationService.isReminderEnabled();
-      state = AsyncValue.data(enabled);
+      if (mounted) state = AsyncValue.data(enabled);
     } catch (e, st) {
-      state = AsyncValue.error(e, st);
+      if (mounted) state = AsyncValue.error(e, st);
     }
   }
 
@@ -121,12 +130,13 @@ class ReminderNotifier extends StateNotifier<AsyncValue<bool>> {
       return null;
     }
     try {
-      final result = await _notificationService.enableReminder(districtId);
+      final result = await _notificationService.enableReminder(districtId,
+          municipalityId: _municipalityId);
       // 成功時のみ有効状態にする。拒否・送信失敗時は false のまま保持する。
-      state = AsyncValue.data(result == EnableResult.success);
+      if (mounted) state = AsyncValue.data(result == EnableResult.success);
       return result;
     } catch (e, st) {
-      state = AsyncValue.error(e, st);
+      if (mounted) state = AsyncValue.error(e, st);
       return null;
     }
   }
@@ -135,9 +145,9 @@ class ReminderNotifier extends StateNotifier<AsyncValue<bool>> {
   Future<void> disable() async {
     try {
       await _notificationService.disableReminder();
-      state = const AsyncValue.data(false);
+      if (mounted) state = const AsyncValue.data(false);
     } catch (e, st) {
-      state = AsyncValue.error(e, st);
+      if (mounted) state = AsyncValue.error(e, st);
     }
   }
 }

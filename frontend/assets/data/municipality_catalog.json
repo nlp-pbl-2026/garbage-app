@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "municipalities": [
+    {
+      "id": "38201",
+      "version": "matsuyama-2026.1",
+      "name": "松山市",
+      "prefecture_id": "38",
+      "prefecture_name": "愛媛県",
+      "registry_asset": "assets/data/municipality_registry.json",
+      "profiles": {
+        "matsuyama_hojo": {
+          "calendar_asset": "assets/data/municipality_calendar.json",
+          "categories": {
+            "可燃": {
+              "name": "可燃ごみ",
+              "collection_type_id": "combustible",
+              "cutoff": "07:00"
+            },
+            "プラ": {
+              "name": "プラスチック製容器包装",
+              "collection_type_id": "plastic_packaging",
+              "cutoff": "08:00"
+            },
+            "紙類": {
+              "name": "紙類",
+              "collection_type_id": "paper",
+              "cutoff": "08:00"
+            },
+            "金・ガ": {
+              "name": "金物・ガラス類",
+              "collection_type_id": "metal_glass",
+              "cutoff": "08:00"
+            },
+            "埋立": {
+              "name": "埋立ごみ",
+              "collection_type_id": "landfill",
+              "cutoff": "08:00"
+            },
+            "水銀": {
+              "name": "水銀ごみ",
+              "collection_type_id": "mercury",
+              "cutoff": "08:00"
+            },
+            "ペット": {
+              "name": "ペットボトル",
+              "collection_type_id": "pet_bottle",
+              "cutoff": "08:00"
+            },
+            "粗大": {
+              "name": "粗大ごみ"
+            },
+            "禁止": {
+              "name": "市で収集しないもの"
+            }
+          }
+        },
+        "nakajima": {
+          "calendar_asset": "assets/data/municipality_calendar.json",
+          "categories": {
+            "可燃": {
+              "name": "可燃ごみ",
+              "collection_type_id": "combustible",
+              "cutoff": "07:00"
+            },
+            "プラ": {
+              "name": "プラスチック製容器包装",
+              "collection_type_id": "plastic_packaging",
+              "cutoff": "08:00"
+            },
+            "紙類": {
+              "name": "紙類",
+              "collection_type_id": "paper",
+              "cutoff": "08:00"
+            },
+            "金・ガ": {
+              "name": "金物・ガラス類",
+              "collection_type_id": "metal_glass",
+              "cutoff": "08:00"
+            },
+            "埋立": {
+              "name": "埋立ごみ",
+              "collection_type_id": "landfill",
+              "cutoff": "08:00"
+            },
+            "水銀": {
+              "name": "水銀ごみ",
+              "collection_type_id": "mercury",
+              "cutoff": "08:00"
+            },
+            "ペット": {
+              "name": "ペットボトル",
+              "collection_type_id": "pet_bottle",
+              "cutoff": "08:00"
+            },
+            "粗大": {
+              "name": "粗大ごみ",
+              "collection_type_id": "bulky",
+              "cutoff": "08:00"
+            },
+            "缶": {
+              "name": "缶類",
+              "collection_type_id": "cans",
+              "cutoff": "08:00"
+            },
+            "びん": {
+              "name": "びん類",
+              "collection_type_id": "bottles",
+              "cutoff": "08:00"
+            },
+            "禁止": {
+              "name": "市で収集しないもの"
+            }
+          }
+        }
+      },
+      "addresses_asset": "assets/data/municipality_addresses.json"
+    }
+  ]
+}

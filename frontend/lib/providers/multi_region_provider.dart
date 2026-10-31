@@ -1,3 +1,5 @@
+export 'municipality_provider.dart' show municipalityDataProvider;
+import 'municipality_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../models/region.dart';
@@ -10,10 +12,6 @@ import 'settings_provider.dart';
 /// MultiRegionServiceのプロバイダー
 final multiRegionServiceProvider = Provider<MultiRegionService>((ref) {
   return MultiRegionService();
-});
-
-final municipalityDataProvider = Provider<MunicipalityDataService>((ref) {
-  return MunicipalityDataService();
 });
 
 /// 複数地区管理のStateNotifierProvider
@@ -93,7 +91,9 @@ class MultiRegionNotifier extends StateNotifier<AsyncValue<List<SavedRegion>>> {
       if (wasActive) {
         SavedRegion? fallback;
         for (final candidate in await _service.getSavedRegions()) {
-          if (await _municipalityData.area(candidate.setting.districtId) != null) {
+          if (await _municipalityData.area(candidate.setting.districtId,
+                  municipalityId: candidate.setting.municipalityId) !=
+              null) {
             fallback = candidate;
             break;
           }
@@ -119,9 +119,13 @@ class MultiRegionNotifier extends StateNotifier<AsyncValue<List<SavedRegion>>> {
   /// regionSettingProviderを更新し、通知スケジュールを再計算する。
   Future<void> setActiveRegion(String id) async {
     try {
-      final saved = (await _service.getSavedRegions()).where((region) => region.id == id).firstOrNull;
-      final area = saved == null ? null :
-          await _municipalityData.area(saved.setting.districtId);
+      final saved = (await _service.getSavedRegions())
+          .where((region) => region.id == id)
+          .firstOrNull;
+      final area = saved == null
+          ? null
+          : await _municipalityData.area(saved.setting.districtId,
+              municipalityId: saved.setting.municipalityId);
       if (saved == null || area == null) {
         throw StateError('保存された収集地区を再選択してください。');
       }
@@ -157,6 +161,7 @@ class MultiRegionNotifier extends StateNotifier<AsyncValue<List<SavedRegion>>> {
     await _ref.read(regionSettingProvider.notifier).saveSetting(setting);
 
     // 通知側にも新しいDistrict_IDを反映し、通知スケジュールを再計算する（要件 1.6, 3.7）
-    await _notificationService.updateDistrict(setting.districtId);
+    await _notificationService.updateDistrict(setting.districtId,
+        municipalityId: setting.municipalityId);
   }
 }

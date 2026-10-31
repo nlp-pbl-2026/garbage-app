@@ -26,6 +26,8 @@ data/regions/*/source/
 data/regions/*/generated/
 frontend/assets/data/municipality_calendar.json
 frontend/assets/data/municipality_addresses.json
+frontend/assets/data/municipality_*_calendar.json
+frontend/assets/data/municipality_*_addresses.json
 
 # Environment variables
 .env

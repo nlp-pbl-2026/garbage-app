@@ -1,3 +1,5 @@
+import 'region.dart';
+
 // GPS地区自動判定機能のデータモデルと例外クラス
 
 /// GPS判定エラー種別（UI分岐制御用）
@@ -18,12 +20,14 @@ class DistrictCandidate {
   final String districtName;
   final String townName;
   final String? collectionAreaId;
+  final RegionSetting? region;
 
   const DistrictCandidate({
     required this.districtNumber,
     required this.districtName,
     required this.townName,
     this.collectionAreaId,
+    this.region,
   });
 
   @override
@@ -37,10 +41,13 @@ class DistrictCandidate {
           runtimeType == other.runtimeType &&
           districtNumber == other.districtNumber &&
           districtName == other.districtName &&
-          townName == other.townName;
+          townName == other.townName &&
+          region?.municipalityId == other.region?.municipalityId &&
+          collectionAreaId == other.collectionAreaId;
 
   @override
-  int get hashCode => Object.hash(districtNumber, districtName, townName);
+  int get hashCode => Object.hash(districtNumber, districtName, townName,
+      region?.municipalityId, collectionAreaId);
 }
 
 /// GPS座標データモデル
@@ -117,12 +124,14 @@ class DistrictMatchResult {
   final String districtName; // 地区名（例: "道後"）
   final String matchedTown; // マッチした町名
   final String? collectionAreaId;
+  final RegionSetting? region;
 
   const DistrictMatchResult({
     required this.districtNumber,
     required this.districtName,
     required this.matchedTown,
     this.collectionAreaId,
+    this.region,
   });
 
   @override
@@ -136,11 +145,13 @@ class DistrictMatchResult {
           runtimeType == other.runtimeType &&
           districtNumber == other.districtNumber &&
           districtName == other.districtName &&
-          matchedTown == other.matchedTown;
+          matchedTown == other.matchedTown &&
+          region?.municipalityId == other.region?.municipalityId &&
+          collectionAreaId == other.collectionAreaId;
 
   @override
-  int get hashCode =>
-      Object.hash(districtNumber, districtName, matchedTown);
+  int get hashCode => Object.hash(districtNumber, districtName, matchedTown,
+      region?.municipalityId, collectionAreaId);
 }
 
 /// choumei.csv の1行分のデータモデル

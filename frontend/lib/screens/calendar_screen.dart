@@ -30,7 +30,12 @@ class CalendarScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final focusedMonth = ref.watch(focusedMonthProvider);
+    final requestedMonth = ref.watch(focusedMonthProvider);
+    final validity = ref.watch(calendarValidityProvider);
+    final period = validity.asData?.value;
+    final focusedMonth = period == null ? requestedMonth
+        : requestedMonth.isBefore(period.start) ? period.start
+        : requestedMonth.isAfter(period.end) ? period.end : requestedMonth;
     final selectedDay = ref.watch(selectedDayProvider);
     final monthlyScheduleAsync = ref.watch(
       monthlyScheduleProvider(DateTime(focusedMonth.year, focusedMonth.month)),
@@ -64,14 +69,17 @@ class CalendarScreen extends ConsumerWidget {
               child: Column(
                 children: [
                   monthlyScheduleAsync.when(
-                    data: (schedule) => _buildCalendar(
+                    data: (schedule) => period == null
+                        ? const Padding(padding: EdgeInsets.all(24), child: Text(AppStrings.dataLoadError))
+                        : _buildCalendar(
                       context,
                       ref,
                       focusedMonth,
                       selectedDay,
                       schedule,
-                      weatherAsync.valueOrNull ?? {},
+                      weatherAsync.asData?.value ?? {},
                       memoDates,
+                      period.start, period.end,
                     ),
                     loading: () => const Padding(
                       padding: EdgeInsets.all(32.0),
@@ -97,7 +105,7 @@ class CalendarScreen extends ConsumerWidget {
                     ref,
                     selectedDay,
                     monthlyScheduleAsync,
-                    weatherAsync.valueOrNull ?? {},
+                    weatherAsync.asData?.value ?? {},
                   ),
 
                   // カテゴリ別次回収集日一覧
@@ -178,7 +186,8 @@ class CalendarScreen extends ConsumerWidget {
 
     final scheduleService = ref.watch(scheduleServiceProvider);
     final districtId = regionSetting.districtId;
-    final profile = ref.watch(ruleProfileProvider(districtId)).valueOrNull;
+    final categories = ref.watch(collectionCategoriesProvider).asData?.value ??
+        <GarbageCategory>[];
 
     return Container(
       width: double.infinity,
@@ -199,7 +208,7 @@ class CalendarScreen extends ConsumerWidget {
             ),
           ),
           const SizedBox(height: 8),
-          ...CategoryColors.forRuleProfile(profile).map(
+          ...categories.map(
             (category) => _buildCategoryNextDate(
               scheduleService,
               districtId,
@@ -221,6 +230,8 @@ class CalendarScreen extends ConsumerWidget {
     final label = CategoryColors.getLabel(category);
 
     return FutureBuilder<DateTime?>(
+      key: ValueKey(
+          '${scheduleService.municipalityId}/$districtId/${category.toJsonString()}'),
       future: scheduleService.getNextCollectionDate(
         districtId,
         category.toJsonString(),
@@ -504,6 +515,7 @@ class CalendarScreen extends ConsumerWidget {
     Map<DateTime, List<ScheduleEntry>> schedule,
     Map<DateTime, DailyWeather> weather,
     Set<DateTime> memoDates,
+    DateTime firstDay, DateTime lastDay,
   ) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
@@ -522,8 +534,8 @@ class CalendarScreen extends ConsumerWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(16),
         child: TableCalendar<ScheduleEntry>(
-      firstDay: DateTime(2024, 1, 1),
-      lastDay: DateTime(2026, 12, 31),
+      firstDay: firstDay,
+      lastDay: lastDay,
       focusedDay: focusedMonth,
       selectedDayPredicate: (day) {
         if (selectedDay == null) return false;
@@ -729,14 +741,14 @@ class CalendarScreen extends ConsumerWidget {
 
   /// 色凡例を構築する
   Widget _buildColorLegend(WidgetRef ref) {
-    final districtId = ref.watch(regionSettingProvider).valueOrNull?.districtId;
-    final profile = districtId == null ? null : ref.watch(ruleProfileProvider(districtId)).valueOrNull;
+    final categories = ref.watch(collectionCategoriesProvider).asData?.value ??
+        <GarbageCategory>[];
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       child: Wrap(
         spacing: 12,
         runSpacing: 8,
-        children: CategoryColors.forRuleProfile(profile).map((category) {
+        children: categories.map((category) {
           return Row(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -787,6 +799,8 @@ class CalendarScreen extends ConsumerWidget {
         return 'びん';
       case GarbageCategory.bulky:
         return '粗大';
+      default:
+        return CategoryColors.getLabel(category);
     }
   }
 
@@ -1081,6 +1095,8 @@ class CalendarScreen extends ConsumerWidget {
         return Icons.wine_bar_outlined;
       case GarbageCategory.bulky:
         return Icons.chair_outlined;
+      default:
+        return Icons.delete_outline;
     }
   }
 

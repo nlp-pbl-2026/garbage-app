@@ -5,13 +5,13 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../models/bulky_waste.dart';
-import '../models/garbage_item.dart';
 import '../repositories/bulky_waste_repository.dart';
 import '../services/bulky_waste_notification_service.dart';
 import '../services/municipality_data_service.dart';
 import '../services/schedule_service.dart';
 import '../utils/japan_time.dart';
 import 'region_provider.dart';
+import 'municipality_provider.dart';
 
 /// SharedPreferencesのプロバイダー
 ///
@@ -53,11 +53,26 @@ final municipalityConfigProvider =
 
   if (regionSetting == null) return null;
 
-  final area = await MunicipalityDataService().area(regionSetting.districtId);
+  final data = ref.watch(municipalityDataProvider);
+  final area = await data.area(regionSetting.districtId,
+      municipalityId: regionSetting.municipalityId);
   if (area == null) return null;
-  if (area['rule_profile_id'] == 'nakajima') {
-    return CachedResult(data: BulkyWasteRepository.nakajimaConfig(),
-        isStale: false, isBundledFallback: true);
+  final profile = await data.profile(
+      regionSetting.municipalityId, area['rule_profile_id'] as String);
+  final config = (profile['bulky_waste'] as Map<String, dynamic>?)?['config'];
+  if (config is Map<String, dynamic>) {
+    final result = MunicipalityConfig.fromJson(config);
+    if (result.municipalityId != regionSetting.municipalityId) {
+      throw const FormatException('Bulky configuration municipality mismatch');
+    }
+    return CachedResult(data: result, isStale: false, isBundledFallback: true);
+  }
+  if (regionSetting.municipalityId == '38201' &&
+      area['rule_profile_id'] == 'nakajima') {
+    return CachedResult(
+        data: BulkyWasteRepository.nakajimaConfig(),
+        isStale: false,
+        isBundledFallback: true);
   }
 
   final repo = ref.watch(bulkyWasteRepositoryProvider);
@@ -124,12 +139,21 @@ final bulkyWasteItemsProvider =
     FutureProvider.family<CachedResult<BulkyWasteItemList>?, BulkyWasteQuery>(
         (ref, query) async {
   final repo = ref.watch(bulkyWasteRepositoryProvider);
-  final area = query.districtId == null ? null :
-      await MunicipalityDataService().area(query.districtId!);
+  final data = ref.watch(municipalityDataProvider);
+  final area = query.districtId == null
+      ? null
+      : await data.area(query.districtId!,
+          municipalityId: query.municipalityId);
+  if (area == null) return null;
+  final profile = await data.profile(
+      query.municipalityId, area['rule_profile_id'] as String);
   return repo.getItems(
     query.municipalityId,
     districtId: query.districtId,
-    isNakajima: area?['rule_profile_id'] == 'nakajima',
+    isNakajima: query.municipalityId == '38201' &&
+        area['rule_profile_id'] == 'nakajima',
+    categoryCode: (profile['bulky_waste']
+        as Map<String, dynamic>?)?['category_code'] as String?,
     search: query.search,
     sortBy: query.sortBy,
     sortOrder: query.sortOrder,
@@ -146,6 +170,7 @@ class ApplicationRecordNotifier extends StateNotifier<List<ApplicationRecord>> {
   final SharedPreferences _prefs;
   final BulkyWasteNotificationService _notificationService;
   final String _districtId;
+  final String _municipalityId;
   final Future<String?> Function(String, DateTime) _validateCollectionDate;
   List<ApplicationRecord> _allRecords = [];
 
@@ -154,21 +179,38 @@ class ApplicationRecordNotifier extends StateNotifier<List<ApplicationRecord>> {
 
   ApplicationRecordNotifier(this._prefs, this._notificationService,
       {String districtId = '38201-08',
-       Future<String?> Function(String, DateTime)? validateCollectionDate})
+      String municipalityId = '38201',
+      Future<String?> Function(String, DateTime)? validateCollectionDate})
       : _districtId = districtId,
-      _validateCollectionDate = validateCollectionDate ?? _validateOfficialIslandDate,
-      super([]) {
+        _municipalityId = municipalityId,
+        _validateCollectionDate = validateCollectionDate ??
+            ((id, date) => _validateOfficialIslandDate(id, date,
+                municipalityId: municipalityId)),
+        super([]) {
     _loadRecords();
   }
 
-  static Future<String?> _validateOfficialIslandDate(String districtId, DateTime date) async {
+  static Future<String?> _validateOfficialIslandDate(
+      String districtId, DateTime date,
+      {String municipalityId = '38201'}) async {
     try {
-      final area = await MunicipalityDataService().area(districtId);
+      final data = MunicipalityDataService();
+      final area = await data.area(districtId, municipalityId: municipalityId);
       if (area == null) return '収集地区を選び直してください';
-      if (area['rule_profile_id'] != 'nakajima') return null;
-      final entries = await ScheduleService().getScheduleForDate(districtId, date);
-      return entries.any((entry) => entry.category == GarbageCategory.bulky)
-          ? null : '中島地域の粗大ごみ収集日をカレンダーから選んでください';
+      final profile =
+          await data.profile(municipalityId, area['rule_profile_id'] as String);
+      final stream = (profile['bulky_waste']
+              as Map<String, dynamic>?)?['collection_type_id'] as String? ??
+          (municipalityId == '38201' && area['rule_profile_id'] == 'nakajima'
+              ? 'bulky'
+              : null);
+      if (stream == null) return null;
+      final entries =
+          await ScheduleService(data: data, municipalityId: municipalityId)
+              .getScheduleForDate(districtId, date);
+      return entries.any((entry) => entry.category.id == stream)
+          ? null
+          : '粗大ごみ収集日を地区別カレンダーから選んでください';
     } catch (_) {
       return '公式カレンダーデータを確認できませんでした';
     }
@@ -186,7 +228,11 @@ class ApplicationRecordNotifier extends StateNotifier<List<ApplicationRecord>> {
       _allRecords = jsonList
           .map((e) => ApplicationRecord.fromJson(e as Map<String, dynamic>))
           .toList();
-      state = _allRecords.where((record) => record.districtId == _districtId).toList();
+      state = _allRecords
+          .where((record) =>
+              record.municipalityId == _municipalityId &&
+              record.districtId == _districtId)
+          .toList();
     } catch (_) {
       state = [];
     }
@@ -194,6 +240,16 @@ class ApplicationRecordNotifier extends StateNotifier<List<ApplicationRecord>> {
 
   /// 記録をSharedPreferencesに永続化する
   Future<void> _saveRecords() async {
+    final latest = _prefs.getString(_storageKey);
+    final others = latest == null
+        ? <ApplicationRecord>[]
+        : (jsonDecode(latest) as List)
+            .map((e) => ApplicationRecord.fromJson(e as Map<String, dynamic>))
+            .where((record) =>
+                record.municipalityId != _municipalityId ||
+                record.districtId != _districtId)
+            .toList();
+    _allRecords = [...others, ...state];
     final jsonList = _allRecords.map((e) => e.toJson()).toList();
     await _prefs.setString(_storageKey, jsonEncode(jsonList));
   }
@@ -244,6 +300,7 @@ class ApplicationRecordNotifier extends StateNotifier<List<ApplicationRecord>> {
       createdAt: now,
       updatedAt: now,
       districtId: _districtId,
+      municipalityId: _municipalityId,
     );
 
     state = [...state, record];
@@ -332,7 +389,9 @@ final applicationRecordsProvider =
     final prefs = ref.watch(sharedPreferencesProvider);
     final notificationService =
         ref.watch(bulkyWasteNotificationServiceProvider);
-    final districtId = ref.watch(regionSettingProvider).valueOrNull?.districtId ?? '38201-08';
-    return ApplicationRecordNotifier(prefs, notificationService, districtId: districtId);
+    final region = ref.watch(regionSettingProvider).valueOrNull;
+    return ApplicationRecordNotifier(prefs, notificationService,
+        districtId: region?.districtId ?? '',
+        municipalityId: region?.municipalityId ?? '');
   },
 );

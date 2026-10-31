@@ -4,7 +4,7 @@ import 'garbage_item.dart';
 
 /// カテゴリ色・ラベルマッピング
 ///
-/// GarbageCategoryに対する固定の色とテキストラベルを提供する。
+/// 地域定義を優先し、松山市の旧カテゴリには互換の色・ラベルを提供する。
 /// すべての画面で同一のカテゴリに同一の色とラベルを使用し、一貫性を保つ。
 class CategoryColors {
   // プライベートコンストラクタ（インスタンス化防止）
@@ -16,19 +16,8 @@ class CategoryColors {
     GarbageCategory.bulky,
   ];
 
-  static List<GarbageCategory> forRuleProfile(String? profileId) {
-    const mainland = [
-      GarbageCategory.burnable, GarbageCategory.paper, GarbageCategory.metalGlass,
-      GarbageCategory.landfill, GarbageCategory.mercury, GarbageCategory.plastic,
-      GarbageCategory.petBottle,
-    ];
-    return profileId == 'nakajima'
-        ? [...mainland, GarbageCategory.cans, GarbageCategory.bottles, GarbageCategory.bulky]
-        : mainland;
-  }
-
   /// カテゴリ → 色のマッピング
-  static const Map<GarbageCategory, Color> colorMap = {
+  static final Map<GarbageCategory, Color> colorMap = Map.unmodifiable({
     GarbageCategory.burnable: AppColors.burnable,
     GarbageCategory.recyclable: AppColors.recyclable,
     GarbageCategory.plastic: AppColors.plastic,
@@ -41,10 +30,10 @@ class CategoryColors {
     GarbageCategory.cans: AppColors.recyclable,
     GarbageCategory.bottles: AppColors.recyclable,
     GarbageCategory.bulky: AppColors.hazardous,
-  };
+  });
 
   /// カテゴリ → ラベル（日本語名）のマッピング
-  static const Map<GarbageCategory, String> labelMap = {
+  static final Map<GarbageCategory, String> labelMap = Map.unmodifiable({
     GarbageCategory.burnable: '可燃ごみ',
     GarbageCategory.recyclable: '資源ごみ',
     GarbageCategory.plastic: 'プラスチック製容器包装',
@@ -57,15 +46,17 @@ class CategoryColors {
     GarbageCategory.cans: '缶類',
     GarbageCategory.bottles: 'びん類',
     GarbageCategory.bulky: '粗大ごみ',
-  };
+  });
 
   /// 指定カテゴリの色を取得
   static Color getColor(GarbageCategory category) {
-    return colorMap[category]!;
+    return category.colorValue == null
+        ? colorMap[category] ?? Colors.blueGrey
+        : Color(category.colorValue!);
   }
 
   /// 指定カテゴリのラベルを取得
   static String getLabel(GarbageCategory category) {
-    return labelMap[category]!;
+    return category.displayName ?? labelMap[category] ?? category.id;
   }
 }

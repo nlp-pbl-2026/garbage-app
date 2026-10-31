@@ -231,4 +231,36 @@ void main() {
       ),
     );
   });
+  for (final mode in ['text', 'image', 'both']) {
+    test('regional $mode search and follow-up carry the selected city through all stages', () async {
+      final selected = RegionSetting(prefectureId: '38', prefectureName: '愛媛県',
+          municipalityId: '90002', municipalityName: '試験町B', districtId: 'same-area', districtName: '試験地区');
+      final captured = <String, Map<String, dynamic>>{};
+      final image = mode == 'text' ? null : SearchImageInput(bytes: Uint8List.fromList([1, 2, 3]),
+          mediaType: 'image/png', fileName: 'test.png');
+      final service = WasteGuideService(baseUrl: 'http://test', client: MockClient((request) async {
+        final body = jsonDecode(request.body) as Map<String, dynamic>;
+        captured[request.url.path] = body;
+        expect(body['municipality_id'], '90002');
+        expect(body['district_id'], 'same-area');
+        if (request.url.path.endsWith('/rewrite')) return jsonResponse({'rewritten_query': '試験品'});
+        if (request.url.path.endsWith('/retrieve')) {
+          return jsonResponse({'documents': [
+            {'title': '試験町Bの資料', 'uri': 'regional://90002/standard/b-v1/item', 'snippet': '専用の出し方', 'score': .9}
+          ]});
+        }
+        expect((body['documents'] as List).single['uri'], startsWith('regional://90002/'));
+        return jsonResponse({'status': 'needs_clarification', 'rewritten_query': '試験品',
+          'follow_up_question': '用途を確認してください', 'sources': []});
+      }));
+      final result = await service.classify(query: mode == 'image' ? '' : '試験品', region: selected,
+          image: image, clarifications: [{'question': '家庭用品ですか？', 'answer': 'はい'}]);
+      expect(result.needsClarification, isTrue);
+      for (final path in ['/api/search/rewrite', '/api/search/decide']) {
+        expect(captured[path]!['clarifications'], [{'question': '家庭用品ですか？', 'answer': 'はい'}]);
+        expect(captured[path]!.containsKey('image'), image != null);
+      }
+    });
+  }
+
 }

@@ -30,31 +30,30 @@ class RegionService {
 
   /// 指定された都道府県IDに属する市区町村一覧を取得する。
   ///
-  /// assets/data/municipalities.json からデータを読み込み、
+  /// 同梱カタログに登録された自治体から、
   /// [prefectureId] でフィルタリングした結果を返す。
   Future<List<Municipality>> getMunicipalities(String prefectureId) async {
-    final jsonString =
-        await rootBundle.loadString('assets/data/municipalities.json');
-    final List<dynamic> jsonList = json.decode(jsonString) as List<dynamic>;
-    final allMunicipalities = jsonList
-        .map((item) => Municipality.fromJson(item as Map<String, dynamic>))
-        .toList();
-    return allMunicipalities
-        .where((m) => m.prefectureId == prefectureId)
+    return (await _data.municipalities())
+        .where((entry) => entry['prefecture_id'] == prefectureId)
+        .map((entry) => Municipality(
+            id: entry['id'] as String,
+            prefectureId: prefectureId,
+            name: entry['name'] as String))
         .toList();
   }
 
   /// 指定された市区町村IDに属する地区一覧を取得する。
   ///
-  /// assets/data/districts.json からデータを読み込み、
+  /// 選択した自治体の収集地区台帳から、
   /// [municipalityId] でフィルタリングした結果を返す。
   Future<List<District>> getDistricts(String municipalityId) async {
-    if (municipalityId != '38201') return [];
-    return (await _data.getAreas()).map((entry) => District(
-      id: entry['id'] as String,
-      municipalityId: municipalityId,
-      name: entry['name'] as String,
-    )).toList();
+    return (await _data.getAreas(municipalityId))
+        .map((entry) => District(
+              id: entry['id'] as String,
+              municipalityId: municipalityId,
+              name: entry['name'] as String,
+            ))
+        .toList();
   }
 
   /// 地域設定をSharedPreferencesに保存する。
@@ -83,9 +82,14 @@ class RegionService {
     final Map<String, dynamic> jsonMap =
         json.decode(jsonString) as Map<String, dynamic>;
     final old = RegionSetting.fromJson(jsonMap);
-    final area = await _data.area(old.districtId);
-    if (area == null) return null; // Ambiguous/unknown legacy ID requires selection.
-    if (area['id'] == old.districtId && area['name'] == old.districtName) return old;
+    final area =
+        await _data.area(old.districtId, municipalityId: old.municipalityId);
+    if (area == null) {
+      return null; // Ambiguous/unknown legacy ID requires selection.
+    }
+    if (area['id'] == old.districtId && area['name'] == old.districtName) {
+      return old;
+    }
     final migrated = RegionSetting(
       prefectureId: old.prefectureId, prefectureName: old.prefectureName,
       municipalityId: old.municipalityId, municipalityName: old.municipalityName,

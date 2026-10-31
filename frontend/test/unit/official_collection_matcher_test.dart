@@ -1,5 +1,5 @@
+import '../helpers/municipality_assets.dart';
 import 'dart:convert';
-import 'dart:typed_data';
 
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -17,21 +17,26 @@ class MemoryAssetBundle extends CachingAssetBundle {
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
-  final data = MunicipalityDataService(bundle: MemoryAssetBundle({
+  final data = MunicipalityDataService(
+      bundle: MemoryAssetBundle(withMatsuyamaCatalog({
     'assets/data/municipality_registry.json': jsonEncode({
+      'municipality_id': '38201',
+      'version': 'test-v1',
       'collection_areas': [
         {'id': '38201-08', 'name': '清水'},
         {'id': '38201-ca-test', 'name': '試験地区'},
       ],
     }),
     'assets/data/municipality_addresses.json': jsonEncode({
+      'municipality_id': '38201',
+      'version': 'test-v1',
       'entries': [
         {'town': '清水町', 'lookup_town': '清水町', 'area_id': '38201-08'},
         {'town': '分割町(1)', 'lookup_town': '分割町', 'area_id': '38201-08'},
         {'town': '分割町(2)', 'lookup_town': '分割町', 'area_id': '38201-ca-test'},
       ],
     }),
-  }));
+  })));
 
   GeocodedAddress address(String town, {String city = '松山市'}) => GeocodedAddress(
     prefecture: '愛媛県', city: city, town: town, fullAddress: '$city$town');

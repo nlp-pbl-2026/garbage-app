@@ -17,8 +17,10 @@ import '../../providers/bulky_waste_provider.dart';
 /// 要件7.6: 品目名空/過去日付のバリデーション
 /// 要件7.7: 収集日超過の未完了レコードに「期限超過」表示
 class StatusTrackerView extends ConsumerWidget {
-  const StatusTrackerView({super.key, this.isNakajima = false});
+  const StatusTrackerView(
+      {super.key, this.isNakajima = false, this.municipalityName = '松山市'});
   final bool isNakajima;
+  final String municipalityName;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -37,7 +39,7 @@ class StatusTrackerView extends ConsumerWidget {
           child: Text(
             isNakajima
                 ? '品目名と公式カレンダーで確認した収集日を、この端末に手動で記録します。市の収集状況は取得しません。'
-                : '松山市への申込み後、品目名・通知された収集日・進み具合を、この端末に手動で記録します。市への申込みや申込状況の取得は行いません。',
+                : '$municipalityNameへの申込み後、品目名・通知された収集日・進み具合を、この端末に手動で記録します。市への申込みや申込状況の取得は行いません。',
             style: Theme.of(context).textTheme.bodySmall,
           ),
         ),

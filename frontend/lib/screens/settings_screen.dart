@@ -792,7 +792,8 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
           ),
         ),
         subtitle: FutureBuilder<Map<String, dynamic>?>(
-          future: MunicipalityDataService().area(region.setting.districtId),
+          future: MunicipalityDataService().area(region.setting.districtId,
+              municipalityId: region.setting.municipalityId),
           builder: (context, snapshot) => Text(
             '${region.setting.municipalityName} ${region.setting.districtName}'
             '${snapshot.connectionState == ConnectionState.done && snapshot.data == null ? '（収集地区の再選択が必要）' : ''}',
@@ -826,7 +827,9 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
           ],
         ),
         onTap: () async {
-          final area = await MunicipalityDataService().area(region.setting.districtId);
+          final area = await MunicipalityDataService().area(
+              region.setting.districtId,
+              municipalityId: region.setting.municipalityId);
           if (area == null) {
             if (context.mounted) _navigateToReplaceRegion(context, ref, region);
           } else if (!region.isActive) {
@@ -974,6 +977,8 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
 
   /// GPS判定成功時の確認ダイアログを表示
   void _showGpsConfirmationDialog(DistrictMatchResult result) {
+    final region = result.region;
+    if (region == null) return;
     showDialog(
       context: context,
       builder: (dialogContext) {
@@ -985,8 +990,8 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             children: [
               const Text('以下の地域が検出されました：'),
               const SizedBox(height: 12),
-              const Text('都道府県: 愛媛県'),
-              const Text('市区町村: 松山市'),
+              Text('都道府県: ${region.prefectureName}'),
+              Text('市区町村: ${region.municipalityName}'),
               Text('地区: ${result.districtName}'),
             ],
           ),
@@ -1000,17 +1005,13 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             ),
             ElevatedButton(
               onPressed: () async {
-                final setting = RegionSetting(
-                  prefectureId: '38',
-                  prefectureName: '愛媛県',
-                  municipalityId: '38201',
-                  municipalityName: '松山市',
-                  districtId: result.collectionAreaId ?? '38201-${result.districtNumber.toString().padLeft(2, '0')}',
-                  districtName: result.districtName,
-                );
+                final setting = region;
                 await ref
                     .read(regionSettingProvider.notifier)
                     .saveSetting(setting);
+                await ref.read(notificationServiceProvider).updateDistrict(
+                    setting.districtId,
+                    municipalityId: setting.municipalityId);
                 if (dialogContext.mounted) {
                   Navigator.of(dialogContext).pop();
                 }
@@ -1104,7 +1105,9 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
           final added = await ref.read(multiRegionProvider.notifier).addRegion(label, newSetting);
           if (added == null) return;
           if (previousActive != null) {
-            final previousArea = await MunicipalityDataService().area(previousActive.setting.districtId);
+            final previousArea = await MunicipalityDataService().area(
+                previousActive.setting.districtId,
+                municipalityId: previousActive.setting.municipalityId);
             await ref.read(multiRegionProvider.notifier).setActiveRegion(
                 previousArea == null ? added.id : previousActive.id);
           }
@@ -1134,7 +1137,9 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
       if (setting != null) {
         await ref.read(multiRegionProvider.notifier).replaceRegionSetting(saved.id, setting);
         if (previousActive != null && previousActive.id != saved.id) {
-          final previousArea = await MunicipalityDataService().area(previousActive.setting.districtId);
+          final previousArea = await MunicipalityDataService().area(
+              previousActive.setting.districtId,
+              municipalityId: previousActive.setting.municipalityId);
           await ref.read(multiRegionProvider.notifier).setActiveRegion(
               previousArea == null ? saved.id : previousActive.id);
         }

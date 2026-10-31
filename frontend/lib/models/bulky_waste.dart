@@ -354,6 +354,7 @@ class ApplicationRecord {
   final DateTime createdAt;
   final DateTime updatedAt;
   final String districtId;
+  final String municipalityId;
 
   /// itemNameの最大文字数
   static const int maxItemNameLength = 50;
@@ -366,6 +367,7 @@ class ApplicationRecord {
     required this.createdAt,
     required this.updatedAt,
     this.districtId = '38201-08',
+    this.municipalityId = '38201',
   }) : assert(itemName.length <= maxItemNameLength,
             'itemName must be at most $maxItemNameLength characters');
 
@@ -378,6 +380,7 @@ class ApplicationRecord {
       createdAt: DateTime.parse(json['created_at'] as String),
       updatedAt: DateTime.parse(json['updated_at'] as String),
       districtId: json['district_id'] as String? ?? '38201-08',
+      municipalityId: json['municipality_id'] as String? ?? '38201',
     );
   }
 
@@ -390,6 +393,7 @@ class ApplicationRecord {
       'created_at': createdAt.toIso8601String(),
       'updated_at': updatedAt.toIso8601String(),
       'district_id': districtId,
+      'municipality_id': municipalityId,
     };
   }
 
@@ -403,6 +407,7 @@ class ApplicationRecord {
       createdAt: createdAt,
       updatedAt: DateTime.now(),
       districtId: districtId,
+      municipalityId: municipalityId,
     );
   }
 

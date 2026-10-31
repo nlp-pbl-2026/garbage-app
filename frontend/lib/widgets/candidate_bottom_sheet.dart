@@ -90,7 +90,9 @@ Future<DistrictCandidate?> showCandidateBottomSheet({
                     final candidate = sortedCandidates[index];
                     return ListTile(
                       title: Text(candidate.districtName),
-                      subtitle: Text(candidate.townName),
+                      subtitle: Text(
+                          '${candidate.region?.municipalityName ?? ''} ${candidate.townName}'
+                              .trim()),
                       trailing: const Icon(Icons.chevron_right, size: 20),
                       onTap: () async {
                         final confirmed = await _showConfirmationDialog(

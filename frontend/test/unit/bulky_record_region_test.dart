@@ -9,6 +9,8 @@ import 'package:garbage_app/services/bulky_waste_notification_service.dart';
 class FakeNotifications extends BulkyWasteNotificationService {
   @override
   Future<void> scheduleNotification(ApplicationRecord record) async {}
+  @override
+  Future<void> cancelNotification(String recordId) async {}
 }
 
 void main() {
@@ -48,4 +50,21 @@ void main() {
     expect(notifier.state, isEmpty);
     expect(prefs.getString('application_records'), isNull);
   });
+  test('records with identical district IDs are separated by municipality and preserved on save', () async {
+    SharedPreferences.setMockInitialValues({});
+    final prefs = await SharedPreferences.getInstance();
+    ApplicationRecordNotifier records(String city) => ApplicationRecordNotifier(prefs, FakeNotifications(),
+        municipalityId: city, districtId: 'same-area', validateCollectionDate: (_, __) async => null);
+    final a = records('90001');
+    final b = records('90002'); // Both notifiers initially read the empty store.
+    await a.addRecord(itemName: '試験市Aのいす', collectionDate: DateTime.now().add(const Duration(days: 3)));
+    await b.addRecord(itemName: '試験町Bの机', collectionDate: DateTime.now().add(const Duration(days: 4)));
+    expect(records('90001').state.single.itemName, '試験市Aのいす');
+    expect(records('90002').state.single.itemName, '試験町Bの机');
+    expect((jsonDecode(prefs.getString('application_records')!) as List).length, 2);
+    await b.updateStatus(b.state.single.id, ApplicationStatus.completed);
+    expect(records('90002').state.single.municipalityId, '90002');
+    expect(records('90001').state.single.status, ApplicationStatus.applied);
+  });
+
 }

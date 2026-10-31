@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../models/category_notification_setting.dart';
-import '../models/garbage_category.dart';
+import 'calendar_provider.dart';
 import '../models/garbage_item.dart';
 import '../models/notification_timing_type.dart';
 import '../services/notification_customization_service.dart';
@@ -34,7 +34,8 @@ final notificationCustomizationProvider = StateNotifierProvider<
       ref.watch(notificationCustomizationServiceProvider);
   final notificationService = ref.watch(notificationServiceProvider);
   return NotificationCustomizationNotifier(
-      customizationService, notificationService);
+      customizationService, notificationService,
+      categories: ref.watch(collectionCategoriesProvider).asData?.value ?? []);
 });
 
 /// カテゴリ別通知設定を管理するStateNotifier
@@ -46,11 +47,14 @@ class NotificationCustomizationNotifier
     extends StateNotifier<AsyncValue<CategorySettingsMap>> {
   final NotificationCustomizationService _customizationService;
   final NotificationService _notificationService;
+  final List<GarbageCategory> _categories;
 
   NotificationCustomizationNotifier(
     this._customizationService,
-    this._notificationService,
-  ) : super(const AsyncValue.loading()) {
+    this._notificationService, {
+    required List<GarbageCategory> categories,
+  })  : _categories = categories,
+        super(const AsyncValue.loading()) {
     _loadSettings();
   }
 
@@ -60,7 +64,8 @@ class NotificationCustomizationNotifier
   /// 読み込み失敗時はデフォルト全ON状態にフォールバックし、AsyncValue.dataへ遷移する。
   Future<void> _loadSettings() async {
     try {
-      final settings = await _customizationService.loadAllSettings();
+      final settings =
+          await _customizationService.loadAllSettings(categories: _categories);
       if (!mounted) return;
       state = AsyncValue.data(settings);
     } catch (e, st) {
@@ -124,7 +129,7 @@ class NotificationCustomizationNotifier
   /// デフォルト全ON状態の設定マップを生成する
   CategorySettingsMap _buildDefaultSettings() {
     final Map<GarbageCategory, CategoryNotificationSetting> defaults = {};
-    for (final category in CategoryColors.collectionCategories) {
+    for (final category in _categories) {
       defaults[category] = CategoryNotificationSetting(
         category: category,
         eveningEnabled: true,
