@@ -1,5 +1,6 @@
 import '../models/collection_schedule.dart';
 import '../models/garbage_item.dart';
+import '../models/collection_status.dart';
 import 'municipality_data_service.dart';
 import '../utils/japan_time.dart';
 
@@ -37,6 +38,8 @@ class ScheduleService {
         continue;
       }
       for (final code in (day.value as List).cast<String>()) {
+        final verification = record['collection_type_verification'] as Map<String, dynamic>?;
+        if ((verification?[code] as Map<String, dynamic>?)?['status'] == 'unverified') continue;
         final matches = categories.where((category) =>
             category.toJsonString() == code ||
             (municipalityId == '38201' && _category(code) == category));
@@ -51,6 +54,9 @@ class ScheduleService {
     }
     return result;
   }
+
+  Future<Map<String, CollectionStatus>> collectionStatuses(String districtId) =>
+      _data.collectionStatuses(districtId, municipalityId: municipalityId);
 
   Future<List<ScheduleEntry>> getScheduleForDate(String districtId, DateTime date) async {
     final month = await getMonthlySchedule(districtId, date.year, date.month);

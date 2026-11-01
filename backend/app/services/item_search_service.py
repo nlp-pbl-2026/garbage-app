@@ -1,6 +1,7 @@
 """構造化された品目辞典を、決定的な文字列類似度で検索する。"""
 
 import csv
+import json
 import re
 import unicodedata
 from dataclasses import dataclass
@@ -18,6 +19,8 @@ class ItemMatch:
     note: str
     score: float
     ranking_score: float = 0.0
+    category_options: tuple[str, ...] = ()
+    disposal_instructions: str = ""
 
     @property
     def evidence_text(self) -> str:
@@ -26,8 +29,12 @@ class ItemMatch:
             f"分類コード: {self.category}",
             f"分類: {self.category_display}",
         ]
+        if self.category_options:
+            lines.append("条件付き分類コード: " + json.dumps(self.category_options, ensure_ascii=False))
         if self.note:
             lines.append(f"出し方・注意: {self.note}")
+        if self.disposal_instructions:
+            lines.append(f"区分共通の出し方（上記の品目固有条件を優先）: {self.disposal_instructions}")
         return "\n".join(lines)
 
 
@@ -158,7 +165,9 @@ class ItemSearchService:
                     item=item,
                     category=row.get("category", ""),
                     category_display=row.get("category_display", ""),
+                    category_options=tuple(json.loads(row.get("category_options") or "[]")),
                     note=row.get("note", ""),
+                    disposal_instructions=row.get("disposal_instructions", ""),
                     score=score,
                     ranking_score=ranking_score,
                 )
@@ -190,7 +199,7 @@ class ItemSearchService:
         rows = [
             row
             for row in self._items
-            if (not category or row.get("category") == category)
+            if (not category or row.get("category") == category or category in json.loads(row.get("category_options") or "[]"))
             and (
                 not normalized_query
                 or normalized_query
@@ -221,7 +230,9 @@ class ItemSearchService:
                 item=row.get("item", ""),
                 category=row.get("category", ""),
                 category_display=row.get("category_display", ""),
+                category_options=tuple(json.loads(row.get("category_options") or "[]")),
                 note=row.get("note", ""),
+                disposal_instructions=row.get("disposal_instructions", ""),
                 score=1.0,
                 ranking_score=1.0,
             )

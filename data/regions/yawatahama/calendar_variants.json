@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "source_page": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/",
+  "paper_collection_types": [
+    "cardboard",
+    "newspaper",
+    "magazines",
+    "paper_packaging"
+  ],
+  "variants": {
+    "13": [
+      {
+        "suffix": "tu",
+        "name": "13（紙類は火曜）：末広、田浪、高野地、古谷",
+        "address_labels": [
+          "末広",
+          "田浪",
+          "高野地",
+          "古谷"
+        ],
+        "paper_weekday_iso": 2,
+        "official_note": "赤枠の地区の紙類は火曜のみ"
+      },
+      {
+        "suffix": "fr",
+        "name": "13（紙類は金曜）：郷・梨尾、上郷、南裏、川之内上、古薮",
+        "address_labels": [
+          "郷・梨尾",
+          "上郷",
+          "南裏",
+          "川之内上",
+          "古薮"
+        ],
+        "paper_weekday_iso": 5,
+        "official_note": "青枠の地区の紙類は金曜のみ"
+      },
+      {
+        "suffix": "go",
+        "name": "13：郷・中央（郷一木地区・旧道沿い／紙類の収集日未確認）",
+        "address_labels": [
+          "郷・中央（郷一木地区・旧道沿い）"
+        ],
+        "unverified_collection_types": [
+          "cardboard",
+          "newspaper",
+          "magazines",
+          "paper_packaging"
+        ],
+        "official_note": "公式索引では13番。PDFの紙類の火曜・金曜の住所枠には明記がないため、紙類以外のみ利用する。"
+      }
+    ],
+    "15": [
+      {
+        "suffix": "th",
+        "name": "15（紙類は木曜）：日土町（神明・今出）",
+        "address_labels": [
+          "日土町（神明・今出）"
+        ],
+        "paper_weekday_iso": 4,
+        "official_note": "赤枠の地区の紙類は木曜のみ"
+      },
+      {
+        "suffix": "mo",
+        "name": "15（紙類は月曜）：日土町（田之窪）",
+        "address_labels": [
+          "日土町（田之窪）"
+        ],
+        "paper_weekday_iso": 1,
+        "official_note": "青枠の地区の紙類は月曜のみ"
+      }
+    ]
+  },
+  "display_label_exclusions": {
+    "6": {
+      "郷・中央": "郷・中央（郷一木地区・旧道沿いは対象外）"
+    },
+    "3": {
+      "大平": "大平（愛宕山道路沿いを除く）"
+    },
+    "16": {
+      "国木": "国木（県営住宅及び周辺を除く）"
+    }
+  },
+  "partial_address_labels": [
+    {
+      "label": "郷・中央（郷一木地区・旧道沿い）",
+      "calendar_number": 13,
+      "reason": "公式HTML索引にはあるが、PDFの紙類曜日を分ける住所枠との対応を一意に確認できない",
+      "status": "partially_supported",
+      "decision": "地区を利用可能とし、紙類4区分だけ収集日未確認として扱う。2026-11-01"
+    }
+  ],
+  "display_name_overrides": {
+    "10": "日土町（神明・今出・田之窪を除く）"
+  }
+}

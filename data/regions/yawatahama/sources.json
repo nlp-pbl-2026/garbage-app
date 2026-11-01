@@ -1,0 +1,310 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38204",
+  "version": "yawatahama-2026.2",
+  "valid_from": "2026-04-01",
+  "valid_to": "2027-03-31",
+  "license_status": "unconfirmed",
+  "sources": [
+    {
+      "file": "calendar.html",
+      "url": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/",
+      "sha256": "fa8113f545bbe428306d54214549a95c11b2492c532eb05fc0012b24cc1f5ce8",
+      "retrieved_at": "2026-10-31T19:21:26.485276+00:00"
+    },
+    {
+      "file": "items-a.html",
+      "url": "https://www.city.yawatahama.ehime.jp/doc/2023083100038/",
+      "sha256": "35ccb213e988b6de079d0668e099be5144aa51bc2850ac43e7710aa45b580d2c",
+      "retrieved_at": "2026-10-31T19:21:26.559876+00:00"
+    },
+    {
+      "file": "items-b.html",
+      "url": "https://www.city.yawatahama.ehime.jp/doc/2023091300024/",
+      "sha256": "01ae4b8ed33f2c702ad402b80db67b71f0004c29b45dcac26d19ce2b4a58defd",
+      "retrieved_at": "2026-10-31T19:21:26.536142+00:00"
+    },
+    {
+      "file": "rules.html",
+      "url": "https://www.city.yawatahama.ehime.jp/doc/2022091300010/",
+      "sha256": "ba8474f98b97b46f30edb2de475616f291e4fd2cf16224fd9e59de51c8bea3be",
+      "retrieved_at": "2026-10-31T19:21:26.599300+00:00"
+    },
+    {
+      "file": "guide.html",
+      "url": "https://www.city.yawatahama.ehime.jp/doc/2021022400010/",
+      "sha256": "a8c78993fbc872533f7e61149f8290ef5610e5b5fdd29b78df4f9ad86ffd5ced",
+      "retrieved_at": "2026-10-31T19:21:26.646731+00:00"
+    },
+    {
+      "file": "R8_Part14.pdf",
+      "url": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/file_contents/R8_Part14.pdf",
+      "sha256": "02888ce2197d8a33c682eba13f57c15faecaf043a7b7cdf127c09384dc4dc890",
+      "retrieved_at": "2026-10-31T19:21:26.881716+00:00"
+    },
+    {
+      "file": "R8_Part11.pdf",
+      "url": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/file_contents/R8_Part11.pdf",
+      "sha256": "aa0b213dc41a6cd025f5dfb8b36a3243f11730d5e650d7a7158ad4faa367afd5",
+      "retrieved_at": "2026-10-31T19:21:26.843227+00:00"
+    },
+    {
+      "file": "R8_Part1.pdf",
+      "url": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/file_contents/R8_Part1.pdf",
+      "sha256": "9ac6108b307cefe6aa2ae7261ff824a5a09dbe5669836e19eadd227f4765a976",
+      "retrieved_at": "2026-10-31T19:21:26.843913+00:00"
+    },
+    {
+      "file": "R8_Part5.pdf",
+      "url": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/file_contents/R8_Part5.pdf",
+      "sha256": "18538002002490a1933191fe39b94e72543e2d565bbd583bdaab07c2474e31fa",
+      "retrieved_at": "2026-10-31T19:21:26.993856+00:00"
+    },
+    {
+      "file": "R8_Part6.pdf",
+      "url": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/file_contents/R8_Part6.pdf",
+      "sha256": "18f56e85325e4b2a667b75597b7d34328c17595c656a11dd134fde37ad820aba",
+      "retrieved_at": "2026-10-31T19:21:26.997331+00:00"
+    },
+    {
+      "file": "R8_Part16.pdf",
+      "url": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/file_contents/R8_Part16.pdf",
+      "sha256": "285055796113a14f0545353ef18e18509de6205ea80a42b08237ba91d7fdd26a",
+      "retrieved_at": "2026-10-31T19:21:27.027457+00:00"
+    },
+    {
+      "file": "R8_Part7.pdf",
+      "url": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/file_contents/R8_Part7.pdf",
+      "sha256": "61ef9dd0831828914cd53d12b5cfa79fa46df215be666d7e5fa39681b4b05235",
+      "retrieved_at": "2026-10-31T19:21:27.154066+00:00"
+    },
+    {
+      "file": "R8_Part8.pdf",
+      "url": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/file_contents/R8_Part8.pdf",
+      "sha256": "58beb6ad1c1db3796d5c4854007352496b04a4d562756eff2d838214855eff0c",
+      "retrieved_at": "2026-10-31T19:21:27.146240+00:00"
+    },
+    {
+      "file": "R8_Part2.pdf",
+      "url": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/file_contents/R8_Part2.pdf",
+      "sha256": "b6e86810dac12de39378111e9f3545a6d5d8677df2b8669b99eadbfc3ee5592e",
+      "retrieved_at": "2026-10-31T19:21:27.176469+00:00"
+    },
+    {
+      "file": "R8_Part3.pdf",
+      "url": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/file_contents/R8_Part3.pdf",
+      "sha256": "9f5efd50dd8b6d945afb4b14d6c23d60e5e9ac2e6baf5cca7a4cf50f3ce7f3bb",
+      "retrieved_at": "2026-10-31T19:21:27.307682+00:00"
+    },
+    {
+      "file": "R8_Part19.pdf",
+      "url": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/file_contents/R8_Part19.pdf",
+      "sha256": "19353b92fde2fdd2d3922dcb5c2b46981f4abb1470f976f3be8a00af82b1d827",
+      "retrieved_at": "2026-10-31T19:21:27.314834+00:00"
+    },
+    {
+      "file": "R8_Part20.pdf",
+      "url": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/file_contents/R8_Part20.pdf",
+      "sha256": "a1d999e9d1c271c1929440dc09373e54b3c88843bfcff38100dcc00f6ce25850",
+      "retrieved_at": "2026-10-31T19:21:27.325281+00:00"
+    },
+    {
+      "file": "R8_Part13.pdf",
+      "url": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/file_contents/R8_Part13.pdf",
+      "sha256": "dec68ae326a9f41a130c95b3642839a269af388c6e6452032854cb5b294e2a26",
+      "retrieved_at": "2026-10-31T19:21:27.461903+00:00"
+    },
+    {
+      "file": "R8_Part9.pdf",
+      "url": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/file_contents/R8_Part9.pdf",
+      "sha256": "ac6691d1662667d32ef5837c1ee972cfc4c7ea41926a4d3f09c87446ad6ead8d",
+      "retrieved_at": "2026-10-31T19:21:27.468138+00:00"
+    },
+    {
+      "file": "R8_Part12.pdf",
+      "url": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/file_contents/R8_Part12.pdf",
+      "sha256": "d2c8a3a18e21224cde3450fc13a09be0b7d2c58468f05443c45849aa019abdce",
+      "retrieved_at": "2026-10-31T19:21:27.506374+00:00"
+    },
+    {
+      "file": "R8_Part10.pdf",
+      "url": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/file_contents/R8_Part10.pdf",
+      "sha256": "5c3304835d93d77a62d967c4e01240b292654ac926f08d20962d63adea317d36",
+      "retrieved_at": "2026-10-31T19:21:27.670311+00:00"
+    },
+    {
+      "file": "R8_Part15.pdf",
+      "url": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/file_contents/R8_Part15.pdf",
+      "sha256": "3ee33a8b50927b3a380dcc5210177083e6f257ec344b869fa330f33d3af784b3",
+      "retrieved_at": "2026-10-31T19:21:27.683473+00:00"
+    },
+    {
+      "file": "R8_Part4.pdf",
+      "url": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/file_contents/R8_Part4.pdf",
+      "sha256": "811941a54c3c0e8ffdf3a79c95315f9e5e22e90a28012a106b6259bbfc119dc6",
+      "retrieved_at": "2026-10-31T19:21:27.729856+00:00"
+    },
+    {
+      "file": "R8_Part17.pdf",
+      "url": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/file_contents/R8_Part17.pdf",
+      "sha256": "55e980940ba8a8d85f79a7de3864efcaedf49f4cb616e3492429fc1d85eb6d2b",
+      "retrieved_at": "2026-10-31T19:21:27.840095+00:00"
+    },
+    {
+      "file": "R8_Part18.pdf",
+      "url": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/file_contents/R8_Part18.pdf",
+      "sha256": "a5d9fb448676c1dee04025baa41886aa8d4130a0d56b57f17815d6ef3252af53",
+      "retrieved_at": "2026-10-31T19:21:27.849205+00:00"
+    },
+    {
+      "file": "guidebook2023.pdf",
+      "url": "https://www.city.yawatahama.ehime.jp/doc/2021022400010/file_contents/guidebook2023.pdf",
+      "sha256": "0343410f46acb92a15bf72d474559d8303b243403b3b315f43e59bdddc36aca4",
+      "retrieved_at": "2026-10-31T19:21:29.468575+00:00"
+    },
+    {
+      "file": "2023-01.pdf",
+      "url": "https://www.city.yawatahama.ehime.jp/doc/2021022400010/file_contents/2023-01.pdf",
+      "sha256": "9be040762e65783cf6fb77fea2c77aa112b60fc4a5c8967ef90a2fa20d28e123",
+      "retrieved_at": "2026-10-31T19:21:28.325629+00:00"
+    },
+    {
+      "file": "2023-02.pdf",
+      "url": "https://www.city.yawatahama.ehime.jp/doc/2021022400010/file_contents/2023-02.pdf",
+      "sha256": "d77fa3cbe0da9f9cd300bcdb89c1bf79b88d4b53cb3628ab5e7da9bd3f8eda1b",
+      "retrieved_at": "2026-10-31T19:21:28.159389+00:00"
+    },
+    {
+      "file": "2023-03.pdf",
+      "url": "https://www.city.yawatahama.ehime.jp/doc/2021022400010/file_contents/2023-03.pdf",
+      "sha256": "0bfde60097a106a38f27113a630b83b7f5e550b746bdd074a2aeb57fe037ee14",
+      "retrieved_at": "2026-10-31T19:21:28.479208+00:00"
+    },
+    {
+      "file": "2023-04.pdf",
+      "url": "https://www.city.yawatahama.ehime.jp/doc/2021022400010/file_contents/2023-04.pdf",
+      "sha256": "79e4e6522b891bb8b08152ce9baa372652da9a372ee0307b3275e6b45b6b2ca5",
+      "retrieved_at": "2026-10-31T19:21:28.662071+00:00"
+    },
+    {
+      "file": "2023-05.pdf",
+      "url": "https://www.city.yawatahama.ehime.jp/doc/2021022400010/file_contents/2023-05.pdf",
+      "sha256": "06d972fc870e4cf13f02bc91cf050503719ef86fde783848897040e72fcf03c7",
+      "retrieved_at": "2026-10-31T19:21:29.077228+00:00"
+    },
+    {
+      "file": "2023-06.pdf",
+      "url": "https://www.city.yawatahama.ehime.jp/doc/2021022400010/file_contents/2023-06.pdf",
+      "sha256": "6192b5b065781b0e9f36d2865794954555336d67d535a3d390a0284e787d0770",
+      "retrieved_at": "2026-10-31T19:21:29.060676+00:00"
+    },
+    {
+      "file": "2023-07.pdf",
+      "url": "https://www.city.yawatahama.ehime.jp/doc/2021022400010/file_contents/2023-07.pdf",
+      "sha256": "2ac730fb0b969bb7de26f6d5cad396011385eb01d04f549ff71e4921f4bb9962",
+      "retrieved_at": "2026-10-31T19:21:29.440257+00:00"
+    },
+    {
+      "file": "2023-08.pdf",
+      "url": "https://www.city.yawatahama.ehime.jp/doc/2021022400010/file_contents/2023-08.pdf",
+      "sha256": "02a3a0c3a1307ba2ec5bc7010f99388be0d727471d3963c94e7e0ee32684038b",
+      "retrieved_at": "2026-10-31T19:21:29.609115+00:00"
+    },
+    {
+      "file": "2023-09.pdf",
+      "url": "https://www.city.yawatahama.ehime.jp/doc/2021022400010/file_contents/2023-09.pdf",
+      "sha256": "6db772eb16f607a72608b54e2e3cb7a1bcdcb58b466a3ed0950f1c0169dc05fb",
+      "retrieved_at": "2026-10-31T19:21:29.699935+00:00"
+    },
+    {
+      "file": "2023-10.pdf",
+      "url": "https://www.city.yawatahama.ehime.jp/doc/2021022400010/file_contents/2023-10.pdf",
+      "sha256": "4b7b07d7f70b6409ab11361c09743b49a5241fedcf2e4ca149175334a0f580ee",
+      "retrieved_at": "2026-10-31T19:21:29.740735+00:00"
+    },
+    {
+      "file": "2023-11.pdf",
+      "url": "https://www.city.yawatahama.ehime.jp/doc/2021022400010/file_contents/2023-11.pdf",
+      "sha256": "fc8db4f80aaab930da0b8128ee4a4e469b427795684d56914437748674cce83e",
+      "retrieved_at": "2026-10-31T19:21:29.802050+00:00"
+    },
+    {
+      "file": "2023-12.pdf",
+      "url": "https://www.city.yawatahama.ehime.jp/doc/2021022400010/file_contents/2023-12.pdf",
+      "sha256": "21818b63abaf64b35791f708549b1144065c4cc2c7382bd76cbec0a4d5bd19f8",
+      "retrieved_at": "2026-10-31T19:21:29.872632+00:00"
+    },
+    {
+      "file": "2023-13.pdf",
+      "url": "https://www.city.yawatahama.ehime.jp/doc/2021022400010/file_contents/2023-13.pdf",
+      "sha256": "9b27d275c54ab6c79776455d73e7766a473ad874113fae0b75eb73abbb8ed36f",
+      "retrieved_at": "2026-10-31T19:21:29.930146+00:00"
+    },
+    {
+      "file": "2023-14.pdf",
+      "url": "https://www.city.yawatahama.ehime.jp/doc/2021022400010/file_contents/2023-14.pdf",
+      "sha256": "108d40db29ff1a5f37f56eef24bc377a764e0c5726eead3a318f7291ea9abaea",
+      "retrieved_at": "2026-10-31T19:21:29.970473+00:00"
+    },
+    {
+      "file": "2023-15.pdf",
+      "url": "https://www.city.yawatahama.ehime.jp/doc/2021022400010/file_contents/2023-15.pdf",
+      "sha256": "157a16ea4b1a756e6cb96573934c4ca79cb34066aa3da39d6da93d1eae548928",
+      "retrieved_at": "2026-10-31T19:21:30.051749+00:00"
+    },
+    {
+      "file": "2023-16.pdf",
+      "url": "https://www.city.yawatahama.ehime.jp/doc/2021022400010/file_contents/2023-16.pdf",
+      "sha256": "eb0e77f2ed9faaba088175985e5edd45adccb8f4da57214637ae199b7ec71f94",
+      "retrieved_at": "2026-10-31T19:21:30.104430+00:00"
+    },
+    {
+      "file": "2023-17.pdf",
+      "url": "https://www.city.yawatahama.ehime.jp/doc/2021022400010/file_contents/2023-17.pdf",
+      "sha256": "b95757d8620c14abaf5b0f387617aeb58582b3804e416895bd7aa7c2690f476a",
+      "retrieved_at": "2026-10-31T19:21:30.147384+00:00"
+    },
+    {
+      "file": "2023-18.pdf",
+      "url": "https://www.city.yawatahama.ehime.jp/doc/2021022400010/file_contents/2023-18.pdf",
+      "sha256": "adbf3480ce24ce010ffe7ddf98a7a64e438d09fd86249d1b9b2da41732fb3b82",
+      "retrieved_at": "2026-10-31T19:21:30.267639+00:00"
+    },
+    {
+      "file": "2023-19.pdf",
+      "url": "https://www.city.yawatahama.ehime.jp/doc/2021022400010/file_contents/2023-19.pdf",
+      "sha256": "7b1dfc50b075ce4b1e48d283448cb9d60961984593dd44a72e5cc5cdd29f557c",
+      "retrieved_at": "2026-10-31T19:21:30.285909+00:00"
+    },
+    {
+      "file": "2023-20.pdf",
+      "url": "https://www.city.yawatahama.ehime.jp/doc/2021022400010/file_contents/2023-20.pdf",
+      "sha256": "bad9c7e5492b544e978c275cdd9c0cfbec83bd5fbeb0ef08676436a43edc9156",
+      "retrieved_at": "2026-10-31T19:21:30.333741+00:00"
+    },
+    {
+      "file": "2023-21.pdf",
+      "url": "https://www.city.yawatahama.ehime.jp/doc/2021022400010/file_contents/2023-21.pdf",
+      "sha256": "acb4d08f721bfb1c99d788bff2ea65aa7a2980e74c4e400adea4366a99a0fbc9",
+      "retrieved_at": "2026-10-31T19:21:30.513380+00:00"
+    },
+    {
+      "file": "2023-22.pdf",
+      "url": "https://www.city.yawatahama.ehime.jp/doc/2021022400010/file_contents/2023-22.pdf",
+      "sha256": "d0c0b7b2120f21c4cc42c863f6a61ae977fd0c2510b9525564c7baea43ae0675",
+      "retrieved_at": "2026-10-31T19:21:30.493327+00:00"
+    },
+    {
+      "file": "2023-23.pdf",
+      "url": "https://www.city.yawatahama.ehime.jp/doc/2021022400010/file_contents/2023-23.pdf",
+      "sha256": "67ce209cb4fc319870357475af80f3c6f8511cf7ecc11db1326f9f3a0d80ef76",
+      "retrieved_at": "2026-10-31T19:21:30.554248+00:00"
+    },
+    {
+      "file": "2023-24.pdf",
+      "url": "https://www.city.yawatahama.ehime.jp/doc/2021022400010/file_contents/2023-24.pdf",
+      "sha256": "d1eb659aaa63e0ecde444471e45869adfdd7bb526e128ca3ace59ff767691051",
+      "retrieved_at": "2026-10-31T19:21:30.671778+00:00"
+    }
+  ]
+}

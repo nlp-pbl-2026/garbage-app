@@ -45,7 +45,27 @@ class MultiRegionNotifier extends StateNotifier<AsyncValue<List<SavedRegion>>> {
     state = const AsyncValue.loading();
     try {
       final regions = await _service.getSavedRegions();
-      state = AsyncValue.data(regions);
+      final refreshed = <SavedRegion>[];
+      for (final region in regions) {
+        Map<String, dynamic>? area;
+        try {
+          area = await _municipalityData.area(region.setting.districtId,
+              municipalityId: region.setting.municipalityId);
+        } catch (_) {
+          // A display refresh must not discard saved settings when assets are unavailable.
+        }
+        if (area != null && area['display_name'] != null && area['id'] == region.setting.districtId &&
+            area['name'] != region.setting.districtName) {
+          final updated = await _service.replaceRegionSetting(region.id, RegionSetting(
+            prefectureId: region.setting.prefectureId, prefectureName: region.setting.prefectureName,
+            municipalityId: region.setting.municipalityId, municipalityName: region.setting.municipalityName,
+            districtId: region.setting.districtId, districtName: area['name'] as String));
+          refreshed.add(updated ?? region);
+        } else {
+          refreshed.add(region);
+        }
+      }
+      state = AsyncValue.data(refreshed);
     } catch (e, st) {
       state = AsyncValue.error(e, st);
     }
@@ -129,7 +149,8 @@ class MultiRegionNotifier extends StateNotifier<AsyncValue<List<SavedRegion>>> {
       if (saved == null || area == null) {
         throw StateError('保存された収集地区を再選択してください。');
       }
-      if (area['id'] != saved.setting.districtId) {
+      if (area['id'] != saved.setting.districtId ||
+          (area['display_name'] != null && area['name'] != saved.setting.districtName)) {
         await _service.replaceRegionSetting(id, RegionSetting(
           prefectureId: saved.setting.prefectureId,
           prefectureName: saved.setting.prefectureName,

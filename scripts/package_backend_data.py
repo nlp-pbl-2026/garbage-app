@@ -45,6 +45,11 @@ def runtime_files(catalog_path: Path) -> set[Path]:
             if municipality_id != "38201" and any(
                     row.get("category") and row["category"] not in profile.categories for row in rows):
                 raise ValueError("Unknown regional item category")
+            if municipality_id != "38201":
+                for row in rows:
+                    options = json.loads(row.get("category_options") or "[]")
+                    if not isinstance(options, list) or any(code not in profile.categories for code in options):
+                        raise ValueError("Unknown conditional item category")
             if municipality_id != "38201" and (
                     manifest.get("municipality_id") != municipality_id
                     or manifest.get("profile_id") != profile.index_profile_id):
@@ -53,7 +58,7 @@ def runtime_files(catalog_path: Path) -> set[Path]:
         for area in registry.areas.values():
             region = registry.resolve(municipality_id, area["id"])
             calendar = CalendarService(calendar_path=region.rules.calendar_path, region=region)
-            if calendar.availability != "available":
+            if calendar.availability not in {"available", "partially_available"}:
                 raise ValueError(f"Calendar is not verified: {municipality_id}/{area['id']}")
         if municipality_id == "38201" and "nakajima" in registry.profiles:
             files.add(path.parent / "generated/nakajima_items.csv")

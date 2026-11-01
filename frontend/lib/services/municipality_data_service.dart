@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/services.dart' show AssetBundle, rootBundle;
 import '../models/garbage_item.dart';
+import '../models/collection_status.dart';
 
 /// Offline UI metadata generated from the same registries as the backend.
 /// Missing data never falls back to another municipality.
@@ -69,7 +70,9 @@ class MunicipalityDataService {
       [String municipalityId = '38201']) async {
     if (await municipality(municipalityId) == null) return [];
     return ((await registryFor(municipalityId))['collection_areas'] as List)
-        .cast<Map<String, dynamic>>();
+        .cast<Map<String, dynamic>>()
+        .map((area) => {...area, 'name': area['display_name'] ?? area['name']})
+        .toList();
   }
 
   Future<List<String>> areaCandidates(String districtId,
@@ -180,9 +183,34 @@ class MunicipalityDataService {
     final record =
         (bundle['calendars'] as Map<String, dynamic>)[entry['calendar_id']];
     if (record is! Map<String, dynamic> ||
-        record['verification_status'] != 'checked') {
+        !['checked', 'partially_checked'].contains(record['verification_status'])) {
       return null;
     }
+    final verification = record['collection_type_verification'];
+    if (verification != null || record['verification_status'] == 'partially_checked') {
+      final definitions = (await profile(municipalityId, entry['rule_profile_id'] as String))['categories'] as Map<String, dynamic>;
+      final streams = definitions.values.cast<Map<String, dynamic>>()
+          .map((definition) => definition['collection_type_id']).whereType<String>().toSet();
+      if (verification is! Map<String, dynamic> || verification.keys.toSet().difference(streams).isNotEmpty ||
+          streams.difference(verification.keys.toSet()).isNotEmpty) { return null; }
+      if (verification.values.any((info) => info is! Map<String, dynamic> ||
+          !['checked', 'unverified'].contains(info['status']))) { return null; }
+      final unknown = verification.values.cast<Map<String, dynamic>>().where((info) => info['status'] == 'unverified').toList();
+      if (unknown.isNotEmpty != (record['verification_status'] == 'partially_checked') || unknown.length == streams.length ||
+          unknown.any((info) => info['message'] is! String || info['source_url'] is! String ||
+              (info['message'] as String).isEmpty || (info['source_url'] as String).isEmpty)) { return null; }
+    }
     return record;
+  }
+
+  Future<Map<String, CollectionStatus>> collectionStatuses(String districtId,
+      {String municipalityId = '38201'}) async {
+    final record = await verifiedCalendar(districtId, municipalityId: municipalityId);
+    final types = await categories(districtId, municipalityId: municipalityId);
+    final verification = record?['collection_type_verification'] as Map<String, dynamic>?;
+    return {for (final type in types) type.id:
+      record == null ? const CollectionStatus('unverified_data') :
+        verification?[type.id] == null ? const CollectionStatus('checked') :
+          CollectionStatus.fromJson(verification![type.id] as Map<String, dynamic>)};
   }
 }

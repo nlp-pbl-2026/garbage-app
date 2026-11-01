@@ -56,6 +56,11 @@ class RegionService {
         .toList();
   }
 
+  Future<String?> getCoverageNotice(String municipalityId) async {
+    if (await _data.municipality(municipalityId) == null) return null;
+    return (await _data.registryFor(municipalityId))['coverage_notice'] as String?;
+  }
+
   /// 地域設定をSharedPreferencesに保存する。
   ///
   /// [setting] をJSON文字列にシリアライズして保存する。

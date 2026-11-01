@@ -1,3 +1,5 @@
+import '../models/collection_status.dart';
+import '../widgets/collection_status_notice.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:table_calendar/table_calendar.dart';
@@ -213,6 +215,7 @@ class CalendarScreen extends ConsumerWidget {
               scheduleService,
               districtId,
               category,
+              ref.watch(collectionStatusesProvider).asData?.value[category.id],
             ),
           ),
         ],
@@ -225,6 +228,7 @@ class CalendarScreen extends ConsumerWidget {
     dynamic scheduleService,
     String districtId,
     GarbageCategory category,
+    CollectionStatus? verification,
   ) {
     final color = CategoryColors.getColor(category);
     final label = CategoryColors.getLabel(category);
@@ -237,10 +241,11 @@ class CalendarScreen extends ConsumerWidget {
         category.toJsonString(),
       ),
       builder: (context, snapshot) {
-        String dateText = '---';
+        final unknown = verification?.isUnverified ?? false;
+        String dateText = unknown ? '収集日未確認' : '---';
         String? daysText;
 
-        if (snapshot.connectionState == ConnectionState.done &&
+        if (!unknown && snapshot.connectionState == ConnectionState.done &&
             snapshot.data != null) {
           final nextDate = snapshot.data!;
           final now = japanWallTime(DateTime.now());
@@ -261,7 +266,11 @@ class CalendarScreen extends ConsumerWidget {
         }
 
         return InkWell(
-          onTap: () {
+          onTap: verification == null ? null : () {
+            if (unknown) {
+              _showUnverifiedCollection(context, label, verification);
+              return;
+            }
             _showUpcomingScheduleSheet(
               context,
               scheduleService,
@@ -337,6 +346,17 @@ class CalendarScreen extends ConsumerWidget {
         );
       },
     );
+  }
+
+  void _showUnverifiedCollection(BuildContext context, String label, CollectionStatus status) {
+    showModalBottomSheet<void>(context: context, isScrollControlled: true,
+      builder: (_) => SafeArea(child: SingleChildScrollView(child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Text('$labelの収集日', style: Theme.of(context).textTheme.titleMedium),
+          CollectionStatusNotice(status: status),
+        ]),
+      ))));
   }
 
   /// 指定カテゴリの今後の収集日一覧をBottomSheetで表示する
@@ -850,11 +870,12 @@ class CalendarScreen extends ConsumerWidget {
               ],
               const SizedBox(height: 12),
               if (entries.isEmpty)
-                const Padding(
-                  padding: EdgeInsets.symmetric(vertical: 8.0),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8.0),
                   child: Text(
-                    AppStrings.noSchedule,
-                    style: TextStyle(
+                    (ref.watch(collectionStatusesProvider).asData?.value.values.any((status) => status.isUnverified) ?? false)
+                        ? '確認済みの収集予定はありません。収集日が未確認の区分があります。' : AppStrings.noSchedule,
+                    style: const TextStyle(
                       fontSize: 14,
                       color: Colors.grey,
                     ),

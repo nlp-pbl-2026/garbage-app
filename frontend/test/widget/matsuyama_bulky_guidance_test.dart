@@ -36,6 +36,25 @@ BulkyWasteItem _freeItem() => BulkyWasteItem(
     );
 
 void main() {
+  testWidgets('phone collection keeps official information separate from application', (tester) async {
+    final config = MunicipalityConfig.fromJson({
+      ..._mainlandConfig().toJson(),
+      'municipality_id': '90001', 'municipality_name': '試験市',
+      'application_method': 'phone', 'phone_number': '000-0000',
+      'web_form_url': null, 'information_url': 'https://example.org/guide.pdf',
+    });
+    expect(config.toJson()['information_url'], 'https://example.org/guide.pdf');
+    await tester.pumpWidget(MaterialApp(home: Scaffold(body: ApplicationGuideView(config: config))));
+    expect(find.text('申込区分A〜Dとは'), findsNothing);
+    final lookup = tester.widget<ExternalLinkHandler>(find.ancestor(
+      of: find.text('公式の出し方を確認'), matching: find.byType(ExternalLinkHandler)));
+    expect(lookup.webFormUrl, 'https://example.org/guide.pdf');
+    expect(find.byType(ExternalLinkHandler), findsNWidgets(2));
+    final phone = tester.widgetList<ExternalLinkHandler>(find.byType(ExternalLinkHandler))
+        .where((link) => link.applicationMethod == ApplicationMethod.phone).single;
+    expect(phone.phoneNumber, '000-0000');
+  });
+
   testWidgets('mainland guide links to the official address-to-group lookup',
       (tester) async {
     await tester.pumpWidget(MaterialApp(

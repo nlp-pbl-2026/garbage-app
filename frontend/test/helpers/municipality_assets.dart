@@ -138,3 +138,26 @@ class MunicipalityBundle extends CachingAssetBundle {
     return ByteData.sublistView(Uint8List.fromList(utf8.encode(files[key]!)));
   }
 }
+
+/// Partial verification fixture; dates are synthetic and deliberately include
+/// an unverified stream to exercise the export/notification safety filter.
+Map<String, String> partialMunicipalityAssets() {
+  final files = multiMunicipalityAssets();
+  final catalog = jsonDecode(files['assets/data/municipality_catalog.json']!);
+  final categories = catalog['municipalities'][0]['profiles']['nakajima']['categories'];
+  for (final id in ['paper_a', 'paper_b', 'paper_c', 'paper_d']) {
+    categories[id] = {'name': '未確認の$id', 'collection_type_id': id, 'cutoff': '08:30'};
+  }
+  files['assets/data/municipality_catalog.json'] = jsonEncode(catalog);
+  final calendar = jsonDecode(files['90001-calendar']!);
+  final record = calendar['calendars']['same-calendar'];
+  record['verification_status'] = 'partially_checked';
+  record['collection_type_verification'] = {
+    'burnable': {'status': 'checked'},
+    for (final id in ['paper_a', 'paper_b', 'paper_c', 'paper_d'])
+      id: {'status': 'unverified', 'message': '紙類4区分の収集日は未確認です。', 'source_url': 'https://example.test/calendar.pdf'}
+  };
+  record['days']['2026-11-03'] = ['paper_a', 'paper_b', 'paper_c', 'paper_d'];
+  files['90001-calendar'] = jsonEncode(calendar);
+  return files;
+}

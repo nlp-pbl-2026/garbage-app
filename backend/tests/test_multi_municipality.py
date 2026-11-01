@@ -356,3 +356,128 @@ def test_package_refuses_incomplete_data_before_copying(municipalities):
     with pytest.raises(FileNotFoundError):
         packaging_module().stage_data(destination, municipalities / "catalog.json")
     assert not destination.exists()
+
+
+def test_explicit_conditional_codes_can_support_a_different_final_classification(municipalities):
+    from app.services.item_search_service import ItemMatch
+    region = MunicipalityCatalog(municipalities / "catalog.json").resolve('90001', 'same-area')
+    match = ItemMatch(item_id='test', item='試験品', category='可燃', category_display='試験市A回収物',
+        note='小さいものは回収、大きいものは専用持込', score=.9, category_options=('X',))
+    document = RetrievedDocument(text=match.evidence_text, uri=region.evidence_prefix+'items/test')
+    assert BedrockGateway._document_supports_category(document, '可燃', region=region)
+    assert BedrockGateway._document_supports_category(document, 'X', region=region)
+    unverified = RetrievedDocument(text=match.evidence_text.replace('条件付き分類コード: ["X"]\n', ''))
+    assert not BedrockGateway._document_supports_category(unverified, 'X', region=region)
+
+
+@pytest.mark.parametrize('options', ['["X", "unknown"]', '"X"', '{"X": true}', '[null]'])
+def test_unknown_or_malformed_conditional_codes_never_support_a_decision(municipalities, options):
+    region = MunicipalityCatalog(municipalities / "catalog.json").resolve('90001', 'same-area')
+    document = RetrievedDocument(text='分類コード: 可燃\n分類: 回収物\n条件付き分類コード: '+options)
+    assert not BedrockGateway._document_supports_category(document, 'X', region=region)
+
+
+def test_explicit_packaging_mark_avoids_duplicate_material_question(municipalities):
+    region = MunicipalityCatalog(municipalities / 'catalog.json').resolve('90001', 'same-area')
+    options = dict(clarifications=[], documents=[], region=region)
+    assert WasteGuideService._missing_detail_question(
+        query='洗っても汚れが落ちないプラマーク付き弁当容器', **options) is None
+    assert WasteGuideService._missing_detail_question(
+        query='プラマーク付きではない容器', **options) is not None
+    # The legacy path remains identical, including its established limitation.
+    assert WasteGuideService._missing_detail_question(
+        query='プラマーク付き容器', clarifications=[], documents=[]) is not None
+
+
+def test_packaging_mark_decision_keeps_resolved_model_result_and_collection_date(municipalities):
+    region = get_registry().resolve('90001', 'same-area')
+    service = guide(Runtime())
+    result = service.decide(query='洗っても汚れが落ちないプラマーク付き弁当容器',
+        rewritten_query='弁当容器 プラマークあり', municipality_id='90001', district_id='same-area',
+        documents=[RetrievedDocument('品目: 弁当容器\n分類コード: 可燃\n出し方・注意: プラマークを確認。汚れが落ちないものは可燃',
+            score=.95, uri=region.evidence_prefix+'items/test')])
+    assert result.status == 'answered'
+    assert result.decision.category_code == '可燃'
+    assert result.next_collection is not None
+
+
+@pytest.fixture
+def partial_city(municipalities):
+    root = municipalities / '90001'
+    registry = json.loads((root / 'registry.json').read_text())
+    registry['rule_profiles']['nakajima']['categories']['paper'] = {
+        'name': '試験紙', 'collection_type_id': 'paper_stream', 'cutoff': '08:30'}
+    write_json(root / 'registry.json', registry)
+    calendar = json.loads((root / 'calendar.json').read_text())
+    calendar['calendars']['same-calendar'].update(verification_status='partially_checked',
+        collection_type_verification={'test_stream': {'status': 'checked'},
+            'paper_stream': {'status': 'unverified', 'message': '紙の収集日は未確認です。',
+                             'source_url': 'https://example.test/calendar.pdf'}})
+    write_json(root / 'calendar.json', calendar)
+    return root
+
+
+def test_partial_calendar_keeps_known_dates_and_distinguishes_unknown_from_empty(partial_city):
+    calendar = CalendarService(region=get_registry().resolve('90001', 'same-area'))
+    assert calendar.availability == 'partially_available'
+    known = calendar.next_collection('可燃', from_date=date(2026, 11, 1))
+    assert known.date == date(2026, 11, 2)
+    assert calendar.collection_status('可燃', known).status == 'scheduled'
+    assert calendar.next_collection('paper', from_date=date(2026, 11, 1)) is None
+    assert calendar.collection_status('paper').status == 'unverified'
+    assert calendar.next_collection('可燃', from_date=date(2026, 12, 31)) is None
+    assert calendar.collection_status('可燃').status == 'no_upcoming_collection'
+    assert calendar.collection_status('X').status == 'not_scheduled'
+
+
+@pytest.mark.parametrize('problem', ['missing_stream', 'bad_status', 'checked_with_unknown', 'guessed_date'])
+def test_partial_calendar_rejects_invalid_verification_or_guessed_dates(partial_city, problem):
+    path = partial_city / 'calendar.json'
+    bundle = json.loads(path.read_text()); record = bundle['calendars']['same-calendar']
+    if problem == 'missing_stream': del record['collection_type_verification']['test_stream']
+    elif problem == 'bad_status': record['collection_type_verification']['paper_stream']['status'] = 'unknown_typo'
+    elif problem == 'checked_with_unknown': record['verification_status'] = 'checked'
+    else: record['days']['2026-11-03'] = ['paper_stream']
+    write_json(path, bundle)
+    with pytest.raises(ValueError):
+        CalendarService(region=get_registry().resolve('90001', 'same-area'))
+
+
+@pytest.mark.asyncio
+async def test_api_returns_unknown_collection_status_without_a_date(partial_city):
+    from unittest.mock import patch
+    region = get_registry().resolve('90001', 'same-area')
+    runtime = Runtime(); runtime.category = 'paper'
+    with patch('app.routers.search_router.WasteGuideService', return_value=guide(runtime)), patch('app.routers.search_router.SearchLogService'):
+        async with AsyncClient(transport=ASGITransport(app=app), base_url='http://test') as client:
+            response = await client.post('/api/search/decide', json={
+                'query': '試験紙', 'rewritten_query': '試験紙', 'municipality_id': '90001', 'district_id': 'same-area',
+                'documents': [{'snippet': '品目: 試験紙\n分類コード: paper', 'score': .99, 'uri': region.evidence_prefix+'items/test'}]})
+    assert response.status_code == 200
+    body = response.json()
+    assert body['status'] == 'answered'
+    assert body['classification']['category_code'] == 'paper'
+    assert body['next_collection'] is None
+    assert body['collection_status'] == {'status': 'unverified', 'message': '紙の収集日は未確認です。',
+                                         'source_url': 'https://example.test/calendar.pdf'}
+    assert '未確認' in body['answer']
+
+
+def test_partial_calendar_can_be_packaged_without_dropping_other_municipalities(partial_city, municipalities):
+    targets = packaging_module().stage_data(municipalities / 'package', municipalities / 'catalog.json')
+    assert len(targets) == 11
+
+
+def test_area_display_name_is_used_in_answers_without_changing_calendar_identity(municipalities):
+    path = municipalities / '90001/registry.json'
+    raw = json.loads(path.read_text())
+    raw['collection_areas'][0].update(name='13（紙類の収集日未確認）：旧表示', display_name='地名のみ')
+    write_json(path, raw)
+    region = get_registry().resolve('90001', 'same-area')
+    assert region.area_name == '地名のみ'
+    assert region.calendar_id == 'same-calendar'
+    answer = WasteGuideService._build_answer(ClassificationDecision(True, '試験品', '可燃'),
+        CalendarService(region=region).next_collection('可燃', from_date=date(2026, 11, 1)), region=region)
+    assert '地名のみ地区' in answer
+    assert '未確認' not in answer
+    assert get_registry().resolve('90002', 'same-area').area_name == '試験町B地区'

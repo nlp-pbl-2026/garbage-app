@@ -202,6 +202,7 @@ class MunicipalityConfig {
   final FeeStructureType feeStructureType;
   final ApplicationMethod applicationMethod;
   final String? webFormUrl;
+  final String? informationUrl;
   final String? phoneNumber;
   final List<ApplicationStep> steps;
 
@@ -214,6 +215,7 @@ class MunicipalityConfig {
     required this.feeStructureType,
     required this.applicationMethod,
     this.webFormUrl,
+    this.informationUrl,
     this.phoneNumber,
     required this.steps,
   });
@@ -230,6 +232,7 @@ class MunicipalityConfig {
       applicationMethod: ApplicationMethodExtension.fromString(
           json['application_method'] as String),
       webFormUrl: json['web_form_url'] as String?,
+      informationUrl: json['information_url'] as String?,
       phoneNumber: json['phone_number'] as String?,
       steps: (json['steps'] as List<dynamic>)
           .map((e) => ApplicationStep.fromJson(e as Map<String, dynamic>))
@@ -247,6 +250,7 @@ class MunicipalityConfig {
       'fee_structure_type': feeStructureType.toJsonString(),
       'application_method': applicationMethod.toJsonString(),
       'web_form_url': webFormUrl,
+      if (informationUrl != null) 'information_url': informationUrl,
       'phone_number': phoneNumber,
       'steps': steps.map((e) => e.toJson()).toList(),
     };

@@ -12,7 +12,7 @@ import boto3
 from botocore.exceptions import BotoCoreError, ClientError, NoCredentialsError
 
 from .. import config
-from .calendar_service import CalendarService, CollectionDate
+from .calendar_service import CalendarService, CollectionDate, CollectionStatus
 from .embedding_search_service import EmbeddingSearchService
 from .item_search_service import ItemSearchService
 from .nakajima_search_service import NakajimaSearchService
@@ -72,6 +72,7 @@ class WasteGuideResult:
     next_collection: CollectionDate | None = None
     sources: list[RetrievedDocument] = field(default_factory=list)
     category_name: str | None = None
+    collection_status: CollectionStatus | None = None
 
 
 class BedrockGateway:
@@ -315,7 +316,8 @@ class BedrockGateway:
             raise WasteGuideError("Verified regional item index is unavailable")
         matches = search.search(query, limit=limit)
         if region and region.municipality_id != "38201" and any(
-                match.category and match.category not in region.category_codes for match in matches):
+                (match.category and match.category not in region.category_codes) or
+                any(code not in region.category_codes for code in match.category_options) for match in matches):
             raise WasteGuideError("Item data contains an unknown regional category")
         return matches
 
@@ -513,7 +515,20 @@ class BedrockGateway:
         structured = re.search(r"^分類(?:コード)?:\s*([^\n]+)", text, re.MULTILINE)
         if structured:
             label = names.get(category_code, "")
-            return structured.group(1).strip() in (category_code, label, f"{label} ({category_code})")
+            if structured.group(1).strip() in (category_code, label, f"{label} ({category_code})"):
+                return True
+            # Opt-in, explicit alternatives for conditional official rows. Preserve
+            # Matsuyama's established decision path and never infer codes from notes.
+            if region and region.municipality_id != "38201":
+                alternative = re.search(r"^条件付き分類コード:\s*(\[[^\n]*\])", text, re.MULTILINE)
+                if alternative:
+                    try:
+                        options = json.loads(alternative.group(1))
+                        return isinstance(options, list) and category_code in options and all(
+                            code in region.category_codes for code in options)
+                    except (ValueError, TypeError):
+                        return False
+            return False
         category_name = names.get(category_code, "")
         return category_code in text or (category_name and category_name in text)
 
@@ -868,6 +883,7 @@ class WasteGuideService:
             query=query,
             clarifications=clarification_items,
             documents=documents,
+            region=region,
         )
         conditional_question = self._conditional_evidence_question(
             query=detail_query,
@@ -965,7 +981,8 @@ class WasteGuideService:
                 decision.category_code,
                 at=datetime.now(ZoneInfo(config.TIMEZONE)),
             )
-        answer = self._build_answer(decision, next_collection, region=region)
+        collection_status = self._calendar.collection_status(decision.category_code, next_collection)
+        answer = self._build_answer(decision, next_collection, region=region, collection_status=collection_status)
         return WasteGuideResult(
             status="answered",
             rewritten_query=rewritten_query,
@@ -974,6 +991,7 @@ class WasteGuideService:
             next_collection=next_collection,
             sources=sources,
             category_name=region.category_names[decision.category_code],
+            collection_status=collection_status,
         )
 
     @staticmethod
@@ -1057,6 +1075,7 @@ class WasteGuideService:
         query: str,
         clarifications: list[dict],
         documents: list[RetrievedDocument],
+        region: RegionContext | None = None,
     ) -> str | None:
         """一般名詞だけの入力を、検索候補だけで確定しないための最終ガード。"""
 
@@ -1070,6 +1089,14 @@ class WasteGuideService:
                 ]
             ),
         ).lower()
+        # A positively identified packaging mark already supplies the material.
+        # Keep the established Matsuyama guard unchanged. Uncertain/negative
+        # statements still require the normal evidence/model checks.
+        if region and region.municipality_id != "38201" and re.search(
+            r"(?:プラ|紙)マーク(?:付き(?!では|じゃ|でない|か|とは)|が付いて(?:います|いる)|あり(?!ません))",
+            text,
+        ):
+            return None
         material_markers = (
             "プラスチック",
             "樹脂",
@@ -1305,14 +1332,16 @@ class WasteGuideService:
     @staticmethod
     def _build_answer(
         decision: ClassificationDecision, next_collection: CollectionDate | None,
-        *, region: RegionContext | None = None,
+        *, region: RegionContext | None = None, collection_status: CollectionStatus | None = None,
     ) -> str:
         names = region.category_names if region else CATEGORY_NAMES
         category_name = names[decision.category_code]
         lines = [f"{decision.item_name}は「{category_name}」です。"]
         if decision.disposal_instructions:
             lines.append(decision.disposal_instructions)
-        if next_collection:
+        if collection_status and collection_status.status == "unverified":
+            lines.append(collection_status.message or "この区分の収集日は未確認です。")
+        elif next_collection:
             lines.append(
                 f"{region.area_name if region else '清水'}地区の次回収集日は{next_collection.display_date}です。"
             )

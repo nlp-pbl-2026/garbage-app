@@ -13,6 +13,7 @@ from datetime import date
 import hashlib
 import json
 from pathlib import Path
+import re
 import subprocess
 import tempfile
 
@@ -33,6 +34,27 @@ def write_json(path: Path, value):
 
 def sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def check_auxiliary_source(path: Path, expected: str) -> dict:
+    """Check full bytes, allowing only the CMS's unrelated recommendation block.
+
+    These two reviewed HTML snapshots had an empty recommendation line. Keep
+    the downloaded bytes intact and compare the rest byte-for-byte with that
+    snapshot; never normalize the actual disposal rules or address tables.
+    """
+    content = path.read_bytes()
+    actual = hashlib.sha256(content).hexdigest()
+    normalization = "none"
+    if actual != expected:
+        if path.name not in {"kateigomi_matsuyama.html", "kateigomi_nakajima.html"}:
+            raise ValueError(f"Official auxiliary source changed; review required: {path.name}")
+        normalized, count = re.subn(rb'<div id="lorecommend">[^\r\n]*?</div>', b"", content)
+        if count != 1 or hashlib.sha256(normalized).hexdigest() != expected:
+            raise ValueError(f"Official auxiliary source changed; review required: {path.name}")
+        normalization = "remove_single_line_cms_lorecommend"
+    return {"file": path.name, "source_sha256": actual,
+            "verified_content_sha256": expected, "normalization": normalization}
 
 
 def normalized_hash(record) -> str:
@@ -78,13 +100,14 @@ def fetch_auxiliary():
     expected = read_json(DATA / "auxiliary_sources.json")["sources"]
     if set(expected) != {url.rsplit("/", 1)[-1] for url in urls}:
         raise ValueError("Unreviewed auxiliary source list")
+    records = []
     for url in urls:
         target = DATA / "source" / url.rsplit("/", 1)[-1]
         target.parent.mkdir(parents=True, exist_ok=True)
         if not target.exists():
             subprocess.run(["curl", "-fsSL", "--retry", "2", "--max-time", "45", url, "-o", str(target)], check=True)
-        if sha256(target) != expected[target.name]:
-            raise ValueError(f"Official auxiliary source changed; review required: {target.name}")
+        records.append({**check_auxiliary_source(target, expected[target.name]), "url": url})
+    write_json(DATA / "source/auxiliary-verification.json", {"sources": records})
     print(f"Checked {len(urls)} official address/rule/dictionary sources")
 
 
@@ -152,8 +175,7 @@ def main():
     elif args.command == "build-knowledge":
         from matsuyama_knowledge import build_addresses, build_nakajima_items
         for filename, digest in read_json(DATA / "auxiliary_sources.json")["sources"].items():
-            if sha256(DATA / "source" / filename) != digest:
-                raise ValueError(f"Unreviewed auxiliary source: {filename}")
+            check_auxiliary_source(DATA / "source" / filename, digest)
         address_data = build_addresses(DATA / "source", registry)
         with tempfile.TemporaryDirectory() as scratch:
             draft_items = Path(scratch) / "nakajima_items.csv"

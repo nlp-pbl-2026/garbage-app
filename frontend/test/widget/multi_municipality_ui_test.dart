@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:garbage_app/models/region.dart';
+import 'package:garbage_app/models/collection_status.dart';
 import 'package:garbage_app/models/waste_guide_result.dart';
 import 'package:garbage_app/providers/calendar_provider.dart';
 import 'package:garbage_app/providers/municipality_provider.dart';
@@ -172,8 +173,11 @@ void main() {
     tester.view.devicePixelRatio = 1;
     addTearDown(tester.view.resetPhysicalSize);
     addTearDown(tester.view.resetDevicePixelRatio);
-    final data = MunicipalityDataService(
-        bundle: MunicipalityBundle(multiMunicipalityAssets()));
+    final assets = multiMunicipalityAssets();
+    final registry = jsonDecode(assets['90002-registry']!);
+    registry['coverage_notice'] = '確認できていない住所は選択対象外です';
+    assets['90002-registry'] = jsonEncode(registry);
+    final data = MunicipalityDataService(bundle: MunicipalityBundle(assets));
     final selected = SelectedRegion();
     final notifications = LocalNotifications();
     await tester.pumpWidget(ProviderScope(
@@ -196,6 +200,7 @@ void main() {
     expect(find.text('松山市'), findsNothing);
     await tester.tap(find.text('試験町B'));
     await tester.pumpAndSettle();
+    expect(find.text('確認できていない住所は選択対象外です'), findsOneWidget);
     await tester.tap(find.byKey(const Key('district-selector')));
     await tester.pumpAndSettle();
     await tester.tap(find.text('試験町B地区'));
@@ -232,6 +237,100 @@ void main() {
     expect(isSameDay(calendar.lastDay, DateTime(2027, 3, 31)), isTrue);
     expect(calendar.focusedDay.year, 2027);
     expect(calendar.focusedDay.month, 1);
+    expect(tester.takeException(), isNull);
+  });
+
+  testWidgets('partial calendar labels unknown streams without claiming no collection', (tester) async {
+    await initializeDateFormatting('ja_JP');
+    tester.view.physicalSize = const Size(1000, 1800); tester.view.devicePixelRatio = 1;
+    addTearDown(tester.view.resetPhysicalSize); addTearDown(tester.view.resetDevicePixelRatio);
+    final data = MunicipalityDataService(bundle: MunicipalityBundle(partialMunicipalityAssets()));
+    await tester.pumpWidget(ProviderScope(overrides: [
+      municipalityDataProvider.overrideWithValue(data),
+      regionSettingProvider.overrideWith((ref) => SelectedRegion()),
+      focusedMonthProvider.overrideWith((ref) => DateTime(2026, 11)),
+      selectedDayProvider.overrideWith((ref) => DateTime(2026, 11, 3)),
+      memoForDateProvider.overrideWith((ref, date) => null),
+      monthlyMemosProvider.overrideWith((ref, month) => <DateTime>{}),
+      weatherForecastProvider.overrideWith((ref) async => {}),
+    ], child: const MaterialApp(home: CalendarScreen())));
+    await tester.pumpAndSettle();
+    expect(find.text('収集日未確認'), findsNWidgets(4));
+    expect(find.text('公式カレンダーを確認'), findsNothing);
+    await tester.ensureVisible(find.text('試験市A回収物').last);
+    await tester.tap(find.text('試験市A回収物').last); await tester.pumpAndSettle();
+    expect(find.text('試験市A回収物の収集日'), findsOneWidget);
+    expect(find.text('紙類4区分の収集日は未確認です。'), findsNothing);
+    expect(find.text('公式カレンダーを確認'), findsNothing);
+    Navigator.of(tester.element(find.text('試験市A回収物の収集日'))).pop();
+    await tester.pumpAndSettle();
+    await tester.ensureVisible(find.text('収集日未確認').first);
+    await tester.tap(find.text('収集日未確認').first);
+    await tester.pumpAndSettle();
+    expect(find.text('公式カレンダーを確認'), findsOneWidget);
+    Navigator.of(tester.element(find.text('公式カレンダーを確認'))).pop();
+    await tester.pumpAndSettle();
+    expect(find.text('確認済みの収集予定はありません。収集日が未確認の区分があります。'), findsOneWidget);
+    expect(tester.takeException(), isNull);
+  });
+
+  testWidgets('search shows unknown date and official link instead of a guessed next date', (tester) async {
+    final guide = DeferredGuide();
+    await tester.pumpWidget(ProviderScope(overrides: [
+      regionSettingProvider.overrideWith((ref) => SelectedRegion()),
+    ], child: MaterialApp(home: SearchScreen(service: guide))));
+    await tester.enterText(find.byType(TextField).first, '試験紙');
+    await tester.tap(find.text('調べる')); await tester.pump();
+    guide.calls.last.result.complete(const WasteGuideResult(status: 'answered', rewrittenQuery: '試験紙', answer: '紙類です。収集日は未確認です。',
+      collectionStatus: CollectionStatus('unverified', message: '未確認', sourceUrl: 'https://example.test/calendar.pdf'),
+      nextCollection: NextCollection(date: '2026-11-03', displayDate: '推測した日付', collectionType: '紙類'), sources: []));
+    await tester.pump();
+    expect(find.text('収集日未確認'), findsOneWidget);
+    expect(find.text('公式カレンダーを確認'), findsOneWidget);
+    expect(find.text('推測した日付'), findsNothing);
+  });
+
+  testWidgets('Yawatahama selection shows place names with no paper notice', (tester) async {
+    tester.view.physicalSize = const Size(1000, 1800); tester.view.devicePixelRatio = 1;
+    addTearDown(tester.view.resetPhysicalSize); addTearDown(tester.view.resetDevicePixelRatio);
+    final files = multiMunicipalityAssets();
+    final catalog = jsonDecode(files['assets/data/municipality_catalog.json']!);
+    catalog['municipalities'][0]['id'] = '38204';
+    catalog['municipalities'][0]['name'] = '八幡浜市';
+    files['assets/data/municipality_catalog.json'] = jsonEncode(catalog);
+    final registry = jsonDecode(files['90001-registry']!);
+    registry['municipality_id'] = '38204';
+    registry['partial_address_labels'] = [{'reason': '紙類の収集日未確認'}];
+    registry['collection_areas'] = [
+      {'id': '38204-13-tu', 'name': '13（紙類は火曜）：末広、田浪', 'display_name': '末広、田浪', 'calendar_id': 'same-calendar', 'rule_profile_id': 'nakajima'},
+      {'id': '38204-13-go', 'name': '13：郷・中央（郷一木地区・旧道沿い／紙類の収集日未確認）', 'display_name': '郷・中央（郷一木地区・旧道沿い）', 'calendar_id': 'same-calendar', 'rule_profile_id': 'nakajima'},
+    ];
+    files['90001-registry'] = jsonEncode(registry);
+    final data = MunicipalityDataService(bundle: MunicipalityBundle(files));
+    final selected = SelectedRegion(); final notifications = LocalNotifications();
+    await tester.pumpWidget(ProviderScope(overrides: [
+      prefecturesProvider.overrideWith((ref) async => [Prefecture(id: '38', name: '愛媛県')]),
+      municipalityDataProvider.overrideWithValue(data),
+      regionSettingProvider.overrideWith((ref) => selected),
+      notificationServiceProvider.overrideWithValue(notifications),
+    ], child: const MaterialApp(home: RegionSelectionScreen(updateActiveSavedRegion: false))));
+    await tester.pumpAndSettle();
+    await tester.tap(find.byKey(const Key('prefecture-selector'))); await tester.pumpAndSettle();
+    await tester.tap(find.text('愛媛県').last); await tester.pumpAndSettle();
+    await tester.tap(find.byKey(const Key('municipality-selector'))); await tester.pumpAndSettle();
+    await tester.tap(find.text('八幡浜市')); await tester.pumpAndSettle();
+    expect(find.textContaining('未確認'), findsNothing);
+    await tester.tap(find.byKey(const Key('district-selector'))); await tester.pumpAndSettle();
+    expect(find.text('末広、田浪'), findsOneWidget);
+    expect(find.text('郷・中央（郷一木地区・旧道沿い）'), findsOneWidget);
+    expect(find.textContaining('紙類'), findsNothing);
+    expect(find.textContaining('13（'), findsNothing);
+    await tester.tap(find.text('郷・中央（郷一木地区・旧道沿い）')); await tester.pumpAndSettle();
+    expect(find.textContaining('未確認'), findsNothing);
+    await tester.tap(find.byKey(const Key('manual-region-button'))); await tester.pumpAndSettle();
+    expect(selected.state.valueOrNull!.districtId, '38204-13-go');
+    expect(selected.state.valueOrNull!.districtName, '郷・中央（郷一木地区・旧道沿い）');
+    expect(notifications.municipality, '38204');
     expect(tester.takeException(), isNull);
   });
 

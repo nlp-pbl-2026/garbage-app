@@ -271,4 +271,23 @@ void main() {
         town: '同名町', fullAddress: '試験町B同名町')), throwsA(isA<DistrictNotFoundException>()));
   });
 
+  test('display names refresh saved labels without changing region or calendar IDs', () async {
+    final registry = jsonDecode(files['90001-registry']!);
+    registry['collection_areas'][0]['name'] = '13（紙類は火曜）：旧表示';
+    registry['collection_areas'][0]['display_name'] = '地名のみ';
+    files['90001-registry'] = jsonEncode(registry);
+    final service = RegionService(data: data);
+    final old = RegionSetting(prefectureId: '38', prefectureName: '愛媛県', municipalityId: '90001',
+        municipalityName: '試験市A', districtId: 'same-area', districtName: '13（紙類は火曜）：旧表示');
+    await service.saveRegionSetting(old);
+    expect((await service.getDistricts('90001')).single.name, '地名のみ');
+    final restored = (await service.getRegionSetting())!;
+    expect(restored.districtName, '地名のみ');
+    expect(restored.districtId, old.districtId);
+    expect((await data.area(restored.districtId, municipalityId: restored.municipalityId))!['calendar_id'], 'same-calendar');
+    final prefs = await SharedPreferences.getInstance();
+    expect(jsonDecode(prefs.getString('region_setting')!)['districtName'], '地名のみ');
+    expect((await service.getDistricts('90002')).single.name, '試験町B地区');
+  });
+
 }

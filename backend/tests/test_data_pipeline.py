@@ -58,3 +58,51 @@ def test_validation_rejects_identically_corrupted_backend_and_flutter_bundles():
     record["days"]["2026-04-01"] = ["combustible"]
     with pytest.raises(ValueError, match="differs from reviewed PDF extraction"):
         check(record, extracted, review, "test")
+
+
+@pytest.mark.parametrize('name', ['kateigomi_matsuyama.html', 'kateigomi_nakajima.html'])
+def test_auxiliary_recommendations_can_change_without_changing_reviewed_rules(tmp_path, name):
+    import hashlib
+    p = pipeline()
+    original = b'<main>reviewed disposal rules</main>\n\n<footer>official</footer>'
+    current = original.replace(b'\n\n', b'\n<div id="lorecommend"><h2>Recommendations</h2><ul><li>unrelated</li></ul></div>\n')
+    path = tmp_path / name
+    path.write_bytes(current)
+    record = p.check_auxiliary_source(path, hashlib.sha256(original).hexdigest())
+    assert record['normalization'] == 'remove_single_line_cms_lorecommend'
+    assert record['source_sha256'] == hashlib.sha256(current).hexdigest()
+    assert record['verified_content_sha256'] == hashlib.sha256(original).hexdigest()
+    assert path.read_bytes() == current  # Keep the actual downloaded source intact.
+
+
+@pytest.mark.parametrize('name', ['kateigomi_matsuyama.html', 'kateigomi_nakajima.html'])
+def test_disposal_rule_change_is_not_hidden_by_recommendation_normalization(tmp_path, name):
+    import hashlib
+    p = pipeline()
+    path = tmp_path / name
+    original = b'<main>collect at 8</main>\n\n'
+    current = b'<main>collect at 9</main>\n<div id="lorecommend">unrelated</div>\n'
+    path.write_bytes(current)
+    with pytest.raises(ValueError, match='review required'):
+        p.check_auxiliary_source(path, hashlib.sha256(original).hexdigest())
+
+
+def test_address_tables_still_require_exact_bytes(tmp_path):
+    import hashlib
+    p = pipeline()
+    original = b'<table>reviewed address</table>\n\n'
+    path = tmp_path / 'chikukensaku-a.html'
+    path.write_bytes(original)
+    assert p.check_auxiliary_source(path, hashlib.sha256(original).hexdigest())['normalization'] == 'none'
+    path.write_bytes(original + b'<div id="lorecommend">unrelated</div>')
+    with pytest.raises(ValueError, match='review required'):
+        p.check_auxiliary_source(path, hashlib.sha256(original).hexdigest())
+
+
+def test_unexpected_recommendation_layout_still_requires_review(tmp_path):
+    import hashlib
+    p = pipeline()
+    path = tmp_path / 'kateigomi_matsuyama.html'
+    path.write_bytes(b'<main>reviewed</main>\n<div id="lorecommend">\nunknown layout\n</div>\n')
+    with pytest.raises(ValueError, match='review required'):
+        p.check_auxiliary_source(path, hashlib.sha256(b'<main>reviewed</main>\n\n').hexdigest())

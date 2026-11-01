@@ -118,6 +118,10 @@ class EmbeddingSearchService:
             meta = {row["item_id"]: row for row in rows}
             if len(rows) != len(meta):
                 raise ValueError("Duplicate item IDs")
+            for row in rows:
+                options = json.loads(row.get("category_options") or "[]")
+                if not isinstance(options, list) or not all(isinstance(code, str) and code for code in options):
+                    raise ValueError("Invalid conditional category codes")
             return meta
 
     @property
@@ -181,7 +185,9 @@ class EmbeddingSearchService:
                     item=row.get("item", ""),
                     category=row.get("category", ""),
                     category_display=row.get("category_display", ""),
+                    category_options=tuple(json.loads(row.get("category_options") or "[]")),
                     note=row.get("note", ""),
+                    disposal_instructions=row.get("disposal_instructions", ""),
                     score=score,
                     ranking_score=score,
                 )

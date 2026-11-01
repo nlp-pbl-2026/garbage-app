@@ -210,6 +210,12 @@ class NextCollection(BaseModel):
     collection_type: str
 
 
+class CollectionStatusResponse(BaseModel):
+    status: str = Field(pattern=r"^(scheduled|unverified|no_upcoming_collection|not_scheduled|missing_data|unverified_data)$")
+    message: str | None = None
+    source_url: str | None = None
+
+
 class WasteGuideResponse(BaseModel):
     """単発の回答、または分類確定に必要な追加質問。"""
 
@@ -221,6 +227,7 @@ class WasteGuideResponse(BaseModel):
     rewritten_query: str
     classification: WasteClassification | None = None
     next_collection: NextCollection | None = None
+    collection_status: CollectionStatusResponse | None = None
     sources: list[GuideSource] = Field(default_factory=list)
     request_id: str
 

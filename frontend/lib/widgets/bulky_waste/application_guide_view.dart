@@ -51,6 +51,14 @@ class ApplicationGuideView extends StatelessWidget {
             const _MatsuyamaApplicationGroupHelp(),
             const SizedBox(height: 16),
           ],
+          if (config.informationUrl != null) ...[
+            ExternalLinkHandler(
+              applicationMethod: ApplicationMethod.webForm,
+              webFormUrl: config.informationUrl,
+              webButtonLabel: '公式の出し方を確認',
+            ),
+            const SizedBox(height: 16),
+          ],
           // ステップ一覧
           ...sortedSteps.map((step) => _StepCard(
                 step: step,

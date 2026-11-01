@@ -115,6 +115,242 @@
         }
       },
       "addresses_asset": "assets/data/municipality_addresses.json"
+    },
+    {
+      "id": "38204",
+      "version": "yawatahama-2026.2",
+      "name": "八幡浜市",
+      "prefecture_id": "38",
+      "prefecture_name": "愛媛県",
+      "registry_asset": "assets/data/municipality_38204_registry.json",
+      "profiles": {
+        "standard": {
+          "calendar_asset": "assets/data/municipality_38204_0_calendar.json",
+          "categories": {
+            "burnable": {
+              "name": "燃やすごみ",
+              "collection_type_id": "burnable",
+              "cutoff": "08:00",
+              "color": "#F2A900"
+            },
+            "non_burnable": {
+              "name": "燃やさないごみ",
+              "collection_type_id": "non_burnable",
+              "cutoff": "08:00",
+              "color": "#499ACD"
+            },
+            "bottles": {
+              "name": "びん類",
+              "collection_type_id": "bottles",
+              "cutoff": "08:00",
+              "color": "#F4D43F"
+            },
+            "cans": {
+              "name": "かん類",
+              "collection_type_id": "cans",
+              "cutoff": "08:00",
+              "color": "#E866B2"
+            },
+            "pet_bottles": {
+              "name": "ペットボトル",
+              "collection_type_id": "pet_bottles",
+              "cutoff": "08:00",
+              "color": "#43AF69"
+            },
+            "plastic_packaging": {
+              "name": "プラスチック製容器包装",
+              "collection_type_id": "plastic_packaging",
+              "cutoff": "08:00",
+              "color": "#8C79BE"
+            },
+            "paper_packaging": {
+              "name": "紙製容器包装",
+              "collection_type_id": "paper_packaging",
+              "cutoff": "08:00",
+              "color": "#F4A7B9"
+            },
+            "cardboard": {
+              "name": "段ボール",
+              "collection_type_id": "cardboard",
+              "cutoff": "08:00",
+              "color": "#C8A66D"
+            },
+            "newspaper": {
+              "name": "新聞",
+              "collection_type_id": "newspaper",
+              "cutoff": "08:00",
+              "color": "#9BA2A7"
+            },
+            "magazines": {
+              "name": "雑誌",
+              "collection_type_id": "magazines",
+              "cutoff": "08:00",
+              "color": "#A871B0"
+            },
+            "bulky": {
+              "name": "粗大ごみ"
+            },
+            "bring_in": {
+              "name": "持込み"
+            },
+            "not_collected": {
+              "name": "市で処理できないもの"
+            }
+          },
+          "bulky_waste": {
+            "category_code": "bulky",
+            "config": {
+              "municipality_id": "38204",
+              "municipality_name": "八幡浜市",
+              "collection_frequency": "定期収集なし。直接搬入・地域の回収・電話予約収集",
+              "reception_hours": "予約受付：月～金 8:30～17:15",
+              "collection_rules": "指定ごみ袋に入りきらない家具等が対象です。テレビ・冷蔵庫等の対象外品目に注意してください。環境センターへの直接搬入、地域の粗大ごみ回収（実施の有無を公民館・地区長に確認）、環境センターへの電話予約収集を利用できます。料金と日程は予約時に確認してください。",
+              "fee_structure_type": "fixed",
+              "application_method": "phone",
+              "phone_number": "0894-23-0053",
+              "web_form_url": null,
+              "information_url": "https://www.city.yawatahama.ehime.jp/doc/2021022400010/file_contents/2023-11.pdf",
+              "steps": [
+                {
+                  "step_number": 1,
+                  "title": "対象品目と出し方を確認",
+                  "description": "指定ごみ袋に入りきらない家具等が対象です。市で処理できないものは販売店等へ相談してください。"
+                },
+                {
+                  "step_number": 2,
+                  "title": "持込み・地域の回収・予約収集から選ぶ",
+                  "description": "直接搬入の条件を環境センターで確認するか、地域で回収を実施しているか公民館・地区長に確認します。"
+                },
+                {
+                  "step_number": 3,
+                  "title": "予約収集は環境センターへ電話",
+                  "description": "0894-23-0053へ品目・量・住所を伝え、料金と収集日を確認してください。受付は月～金8:30～17:15です。"
+                },
+                {
+                  "step_number": 4,
+                  "title": "収集日までに搬出",
+                  "description": "収集のみの対応です。あらかじめ玄関先などへ出してください。室内からの搬出・片付けが必要な場合は許可業者へ相談してください。"
+                }
+              ]
+            }
+          }
+        },
+        "oshima": {
+          "calendar_asset": "assets/data/municipality_38204_0_calendar.json",
+          "categories": {
+            "burnable": {
+              "name": "燃やすごみ",
+              "collection_type_id": "burnable",
+              "cutoff": "08:00",
+              "color": "#F2A900"
+            },
+            "non_burnable": {
+              "name": "燃やさないごみ",
+              "collection_type_id": "non_burnable",
+              "cutoff": "08:00",
+              "color": "#499ACD"
+            },
+            "bottles": {
+              "name": "びん類",
+              "collection_type_id": "bottles",
+              "cutoff": "08:00",
+              "color": "#F4D43F"
+            },
+            "cans": {
+              "name": "かん類",
+              "collection_type_id": "cans",
+              "cutoff": "08:00",
+              "color": "#E866B2"
+            },
+            "pet_bottles": {
+              "name": "ペットボトル",
+              "collection_type_id": "pet_bottles",
+              "cutoff": "08:00",
+              "color": "#43AF69"
+            },
+            "plastic_packaging": {
+              "name": "プラスチック製容器包装",
+              "collection_type_id": "plastic_packaging",
+              "cutoff": "08:00",
+              "color": "#8C79BE"
+            },
+            "paper_packaging": {
+              "name": "紙製容器包装",
+              "collection_type_id": "paper_all",
+              "cutoff": "08:00",
+              "collection_name": "紙類（段ボール・新聞・雑誌・紙製容器包装）",
+              "color": "#F4A7B9"
+            },
+            "cardboard": {
+              "name": "段ボール",
+              "collection_type_id": "paper_all",
+              "cutoff": "08:00",
+              "collection_name": "紙類（段ボール・新聞・雑誌・紙製容器包装）",
+              "color": "#F4A7B9"
+            },
+            "newspaper": {
+              "name": "新聞",
+              "collection_type_id": "paper_all",
+              "cutoff": "08:00",
+              "collection_name": "紙類（段ボール・新聞・雑誌・紙製容器包装）",
+              "color": "#F4A7B9"
+            },
+            "magazines": {
+              "name": "雑誌",
+              "collection_type_id": "paper_all",
+              "cutoff": "08:00",
+              "collection_name": "紙類（段ボール・新聞・雑誌・紙製容器包装）",
+              "color": "#F4A7B9"
+            },
+            "bulky": {
+              "name": "粗大ごみ"
+            },
+            "bring_in": {
+              "name": "持込み"
+            },
+            "not_collected": {
+              "name": "市で処理できないもの"
+            }
+          },
+          "bulky_waste": {
+            "category_code": "bulky",
+            "config": {
+              "municipality_id": "38204",
+              "municipality_name": "八幡浜市",
+              "collection_frequency": "定期収集なし。直接搬入・地域の回収・電話予約収集",
+              "reception_hours": "予約受付：月～金 8:30～17:15",
+              "collection_rules": "指定ごみ袋に入りきらない家具等が対象です。テレビ・冷蔵庫等の対象外品目に注意してください。環境センターへの直接搬入、地域の粗大ごみ回収（実施の有無を公民館・地区長に確認）、環境センターへの電話予約収集を利用できます。料金と日程は予約時に確認してください。",
+              "fee_structure_type": "fixed",
+              "application_method": "phone",
+              "phone_number": "0894-23-0053",
+              "web_form_url": null,
+              "information_url": "https://www.city.yawatahama.ehime.jp/doc/2021022400010/file_contents/2023-11.pdf",
+              "steps": [
+                {
+                  "step_number": 1,
+                  "title": "対象品目と出し方を確認",
+                  "description": "指定ごみ袋に入りきらない家具等が対象です。市で処理できないものは販売店等へ相談してください。"
+                },
+                {
+                  "step_number": 2,
+                  "title": "持込み・地域の回収・予約収集から選ぶ",
+                  "description": "直接搬入の条件を環境センターで確認するか、地域で回収を実施しているか公民館・地区長に確認します。"
+                },
+                {
+                  "step_number": 3,
+                  "title": "予約収集は環境センターへ電話",
+                  "description": "0894-23-0053へ品目・量・住所を伝え、料金と収集日を確認してください。受付は月～金8:30～17:15です。"
+                },
+                {
+                  "step_number": 4,
+                  "title": "収集日までに搬出",
+                  "description": "収集のみの対応です。あらかじめ玄関先などへ出してください。室内からの搬出・片付けが必要な場合は許可業者へ相談してください。"
+                }
+              ]
+            }
+          }
+        }
+      }
     }
   ]
 }
