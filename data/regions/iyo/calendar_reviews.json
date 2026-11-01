@@ -1,0 +1,278 @@
+{
+  "schema_version": 1,
+  "version": "iyo-2026.1",
+  "calendars": {
+    "iy-iyo-south": {
+      "pdf_date_labels": 365,
+      "raster_and_text_days": 345,
+      "shared_cells_header_rule_days": [
+        "2026-08-23",
+        "2026-08-30",
+        "2026-08-24",
+        "2026-08-31",
+        "2026-05-24",
+        "2026-05-31",
+        "2027-01-24",
+        "2027-01-31"
+      ],
+      "year_end_table_days": 12,
+      "days_sha256": "b9867c6d3eadca29bc40109f68ad61cc04d0a651b8d4eef8d51274073d858027",
+      "source_sha256": "a2c28f7e763831e85a566804909d0dacf384efc61c7c3533edab8d47ad840b3c"
+    },
+    "iy-iyo-central": {
+      "pdf_date_labels": 365,
+      "raster_and_text_days": 345,
+      "shared_cells_header_rule_days": [
+        "2026-08-23",
+        "2026-08-30",
+        "2026-08-24",
+        "2026-08-31",
+        "2026-05-24",
+        "2026-05-31",
+        "2027-01-24",
+        "2027-01-31"
+      ],
+      "year_end_table_days": 12,
+      "days_sha256": "3fdf1749637d7387822c0ea308c80ba4c7319e279cd6a59ab116648248fb5a68",
+      "source_sha256": "a2c28f7e763831e85a566804909d0dacf384efc61c7c3533edab8d47ad840b3c"
+    },
+    "iy-iyo-north": {
+      "pdf_date_labels": 365,
+      "raster_and_text_days": 345,
+      "shared_cells_header_rule_days": [
+        "2026-08-23",
+        "2026-08-30",
+        "2026-08-24",
+        "2026-08-31",
+        "2026-05-24",
+        "2026-05-31",
+        "2027-01-24",
+        "2027-01-31"
+      ],
+      "year_end_table_days": 12,
+      "days_sha256": "7f104f0e80bd0abbf7cc036fd392a7fa84d7eb4a8da03dc81e505cfe16719207",
+      "source_sha256": "a2c28f7e763831e85a566804909d0dacf384efc61c7c3533edab8d47ad840b3c"
+    },
+    "iy-iyo-west": {
+      "pdf_date_labels": 365,
+      "raster_and_text_days": 345,
+      "shared_cells_header_rule_days": [
+        "2026-08-23",
+        "2026-08-30",
+        "2026-08-24",
+        "2026-08-31",
+        "2026-05-24",
+        "2026-05-31",
+        "2027-01-24",
+        "2027-01-31"
+      ],
+      "year_end_table_days": 12,
+      "days_sha256": "471c3eba3afa7234b467d068353cd8b0ae5b1a2ecf9b888a9c1cd7535a573283",
+      "source_sha256": "a2c28f7e763831e85a566804909d0dacf384efc61c7c3533edab8d47ad840b3c"
+    },
+    "iy-iyo-east": {
+      "pdf_date_labels": 365,
+      "raster_and_text_days": 345,
+      "shared_cells_header_rule_days": [
+        "2026-08-23",
+        "2026-08-30",
+        "2026-08-24",
+        "2026-08-31",
+        "2026-05-24",
+        "2026-05-31",
+        "2027-01-24",
+        "2027-01-31"
+      ],
+      "year_end_table_days": 12,
+      "days_sha256": "7f65108b055fe5bd991f9d76fc5375e8f37879da375c7f6eac6c66c1761059eb",
+      "source_sha256": "a2c28f7e763831e85a566804909d0dacf384efc61c7c3533edab8d47ad840b3c"
+    },
+    "iy-iyo-hiraoka": {
+      "pdf_date_labels": 365,
+      "raster_and_text_days": 345,
+      "shared_cells_header_rule_days": [
+        "2026-08-23",
+        "2026-08-30",
+        "2026-08-24",
+        "2026-08-31",
+        "2026-05-24",
+        "2026-05-31",
+        "2027-01-24",
+        "2027-01-31"
+      ],
+      "year_end_table_days": 12,
+      "days_sha256": "b21cad8ccf0696a015789a3a385d69c8abb662773b59f0cd09fd95520ca337ee",
+      "source_sha256": "a2c28f7e763831e85a566804909d0dacf384efc61c7c3533edab8d47ad840b3c"
+    },
+    "iy-futami-a": {
+      "pdf_date_labels": 365,
+      "raster_and_text_days": 345,
+      "shared_cells_header_rule_days": [
+        "2026-05-24",
+        "2026-05-31",
+        "2026-08-23",
+        "2026-08-30",
+        "2026-08-24",
+        "2026-08-31",
+        "2027-01-24",
+        "2027-01-31"
+      ],
+      "year_end_table_days": 12,
+      "days_sha256": "dd40f10d46d9c075264fc5c81a00b137d3d9fa5ec5e6f680fddbaf96bcc6df8d",
+      "source_sha256": "b504d340794fb4755bea40a28b7549d7ed09a602f6a4eecc5deb8e55c52c3a8d"
+    },
+    "iy-futami-b": {
+      "pdf_date_labels": 365,
+      "raster_and_text_days": 345,
+      "shared_cells_header_rule_days": [
+        "2026-05-24",
+        "2026-05-31",
+        "2026-08-23",
+        "2026-08-30",
+        "2026-08-24",
+        "2026-08-31",
+        "2027-01-24",
+        "2027-01-31"
+      ],
+      "year_end_table_days": 12,
+      "days_sha256": "8b4e605a75dd0bdfca6b5d61378fad533b4db74319d9edf586b2ec911bb72384",
+      "source_sha256": "b504d340794fb4755bea40a28b7549d7ed09a602f6a4eecc5deb8e55c52c3a8d"
+    },
+    "iy-futami-c": {
+      "pdf_date_labels": 365,
+      "raster_and_text_days": 345,
+      "shared_cells_header_rule_days": [
+        "2026-05-24",
+        "2026-05-31",
+        "2026-08-23",
+        "2026-08-30",
+        "2026-08-24",
+        "2026-08-31",
+        "2027-01-24",
+        "2027-01-31"
+      ],
+      "year_end_table_days": 12,
+      "days_sha256": "03c485f04077f734b9cd35c426133184594488c15dc65072f23676407f66f4d8",
+      "source_sha256": "b504d340794fb4755bea40a28b7549d7ed09a602f6a4eecc5deb8e55c52c3a8d"
+    },
+    "iy-futami-d": {
+      "pdf_date_labels": 365,
+      "raster_and_text_days": 345,
+      "shared_cells_header_rule_days": [
+        "2026-05-24",
+        "2026-05-31",
+        "2026-08-23",
+        "2026-08-30",
+        "2026-08-24",
+        "2026-08-31",
+        "2027-01-24",
+        "2027-01-31"
+      ],
+      "year_end_table_days": 12,
+      "days_sha256": "8daae95aa6dc1033faa3f30d4d228c61c43270ba6a5f9706e0d934ff34403940",
+      "source_sha256": "b504d340794fb4755bea40a28b7549d7ed09a602f6a4eecc5deb8e55c52c3a8d"
+    },
+    "iy-futami-e": {
+      "pdf_date_labels": 365,
+      "raster_and_text_days": 345,
+      "shared_cells_header_rule_days": [
+        "2026-05-24",
+        "2026-05-31",
+        "2026-08-23",
+        "2026-08-30",
+        "2026-08-24",
+        "2026-08-31",
+        "2027-01-24",
+        "2027-01-31"
+      ],
+      "year_end_table_days": 12,
+      "days_sha256": "1b709b8173e80d76beab8de1fa5852acd9f16b400bf7439375744785767a84be",
+      "source_sha256": "b504d340794fb4755bea40a28b7549d7ed09a602f6a4eecc5deb8e55c52c3a8d"
+    },
+    "iy-futami-f": {
+      "pdf_date_labels": 365,
+      "raster_and_text_days": 345,
+      "shared_cells_header_rule_days": [
+        "2026-05-24",
+        "2026-05-31",
+        "2026-08-23",
+        "2026-08-30",
+        "2026-08-24",
+        "2026-08-31",
+        "2027-01-24",
+        "2027-01-31"
+      ],
+      "year_end_table_days": 12,
+      "days_sha256": "e76c29793c4e5c021e661297580785cc7941c90c73568e94f142d15ee8f3cfa4",
+      "source_sha256": "b504d340794fb4755bea40a28b7549d7ed09a602f6a4eecc5deb8e55c52c3a8d"
+    },
+    "iy-futami-g": {
+      "pdf_date_labels": 365,
+      "raster_and_text_days": 345,
+      "shared_cells_header_rule_days": [
+        "2026-05-24",
+        "2026-05-31",
+        "2026-08-23",
+        "2026-08-30",
+        "2026-08-24",
+        "2026-08-31",
+        "2027-01-24",
+        "2027-01-31"
+      ],
+      "year_end_table_days": 12,
+      "days_sha256": "49b9f382a61125cac8c5b041262a0886e215f402fc414d71db2583b334949151",
+      "source_sha256": "b504d340794fb4755bea40a28b7549d7ed09a602f6a4eecc5deb8e55c52c3a8d"
+    },
+    "iy-nakayama-sare": {
+      "pdf_date_labels": 365,
+      "raster_and_text_days": 348,
+      "shared_cells_header_rule_days": [
+        "2026-05-24",
+        "2026-05-31",
+        "2026-08-23",
+        "2026-08-30",
+        "2026-08-24",
+        "2026-08-31",
+        "2027-01-24",
+        "2027-01-31"
+      ],
+      "year_end_table_days": 9,
+      "days_sha256": "9faf913c396cb488ad0e21b4ac07fd0b0ec9e7a7f5c5eb45d81484ecdbd8cf28",
+      "source_sha256": "3a740ee53e8b2bcd9c863ba5295437de18e72c6f62581956190d98464a1f3542"
+    },
+    "iy-nakayama-naka": {
+      "pdf_date_labels": 365,
+      "raster_and_text_days": 348,
+      "shared_cells_header_rule_days": [
+        "2026-05-24",
+        "2026-05-31",
+        "2026-08-23",
+        "2026-08-30",
+        "2026-08-24",
+        "2026-08-31",
+        "2027-01-24",
+        "2027-01-31"
+      ],
+      "year_end_table_days": 9,
+      "days_sha256": "736e797386cfd4d55ed35d11f1c6899e4702ab3ea3c9c2b6e805bca064f67905",
+      "source_sha256": "3a740ee53e8b2bcd9c863ba5295437de18e72c6f62581956190d98464a1f3542"
+    },
+    "iy-nakayama-ide": {
+      "pdf_date_labels": 365,
+      "raster_and_text_days": 348,
+      "shared_cells_header_rule_days": [
+        "2026-05-24",
+        "2026-05-31",
+        "2026-08-23",
+        "2026-08-30",
+        "2026-08-24",
+        "2026-08-31",
+        "2027-01-24",
+        "2027-01-31"
+      ],
+      "year_end_table_days": 9,
+      "days_sha256": "21f39298437679238f90a00f14ed9efda100d44bdc117a4a09e77983ae5a86c5",
+      "source_sha256": "3a740ee53e8b2bcd9c863ba5295437de18e72c6f62581956190d98464a1f3542"
+    }
+  }
+}

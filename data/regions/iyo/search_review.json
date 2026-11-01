@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38210",
+  "version": "iyo-2026.1",
+  "reviewed_at": "2026-11-02",
+  "model": "amazon.nova-lite-v1:0",
+  "embedding_model": "amazon.titan-embed-text-v2:0",
+  "search_settings": {
+    "knowledge_base": false,
+    "lexical_search": false,
+    "top_k": 8,
+    "min_similarity": 0.15,
+    "confidence_threshold": 0.75
+  },
+  "final_csv_sha256": "478e92ebfa83180d8576557ec5ff5394c0943cd95c79319f1342625a7165b254",
+  "final_items": 1703,
+  "runs": [
+    {
+      "stage": "initial",
+      "queries": 24,
+      "passed": 20,
+      "note": "Initial 1646-record extraction; 55 dark-gray prohibition rows were subsequently added."
+    },
+    {
+      "stage": "recheck",
+      "queries": 8,
+      "passed": 6,
+      "note": "1647 records; shared disposal instructions separated from item classification options."
+    },
+    {
+      "stage": "final",
+      "queries": 4,
+      "passed": 4,
+      "note": "Final 1703-record data; straw, carryable furniture, uncarryable furniture, PET body."
+    }
+  ],
+  "earlier_successes": [
+    "乳白色・透明な化粧品びん",
+    "ジャムびん",
+    "ガラス食器",
+    "洗った飲料缶",
+    "スプレー缶",
+    "シュレッダー紙",
+    "汚れた衣類",
+    "取り外せる充電池",
+    "小型シール鉛蓄電池",
+    "画像のみ・画像＋文章（公式イラストを使用）",
+    "ガラスびんの追加質問への「はい」",
+    "木材と回答した家具",
+    "平岡・鵜崎の紙類は分類回答＋収集日未確認",
+    "松山市清水・八幡浜市の回帰例各1件"
+  ],
+  "limits": [
+    "The final data were not subjected to a complete rerun of all 24 initial searches.",
+    "No per-item accuracy claim for all 1697 official items.",
+    "Image evaluation used an official illustration; real-world photo/device evaluation remains.",
+    "Actual billing is not yet available; usage plus conservative rates is below the approved USD 1."
+  ],
+  "paid_index_attempts": 1706,
+  "nova_calls_with_usage": 72,
+  "conservative_total_upper_usd": 0.24671,
+  "pricing_source": "https://aws.amazon.com/bedrock/pricing/"
+}

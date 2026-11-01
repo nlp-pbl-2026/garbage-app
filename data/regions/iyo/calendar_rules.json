@@ -1,0 +1,1619 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38210",
+  "version": "iyo-2026.1",
+  "valid_from": "2026-04-01",
+  "valid_to": "2027-03-31",
+  "collection_types": [
+    "burnable",
+    "plastic_packaging",
+    "paper",
+    "cans",
+    "bottles",
+    "textiles",
+    "pet_bottles",
+    "hazardous",
+    "non_burnable"
+  ],
+  "closed_dates": [
+    "2026-12-31",
+    "2027-01-01",
+    "2027-01-02",
+    "2027-01-03"
+  ],
+  "source_files": {
+    "iyo": "r8iyo.pdf",
+    "futami": "r8hutami.pdf",
+    "nakayama": "r8nakayama.pdf"
+  },
+  "areas": [
+    {
+      "id": "38210-iyo-south",
+      "name": "南山崎（上唐川・下唐川・大平上・大平下、平岡・鵜崎を除く）、鳥ノ木",
+      "display_name": "南山崎（上唐川・下唐川・大平上・大平下、平岡・鵜崎を除く）、鳥ノ木",
+      "calendar_id": "iy-iyo-south",
+      "rule_profile_id": "iyo",
+      "rules": [
+        {
+          "weekdays": [
+            1,
+            5
+          ],
+          "types": [
+            "burnable"
+          ]
+        },
+        {
+          "weekdays": [
+            3
+          ],
+          "types": [
+            "plastic_packaging"
+          ]
+        },
+        {
+          "weekdays": [
+            2
+          ],
+          "types": [
+            "bottles"
+          ],
+          "occurrences": [
+            1
+          ]
+        },
+        {
+          "weekdays": [
+            2
+          ],
+          "types": [
+            "textiles",
+            "cans"
+          ],
+          "occurrences": [
+            2
+          ]
+        },
+        {
+          "weekdays": [
+            2
+          ],
+          "types": [
+            "pet_bottles",
+            "non_burnable",
+            "hazardous"
+          ],
+          "occurrences": [
+            3
+          ]
+        },
+        {
+          "weekdays": [
+            2
+          ],
+          "types": [
+            "cans",
+            "paper"
+          ],
+          "occurrences": [
+            4
+          ]
+        },
+        {
+          "weekdays": [
+            2
+          ],
+          "types": [
+            "pet_bottles",
+            "non_burnable",
+            "hazardous"
+          ],
+          "occurrences": [
+            5
+          ]
+        }
+      ],
+      "nonburnable_weekday": 2,
+      "burnable_weekdays": [
+        1,
+        5
+      ],
+      "plastic_weekday": 3,
+      "replacements": {
+        "2026-12-29": [
+          "pet_bottles",
+          "non_burnable",
+          "hazardous"
+        ],
+        "2026-12-30": [
+          "plastic_packaging"
+        ],
+        "2026-12-31": [],
+        "2027-01-01": [],
+        "2027-01-02": [],
+        "2027-01-03": [],
+        "2027-01-04": [
+          "burnable"
+        ],
+        "2027-01-05": [
+          "bottles"
+        ],
+        "2027-01-06": [
+          "plastic_packaging"
+        ],
+        "2027-01-07": [],
+        "2027-01-08": [
+          "burnable"
+        ],
+        "2027-01-09": []
+      }
+    },
+    {
+      "id": "38210-iyo-central",
+      "name": "灘町、米湊、上吾川（白水を除く）",
+      "display_name": "灘町、米湊、上吾川（白水を除く）",
+      "calendar_id": "iy-iyo-central",
+      "rule_profile_id": "iyo",
+      "rules": [
+        {
+          "weekdays": [
+            1,
+            5
+          ],
+          "types": [
+            "burnable"
+          ]
+        },
+        {
+          "weekdays": [
+            3
+          ],
+          "types": [
+            "plastic_packaging"
+          ]
+        },
+        {
+          "weekdays": [
+            3
+          ],
+          "types": [
+            "bottles"
+          ],
+          "occurrences": [
+            1
+          ]
+        },
+        {
+          "weekdays": [
+            3
+          ],
+          "types": [
+            "textiles",
+            "cans"
+          ],
+          "occurrences": [
+            2
+          ]
+        },
+        {
+          "weekdays": [
+            3
+          ],
+          "types": [
+            "pet_bottles",
+            "non_burnable",
+            "hazardous"
+          ],
+          "occurrences": [
+            3
+          ]
+        },
+        {
+          "weekdays": [
+            3
+          ],
+          "types": [
+            "cans",
+            "paper"
+          ],
+          "occurrences": [
+            4
+          ]
+        },
+        {
+          "weekdays": [
+            3
+          ],
+          "types": [
+            "pet_bottles",
+            "non_burnable",
+            "hazardous"
+          ],
+          "occurrences": [
+            5
+          ]
+        }
+      ],
+      "nonburnable_weekday": 3,
+      "burnable_weekdays": [
+        1,
+        5
+      ],
+      "plastic_weekday": 3,
+      "replacements": {
+        "2026-12-29": [],
+        "2026-12-30": [
+          "plastic_packaging",
+          "pet_bottles",
+          "non_burnable",
+          "hazardous"
+        ],
+        "2026-12-31": [],
+        "2027-01-01": [],
+        "2027-01-02": [],
+        "2027-01-03": [],
+        "2027-01-04": [
+          "burnable"
+        ],
+        "2027-01-05": [],
+        "2027-01-06": [
+          "plastic_packaging",
+          "bottles"
+        ],
+        "2027-01-07": [],
+        "2027-01-08": [
+          "burnable"
+        ],
+        "2027-01-09": []
+      }
+    },
+    {
+      "id": "38210-iyo-north",
+      "name": "北山崎（三秋・中村・森・本郡・尾﨑・三島町・市場・稲荷）",
+      "display_name": "北山崎（三秋・中村・森・本郡・尾﨑・三島町・市場・稲荷）",
+      "calendar_id": "iy-iyo-north",
+      "rule_profile_id": "iyo",
+      "rules": [
+        {
+          "weekdays": [
+            1,
+            5
+          ],
+          "types": [
+            "burnable"
+          ]
+        },
+        {
+          "weekdays": [
+            3
+          ],
+          "types": [
+            "plastic_packaging"
+          ]
+        },
+        {
+          "weekdays": [
+            6
+          ],
+          "types": [
+            "bottles"
+          ],
+          "occurrences": [
+            1
+          ]
+        },
+        {
+          "weekdays": [
+            6
+          ],
+          "types": [
+            "textiles",
+            "cans"
+          ],
+          "occurrences": [
+            2
+          ]
+        },
+        {
+          "weekdays": [
+            6
+          ],
+          "types": [
+            "pet_bottles",
+            "non_burnable",
+            "hazardous"
+          ],
+          "occurrences": [
+            3
+          ]
+        },
+        {
+          "weekdays": [
+            6
+          ],
+          "types": [
+            "cans",
+            "paper"
+          ],
+          "occurrences": [
+            4
+          ]
+        },
+        {
+          "weekdays": [
+            6
+          ],
+          "types": [
+            "pet_bottles",
+            "non_burnable",
+            "hazardous"
+          ],
+          "occurrences": [
+            5
+          ]
+        }
+      ],
+      "nonburnable_weekday": 6,
+      "burnable_weekdays": [
+        1,
+        5
+      ],
+      "plastic_weekday": 3,
+      "replacements": {
+        "2026-12-29": [],
+        "2026-12-30": [
+          "plastic_packaging"
+        ],
+        "2026-12-31": [],
+        "2027-01-01": [],
+        "2027-01-02": [],
+        "2027-01-03": [],
+        "2027-01-04": [
+          "burnable"
+        ],
+        "2027-01-05": [],
+        "2027-01-06": [
+          "plastic_packaging"
+        ],
+        "2027-01-07": [],
+        "2027-01-08": [
+          "burnable"
+        ],
+        "2027-01-09": [
+          "textiles",
+          "cans",
+          "bottles"
+        ]
+      }
+    },
+    {
+      "id": "38210-iyo-west",
+      "name": "湊町、白水、下吾川（鳥ノ木を除く）",
+      "display_name": "湊町、白水、下吾川（鳥ノ木を除く）",
+      "calendar_id": "iy-iyo-west",
+      "rule_profile_id": "iyo",
+      "rules": [
+        {
+          "weekdays": [
+            2,
+            6
+          ],
+          "types": [
+            "burnable"
+          ]
+        },
+        {
+          "weekdays": [
+            4
+          ],
+          "types": [
+            "plastic_packaging"
+          ]
+        },
+        {
+          "weekdays": [
+            4
+          ],
+          "types": [
+            "bottles"
+          ],
+          "occurrences": [
+            1
+          ]
+        },
+        {
+          "weekdays": [
+            4
+          ],
+          "types": [
+            "textiles",
+            "cans"
+          ],
+          "occurrences": [
+            2
+          ]
+        },
+        {
+          "weekdays": [
+            4
+          ],
+          "types": [
+            "pet_bottles",
+            "non_burnable",
+            "hazardous"
+          ],
+          "occurrences": [
+            3
+          ]
+        },
+        {
+          "weekdays": [
+            4
+          ],
+          "types": [
+            "cans",
+            "paper"
+          ],
+          "occurrences": [
+            4
+          ]
+        },
+        {
+          "weekdays": [
+            4
+          ],
+          "types": [
+            "pet_bottles",
+            "non_burnable",
+            "hazardous"
+          ],
+          "occurrences": [
+            5
+          ]
+        }
+      ],
+      "nonburnable_weekday": 4,
+      "burnable_weekdays": [
+        2,
+        6
+      ],
+      "plastic_weekday": 4,
+      "replacements": {
+        "2026-12-29": [
+          "burnable"
+        ],
+        "2026-12-30": [
+          "plastic_packaging"
+        ],
+        "2026-12-31": [],
+        "2027-01-01": [],
+        "2027-01-02": [],
+        "2027-01-03": [],
+        "2027-01-04": [],
+        "2027-01-05": [
+          "burnable"
+        ],
+        "2027-01-06": [],
+        "2027-01-07": [
+          "plastic_packaging",
+          "bottles"
+        ],
+        "2027-01-08": [],
+        "2027-01-09": [
+          "burnable"
+        ]
+      }
+    },
+    {
+      "id": "38210-iyo-east",
+      "name": "南伊予（下三谷・上三谷・上野・宮下・八倉）",
+      "display_name": "南伊予（下三谷・上三谷・上野・宮下・八倉）",
+      "calendar_id": "iy-iyo-east",
+      "rule_profile_id": "iyo",
+      "rules": [
+        {
+          "weekdays": [
+            2,
+            6
+          ],
+          "types": [
+            "burnable"
+          ]
+        },
+        {
+          "weekdays": [
+            4
+          ],
+          "types": [
+            "plastic_packaging"
+          ]
+        },
+        {
+          "weekdays": [
+            5
+          ],
+          "types": [
+            "bottles"
+          ],
+          "occurrences": [
+            1
+          ]
+        },
+        {
+          "weekdays": [
+            5
+          ],
+          "types": [
+            "textiles",
+            "cans"
+          ],
+          "occurrences": [
+            2
+          ]
+        },
+        {
+          "weekdays": [
+            5
+          ],
+          "types": [
+            "pet_bottles",
+            "non_burnable",
+            "hazardous"
+          ],
+          "occurrences": [
+            3
+          ]
+        },
+        {
+          "weekdays": [
+            5
+          ],
+          "types": [
+            "cans",
+            "paper"
+          ],
+          "occurrences": [
+            4
+          ]
+        },
+        {
+          "weekdays": [
+            5
+          ],
+          "types": [
+            "pet_bottles",
+            "non_burnable",
+            "hazardous"
+          ],
+          "occurrences": [
+            5
+          ]
+        }
+      ],
+      "nonburnable_weekday": 5,
+      "burnable_weekdays": [
+        2,
+        6
+      ],
+      "plastic_weekday": 4,
+      "replacements": {
+        "2026-12-29": [
+          "burnable"
+        ],
+        "2026-12-30": [
+          "plastic_packaging"
+        ],
+        "2026-12-31": [],
+        "2027-01-01": [],
+        "2027-01-02": [],
+        "2027-01-03": [],
+        "2027-01-04": [],
+        "2027-01-05": [
+          "burnable"
+        ],
+        "2027-01-06": [],
+        "2027-01-07": [
+          "plastic_packaging"
+        ],
+        "2027-01-08": [
+          "textiles",
+          "cans",
+          "bottles"
+        ],
+        "2027-01-09": [
+          "burnable"
+        ]
+      }
+    },
+    {
+      "id": "38210-iyo-hiraoka",
+      "name": "平岡、鵜崎",
+      "display_name": "平岡、鵜崎",
+      "calendar_id": "iy-iyo-hiraoka",
+      "rule_profile_id": "iyo",
+      "rules": [
+        {
+          "weekdays": [
+            1,
+            5
+          ],
+          "types": [
+            "burnable"
+          ]
+        },
+        {
+          "weekdays": [
+            3
+          ],
+          "types": [
+            "plastic_packaging"
+          ]
+        },
+        {
+          "weekdays": [
+            2
+          ],
+          "types": [
+            "textiles",
+            "cans"
+          ],
+          "occurrences": [
+            2
+          ]
+        }
+      ],
+      "nonburnable_weekday": 2,
+      "burnable_weekdays": [
+        1,
+        5
+      ],
+      "plastic_weekday": 3,
+      "unverified_collection_types": [
+        "bottles",
+        "pet_bottles",
+        "non_burnable",
+        "hazardous",
+        "paper"
+      ],
+      "verification_message": "平岡・鵜崎は燃えないごみが毎月第2火曜と注記されていますが、びん類・ペットボトル・燃えないその他ごみ・有害ごみ・紙類の区分別収集日は未確認です。伊予市環境政策課（089-909-6338）で確認してください。",
+      "replacements": {
+        "2026-12-29": [],
+        "2026-12-30": [
+          "plastic_packaging"
+        ],
+        "2026-12-31": [],
+        "2027-01-01": [],
+        "2027-01-02": [],
+        "2027-01-03": [],
+        "2027-01-04": [
+          "burnable"
+        ],
+        "2027-01-05": [],
+        "2027-01-06": [
+          "plastic_packaging"
+        ],
+        "2027-01-07": [],
+        "2027-01-08": [
+          "burnable"
+        ],
+        "2027-01-09": []
+      }
+    },
+    {
+      "id": "38210-futami-a",
+      "name": "双海：柆野、犬寄、高見、東峰",
+      "display_name": "双海：柆野、犬寄、高見、東峰",
+      "calendar_id": "iy-futami-a",
+      "rule_profile_id": "futami",
+      "rules": [
+        {
+          "weekdays": [
+            1,
+            5
+          ],
+          "types": [
+            "burnable"
+          ]
+        },
+        {
+          "weekdays": [
+            3
+          ],
+          "types": [
+            "plastic_packaging"
+          ]
+        },
+        {
+          "weekdays": [
+            2
+          ],
+          "types": [
+            "bottles",
+            "cans",
+            "hazardous",
+            "non_burnable"
+          ],
+          "occurrences": [
+            4
+          ]
+        },
+        {
+          "weekdays": [
+            5
+          ],
+          "types": [
+            "pet_bottles"
+          ],
+          "occurrences": [
+            4
+          ]
+        },
+        {
+          "weekdays": [
+            6
+          ],
+          "types": [
+            "textiles",
+            "paper"
+          ],
+          "occurrences": [
+            2
+          ]
+        }
+      ],
+      "official_group": "A",
+      "burnable_weekdays": [
+        1,
+        5
+      ],
+      "plastic_weekday": 3,
+      "subregion": "upper",
+      "replacements": {
+        "2026-12-29": [],
+        "2026-12-30": [
+          "plastic_packaging"
+        ],
+        "2026-12-31": [],
+        "2027-01-01": [],
+        "2027-01-02": [],
+        "2027-01-03": [],
+        "2027-01-04": [
+          "burnable"
+        ],
+        "2027-01-05": [],
+        "2027-01-06": [
+          "plastic_packaging"
+        ],
+        "2027-01-07": [],
+        "2027-01-08": [
+          "burnable"
+        ],
+        "2027-01-09": [
+          "textiles",
+          "paper"
+        ]
+      }
+    },
+    {
+      "id": "38210-futami-b",
+      "name": "双海：両谷、久保、三島、岡、日尾野、大栄、奥大栄",
+      "display_name": "双海：両谷、久保、三島、岡、日尾野、大栄、奥大栄",
+      "calendar_id": "iy-futami-b",
+      "rule_profile_id": "futami",
+      "rules": [
+        {
+          "weekdays": [
+            1,
+            5
+          ],
+          "types": [
+            "burnable"
+          ]
+        },
+        {
+          "weekdays": [
+            3
+          ],
+          "types": [
+            "plastic_packaging"
+          ]
+        },
+        {
+          "weekdays": [
+            3
+          ],
+          "types": [
+            "bottles",
+            "cans",
+            "hazardous",
+            "non_burnable"
+          ],
+          "occurrences": [
+            4
+          ]
+        },
+        {
+          "weekdays": [
+            5
+          ],
+          "types": [
+            "pet_bottles"
+          ],
+          "occurrences": [
+            4
+          ]
+        },
+        {
+          "weekdays": [
+            6
+          ],
+          "types": [
+            "textiles",
+            "paper"
+          ],
+          "occurrences": [
+            2
+          ]
+        }
+      ],
+      "official_group": "B",
+      "burnable_weekdays": [
+        1,
+        5
+      ],
+      "plastic_weekday": 3,
+      "subregion": "upper",
+      "replacements": {
+        "2026-12-29": [],
+        "2026-12-30": [
+          "plastic_packaging"
+        ],
+        "2026-12-31": [],
+        "2027-01-01": [],
+        "2027-01-02": [],
+        "2027-01-03": [],
+        "2027-01-04": [
+          "burnable"
+        ],
+        "2027-01-05": [],
+        "2027-01-06": [
+          "plastic_packaging"
+        ],
+        "2027-01-07": [],
+        "2027-01-08": [
+          "burnable"
+        ],
+        "2027-01-09": [
+          "textiles",
+          "paper"
+        ]
+      }
+    },
+    {
+      "id": "38210-futami-c",
+      "name": "双海：灘町",
+      "display_name": "双海：灘町",
+      "calendar_id": "iy-futami-c",
+      "rule_profile_id": "futami",
+      "rules": [
+        {
+          "weekdays": [
+            1,
+            5
+          ],
+          "types": [
+            "burnable"
+          ]
+        },
+        {
+          "weekdays": [
+            3
+          ],
+          "types": [
+            "plastic_packaging"
+          ]
+        },
+        {
+          "weekdays": [
+            3
+          ],
+          "types": [
+            "bottles",
+            "cans",
+            "hazardous",
+            "non_burnable"
+          ],
+          "occurrences": [
+            3
+          ]
+        },
+        {
+          "weekdays": [
+            5
+          ],
+          "types": [
+            "pet_bottles"
+          ],
+          "occurrences": [
+            4
+          ]
+        },
+        {
+          "weekdays": [
+            6
+          ],
+          "types": [
+            "textiles",
+            "paper"
+          ],
+          "occurrences": [
+            2
+          ]
+        }
+      ],
+      "official_group": "C",
+      "burnable_weekdays": [
+        1,
+        5
+      ],
+      "plastic_weekday": 3,
+      "subregion": "upper",
+      "replacements": {
+        "2026-12-29": [],
+        "2026-12-30": [
+          "plastic_packaging"
+        ],
+        "2026-12-31": [],
+        "2027-01-01": [],
+        "2027-01-02": [],
+        "2027-01-03": [],
+        "2027-01-04": [
+          "burnable"
+        ],
+        "2027-01-05": [],
+        "2027-01-06": [
+          "plastic_packaging"
+        ],
+        "2027-01-07": [],
+        "2027-01-08": [
+          "burnable"
+        ],
+        "2027-01-09": [
+          "textiles",
+          "paper"
+        ]
+      }
+    },
+    {
+      "id": "38210-futami-d",
+      "name": "双海：小網、城ノ下、高野川",
+      "display_name": "双海：小網、城ノ下、高野川",
+      "calendar_id": "iy-futami-d",
+      "rule_profile_id": "futami",
+      "rules": [
+        {
+          "weekdays": [
+            1,
+            5
+          ],
+          "types": [
+            "burnable"
+          ]
+        },
+        {
+          "weekdays": [
+            3
+          ],
+          "types": [
+            "plastic_packaging"
+          ]
+        },
+        {
+          "weekdays": [
+            4
+          ],
+          "types": [
+            "bottles",
+            "cans",
+            "hazardous",
+            "non_burnable"
+          ],
+          "occurrences": [
+            3
+          ]
+        },
+        {
+          "weekdays": [
+            5
+          ],
+          "types": [
+            "pet_bottles"
+          ],
+          "occurrences": [
+            4
+          ]
+        },
+        {
+          "weekdays": [
+            6
+          ],
+          "types": [
+            "textiles",
+            "paper"
+          ],
+          "occurrences": [
+            2
+          ]
+        }
+      ],
+      "official_group": "D",
+      "burnable_weekdays": [
+        1,
+        5
+      ],
+      "plastic_weekday": 3,
+      "subregion": "upper",
+      "replacements": {
+        "2026-12-29": [],
+        "2026-12-30": [
+          "plastic_packaging"
+        ],
+        "2026-12-31": [],
+        "2027-01-01": [],
+        "2027-01-02": [],
+        "2027-01-03": [],
+        "2027-01-04": [
+          "burnable"
+        ],
+        "2027-01-05": [],
+        "2027-01-06": [
+          "plastic_packaging"
+        ],
+        "2027-01-07": [],
+        "2027-01-08": [
+          "burnable"
+        ],
+        "2027-01-09": [
+          "textiles",
+          "paper"
+        ]
+      }
+    },
+    {
+      "id": "38210-futami-e",
+      "name": "双海：本郷、塩屋、唐崎",
+      "display_name": "双海：本郷、塩屋、唐崎",
+      "calendar_id": "iy-futami-e",
+      "rule_profile_id": "futami",
+      "rules": [
+        {
+          "weekdays": [
+            2,
+            6
+          ],
+          "types": [
+            "burnable"
+          ]
+        },
+        {
+          "weekdays": [
+            4
+          ],
+          "types": [
+            "plastic_packaging"
+          ]
+        },
+        {
+          "weekdays": [
+            4
+          ],
+          "types": [
+            "bottles",
+            "cans",
+            "hazardous",
+            "non_burnable"
+          ],
+          "occurrences": [
+            4
+          ]
+        },
+        {
+          "weekdays": [
+            5
+          ],
+          "types": [
+            "pet_bottles"
+          ],
+          "occurrences": [
+            4
+          ]
+        },
+        {
+          "weekdays": [
+            6
+          ],
+          "types": [
+            "textiles",
+            "paper"
+          ],
+          "occurrences": [
+            2
+          ]
+        }
+      ],
+      "official_group": "E",
+      "burnable_weekdays": [
+        2,
+        6
+      ],
+      "plastic_weekday": 4,
+      "subregion": "upper",
+      "replacements": {
+        "2026-12-29": [
+          "burnable"
+        ],
+        "2026-12-30": [
+          "plastic_packaging"
+        ],
+        "2026-12-31": [],
+        "2027-01-01": [],
+        "2027-01-02": [],
+        "2027-01-03": [],
+        "2027-01-04": [],
+        "2027-01-05": [
+          "burnable"
+        ],
+        "2027-01-06": [],
+        "2027-01-07": [
+          "plastic_packaging"
+        ],
+        "2027-01-08": [],
+        "2027-01-09": [
+          "burnable",
+          "textiles",
+          "paper"
+        ]
+      }
+    },
+    {
+      "id": "38210-futami-f",
+      "name": "双海：下灘（上浜・下浜を除く）",
+      "display_name": "双海：下灘（上浜・下浜を除く）",
+      "calendar_id": "iy-futami-f",
+      "rule_profile_id": "futami",
+      "rules": [
+        {
+          "weekdays": [
+            2,
+            6
+          ],
+          "types": [
+            "burnable"
+          ]
+        },
+        {
+          "weekdays": [
+            4
+          ],
+          "types": [
+            "plastic_packaging"
+          ]
+        },
+        {
+          "weekdays": [
+            3
+          ],
+          "types": [
+            "bottles",
+            "cans",
+            "hazardous",
+            "non_burnable"
+          ],
+          "occurrences": [
+            2
+          ]
+        },
+        {
+          "weekdays": [
+            5
+          ],
+          "types": [
+            "pet_bottles"
+          ],
+          "occurrences": [
+            3
+          ]
+        },
+        {
+          "weekdays": [
+            6
+          ],
+          "types": [
+            "textiles",
+            "paper"
+          ],
+          "occurrences": [
+            1
+          ]
+        }
+      ],
+      "official_group": "F",
+      "burnable_weekdays": [
+        2,
+        6
+      ],
+      "plastic_weekday": 4,
+      "subregion": "lower",
+      "replacements": {
+        "2026-12-29": [
+          "burnable"
+        ],
+        "2026-12-30": [
+          "plastic_packaging"
+        ],
+        "2026-12-31": [],
+        "2027-01-01": [],
+        "2027-01-02": [],
+        "2027-01-03": [],
+        "2027-01-04": [],
+        "2027-01-05": [
+          "burnable"
+        ],
+        "2027-01-06": [],
+        "2027-01-07": [
+          "plastic_packaging"
+        ],
+        "2027-01-08": [],
+        "2027-01-09": [
+          "burnable",
+          "textiles",
+          "paper"
+        ]
+      }
+    },
+    {
+      "id": "38210-futami-g",
+      "name": "双海：上浜、下浜",
+      "display_name": "双海：上浜、下浜",
+      "calendar_id": "iy-futami-g",
+      "rule_profile_id": "futami",
+      "rules": [
+        {
+          "weekdays": [
+            2,
+            6
+          ],
+          "types": [
+            "burnable"
+          ]
+        },
+        {
+          "weekdays": [
+            4
+          ],
+          "types": [
+            "plastic_packaging"
+          ]
+        },
+        {
+          "weekdays": [
+            4
+          ],
+          "types": [
+            "bottles",
+            "cans",
+            "hazardous",
+            "non_burnable"
+          ],
+          "occurrences": [
+            2
+          ]
+        },
+        {
+          "weekdays": [
+            5
+          ],
+          "types": [
+            "pet_bottles"
+          ],
+          "occurrences": [
+            3
+          ]
+        },
+        {
+          "weekdays": [
+            6
+          ],
+          "types": [
+            "textiles",
+            "paper"
+          ],
+          "occurrences": [
+            1
+          ]
+        }
+      ],
+      "official_group": "G",
+      "burnable_weekdays": [
+        2,
+        6
+      ],
+      "plastic_weekday": 4,
+      "subregion": "lower",
+      "replacements": {
+        "2026-12-29": [
+          "burnable"
+        ],
+        "2026-12-30": [
+          "plastic_packaging"
+        ],
+        "2026-12-31": [],
+        "2027-01-01": [],
+        "2027-01-02": [],
+        "2027-01-03": [],
+        "2027-01-04": [],
+        "2027-01-05": [
+          "burnable"
+        ],
+        "2027-01-06": [],
+        "2027-01-07": [
+          "plastic_packaging"
+        ],
+        "2027-01-08": [],
+        "2027-01-09": [
+          "burnable",
+          "textiles",
+          "paper"
+        ]
+      }
+    },
+    {
+      "id": "38210-nakayama-sare",
+      "name": "中山地域：佐礼谷（上長沢・下長沢・長沢団地・榎峠・竹之内・日浦・影浦・障子ヶ谷・坪之内・村中・山口・中替地・柿谷・安別当・梅之木・源氏・赤海・犬寄）",
+      "display_name": "中山地域：佐礼谷（上長沢・下長沢・長沢団地・榎峠・竹之内・日浦・影浦・障子ヶ谷・坪之内・村中・山口・中替地・柿谷・安別当・梅之木・源氏・赤海・犬寄）",
+      "calendar_id": "iy-nakayama-sare",
+      "rule_profile_id": "nakayama",
+      "rules": [
+        {
+          "weekdays": [
+            3,
+            6
+          ],
+          "types": [
+            "burnable"
+          ]
+        },
+        {
+          "weekdays": [
+            2
+          ],
+          "types": [
+            "plastic_packaging"
+          ]
+        },
+        {
+          "weekdays": [
+            6
+          ],
+          "types": [
+            "bottles",
+            "cans",
+            "hazardous",
+            "non_burnable"
+          ],
+          "occurrences": [
+            2
+          ]
+        },
+        {
+          "weekdays": [
+            1
+          ],
+          "types": [
+            "pet_bottles",
+            "textiles"
+          ],
+          "occurrences": [
+            1
+          ]
+        },
+        {
+          "weekdays": [
+            1
+          ],
+          "types": [
+            "paper"
+          ],
+          "occurrences": [
+            4
+          ]
+        }
+      ],
+      "official_group": "sare",
+      "replacements": {
+        "2026-12-29": [
+          "plastic_packaging"
+        ],
+        "2026-12-30": [
+          "burnable"
+        ],
+        "2026-12-31": [],
+        "2027-01-01": [],
+        "2027-01-02": [],
+        "2027-01-03": [],
+        "2027-01-04": [
+          "pet_bottles",
+          "textiles"
+        ],
+        "2027-01-05": [
+          "plastic_packaging"
+        ],
+        "2027-01-06": [
+          "burnable"
+        ]
+      }
+    },
+    {
+      "id": "38210-nakayama-naka",
+      "name": "中山地域：中山（泉町一・泉町二・泉町三・泉町四・福元・高岡・柚之木・重藤・永木・福住・梅原・平村・添賀）",
+      "display_name": "中山地域：中山（泉町一・泉町二・泉町三・泉町四・福元・高岡・柚之木・重藤・永木・福住・梅原・平村・添賀）",
+      "calendar_id": "iy-nakayama-naka",
+      "rule_profile_id": "nakayama",
+      "rules": [
+        {
+          "weekdays": [
+            3,
+            6
+          ],
+          "types": [
+            "burnable"
+          ]
+        },
+        {
+          "weekdays": [
+            4
+          ],
+          "types": [
+            "plastic_packaging"
+          ]
+        },
+        {
+          "weekdays": [
+            6
+          ],
+          "types": [
+            "bottles",
+            "cans",
+            "hazardous",
+            "non_burnable"
+          ],
+          "occurrences": [
+            3
+          ]
+        },
+        {
+          "weekdays": [
+            1
+          ],
+          "types": [
+            "pet_bottles",
+            "textiles"
+          ],
+          "occurrences": [
+            2
+          ]
+        },
+        {
+          "weekdays": [
+            1
+          ],
+          "types": [
+            "paper"
+          ],
+          "occurrences": [
+            4
+          ]
+        }
+      ],
+      "official_group": "naka",
+      "replacements": {
+        "2026-12-29": [
+          "plastic_packaging"
+        ],
+        "2026-12-30": [
+          "burnable"
+        ],
+        "2026-12-31": [],
+        "2027-01-01": [],
+        "2027-01-02": [],
+        "2027-01-03": [],
+        "2027-01-04": [],
+        "2027-01-05": [],
+        "2027-01-06": [
+          "burnable"
+        ]
+      }
+    },
+    {
+      "id": "38210-nakayama-ide",
+      "name": "中山地域：出渕（豊岡一・豊岡二・東町・門前・坪井・小池・大矢・野中・影之浦・栃谷・日南登・漆・福岡・平沢・栗田二・栗田三）",
+      "display_name": "中山地域：出渕（豊岡一・豊岡二・東町・門前・坪井・小池・大矢・野中・影之浦・栃谷・日南登・漆・福岡・平沢・栗田二・栗田三）",
+      "calendar_id": "iy-nakayama-ide",
+      "rule_profile_id": "nakayama",
+      "rules": [
+        {
+          "weekdays": [
+            3,
+            6
+          ],
+          "types": [
+            "burnable"
+          ]
+        },
+        {
+          "weekdays": [
+            5
+          ],
+          "types": [
+            "plastic_packaging"
+          ]
+        },
+        {
+          "weekdays": [
+            6
+          ],
+          "types": [
+            "bottles",
+            "cans",
+            "hazardous",
+            "non_burnable"
+          ],
+          "occurrences": [
+            4
+          ]
+        },
+        {
+          "weekdays": [
+            1
+          ],
+          "types": [
+            "pet_bottles",
+            "textiles"
+          ],
+          "occurrences": [
+            3
+          ]
+        },
+        {
+          "weekdays": [
+            1
+          ],
+          "types": [
+            "paper"
+          ],
+          "occurrences": [
+            4
+          ]
+        }
+      ],
+      "official_group": "ide",
+      "replacements": {
+        "2026-12-29": [
+          "plastic_packaging"
+        ],
+        "2026-12-30": [
+          "burnable"
+        ],
+        "2026-12-31": [],
+        "2027-01-01": [],
+        "2027-01-02": [],
+        "2027-01-03": [],
+        "2027-01-04": [],
+        "2027-01-05": [],
+        "2027-01-06": [
+          "burnable"
+        ]
+      }
+    }
+  ]
+}
