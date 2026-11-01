@@ -1,3 +1,5 @@
+import 'collection_status.dart';
+
 class GuideSource {
   final String? title;
   final String? uri;
@@ -69,6 +71,7 @@ class WasteGuideResult {
   final String rewrittenQuery;
   final WasteClassification? classification;
   final NextCollection? nextCollection;
+  final CollectionStatus? collectionStatus;
   final List<GuideSource> sources;
 
   const WasteGuideResult({
@@ -78,6 +81,7 @@ class WasteGuideResult {
     required this.rewrittenQuery,
     this.classification,
     this.nextCollection,
+    this.collectionStatus,
     required this.sources,
   });
 
@@ -95,6 +99,8 @@ class WasteGuideResult {
           : WasteClassification.fromJson(
               json['classification'] as Map<String, dynamic>,
             ),
+      collectionStatus: json['collection_status'] == null ? null :
+          CollectionStatus.fromJson(json['collection_status'] as Map<String, dynamic>),
       nextCollection: json['next_collection'] == null
           ? null
           : NextCollection.fromJson(

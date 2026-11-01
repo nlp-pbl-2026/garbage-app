@@ -1,3 +1,4 @@
+import '../widgets/collection_status_notice.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
@@ -612,7 +613,9 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                       TextStyle(fontSize: 12, color: colors.onSurfaceVariant),
                 ),
               ],
-              if (result.nextCollection != null) ...[
+              if (result.collectionStatus?.isUnverified ?? false)
+                CollectionStatusNotice(status: result.collectionStatus!, showMessage: false),
+              if (result.nextCollection != null && !(result.collectionStatus?.isUnverified ?? false)) ...[
                 const SizedBox(height: 18),
                 Container(
                   width: double.infinity,

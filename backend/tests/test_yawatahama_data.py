@@ -70,3 +70,16 @@ def test_catalog_cannot_escape_municipality_directory(tmp_path):
     path.write_text(json.dumps({'municipalities': [{'id': '90001', 'registry_path': '../registry.json'}]}))
     with pytest.raises(RegionalDataError):
         MunicipalityCatalog(path)
+
+
+def test_partial_address_uses_non_paper_dates_without_selecting_a_paper_weekday():
+    days = {'2026-11-03': ['burnable', 'newspaper'], '2026-11-06': ['burnable', 'paper_packaging']}
+    papers = ['newspaper', 'paper_packaging']
+    config = {'paper_collection_types': papers, 'variants': {'13': [
+        {'suffix': 'tu', 'paper_weekday_iso': 2}, {'suffix': 'fr', 'paper_weekday_iso': 5},
+        {'suffix': 'go', 'unverified_collection_types': papers}]}}
+    first, second, partial = data.area_variants(13, days, [], config)
+    assert partial['days'] == {'2026-11-03': ['burnable'], '2026-11-06': ['burnable']}
+    assert 'paper_weekday_iso' not in partial
+    assert first['days']['2026-11-03'] == ['burnable', 'newspaper']
+    assert second['days']['2026-11-06'] == ['burnable', 'paper_packaging']

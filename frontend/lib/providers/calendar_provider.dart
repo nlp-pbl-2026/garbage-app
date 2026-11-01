@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../models/collection_schedule.dart';
+import '../models/collection_status.dart';
 import '../models/garbage_item.dart';
 import 'municipality_provider.dart';
 import '../services/schedule_service.dart';
@@ -87,4 +88,10 @@ final nextCollectionProvider = FutureProvider<ScheduleEntry?>((ref) async {
   final service = ref.watch(scheduleServiceProvider);
 
   return service.getNextCollection(districtId);
+});
+
+final collectionStatusesProvider = FutureProvider<Map<String, CollectionStatus>>((ref) async {
+  final region = ref.watch(regionSettingProvider).valueOrNull;
+  if (region == null) return {};
+  return ref.watch(scheduleServiceProvider).collectionStatuses(region.districtId);
 });

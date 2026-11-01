@@ -23,7 +23,7 @@ from concurrent.futures import ThreadPoolExecutor
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data/regions/yawatahama"
-VERSION = "yawatahama-2026.1"
+VERSION = "yawatahama-2026.2"
 CITY = "38204"
 PAGES = {
     "calendar": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/",
@@ -213,13 +213,16 @@ def area_variants(number, days, labels, config):
         display = [config.get("display_label_exclusions", {}).get(str(number), {}).get(label, label) for label in labels]
         return [{"suffix": "", "name": f"{number}：" + "、".join(display),
                  "address_labels": labels, "days": days}]
+    for variant in variants:
+        if variant.get("unverified_collection_types") and not set(variant.get("address_labels", [])).issubset(labels):
+            raise ValueError("Partially supported address must be present in the official PDF index")
     paper = set(config["paper_collection_types"])
-    allowed = {variant["paper_weekday_iso"] for variant in variants}
+    allowed = {variant["paper_weekday_iso"] for variant in variants if "paper_weekday_iso" in variant}
     for day, codes in days.items():
         if paper.intersection(codes) and date.fromisoformat(day).isoweekday() not in allowed:
             raise ValueError(f"Paper date contradicts official area note: {number}/{day}")
-    return [{**variant, "days": {day: [code for code in codes if code not in paper or
-        date.fromisoformat(day).isoweekday() == variant["paper_weekday_iso"]]
+    return [{**variant, "days": {day: [code for code in codes if code not in variant.get("unverified_collection_types", []) and (code not in paper or
+        date.fromisoformat(day).isoweekday() == variant.get("paper_weekday_iso"))]
         for day, codes in days.items()}} for variant in variants]
 
 
@@ -251,6 +254,14 @@ def inspect_calendars(*, raster=True):
                 "source_sha256": sources[filename]["sha256"], "verification_status": "pending",
                 "days": variant["days"], "exceptions": [],
                 "official_area_note": variant.get("official_note", ""), "source_calendar_id": identifier}
+            if variant.get("unverified_collection_types"):
+                streams = {definition["collection_type_id"] for definition in read(DATA / "official_rules.json")["categories"].values()
+                           if "collection_type_id" in definition}
+                message = "この地区の紙類（段ボール・新聞・雑誌・紙製容器包装）の収集日は未確認です。火曜・金曜のどちらかを推測せず、公式カレンダーと生活環境課（0894-22-3111）で確認してください。"
+                calendars[calendar_id]["collection_type_verification"] = {
+                    code: ({"status": "unverified", "message": message, "source_url": sources[filename]["url"]}
+                           if code in variant["unverified_collection_types"] else {"status": "checked"})
+                    for code in sorted(streams)}
             areas.append({"id": f"38204-{number:02}{suffix}", "name": variant["name"],
                 "calendar_id": calendar_id, "rule_profile_id": "oshima" if number >= 19 else "standard",
                 "official_calendar_number": number, "official_pdf_area_heading": title,
@@ -272,7 +283,7 @@ def build(*, inspect_only=False):
     if approved["calendars"] != reviews or approved["version"] != VERSION:
         raise ValueError("PDFs/generated dates differ from recorded review; inspect before approval")
     for record in calendars.values():
-        record["verification_status"] = "checked"
+        record["verification_status"] = "partially_checked" if "collection_type_verification" in record else "checked"
     rules = read(DATA / "official_rules.json")
     profiles = {}
     for profile in ("standard", "oshima"):
@@ -292,8 +303,8 @@ def build(*, inspect_only=False):
         "collection_areas": areas,
         "calendars": [{"id": area["calendar_id"], "rule_profile_id": area["rule_profile_id"]} for area in areas],
         "rule_profiles": profiles}
-    registry["coverage_notice"] = "郷・中央（郷一木地区・旧道沿い）は、紙類の収集曜日を確認できていないため選択対象に含めていません。該当する場合は市の公式カレンダーと生活環境課で確認してください。"
-    registry["excluded_address_labels"] = read(DATA / "calendar_variants.json")["unresolved_address_labels"]
+    registry["coverage_notice"] = "郷・中央（郷一木地区・旧道沿い）は、紙類以外の収集日を利用できます。紙類（段ボール・新聞・雑誌・紙製容器包装）の収集日は未確認です。公式カレンダーと生活環境課で確認してください。"
+    registry["partial_address_labels"] = read(DATA / "calendar_variants.json")["partial_address_labels"]
     write(DATA / "registry.json", registry)
     write(DATA / "generated/calendar-2026.json", {key: registry[key] for key in
         ["municipality_id", "version", "valid_from", "valid_to"]} | {"calendars": calendars})
@@ -337,7 +348,7 @@ def verify(*, raster=True):
                 raise ValueError("CSV and index row order differ")
     for area in registry.areas.values():
         region = registry.resolve(CITY, area["id"])
-        if CalendarService(calendar_path=region.rules.calendar_path, region=region).availability != "available":
+        if CalendarService(calendar_path=region.rules.calendar_path, region=region).availability not in {"available", "partially_available"}:
             raise ValueError("Unverified calendar")
     areas, calendars, reviews = inspect_calendars(raster=raster)
     if raster and reviews != read(DATA / "calendar_reviews.json")["calendars"]:
@@ -347,7 +358,9 @@ def verify(*, raster=True):
         raise ValueError("Collection area mapping differs from official sources")
     for identifier, expected in calendars.items():
         actual = bundle["calendars"][identifier]
-        if actual["days"] != expected["days"] or actual["verification_status"] != "checked":
+        status = "partially_checked" if "collection_type_verification" in expected else "checked"
+        if (actual["days"] != expected["days"] or actual["verification_status"] != status
+                or actual.get("collection_type_verification") != expected.get("collection_type_verification")):
             raise ValueError(f"Calendar mismatch: {identifier}")
     frontend = ROOT / "frontend/assets/data"
     ui_catalog = read(frontend / "municipality_catalog.json")
@@ -364,7 +377,7 @@ def verify(*, raster=True):
     result = {"official_item_rows": 768, "search_records": len(rows), "collection_areas": len(areas),
         "source_pdfs": 20, "area_calendars": len(calendars), "source_date_cells": 7300,
         "raster_verified": raster, "source_hashes": len(sources),
-        "excluded_addresses": registry.data["excluded_address_labels"]}
+        "partial_addresses": registry.data["partial_address_labels"], "generated_date_cells": len(calendars) * 365}
     write(DATA / "generated/verification.json", result)
     print(json.dumps(result, ensure_ascii=False))
     return result

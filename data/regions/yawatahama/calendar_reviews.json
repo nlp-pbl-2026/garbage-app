@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "version": "yawatahama-2026.1",
+  "version": "yawatahama-2026.2",
   "calendars": {
     "yh-01": {
       "source_sha256": "9ac6108b307cefe6aa2ae7261ff824a5a09dbe5669836e19eadd227f4765a976",

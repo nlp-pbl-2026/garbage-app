@@ -4,7 +4,7 @@
   "municipality_name": "八幡浜市",
   "prefecture_id": "38",
   "prefecture_name": "愛媛県",
-  "version": "yawatahama-2026.1",
+  "version": "yawatahama-2026.2",
   "valid_from": "2026-04-01",
   "valid_to": "2027-03-31",
   "collection_areas": [
@@ -291,6 +291,19 @@
       "source_url": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/"
     },
     {
+      "id": "38204-13-go",
+      "name": "13：郷・中央（郷一木地区・旧道沿い／紙類の収集日未確認）",
+      "calendar_id": "yh-13-go",
+      "rule_profile_id": "standard",
+      "official_calendar_number": 13,
+      "official_pdf_area_heading": "末広、田浪、高野地、古谷、郷梨尾、上郷、南裏、川之内上、古藪の地区の紙類は、火曜のみの地区の紙類は、金曜のみ",
+      "address_labels": [
+        "郷・中央（郷一木地区・旧道沿い）"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.yawatahama.ehime.jp/doc/2026030500028/"
+    },
+    {
       "id": "38204-14",
       "name": "14：朝潮橋、北浜、大黒町",
       "calendar_id": "yh-14",
@@ -458,6 +471,10 @@
       "rule_profile_id": "standard"
     },
     {
+      "id": "yh-13-go",
+      "rule_profile_id": "standard"
+    },
+    {
       "id": "yh-14",
       "rule_profile_id": "standard"
     },
@@ -490,14 +507,14 @@
       "rule_profile_id": "oshima"
     }
   ],
-  "coverage_notice": "郷・中央（郷一木地区・旧道沿い）は、紙類の収集曜日を確認できていないため選択対象に含めていません。該当する場合は市の公式カレンダーと生活環境課で確認してください。",
-  "excluded_address_labels": [
+  "coverage_notice": "郷・中央（郷一木地区・旧道沿い）は、紙類以外の収集日を利用できます。紙類（段ボール・新聞・雑誌・紙製容器包装）の収集日は未確認です。公式カレンダーと生活環境課で確認してください。",
+  "partial_address_labels": [
     {
       "label": "郷・中央（郷一木地区・旧道沿い）",
       "calendar_number": 13,
       "reason": "公式HTML索引にはあるが、PDFの紙類曜日を分ける住所枠との対応を一意に確認できない",
-      "status": "excluded_pending_official_confirmation",
-      "decision": "利用者の承認により選択対象から除外。2026-11-01"
+      "status": "partially_supported",
+      "decision": "地区を利用可能とし、紙類4区分だけ収集日未確認として扱う。2026-11-01"
     }
   ]
 }

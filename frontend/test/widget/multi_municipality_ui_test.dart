@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:garbage_app/models/region.dart';
+import 'package:garbage_app/models/collection_status.dart';
 import 'package:garbage_app/models/waste_guide_result.dart';
 import 'package:garbage_app/providers/calendar_provider.dart';
 import 'package:garbage_app/providers/municipality_provider.dart';
@@ -237,6 +238,43 @@ void main() {
     expect(calendar.focusedDay.year, 2027);
     expect(calendar.focusedDay.month, 1);
     expect(tester.takeException(), isNull);
+  });
+
+  testWidgets('partial calendar labels unknown streams without claiming no collection', (tester) async {
+    await initializeDateFormatting('ja_JP');
+    tester.view.physicalSize = const Size(1000, 1800); tester.view.devicePixelRatio = 1;
+    addTearDown(tester.view.resetPhysicalSize); addTearDown(tester.view.resetDevicePixelRatio);
+    final data = MunicipalityDataService(bundle: MunicipalityBundle(partialMunicipalityAssets()));
+    await tester.pumpWidget(ProviderScope(overrides: [
+      municipalityDataProvider.overrideWithValue(data),
+      regionSettingProvider.overrideWith((ref) => SelectedRegion()),
+      focusedMonthProvider.overrideWith((ref) => DateTime(2026, 11)),
+      selectedDayProvider.overrideWith((ref) => DateTime(2026, 11, 3)),
+      memoForDateProvider.overrideWith((ref, date) => null),
+      monthlyMemosProvider.overrideWith((ref, month) => <DateTime>{}),
+      weatherForecastProvider.overrideWith((ref) async => {}),
+    ], child: const MaterialApp(home: CalendarScreen())));
+    await tester.pumpAndSettle();
+    expect(find.text('収集日未確認'), findsNWidgets(5));
+    expect(find.text('公式カレンダーを確認'), findsOneWidget);
+    expect(find.text('確認済みの収集予定はありません。収集日が未確認の区分があります。'), findsOneWidget);
+    expect(tester.takeException(), isNull);
+  });
+
+  testWidgets('search shows unknown date and official link instead of a guessed next date', (tester) async {
+    final guide = DeferredGuide();
+    await tester.pumpWidget(ProviderScope(overrides: [
+      regionSettingProvider.overrideWith((ref) => SelectedRegion()),
+    ], child: MaterialApp(home: SearchScreen(service: guide))));
+    await tester.enterText(find.byType(TextField).first, '試験紙');
+    await tester.tap(find.text('調べる')); await tester.pump();
+    guide.calls.last.result.complete(const WasteGuideResult(status: 'answered', rewrittenQuery: '試験紙', answer: '紙類です。収集日は未確認です。',
+      collectionStatus: CollectionStatus('unverified', message: '未確認', sourceUrl: 'https://example.test/calendar.pdf'),
+      nextCollection: NextCollection(date: '2026-11-03', displayDate: '推測した日付', collectionType: '紙類'), sources: []));
+    await tester.pump();
+    expect(find.text('収集日未確認'), findsOneWidget);
+    expect(find.text('公式カレンダーを確認'), findsOneWidget);
+    expect(find.text('推測した日付'), findsNothing);
   });
 
 }

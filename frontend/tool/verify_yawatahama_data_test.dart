@@ -14,10 +14,10 @@ import 'package:timezone/timezone.dart' as tz;
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
-  test('all 22 official calendars are readable by Flutter, with 08:00 cutoffs', () async {
+  test('all 23 calendars with category-level verification are readable by Flutter, with 08:00 cutoffs', () async {
     final data = MunicipalityDataService();
     final areas = await data.getAreas('38204');
-    expect(areas.length, 22);
+    expect(areas.length, 23);
     final raw = jsonDecode(File('assets/data/municipality_38204_0_calendar.json').readAsStringSync());
     final schedule = ScheduleService(data: data, municipalityId: '38204', clock: () => DateTime(2026, 4, 1));
     var checked = 0;
@@ -38,7 +38,7 @@ void main() {
       }
       expect(await schedule.getMonthlySchedule(id, 2027, 4), isEmpty);
     }
-    expect(checked, 8030);
+    expect(checked, 8395);
   });
 
   test('Oshima shared paper stream, iCal and notification planning agree', () async {
@@ -70,4 +70,29 @@ void main() {
     );
     expect(afterCutoff, isEmpty);
   });
+  test('Go/Chuo uses only confirmed non-paper dates from PDF 13', () async {
+    final data = MunicipalityDataService();
+    final schedule = ScheduleService(data: data, municipalityId: '38204', clock: () => DateTime(2026, 4, 1));
+    const id = '38204-13-go';
+    final statuses = await schedule.collectionStatuses(id);
+    expect(statuses.entries.where((entry) => entry.value.isUnverified).map((entry) => entry.key).toSet(),
+        {'cardboard', 'newspaper', 'magazines', 'paper_packaging'});
+    final raw = jsonDecode(File('assets/data/municipality_38204_0_calendar.json').readAsStringSync());
+    final partial = raw['calendars']['yh-13-go'];
+    final tuesday = raw['calendars']['yh-13-tu']['days'] as Map<String, dynamic>;
+    final friday = raw['calendars']['yh-13-fr']['days'] as Map<String, dynamic>;
+    final papers = statuses.entries.where((e) => e.value.isUnverified).map((e) => e.key).toSet();
+    for (final day in (partial['days'] as Map<String, dynamic>).entries) {
+      final nonPaper = (tuesday[day.key] as List).cast<String>().where((code) => !papers.contains(code)).toSet();
+      expect((day.value as List).toSet(), nonPaper);
+      expect((friday[day.key] as List).cast<String>().where((code) => !papers.contains(code)).toSet(), nonPaper);
+    }
+    final ical = await IcalExportService(schedule, now: () => DateTime(2026, 4, 1)).generateIcalString(id, months: 12);
+    for (final paper in papers) {
+      expect(await schedule.getNextCollectionDate(id, paper), isNull);
+      expect(ical, isNot(contains('-$paper@garbageapp')));
+    }
+    expect(ical, contains('-burnable@garbageapp'));
+  });
+
 }
