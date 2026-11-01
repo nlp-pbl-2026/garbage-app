@@ -139,6 +139,10 @@ TerraformがS3オブジェクトのETag差分を検出してアップロード�
 
 全地区の2026年度収集カレンダー `data/regions/matsuyama/generated/calendar-2026.json` はLambdaパッケージに同梱するため、S3・Knowledge Baseには登録しません。Flutterには同じ原本から生成した `frontend/assets/data/municipality_calendar.json` を同梱します。
 
+### 伊予市追加時のローカル準備
+
+標準カタログは松山市・八幡浜市・伊予市を参照します。Lambda用データのステージングは、各市のCSV・索引・マニフェスト・カレンダーの整合性を検査し、不足時に停止します。[伊予市データガイド](../docs/iyo-data.md)に従ってGit管理外の原本・CSV・索引を配置し、共通カレンダーを生成してください。今回の実装ではAWS設定・リソースを変更しておらず、公開APIへの伊予市反映は別途必要です。
+
 ## バックエンド設定
 
 ```bash
