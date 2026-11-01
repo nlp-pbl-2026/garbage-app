@@ -58,7 +58,7 @@ def runtime_files(catalog_path: Path) -> set[Path]:
         for area in registry.areas.values():
             region = registry.resolve(municipality_id, area["id"])
             calendar = CalendarService(calendar_path=region.rules.calendar_path, region=region)
-            if calendar.availability != "available":
+            if calendar.availability not in {"available", "partially_available"}:
                 raise ValueError(f"Calendar is not verified: {municipality_id}/{area['id']}")
         if municipality_id == "38201" and "nakajima" in registry.profiles:
             files.add(path.parent / "generated/nakajima_items.csv")

@@ -261,6 +261,7 @@ async def _build_response_and_log(
             disposal_instructions=result.decision.disposal_instructions,
             confidence=result.decision.confidence,
         )
+    collection_status = vars(result.collection_status) if result.collection_status else None
     next_collection = None
     if result.next_collection:
         next_collection = NextCollection(
@@ -276,6 +277,7 @@ async def _build_response_and_log(
         rewritten_query=result.rewritten_query,
         classification=classification,
         next_collection=next_collection,
+        collection_status=collection_status,
         sources=sources,
         request_id=request_id,
     )

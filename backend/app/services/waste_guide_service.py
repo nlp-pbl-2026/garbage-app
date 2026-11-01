@@ -12,7 +12,7 @@ import boto3
 from botocore.exceptions import BotoCoreError, ClientError, NoCredentialsError
 
 from .. import config
-from .calendar_service import CalendarService, CollectionDate
+from .calendar_service import CalendarService, CollectionDate, CollectionStatus
 from .embedding_search_service import EmbeddingSearchService
 from .item_search_service import ItemSearchService
 from .nakajima_search_service import NakajimaSearchService
@@ -72,6 +72,7 @@ class WasteGuideResult:
     next_collection: CollectionDate | None = None
     sources: list[RetrievedDocument] = field(default_factory=list)
     category_name: str | None = None
+    collection_status: CollectionStatus | None = None
 
 
 class BedrockGateway:
@@ -980,7 +981,8 @@ class WasteGuideService:
                 decision.category_code,
                 at=datetime.now(ZoneInfo(config.TIMEZONE)),
             )
-        answer = self._build_answer(decision, next_collection, region=region)
+        collection_status = self._calendar.collection_status(decision.category_code, next_collection)
+        answer = self._build_answer(decision, next_collection, region=region, collection_status=collection_status)
         return WasteGuideResult(
             status="answered",
             rewritten_query=rewritten_query,
@@ -989,6 +991,7 @@ class WasteGuideService:
             next_collection=next_collection,
             sources=sources,
             category_name=region.category_names[decision.category_code],
+            collection_status=collection_status,
         )
 
     @staticmethod
@@ -1329,14 +1332,16 @@ class WasteGuideService:
     @staticmethod
     def _build_answer(
         decision: ClassificationDecision, next_collection: CollectionDate | None,
-        *, region: RegionContext | None = None,
+        *, region: RegionContext | None = None, collection_status: CollectionStatus | None = None,
     ) -> str:
         names = region.category_names if region else CATEGORY_NAMES
         category_name = names[decision.category_code]
         lines = [f"{decision.item_name}は「{category_name}」です。"]
         if decision.disposal_instructions:
             lines.append(decision.disposal_instructions)
-        if next_collection:
+        if collection_status and collection_status.status == "unverified":
+            lines.append(collection_status.message or "この区分の収集日は未確認です。")
+        elif next_collection:
             lines.append(
                 f"{region.area_name if region else '清水'}地区の次回収集日は{next_collection.display_date}です。"
             )

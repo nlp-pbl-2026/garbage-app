@@ -399,3 +399,70 @@ def test_packaging_mark_decision_keeps_resolved_model_result_and_collection_date
     assert result.status == 'answered'
     assert result.decision.category_code == '可燃'
     assert result.next_collection is not None
+
+
+@pytest.fixture
+def partial_city(municipalities):
+    root = municipalities / '90001'
+    registry = json.loads((root / 'registry.json').read_text())
+    registry['rule_profiles']['nakajima']['categories']['paper'] = {
+        'name': '試験紙', 'collection_type_id': 'paper_stream', 'cutoff': '08:30'}
+    write_json(root / 'registry.json', registry)
+    calendar = json.loads((root / 'calendar.json').read_text())
+    calendar['calendars']['same-calendar'].update(verification_status='partially_checked',
+        collection_type_verification={'test_stream': {'status': 'checked'},
+            'paper_stream': {'status': 'unverified', 'message': '紙の収集日は未確認です。',
+                             'source_url': 'https://example.test/calendar.pdf'}})
+    write_json(root / 'calendar.json', calendar)
+    return root
+
+
+def test_partial_calendar_keeps_known_dates_and_distinguishes_unknown_from_empty(partial_city):
+    calendar = CalendarService(region=get_registry().resolve('90001', 'same-area'))
+    assert calendar.availability == 'partially_available'
+    known = calendar.next_collection('可燃', from_date=date(2026, 11, 1))
+    assert known.date == date(2026, 11, 2)
+    assert calendar.collection_status('可燃', known).status == 'scheduled'
+    assert calendar.next_collection('paper', from_date=date(2026, 11, 1)) is None
+    assert calendar.collection_status('paper').status == 'unverified'
+    assert calendar.next_collection('可燃', from_date=date(2026, 12, 31)) is None
+    assert calendar.collection_status('可燃').status == 'no_upcoming_collection'
+    assert calendar.collection_status('X').status == 'not_scheduled'
+
+
+@pytest.mark.parametrize('problem', ['missing_stream', 'bad_status', 'checked_with_unknown', 'guessed_date'])
+def test_partial_calendar_rejects_invalid_verification_or_guessed_dates(partial_city, problem):
+    path = partial_city / 'calendar.json'
+    bundle = json.loads(path.read_text()); record = bundle['calendars']['same-calendar']
+    if problem == 'missing_stream': del record['collection_type_verification']['test_stream']
+    elif problem == 'bad_status': record['collection_type_verification']['paper_stream']['status'] = 'unknown_typo'
+    elif problem == 'checked_with_unknown': record['verification_status'] = 'checked'
+    else: record['days']['2026-11-03'] = ['paper_stream']
+    write_json(path, bundle)
+    with pytest.raises(ValueError):
+        CalendarService(region=get_registry().resolve('90001', 'same-area'))
+
+
+@pytest.mark.asyncio
+async def test_api_returns_unknown_collection_status_without_a_date(partial_city):
+    from unittest.mock import patch
+    region = get_registry().resolve('90001', 'same-area')
+    runtime = Runtime(); runtime.category = 'paper'
+    with patch('app.routers.search_router.WasteGuideService', return_value=guide(runtime)), patch('app.routers.search_router.SearchLogService'):
+        async with AsyncClient(transport=ASGITransport(app=app), base_url='http://test') as client:
+            response = await client.post('/api/search/decide', json={
+                'query': '試験紙', 'rewritten_query': '試験紙', 'municipality_id': '90001', 'district_id': 'same-area',
+                'documents': [{'snippet': '品目: 試験紙\n分類コード: paper', 'score': .99, 'uri': region.evidence_prefix+'items/test'}]})
+    assert response.status_code == 200
+    body = response.json()
+    assert body['status'] == 'answered'
+    assert body['classification']['category_code'] == 'paper'
+    assert body['next_collection'] is None
+    assert body['collection_status'] == {'status': 'unverified', 'message': '紙の収集日は未確認です。',
+                                         'source_url': 'https://example.test/calendar.pdf'}
+    assert '未確認' in body['answer']
+
+
+def test_partial_calendar_can_be_packaged_without_dropping_other_municipalities(partial_city, municipalities):
+    targets = packaging_module().stage_data(municipalities / 'package', municipalities / 'catalog.json')
+    assert len(targets) == 11

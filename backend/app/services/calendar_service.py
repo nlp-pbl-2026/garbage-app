@@ -25,6 +25,13 @@ class CollectionDate:
         )
 
 
+@dataclass(frozen=True)
+class CollectionStatus:
+    status: str
+    message: str | None = None
+    source_url: str | None = None
+
+
 class CalendarService:
     """確認済みの年度別日付を読み込み、分類コードから次の収集日を返す。"""
 
@@ -36,6 +43,7 @@ class CalendarService:
         self._valid_from = date.fromisoformat(self.region.valid_from)
         self._valid_to = date.fromisoformat(self.region.valid_to)
         self._dates: dict[str, list[CollectionDate]] = {}
+        self._verification: dict[str, dict] = {}
         # Explicit CSV injection remains available for legacy integrations/tests.
         if calendar_path is not None and calendar_path.suffix == ".csv":
             self._calendar_path = calendar_path
@@ -53,11 +61,27 @@ class CalendarService:
         if (bundle.get("version") != self.region.version or not isinstance(record, dict)
                 or (bundle.get("municipality_id") != self.region.municipality_id
                     and not (self.region.municipality_id == "38201" and "municipality_id" not in bundle))
-                or record.get("verification_status") != "checked"
+                or record.get("verification_status") not in {"checked", "partially_checked"}
                 or bundle.get("valid_from") != self.region.valid_from
                 or bundle.get("valid_to") != self.region.valid_to):
             self.availability = "unverified_data"
             return
+        streams = {definition.collection_type_id for definition in self.region.rules.categories.values()
+                   if definition.collection_type_id}
+        verification = record.get("collection_type_verification")
+        if verification is not None or record["verification_status"] == "partially_checked":
+            if (not isinstance(verification, dict) or set(verification) != streams
+                    or any(not isinstance(info, dict) or info.get("status") not in {"checked", "unverified"}
+                           for info in verification.values())):
+                raise ValueError("Invalid collection type verification")
+            unverified = [info for info in verification.values() if info["status"] == "unverified"]
+            if (bool(unverified) != (record["verification_status"] == "partially_checked")
+                    or len(unverified) == len(streams)
+                    or any(not info.get("message") or not info.get("source_url") for info in unverified)):
+                raise ValueError("Inconsistent partial calendar verification")
+            self._verification = verification
+            if unverified:
+                self.availability = "partially_available"
         if not isinstance(record.get("days"), dict):
             raise ValueError("Invalid calendar days")
         for raw_date, categories in record["days"].items():
@@ -67,6 +91,8 @@ class CalendarService:
             if not self._valid_from <= parsed <= self._valid_to:
                 raise ValueError("Calendar date outside its official validity")
             for category_id in categories:
+                if self._verification.get(category_id, {}).get("status") == "unverified":
+                    raise ValueError("Unverified collection type must not contain scheduled dates")
                 label = next((definition.name for definition in self.region.rules.categories.values()
                               if definition.collection_type_id == category_id), None)
                 if label is None:
@@ -107,7 +133,8 @@ class CalendarService:
     ) -> CollectionDate | None:
         definition = self.region.rules.categories.get(category_code)
         collection_type_id = definition.collection_type_id if definition else None
-        if collection_type_id is None or self.availability != "available":
+        if (collection_type_id is None or self.availability not in {"available", "partially_available"}
+                or self._verification.get(collection_type_id, {}).get("status") == "unverified"):
             return None
         target_date = from_date or datetime.now(ZoneInfo(config.TIMEZONE)).date()
         if at is not None:
@@ -129,3 +156,14 @@ class CalendarService:
             None,
         )
         return CollectionDate(result.date, definition.name) if result else None
+
+    def collection_status(self, category_code: str, next_collection: CollectionDate | None = None) -> CollectionStatus:
+        definition = self.region.rules.categories.get(category_code)
+        if definition is None or definition.collection_type_id is None:
+            return CollectionStatus("not_scheduled")
+        if self.availability not in {"available", "partially_available"}:
+            return CollectionStatus(self.availability)
+        info = self._verification.get(definition.collection_type_id, {})
+        if info.get("status") == "unverified":
+            return CollectionStatus("unverified", info["message"], info["source_url"])
+        return CollectionStatus("scheduled" if next_collection else "no_upcoming_collection")

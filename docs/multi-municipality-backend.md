@@ -125,9 +125,24 @@ Nova Liteによる言い換え・判定、TitanによるクエリEmbedding、上
 カレンダーが不足・未検証なら分類結果は返せますが、`next_collection` は `null` とし、
 確認できないことを案内します。他地区の日付で埋めません。
 
-検索APIのURLとJSON項目は変更していません。省略時の地域は従来どおり松山市清水です。
+検索APIのURLと既存JSON項目は維持しています。回答に任意の `collection_status` を追加し、収集日の未確認と今後の予定なしを区別します。省略時の地域は従来どおり松山市清水です。
 新自治体では `municipality_id` と `district_id` を明示してください。
 品目一覧の `category` にはその分別設定の分類コードを指定します。
+
+### 収集区分単位の検証状態
+
+一部の収集区分だけが未確認のカレンダーは `verification_status: partially_checked` にします。
+`collection_type_verification` に、その分別設定の全 `collection_type_id` を記録してください。
+各値は `{"status": "checked"}`、または `{"status": "unverified", "message": "確認が必要な内容", "source_url": "公式資料URL"}` です。
+部分検証には確認済み・未確認の両方が必要です。未確認区分の日付を `days` に含めてはいけません。
+バックエンドは不整合を拒否し、Flutterも未確認区分を通知・iCalへ流しません。
+従来の `checked` カレンダーでこの項目を省略した場合は、既存どおり全区分を確認済みと扱います。
+
+回答の `collection_status` は `status,message,source_url` を持ちます。
+`unverified` は分類済みだが収集日未確認、`scheduled` は次回日付あり、
+`no_upcoming_collection` は確認済み範囲に次回予定なし、`not_scheduled` は定期収集対象外です。
+カレンダー欠損・版不一致は `missing_data` / `unverified_data` になります。
+旧クライアントは追加項目を無視でき、従来の `next_collection` は維持します。
 
 ## パッケージと次の自治体追加
 
@@ -136,7 +151,7 @@ Nova Liteによる言い換え・判定、TitanによるクエリEmbedding、上
 カレンダーの検証状態を確認し、不足があれば停止します。原資料PDFやログは同梱しません。
 原資料との公式照合はこの検査に加えて、自治体ごとに行ってください。
 
-次の八幡浜市対応では、公式資料取得、公式分類と収集区分の対応、条件付き品目、
+新しい自治体の追加では、公式資料取得、公式分類と収集区分の対応、条件付き品目、
 地区・カレンダー対応を整備した後、専用索引とマニフェストを生成します。
 その後にカタログへ登録し、公式資料の照合・検索評価・Flutter用データ生成と実機確認を実施します。
 松山市の品目CSV・索引は再生成しません。
