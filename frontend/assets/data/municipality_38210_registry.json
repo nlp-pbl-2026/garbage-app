@@ -1,0 +1,222 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38210",
+  "municipality_name": "伊予市",
+  "prefecture_id": "38",
+  "prefecture_name": "愛媛県",
+  "version": "iyo-2026.1",
+  "valid_from": "2026-04-01",
+  "valid_to": "2027-03-31",
+  "collection_areas": [
+    {
+      "id": "38210-iyo-south",
+      "name": "南山崎（上唐川・下唐川・大平上・大平下、平岡・鵜崎を除く）、鳥ノ木",
+      "display_name": "南山崎（上唐川・下唐川・大平上・大平下、平岡・鵜崎を除く）、鳥ノ木",
+      "calendar_id": "iy-iyo-south",
+      "rule_profile_id": "iyo",
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.iyo.lg.jp/shiminseikatsu/kurashi/gomi/shushubi/documents/r8iyo.pdf"
+    },
+    {
+      "id": "38210-iyo-central",
+      "name": "灘町、米湊、上吾川（白水を除く）",
+      "display_name": "灘町、米湊、上吾川（白水を除く）",
+      "calendar_id": "iy-iyo-central",
+      "rule_profile_id": "iyo",
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.iyo.lg.jp/shiminseikatsu/kurashi/gomi/shushubi/documents/r8iyo.pdf"
+    },
+    {
+      "id": "38210-iyo-north",
+      "name": "北山崎（三秋・中村・森・本郡・尾﨑・三島町・市場・稲荷）",
+      "display_name": "北山崎（三秋・中村・森・本郡・尾﨑・三島町・市場・稲荷）",
+      "calendar_id": "iy-iyo-north",
+      "rule_profile_id": "iyo",
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.iyo.lg.jp/shiminseikatsu/kurashi/gomi/shushubi/documents/r8iyo.pdf"
+    },
+    {
+      "id": "38210-iyo-west",
+      "name": "湊町、白水、下吾川（鳥ノ木を除く）",
+      "display_name": "湊町、白水、下吾川（鳥ノ木を除く）",
+      "calendar_id": "iy-iyo-west",
+      "rule_profile_id": "iyo",
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.iyo.lg.jp/shiminseikatsu/kurashi/gomi/shushubi/documents/r8iyo.pdf"
+    },
+    {
+      "id": "38210-iyo-east",
+      "name": "南伊予（下三谷・上三谷・上野・宮下・八倉）",
+      "display_name": "南伊予（下三谷・上三谷・上野・宮下・八倉）",
+      "calendar_id": "iy-iyo-east",
+      "rule_profile_id": "iyo",
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.iyo.lg.jp/shiminseikatsu/kurashi/gomi/shushubi/documents/r8iyo.pdf"
+    },
+    {
+      "id": "38210-iyo-hiraoka",
+      "name": "平岡、鵜崎",
+      "display_name": "平岡、鵜崎",
+      "calendar_id": "iy-iyo-hiraoka",
+      "rule_profile_id": "iyo",
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.iyo.lg.jp/shiminseikatsu/kurashi/gomi/shushubi/documents/r8iyo.pdf"
+    },
+    {
+      "id": "38210-futami-a",
+      "name": "双海：柆野、犬寄、高見、東峰",
+      "display_name": "双海：柆野、犬寄、高見、東峰",
+      "calendar_id": "iy-futami-a",
+      "rule_profile_id": "futami",
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.iyo.lg.jp/shiminseikatsu/kurashi/gomi/shushubi/documents/r8hutami.pdf"
+    },
+    {
+      "id": "38210-futami-b",
+      "name": "双海：両谷、久保、三島、岡、日尾野、大栄、奥大栄",
+      "display_name": "双海：両谷、久保、三島、岡、日尾野、大栄、奥大栄",
+      "calendar_id": "iy-futami-b",
+      "rule_profile_id": "futami",
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.iyo.lg.jp/shiminseikatsu/kurashi/gomi/shushubi/documents/r8hutami.pdf"
+    },
+    {
+      "id": "38210-futami-c",
+      "name": "双海：灘町",
+      "display_name": "双海：灘町",
+      "calendar_id": "iy-futami-c",
+      "rule_profile_id": "futami",
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.iyo.lg.jp/shiminseikatsu/kurashi/gomi/shushubi/documents/r8hutami.pdf"
+    },
+    {
+      "id": "38210-futami-d",
+      "name": "双海：小網、城ノ下、高野川",
+      "display_name": "双海：小網、城ノ下、高野川",
+      "calendar_id": "iy-futami-d",
+      "rule_profile_id": "futami",
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.iyo.lg.jp/shiminseikatsu/kurashi/gomi/shushubi/documents/r8hutami.pdf"
+    },
+    {
+      "id": "38210-futami-e",
+      "name": "双海：本郷、塩屋、唐崎",
+      "display_name": "双海：本郷、塩屋、唐崎",
+      "calendar_id": "iy-futami-e",
+      "rule_profile_id": "futami",
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.iyo.lg.jp/shiminseikatsu/kurashi/gomi/shushubi/documents/r8hutami.pdf"
+    },
+    {
+      "id": "38210-futami-f",
+      "name": "双海：下灘（上浜・下浜を除く）",
+      "display_name": "双海：下灘（上浜・下浜を除く）",
+      "calendar_id": "iy-futami-f",
+      "rule_profile_id": "futami",
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.iyo.lg.jp/shiminseikatsu/kurashi/gomi/shushubi/documents/r8hutami.pdf"
+    },
+    {
+      "id": "38210-futami-g",
+      "name": "双海：上浜、下浜",
+      "display_name": "双海：上浜、下浜",
+      "calendar_id": "iy-futami-g",
+      "rule_profile_id": "futami",
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.iyo.lg.jp/shiminseikatsu/kurashi/gomi/shushubi/documents/r8hutami.pdf"
+    },
+    {
+      "id": "38210-nakayama-sare",
+      "name": "中山地域：佐礼谷（上長沢・下長沢・長沢団地・榎峠・竹之内・日浦・影浦・障子ヶ谷・坪之内・村中・山口・中替地・柿谷・安別当・梅之木・源氏・赤海・犬寄）",
+      "display_name": "中山地域：佐礼谷（上長沢・下長沢・長沢団地・榎峠・竹之内・日浦・影浦・障子ヶ谷・坪之内・村中・山口・中替地・柿谷・安別当・梅之木・源氏・赤海・犬寄）",
+      "calendar_id": "iy-nakayama-sare",
+      "rule_profile_id": "nakayama",
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.iyo.lg.jp/shiminseikatsu/kurashi/gomi/shushubi/documents/r8nakayama.pdf"
+    },
+    {
+      "id": "38210-nakayama-naka",
+      "name": "中山地域：中山（泉町一・泉町二・泉町三・泉町四・福元・高岡・柚之木・重藤・永木・福住・梅原・平村・添賀）",
+      "display_name": "中山地域：中山（泉町一・泉町二・泉町三・泉町四・福元・高岡・柚之木・重藤・永木・福住・梅原・平村・添賀）",
+      "calendar_id": "iy-nakayama-naka",
+      "rule_profile_id": "nakayama",
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.iyo.lg.jp/shiminseikatsu/kurashi/gomi/shushubi/documents/r8nakayama.pdf"
+    },
+    {
+      "id": "38210-nakayama-ide",
+      "name": "中山地域：出渕（豊岡一・豊岡二・東町・門前・坪井・小池・大矢・野中・影之浦・栃谷・日南登・漆・福岡・平沢・栗田二・栗田三）",
+      "display_name": "中山地域：出渕（豊岡一・豊岡二・東町・門前・坪井・小池・大矢・野中・影之浦・栃谷・日南登・漆・福岡・平沢・栗田二・栗田三）",
+      "calendar_id": "iy-nakayama-ide",
+      "rule_profile_id": "nakayama",
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.iyo.lg.jp/shiminseikatsu/kurashi/gomi/shushubi/documents/r8nakayama.pdf"
+    }
+  ],
+  "calendars": [
+    {
+      "id": "iy-iyo-south",
+      "rule_profile_id": "iyo"
+    },
+    {
+      "id": "iy-iyo-central",
+      "rule_profile_id": "iyo"
+    },
+    {
+      "id": "iy-iyo-north",
+      "rule_profile_id": "iyo"
+    },
+    {
+      "id": "iy-iyo-west",
+      "rule_profile_id": "iyo"
+    },
+    {
+      "id": "iy-iyo-east",
+      "rule_profile_id": "iyo"
+    },
+    {
+      "id": "iy-iyo-hiraoka",
+      "rule_profile_id": "iyo"
+    },
+    {
+      "id": "iy-futami-a",
+      "rule_profile_id": "futami"
+    },
+    {
+      "id": "iy-futami-b",
+      "rule_profile_id": "futami"
+    },
+    {
+      "id": "iy-futami-c",
+      "rule_profile_id": "futami"
+    },
+    {
+      "id": "iy-futami-d",
+      "rule_profile_id": "futami"
+    },
+    {
+      "id": "iy-futami-e",
+      "rule_profile_id": "futami"
+    },
+    {
+      "id": "iy-futami-f",
+      "rule_profile_id": "futami"
+    },
+    {
+      "id": "iy-futami-g",
+      "rule_profile_id": "futami"
+    },
+    {
+      "id": "iy-nakayama-sare",
+      "rule_profile_id": "nakayama"
+    },
+    {
+      "id": "iy-nakayama-naka",
+      "rule_profile_id": "nakayama"
+    },
+    {
+      "id": "iy-nakayama-ide",
+      "rule_profile_id": "nakayama"
+    }
+  ]
+}
