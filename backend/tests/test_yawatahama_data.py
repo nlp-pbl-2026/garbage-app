@@ -83,3 +83,15 @@ def test_partial_address_uses_non_paper_dates_without_selecting_a_paper_weekday(
     assert 'paper_weekday_iso' not in partial
     assert first['days']['2026-11-03'] == ['burnable', 'newspaper']
     assert second['days']['2026-11-06'] == ['burnable', 'paper_packaging']
+
+
+def test_display_names_use_places_and_keep_scope_qualifiers_without_calendar_details():
+    variant = {'name': '13（紙類は火曜）：試験地区', 'address_labels': ['末広', '田浪']}
+    assert data.area_display_name(13, variant, {}) == '末広、田浪'
+    go = {'name': '13：郷・中央（郷一木地区・旧道沿い／紙類の収集日未確認）',
+          'address_labels': ['郷・中央（郷一木地区・旧道沿い）']}
+    assert data.area_display_name(13, go, {}) == '郷・中央（郷一木地区・旧道沿い）'
+    config = {'display_label_exclusions': {'6': {'郷・中央': '郷・中央（郷一木地区・旧道沿いは対象外）'}},
+              'display_name_overrides': {'10': '日土町（神明・今出・田之窪を除く）'}}
+    assert '対象外' in data.area_display_name(6, {'address_labels': ['郷・中央']}, config)
+    assert data.area_display_name(10, {'address_labels': ['日土町']}, config) == '日土町（神明・今出・田之窪を除く）'

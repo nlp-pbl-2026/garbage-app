@@ -70,7 +70,9 @@ class MunicipalityDataService {
       [String municipalityId = '38201']) async {
     if (await municipality(municipalityId) == null) return [];
     return ((await registryFor(municipalityId))['collection_areas'] as List)
-        .cast<Map<String, dynamic>>();
+        .cast<Map<String, dynamic>>()
+        .map((area) => {...area, 'name': area['display_name'] ?? area['name']})
+        .toList();
   }
 
   Future<List<String>> areaCandidates(String districtId,

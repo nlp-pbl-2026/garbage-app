@@ -166,6 +166,8 @@ class RegionRegistry:
         if len(self.calendars) != len(self.data["calendars"]):
             raise ValueError("Duplicate calendar ID")
         for area in areas:
+            if "display_name" in area and (not isinstance(area["display_name"], str) or not area["display_name"].strip()):
+                raise ValueError("Invalid collection area display name")
             if area.get("municipality_id", self.data["municipality_id"]) != self.data["municipality_id"]:
                 raise ValueError("Collection area municipality mismatch")
             calendar = self.calendars[area["calendar_id"]]
@@ -244,7 +246,7 @@ class RegionRegistry:
         if not candidates:
             raise RegionResolutionError("指定された収集地区は未対応です。")
         area = self.areas[candidates[0]]
-        return RegionContext(municipality_id, area["id"], area["name"],
+        return RegionContext(municipality_id, area["id"], area.get("display_name", area["name"]),
                              area["calendar_id"], area["rule_profile_id"],
                              self.data["version"], self.data["valid_from"], self.data["valid_to"],
                              self.data.get("municipality_name", ""), self.profiles[area["rule_profile_id"]])

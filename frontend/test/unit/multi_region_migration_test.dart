@@ -108,4 +108,31 @@ void main() {
     expect(container.read(regionSettingProvider).valueOrNull?.districtId, '38201-08');
     expect(notifications.updated.last, '38201-08');
   });
+  test('saved display labels refresh without changing user labels, IDs or active state', () async {
+    final files = multiMunicipalityAssets();
+    final registry = jsonDecode(files['90001-registry']!);
+    registry['collection_areas'][0]['name'] = '13（紙類は火曜）：旧表示';
+    registry['collection_areas'][0]['display_name'] = '地名のみ';
+    files['90001-registry'] = jsonEncode(registry);
+    final data = MunicipalityDataService(bundle: MunicipalityBundle(files));
+    final old = RegionSetting(prefectureId: '38', prefectureName: '愛媛県', municipalityId: '90001',
+        municipalityName: '試験市A', districtId: 'same-area', districtName: '13（紙類は火曜）：旧表示');
+    SharedPreferences.setMockInitialValues({
+      'multi_region_migrated': true, 'region_setting': jsonEncode(old.toJson()),
+      'saved_regions': jsonEncode([SavedRegion(id: 'home', label: '自宅', setting: old, isActive: true).toJson()]),
+    });
+    final container = ProviderContainer(overrides: [
+      municipalityDataProvider.overrideWithValue(data),
+      regionServiceProvider.overrideWithValue(RegionService(data: data)),
+      notificationServiceProvider.overrideWithValue(_Notifications()),
+    ]);
+    addTearDown(container.dispose);
+    await container.read(multiRegionProvider.notifier).loadRegions();
+    final saved = container.read(multiRegionProvider).valueOrNull!.single;
+    expect(saved.id, 'home'); expect(saved.label, '自宅'); expect(saved.isActive, isTrue);
+    expect(saved.setting.districtId, 'same-area'); expect(saved.setting.districtName, '地名のみ');
+    await container.read(multiRegionProvider.notifier).setActiveRegion('home');
+    expect(container.read(regionSettingProvider).valueOrNull!.districtName, '地名のみ');
+  });
+
 }

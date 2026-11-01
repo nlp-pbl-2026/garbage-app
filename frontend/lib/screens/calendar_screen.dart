@@ -70,8 +70,6 @@ class CalendarScreen extends ConsumerWidget {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  ...{for (final status in (ref.watch(collectionStatusesProvider).asData?.value ?? <String, CollectionStatus>{}).values)
-                    if (status.isUnverified) status.message: status}.values.map((status) => CollectionStatusNotice(status: status)),
                   monthlyScheduleAsync.when(
                     data: (schedule) => period == null
                         ? const Padding(padding: EdgeInsets.all(24), child: Text(AppStrings.dataLoadError))
@@ -268,7 +266,11 @@ class CalendarScreen extends ConsumerWidget {
         }
 
         return InkWell(
-          onTap: unknown || verification == null ? null : () {
+          onTap: verification == null ? null : () {
+            if (unknown) {
+              _showUnverifiedCollection(context, label, verification);
+              return;
+            }
             _showUpcomingScheduleSheet(
               context,
               scheduleService,
@@ -333,7 +335,7 @@ class CalendarScreen extends ConsumerWidget {
                     ),
                   ),
                 const SizedBox(width: 4),
-                if (!unknown) Icon(
+                Icon(
                   Icons.chevron_right,
                   size: 16,
                   color: Colors.grey.shade400,
@@ -344,6 +346,17 @@ class CalendarScreen extends ConsumerWidget {
         );
       },
     );
+  }
+
+  void _showUnverifiedCollection(BuildContext context, String label, CollectionStatus status) {
+    showModalBottomSheet<void>(context: context, isScrollControlled: true,
+      builder: (_) => SafeArea(child: SingleChildScrollView(child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Text('$labelの収集日', style: Theme.of(context).textTheme.titleMedium),
+          CollectionStatusNotice(status: status),
+        ]),
+      ))));
   }
 
   /// 指定カテゴリの今後の収集日一覧をBottomSheetで表示する

@@ -207,6 +207,14 @@ def calendar_aliases():
     return result
 
 
+def area_display_name(number, variant, config):
+    overrides = config.get("display_name_overrides", {})
+    if str(number) in overrides:
+        return overrides[str(number)]
+    exclusions = config.get("display_label_exclusions", {}).get(str(number), {})
+    return "、".join(exclusions.get(label, label) for label in variant["address_labels"])
+
+
 def area_variants(number, days, labels, config):
     variants = config["variants"].get(str(number))
     if not variants:
@@ -263,11 +271,15 @@ def inspect_calendars(*, raster=True):
                            if code in variant["unverified_collection_types"] else {"status": "checked"})
                     for code in sorted(streams)}
             areas.append({"id": f"38204-{number:02}{suffix}", "name": variant["name"],
+                "display_name": area_display_name(number, variant, variants),
                 "calendar_id": calendar_id, "rule_profile_id": "oshima" if number >= 19 else "standard",
                 "official_calendar_number": number, "official_pdf_area_heading": title,
                 "address_labels": variant["address_labels"], "needs_local_confirmation": True,
                 "source_url": PAGES["calendar"]})
         print(f"Calendar {number}: {len(days)} dated cells, {symbols} symbols; raster={raster}", flush=True)
+    names = [area["display_name"] for area in areas]
+    if any(not name for name in names) or len(set(names)) != len(names):
+        raise ValueError("Collection area display names must be nonempty and unique")
     return areas, calendars, reviews
 
 
@@ -303,7 +315,6 @@ def build(*, inspect_only=False):
         "collection_areas": areas,
         "calendars": [{"id": area["calendar_id"], "rule_profile_id": area["rule_profile_id"]} for area in areas],
         "rule_profiles": profiles}
-    registry["coverage_notice"] = "郷・中央（郷一木地区・旧道沿い）は、紙類以外の収集日を利用できます。紙類（段ボール・新聞・雑誌・紙製容器包装）の収集日は未確認です。公式カレンダーと生活環境課で確認してください。"
     registry["partial_address_labels"] = read(DATA / "calendar_variants.json")["partial_address_labels"]
     write(DATA / "registry.json", registry)
     write(DATA / "generated/calendar-2026.json", {key: registry[key] for key in

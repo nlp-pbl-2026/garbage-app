@@ -11,6 +11,7 @@
     {
       "id": "38204-01",
       "name": "1：愛宕、大平（愛宕山道路沿い）、片山町、幸町（愛宕山道路沿い）、清水町花小路、大正町、大門、（花小路）、浜田町、東新川、松蔭町、松本町（愛宕山道路沿い）、矢野町2～4",
+      "display_name": "愛宕、大平（愛宕山道路沿い）、片山町、幸町（愛宕山道路沿い）、清水町花小路、大正町、大門、（花小路）、浜田町、東新川、松蔭町、松本町（愛宕山道路沿い）、矢野町2～4",
       "calendar_id": "yh-01",
       "rule_profile_id": "standard",
       "official_calendar_number": 1,
@@ -36,6 +37,7 @@
     {
       "id": "38204-02",
       "name": "2：海老崎、戎町、旧役場前通、琴平町、（下道）、新栄町、新町、新港、須崎、船場通、大黒町（清水ビル）、中央、千代田町、天神通1、仲之町、浜之町、本町、港町、矢野町5～7、横町",
+      "display_name": "海老崎、戎町、旧役場前通、琴平町、（下道）、新栄町、新町、新港、須崎、船場通、大黒町（清水ビル）、中央、千代田町、天神通1、仲之町、浜之町、本町、港町、矢野町5～7、横町",
       "calendar_id": "yh-02",
       "rule_profile_id": "standard",
       "official_calendar_number": 2,
@@ -68,6 +70,7 @@
     {
       "id": "38204-03",
       "name": "3：近江屋町、大平（愛宕山道路沿いを除く）、海望園、喜多町、旧港、琴平町（池上マンション・コーポ池上）、裁判所通、幸町、白浜通、津羽井、花園町、松本町、緑ヶ丘、向灘（大内浦・勘定・高城・杖之浦・中浦）",
+      "display_name": "近江屋町、大平（愛宕山道路沿いを除く）、海望園、喜多町、旧港、琴平町（池上マンション・コーポ池上）、裁判所通、幸町、白浜通、津羽井、花園町、松本町、緑ヶ丘、向灘（大内浦・勘定・高城・杖之浦・中浦）",
       "calendar_id": "yh-03",
       "rule_profile_id": "standard",
       "official_calendar_number": 3,
@@ -94,6 +97,7 @@
     {
       "id": "38204-04",
       "name": "4：古町2、八代（王子※・野中・人加志・水の元・八代一丁目）",
+      "display_name": "古町2、八代（王子※・野中・人加志・水の元・八代一丁目）",
       "calendar_id": "yh-04",
       "rule_profile_id": "standard",
       "official_calendar_number": 4,
@@ -108,6 +112,7 @@
     {
       "id": "38204-05",
       "name": "5：穴井、川上町、合田、舌間、真網代",
+      "display_name": "穴井、川上町、合田、舌間、真網代",
       "calendar_id": "yh-05",
       "rule_profile_id": "standard",
       "official_calendar_number": 5,
@@ -125,6 +130,7 @@
     {
       "id": "38204-06",
       "name": "6：稲ケ市、釜倉、川之内下、木多町、郷・中央（郷一木地区・旧道沿いは対象外）、郷・横畑、新開町、末広（大下地区）、末広西、千丈駅前、谷、中津川、布喜川、松尾、横平、若山",
+      "display_name": "稲ケ市、釜倉、川之内下、木多町、郷・中央（郷一木地区・旧道沿いは対象外）、郷・横畑、新開町、末広（大下地区）、末広西、千丈駅前、谷、中津川、布喜川、松尾、横平、若山",
       "calendar_id": "yh-06",
       "rule_profile_id": "standard",
       "official_calendar_number": 6,
@@ -153,6 +159,7 @@
     {
       "id": "38204-07",
       "name": "7：駅前、江戸岡1、大谷口、栗野浦、神宮通、神宮前、東矢野町、広瀬、古町1、矢野町1",
+      "display_name": "駅前、江戸岡1、大谷口、栗野浦、神宮通、神宮前、東矢野町、広瀬、古町1、矢野町1",
       "calendar_id": "yh-07",
       "rule_profile_id": "standard",
       "official_calendar_number": 7,
@@ -175,6 +182,7 @@
     {
       "id": "38204-08",
       "name": "8：江戸岡2、国木県営住宅及び周辺、五反田・湯島、産業通、新和田町、徳雲坊、日の浦団地、山越",
+      "display_name": "江戸岡2、国木県営住宅及び周辺、五反田・湯島、産業通、新和田町、徳雲坊、日の浦団地、山越",
       "calendar_id": "yh-08",
       "rule_profile_id": "standard",
       "official_calendar_number": 8,
@@ -195,6 +203,7 @@
     {
       "id": "38204-09",
       "name": "9：清滝、清滝下、五反田（川筋・川舞※・鯨・下大峠・新道・千畳・元井）、元城団地、八代・王子（伊予銀行王子の森寮沿い・森ビル第3）、八代（迫田）",
+      "display_name": "清滝、清滝下、五反田（川筋・川舞※・鯨・下大峠・新道・千畳・元井）、元城団地、八代・王子（伊予銀行王子の森寮沿い・森ビル第3）、八代（迫田）",
       "calendar_id": "yh-09",
       "rule_profile_id": "standard",
       "official_calendar_number": 9,
@@ -213,6 +222,7 @@
     {
       "id": "38204-10",
       "name": "10：日土町",
+      "display_name": "日土町（神明・今出・田之窪を除く）",
       "calendar_id": "yh-10",
       "rule_profile_id": "standard",
       "official_calendar_number": 10,
@@ -226,6 +236,7 @@
     {
       "id": "38204-11",
       "name": "11：旭町、昭和通、新川、大黒町（元バスラーメン～モビーディック）、千代田町（新川ハイツ）、天神通2",
+      "display_name": "旭町、昭和通、新川、大黒町（元バスラーメン～モビーディック）、千代田町（新川ハイツ）、天神通2",
       "calendar_id": "yh-11",
       "rule_profile_id": "standard",
       "official_calendar_number": 11,
@@ -244,6 +255,7 @@
     {
       "id": "38204-12",
       "name": "12：入寺、桧谷、松柏1～7、南柏",
+      "display_name": "入寺、桧谷、松柏1～7、南柏",
       "calendar_id": "yh-12",
       "rule_profile_id": "standard",
       "official_calendar_number": 12,
@@ -260,6 +272,7 @@
     {
       "id": "38204-13-tu",
       "name": "13（紙類は火曜）：末広、田浪、高野地、古谷",
+      "display_name": "末広、田浪、高野地、古谷",
       "calendar_id": "yh-13-tu",
       "rule_profile_id": "standard",
       "official_calendar_number": 13,
@@ -276,6 +289,7 @@
     {
       "id": "38204-13-fr",
       "name": "13（紙類は金曜）：郷・梨尾、上郷、南裏、川之内上、古薮",
+      "display_name": "郷・梨尾、上郷、南裏、川之内上、古薮",
       "calendar_id": "yh-13-fr",
       "rule_profile_id": "standard",
       "official_calendar_number": 13,
@@ -293,6 +307,7 @@
     {
       "id": "38204-13-go",
       "name": "13：郷・中央（郷一木地区・旧道沿い／紙類の収集日未確認）",
+      "display_name": "郷・中央（郷一木地区・旧道沿い）",
       "calendar_id": "yh-13-go",
       "rule_profile_id": "standard",
       "official_calendar_number": 13,
@@ -306,6 +321,7 @@
     {
       "id": "38204-14",
       "name": "14：朝潮橋、北浜、大黒町",
+      "display_name": "朝潮橋、北浜、大黒町",
       "calendar_id": "yh-14",
       "rule_profile_id": "standard",
       "official_calendar_number": 14,
@@ -321,6 +337,7 @@
     {
       "id": "38204-15-th",
       "name": "15（紙類は木曜）：日土町（神明・今出）",
+      "display_name": "日土町（神明・今出）",
       "calendar_id": "yh-15-th",
       "rule_profile_id": "standard",
       "official_calendar_number": 15,
@@ -334,6 +351,7 @@
     {
       "id": "38204-15-mo",
       "name": "15（紙類は月曜）：日土町（田之窪）",
+      "display_name": "日土町（田之窪）",
       "calendar_id": "yh-15-mo",
       "rule_profile_id": "standard",
       "official_calendar_number": 15,
@@ -347,6 +365,7 @@
     {
       "id": "38204-16",
       "name": "16：牛名、国木（県営住宅及び周辺を除く）、五反田・上大峠、五反田・川舞（三本木・神田）",
+      "display_name": "牛名、国木（県営住宅及び周辺を除く）、五反田・上大峠、五反田・川舞（三本木・神田）",
       "calendar_id": "yh-16",
       "rule_profile_id": "standard",
       "official_calendar_number": 16,
@@ -363,6 +382,7 @@
     {
       "id": "38204-17",
       "name": "17：保内町（喜須木・宮内）",
+      "display_name": "保内町（喜須木・宮内）",
       "calendar_id": "yh-17",
       "rule_profile_id": "standard",
       "official_calendar_number": 17,
@@ -376,6 +396,7 @@
     {
       "id": "38204-18",
       "name": "18：保内町（川之石・磯津）",
+      "display_name": "保内町（川之石・磯津）",
       "calendar_id": "yh-18",
       "rule_profile_id": "standard",
       "official_calendar_number": 18,
@@ -389,6 +410,7 @@
     {
       "id": "38204-19",
       "name": "19：大島（1・2分団）",
+      "display_name": "大島（1・2分団）",
       "calendar_id": "yh-19",
       "rule_profile_id": "oshima",
       "official_calendar_number": 19,
@@ -402,6 +424,7 @@
     {
       "id": "38204-20",
       "name": "20：大島（3・4分団）",
+      "display_name": "大島（3・4分団）",
       "calendar_id": "yh-20",
       "rule_profile_id": "oshima",
       "official_calendar_number": 20,
@@ -507,7 +530,6 @@
       "rule_profile_id": "oshima"
     }
   ],
-  "coverage_notice": "郷・中央（郷一木地区・旧道沿い）は、紙類以外の収集日を利用できます。紙類（段ボール・新聞・雑誌・紙製容器包装）の収集日は未確認です。公式カレンダーと生活環境課で確認してください。",
   "partial_address_labels": [
     {
       "label": "郷・中央（郷一木地区・旧道沿い）",

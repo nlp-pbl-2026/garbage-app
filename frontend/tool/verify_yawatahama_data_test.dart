@@ -5,6 +5,7 @@ import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:garbage_app/models/garbage_item.dart';
+import 'package:garbage_app/services/region_service.dart';
 import 'package:garbage_app/services/municipality_data_service.dart';
 import 'package:garbage_app/services/schedule_service.dart';
 import 'package:garbage_app/services/ical_export_service.dart';
@@ -93,6 +94,24 @@ void main() {
       expect(ical, isNot(contains('-$paper@garbageapp')));
     }
     expect(ical, contains('-burnable@garbageapp'));
+  });
+
+  test('all Yawatahama selection labels are unique place names without calendar details', () async {
+    final data = MunicipalityDataService();
+    final areas = await data.getAreas('38204');
+    final districts = await RegionService(data: data).getDistricts('38204');
+    final names = districts.map((district) => district.name).toList();
+    expect(names.toSet().length, 23);
+    expect(names.any((name) => RegExp(r'^\d+[（(：:]').hasMatch(name)), isFalse);
+    expect(names.any((name) => name.contains('紙類') || name.contains('未確認')), isFalse);
+    expect((await data.area('38204-13-go', municipalityId: '38204'))!['name'], '郷・中央（郷一木地区・旧道沿い）');
+    expect((await data.area('38204-15-th', municipalityId: '38204'))!['name'], '日土町（神明・今出）');
+    expect((await data.area('38204-10', municipalityId: '38204'))!['name'], '日土町（神明・今出・田之窪を除く）');
+    expect((await data.registryFor('38204')).containsKey('coverage_notice'), isFalse);
+    for (final area in areas) {
+      expect(area['calendar_id'], isNotNull);
+      expect(area['official_calendar_number'], isNotNull);
+    }
   });
 
 }

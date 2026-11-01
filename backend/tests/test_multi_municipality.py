@@ -466,3 +466,18 @@ async def test_api_returns_unknown_collection_status_without_a_date(partial_city
 def test_partial_calendar_can_be_packaged_without_dropping_other_municipalities(partial_city, municipalities):
     targets = packaging_module().stage_data(municipalities / 'package', municipalities / 'catalog.json')
     assert len(targets) == 11
+
+
+def test_area_display_name_is_used_in_answers_without_changing_calendar_identity(municipalities):
+    path = municipalities / '90001/registry.json'
+    raw = json.loads(path.read_text())
+    raw['collection_areas'][0].update(name='13（紙類の収集日未確認）：旧表示', display_name='地名のみ')
+    write_json(path, raw)
+    region = get_registry().resolve('90001', 'same-area')
+    assert region.area_name == '地名のみ'
+    assert region.calendar_id == 'same-calendar'
+    answer = WasteGuideService._build_answer(ClassificationDecision(True, '試験品', '可燃'),
+        CalendarService(region=region).next_collection('可燃', from_date=date(2026, 11, 1)), region=region)
+    assert '地名のみ地区' in answer
+    assert '未確認' not in answer
+    assert get_registry().resolve('90002', 'same-area').area_name == '試験町B地区'

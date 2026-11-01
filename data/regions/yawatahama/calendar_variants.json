@@ -89,5 +89,8 @@
       "status": "partially_supported",
       "decision": "地区を利用可能とし、紙類4区分だけ収集日未確認として扱う。2026-11-01"
     }
-  ]
+  ],
+  "display_name_overrides": {
+    "10": "日土町（神明・今出・田之窪を除く）"
+  }
 }
