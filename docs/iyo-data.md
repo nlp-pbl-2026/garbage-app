@@ -102,11 +102,11 @@ backend/.venv/bin/python scripts/iyo_data.py verify
 backend/.venv/bin/python -m pytest backend/official_tests/verify_iyo_runtime.py -q
 cd frontend
 flutter test
-flutter test tool/verify_iyo_data_test.dart tool/verify_yawatahama_data_test.dart
+flutter test tool/verify_iyo_data_test.dart tool/verify_iyo_ui_test.dart tool/verify_yawatahama_data_test.dart
 flutter analyze
 flutter build web
 ```
 
 `verify_iyo_data_test.dart` は16地区・5,840日付の共通原本との一致、8:30期限、未確認5区分の予定除外、8月24日／31日の紙類を検査します。これはFlutterの読込結果と原本の整合性検査であり、公式PDFとの照合はPython側で別に行います。
 
-実API評価は初回24例中20例、最初の修正後8例中6例でした。PET本体と付属品の混同、不要なプラマーク質問、家具の運搬条件を修正し、最終1,703行の索引ではストロー・運べる家具・運べない家具・PET本体の4例がすべて想定どおりでした。初回のガラスびんの「はい」、画像検索、既存2市の回帰例も確認していますが、最終版で全24例を再実行したわけではありません。画像評価は公式イラストを使用しています。全1,697品目の実検索精度や実物写真の精度を保証する評価ではありません。詳細は `search_review.json` を参照してください。
+最終版の同じ24例を再評価し、固定分類22例、運搬条件未確認時の追加質問1例、画像のみの応答確認1例を確認しました。画像のみの例は一度モデルJSONが途中で切れて503となり、同じ入力の1回の再試行は成功しました。運搬可否への「はい」「いいえ」の追加2例も確認しています。これは24/24の分類正解率や、全1,697品目・実物写真の精度を保証する評価ではありません。[24例の修正前後・PR確認結果](iyo-pr-review.md)と `search_review.json` に、過去の結果、失敗・再試行、評価の限界を記録しています。
