@@ -1,6 +1,6 @@
 {
   "official_items": 1196,
-  "search_records": 1205,
+  "search_records": 1207,
   "source_categories": {
     "かん": 23,
     "びん": 19,
@@ -42,7 +42,7 @@
     "47": 38,
     "48": 27
   },
-  "conditional_records": 172,
+  "conditional_records": 177,
   "runtime_categories": {
     "bottles": 19,
     "bulky": 180,
@@ -56,6 +56,6 @@
     "plastic_packaging": 107,
     "styrofoam": 5
   },
-  "rows_sha256": "879748e253a1a98ddea9ec3091909441da1609dfee4bf8c5eb84ad9d0e20603a",
+  "rows_sha256": "e768c06f98bfbf1d4f19d3b8b4a6fee4b3a8d7f3bfd4e58faaa1ed23ea92f59e",
   "dictionary_audit": "26_pages_full_and_parts_text_geometry_raster"
 }

@@ -79,6 +79,7 @@ def classification_options(note, primary):
         r'汚れ(?:の落ちない|た)(?:もの|物)は(可燃|埋立)',
         r'(?:金属製のもの|木製・プラ製のもの|紙製のもの|白色以外のもの|ビニール加工のもの)は(可燃|埋立|プラ)',
         r'LEDは(埋立)',
+        r'濡れた・汚れた・ひどく破れた古着は(可燃)',
     )
     codes = {CATEGORY_CODES[label] for pattern in patterns for label in re.findall(pattern, note)}
     if '農業・漁業用は、産業廃棄物' in note or '家電4 品目対象品は排出禁止' in note:
@@ -95,6 +96,10 @@ def item_rows():
         code = row['category']
         note = row['note']
         source_url = 'https://www.town.ikata.ehime.jp/uploaded/attachment/'+row['source_file']+'#page='+str(row['part_page'])
+        # This guide-wide rule applies to the seven explicitly labelled 古着
+        # rows, not to all paper or to garments with a different fixed category.
+        if code == 'paper_textiles' and '古着として' in note:
+            note += '。ガイド13ページ：濡れた・汚れた・ひどく破れた古着は可燃。'
         if row['source_page'] == 27 and row['item'] == '乾電池（ボタン型・充電式）':
             if code != 'hazardous' or note != '販売店などに相談':
                 raise ValueError('Reviewed battery correction source changed')
@@ -168,6 +173,22 @@ def bulky_config():
                       for i, (title, description) in enumerate(steps, 1)]}
 
 
+def registry_record(areas):
+    rules = read(DATA/'official_rules.json')
+    profiles = {key: {'items_path': 'knowledge/items.csv', 'embedding_index_path': 'knowledge/item_embeddings.npz',
+        'index_profile_id': 'townwide', 'calendar_path': 'generated/calendar-2026.json',
+        'knowledge_title': '伊方町公式ごみ分別ガイドブック・ごみ分別辞典',
+        'classification_rules': rules['classification_rules'], 'size_question': '町指定のごみ袋に入る大きさですか？（埋立ごみ袋は30リットル）',
+        'categories': {code: {k: v for k, v in definition.items() if k not in ('instructions', 'source_url')}
+                       for code, definition in rules['categories'].items()},
+        'bulky_waste': {'category_code': 'bulky', 'config': bulky_config()}}
+        for key in ('ikata', 'seto', 'misaki')}
+    return {'schema_version': 1, 'municipality_id': CITY, 'municipality_name': '伊方町',
+        'prefecture_id': '38', 'prefecture_name': '愛媛県', 'version': VERSION,
+        'valid_from': VALID_FROM, 'valid_to': VALID_TO, 'collection_areas': areas,
+        'calendars': [{'id': a['calendar_id'], 'rule_profile_id': a['rule_profile_id']} for a in areas], 'rule_profiles': profiles}
+
+
 def build(*, inspect_only=False):
     areas, calendars, reviews = inspect_calendars()
     rows, item_review = item_rows()
@@ -179,19 +200,7 @@ def build(*, inspect_only=False):
         return
     if read(DATA/'calendar_reviews.json') != calendar_review or read(DATA/'item_reviews.json') != item_review:
         raise ValueError('Reviewed calendar/dictionary audit differs; review required')
-    rules = read(DATA/'official_rules.json')
-    profiles = {key: {'items_path': 'knowledge/items.csv', 'embedding_index_path': 'knowledge/item_embeddings.npz',
-        'index_profile_id': 'townwide', 'calendar_path': 'generated/calendar-2026.json',
-        'knowledge_title': '伊方町公式ごみ分別ガイドブック・ごみ分別辞典',
-        'classification_rules': rules['classification_rules'], 'size_question': '町指定のごみ袋に入る大きさですか？（埋立ごみ袋は30リットル）',
-        'categories': {code: {k: v for k, v in definition.items() if k not in ('instructions', 'source_url')}
-                       for code, definition in rules['categories'].items()},
-        'bulky_waste': {'category_code': 'bulky', 'config': bulky_config()}}
-        for key in ('ikata', 'seto', 'misaki')}
-    registry = {'schema_version': 1, 'municipality_id': CITY, 'municipality_name': '伊方町',
-        'prefecture_id': '38', 'prefecture_name': '愛媛県', 'version': VERSION,
-        'valid_from': VALID_FROM, 'valid_to': VALID_TO, 'collection_areas': areas,
-        'calendars': [{'id': a['calendar_id'], 'rule_profile_id': a['rule_profile_id']} for a in areas], 'rule_profiles': profiles}
+    registry = registry_record(areas)
     write(DATA/'registry.json', registry)
     write(DATA/'generated/calendar-2026.json', {k: registry[k] for k in ('municipality_id', 'version', 'valid_from', 'valid_to')} | {'calendars': calendars})
     target = DATA/'knowledge/items.csv'; target.parent.mkdir(parents=True, exist_ok=True)
@@ -214,7 +223,8 @@ def verify(*, without_index=False):
         if list(csv.DictReader(stream)) != rows:
             raise ValueError('CSV differs from official dictionary and reviewed examples')
     registry = RegionRegistry(DATA/'registry.json')
-    if registry.data['collection_areas'] != areas or read(DATA/'generated/calendar-2026.json')['calendars'] != calendars:
+    expected_calendar = {k: registry.data[k] for k in ('municipality_id', 'version', 'valid_from', 'valid_to')} | {'calendars': calendars}
+    if registry.data != registry_record(areas) or read(DATA/'generated/calendar-2026.json') != expected_calendar:
         raise ValueError('Runtime registry/calendar differs from official sources')
     for profile in registry.profiles.values():
         if not without_index:

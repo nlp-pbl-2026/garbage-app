@@ -673,6 +673,325 @@
           }
         }
       }
+    },
+    {
+      "id": "38442",
+      "version": "ikata-2026.1",
+      "name": "伊方町",
+      "prefecture_id": "38",
+      "prefecture_name": "愛媛県",
+      "registry_asset": "assets/data/municipality_38442_registry.json",
+      "profiles": {
+        "ikata": {
+          "calendar_asset": "assets/data/municipality_38442_0_calendar.json",
+          "categories": {
+            "burnable": {
+              "name": "可燃ごみ",
+              "collection_type_id": "burnable",
+              "cutoff": "08:00",
+              "color": "#EF8200"
+            },
+            "landfill": {
+              "name": "埋立ごみ",
+              "collection_type_id": "landfill",
+              "cutoff": "08:00",
+              "color": "#008CCF"
+            },
+            "bottles": {
+              "name": "びん類",
+              "collection_type_id": "bottles",
+              "cutoff": "08:00",
+              "color": "#FFC600"
+            },
+            "cans": {
+              "name": "かん類",
+              "collection_type_id": "cans",
+              "cutoff": "08:00",
+              "color": "#918378"
+            },
+            "pet_bottles": {
+              "name": "ペットボトル",
+              "collection_type_id": "pet_bottles",
+              "cutoff": "08:00",
+              "color": "#00AF50"
+            },
+            "plastic_packaging": {
+              "name": "プラスチック製容器包装",
+              "collection_type_id": "plastic_packaging",
+              "cutoff": "08:00",
+              "color": "#9082BC"
+            },
+            "styrofoam": {
+              "name": "発泡スチロール",
+              "collection_type_id": "styrofoam",
+              "cutoff": "08:00",
+              "color": "#95BE16"
+            },
+            "paper_textiles": {
+              "name": "古紙・古着類",
+              "collection_type_id": "paper_textiles",
+              "cutoff": "08:00",
+              "color": "#AA9649"
+            },
+            "hazardous": {
+              "name": "有害ごみ",
+              "collection_type_id": "hazardous",
+              "cutoff": "08:00",
+              "color": "#298D59"
+            },
+            "bulky": {
+              "name": "粗大ごみ",
+              "color": "#655B87"
+            },
+            "not_collected": {
+              "name": "排出禁止物",
+              "color": "#E60012"
+            }
+          },
+          "bulky_waste": {
+            "category_code": "bulky",
+            "config": {
+              "municipality_id": "38442",
+              "municipality_name": "伊方町",
+              "collection_frequency": "申込制・有料（収集日は申込先に確認）",
+              "reception_hours": "町民課・各支所の開庁時間にご相談ください。",
+              "collection_rules": "町民課・各支所又は許可業者で収集日・料金・場所を確認してください。定期カレンダーには粗大ごみの収集日の記載がありません。",
+              "fee_structure_type": "size_based",
+              "application_method": "phone",
+              "phone_number": "0894-38-0211",
+              "information_url": "https://www.town.ikata.ehime.jp/soshiki/32/11452.html",
+              "steps": [
+                {
+                  "step_number": 1,
+                  "title": "対象品目と収集方法を確認",
+                  "description": "町指定埋立ごみ袋（30リットル）に入らないもの等が対象。家電リサイクル4品目、充電式電池、農漁業用品などの禁止品は出せません。"
+                },
+                {
+                  "step_number": 2,
+                  "title": "町の窓口又は許可業者へ連絡",
+                  "description": "町民課・各支所に電話又は窓口で申し込むか、許可業者に依頼します。収集日・場所・手数料は申込先に確認してください。このアプリからは申し込めません。"
+                },
+                {
+                  "step_number": 3,
+                  "title": "納付券など申込先の指示を確認",
+                  "description": "町の収集では許可証・手数料納付券（シール）・納付書の案内に従い、手数料を納付してシールを貼ります。2026年度PDFには粗大ごみの収集日がないため、日付を推測しません。"
+                },
+                {
+                  "step_number": 4,
+                  "title": "直接搬入する場合",
+                  "description": "伊方町一般廃棄物最終処分場（九町2番耕地117番地2）は毎週金曜14〜16時、祝日を除きます。10kgにつき20円、端数は10kgへ切上げ。可燃ごみ・禁止品は搬入できません。最新の条件を公式案内で確認してください。"
+                }
+              ]
+            }
+          }
+        },
+        "seto": {
+          "calendar_asset": "assets/data/municipality_38442_0_calendar.json",
+          "categories": {
+            "burnable": {
+              "name": "可燃ごみ",
+              "collection_type_id": "burnable",
+              "cutoff": "08:00",
+              "color": "#EF8200"
+            },
+            "landfill": {
+              "name": "埋立ごみ",
+              "collection_type_id": "landfill",
+              "cutoff": "08:00",
+              "color": "#008CCF"
+            },
+            "bottles": {
+              "name": "びん類",
+              "collection_type_id": "bottles",
+              "cutoff": "08:00",
+              "color": "#FFC600"
+            },
+            "cans": {
+              "name": "かん類",
+              "collection_type_id": "cans",
+              "cutoff": "08:00",
+              "color": "#918378"
+            },
+            "pet_bottles": {
+              "name": "ペットボトル",
+              "collection_type_id": "pet_bottles",
+              "cutoff": "08:00",
+              "color": "#00AF50"
+            },
+            "plastic_packaging": {
+              "name": "プラスチック製容器包装",
+              "collection_type_id": "plastic_packaging",
+              "cutoff": "08:00",
+              "color": "#9082BC"
+            },
+            "styrofoam": {
+              "name": "発泡スチロール",
+              "collection_type_id": "styrofoam",
+              "cutoff": "08:00",
+              "color": "#95BE16"
+            },
+            "paper_textiles": {
+              "name": "古紙・古着類",
+              "collection_type_id": "paper_textiles",
+              "cutoff": "08:00",
+              "color": "#AA9649"
+            },
+            "hazardous": {
+              "name": "有害ごみ",
+              "collection_type_id": "hazardous",
+              "cutoff": "08:00",
+              "color": "#298D59"
+            },
+            "bulky": {
+              "name": "粗大ごみ",
+              "color": "#655B87"
+            },
+            "not_collected": {
+              "name": "排出禁止物",
+              "color": "#E60012"
+            }
+          },
+          "bulky_waste": {
+            "category_code": "bulky",
+            "config": {
+              "municipality_id": "38442",
+              "municipality_name": "伊方町",
+              "collection_frequency": "申込制・有料（収集日は申込先に確認）",
+              "reception_hours": "町民課・各支所の開庁時間にご相談ください。",
+              "collection_rules": "町民課・各支所又は許可業者で収集日・料金・場所を確認してください。定期カレンダーには粗大ごみの収集日の記載がありません。",
+              "fee_structure_type": "size_based",
+              "application_method": "phone",
+              "phone_number": "0894-38-0211",
+              "information_url": "https://www.town.ikata.ehime.jp/soshiki/32/11452.html",
+              "steps": [
+                {
+                  "step_number": 1,
+                  "title": "対象品目と収集方法を確認",
+                  "description": "町指定埋立ごみ袋（30リットル）に入らないもの等が対象。家電リサイクル4品目、充電式電池、農漁業用品などの禁止品は出せません。"
+                },
+                {
+                  "step_number": 2,
+                  "title": "町の窓口又は許可業者へ連絡",
+                  "description": "町民課・各支所に電話又は窓口で申し込むか、許可業者に依頼します。収集日・場所・手数料は申込先に確認してください。このアプリからは申し込めません。"
+                },
+                {
+                  "step_number": 3,
+                  "title": "納付券など申込先の指示を確認",
+                  "description": "町の収集では許可証・手数料納付券（シール）・納付書の案内に従い、手数料を納付してシールを貼ります。2026年度PDFには粗大ごみの収集日がないため、日付を推測しません。"
+                },
+                {
+                  "step_number": 4,
+                  "title": "直接搬入する場合",
+                  "description": "伊方町一般廃棄物最終処分場（九町2番耕地117番地2）は毎週金曜14〜16時、祝日を除きます。10kgにつき20円、端数は10kgへ切上げ。可燃ごみ・禁止品は搬入できません。最新の条件を公式案内で確認してください。"
+                }
+              ]
+            }
+          }
+        },
+        "misaki": {
+          "calendar_asset": "assets/data/municipality_38442_0_calendar.json",
+          "categories": {
+            "burnable": {
+              "name": "可燃ごみ",
+              "collection_type_id": "burnable",
+              "cutoff": "08:00",
+              "color": "#EF8200"
+            },
+            "landfill": {
+              "name": "埋立ごみ",
+              "collection_type_id": "landfill",
+              "cutoff": "08:00",
+              "color": "#008CCF"
+            },
+            "bottles": {
+              "name": "びん類",
+              "collection_type_id": "bottles",
+              "cutoff": "08:00",
+              "color": "#FFC600"
+            },
+            "cans": {
+              "name": "かん類",
+              "collection_type_id": "cans",
+              "cutoff": "08:00",
+              "color": "#918378"
+            },
+            "pet_bottles": {
+              "name": "ペットボトル",
+              "collection_type_id": "pet_bottles",
+              "cutoff": "08:00",
+              "color": "#00AF50"
+            },
+            "plastic_packaging": {
+              "name": "プラスチック製容器包装",
+              "collection_type_id": "plastic_packaging",
+              "cutoff": "08:00",
+              "color": "#9082BC"
+            },
+            "styrofoam": {
+              "name": "発泡スチロール",
+              "collection_type_id": "styrofoam",
+              "cutoff": "08:00",
+              "color": "#95BE16"
+            },
+            "paper_textiles": {
+              "name": "古紙・古着類",
+              "collection_type_id": "paper_textiles",
+              "cutoff": "08:00",
+              "color": "#AA9649"
+            },
+            "hazardous": {
+              "name": "有害ごみ",
+              "collection_type_id": "hazardous",
+              "cutoff": "08:00",
+              "color": "#298D59"
+            },
+            "bulky": {
+              "name": "粗大ごみ",
+              "color": "#655B87"
+            },
+            "not_collected": {
+              "name": "排出禁止物",
+              "color": "#E60012"
+            }
+          },
+          "bulky_waste": {
+            "category_code": "bulky",
+            "config": {
+              "municipality_id": "38442",
+              "municipality_name": "伊方町",
+              "collection_frequency": "申込制・有料（収集日は申込先に確認）",
+              "reception_hours": "町民課・各支所の開庁時間にご相談ください。",
+              "collection_rules": "町民課・各支所又は許可業者で収集日・料金・場所を確認してください。定期カレンダーには粗大ごみの収集日の記載がありません。",
+              "fee_structure_type": "size_based",
+              "application_method": "phone",
+              "phone_number": "0894-38-0211",
+              "information_url": "https://www.town.ikata.ehime.jp/soshiki/32/11452.html",
+              "steps": [
+                {
+                  "step_number": 1,
+                  "title": "対象品目と収集方法を確認",
+                  "description": "町指定埋立ごみ袋（30リットル）に入らないもの等が対象。家電リサイクル4品目、充電式電池、農漁業用品などの禁止品は出せません。"
+                },
+                {
+                  "step_number": 2,
+                  "title": "町の窓口又は許可業者へ連絡",
+                  "description": "町民課・各支所に電話又は窓口で申し込むか、許可業者に依頼します。収集日・場所・手数料は申込先に確認してください。このアプリからは申し込めません。"
+                },
+                {
+                  "step_number": 3,
+                  "title": "納付券など申込先の指示を確認",
+                  "description": "町の収集では許可証・手数料納付券（シール）・納付書の案内に従い、手数料を納付してシールを貼ります。2026年度PDFには粗大ごみの収集日がないため、日付を推測しません。"
+                },
+                {
+                  "step_number": 4,
+                  "title": "直接搬入する場合",
+                  "description": "伊方町一般廃棄物最終処分場（九町2番耕地117番地2）は毎週金曜14〜16時、祝日を除きます。10kgにつき20円、端数は10kgへ切上げ。可燃ごみ・禁止品は搬入できません。最新の条件を公式案内で確認してください。"
+                }
+              ]
+            }
+          }
+        }
+      }
     }
   ]
 }

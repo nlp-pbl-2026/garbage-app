@@ -3,6 +3,7 @@ from io import BytesIO
 import json
 from pathlib import Path
 import sys
+from types import SimpleNamespace
 
 import numpy as np
 import pytest
@@ -20,6 +21,7 @@ from ikata_pdf import raster_types
     ('汚れの落ちないものは可燃', 'styrofoam', ['burnable']),
     ('白色以外のものはプラ', 'styrofoam', ['plastic_packaging']),
     ('LEDは埋立', 'hazardous', ['landfill']),
+    ('古着として。濡れた・汚れた・ひどく破れた古着は可燃', 'paper_textiles', ['burnable']),
     ('農業・漁業用は、産業廃棄物', 'bulky', ['not_collected']),
     ('金具は外して埋立', 'burnable', []),
     ('金属部分は埋立', 'burnable', []),
@@ -75,3 +77,15 @@ def test_review_mismatch_stops_before_runtime_data_are_written(tmp_path, monkeyp
         ikata_data.build()
     assert not (tmp_path/'registry.json').exists()
     assert not (tmp_path/'generated/calendar-2026.json').exists()
+
+
+@pytest.mark.parametrize('answer', ['はい', 'いいえ'])
+def test_short_size_answer_is_confirmation_only_for_a_size_question(answer):
+    from app.services.waste_guide_service import RetrievedDocument, WasteGuideService
+    evidence = [RetrievedDocument('品目: バケツ\n分類コード: landfill\n出し方・注意: 指定袋に入らないものは粗大')]
+    region = SimpleNamespace(municipality_id='38442', rules=SimpleNamespace(size_question='袋に入りますか？'))
+    def question(text):
+        return WasteGuideService._conditional_evidence_question(query='プラスチック製バケツ',
+            clarifications=[{'question': text, 'answer': answer}], documents=evidence, region=region)
+    assert question('指定袋に入りますか？') is None
+    assert question('プラスチック製ですか？') == '袋に入りますか？'
