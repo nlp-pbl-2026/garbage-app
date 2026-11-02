@@ -1,0 +1,258 @@
+{
+  "schema_version": 1,
+  "version": "ainan-2026.1",
+  "valid_from": "2026-01-01",
+  "valid_to": "2026-12-31",
+  "source_url": "https://www.town.ainan.ehime.jp/kurashi/tetsuduki/kankyoeisei/gomi/gomishushunittei.html",
+  "blocks": [
+    {
+      "number": 1,
+      "address_expression": "長月第1～4、上・下永ノ岡、和口第1・2、馬場、上町、本町、寺新町、栄町、貝塚、八幡野",
+      "address_labels": [
+        "長月第1～4",
+        "上・下永ノ岡",
+        "和口第1・2",
+        "馬場",
+        "上町",
+        "本町",
+        "寺新町",
+        "栄町",
+        "貝塚",
+        "八幡野"
+      ],
+      "rules": {
+        "burnable": "月曜日、水曜日、金曜日",
+        "containers": "第1火曜日",
+        "pet_bottles": "第2火曜日",
+        "nonburnable": "第3火曜日"
+      },
+      "days_sha256": "d247669cd79362ec68d6f425b78562fc21bb7e2e15ca74c3f044a0b412d7802e",
+      "dated_cells": 192,
+      "collection_dates": {
+        "burnable": 156,
+        "containers": 12,
+        "pet_bottles": 12,
+        "nonburnable": 12
+      }
+    },
+    {
+      "number": 2,
+      "address_expression": "菊川第1～4、平山、長洲、長崎、節崎、馬瀬、深泥、防城成川、赤水、高畑、尻貝、奥の谷、中の谷、高手、灘前、左右水、猿鳴",
+      "address_labels": [
+        "菊川第1～4",
+        "平山",
+        "長洲",
+        "長崎",
+        "節崎",
+        "馬瀬",
+        "深泥",
+        "防城成川",
+        "赤水",
+        "高畑",
+        "尻貝",
+        "奥の谷",
+        "中の谷",
+        "高手",
+        "灘前",
+        "左右水",
+        "猿鳴"
+      ],
+      "rules": {
+        "burnable": "月曜日、水曜日、金曜日",
+        "containers": "第1木曜日",
+        "pet_bottles": "第4木曜日",
+        "nonburnable": "第3木曜日"
+      },
+      "days_sha256": "d291b4487b7c75a7df8648f22c02df338f1694befb4b1ef617fe89e8d14731cd",
+      "dated_cells": 192,
+      "collection_dates": {
+        "containers": 12,
+        "burnable": 156,
+        "nonburnable": 12,
+        "pet_bottles": 12
+      }
+    },
+    {
+      "number": 3,
+      "address_expression": "僧都、山出、梶郷上・下、大道上・下、樫床、樋口、西柳、岡、中緑、当時、下緑、左谷、太場、土居、三島団地、蓮乗寺、東浜、中組、奥前、西浜、鼻前、垣内、岩水、敦盛、柿ノ浦、大浜、中玉、脇本",
+      "address_labels": [
+        "僧都",
+        "山出",
+        "梶郷上・下",
+        "大道上・下",
+        "樫床",
+        "樋口",
+        "西柳",
+        "岡",
+        "中緑",
+        "当時",
+        "下緑",
+        "左谷",
+        "太場",
+        "土居",
+        "三島団地",
+        "蓮乗寺",
+        "東浜",
+        "中組",
+        "奥前",
+        "西浜",
+        "鼻前",
+        "垣内",
+        "岩水",
+        "敦盛",
+        "柿ノ浦",
+        "大浜",
+        "中玉",
+        "脇本"
+      ],
+      "rules": {
+        "burnable": "火曜日、木曜日、土曜日",
+        "containers": "第1月曜日",
+        "pet_bottles": "第2月曜日",
+        "nonburnable": "第3月曜日"
+      },
+      "days_sha256": "a20b124242d346a4591313611285cc087450645e9576b0a5fe3571a7a1079a94",
+      "dated_cells": 193,
+      "collection_dates": {
+        "burnable": 157,
+        "containers": 12,
+        "pet_bottles": 12,
+        "nonburnable": 12
+      }
+    },
+    {
+      "number": 4,
+      "address_expression": "豊田、石井手、神越、中の谷、鼻、下長野、伊勢町",
+      "address_labels": [
+        "豊田",
+        "石井手",
+        "神越",
+        "中の谷",
+        "鼻",
+        "下長野",
+        "伊勢町"
+      ],
+      "rules": {
+        "burnable": "火曜日、木曜日、土曜日",
+        "containers": "第1水曜日",
+        "pet_bottles": "第2水曜日",
+        "nonburnable": "第3水曜日"
+      },
+      "days_sha256": "f64baab856a2eed394542803b11da2949f334e355a4be880bc49b01fdec7d8f4",
+      "dated_cells": 193,
+      "collection_dates": {
+        "burnable": 157,
+        "containers": 12,
+        "pet_bottles": 12,
+        "nonburnable": 12
+      }
+    },
+    {
+      "number": 5,
+      "address_expression": "矢ノ町1～3、中町上・下、北裡、後1～3、清水、沖1・2、中原、松本、久保、鳥越、古月、鯆越、日土、大寿浦、真浦、西真浦、新浦",
+      "address_labels": [
+        "矢ノ町1～3",
+        "中町上・下",
+        "北裡",
+        "後1～3",
+        "清水",
+        "沖1・2",
+        "中原",
+        "松本",
+        "久保",
+        "鳥越",
+        "古月",
+        "鯆越",
+        "日土",
+        "大寿浦",
+        "真浦",
+        "西真浦",
+        "新浦"
+      ],
+      "rules": {
+        "burnable": "火曜日、木曜日、土曜日",
+        "containers": "第1金曜日",
+        "pet_bottles": "第2金曜日",
+        "nonburnable": "第3金曜日"
+      },
+      "days_sha256": "9b4487a84f2220548d048df86273c5dabd927039c4998c26d10e904628487d49",
+      "dated_cells": 193,
+      "collection_dates": {
+        "burnable": 157,
+        "containers": 12,
+        "pet_bottles": 12,
+        "nonburnable": 12
+      }
+    },
+    {
+      "number": 6,
+      "address_expression": "一本松全域",
+      "address_labels": [
+        "一本松全域"
+      ],
+      "rules": {
+        "burnable": "月曜日、水曜日、金曜日",
+        "containers": "第1木曜日",
+        "pet_bottles": "第4木曜日",
+        "nonburnable": "第3木曜日"
+      },
+      "days_sha256": "d291b4487b7c75a7df8648f22c02df338f1694befb4b1ef617fe89e8d14731cd",
+      "dated_cells": 192,
+      "collection_dates": {
+        "containers": 12,
+        "burnable": 156,
+        "nonburnable": 12,
+        "pet_bottles": 12
+      }
+    },
+    {
+      "number": 7,
+      "address_expression": "内海全域",
+      "address_labels": [
+        "内海全域"
+      ],
+      "rules": {
+        "burnable": "火曜日、木曜日、土曜日",
+        "containers": "第1水曜日",
+        "pet_bottles": "第2水曜日",
+        "nonburnable": "第3水曜日"
+      },
+      "days_sha256": "f64baab856a2eed394542803b11da2949f334e355a4be880bc49b01fdec7d8f4",
+      "dated_cells": 193,
+      "collection_dates": {
+        "burnable": 157,
+        "containers": 12,
+        "pet_bottles": 12,
+        "nonburnable": 12
+      }
+    },
+    {
+      "number": 8,
+      "address_expression": "西海全域",
+      "address_labels": [
+        "西海全域"
+      ],
+      "rules": {
+        "burnable": "月曜日、水曜日、金曜日",
+        "containers": "第1火曜日",
+        "pet_bottles": "第2火曜日",
+        "nonburnable": "第3火曜日"
+      },
+      "days_sha256": "d247669cd79362ec68d6f425b78562fc21bb7e2e15ca74c3f044a0b412d7802e",
+      "dated_cells": 192,
+      "collection_dates": {
+        "burnable": 156,
+        "containers": 12,
+        "pet_bottles": 12,
+        "nonburnable": 12
+      }
+    }
+  ],
+  "paper_battery_source_url": "https://www.town.ainan.ehime.jp/kurashi/tetsuduki/kankyoeisei/gomi/files/2026shinbunshushu.pdf",
+  "verification": {
+    "method": "Official 2026 HTML block tables converted from weekly and nth-weekday rules",
+    "coverage": "Eight official blocks; burnable, bottles/cans, PET bottles and nonburnable waste",
+    "limitations": "Paper and dry-battery collection uses a separate ten-site schedule and is not inferred from the eight residential blocks",
+    "reviewed_at": "2026-11-02"
+  }
+}

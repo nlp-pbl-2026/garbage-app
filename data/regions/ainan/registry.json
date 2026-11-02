@@ -1,0 +1,315 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38506",
+  "municipality_name": "愛南町",
+  "prefecture_id": "38",
+  "prefecture_name": "愛媛県",
+  "version": "ainan-2026.1",
+  "valid_from": "2026-01-01",
+  "valid_to": "2026-12-31",
+  "collection_areas": [
+    {
+      "id": "38506-block-1",
+      "name": "ブロック1",
+      "display_name": "ブロック1（長月第1～4、上・下永ノ岡、和口第1・2、馬場、上町、本町、寺新町、栄町、貝塚、八幡野）",
+      "calendar_id": "ainan-block-1",
+      "rule_profile_id": "ainan",
+      "address_labels": [
+        "長月第1～4",
+        "上・下永ノ岡",
+        "和口第1・2",
+        "馬場",
+        "上町",
+        "本町",
+        "寺新町",
+        "栄町",
+        "貝塚",
+        "八幡野"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.ainan.ehime.jp/kurashi/tetsuduki/kankyoeisei/gomi/gomishushunittei.html"
+    },
+    {
+      "id": "38506-block-2",
+      "name": "ブロック2",
+      "display_name": "ブロック2（菊川第1～4、平山、長洲、長崎、節崎、馬瀬、深泥、防城成川、赤水、高畑、尻貝、奥の谷、中の谷、高手、灘前、左右水、猿鳴）",
+      "calendar_id": "ainan-block-2",
+      "rule_profile_id": "ainan",
+      "address_labels": [
+        "菊川第1～4",
+        "平山",
+        "長洲",
+        "長崎",
+        "節崎",
+        "馬瀬",
+        "深泥",
+        "防城成川",
+        "赤水",
+        "高畑",
+        "尻貝",
+        "奥の谷",
+        "中の谷",
+        "高手",
+        "灘前",
+        "左右水",
+        "猿鳴"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.ainan.ehime.jp/kurashi/tetsuduki/kankyoeisei/gomi/gomishushunittei.html"
+    },
+    {
+      "id": "38506-block-3",
+      "name": "ブロック3",
+      "display_name": "ブロック3（僧都、山出、梶郷上・下、大道上・下、樫床、樋口、西柳、岡、中緑、当時、下緑、左谷、太場、土居、三島団地、蓮乗寺、東浜、中組、奥前、西浜、鼻前、垣内、岩水、敦盛、柿ノ浦、大浜、中玉、脇本）",
+      "calendar_id": "ainan-block-3",
+      "rule_profile_id": "ainan",
+      "address_labels": [
+        "僧都",
+        "山出",
+        "梶郷上・下",
+        "大道上・下",
+        "樫床",
+        "樋口",
+        "西柳",
+        "岡",
+        "中緑",
+        "当時",
+        "下緑",
+        "左谷",
+        "太場",
+        "土居",
+        "三島団地",
+        "蓮乗寺",
+        "東浜",
+        "中組",
+        "奥前",
+        "西浜",
+        "鼻前",
+        "垣内",
+        "岩水",
+        "敦盛",
+        "柿ノ浦",
+        "大浜",
+        "中玉",
+        "脇本"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.ainan.ehime.jp/kurashi/tetsuduki/kankyoeisei/gomi/gomishushunittei.html"
+    },
+    {
+      "id": "38506-block-4",
+      "name": "ブロック4",
+      "display_name": "ブロック4（豊田、石井手、神越、中の谷、鼻、下長野、伊勢町）",
+      "calendar_id": "ainan-block-4",
+      "rule_profile_id": "ainan",
+      "address_labels": [
+        "豊田",
+        "石井手",
+        "神越",
+        "中の谷",
+        "鼻",
+        "下長野",
+        "伊勢町"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.ainan.ehime.jp/kurashi/tetsuduki/kankyoeisei/gomi/gomishushunittei.html"
+    },
+    {
+      "id": "38506-block-5",
+      "name": "ブロック5",
+      "display_name": "ブロック5（矢ノ町1～3、中町上・下、北裡、後1～3、清水、沖1・2、中原、松本、久保、鳥越、古月、鯆越、日土、大寿浦、真浦、西真浦、新浦）",
+      "calendar_id": "ainan-block-5",
+      "rule_profile_id": "ainan",
+      "address_labels": [
+        "矢ノ町1～3",
+        "中町上・下",
+        "北裡",
+        "後1～3",
+        "清水",
+        "沖1・2",
+        "中原",
+        "松本",
+        "久保",
+        "鳥越",
+        "古月",
+        "鯆越",
+        "日土",
+        "大寿浦",
+        "真浦",
+        "西真浦",
+        "新浦"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.ainan.ehime.jp/kurashi/tetsuduki/kankyoeisei/gomi/gomishushunittei.html"
+    },
+    {
+      "id": "38506-block-6",
+      "name": "ブロック6",
+      "display_name": "ブロック6（一本松全域）",
+      "calendar_id": "ainan-block-6",
+      "rule_profile_id": "ainan",
+      "address_labels": [
+        "一本松全域"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.ainan.ehime.jp/kurashi/tetsuduki/kankyoeisei/gomi/gomishushunittei.html"
+    },
+    {
+      "id": "38506-block-7",
+      "name": "ブロック7",
+      "display_name": "ブロック7（内海全域）",
+      "calendar_id": "ainan-block-7",
+      "rule_profile_id": "ainan",
+      "address_labels": [
+        "内海全域"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.ainan.ehime.jp/kurashi/tetsuduki/kankyoeisei/gomi/gomishushunittei.html"
+    },
+    {
+      "id": "38506-block-8",
+      "name": "ブロック8",
+      "display_name": "ブロック8（西海全域）",
+      "calendar_id": "ainan-block-8",
+      "rule_profile_id": "ainan",
+      "address_labels": [
+        "西海全域"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.ainan.ehime.jp/kurashi/tetsuduki/kankyoeisei/gomi/gomishushunittei.html"
+    }
+  ],
+  "calendars": [
+    {
+      "id": "ainan-block-1",
+      "rule_profile_id": "ainan"
+    },
+    {
+      "id": "ainan-block-2",
+      "rule_profile_id": "ainan"
+    },
+    {
+      "id": "ainan-block-3",
+      "rule_profile_id": "ainan"
+    },
+    {
+      "id": "ainan-block-4",
+      "rule_profile_id": "ainan"
+    },
+    {
+      "id": "ainan-block-5",
+      "rule_profile_id": "ainan"
+    },
+    {
+      "id": "ainan-block-6",
+      "rule_profile_id": "ainan"
+    },
+    {
+      "id": "ainan-block-7",
+      "rule_profile_id": "ainan"
+    },
+    {
+      "id": "ainan-block-8",
+      "rule_profile_id": "ainan"
+    }
+  ],
+  "rule_profiles": {
+    "ainan": {
+      "items_path": "knowledge/items.csv",
+      "embedding_index_path": "knowledge/item_embeddings.npz",
+      "index_profile_id": "citywide",
+      "calendar_path": "generated/calendar-2026.json",
+      "classification_rules": "愛南町公式の家庭ごみ分別早見表と、選択したブロックの令和8年収集日程に従う。公式分類（可燃、びん・缶、ペットボトル、不燃、古紙、資源、小型家電、粗大、禁止）を保持し、素材、指定袋に入るか、50cm以下への切断可否、家庭用か事業用かなどの条件を確認する。条件を利用者の説明や画像から確認できない場合は推測せず質問する。可燃・びん缶・ペットボトル・不燃は、指定袋に入れ、収集日の朝7時までに決められたステーションへ出す。一度に出せる指定大袋は3袋まで。古紙・乾電池は8ブロックとは別の収集場所・日程なので、2026年の公式一覧を確認する。指定袋に入らない粗大ごみは環境衛生センター等へ持ち込み、禁止物は取扱店や専門業者へ相談する。",
+      "size_question": "愛南町の指定ごみ袋に入りますか？素材や長さは分かりますか？",
+      "knowledge_title": "愛南町公式家庭ごみ分別早見表",
+      "categories": {
+        "burnable": {
+          "name": "可燃",
+          "collection_type_id": "burnable",
+          "cutoff": "07:00",
+          "color": "#FFBC38"
+        },
+        "containers": {
+          "name": "びん・缶",
+          "collection_type_id": "containers",
+          "cutoff": "07:00",
+          "color": "#996345"
+        },
+        "pet_bottles": {
+          "name": "ペットボトル",
+          "collection_type_id": "pet_bottles",
+          "cutoff": "07:00",
+          "color": "#A8D14F"
+        },
+        "nonburnable": {
+          "name": "不燃",
+          "collection_type_id": "nonburnable",
+          "cutoff": "07:00",
+          "color": "#4A518A"
+        },
+        "waste_paper": {
+          "name": "古紙",
+          "color": "#9BC1E7",
+          "answer_note": "8ブロックの定期収集とは別の日程です。2026年の新聞・雑誌・ダンボール・廃乾電池の収集予定日と集積場所を確認してください。"
+        },
+        "dry_batteries": {
+          "name": "資源（乾電池）",
+          "color": "#9BC1E7",
+          "answer_note": "8ブロックの定期収集とは別の日程です。2026年の新聞・雑誌・ダンボール・廃乾電池の収集予定日と集積場所を確認してください。"
+        },
+        "small_appliances": {
+          "name": "小型家電",
+          "color": "#FAAFCE",
+          "answer_note": "役場本庁・各支所・環境衛生センターへ持ち込みます。指定の不燃袋で出す場合は品目別の条件を確認してください。"
+        },
+        "bulky": {
+          "name": "粗大",
+          "color": "#F3F3F3",
+          "answer_note": "ごみステーションでの定期収集はありません。愛南町環境衛生センターまたは宇和島地区広域事務組合環境センターへ持ち込みます。"
+        },
+        "not_collected": {
+          "name": "禁止",
+          "color": "#F24234",
+          "answer_note": "愛南町の収集や処理施設では受け入れできません。取扱店、メーカー、専門業者などへ相談してください。"
+        }
+      },
+      "bulky_waste": {
+        "category_code": "bulky",
+        "config": {
+          "municipality_id": "38506",
+          "municipality_name": "愛南町",
+          "collection_frequency": "ごみステーションでの定期収集なし",
+          "reception_hours": "愛南町環境衛生センター：月～土 9:00～16:00（予約必要、休業日あり）",
+          "collection_rules": "指定ごみ袋に収まらない原則100×80×250cm以内の粗大ごみは、環境衛生センター等へ直接持ち込むか、町の許可業者へ収集運搬を依頼します。",
+          "fee_structure_type": "weight_based",
+          "application_method": "direct_dropoff",
+          "phone_number": "0895-72-6955",
+          "web_form_url": null,
+          "information_url": "https://www.town.ainan.ehime.jp/kurashi/tetsuduki/kankyoeisei/gomi/R412bunbetsu.html",
+          "steps": [
+            {
+              "step_number": 1,
+              "title": "品目と大きさを確認",
+              "description": "指定袋に収まらず、原則100×80×250cm以内のものが粗大ごみです。禁止物は持ち込めません。"
+            },
+            {
+              "step_number": 2,
+              "title": "持込先へ予約",
+              "description": "愛南町環境衛生センターへ持ち込む場合は、受付時間と休業日を確認して事前に予約します。"
+            },
+            {
+              "step_number": 3,
+              "title": "分別して持ち込む",
+              "description": "袋に入る大きさのごみも施設へ持ち込む場合は分別し、中身が見える透明・半透明袋を使用します。"
+            },
+            {
+              "step_number": 4,
+              "title": "運搬を依頼する場合",
+              "description": "家庭系粗大ごみ収集運搬許可業者へ依頼し、料金を各業者へ確認します。"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

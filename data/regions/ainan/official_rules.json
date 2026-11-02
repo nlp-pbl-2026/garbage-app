@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38506",
+  "version": "ainan-2026.1",
+  "source_urls": [
+    "https://www.town.ainan.ehime.jp/kurashi/tetsuduki/kankyoeisei/gomi/gomishushunittei.html",
+    "https://www.town.ainan.ehime.jp/kurashi/tetsuduki/kankyoeisei/gomi/R412bunbetsu.html",
+    "https://www.town.ainan.ehime.jp/kurashi/tetsuduki/kankyoeisei/gomi/files/r6.8.8gomibunnbetuhayamihyo.pdf",
+    "https://www.town.ainan.ehime.jp/kurashi/tetsuduki/kankyoeisei/gomi/files/2026shinbunshushu.pdf"
+  ],
+  "classification_rules": "愛南町公式の家庭ごみ分別早見表と、選択したブロックの令和8年収集日程に従う。公式分類（可燃、びん・缶、ペットボトル、不燃、古紙、資源、小型家電、粗大、禁止）を保持し、素材、指定袋に入るか、50cm以下への切断可否、家庭用か事業用かなどの条件を確認する。条件を利用者の説明や画像から確認できない場合は推測せず質問する。可燃・びん缶・ペットボトル・不燃は、指定袋に入れ、収集日の朝7時までに決められたステーションへ出す。一度に出せる指定大袋は3袋まで。古紙・乾電池は8ブロックとは別の収集場所・日程なので、2026年の公式一覧を確認する。指定袋に入らない粗大ごみは環境衛生センター等へ持ち込み、禁止物は取扱店や専門業者へ相談する。",
+  "categories": {
+    "burnable": {
+      "name": "可燃",
+      "collection_type_id": "burnable",
+      "cutoff": "07:00",
+      "color": "#FFBC38",
+      "instructions": "愛南町指定ごみ袋に入れ、収集日の朝7時までに決められたステーションへ出します。草・枝は直径5cm、長さ50cm以下で指定袋に収まる大きさにします。"
+    },
+    "containers": {
+      "name": "びん・缶",
+      "collection_type_id": "containers",
+      "cutoff": "07:00",
+      "color": "#996345",
+      "instructions": "キャップやラベルを外し、すすいで指定袋に入れ、収集日の朝7時までに出します。スプレー缶は中身を使い切り、公式資料の注意に従います。"
+    },
+    "pet_bottles": {
+      "name": "ペットボトル",
+      "collection_type_id": "pet_bottles",
+      "cutoff": "07:00",
+      "color": "#A8D14F",
+      "instructions": "キャップとラベルを外し、すすいで指定袋に入れ、収集日の朝7時までに出します。外したキャップとラベルは可燃ごみです。"
+    },
+    "nonburnable": {
+      "name": "不燃",
+      "collection_type_id": "nonburnable",
+      "cutoff": "07:00",
+      "color": "#4A518A",
+      "instructions": "指定の不燃袋に入れ、収集日の朝7時までに出します。刃物や割れ物などは紙や布で包み「キケン」と表示します。"
+    },
+    "waste_paper": {
+      "name": "古紙",
+      "color": "#9BC1E7",
+      "answer_note": "8ブロックの定期収集とは別の日程です。2026年の新聞・雑誌・ダンボール・廃乾電池の収集予定日と集積場所を確認してください。",
+      "instructions": "新聞、雑誌・チラシ、ダンボールを種類別にひもで十文字に縛り、指定された集積場所へ出します。"
+    },
+    "dry_batteries": {
+      "name": "資源（乾電池）",
+      "color": "#9BC1E7",
+      "answer_note": "8ブロックの定期収集とは別の日程です。2026年の新聞・雑誌・ダンボール・廃乾電池の収集予定日と集積場所を確認してください。",
+      "instructions": "乾電池、ボタン型電池、リチウムイオン電池を指定された集積場所へ出します。発火等の危険性があるため可燃物には出しません。"
+    },
+    "small_appliances": {
+      "name": "小型家電",
+      "color": "#FAAFCE",
+      "answer_note": "役場本庁・各支所・環境衛生センターへ持ち込みます。指定の不燃袋で出す場合は品目別の条件を確認してください。",
+      "instructions": "電池を外して持ち込みます。不燃ごみとして出せる品目はコードを50cm以下に切断し、品目別の条件に従います。"
+    },
+    "bulky": {
+      "name": "粗大",
+      "color": "#F3F3F3",
+      "answer_note": "ごみステーションでの定期収集はありません。愛南町環境衛生センターまたは宇和島地区広域事務組合環境センターへ持ち込みます。",
+      "instructions": "指定ごみ袋に収まらないもので、原則100×80×250cm以内です。施設の受付時間・予約要否・処理手数料を確認して持ち込みます。"
+    },
+    "not_collected": {
+      "name": "禁止",
+      "color": "#F24234",
+      "answer_note": "愛南町の収集や処理施設では受け入れできません。取扱店、メーカー、専門業者などへ相談してください。",
+      "instructions": "家電リサイクル対象機器、自動車・バイク、処理困難物、産業廃棄物などは公式資料記載の取扱先へ相談します。"
+    }
+  }
+}

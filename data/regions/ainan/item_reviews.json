@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "version": "ainan-2026.1",
+  "official_items": 977,
+  "items_sha256": "a2e785817024f6d8c470ceefc342122efc17dedaad6e65f3dfa0e6cc976a8551",
+  "primary_categories": {
+    "nonburnable": 342,
+    "burnable": 360,
+    "containers": 42,
+    "bulky": 110,
+    "not_collected": 75,
+    "small_appliances": 9,
+    "waste_paper": 30,
+    "dry_batteries": 7,
+    "pet_bottles": 2
+  },
+  "multi_category_records": 143,
+  "records_with_notes": 673,
+  "source_pdf_pages": "4-36",
+  "extraction_method": "200 dpi ruled-table segmentation plus Windows Japanese OCR coordinates and official category colors",
+  "html_corrections": [
+    "カーペット(ホットカーペット等)",
+    "ガステーブル",
+    "ジュニアシート(自動車用)",
+    "テニスラケット",
+    "バルサン(くん煙殺虫剤)",
+    "ブルーシート",
+    "布団・毛布",
+    "洗濯バサミ",
+    "金庫(小さく軽量のもの)",
+    "鉄アレイ",
+    "電気毛布"
+  ],
+  "reviewed_at": "2026-11-02"
+}
