@@ -1,0 +1,182 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38442",
+  "version": "ikata-2026.1",
+  "license_status": "unconfirmed",
+  "classification_rules": "伊方町のごみ分別ガイドブック（現在公開の全ページ版・分冊）、2026年度カレンダー、関連更新ページを根拠とする。他自治体の分類・袋・施設・手数料を適用しない。\n分類と収集方法を区別し、個別品目の注記・禁止指定を共通案内より優先する。指定埋立ごみ袋は30リットル。袋に入らないものを粗大とする条件と、品目自体の固定分類を混同しない。農漁業の器具・資材、家電リサイクル対象品は大きさで粗大へ変更しない。\nプラスチック製品と容器包装を区別する。製品（バケツ・歯ブラシ・玩具等）は埋立。プラマーク付き容器包装はプラ、白色発泡トレイは発泡スチロール、白色以外の発泡トレイはプラ。洗えない・汚れの落ちないPET本体・プラ容器包装・発泡スチロールは原則可燃。ただし辞典の特定品目に汚れの落ちないものは埋立とある場合はその個別注記を優先し、矛盾を推測で解消しない。\n飲料・食料用のびんはびん類。化粧品びん、ほ乳びん、ガラスコップ、割れたびんは埋立。飲料・食料缶とスプレー缶はかん類。スプレーは町の資料に従って使い切り、火気のない場所でガス抜きを案内する。ペンキ缶等の汚れが取れない缶は埋立。\nPETマーク付きのボトル本体と外した部品を分ける。プラスチック製キャップ・外したラベルはプラ、金属キャップは埋立。付属物の分類をボトル本体へ誤適用しない。利用者が確認した表示・材質・状態を画像からの推測と混同しない。\n古紙・古着類にはシュレッダー紙も含む。汚れ・濡れ・ひどい破れのある古着、下着・肌着・ストッキング等は可燃。内側にアルミ箔のある紙パックは可燃。品目別の袋サイズ条件を優先する。\nアルカリ・マンガン乾電池と蛍光管・白熱電球は有害、LED球とデジタル体温計は埋立。充電式・ボタン型電池は排出禁止で販売店等へ相談する。電池の種類が不明な場合は確認し、他自治体の充電池回収ルールを適用しない。\n粗大ごみは有料・申込制で定期カレンダーに日付がない。町の窓口又は許可業者で収集日・料金・条件を確認する。最終処分場への直接搬入は毎週金曜14〜16時（祝日を除く）、10kgごと20円（端数切上げ）で可燃ごみは搬入不可。可燃ごみは八幡浜市環境センターへの前営業日までの事前申請で別途搬入。家電リサイクル4品目は町の施設への持込も不可（2023年更新ページ）。\n2026年度の検証済み日付だけを使い、年末年始・祝日もPDFの印字を優先する。条件不足は追加質問又は判定保留とする。共通の出し方に書かれた別品目の分類は対象本体の分類根拠にしない。",
+  "categories": {
+    "burnable": {
+      "name": "可燃ごみ",
+      "color": "#EF8200",
+      "instructions": "町指定のもやすごみ袋（20・30・45リットル）に入れ、口をしっかり結ぶ。生ごみは十分に水を切る。食用油は紙や布に染み込ませるか固める。収集日当日の午前8時までに地域のごみステーションへ。前夜には出さない。",
+      "source_url": "https://www.town.ikata.ehime.jp/uploaded/attachment/14759.pdf#page=2",
+      "collection_type_id": "burnable",
+      "cutoff": "08:00"
+    },
+    "landfill": {
+      "name": "埋立ごみ",
+      "color": "#008CCF",
+      "instructions": "町指定の埋立ごみ袋（30リットル）に入れ、口をしっかり結ぶ。刃物・割れ物は危なくないよう紙や布で包む。電池を外す。袋を無理に破らない。収集日当日の午前8時までに地域のごみステーションへ。前夜には出さない。",
+      "source_url": "https://www.town.ikata.ehime.jp/uploaded/attachment/14759.pdf#page=5",
+      "collection_type_id": "landfill",
+      "cutoff": "08:00"
+    },
+    "bottles": {
+      "name": "びん類",
+      "color": "#FFC600",
+      "instructions": "飲料・食料用の空きびんはキャップを外し、さっとすすいで45リットルの市販の無色透明袋へ。化粧品びん・ほ乳びん・ガラスのコップは別品目として扱う。収集日当日の午前8時までに地域のごみステーションへ。前夜には出さない。",
+      "source_url": "https://www.town.ikata.ehime.jp/uploaded/attachment/14759.pdf#page=6",
+      "collection_type_id": "bottles",
+      "cutoff": "08:00"
+    },
+    "cans": {
+      "name": "かん類",
+      "color": "#918378",
+      "instructions": "飲料・食料用の空き缶はさっとすすぎ、つぶさず45リットルの市販の無色透明袋へ。スプレー缶は使い切り、火気のない場所で底を開けてガスを抜くという町の案内を確認する。収集日当日の午前8時までに地域のごみステーションへ。前夜には出さない。",
+      "source_url": "https://www.town.ikata.ehime.jp/uploaded/attachment/14759.pdf#page=7",
+      "collection_type_id": "cans",
+      "cutoff": "08:00"
+    },
+    "pet_bottles": {
+      "name": "ペットボトル",
+      "color": "#00AF50",
+      "instructions": "PETマーク付きの飲料・酒類・しょうゆ用等のボトル本体。キャップとラベルを外し、さっとすすぎ、つぶさず45リットルの市販の無色透明袋へ。収集日当日の午前8時までに地域のごみステーションへ。前夜には出さない。",
+      "source_url": "https://www.town.ikata.ehime.jp/uploaded/attachment/14759.pdf#page=8",
+      "collection_type_id": "pet_bottles",
+      "cutoff": "08:00"
+    },
+    "plastic_packaging": {
+      "name": "プラスチック製容器包装",
+      "color": "#9082BC",
+      "instructions": "プラマーク付きの商品の容器・包装をさっとすすぎ、十分に水切りし、45リットルの市販の無色透明袋へ。半透明袋・レジ袋・二重袋は使わない。出す対象が本体か付属品かを区別する。収集日当日の午前8時までに地域のごみステーションへ。前夜には出さない。",
+      "source_url": "https://www.town.ikata.ehime.jp/uploaded/attachment/14759.pdf#page=9",
+      "collection_type_id": "plastic_packaging",
+      "cutoff": "08:00"
+    },
+    "styrofoam": {
+      "name": "発泡スチロール",
+      "color": "#95BE16",
+      "instructions": "白色の発泡食品トレイ、保冷箱、家電の固定用発泡スチロール等。シールを外してすすぎ、水切りして45リットルの市販の無色透明袋へ。袋に入らないものは小さく砕く。ひもで縛らない。収集日当日の午前8時までに地域のごみステーションへ。前夜には出さない。",
+      "source_url": "https://www.town.ikata.ehime.jp/uploaded/attachment/14759.pdf#page=11",
+      "collection_type_id": "styrofoam",
+      "cutoff": "08:00"
+    },
+    "paper_textiles": {
+      "name": "古紙・古着類",
+      "color": "#AA9649",
+      "instructions": "新聞・雑誌雑紙・段ボール・紙パック・シュレッダー紙・古着を種類別にまとめ、平らに伸ばしてひもで十文字にしばる。新聞とチラシは分けない。シュレッダー紙は無色透明袋に入れて飛散防止。古着は片手で持てる重さ。収集日当日の午前8時までに地域のごみステーションへ。前夜には出さない。",
+      "source_url": "https://www.town.ikata.ehime.jp/uploaded/attachment/14759.pdf#page=12",
+      "collection_type_id": "paper_textiles",
+      "cutoff": "08:00"
+    },
+    "hazardous": {
+      "name": "有害ごみ",
+      "color": "#298D59",
+      "instructions": "蛍光管・乾電池（アルカリ・マンガン）・白熱電球・水銀体温計等。45リットルの市販の無色透明袋へ。乾電池は割れ防止のため別の小さな無色透明袋に入れる。長い蛍光管は両側から袋をかぶせる。収集日当日の午前8時までに地域のごみステーションへ。前夜には出さない。",
+      "source_url": "https://www.town.ikata.ehime.jp/uploaded/attachment/14759.pdf#page=14",
+      "collection_type_id": "hazardous",
+      "cutoff": "08:00"
+    },
+    "bulky": {
+      "name": "粗大ごみ",
+      "color": "#655B87",
+      "instructions": "町指定埋立ごみ袋（30リットル）に入らないもの等。申込制の有料収集、許可業者への依頼、又は最終処分場への有料直接搬入。禁止品は大きさに関係なく対象外。",
+      "source_url": "https://www.town.ikata.ehime.jp/uploaded/attachment/14759.pdf#page=15",
+      "answer_note": "粗大ごみは申込制・有料です。2026年度の地区別PDFには粗大ごみの収集日の記載がないため、町民課・各支所又は許可業者へ申込み時に確認してください。直接搬入は最終処分場で金曜14〜16時（祝日を除く）、有料です。"
+    },
+    "not_collected": {
+      "name": "排出禁止物",
+      "color": "#E60012",
+      "instructions": "家電リサイクル4品目、農漁業用器具資材、医療廃棄物、車・バイク部品、充電式・ボタン型電池など。町の定期収集へ出さず、品目別に販売店・専門業者等へ相談する。",
+      "source_url": "https://www.town.ikata.ehime.jp/uploaded/attachment/14759.pdf#page=49",
+      "answer_note": "町の定期収集へは出せません。販売店・専門業者など、公式の品目別案内を確認してください。"
+    }
+  },
+  "examples": [
+    {
+      "id": "ik-rule-pet-clean",
+      "item": "PETマーク付き飲料用ペットボトル本体（キャップ・ラベルを外したもの）",
+      "category": "pet_bottles",
+      "note": "本体はペット。外したプラ製キャップとラベルとは別にする。洗えないもの・汚れの落ちないものは可燃。",
+      "source_url": "https://www.town.ikata.ehime.jp/uploaded/attachment/14759.pdf#page=8",
+      "category_options": [
+        "burnable"
+      ]
+    },
+    {
+      "id": "ik-rule-pet-cap",
+      "item": "ペットボトルから外したプラスチック製キャップ・ラベル",
+      "category": "plastic_packaging",
+      "note": "プラ製のキャップ・ラベルだけが対象。本体は別。洗えないもの・汚れが落ちないものは可燃。",
+      "source_url": "https://www.town.ikata.ehime.jp/uploaded/attachment/14759.pdf#page=8",
+      "category_options": [
+        "burnable"
+      ]
+    },
+    {
+      "id": "ik-rule-foam-white",
+      "item": "洗った白色の発泡スチロール食品トレイ",
+      "category": "styrofoam",
+      "note": "白色の発泡食品トレイ。汚れの落ちないものは可燃。",
+      "source_url": "https://www.town.ikata.ehime.jp/uploaded/attachment/14759.pdf#page=11",
+      "category_options": [
+        "burnable"
+      ]
+    },
+    {
+      "id": "ik-rule-foam-color",
+      "item": "洗った白色以外の発泡食品トレイ（プラマーク付き）",
+      "category": "plastic_packaging",
+      "note": "白色以外の容器包装トレイはプラ。汚れの落ちないものは可燃。",
+      "source_url": "https://www.town.ikata.ehime.jp/uploaded/attachment/14759.pdf#page=9",
+      "category_options": [
+        "burnable"
+      ]
+    },
+    {
+      "id": "ik-rule-cosmetic-bottle",
+      "item": "空の化粧品ガラスびん",
+      "category": "landfill",
+      "note": "化粧品のびんはびん類として出せない。埋立へ。",
+      "source_url": "https://www.town.ikata.ehime.jp/uploaded/attachment/14759.pdf#page=6"
+    },
+    {
+      "id": "ik-rule-milk-bottle",
+      "item": "使わなくなったガラス製ほ乳びん",
+      "category": "landfill",
+      "note": "ほ乳びんはびん類として出せない。埋立へ。",
+      "source_url": "https://www.town.ikata.ehime.jp/uploaded/attachment/14759.pdf#page=6"
+    },
+    {
+      "id": "ik-rule-broken-bottle",
+      "item": "割れたガラスびん",
+      "category": "landfill",
+      "note": "割れたびんは危なくないように布などで包んで埋立へ。",
+      "source_url": "https://www.town.ikata.ehime.jp/uploaded/attachment/14759.pdf#page=5"
+    },
+    {
+      "id": "ik-rule-battery-rechargeable",
+      "item": "使い終わった充電式電池・リチウムイオン電池",
+      "category": "not_collected",
+      "note": "充電式電池は排出禁止。販売店などに相談する。一般の乾電池と混同しない。",
+      "source_url": "https://www.town.ikata.ehime.jp/uploaded/attachment/14759.pdf#page=49"
+    },
+    {
+      "id": "ik-rule-battery-button",
+      "item": "ボタン型電池",
+      "category": "not_collected",
+      "note": "ボタン型電池は排出禁止。販売店などに相談する。",
+      "source_url": "https://www.town.ikata.ehime.jp/uploaded/attachment/14759.pdf#page=49"
+    }
+  ],
+  "review_notes": [
+    "2025年11月策定第11期分別収集計画と2026年度9収集区分を照合。詳細な品目分別は現行公開ガイドを使用。",
+    "可燃ごみガイドの生ごみ処理容器補助は令和6年度終了の追記があり、アプリの案内対象にしない。",
+    "2026年度PDFは粗大ごみの申込制を明記するが収集日を掲載していない。定期予定は生成しない。",
+    "個別の汚れ条件が共通案内と異なる辞典行は原文を保持し、個別注記を優先する。",
+    "家電4品目の町施設搬入禁止は2023年公式更新ページを優先。",
+    "最新の充電池回収変更は調査した公式ページでは確認できず、現行公開ガイドの禁止指定を維持する。",
+    "辞典27ページの乾電池（ボタン型・充電式）は有害の文字と禁止色が混在。14・49ページ及び辞典37ページの電池の禁止指定に基づき排出禁止へ補正。",
+    "辞典39ページの入浴剤プラ容器は文字プラ・背景埋立色。9ページの容器包装案内とも一致する文字プラを採用し、色の例外は該当セルだけに限定。"
+  ]
+}

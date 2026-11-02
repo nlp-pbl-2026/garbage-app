@@ -1,0 +1,178 @@
+{
+  "areas": [
+    {
+      "id": "38442-01",
+      "name": "河内、湊浦、小中浦、中浦、川永田、豊之浦",
+      "display_name": "伊方地域：河内、湊浦、小中浦、中浦、川永田、豊之浦",
+      "calendar_id": "ik-a-1",
+      "rule_profile_id": "ikata",
+      "region_name": "伊方地域",
+      "official_names": [
+        "河内",
+        "湊浦",
+        "小中浦",
+        "中浦",
+        "川永田",
+        "豊之浦"
+      ],
+      "source_file": "16660.pdf",
+      "official_calendar_code": "A-1"
+    },
+    {
+      "id": "38442-02",
+      "name": "奥、向、畑、須賀、久保、西、二見、加周、田之浦、古屋敷、鳥津、大成",
+      "display_name": "伊方地域：奥、向、畑、須賀、久保、西、二見、加周、田之浦、古屋敷、鳥津、大成",
+      "calendar_id": "ik-b-1",
+      "rule_profile_id": "ikata",
+      "region_name": "伊方地域",
+      "official_names": [
+        "奥",
+        "向",
+        "畑",
+        "須賀",
+        "久保",
+        "西",
+        "二見",
+        "加周",
+        "田之浦",
+        "古屋敷",
+        "鳥津",
+        "大成"
+      ],
+      "source_file": "16661.pdf",
+      "official_calendar_code": "B-1"
+    },
+    {
+      "id": "38442-03",
+      "name": "大浜、中之浜、仁田之浜、伊方越、亀浦",
+      "display_name": "伊方地域：大浜、中之浜、仁田之浜、伊方越、亀浦",
+      "calendar_id": "ik-c-1",
+      "rule_profile_id": "ikata",
+      "region_name": "伊方地域",
+      "official_names": [
+        "大浜",
+        "中之浜",
+        "仁田之浜",
+        "伊方越",
+        "亀浦"
+      ],
+      "source_file": "16662.pdf",
+      "official_calendar_code": "C-1"
+    },
+    {
+      "id": "38442-04",
+      "name": "三机、上倉、松之浜、大江、志津、小島、田部、神崎、高茂、リゾート",
+      "display_name": "瀬戸地域：三机、上倉、松之浜、大江、志津、小島、田部、神崎、高茂、リゾート",
+      "calendar_id": "ik-a-2",
+      "rule_profile_id": "seto",
+      "region_name": "瀬戸地域",
+      "official_names": [
+        "三机",
+        "上倉",
+        "松之浜",
+        "大江",
+        "志津",
+        "小島",
+        "田部",
+        "神崎",
+        "高茂",
+        "リゾート"
+      ],
+      "source_file": "16664.pdf",
+      "official_calendar_code": "A-2"
+    },
+    {
+      "id": "38442-05",
+      "name": "大久、川之浜、塩成、足成、高浦、佐市",
+      "display_name": "瀬戸地域：大久、川之浜、塩成、足成、高浦、佐市",
+      "calendar_id": "ik-b-2",
+      "rule_profile_id": "seto",
+      "region_name": "瀬戸地域",
+      "official_names": [
+        "大久",
+        "川之浜",
+        "塩成",
+        "足成",
+        "高浦",
+        "佐市"
+      ],
+      "source_file": "16665.pdf",
+      "official_calendar_code": "B-2"
+    },
+    {
+      "id": "38442-06",
+      "name": "三崎須賀、中村、上、札場、杉山、中西、大西、赤坂、川之元、中尾、サザエバヤ、灘",
+      "display_name": "三崎地域：三崎須賀、中村、上、札場、杉山、中西、大西、赤坂、川之元、中尾、サザエバヤ、灘",
+      "calendar_id": "ik-a-3",
+      "rule_profile_id": "misaki",
+      "region_name": "三崎地域",
+      "official_names": [
+        "三崎須賀",
+        "中村",
+        "上",
+        "札場",
+        "杉山",
+        "中西",
+        "大西",
+        "赤坂",
+        "川之元",
+        "中尾",
+        "サザエバヤ",
+        "灘"
+      ],
+      "source_file": "16667.pdf",
+      "official_calendar_code": "A-3"
+    },
+    {
+      "id": "38442-07",
+      "name": "高浦、佐田、大佐田、井野浦、二名津、明神、松、名取、釜木、平磯",
+      "display_name": "三崎地域：高浦、佐田、大佐田、井野浦、二名津、明神、松、名取、釜木、平磯",
+      "calendar_id": "ik-b-3",
+      "rule_profile_id": "misaki",
+      "region_name": "三崎地域",
+      "official_names": [
+        "高浦",
+        "佐田",
+        "大佐田",
+        "井野浦",
+        "二名津",
+        "明神",
+        "松",
+        "名取",
+        "釜木",
+        "平磯"
+      ],
+      "source_file": "16668.pdf",
+      "official_calendar_code": "B-3",
+      "pdf_area_names": [
+        "高浦",
+        "佐田",
+        "大佐田",
+        "井野浦",
+        "二名津",
+        "明神",
+        "松",
+        "名取",
+        "釜木",
+        "平礒"
+      ],
+      "review_note": "公式索引は平磯、同じリンク先B-3 PDFの対象地域欄は平礒と表記。索引の地区名で表示し、PDF照合は原表記を保持する。"
+    },
+    {
+      "id": "38442-08",
+      "name": "与侈、串、正野",
+      "display_name": "三崎地域：与侈、串、正野",
+      "calendar_id": "ik-c-2",
+      "rule_profile_id": "misaki",
+      "region_name": "三崎地域",
+      "official_names": [
+        "与侈",
+        "串",
+        "正野"
+      ],
+      "source_file": "16669.pdf",
+      "official_calendar_code": "C-2",
+      "review_note": "三崎地域の与侈・串・正野は公式索引とPDFの対象地域欄で照合。PDF右上の管理記号はC-2のため、その表記を保持する（C-3へ補正しない）。"
+    }
+  ]
+}

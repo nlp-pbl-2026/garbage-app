@@ -1,0 +1,182 @@
+{
+  "schema_version": 1,
+  "version": "ikata-2026.1",
+  "calendars": {
+    "ik-a-1": {
+      "printed_dates": 365,
+      "raster_cells": 365,
+      "symbol_counts": {
+        "bottles": 12,
+        "burnable": 104,
+        "cans": 12,
+        "hazardous": 3,
+        "landfill": 12,
+        "paper_textiles": 12,
+        "pet_bottles": 24,
+        "plastic_packaging": 24,
+        "styrofoam": 12
+      },
+      "closed_dates": [
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03"
+      ],
+      "source_sha256": "80c624fa52af73244ebb2f5cb0f359fc23e18698c89526586526098f3be23d1c",
+      "days_sha256": "db0f51cc6f4b90af3e24bb9132eb219f4f05a7ab1d1b15f6b8de0c4c056548a7"
+    },
+    "ik-b-1": {
+      "printed_dates": 365,
+      "raster_cells": 365,
+      "symbol_counts": {
+        "bottles": 12,
+        "burnable": 103,
+        "cans": 12,
+        "hazardous": 3,
+        "landfill": 12,
+        "paper_textiles": 12,
+        "pet_bottles": 24,
+        "plastic_packaging": 24,
+        "styrofoam": 12
+      },
+      "closed_dates": [
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03"
+      ],
+      "source_sha256": "16dd565c374f069c6804254e77249e73eedfe96b7331f87e4f8e9a152e536241",
+      "days_sha256": "2387b9d008d5d00a4b9d5a2eb02fb6f8469a7384050b308f72a19e236e329dd3"
+    },
+    "ik-c-1": {
+      "printed_dates": 365,
+      "raster_cells": 365,
+      "symbol_counts": {
+        "bottles": 12,
+        "burnable": 104,
+        "cans": 12,
+        "hazardous": 3,
+        "landfill": 12,
+        "paper_textiles": 12,
+        "pet_bottles": 24,
+        "plastic_packaging": 24,
+        "styrofoam": 12
+      },
+      "closed_dates": [
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03"
+      ],
+      "source_sha256": "e4b600de73f8798b4f48004c7f867f226c5e061fd87d9dc074814061ae6a5636",
+      "days_sha256": "20e83c81d412c149e366607291ad2978e237e45ef110fc83e23d3141821a9462"
+    },
+    "ik-a-2": {
+      "printed_dates": 365,
+      "raster_cells": 365,
+      "symbol_counts": {
+        "bottles": 12,
+        "burnable": 104,
+        "cans": 12,
+        "hazardous": 3,
+        "landfill": 12,
+        "paper_textiles": 12,
+        "pet_bottles": 24,
+        "plastic_packaging": 24,
+        "styrofoam": 12
+      },
+      "closed_dates": [
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03"
+      ],
+      "source_sha256": "10d4c3140eb07f7fd25dc6c786089bb0f48ef9c5736fd670236f6868a2fd9d6a",
+      "days_sha256": "db37d4679d7ba1901b90fe25f2a2a4ba86d414064cd60d73b4852b940d6397cc"
+    },
+    "ik-b-2": {
+      "printed_dates": 365,
+      "raster_cells": 365,
+      "symbol_counts": {
+        "bottles": 12,
+        "burnable": 103,
+        "cans": 12,
+        "hazardous": 3,
+        "landfill": 12,
+        "paper_textiles": 12,
+        "pet_bottles": 24,
+        "plastic_packaging": 24,
+        "styrofoam": 12
+      },
+      "closed_dates": [
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03"
+      ],
+      "source_sha256": "e1a4c4257dcd45611febd9b4ff782a1643813f691aa6a53a3450a5ec8d199fe0",
+      "days_sha256": "b4313d7b9ee0f32e1620cada61d3ac582730eb6ee3afc93a91951f3549cca072"
+    },
+    "ik-a-3": {
+      "printed_dates": 365,
+      "raster_cells": 365,
+      "symbol_counts": {
+        "bottles": 12,
+        "burnable": 104,
+        "cans": 12,
+        "hazardous": 3,
+        "landfill": 12,
+        "paper_textiles": 12,
+        "pet_bottles": 24,
+        "plastic_packaging": 24,
+        "styrofoam": 12
+      },
+      "closed_dates": [
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03"
+      ],
+      "source_sha256": "530103cb5ca8539f426217823a7ed8e895c2e0cf4c897a9a118764181fa3b159",
+      "days_sha256": "39c05e57b064f1d237125d9a131b994e7ad05d201e3ebea0f5c42216959877be"
+    },
+    "ik-b-3": {
+      "printed_dates": 365,
+      "raster_cells": 365,
+      "symbol_counts": {
+        "bottles": 12,
+        "burnable": 103,
+        "cans": 12,
+        "hazardous": 3,
+        "landfill": 12,
+        "paper_textiles": 12,
+        "pet_bottles": 24,
+        "plastic_packaging": 24,
+        "styrofoam": 12
+      },
+      "closed_dates": [
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03"
+      ],
+      "source_sha256": "c5d8381be534e9497380d2e91a7a9bfd9dddaf87ab34f1bc43c21f503992eba1",
+      "days_sha256": "a05fab021aace5aeb94276b297a8d3a8579a4e5b1ee82f1a3bf4476c05838ff2"
+    },
+    "ik-c-2": {
+      "printed_dates": 365,
+      "raster_cells": 365,
+      "symbol_counts": {
+        "bottles": 12,
+        "burnable": 104,
+        "cans": 12,
+        "hazardous": 3,
+        "landfill": 12,
+        "paper_textiles": 12,
+        "pet_bottles": 24,
+        "plastic_packaging": 24,
+        "styrofoam": 12
+      },
+      "closed_dates": [
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03"
+      ],
+      "source_sha256": "f19d54b0edecfbc2f082367f91049772872fe0ad9467ef7ac4c608af471e7f03",
+      "days_sha256": "53ced39c9b4b90d3ae2399a13e994fd9f2117ad5f809c5587865b6695279127f"
+    }
+  }
+}
