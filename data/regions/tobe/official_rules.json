@@ -1,0 +1,130 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38402",
+  "version": "tobe-2026.1",
+  "source_urls": [
+    "https://www.town.tobe.ehime.jp/soshikikarasagasu/chominka/gomi/871.html",
+    "https://www.town.tobe.ehime.jp/material/files/group/12/22532.pdf",
+    "https://www.town.tobe.ehime.jp/material/files/group/12/22241.pdf",
+    "https://www.town.tobe.ehime.jp/material/files/group/12/gomibunbetuchou.pdf",
+    "https://www.town.tobe.ehime.jp/gomi_search/4959.html",
+    "https://www.town.tobe.ehime.jp/kurashi_tetsuzuki/gomi_risaikuru_kankyo/1/1745.html",
+    "https://www.town.tobe.ehime.jp/soshikikarasagasu/chominka/gomi/850.html"
+  ],
+  "classification_rules": "砥部町公式のごみ分別辞典、分別帳、選択した地区のくらしのカレンダーに従う。辞典の14分別（可燃ごみ、剪定枝・葉・草、プラスチック製容器包装、空きびん、空き缶、金属くず、ペットボトル、段ボール、紙パック、新聞・チラシ、雑誌・雑がみ、古着・古布、危険ごみ、雑ごみ）を保持し、素材・汚れ・大きさ・電池の有無などの条件を確認する。条件を利用者の説明や画像から確認できない場合は推測せず質問する。ごみは収集日当日の午前7時30分までに決められた集積場所へ出す。可燃ごみと雑ごみは砥部町指定袋を使う。指定袋に入らない大きな雑ごみ、20kg以上のごみ、一時多量ごみ、辞典で美化センター等への持込が指定された品目は、ごみステーションへ出さず施設へ直接持ち込むか町の許可業者へ依頼する。排出禁止物、家電4品目、リチウムイオン電池等を大きさだけで雑ごみや持込ごみに変更しない。",
+  "categories": {
+    "burnable": {
+      "name": "可燃ごみ",
+      "collection_type_id": "burnable",
+      "cutoff": "07:30",
+      "color": "#E8895B",
+      "instructions": "砥部町指定ごみ袋（可燃ごみ用）に入れ、収集日当日の午前7時30分までに出します。"
+    },
+    "pruning": {
+      "name": "剪定枝・葉・草",
+      "collection_type_id": "pruning",
+      "cutoff": "07:30",
+      "color": "#8FB36A",
+      "instructions": "枝は直径15cm未満・長さ1mまでとし、1人で持てる大きさに束ねます。葉・草は土を落とし、資源回収用指定袋または45Lまでの透明袋で出します。"
+    },
+    "plastic_packaging": {
+      "name": "プラスチック製容器包装",
+      "collection_type_id": "plastic_packaging",
+      "cutoff": "07:30",
+      "color": "#67A982",
+      "instructions": "プラマークのある容器包装を、資源回収用指定袋または45Lまでの透明袋で出します。汚れが落ちないものは可燃ごみです。"
+    },
+    "bottles": {
+      "name": "空きびん",
+      "collection_type_id": "containers",
+      "cutoff": "07:30",
+      "color": "#6E9ECF",
+      "instructions": "中をすすぎ、ふたを外して、空きびんだけの袋に分けて出します。割れたものは危険ごみです。"
+    },
+    "cans": {
+      "name": "空き缶",
+      "collection_type_id": "containers",
+      "cutoff": "07:30",
+      "color": "#D89C4B",
+      "instructions": "中を使い切ってすすぎ、空き缶だけの袋に分けて出します。スプレー缶・カセットボンベは中身を使い切ります。"
+    },
+    "metals": {
+      "name": "金属くず",
+      "collection_type_id": "containers",
+      "cutoff": "07:30",
+      "color": "#8C9199",
+      "instructions": "金属くずだけの袋に分け、資源回収用指定袋または45Lまでの透明袋で出します。"
+    },
+    "pet_bottles": {
+      "name": "ペットボトル",
+      "collection_type_id": "containers",
+      "cutoff": "07:30",
+      "color": "#4DA3A3",
+      "instructions": "PETマークを確認し、すすいで、キャップとラベルを外し、ペットボトルだけの袋に分けて出します。"
+    },
+    "cardboard": {
+      "name": "段ボール",
+      "collection_type_id": "paper_cloth",
+      "cutoff": "07:30",
+      "color": "#B89A6B",
+      "instructions": "段ボールだけをひもで十字にしばって出します。雨の日はできるだけ避けます。"
+    },
+    "paper_cartons": {
+      "name": "紙パック",
+      "collection_type_id": "paper_cloth",
+      "cutoff": "07:30",
+      "color": "#C7A96C",
+      "instructions": "500ml以上の紙パックをすすいで開き、紙パックだけをひもで十字にしばって出します。"
+    },
+    "newspaper": {
+      "name": "新聞・チラシ",
+      "collection_type_id": "paper_cloth",
+      "cutoff": "07:30",
+      "color": "#A88F69",
+      "instructions": "新聞・チラシをひもで十字にしばって出します。"
+    },
+    "magazines": {
+      "name": "雑誌・雑がみ",
+      "collection_type_id": "paper_cloth",
+      "cutoff": "07:30",
+      "color": "#9D8A70",
+      "instructions": "雑誌・雑がみをひもで十字にしばって出します。汚れた紙や特殊加工紙は可燃ごみです。"
+    },
+    "textiles": {
+      "name": "古着・古布",
+      "collection_type_id": "paper_cloth",
+      "cutoff": "07:30",
+      "color": "#B08AA5",
+      "instructions": "洗濯して再利用できるものを、資源回収用指定袋または45Lまでの透明袋で出します。汚れ・破れ・綿入り品は対象外です。"
+    },
+    "hazardous": {
+      "name": "危険ごみ",
+      "collection_type_id": "hazardous",
+      "cutoff": "07:30",
+      "color": "#9A7DAE",
+      "instructions": "蛍光灯類、乾電池・ライター、刃物・割れ物等の3区分をそれぞれ別の袋に分け、割れ物や刃物は包んで出します。"
+    },
+    "miscellaneous": {
+      "name": "雑ごみ",
+      "collection_type_id": "miscellaneous",
+      "cutoff": "07:30",
+      "color": "#7B8794",
+      "instructions": "木製品、陶磁器、電気製品、生活雑貨・その他の4区分をそれぞれ砥部町指定ごみ袋（雑ごみ用）に分けて出します。電池・燃料は外します。"
+    },
+    "collection_box": {
+      "name": "小型家電・電池等の拠点回収",
+      "answer_note": "定期収集とは別の回収方法です。品目ごとの対象条件と公式ページ記載の回収場所を確認してください。",
+      "instructions": "回収ボックスや役場等の指定場所へ持ち込みます。"
+    },
+    "facility_dropoff": {
+      "name": "施設へ持ち込むごみ",
+      "answer_note": "ごみステーションでは収集しません。美化センターまたは品目に応じた施設へ直接持ち込むか、町の許可業者へ依頼してください。",
+      "instructions": "公式ページで対象施設、受付日、重量制の処理手数料を確認して持ち込みます。"
+    },
+    "not_collected": {
+      "name": "町では処理できないもの",
+      "answer_note": "ごみステーションや町の処理施設には出せません。販売店、メーカー、専門業者など公式辞典記載の窓口へ相談してください。",
+      "instructions": "販売店、メーカー、指定引取場所、専門の処理業者等へ相談します。"
+    }
+  }
+}
