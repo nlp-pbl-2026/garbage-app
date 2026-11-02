@@ -1,0 +1,1077 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38210",
+  "version": "iyo-2026.1",
+  "reviewed_at": "2026-11-02",
+  "model": "amazon.nova-lite-v1:0",
+  "embedding_model": "amazon.titan-embed-text-v2:0",
+  "search_settings": {
+    "knowledge_base": false,
+    "lexical_search": false,
+    "top_k": 8,
+    "min_similarity": 0.15,
+    "confidence_threshold": 0.75
+  },
+  "final_csv_sha256": "478e92ebfa83180d8576557ec5ff5394c0943cd95c79319f1342625a7165b254",
+  "final_items": 1703,
+  "runs": [
+    {
+      "stage": "initial",
+      "queries": 24,
+      "passed": 20,
+      "note": "Initial 1646-record extraction; 55 dark-gray prohibition rows were subsequently added.",
+      "classification_cases": 22,
+      "classification_matched": 18,
+      "response_only_cases": 2,
+      "metric": "legacy mixed checks; not classification accuracy"
+    },
+    {
+      "stage": "recheck",
+      "queries": 8,
+      "passed": 6,
+      "note": "1647 records; shared disposal instructions separated from item classification options."
+    },
+    {
+      "stage": "final",
+      "queries": 4,
+      "passed": 4,
+      "note": "Final 1703-record data; straw, carryable furniture, uncarryable furniture, PET body."
+    },
+    {
+      "stage": "pr_review_before_carry_guard",
+      "queries": 24,
+      "classification_cases": 22,
+      "classification_matched": 22,
+      "manual_issue": "Case 20 inferred inability to carry from a material-only answer; prior response-only check missed this."
+    },
+    {
+      "stage": "pr_review_after_carry_guard",
+      "queries": 26,
+      "classification_cases": 24,
+      "classification_matched": 24,
+      "missing_condition_cases": 1,
+      "missing_condition_passed": 1,
+      "image_response_cases": 1,
+      "initial_image_http_status": 503,
+      "single_image_retry_http_status": 200,
+      "note": "26 scenarios / 27 request attempts; one transient image-only JSON truncation retained in the report."
+    }
+  ],
+  "earlier_successes": [
+    "乳白色・透明な化粧品びん",
+    "ジャムびん",
+    "ガラス食器",
+    "洗った飲料缶",
+    "スプレー缶",
+    "シュレッダー紙",
+    "汚れた衣類",
+    "取り外せる充電池",
+    "小型シール鉛蓄電池",
+    "画像のみ・画像＋文章（公式イラストを使用）",
+    "ガラスびんの追加質問への「はい」",
+    "木材と回答した家具（過去は応答のみ確認。今回、運搬未確認の推測を修正）",
+    "平岡・鵜崎の紙類は分類回答＋収集日未確認",
+    "松山市清水・八幡浜市の回帰例各1件"
+  ],
+  "limits": [
+    "22 fixed-classification cases are distinct from one missing-condition case and one image-only response check. Do not call this 24/24 classification accuracy.",
+    "The post-fix image-only response was truncated once at 600 output tokens and returned 503; one retry succeeded. No partial answer/date was returned.",
+    "The image is an official illustration, not a real-world photo benchmark.",
+    "No per-item accuracy claim for all 1697 official items.",
+    "Native notification delivery, GPS and sharing-sheet behavior have not been verified on phones in this review.",
+    "Actual billing has not been queried; conservative usage/budget reservations remain below the separately approved USD 0.50."
+  ],
+  "paid_index_attempts": 1706,
+  "nova_calls_with_usage": 174,
+  "conservative_total_upper_usd": 0.566929,
+  "pricing_source": "https://aws.amazon.com/bedrock/pricing/",
+  "case_results": [
+    {
+      "id": 1,
+      "input": {
+        "query": "食品用のPETマークがある空のペットボトル。キャップとラベルは外しました。",
+        "municipality_id": "38210",
+        "municipality_name": "伊予市",
+        "district_id": "38210-iyo-central",
+        "clarifications": []
+      },
+      "image": false,
+      "check_type": "classification",
+      "expected_category": "pet_bottles",
+      "initial": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "plastic_packaging",
+        "question": null,
+        "next_collection_date": "2026-11-04",
+        "collection_status": "scheduled"
+      },
+      "pre_guard_review": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "pet_bottles",
+        "question": null,
+        "next_collection_date": "2026-11-18",
+        "collection_status": "scheduled"
+      },
+      "post_guard_review": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "pet_bottles",
+        "question": null,
+        "next_collection_date": "2026-11-18",
+        "collection_status": "scheduled"
+      },
+      "post_guard_check_passed": true
+    },
+    {
+      "id": 2,
+      "input": {
+        "query": "ペットボトルから外したプラマーク付きのキャップ",
+        "municipality_id": "38210",
+        "municipality_name": "伊予市",
+        "district_id": "38210-iyo-central",
+        "clarifications": []
+      },
+      "image": false,
+      "check_type": "classification",
+      "expected_category": "plastic_packaging",
+      "initial": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "plastic_packaging",
+        "question": null,
+        "next_collection_date": "2026-11-04",
+        "collection_status": "scheduled"
+      },
+      "pre_guard_review": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "plastic_packaging",
+        "question": null,
+        "next_collection_date": "2026-11-04",
+        "collection_status": "scheduled"
+      },
+      "post_guard_review": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "plastic_packaging",
+        "question": null,
+        "next_collection_date": "2026-11-04",
+        "collection_status": "scheduled"
+      },
+      "post_guard_check_passed": true
+    },
+    {
+      "id": 3,
+      "input": {
+        "query": "ジャムが入っていた空のガラスびん。割れていません。",
+        "municipality_id": "38210",
+        "municipality_name": "伊予市",
+        "district_id": "38210-futami-a",
+        "clarifications": []
+      },
+      "image": false,
+      "check_type": "classification",
+      "expected_category": "bottles",
+      "initial": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "bottles",
+        "question": null,
+        "next_collection_date": "2026-11-24",
+        "collection_status": "scheduled"
+      },
+      "pre_guard_review": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "bottles",
+        "question": null,
+        "next_collection_date": "2026-11-24",
+        "collection_status": "scheduled"
+      },
+      "post_guard_review": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "bottles",
+        "question": null,
+        "next_collection_date": "2026-11-24",
+        "collection_status": "scheduled"
+      },
+      "post_guard_check_passed": true
+    },
+    {
+      "id": 4,
+      "input": {
+        "query": "乳白色の化粧品の空きびん",
+        "municipality_id": "38210",
+        "municipality_name": "伊予市",
+        "district_id": "38210-iyo-central",
+        "clarifications": []
+      },
+      "image": false,
+      "check_type": "classification",
+      "expected_category": "non_burnable",
+      "initial": {
+        "http_status": 200,
+        "status": "needs_clarification",
+        "category": null,
+        "question": "プラマークは付いていますか？",
+        "next_collection_date": null,
+        "collection_status": null
+      },
+      "pre_guard_review": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "non_burnable",
+        "question": null,
+        "next_collection_date": "2026-11-18",
+        "collection_status": "scheduled"
+      },
+      "post_guard_review": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "non_burnable",
+        "question": null,
+        "next_collection_date": "2026-11-18",
+        "collection_status": "scheduled"
+      },
+      "post_guard_check_passed": true
+    },
+    {
+      "id": 5,
+      "input": {
+        "query": "透明な化粧水のガラスびん。空で割れていません。",
+        "municipality_id": "38210",
+        "municipality_name": "伊予市",
+        "district_id": "38210-iyo-central",
+        "clarifications": []
+      },
+      "image": false,
+      "check_type": "classification",
+      "expected_category": "bottles",
+      "initial": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "bottles",
+        "question": null,
+        "next_collection_date": "2026-11-04",
+        "collection_status": "scheduled"
+      },
+      "pre_guard_review": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "bottles",
+        "question": null,
+        "next_collection_date": "2026-11-04",
+        "collection_status": "scheduled"
+      },
+      "post_guard_review": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "bottles",
+        "question": null,
+        "next_collection_date": "2026-11-04",
+        "collection_status": "scheduled"
+      },
+      "post_guard_check_passed": true
+    },
+    {
+      "id": 6,
+      "input": {
+        "query": "割れたガラスのコップ",
+        "municipality_id": "38210",
+        "municipality_name": "伊予市",
+        "district_id": "38210-iyo-central",
+        "clarifications": []
+      },
+      "image": false,
+      "check_type": "classification",
+      "expected_category": "non_burnable",
+      "initial": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "non_burnable",
+        "question": null,
+        "next_collection_date": "2026-11-18",
+        "collection_status": "scheduled"
+      },
+      "pre_guard_review": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "non_burnable",
+        "question": null,
+        "next_collection_date": "2026-11-18",
+        "collection_status": "scheduled"
+      },
+      "post_guard_review": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "non_burnable",
+        "question": null,
+        "next_collection_date": "2026-11-18",
+        "collection_status": "scheduled"
+      },
+      "post_guard_check_passed": true
+    },
+    {
+      "id": 7,
+      "input": {
+        "query": "中を洗った飲料用アルミ缶",
+        "municipality_id": "38210",
+        "municipality_name": "伊予市",
+        "district_id": "38210-iyo-central",
+        "clarifications": []
+      },
+      "image": false,
+      "check_type": "classification",
+      "expected_category": "cans",
+      "initial": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "cans",
+        "question": null,
+        "next_collection_date": "2026-11-11",
+        "collection_status": "scheduled"
+      },
+      "pre_guard_review": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "cans",
+        "question": null,
+        "next_collection_date": "2026-11-11",
+        "collection_status": "scheduled"
+      },
+      "post_guard_review": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "cans",
+        "question": null,
+        "next_collection_date": "2026-11-11",
+        "collection_status": "scheduled"
+      },
+      "post_guard_check_passed": true
+    },
+    {
+      "id": 8,
+      "input": {
+        "query": "使い切った整髪料のスプレー缶",
+        "municipality_id": "38210",
+        "municipality_name": "伊予市",
+        "district_id": "38210-iyo-central",
+        "clarifications": []
+      },
+      "image": false,
+      "check_type": "classification",
+      "expected_category": "non_burnable",
+      "initial": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "non_burnable",
+        "question": null,
+        "next_collection_date": "2026-11-18",
+        "collection_status": "scheduled"
+      },
+      "pre_guard_review": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "non_burnable",
+        "question": null,
+        "next_collection_date": "2026-11-18",
+        "collection_status": "scheduled"
+      },
+      "post_guard_review": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "non_burnable",
+        "question": null,
+        "next_collection_date": "2026-11-18",
+        "collection_status": "scheduled"
+      },
+      "post_guard_check_passed": true
+    },
+    {
+      "id": 9,
+      "input": {
+        "query": "シュレッダーで細かくした普通のコピー用紙",
+        "municipality_id": "38210",
+        "municipality_name": "伊予市",
+        "district_id": "38210-nakayama-sare",
+        "clarifications": []
+      },
+      "image": false,
+      "check_type": "classification",
+      "expected_category": "paper",
+      "initial": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "paper",
+        "question": null,
+        "next_collection_date": "2026-11-23",
+        "collection_status": "scheduled"
+      },
+      "pre_guard_review": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "paper",
+        "question": null,
+        "next_collection_date": "2026-11-23",
+        "collection_status": "scheduled"
+      },
+      "post_guard_review": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "paper",
+        "question": null,
+        "next_collection_date": "2026-11-23",
+        "collection_status": "scheduled"
+      },
+      "post_guard_check_passed": true
+    },
+    {
+      "id": 10,
+      "input": {
+        "query": "破れて汚れた綿のシャツ",
+        "municipality_id": "38210",
+        "municipality_name": "伊予市",
+        "district_id": "38210-iyo-central",
+        "clarifications": []
+      },
+      "image": false,
+      "check_type": "classification",
+      "expected_category": "burnable",
+      "initial": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "burnable",
+        "question": null,
+        "next_collection_date": "2026-11-02",
+        "collection_status": "scheduled"
+      },
+      "pre_guard_review": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "burnable",
+        "question": null,
+        "next_collection_date": "2026-11-02",
+        "collection_status": "scheduled"
+      },
+      "post_guard_review": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "burnable",
+        "question": null,
+        "next_collection_date": "2026-11-02",
+        "collection_status": "scheduled"
+      },
+      "post_guard_check_passed": true
+    },
+    {
+      "id": 11,
+      "input": {
+        "query": "硬いプラスチック製バケツ、45リットルの袋に入ります。",
+        "municipality_id": "38210",
+        "municipality_name": "伊予市",
+        "district_id": "38210-iyo-central",
+        "clarifications": []
+      },
+      "image": false,
+      "check_type": "classification",
+      "expected_category": "non_burnable",
+      "initial": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "non_burnable",
+        "question": null,
+        "next_collection_date": "2026-11-18",
+        "collection_status": "scheduled"
+      },
+      "pre_guard_review": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "non_burnable",
+        "question": null,
+        "next_collection_date": "2026-11-18",
+        "collection_status": "scheduled"
+      },
+      "post_guard_review": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "non_burnable",
+        "question": null,
+        "next_collection_date": "2026-11-18",
+        "collection_status": "scheduled"
+      },
+      "post_guard_check_passed": true
+    },
+    {
+      "id": 12,
+      "input": {
+        "query": "使い捨ての柔らかいプラスチック製ストロー",
+        "municipality_id": "38210",
+        "municipality_name": "伊予市",
+        "district_id": "38210-iyo-central",
+        "clarifications": []
+      },
+      "image": false,
+      "check_type": "classification",
+      "expected_category": "burnable",
+      "initial": {
+        "http_status": 200,
+        "status": "needs_clarification",
+        "category": null,
+        "question": "プラマークは付いていますか？",
+        "next_collection_date": null,
+        "collection_status": null
+      },
+      "pre_guard_review": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "burnable",
+        "question": null,
+        "next_collection_date": "2026-11-02",
+        "collection_status": "scheduled"
+      },
+      "post_guard_review": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "burnable",
+        "question": null,
+        "next_collection_date": "2026-11-02",
+        "collection_status": "scheduled"
+      },
+      "post_guard_check_passed": true
+    },
+    {
+      "id": 13,
+      "input": {
+        "query": "45リットルの袋に入る石油ストーブ。大人1人で運べます。",
+        "municipality_id": "38210",
+        "municipality_name": "伊予市",
+        "district_id": "38210-iyo-central",
+        "clarifications": []
+      },
+      "image": false,
+      "check_type": "classification",
+      "expected_category": "bulky",
+      "initial": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "bulky",
+        "question": null,
+        "next_collection_date": null,
+        "collection_status": "not_scheduled"
+      },
+      "pre_guard_review": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "bulky",
+        "question": null,
+        "next_collection_date": null,
+        "collection_status": "not_scheduled"
+      },
+      "post_guard_review": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "bulky",
+        "question": null,
+        "next_collection_date": null,
+        "collection_status": "not_scheduled"
+      },
+      "post_guard_check_passed": true
+    },
+    {
+      "id": 14,
+      "input": {
+        "query": "45リットルの袋に入らない壊れた木製の家具。大人1人で運べます。",
+        "municipality_id": "38210",
+        "municipality_name": "伊予市",
+        "district_id": "38210-iyo-central",
+        "clarifications": []
+      },
+      "image": false,
+      "check_type": "classification",
+      "expected_category": "bulky",
+      "initial": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "bulky",
+        "question": null,
+        "next_collection_date": null,
+        "collection_status": "not_scheduled"
+      },
+      "pre_guard_review": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "bulky",
+        "question": null,
+        "next_collection_date": null,
+        "collection_status": "not_scheduled"
+      },
+      "post_guard_review": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "bulky",
+        "question": null,
+        "next_collection_date": null,
+        "collection_status": "not_scheduled"
+      },
+      "post_guard_check_passed": true
+    },
+    {
+      "id": 15,
+      "input": {
+        "query": "大人1人では持ち運べない重い大きな家具",
+        "municipality_id": "38210",
+        "municipality_name": "伊予市",
+        "district_id": "38210-iyo-central",
+        "clarifications": []
+      },
+      "image": false,
+      "check_type": "classification",
+      "expected_category": "not_collected",
+      "initial": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "bulky",
+        "question": null,
+        "next_collection_date": null,
+        "collection_status": "not_scheduled"
+      },
+      "pre_guard_review": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "not_collected",
+        "question": null,
+        "next_collection_date": null,
+        "collection_status": "not_scheduled"
+      },
+      "post_guard_review": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "not_collected",
+        "question": null,
+        "next_collection_date": null,
+        "collection_status": "not_scheduled"
+      },
+      "post_guard_check_passed": true
+    },
+    {
+      "id": 16,
+      "input": {
+        "query": "使い切ったリサイクルマーク付きの取り外せるリチウムイオン充電池",
+        "municipality_id": "38210",
+        "municipality_name": "伊予市",
+        "district_id": "38210-iyo-central",
+        "clarifications": []
+      },
+      "image": false,
+      "check_type": "classification",
+      "expected_category": "hazardous",
+      "initial": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "hazardous",
+        "question": null,
+        "next_collection_date": "2026-11-18",
+        "collection_status": "scheduled"
+      },
+      "pre_guard_review": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "hazardous",
+        "question": null,
+        "next_collection_date": "2026-11-18",
+        "collection_status": "scheduled"
+      },
+      "post_guard_review": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "hazardous",
+        "question": null,
+        "next_collection_date": "2026-11-18",
+        "collection_status": "scheduled"
+      },
+      "post_guard_check_passed": true
+    },
+    {
+      "id": 17,
+      "input": {
+        "query": "リサイクルマーク付き小型シール鉛蓄電池",
+        "municipality_id": "38210",
+        "municipality_name": "伊予市",
+        "district_id": "38210-iyo-central",
+        "clarifications": []
+      },
+      "image": false,
+      "check_type": "classification",
+      "expected_category": "not_collected",
+      "initial": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "not_collected",
+        "question": null,
+        "next_collection_date": null,
+        "collection_status": "not_scheduled"
+      },
+      "pre_guard_review": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "not_collected",
+        "question": null,
+        "next_collection_date": null,
+        "collection_status": "not_scheduled"
+      },
+      "post_guard_review": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "not_collected",
+        "question": null,
+        "next_collection_date": null,
+        "collection_status": "not_scheduled"
+      },
+      "post_guard_check_passed": true
+    },
+    {
+      "id": 18,
+      "input": {
+        "query": "",
+        "municipality_id": "38210",
+        "municipality_name": "伊予市",
+        "district_id": "38210-iyo-central",
+        "clarifications": []
+      },
+      "image": true,
+      "check_type": "response_only",
+      "expected_category": null,
+      "initial": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "cans",
+        "question": null,
+        "next_collection_date": "2026-11-11",
+        "collection_status": "scheduled"
+      },
+      "pre_guard_review": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "cans",
+        "question": null,
+        "next_collection_date": "2026-11-11",
+        "collection_status": "scheduled"
+      },
+      "post_guard_review": {
+        "http_status": 503,
+        "status": null,
+        "category": null,
+        "question": null,
+        "next_collection_date": null,
+        "collection_status": null
+      },
+      "post_guard_check_passed": true,
+      "single_retry": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "cans",
+        "question": null,
+        "next_collection_date": "2026-11-11",
+        "collection_status": "scheduled"
+      }
+    },
+    {
+      "id": 19,
+      "input": {
+        "query": "洗った飲料用のアルミ缶です。",
+        "municipality_id": "38210",
+        "municipality_name": "伊予市",
+        "district_id": "38210-iyo-central",
+        "clarifications": []
+      },
+      "image": true,
+      "check_type": "classification",
+      "expected_category": "cans",
+      "initial": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "cans",
+        "question": null,
+        "next_collection_date": "2026-11-11",
+        "collection_status": "scheduled"
+      },
+      "pre_guard_review": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "cans",
+        "question": null,
+        "next_collection_date": "2026-11-11",
+        "collection_status": "scheduled"
+      },
+      "post_guard_review": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "cans",
+        "question": null,
+        "next_collection_date": "2026-11-11",
+        "collection_status": "scheduled"
+      },
+      "post_guard_check_passed": true
+    },
+    {
+      "id": 20,
+      "input": {
+        "query": "大きな壊れた家具",
+        "municipality_id": "38210",
+        "municipality_name": "伊予市",
+        "district_id": "38210-iyo-central",
+        "clarifications": [
+          {
+            "question": "素材は何ですか？",
+            "answer": "木材"
+          }
+        ]
+      },
+      "image": false,
+      "check_type": "missing_condition",
+      "expected_category": null,
+      "initial": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "bulky",
+        "question": null,
+        "next_collection_date": null,
+        "collection_status": "not_scheduled"
+      },
+      "pre_guard_review": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "not_collected",
+        "question": null,
+        "next_collection_date": null,
+        "collection_status": "not_scheduled"
+      },
+      "post_guard_review": {
+        "http_status": 200,
+        "status": "needs_clarification",
+        "category": null,
+        "question": "大人1人で持ち運べる重さ・大きさですか？",
+        "next_collection_date": null,
+        "collection_status": null
+      },
+      "post_guard_check_passed": true
+    },
+    {
+      "id": 21,
+      "input": {
+        "query": "空のガラスびん",
+        "municipality_id": "38210",
+        "municipality_name": "伊予市",
+        "district_id": "38210-iyo-central",
+        "clarifications": [
+          {
+            "question": "飲料・食料用品ですか？",
+            "answer": "はい"
+          }
+        ]
+      },
+      "image": false,
+      "check_type": "classification",
+      "expected_category": "bottles",
+      "initial": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "bottles",
+        "question": null,
+        "next_collection_date": "2026-11-04",
+        "collection_status": "scheduled"
+      },
+      "pre_guard_review": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "bottles",
+        "question": null,
+        "next_collection_date": "2026-11-04",
+        "collection_status": "scheduled"
+      },
+      "post_guard_review": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "bottles",
+        "question": null,
+        "next_collection_date": "2026-11-04",
+        "collection_status": "scheduled"
+      },
+      "post_guard_check_passed": true
+    },
+    {
+      "id": 22,
+      "input": {
+        "query": "シュレッダーで細かくしたコピー用紙",
+        "municipality_id": "38210",
+        "municipality_name": "伊予市",
+        "district_id": "38210-iyo-hiraoka",
+        "clarifications": []
+      },
+      "image": false,
+      "check_type": "classification",
+      "expected_category": "paper",
+      "initial": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "paper",
+        "question": null,
+        "next_collection_date": null,
+        "collection_status": "unverified"
+      },
+      "pre_guard_review": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "paper",
+        "question": null,
+        "next_collection_date": null,
+        "collection_status": "unverified"
+      },
+      "post_guard_review": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "paper",
+        "question": null,
+        "next_collection_date": null,
+        "collection_status": "unverified"
+      },
+      "post_guard_check_passed": true
+    },
+    {
+      "id": 23,
+      "input": {
+        "query": "キャップとラベルを外した食品用PETマーク付きの空のペットボトル",
+        "municipality_id": "38201",
+        "municipality_name": "松山市",
+        "district_id": "38201-08",
+        "clarifications": []
+      },
+      "image": false,
+      "check_type": "classification",
+      "expected_category": "ペット",
+      "initial": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "ペット",
+        "question": null,
+        "next_collection_date": "2026-11-04",
+        "collection_status": "scheduled"
+      },
+      "pre_guard_review": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "ペット",
+        "question": null,
+        "next_collection_date": "2026-11-04",
+        "collection_status": "scheduled"
+      },
+      "post_guard_review": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "ペット",
+        "question": null,
+        "next_collection_date": "2026-11-04",
+        "collection_status": "scheduled"
+      },
+      "post_guard_check_passed": true
+    },
+    {
+      "id": 24,
+      "input": {
+        "query": "中を洗った飲料用のアルミ缶",
+        "municipality_id": "38204",
+        "municipality_name": "八幡浜市",
+        "district_id": "38204-01",
+        "clarifications": []
+      },
+      "image": false,
+      "check_type": "classification",
+      "expected_category": "cans",
+      "initial": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "cans",
+        "question": null,
+        "next_collection_date": "2026-11-25",
+        "collection_status": "scheduled"
+      },
+      "pre_guard_review": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "cans",
+        "question": null,
+        "next_collection_date": "2026-11-25",
+        "collection_status": "scheduled"
+      },
+      "post_guard_review": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "cans",
+        "question": null,
+        "next_collection_date": "2026-11-25",
+        "collection_status": "scheduled"
+      },
+      "post_guard_check_passed": true
+    }
+  ],
+  "additional_carry_answers": [
+    {
+      "id": 25,
+      "answer": "はい",
+      "expected_category": "bulky",
+      "result": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "bulky",
+        "question": null,
+        "next_collection_date": null,
+        "collection_status": "not_scheduled"
+      },
+      "passed": true
+    },
+    {
+      "id": 26,
+      "answer": "いいえ",
+      "expected_category": "not_collected",
+      "result": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "not_collected",
+        "question": null,
+        "next_collection_date": null,
+        "collection_status": "not_scheduled"
+      },
+      "passed": true
+    }
+  ],
+  "pr_review_budget": {
+    "approved_usd": 0.5,
+    "conservative_upper_usd": 0.320219,
+    "includes_expired_login_reservations": true,
+    "nova_responses_with_usage": 102,
+    "index_regenerated": false,
+    "actual_billing_checked": false
+  },
+  "post_guard_code_sha256": "43c9260f6a6ec9529e953fb4531def6574079c3b3dca42f942462b3b73a015f7",
+  "pr_review_image": {
+    "source_file": "p14~15.pdf",
+    "source_sha256": "12857df003be8146ab30edb8ec6c2142ba91fa08d337d13a91ae57b9a092f89e",
+    "page": 1,
+    "rect": [
+      83,
+      296,
+      123,
+      359
+    ],
+    "scale": 4,
+    "png_sha256": "0a1357f720a1910c9da97c91e6953571aa7fd276ad7bf84b6138cb8c365a0cf7"
+  },
+  "prior_implementation_conservative_upper_usd": 0.24671,
+  "prior_implementation_nova_calls_with_usage": 72,
+  "budget_scope": "Cumulative conservative estimate; pr_review_budget is separately capped at USD 0.50. Not actual billing.",
+  "post_guard_code_commit": "d167d0f",
+  "evaluation_worktree_note": "The guard was uncommitted at evaluation start; the exact code SHA matches the later d167d0f commit."
+}

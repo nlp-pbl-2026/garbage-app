@@ -1,0 +1,154 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38210",
+  "version": "iyo-2026.1",
+  "valid_from": "2026-04-01",
+  "valid_to": "2027-03-31",
+  "license_status": "unconfirmed",
+  "sources": [
+    {
+      "file": "calendar.html",
+      "url": "https://www.city.iyo.lg.jp/shiminseikatsu/kurashi/gomi/shushubi/index.html",
+      "sha256": "39e97e99e1005a9245b8395beacb39e73bcc4228f8be4092c197273f5305cd39",
+      "retrieved_at": "2026-11-01T14:45:21.598081+00:00"
+    },
+    {
+      "file": "guide.html",
+      "url": "https://www.city.iyo.lg.jp/kankyohozen/bunbetu.html",
+      "sha256": "0efff5635b9db47aad4f7ec2d7e87529f5009780759fd00f001fe820582386de",
+      "retrieved_at": "2026-11-01T14:45:21.592235+00:00"
+    },
+    {
+      "file": "bulky.html",
+      "url": "https://www.city.iyo.lg.jp/shiminseikatsu/kurashi/gomi/bunbetsu/sodai/dashikata/calendar.html",
+      "sha256": "ec47b4fbbec5a50b1ff1f779fea544c1847d803a5026fbd51230f63f0e5164aa",
+      "retrieved_at": "2026-11-01T14:45:21.597436+00:00"
+    },
+    {
+      "file": "r8iyo.pdf",
+      "url": "https://www.city.iyo.lg.jp/shiminseikatsu/kurashi/gomi/shushubi/documents/r8iyo.pdf",
+      "sha256": "a2c28f7e763831e85a566804909d0dacf384efc61c7c3533edab8d47ad840b3c",
+      "retrieved_at": "2026-11-01T14:45:24.004431+00:00"
+    },
+    {
+      "file": "r8hutami.pdf",
+      "url": "https://www.city.iyo.lg.jp/shiminseikatsu/kurashi/gomi/shushubi/documents/r8hutami.pdf",
+      "sha256": "b504d340794fb4755bea40a28b7549d7ed09a602f6a4eecc5deb8e55c52c3a8d",
+      "retrieved_at": "2026-11-01T14:45:24.162530+00:00"
+    },
+    {
+      "file": "r8nakayama.pdf",
+      "url": "https://www.city.iyo.lg.jp/shiminseikatsu/kurashi/gomi/shushubi/documents/r8nakayama.pdf",
+      "sha256": "3a740ee53e8b2bcd9c863ba5295437de18e72c6f62581956190d98464a1f3542",
+      "retrieved_at": "2026-11-01T14:45:22.110447+00:00"
+    },
+    {
+      "file": "p1.pdf",
+      "url": "https://www.city.iyo.lg.jp/kankyohozen/documents/p1.pdf",
+      "sha256": "52481bbb1e0a89da35bc1197dd5497c50620e5b35c6b18615592e884a455eaa1",
+      "retrieved_at": "2026-11-01T14:45:22.969309+00:00"
+    },
+    {
+      "file": "p2~3.pdf",
+      "url": "https://www.city.iyo.lg.jp/kankyohozen/documents/p2~3.pdf",
+      "sha256": "cb4a58c5a86ce2e14eef1c4ea4ebc33f269c09993ecb432d08fc62fefb21fa50",
+      "retrieved_at": "2026-11-01T14:45:24.063281+00:00"
+    },
+    {
+      "file": "p4~7.pdf",
+      "url": "https://www.city.iyo.lg.jp/kankyohozen/documents/p4~7.pdf",
+      "sha256": "a0b1e5ff8a467aae0668232410affd3f54958948fcebac01c5b3bb44a02165bd",
+      "retrieved_at": "2026-11-01T14:45:26.233879+00:00"
+    },
+    {
+      "file": "p8~9.pdf",
+      "url": "https://www.city.iyo.lg.jp/kankyohozen/documents/p8~9.pdf",
+      "sha256": "075110a34057d1fa43e815508f04f8c4374e9254994f1cc927f5efe37e45f8db",
+      "retrieved_at": "2026-11-01T14:45:24.652102+00:00"
+    },
+    {
+      "file": "p10~11.pdf",
+      "url": "https://www.city.iyo.lg.jp/kankyohozen/documents/p10~11.pdf",
+      "sha256": "e0968a2e771eeaacc34ff23d4e9052eab513de509dc0904b2b4a107ce2b9d39a",
+      "retrieved_at": "2026-11-01T14:45:24.711769+00:00"
+    },
+    {
+      "file": "p12~13.pdf",
+      "url": "https://www.city.iyo.lg.jp/kankyohozen/documents/p12~13.pdf",
+      "sha256": "fbae3d59f1febebaba2b5bb013aee580706e0c033124fac104239c7152780dbb",
+      "retrieved_at": "2026-11-01T14:45:25.089600+00:00"
+    },
+    {
+      "file": "p14~15.pdf",
+      "url": "https://www.city.iyo.lg.jp/kankyohozen/documents/p14~15.pdf",
+      "sha256": "12857df003be8146ab30edb8ec6c2142ba91fa08d337d13a91ae57b9a092f89e",
+      "retrieved_at": "2026-11-01T14:45:25.146046+00:00"
+    },
+    {
+      "file": "p16~17.pdf",
+      "url": "https://www.city.iyo.lg.jp/kankyohozen/documents/p16~17.pdf",
+      "sha256": "aeb8ed9d176e35bda233d6124cba3705363b06e2c804ef10c0cca94a8f0d8624",
+      "retrieved_at": "2026-11-01T14:45:25.489005+00:00"
+    },
+    {
+      "file": "p18~19.pdf",
+      "url": "https://www.city.iyo.lg.jp/kankyohozen/documents/p18~19.pdf",
+      "sha256": "f39f63f182f534b693fcded780cb109e0a7d6a879ed85436c5b1360307699e30",
+      "retrieved_at": "2026-11-01T14:45:25.319722+00:00"
+    },
+    {
+      "file": "p20~23.pdf",
+      "url": "https://www.city.iyo.lg.jp/kankyohozen/documents/p20~23.pdf",
+      "sha256": "73c341c4f6626d8eb6c287a8ef164acc2a94877aefa8f47060dbcb63ac24ffc1",
+      "retrieved_at": "2026-11-01T14:45:26.200179+00:00"
+    },
+    {
+      "file": "p24~25.pdf",
+      "url": "https://www.city.iyo.lg.jp/kankyohozen/documents/p24~25.pdf",
+      "sha256": "0b165dfd29dfe3f423e3c81f64d3f746b031f6729f2d90df1415a63b4c3ea7b1",
+      "retrieved_at": "2026-11-01T14:45:25.999187+00:00"
+    },
+    {
+      "file": "p26~_1.pdf",
+      "url": "https://www.city.iyo.lg.jp/kankyohozen/documents/p26~_1.pdf",
+      "sha256": "0cb6019f9bec90035004a19478d85b17c05e335024e091bdd3164becfc2f9b87",
+      "retrieved_at": "2026-11-01T14:45:26.273256+00:00"
+    },
+    {
+      "file": "sodair8.pdf",
+      "url": "https://www.city.iyo.lg.jp/shiminseikatsu/kurashi/gomi/bunbetsu/sodai/dashikata/documents/sodair8.pdf",
+      "sha256": "e7eb719c4b3c2ac901837754131eff614c6fe2907ed59a26bbeced501d860683",
+      "retrieved_at": "2026-11-01T14:45:26.459701+00:00"
+    },
+    {
+      "file": "faq.html",
+      "url": "https://www.city.iyo.lg.jp/kankyohozen/gomidasi.html",
+      "sha256": "dc67b9720b740b0a6edd183d1b80dbdea9f7a63b7cb7b4b1d813497466dda33a",
+      "retrieved_at": "2026-11-01T14:54:15.260859+00:00"
+    },
+    {
+      "file": "changes.html",
+      "url": "https://www.city.iyo.lg.jp/kankyohozen/gomibunnbetu.html",
+      "sha256": "1ae4a66763f1af6cf98b6dafbcebab5770772a9094a5545c9ca64465f08f4bbb",
+      "retrieved_at": "2026-11-01T14:54:15.348191+00:00"
+    },
+    {
+      "file": "batteries.html",
+      "url": "https://www.city.iyo.lg.jp/kankyohozen/li-ion.html",
+      "sha256": "808af3ea23e7a7bf75968e70f5b63d1fd01e02ede1d7f221a4f139d21d3567b0",
+      "retrieved_at": "2026-11-01T14:54:15.435902+00:00"
+    },
+    {
+      "file": "112233.jpg",
+      "url": "https://www.city.iyo.lg.jp/kankyohozen/images/112233.jpg",
+      "sha256": "20d59a1fe20d85702ef06abb536d11a7d3b1d299438e12fba560163cab0b8c0a",
+      "retrieved_at": "2026-11-01T14:54:15.554248+00:00"
+    },
+    {
+      "file": "si-ru.png",
+      "url": "https://www.city.iyo.lg.jp/kankyohozen/images/si-ru.png",
+      "sha256": "8a5dff096e82b5b079a0f57e2908542b2ee19a8b6030743a1b4943dd0aed4b90",
+      "retrieved_at": "2026-11-01T14:54:15.653162+00:00"
+    }
+  ]
+}

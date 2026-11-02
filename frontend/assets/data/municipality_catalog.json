@@ -351,6 +351,328 @@
           }
         }
       }
+    },
+    {
+      "id": "38210",
+      "version": "iyo-2026.1",
+      "name": "伊予市",
+      "prefecture_id": "38",
+      "prefecture_name": "愛媛県",
+      "registry_asset": "assets/data/municipality_38210_registry.json",
+      "profiles": {
+        "iyo": {
+          "calendar_asset": "assets/data/municipality_38210_0_calendar.json",
+          "categories": {
+            "burnable": {
+              "name": "燃えるごみ",
+              "collection_type_id": "burnable",
+              "cutoff": "08:30",
+              "color": "#E6B84C"
+            },
+            "plastic_packaging": {
+              "name": "プラスチック製容器包装",
+              "collection_type_id": "plastic_packaging",
+              "cutoff": "08:30",
+              "color": "#73BDD9"
+            },
+            "paper": {
+              "name": "紙類",
+              "collection_type_id": "paper",
+              "cutoff": "08:30",
+              "color": "#9D96C2"
+            },
+            "cans": {
+              "name": "かん類",
+              "collection_type_id": "cans",
+              "cutoff": "08:30",
+              "color": "#D785A3"
+            },
+            "bottles": {
+              "name": "びん類",
+              "collection_type_id": "bottles",
+              "cutoff": "08:30",
+              "color": "#E3AD50"
+            },
+            "textiles": {
+              "name": "布類",
+              "collection_type_id": "textiles",
+              "cutoff": "08:30",
+              "color": "#A8BF68"
+            },
+            "pet_bottles": {
+              "name": "ペットボトル",
+              "collection_type_id": "pet_bottles",
+              "cutoff": "08:30",
+              "color": "#69AE86"
+            },
+            "hazardous": {
+              "name": "有害ごみ",
+              "collection_type_id": "hazardous",
+              "cutoff": "08:30",
+              "color": "#B5A552"
+            },
+            "non_burnable": {
+              "name": "燃えないその他ごみ",
+              "collection_type_id": "non_burnable",
+              "cutoff": "08:30",
+              "color": "#78A1BD"
+            },
+            "bulky": {
+              "name": "粗大ごみ",
+              "color": "#94614F"
+            },
+            "not_collected": {
+              "name": "市で収集しないもの",
+              "color": "#777777"
+            }
+          },
+          "bulky_waste": {
+            "category_code": "bulky",
+            "config": {
+              "municipality_id": "38210",
+              "municipality_name": "伊予市",
+              "collection_frequency": "事前申込制・年6回（奇数月）",
+              "reception_hours": "伊予地域の上吾川・米湊・灘町・湊町・下吾川は偶数月14日締切。それ以外の伊予地域（上唐川・下唐川・大平上・大平下・三秋・中村・森・本郡・尾﨑・三島町・市場・稲荷・下三谷・上三谷・上野・宮下・八倉）は偶数月28日締切です。住所の区分を公式ページで確認してください。",
+              "collection_rules": "伊予地域の上吾川・米湊・灘町・湊町・下吾川は偶数月14日締切。それ以外の伊予地域（上唐川・下唐川・大平上・大平下・三秋・中村・森・本郡・尾﨑・三島町・市場・稲荷・下三谷・上三谷・上野・宮下・八倉）は偶数月28日締切です。住所の区分を公式ページで確認してください。収集日は通知はがきで確認してください。",
+              "fee_structure_type": "fixed",
+              "application_method": "web_form",
+              "phone_number": "089-909-6338",
+              "web_form_url": "https://www.city.iyo.lg.jp/shiminseikatsu/kurashi/gomi/bunbetsu/sodai/dashikata/calendar.html",
+              "information_url": "https://www.city.iyo.lg.jp/shiminseikatsu/kurashi/gomi/bunbetsu/sodai/dashikata/calendar.html",
+              "steps": [
+                {
+                  "step_number": 1,
+                  "title": "対象品目を確認",
+                  "description": "原則45リットルの袋に入らず、大人1人で運べるもの。家電リサイクル対象品などは収集できません。1回5点まで、年30点までです。"
+                },
+                {
+                  "step_number": 2,
+                  "title": "住所と申込期限を確認",
+                  "description": "伊予地域の上吾川・米湊・灘町・湊町・下吾川は偶数月14日締切。それ以外の伊予地域（上唐川・下唐川・大平上・大平下・三秋・中村・森・本郡・尾﨑・三島町・市場・稲荷・下三谷・上三谷・上野・宮下・八倉）は偶数月28日締切です。住所の区分を公式ページで確認してください。収集は翌奇数月の年6回です。"
+                },
+                {
+                  "step_number": 3,
+                  "title": "はがき又は電子申請で申し込む",
+                  "description": "はがきは申込期限の消印有効です。公式サイトからえひめ電子申請システムにも進めます。アプリからの自動申込みは行いません。"
+                },
+                {
+                  "step_number": 4,
+                  "title": "通知はがきで収集日を確認",
+                  "description": "通知はがきに記載された収集日に、粗大ごみシールを貼って午前8時30分までに申込場所へ出してください。立会い不要。粗大ごみの戸別収集は無料ですが、直接搬入・許可業者の費用は別途確認してください。"
+                }
+              ]
+            }
+          }
+        },
+        "futami": {
+          "calendar_asset": "assets/data/municipality_38210_0_calendar.json",
+          "categories": {
+            "burnable": {
+              "name": "燃えるごみ",
+              "collection_type_id": "burnable",
+              "cutoff": "08:30",
+              "color": "#E6B84C"
+            },
+            "plastic_packaging": {
+              "name": "プラスチック製容器包装",
+              "collection_type_id": "plastic_packaging",
+              "cutoff": "08:30",
+              "color": "#73BDD9"
+            },
+            "paper": {
+              "name": "紙類",
+              "collection_type_id": "paper",
+              "cutoff": "08:30",
+              "color": "#9D96C2"
+            },
+            "cans": {
+              "name": "かん類",
+              "collection_type_id": "cans",
+              "cutoff": "08:30",
+              "color": "#D785A3"
+            },
+            "bottles": {
+              "name": "びん類",
+              "collection_type_id": "bottles",
+              "cutoff": "08:30",
+              "color": "#E3AD50"
+            },
+            "textiles": {
+              "name": "布類",
+              "collection_type_id": "textiles",
+              "cutoff": "08:30",
+              "color": "#A8BF68"
+            },
+            "pet_bottles": {
+              "name": "ペットボトル",
+              "collection_type_id": "pet_bottles",
+              "cutoff": "08:30",
+              "color": "#69AE86"
+            },
+            "hazardous": {
+              "name": "有害ごみ",
+              "collection_type_id": "hazardous",
+              "cutoff": "08:30",
+              "color": "#B5A552"
+            },
+            "non_burnable": {
+              "name": "燃えないその他ごみ",
+              "collection_type_id": "non_burnable",
+              "cutoff": "08:30",
+              "color": "#78A1BD"
+            },
+            "bulky": {
+              "name": "粗大ごみ",
+              "color": "#94614F"
+            },
+            "not_collected": {
+              "name": "市で収集しないもの",
+              "color": "#777777"
+            }
+          },
+          "bulky_waste": {
+            "category_code": "bulky",
+            "config": {
+              "municipality_id": "38210",
+              "municipality_name": "伊予市",
+              "collection_frequency": "事前申込制・年6回（奇数月）",
+              "reception_hours": "双海地域は偶数月14日締切です。",
+              "collection_rules": "双海地域は偶数月14日締切です。収集日は通知はがきで確認してください。",
+              "fee_structure_type": "fixed",
+              "application_method": "web_form",
+              "phone_number": "089-909-6338",
+              "web_form_url": "https://www.city.iyo.lg.jp/shiminseikatsu/kurashi/gomi/bunbetsu/sodai/dashikata/calendar.html",
+              "information_url": "https://www.city.iyo.lg.jp/shiminseikatsu/kurashi/gomi/bunbetsu/sodai/dashikata/calendar.html",
+              "steps": [
+                {
+                  "step_number": 1,
+                  "title": "対象品目を確認",
+                  "description": "原則45リットルの袋に入らず、大人1人で運べるもの。家電リサイクル対象品などは収集できません。1回5点まで、年30点までです。"
+                },
+                {
+                  "step_number": 2,
+                  "title": "住所と申込期限を確認",
+                  "description": "双海地域は偶数月14日締切です。収集は翌奇数月の年6回です。"
+                },
+                {
+                  "step_number": 3,
+                  "title": "はがき又は電子申請で申し込む",
+                  "description": "はがきは申込期限の消印有効です。公式サイトからえひめ電子申請システムにも進めます。アプリからの自動申込みは行いません。"
+                },
+                {
+                  "step_number": 4,
+                  "title": "通知はがきで収集日を確認",
+                  "description": "通知はがきに記載された収集日に、粗大ごみシールを貼って午前8時30分までに申込場所へ出してください。立会い不要。粗大ごみの戸別収集は無料ですが、直接搬入・許可業者の費用は別途確認してください。"
+                }
+              ]
+            }
+          }
+        },
+        "nakayama": {
+          "calendar_asset": "assets/data/municipality_38210_0_calendar.json",
+          "categories": {
+            "burnable": {
+              "name": "燃えるごみ",
+              "collection_type_id": "burnable",
+              "cutoff": "08:30",
+              "color": "#E6B84C"
+            },
+            "plastic_packaging": {
+              "name": "プラスチック製容器包装",
+              "collection_type_id": "plastic_packaging",
+              "cutoff": "08:30",
+              "color": "#73BDD9"
+            },
+            "paper": {
+              "name": "紙類",
+              "collection_type_id": "paper",
+              "cutoff": "08:30",
+              "color": "#9D96C2"
+            },
+            "cans": {
+              "name": "かん類",
+              "collection_type_id": "cans",
+              "cutoff": "08:30",
+              "color": "#D785A3"
+            },
+            "bottles": {
+              "name": "びん類",
+              "collection_type_id": "bottles",
+              "cutoff": "08:30",
+              "color": "#E3AD50"
+            },
+            "textiles": {
+              "name": "布類",
+              "collection_type_id": "textiles",
+              "cutoff": "08:30",
+              "color": "#A8BF68"
+            },
+            "pet_bottles": {
+              "name": "ペットボトル",
+              "collection_type_id": "pet_bottles",
+              "cutoff": "08:30",
+              "color": "#69AE86"
+            },
+            "hazardous": {
+              "name": "有害ごみ",
+              "collection_type_id": "hazardous",
+              "cutoff": "08:30",
+              "color": "#B5A552"
+            },
+            "non_burnable": {
+              "name": "燃えないその他ごみ",
+              "collection_type_id": "non_burnable",
+              "cutoff": "08:30",
+              "color": "#78A1BD"
+            },
+            "bulky": {
+              "name": "粗大ごみ",
+              "color": "#94614F"
+            },
+            "not_collected": {
+              "name": "市で収集しないもの",
+              "color": "#777777"
+            }
+          },
+          "bulky_waste": {
+            "category_code": "bulky",
+            "config": {
+              "municipality_id": "38210",
+              "municipality_name": "伊予市",
+              "collection_frequency": "事前申込制・年6回（奇数月）",
+              "reception_hours": "中山地域は偶数月28日締切です。",
+              "collection_rules": "中山地域は偶数月28日締切です。収集日は通知はがきで確認してください。",
+              "fee_structure_type": "fixed",
+              "application_method": "web_form",
+              "phone_number": "089-909-6338",
+              "web_form_url": "https://www.city.iyo.lg.jp/shiminseikatsu/kurashi/gomi/bunbetsu/sodai/dashikata/calendar.html",
+              "information_url": "https://www.city.iyo.lg.jp/shiminseikatsu/kurashi/gomi/bunbetsu/sodai/dashikata/calendar.html",
+              "steps": [
+                {
+                  "step_number": 1,
+                  "title": "対象品目を確認",
+                  "description": "原則45リットルの袋に入らず、大人1人で運べるもの。家電リサイクル対象品などは収集できません。1回5点まで、年30点までです。"
+                },
+                {
+                  "step_number": 2,
+                  "title": "住所と申込期限を確認",
+                  "description": "中山地域は偶数月28日締切です。収集は翌奇数月の年6回です。"
+                },
+                {
+                  "step_number": 3,
+                  "title": "はがき又は電子申請で申し込む",
+                  "description": "はがきは申込期限の消印有効です。公式サイトからえひめ電子申請システムにも進めます。アプリからの自動申込みは行いません。"
+                },
+                {
+                  "step_number": 4,
+                  "title": "通知はがきで収集日を確認",
+                  "description": "通知はがきに記載された収集日に、粗大ごみシールを貼って午前8時30分までに申込場所へ出してください。立会い不要。粗大ごみの戸別収集は無料ですが、直接搬入・許可業者の費用は別途確認してください。"
+                }
+              ]
+            }
+          }
+        }
+      }
     }
   ]
 }

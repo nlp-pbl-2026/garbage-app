@@ -1,0 +1,560 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38210",
+  "municipality_name": "伊予市",
+  "prefecture_id": "38",
+  "prefecture_name": "愛媛県",
+  "version": "iyo-2026.1",
+  "valid_from": "2026-04-01",
+  "valid_to": "2027-03-31",
+  "collection_areas": [
+    {
+      "id": "38210-iyo-south",
+      "name": "南山崎（上唐川・下唐川・大平上・大平下、平岡・鵜崎を除く）、鳥ノ木",
+      "display_name": "南山崎（上唐川・下唐川・大平上・大平下、平岡・鵜崎を除く）、鳥ノ木",
+      "calendar_id": "iy-iyo-south",
+      "rule_profile_id": "iyo",
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.iyo.lg.jp/shiminseikatsu/kurashi/gomi/shushubi/documents/r8iyo.pdf"
+    },
+    {
+      "id": "38210-iyo-central",
+      "name": "灘町、米湊、上吾川（白水を除く）",
+      "display_name": "灘町、米湊、上吾川（白水を除く）",
+      "calendar_id": "iy-iyo-central",
+      "rule_profile_id": "iyo",
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.iyo.lg.jp/shiminseikatsu/kurashi/gomi/shushubi/documents/r8iyo.pdf"
+    },
+    {
+      "id": "38210-iyo-north",
+      "name": "北山崎（三秋・中村・森・本郡・尾﨑・三島町・市場・稲荷）",
+      "display_name": "北山崎（三秋・中村・森・本郡・尾﨑・三島町・市場・稲荷）",
+      "calendar_id": "iy-iyo-north",
+      "rule_profile_id": "iyo",
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.iyo.lg.jp/shiminseikatsu/kurashi/gomi/shushubi/documents/r8iyo.pdf"
+    },
+    {
+      "id": "38210-iyo-west",
+      "name": "湊町、白水、下吾川（鳥ノ木を除く）",
+      "display_name": "湊町、白水、下吾川（鳥ノ木を除く）",
+      "calendar_id": "iy-iyo-west",
+      "rule_profile_id": "iyo",
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.iyo.lg.jp/shiminseikatsu/kurashi/gomi/shushubi/documents/r8iyo.pdf"
+    },
+    {
+      "id": "38210-iyo-east",
+      "name": "南伊予（下三谷・上三谷・上野・宮下・八倉）",
+      "display_name": "南伊予（下三谷・上三谷・上野・宮下・八倉）",
+      "calendar_id": "iy-iyo-east",
+      "rule_profile_id": "iyo",
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.iyo.lg.jp/shiminseikatsu/kurashi/gomi/shushubi/documents/r8iyo.pdf"
+    },
+    {
+      "id": "38210-iyo-hiraoka",
+      "name": "平岡、鵜崎",
+      "display_name": "平岡、鵜崎",
+      "calendar_id": "iy-iyo-hiraoka",
+      "rule_profile_id": "iyo",
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.iyo.lg.jp/shiminseikatsu/kurashi/gomi/shushubi/documents/r8iyo.pdf"
+    },
+    {
+      "id": "38210-futami-a",
+      "name": "双海：柆野、犬寄、高見、東峰",
+      "display_name": "双海：柆野、犬寄、高見、東峰",
+      "calendar_id": "iy-futami-a",
+      "rule_profile_id": "futami",
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.iyo.lg.jp/shiminseikatsu/kurashi/gomi/shushubi/documents/r8hutami.pdf"
+    },
+    {
+      "id": "38210-futami-b",
+      "name": "双海：両谷、久保、三島、岡、日尾野、大栄、奥大栄",
+      "display_name": "双海：両谷、久保、三島、岡、日尾野、大栄、奥大栄",
+      "calendar_id": "iy-futami-b",
+      "rule_profile_id": "futami",
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.iyo.lg.jp/shiminseikatsu/kurashi/gomi/shushubi/documents/r8hutami.pdf"
+    },
+    {
+      "id": "38210-futami-c",
+      "name": "双海：灘町",
+      "display_name": "双海：灘町",
+      "calendar_id": "iy-futami-c",
+      "rule_profile_id": "futami",
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.iyo.lg.jp/shiminseikatsu/kurashi/gomi/shushubi/documents/r8hutami.pdf"
+    },
+    {
+      "id": "38210-futami-d",
+      "name": "双海：小網、城ノ下、高野川",
+      "display_name": "双海：小網、城ノ下、高野川",
+      "calendar_id": "iy-futami-d",
+      "rule_profile_id": "futami",
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.iyo.lg.jp/shiminseikatsu/kurashi/gomi/shushubi/documents/r8hutami.pdf"
+    },
+    {
+      "id": "38210-futami-e",
+      "name": "双海：本郷、塩屋、唐崎",
+      "display_name": "双海：本郷、塩屋、唐崎",
+      "calendar_id": "iy-futami-e",
+      "rule_profile_id": "futami",
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.iyo.lg.jp/shiminseikatsu/kurashi/gomi/shushubi/documents/r8hutami.pdf"
+    },
+    {
+      "id": "38210-futami-f",
+      "name": "双海：下灘（上浜・下浜を除く）",
+      "display_name": "双海：下灘（上浜・下浜を除く）",
+      "calendar_id": "iy-futami-f",
+      "rule_profile_id": "futami",
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.iyo.lg.jp/shiminseikatsu/kurashi/gomi/shushubi/documents/r8hutami.pdf"
+    },
+    {
+      "id": "38210-futami-g",
+      "name": "双海：上浜、下浜",
+      "display_name": "双海：上浜、下浜",
+      "calendar_id": "iy-futami-g",
+      "rule_profile_id": "futami",
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.iyo.lg.jp/shiminseikatsu/kurashi/gomi/shushubi/documents/r8hutami.pdf"
+    },
+    {
+      "id": "38210-nakayama-sare",
+      "name": "中山地域：佐礼谷（上長沢・下長沢・長沢団地・榎峠・竹之内・日浦・影浦・障子ヶ谷・坪之内・村中・山口・中替地・柿谷・安別当・梅之木・源氏・赤海・犬寄）",
+      "display_name": "中山地域：佐礼谷（上長沢・下長沢・長沢団地・榎峠・竹之内・日浦・影浦・障子ヶ谷・坪之内・村中・山口・中替地・柿谷・安別当・梅之木・源氏・赤海・犬寄）",
+      "calendar_id": "iy-nakayama-sare",
+      "rule_profile_id": "nakayama",
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.iyo.lg.jp/shiminseikatsu/kurashi/gomi/shushubi/documents/r8nakayama.pdf"
+    },
+    {
+      "id": "38210-nakayama-naka",
+      "name": "中山地域：中山（泉町一・泉町二・泉町三・泉町四・福元・高岡・柚之木・重藤・永木・福住・梅原・平村・添賀）",
+      "display_name": "中山地域：中山（泉町一・泉町二・泉町三・泉町四・福元・高岡・柚之木・重藤・永木・福住・梅原・平村・添賀）",
+      "calendar_id": "iy-nakayama-naka",
+      "rule_profile_id": "nakayama",
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.iyo.lg.jp/shiminseikatsu/kurashi/gomi/shushubi/documents/r8nakayama.pdf"
+    },
+    {
+      "id": "38210-nakayama-ide",
+      "name": "中山地域：出渕（豊岡一・豊岡二・東町・門前・坪井・小池・大矢・野中・影之浦・栃谷・日南登・漆・福岡・平沢・栗田二・栗田三）",
+      "display_name": "中山地域：出渕（豊岡一・豊岡二・東町・門前・坪井・小池・大矢・野中・影之浦・栃谷・日南登・漆・福岡・平沢・栗田二・栗田三）",
+      "calendar_id": "iy-nakayama-ide",
+      "rule_profile_id": "nakayama",
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.iyo.lg.jp/shiminseikatsu/kurashi/gomi/shushubi/documents/r8nakayama.pdf"
+    }
+  ],
+  "calendars": [
+    {
+      "id": "iy-iyo-south",
+      "rule_profile_id": "iyo"
+    },
+    {
+      "id": "iy-iyo-central",
+      "rule_profile_id": "iyo"
+    },
+    {
+      "id": "iy-iyo-north",
+      "rule_profile_id": "iyo"
+    },
+    {
+      "id": "iy-iyo-west",
+      "rule_profile_id": "iyo"
+    },
+    {
+      "id": "iy-iyo-east",
+      "rule_profile_id": "iyo"
+    },
+    {
+      "id": "iy-iyo-hiraoka",
+      "rule_profile_id": "iyo"
+    },
+    {
+      "id": "iy-futami-a",
+      "rule_profile_id": "futami"
+    },
+    {
+      "id": "iy-futami-b",
+      "rule_profile_id": "futami"
+    },
+    {
+      "id": "iy-futami-c",
+      "rule_profile_id": "futami"
+    },
+    {
+      "id": "iy-futami-d",
+      "rule_profile_id": "futami"
+    },
+    {
+      "id": "iy-futami-e",
+      "rule_profile_id": "futami"
+    },
+    {
+      "id": "iy-futami-f",
+      "rule_profile_id": "futami"
+    },
+    {
+      "id": "iy-futami-g",
+      "rule_profile_id": "futami"
+    },
+    {
+      "id": "iy-nakayama-sare",
+      "rule_profile_id": "nakayama"
+    },
+    {
+      "id": "iy-nakayama-naka",
+      "rule_profile_id": "nakayama"
+    },
+    {
+      "id": "iy-nakayama-ide",
+      "rule_profile_id": "nakayama"
+    }
+  ],
+  "rule_profiles": {
+    "iyo": {
+      "items_path": "knowledge/items.csv",
+      "embedding_index_path": "knowledge/item_embeddings.npz",
+      "index_profile_id": "citywide",
+      "calendar_path": "generated/calendar-2026.json",
+      "knowledge_title": "伊予市公式ごみ分別の手引き・辞典・更新情報",
+      "classification_rules": "伊予市の公式ごみ分別の手引き・辞典と更新ページに従う。他自治体の分類・袋・施設・締切を適用しない。\n可燃=燃えるごみ、プラ=プラスチック製容器包装、その他=燃えないその他ごみ、禁止=市で収集しないもの。分類コードと収集方法を区別する。\n品目の個別注記、禁止指定、条件付き分類を優先する。45リットルの袋に入らず大人1人で運べるものは原則粗大。ただし家電リサイクル対象品・パソコン・禁止品を大きさだけで粗大へ変更しない。大人1人で運べない大型家具等は市で収集しない。石油ストーブ・灯油ポリタンク・ガスコンロ等は袋に入っても粗大。\nプラスチック製品と容器包装を区別する。プラマーク付き容器包装は洗って出す。柔らかい製品は燃えるごみ、硬い製品は燃えないその他ごみ。汚れ・材質・マークは利用者が確認した条件と画像からの推測を区別し、不明なら質問する。他自治体の「汚れたプラは可燃」という例外を根拠なく適用しない。\nびん類には食品・飲料だけでなく薬・化粧品のびんも含む。ただし乳白色のびん、割れたびん、果実酒用保存びんは燃えないその他ごみ。ガラス食器はびん類ではない。食品・飲料缶とスプレー缶を区別する。スプレー缶・カセットボンベは使い切って燃えないその他ごみ。\nペットボトルは食品用PETマークを確認する。本体はペットボトル、外したふた・ラベルはプラスチック製容器包装。付属物の分類を本体へ誤適用しない。シュレッダー紙は紙類。破れた布・汚れた布は燃えるごみ。\n2026年8月更新の充電池案内を優先する。回収対象はリサイクルマーク付きのリチウムイオン・ニカド・ニッケル水素電池。使い切り、取り外せる電池は外して絶縁し有害ごみ。取り外せない製品は無理に分解せず燃えないその他ごみ又は小型家電回収ボックス。小型シール鉛蓄電池はマーク付きでも市で回収しない。電池種別・取り外し可否が不明な場合は質問し、充電式というだけで確定しない。\n粗大ごみは年6回・1回5点まで、年30点までの申込み制。はがき又はえひめ電子申請システムから申込む。双海地域は偶数月14日、中山地域は偶数月28日、伊予地域は住所により14日又は28日締切、翌奇数月に収集。通知はがきに指定された日を利用し、定期カレンダーから推測しない。家庭の粗大ごみ収集は公式申込ガイドで無料とされるが、直接搬入や許可業者への依頼料金は別途確認する。\n燃えるごみの搬入先は伊予地区清掃センター。燃えないごみを同センターへ持ち込めると案内しない。品目別の回収先を優先する。\n定期収集は午前8時30分まで、1回45リットル以下の袋3つまで。検証済み2026年度地区別カレンダーだけを利用する。条件不足は追加質問又は判定保留とし、未知の条件を作らない。\n判定対象は利用者が捨てたい本体・部位を優先する。「キャップとラベルを外したペットボトル」は本体が対象であり、付属物の分類を答えない。品目本体の分類コードを基準とし、共通の出し方に現れる他の品目の分類へ置き換えない。ストロー本体と外袋は別品目で、普通の使い捨てストローのプラマークを確認する必要はない。\n大人1人で持ち運べない大きさ・重さの家具は、材質・袋サイズに関係なく禁止（not_collected）。粗大ごみと答えない。45リットル袋で運べないという品目注記と、大人1人で運べないという利用者の条件を混同しない。",
+      "size_question": "45リットルの袋に入る大きさですか？大人1人で持ち運べますか？",
+      "categories": {
+        "burnable": {
+          "name": "燃えるごみ",
+          "color": "#E6B84C",
+          "collection_type_id": "burnable",
+          "cutoff": "08:30"
+        },
+        "plastic_packaging": {
+          "name": "プラスチック製容器包装",
+          "color": "#73BDD9",
+          "collection_type_id": "plastic_packaging",
+          "cutoff": "08:30"
+        },
+        "paper": {
+          "name": "紙類",
+          "color": "#9D96C2",
+          "collection_type_id": "paper",
+          "cutoff": "08:30"
+        },
+        "cans": {
+          "name": "かん類",
+          "color": "#D785A3",
+          "collection_type_id": "cans",
+          "cutoff": "08:30"
+        },
+        "bottles": {
+          "name": "びん類",
+          "color": "#E3AD50",
+          "collection_type_id": "bottles",
+          "cutoff": "08:30"
+        },
+        "textiles": {
+          "name": "布類",
+          "color": "#A8BF68",
+          "collection_type_id": "textiles",
+          "cutoff": "08:30"
+        },
+        "pet_bottles": {
+          "name": "ペットボトル",
+          "color": "#69AE86",
+          "collection_type_id": "pet_bottles",
+          "cutoff": "08:30"
+        },
+        "hazardous": {
+          "name": "有害ごみ",
+          "color": "#B5A552",
+          "collection_type_id": "hazardous",
+          "cutoff": "08:30"
+        },
+        "non_burnable": {
+          "name": "燃えないその他ごみ",
+          "color": "#78A1BD",
+          "collection_type_id": "non_burnable",
+          "cutoff": "08:30"
+        },
+        "bulky": {
+          "name": "粗大ごみ",
+          "color": "#94614F",
+          "answer_note": "粗大ごみは事前申込み制です。収集日は通知はがきで確認してください。双海は偶数月14日、中山は偶数月28日、伊予地域は住所により14日・28日が申込期限です。公式ページで確認してください。"
+        },
+        "not_collected": {
+          "name": "市で収集しないもの",
+          "color": "#777777",
+          "answer_note": "市の定期収集の対象外です。販売店・許可業者等、公式の品目別案内を確認してください。"
+        }
+      },
+      "bulky_waste": {
+        "category_code": "bulky",
+        "config": {
+          "municipality_id": "38210",
+          "municipality_name": "伊予市",
+          "collection_frequency": "事前申込制・年6回（奇数月）",
+          "reception_hours": "伊予地域の上吾川・米湊・灘町・湊町・下吾川は偶数月14日締切。それ以外の伊予地域（上唐川・下唐川・大平上・大平下・三秋・中村・森・本郡・尾﨑・三島町・市場・稲荷・下三谷・上三谷・上野・宮下・八倉）は偶数月28日締切です。住所の区分を公式ページで確認してください。",
+          "collection_rules": "伊予地域の上吾川・米湊・灘町・湊町・下吾川は偶数月14日締切。それ以外の伊予地域（上唐川・下唐川・大平上・大平下・三秋・中村・森・本郡・尾﨑・三島町・市場・稲荷・下三谷・上三谷・上野・宮下・八倉）は偶数月28日締切です。住所の区分を公式ページで確認してください。収集日は通知はがきで確認してください。",
+          "fee_structure_type": "fixed",
+          "application_method": "web_form",
+          "phone_number": "089-909-6338",
+          "web_form_url": "https://www.city.iyo.lg.jp/shiminseikatsu/kurashi/gomi/bunbetsu/sodai/dashikata/calendar.html",
+          "information_url": "https://www.city.iyo.lg.jp/shiminseikatsu/kurashi/gomi/bunbetsu/sodai/dashikata/calendar.html",
+          "steps": [
+            {
+              "step_number": 1,
+              "title": "対象品目を確認",
+              "description": "原則45リットルの袋に入らず、大人1人で運べるもの。家電リサイクル対象品などは収集できません。1回5点まで、年30点までです。"
+            },
+            {
+              "step_number": 2,
+              "title": "住所と申込期限を確認",
+              "description": "伊予地域の上吾川・米湊・灘町・湊町・下吾川は偶数月14日締切。それ以外の伊予地域（上唐川・下唐川・大平上・大平下・三秋・中村・森・本郡・尾﨑・三島町・市場・稲荷・下三谷・上三谷・上野・宮下・八倉）は偶数月28日締切です。住所の区分を公式ページで確認してください。収集は翌奇数月の年6回です。"
+            },
+            {
+              "step_number": 3,
+              "title": "はがき又は電子申請で申し込む",
+              "description": "はがきは申込期限の消印有効です。公式サイトからえひめ電子申請システムにも進めます。アプリからの自動申込みは行いません。"
+            },
+            {
+              "step_number": 4,
+              "title": "通知はがきで収集日を確認",
+              "description": "通知はがきに記載された収集日に、粗大ごみシールを貼って午前8時30分までに申込場所へ出してください。立会い不要。粗大ごみの戸別収集は無料ですが、直接搬入・許可業者の費用は別途確認してください。"
+            }
+          ]
+        }
+      }
+    },
+    "futami": {
+      "items_path": "knowledge/items.csv",
+      "embedding_index_path": "knowledge/item_embeddings.npz",
+      "index_profile_id": "citywide",
+      "calendar_path": "generated/calendar-2026.json",
+      "knowledge_title": "伊予市公式ごみ分別の手引き・辞典・更新情報",
+      "classification_rules": "伊予市の公式ごみ分別の手引き・辞典と更新ページに従う。他自治体の分類・袋・施設・締切を適用しない。\n可燃=燃えるごみ、プラ=プラスチック製容器包装、その他=燃えないその他ごみ、禁止=市で収集しないもの。分類コードと収集方法を区別する。\n品目の個別注記、禁止指定、条件付き分類を優先する。45リットルの袋に入らず大人1人で運べるものは原則粗大。ただし家電リサイクル対象品・パソコン・禁止品を大きさだけで粗大へ変更しない。大人1人で運べない大型家具等は市で収集しない。石油ストーブ・灯油ポリタンク・ガスコンロ等は袋に入っても粗大。\nプラスチック製品と容器包装を区別する。プラマーク付き容器包装は洗って出す。柔らかい製品は燃えるごみ、硬い製品は燃えないその他ごみ。汚れ・材質・マークは利用者が確認した条件と画像からの推測を区別し、不明なら質問する。他自治体の「汚れたプラは可燃」という例外を根拠なく適用しない。\nびん類には食品・飲料だけでなく薬・化粧品のびんも含む。ただし乳白色のびん、割れたびん、果実酒用保存びんは燃えないその他ごみ。ガラス食器はびん類ではない。食品・飲料缶とスプレー缶を区別する。スプレー缶・カセットボンベは使い切って燃えないその他ごみ。\nペットボトルは食品用PETマークを確認する。本体はペットボトル、外したふた・ラベルはプラスチック製容器包装。付属物の分類を本体へ誤適用しない。シュレッダー紙は紙類。破れた布・汚れた布は燃えるごみ。\n2026年8月更新の充電池案内を優先する。回収対象はリサイクルマーク付きのリチウムイオン・ニカド・ニッケル水素電池。使い切り、取り外せる電池は外して絶縁し有害ごみ。取り外せない製品は無理に分解せず燃えないその他ごみ又は小型家電回収ボックス。小型シール鉛蓄電池はマーク付きでも市で回収しない。電池種別・取り外し可否が不明な場合は質問し、充電式というだけで確定しない。\n粗大ごみは年6回・1回5点まで、年30点までの申込み制。はがき又はえひめ電子申請システムから申込む。双海地域は偶数月14日、中山地域は偶数月28日、伊予地域は住所により14日又は28日締切、翌奇数月に収集。通知はがきに指定された日を利用し、定期カレンダーから推測しない。家庭の粗大ごみ収集は公式申込ガイドで無料とされるが、直接搬入や許可業者への依頼料金は別途確認する。\n燃えるごみの搬入先は伊予地区清掃センター。燃えないごみを同センターへ持ち込めると案内しない。品目別の回収先を優先する。\n定期収集は午前8時30分まで、1回45リットル以下の袋3つまで。検証済み2026年度地区別カレンダーだけを利用する。条件不足は追加質問又は判定保留とし、未知の条件を作らない。\n判定対象は利用者が捨てたい本体・部位を優先する。「キャップとラベルを外したペットボトル」は本体が対象であり、付属物の分類を答えない。品目本体の分類コードを基準とし、共通の出し方に現れる他の品目の分類へ置き換えない。ストロー本体と外袋は別品目で、普通の使い捨てストローのプラマークを確認する必要はない。\n大人1人で持ち運べない大きさ・重さの家具は、材質・袋サイズに関係なく禁止（not_collected）。粗大ごみと答えない。45リットル袋で運べないという品目注記と、大人1人で運べないという利用者の条件を混同しない。",
+      "size_question": "45リットルの袋に入る大きさですか？大人1人で持ち運べますか？",
+      "categories": {
+        "burnable": {
+          "name": "燃えるごみ",
+          "color": "#E6B84C",
+          "collection_type_id": "burnable",
+          "cutoff": "08:30"
+        },
+        "plastic_packaging": {
+          "name": "プラスチック製容器包装",
+          "color": "#73BDD9",
+          "collection_type_id": "plastic_packaging",
+          "cutoff": "08:30"
+        },
+        "paper": {
+          "name": "紙類",
+          "color": "#9D96C2",
+          "collection_type_id": "paper",
+          "cutoff": "08:30"
+        },
+        "cans": {
+          "name": "かん類",
+          "color": "#D785A3",
+          "collection_type_id": "cans",
+          "cutoff": "08:30"
+        },
+        "bottles": {
+          "name": "びん類",
+          "color": "#E3AD50",
+          "collection_type_id": "bottles",
+          "cutoff": "08:30"
+        },
+        "textiles": {
+          "name": "布類",
+          "color": "#A8BF68",
+          "collection_type_id": "textiles",
+          "cutoff": "08:30"
+        },
+        "pet_bottles": {
+          "name": "ペットボトル",
+          "color": "#69AE86",
+          "collection_type_id": "pet_bottles",
+          "cutoff": "08:30"
+        },
+        "hazardous": {
+          "name": "有害ごみ",
+          "color": "#B5A552",
+          "collection_type_id": "hazardous",
+          "cutoff": "08:30"
+        },
+        "non_burnable": {
+          "name": "燃えないその他ごみ",
+          "color": "#78A1BD",
+          "collection_type_id": "non_burnable",
+          "cutoff": "08:30"
+        },
+        "bulky": {
+          "name": "粗大ごみ",
+          "color": "#94614F",
+          "answer_note": "粗大ごみは事前申込み制です。収集日は通知はがきで確認してください。双海は偶数月14日、中山は偶数月28日、伊予地域は住所により14日・28日が申込期限です。公式ページで確認してください。"
+        },
+        "not_collected": {
+          "name": "市で収集しないもの",
+          "color": "#777777",
+          "answer_note": "市の定期収集の対象外です。販売店・許可業者等、公式の品目別案内を確認してください。"
+        }
+      },
+      "bulky_waste": {
+        "category_code": "bulky",
+        "config": {
+          "municipality_id": "38210",
+          "municipality_name": "伊予市",
+          "collection_frequency": "事前申込制・年6回（奇数月）",
+          "reception_hours": "双海地域は偶数月14日締切です。",
+          "collection_rules": "双海地域は偶数月14日締切です。収集日は通知はがきで確認してください。",
+          "fee_structure_type": "fixed",
+          "application_method": "web_form",
+          "phone_number": "089-909-6338",
+          "web_form_url": "https://www.city.iyo.lg.jp/shiminseikatsu/kurashi/gomi/bunbetsu/sodai/dashikata/calendar.html",
+          "information_url": "https://www.city.iyo.lg.jp/shiminseikatsu/kurashi/gomi/bunbetsu/sodai/dashikata/calendar.html",
+          "steps": [
+            {
+              "step_number": 1,
+              "title": "対象品目を確認",
+              "description": "原則45リットルの袋に入らず、大人1人で運べるもの。家電リサイクル対象品などは収集できません。1回5点まで、年30点までです。"
+            },
+            {
+              "step_number": 2,
+              "title": "住所と申込期限を確認",
+              "description": "双海地域は偶数月14日締切です。収集は翌奇数月の年6回です。"
+            },
+            {
+              "step_number": 3,
+              "title": "はがき又は電子申請で申し込む",
+              "description": "はがきは申込期限の消印有効です。公式サイトからえひめ電子申請システムにも進めます。アプリからの自動申込みは行いません。"
+            },
+            {
+              "step_number": 4,
+              "title": "通知はがきで収集日を確認",
+              "description": "通知はがきに記載された収集日に、粗大ごみシールを貼って午前8時30分までに申込場所へ出してください。立会い不要。粗大ごみの戸別収集は無料ですが、直接搬入・許可業者の費用は別途確認してください。"
+            }
+          ]
+        }
+      }
+    },
+    "nakayama": {
+      "items_path": "knowledge/items.csv",
+      "embedding_index_path": "knowledge/item_embeddings.npz",
+      "index_profile_id": "citywide",
+      "calendar_path": "generated/calendar-2026.json",
+      "knowledge_title": "伊予市公式ごみ分別の手引き・辞典・更新情報",
+      "classification_rules": "伊予市の公式ごみ分別の手引き・辞典と更新ページに従う。他自治体の分類・袋・施設・締切を適用しない。\n可燃=燃えるごみ、プラ=プラスチック製容器包装、その他=燃えないその他ごみ、禁止=市で収集しないもの。分類コードと収集方法を区別する。\n品目の個別注記、禁止指定、条件付き分類を優先する。45リットルの袋に入らず大人1人で運べるものは原則粗大。ただし家電リサイクル対象品・パソコン・禁止品を大きさだけで粗大へ変更しない。大人1人で運べない大型家具等は市で収集しない。石油ストーブ・灯油ポリタンク・ガスコンロ等は袋に入っても粗大。\nプラスチック製品と容器包装を区別する。プラマーク付き容器包装は洗って出す。柔らかい製品は燃えるごみ、硬い製品は燃えないその他ごみ。汚れ・材質・マークは利用者が確認した条件と画像からの推測を区別し、不明なら質問する。他自治体の「汚れたプラは可燃」という例外を根拠なく適用しない。\nびん類には食品・飲料だけでなく薬・化粧品のびんも含む。ただし乳白色のびん、割れたびん、果実酒用保存びんは燃えないその他ごみ。ガラス食器はびん類ではない。食品・飲料缶とスプレー缶を区別する。スプレー缶・カセットボンベは使い切って燃えないその他ごみ。\nペットボトルは食品用PETマークを確認する。本体はペットボトル、外したふた・ラベルはプラスチック製容器包装。付属物の分類を本体へ誤適用しない。シュレッダー紙は紙類。破れた布・汚れた布は燃えるごみ。\n2026年8月更新の充電池案内を優先する。回収対象はリサイクルマーク付きのリチウムイオン・ニカド・ニッケル水素電池。使い切り、取り外せる電池は外して絶縁し有害ごみ。取り外せない製品は無理に分解せず燃えないその他ごみ又は小型家電回収ボックス。小型シール鉛蓄電池はマーク付きでも市で回収しない。電池種別・取り外し可否が不明な場合は質問し、充電式というだけで確定しない。\n粗大ごみは年6回・1回5点まで、年30点までの申込み制。はがき又はえひめ電子申請システムから申込む。双海地域は偶数月14日、中山地域は偶数月28日、伊予地域は住所により14日又は28日締切、翌奇数月に収集。通知はがきに指定された日を利用し、定期カレンダーから推測しない。家庭の粗大ごみ収集は公式申込ガイドで無料とされるが、直接搬入や許可業者への依頼料金は別途確認する。\n燃えるごみの搬入先は伊予地区清掃センター。燃えないごみを同センターへ持ち込めると案内しない。品目別の回収先を優先する。\n定期収集は午前8時30分まで、1回45リットル以下の袋3つまで。検証済み2026年度地区別カレンダーだけを利用する。条件不足は追加質問又は判定保留とし、未知の条件を作らない。\n判定対象は利用者が捨てたい本体・部位を優先する。「キャップとラベルを外したペットボトル」は本体が対象であり、付属物の分類を答えない。品目本体の分類コードを基準とし、共通の出し方に現れる他の品目の分類へ置き換えない。ストロー本体と外袋は別品目で、普通の使い捨てストローのプラマークを確認する必要はない。\n大人1人で持ち運べない大きさ・重さの家具は、材質・袋サイズに関係なく禁止（not_collected）。粗大ごみと答えない。45リットル袋で運べないという品目注記と、大人1人で運べないという利用者の条件を混同しない。",
+      "size_question": "45リットルの袋に入る大きさですか？大人1人で持ち運べますか？",
+      "categories": {
+        "burnable": {
+          "name": "燃えるごみ",
+          "color": "#E6B84C",
+          "collection_type_id": "burnable",
+          "cutoff": "08:30"
+        },
+        "plastic_packaging": {
+          "name": "プラスチック製容器包装",
+          "color": "#73BDD9",
+          "collection_type_id": "plastic_packaging",
+          "cutoff": "08:30"
+        },
+        "paper": {
+          "name": "紙類",
+          "color": "#9D96C2",
+          "collection_type_id": "paper",
+          "cutoff": "08:30"
+        },
+        "cans": {
+          "name": "かん類",
+          "color": "#D785A3",
+          "collection_type_id": "cans",
+          "cutoff": "08:30"
+        },
+        "bottles": {
+          "name": "びん類",
+          "color": "#E3AD50",
+          "collection_type_id": "bottles",
+          "cutoff": "08:30"
+        },
+        "textiles": {
+          "name": "布類",
+          "color": "#A8BF68",
+          "collection_type_id": "textiles",
+          "cutoff": "08:30"
+        },
+        "pet_bottles": {
+          "name": "ペットボトル",
+          "color": "#69AE86",
+          "collection_type_id": "pet_bottles",
+          "cutoff": "08:30"
+        },
+        "hazardous": {
+          "name": "有害ごみ",
+          "color": "#B5A552",
+          "collection_type_id": "hazardous",
+          "cutoff": "08:30"
+        },
+        "non_burnable": {
+          "name": "燃えないその他ごみ",
+          "color": "#78A1BD",
+          "collection_type_id": "non_burnable",
+          "cutoff": "08:30"
+        },
+        "bulky": {
+          "name": "粗大ごみ",
+          "color": "#94614F",
+          "answer_note": "粗大ごみは事前申込み制です。収集日は通知はがきで確認してください。双海は偶数月14日、中山は偶数月28日、伊予地域は住所により14日・28日が申込期限です。公式ページで確認してください。"
+        },
+        "not_collected": {
+          "name": "市で収集しないもの",
+          "color": "#777777",
+          "answer_note": "市の定期収集の対象外です。販売店・許可業者等、公式の品目別案内を確認してください。"
+        }
+      },
+      "bulky_waste": {
+        "category_code": "bulky",
+        "config": {
+          "municipality_id": "38210",
+          "municipality_name": "伊予市",
+          "collection_frequency": "事前申込制・年6回（奇数月）",
+          "reception_hours": "中山地域は偶数月28日締切です。",
+          "collection_rules": "中山地域は偶数月28日締切です。収集日は通知はがきで確認してください。",
+          "fee_structure_type": "fixed",
+          "application_method": "web_form",
+          "phone_number": "089-909-6338",
+          "web_form_url": "https://www.city.iyo.lg.jp/shiminseikatsu/kurashi/gomi/bunbetsu/sodai/dashikata/calendar.html",
+          "information_url": "https://www.city.iyo.lg.jp/shiminseikatsu/kurashi/gomi/bunbetsu/sodai/dashikata/calendar.html",
+          "steps": [
+            {
+              "step_number": 1,
+              "title": "対象品目を確認",
+              "description": "原則45リットルの袋に入らず、大人1人で運べるもの。家電リサイクル対象品などは収集できません。1回5点まで、年30点までです。"
+            },
+            {
+              "step_number": 2,
+              "title": "住所と申込期限を確認",
+              "description": "中山地域は偶数月28日締切です。収集は翌奇数月の年6回です。"
+            },
+            {
+              "step_number": 3,
+              "title": "はがき又は電子申請で申し込む",
+              "description": "はがきは申込期限の消印有効です。公式サイトからえひめ電子申請システムにも進めます。アプリからの自動申込みは行いません。"
+            },
+            {
+              "step_number": 4,
+              "title": "通知はがきで収集日を確認",
+              "description": "通知はがきに記載された収集日に、粗大ごみシールを貼って午前8時30分までに申込場所へ出してください。立会い不要。粗大ごみの戸別収集は無料ですが、直接搬入・許可業者の費用は別途確認してください。"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

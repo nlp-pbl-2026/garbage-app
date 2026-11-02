@@ -61,7 +61,7 @@ cd ..
 
 ### 2. 松山市の既存データ
 
-標準カタログは松山市と八幡浜市の両方を参照します。`generate_frontend_data.py` は全登録自治体を処理するため、**八幡浜市だけを生成しても新規cloneでは不足します**。次はBedrockを呼びません。松山市の既存EmbeddingはGitにあり、再生成しません。
+標準カタログは松山市・八幡浜市・伊予市を参照します。`generate_frontend_data.py` は全登録自治体を処理するため、**八幡浜市だけを生成しても新規cloneでは不足します**。このガイドの手順1～4で既存2市を準備した後、共通のFlutter生成・パッケージ検査へ進む前に[伊予市の取得・生成・索引配置](iyo-data.md#新規cloneからの再生成)も行ってください。次はBedrockを呼びません。松山市の既存EmbeddingはGitにあり、再生成しません。
 
 ```bash
 backend/.venv/bin/python scripts/matsuyama_data.py fetch
