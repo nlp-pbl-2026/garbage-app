@@ -1,0 +1,453 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38442",
+  "municipality_name": "伊方町",
+  "prefecture_id": "38",
+  "prefecture_name": "愛媛県",
+  "version": "ikata-2026.1",
+  "valid_from": "2026-04-01",
+  "valid_to": "2027-03-31",
+  "collection_areas": [
+    {
+      "id": "38442-01",
+      "name": "河内、湊浦、小中浦、中浦、川永田、豊之浦",
+      "display_name": "伊方地域：河内、湊浦、小中浦、中浦、川永田、豊之浦",
+      "calendar_id": "ik-a-1",
+      "rule_profile_id": "ikata",
+      "source_url": "https://www.town.ikata.ehime.jp/uploaded/attachment/16660.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38442-02",
+      "name": "奥、向、畑、須賀、久保、西、二見、加周、田之浦、古屋敷、鳥津、大成",
+      "display_name": "伊方地域：奥、向、畑、須賀、久保、西、二見、加周、田之浦、古屋敷、鳥津、大成",
+      "calendar_id": "ik-b-1",
+      "rule_profile_id": "ikata",
+      "source_url": "https://www.town.ikata.ehime.jp/uploaded/attachment/16661.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38442-03",
+      "name": "大浜、中之浜、仁田之浜、伊方越、亀浦",
+      "display_name": "伊方地域：大浜、中之浜、仁田之浜、伊方越、亀浦",
+      "calendar_id": "ik-c-1",
+      "rule_profile_id": "ikata",
+      "source_url": "https://www.town.ikata.ehime.jp/uploaded/attachment/16662.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38442-04",
+      "name": "三机、上倉、松之浜、大江、志津、小島、田部、神崎、高茂、リゾート",
+      "display_name": "瀬戸地域：三机、上倉、松之浜、大江、志津、小島、田部、神崎、高茂、リゾート",
+      "calendar_id": "ik-a-2",
+      "rule_profile_id": "seto",
+      "source_url": "https://www.town.ikata.ehime.jp/uploaded/attachment/16664.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38442-05",
+      "name": "大久、川之浜、塩成、足成、高浦、佐市",
+      "display_name": "瀬戸地域：大久、川之浜、塩成、足成、高浦、佐市",
+      "calendar_id": "ik-b-2",
+      "rule_profile_id": "seto",
+      "source_url": "https://www.town.ikata.ehime.jp/uploaded/attachment/16665.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38442-06",
+      "name": "三崎須賀、中村、上、札場、杉山、中西、大西、赤坂、川之元、中尾、サザエバヤ、灘",
+      "display_name": "三崎地域：三崎須賀、中村、上、札場、杉山、中西、大西、赤坂、川之元、中尾、サザエバヤ、灘",
+      "calendar_id": "ik-a-3",
+      "rule_profile_id": "misaki",
+      "source_url": "https://www.town.ikata.ehime.jp/uploaded/attachment/16667.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38442-07",
+      "name": "高浦、佐田、大佐田、井野浦、二名津、明神、松、名取、釜木、平磯",
+      "display_name": "三崎地域：高浦、佐田、大佐田、井野浦、二名津、明神、松、名取、釜木、平磯",
+      "calendar_id": "ik-b-3",
+      "rule_profile_id": "misaki",
+      "source_url": "https://www.town.ikata.ehime.jp/uploaded/attachment/16668.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38442-08",
+      "name": "与侈、串、正野",
+      "display_name": "三崎地域：与侈、串、正野",
+      "calendar_id": "ik-c-2",
+      "rule_profile_id": "misaki",
+      "source_url": "https://www.town.ikata.ehime.jp/uploaded/attachment/16669.pdf",
+      "needs_local_confirmation": true
+    }
+  ],
+  "calendars": [
+    {
+      "id": "ik-a-1",
+      "rule_profile_id": "ikata"
+    },
+    {
+      "id": "ik-b-1",
+      "rule_profile_id": "ikata"
+    },
+    {
+      "id": "ik-c-1",
+      "rule_profile_id": "ikata"
+    },
+    {
+      "id": "ik-a-2",
+      "rule_profile_id": "seto"
+    },
+    {
+      "id": "ik-b-2",
+      "rule_profile_id": "seto"
+    },
+    {
+      "id": "ik-a-3",
+      "rule_profile_id": "misaki"
+    },
+    {
+      "id": "ik-b-3",
+      "rule_profile_id": "misaki"
+    },
+    {
+      "id": "ik-c-2",
+      "rule_profile_id": "misaki"
+    }
+  ],
+  "rule_profiles": {
+    "ikata": {
+      "items_path": "knowledge/items.csv",
+      "embedding_index_path": "knowledge/item_embeddings.npz",
+      "index_profile_id": "townwide",
+      "calendar_path": "generated/calendar-2026.json",
+      "knowledge_title": "伊方町公式ごみ分別ガイドブック・ごみ分別辞典",
+      "classification_rules": "伊方町のごみ分別ガイドブック（現在公開の全ページ版・分冊）、2026年度カレンダー、関連更新ページを根拠とする。他自治体の分類・袋・施設・手数料を適用しない。\n分類と収集方法を区別し、個別品目の注記・禁止指定を共通案内より優先する。指定埋立ごみ袋は30リットル。袋に入らないものを粗大とする条件と、品目自体の固定分類を混同しない。農漁業の器具・資材、家電リサイクル対象品は大きさで粗大へ変更しない。\nプラスチック製品と容器包装を区別する。製品（バケツ・歯ブラシ・玩具等）は埋立。プラマーク付き容器包装はプラ、白色発泡トレイは発泡スチロール、白色以外の発泡トレイはプラ。洗えない・汚れの落ちないPET本体・プラ容器包装・発泡スチロールは原則可燃。ただし辞典の特定品目に汚れの落ちないものは埋立とある場合はその個別注記を優先し、矛盾を推測で解消しない。\n飲料・食料用のびんはびん類。化粧品びん、ほ乳びん、ガラスコップ、割れたびんは埋立。飲料・食料缶とスプレー缶はかん類。スプレーは町の資料に従って使い切り、火気のない場所でガス抜きを案内する。ペンキ缶等の汚れが取れない缶は埋立。\nPETマーク付きのボトル本体と外した部品を分ける。プラスチック製キャップ・外したラベルはプラ、金属キャップは埋立。付属物の分類をボトル本体へ誤適用しない。利用者が確認した表示・材質・状態を画像からの推測と混同しない。\n古紙・古着類にはシュレッダー紙も含む。汚れ・濡れ・ひどい破れのある古着、下着・肌着・ストッキング等は可燃。内側にアルミ箔のある紙パックは可燃。品目別の袋サイズ条件を優先する。\nアルカリ・マンガン乾電池と蛍光管・白熱電球は有害、LED球とデジタル体温計は埋立。充電式・ボタン型電池は排出禁止で販売店等へ相談する。電池の種類が不明な場合は確認し、他自治体の充電池回収ルールを適用しない。\n粗大ごみは有料・申込制で定期カレンダーに日付がない。町の窓口又は許可業者で収集日・料金・条件を確認する。最終処分場への直接搬入は毎週金曜14〜16時（祝日を除く）、10kgごと20円（端数切上げ）で可燃ごみは搬入不可。可燃ごみは八幡浜市環境センターへの前営業日までの事前申請で別途搬入。家電リサイクル4品目は町の施設への持込も不可（2023年更新ページ）。\n2026年度の検証済み日付だけを使い、年末年始・祝日もPDFの印字を優先する。条件不足は追加質問又は判定保留とする。共通の出し方に書かれた別品目の分類は対象本体の分類根拠にしない。\n状態は利用者の原文を優先する。「水洗いした」「洗浄済み」のものを、根拠の「汚れの落ちないもの」の例外へ振り分けない。洗って汚れを落とした白色発泡トレイはstyrofoam、洗った飲料缶はcans。汚れた・ひどく破れた古着はburnable。単に古着という理由でpaper_textilesを適用しない。バケツ等の袋サイズが未回答なら確認し、壊れたという語だけで粗大にしない。無関係なコンクリート片・浴槽等の候補はバケツの分類根拠にならない。",
+      "size_question": "町指定のごみ袋に入る大きさですか？（埋立ごみ袋は30リットル）",
+      "categories": {
+        "burnable": {
+          "name": "可燃ごみ",
+          "color": "#EF8200",
+          "collection_type_id": "burnable",
+          "cutoff": "08:00"
+        },
+        "landfill": {
+          "name": "埋立ごみ",
+          "color": "#008CCF",
+          "collection_type_id": "landfill",
+          "cutoff": "08:00"
+        },
+        "bottles": {
+          "name": "びん類",
+          "color": "#FFC600",
+          "collection_type_id": "bottles",
+          "cutoff": "08:00"
+        },
+        "cans": {
+          "name": "かん類",
+          "color": "#918378",
+          "collection_type_id": "cans",
+          "cutoff": "08:00"
+        },
+        "pet_bottles": {
+          "name": "ペットボトル",
+          "color": "#00AF50",
+          "collection_type_id": "pet_bottles",
+          "cutoff": "08:00"
+        },
+        "plastic_packaging": {
+          "name": "プラスチック製容器包装",
+          "color": "#9082BC",
+          "collection_type_id": "plastic_packaging",
+          "cutoff": "08:00"
+        },
+        "styrofoam": {
+          "name": "発泡スチロール",
+          "color": "#95BE16",
+          "collection_type_id": "styrofoam",
+          "cutoff": "08:00"
+        },
+        "paper_textiles": {
+          "name": "古紙・古着類",
+          "color": "#AA9649",
+          "collection_type_id": "paper_textiles",
+          "cutoff": "08:00"
+        },
+        "hazardous": {
+          "name": "有害ごみ",
+          "color": "#298D59",
+          "collection_type_id": "hazardous",
+          "cutoff": "08:00"
+        },
+        "bulky": {
+          "name": "粗大ごみ",
+          "color": "#655B87",
+          "answer_note": "粗大ごみは申込制・有料です。2026年度の地区別PDFには粗大ごみの収集日の記載がないため、町民課・各支所又は許可業者へ申込み時に確認してください。直接搬入は最終処分場で金曜14〜16時（祝日を除く）、有料です。"
+        },
+        "not_collected": {
+          "name": "排出禁止物",
+          "color": "#E60012",
+          "answer_note": "町の定期収集へは出せません。販売店・専門業者など、公式の品目別案内を確認してください。"
+        }
+      },
+      "bulky_waste": {
+        "category_code": "bulky",
+        "config": {
+          "municipality_id": "38442",
+          "municipality_name": "伊方町",
+          "collection_frequency": "申込制・有料（収集日は申込先に確認）",
+          "reception_hours": "町民課・各支所の開庁時間にご相談ください。",
+          "collection_rules": "町民課・各支所又は許可業者で収集日・料金・場所を確認してください。定期カレンダーには粗大ごみの収集日の記載がありません。",
+          "fee_structure_type": "size_based",
+          "application_method": "phone",
+          "phone_number": "0894-38-0211",
+          "information_url": "https://www.town.ikata.ehime.jp/soshiki/32/11452.html",
+          "steps": [
+            {
+              "step_number": 1,
+              "title": "対象品目と収集方法を確認",
+              "description": "町指定埋立ごみ袋（30リットル）に入らないもの等が対象。家電リサイクル4品目、充電式電池、農漁業用品などの禁止品は出せません。"
+            },
+            {
+              "step_number": 2,
+              "title": "町の窓口又は許可業者へ連絡",
+              "description": "町民課・各支所に電話又は窓口で申し込むか、許可業者に依頼します。収集日・場所・手数料は申込先に確認してください。このアプリからは申し込めません。"
+            },
+            {
+              "step_number": 3,
+              "title": "納付券など申込先の指示を確認",
+              "description": "町の収集では許可証・手数料納付券（シール）・納付書の案内に従い、手数料を納付してシールを貼ります。2026年度PDFには粗大ごみの収集日がないため、日付を推測しません。"
+            },
+            {
+              "step_number": 4,
+              "title": "直接搬入する場合",
+              "description": "伊方町一般廃棄物最終処分場（九町2番耕地117番地2）は毎週金曜14〜16時、祝日を除きます。10kgにつき20円、端数は10kgへ切上げ。可燃ごみ・禁止品は搬入できません。最新の条件を公式案内で確認してください。"
+            }
+          ]
+        }
+      }
+    },
+    "seto": {
+      "items_path": "knowledge/items.csv",
+      "embedding_index_path": "knowledge/item_embeddings.npz",
+      "index_profile_id": "townwide",
+      "calendar_path": "generated/calendar-2026.json",
+      "knowledge_title": "伊方町公式ごみ分別ガイドブック・ごみ分別辞典",
+      "classification_rules": "伊方町のごみ分別ガイドブック（現在公開の全ページ版・分冊）、2026年度カレンダー、関連更新ページを根拠とする。他自治体の分類・袋・施設・手数料を適用しない。\n分類と収集方法を区別し、個別品目の注記・禁止指定を共通案内より優先する。指定埋立ごみ袋は30リットル。袋に入らないものを粗大とする条件と、品目自体の固定分類を混同しない。農漁業の器具・資材、家電リサイクル対象品は大きさで粗大へ変更しない。\nプラスチック製品と容器包装を区別する。製品（バケツ・歯ブラシ・玩具等）は埋立。プラマーク付き容器包装はプラ、白色発泡トレイは発泡スチロール、白色以外の発泡トレイはプラ。洗えない・汚れの落ちないPET本体・プラ容器包装・発泡スチロールは原則可燃。ただし辞典の特定品目に汚れの落ちないものは埋立とある場合はその個別注記を優先し、矛盾を推測で解消しない。\n飲料・食料用のびんはびん類。化粧品びん、ほ乳びん、ガラスコップ、割れたびんは埋立。飲料・食料缶とスプレー缶はかん類。スプレーは町の資料に従って使い切り、火気のない場所でガス抜きを案内する。ペンキ缶等の汚れが取れない缶は埋立。\nPETマーク付きのボトル本体と外した部品を分ける。プラスチック製キャップ・外したラベルはプラ、金属キャップは埋立。付属物の分類をボトル本体へ誤適用しない。利用者が確認した表示・材質・状態を画像からの推測と混同しない。\n古紙・古着類にはシュレッダー紙も含む。汚れ・濡れ・ひどい破れのある古着、下着・肌着・ストッキング等は可燃。内側にアルミ箔のある紙パックは可燃。品目別の袋サイズ条件を優先する。\nアルカリ・マンガン乾電池と蛍光管・白熱電球は有害、LED球とデジタル体温計は埋立。充電式・ボタン型電池は排出禁止で販売店等へ相談する。電池の種類が不明な場合は確認し、他自治体の充電池回収ルールを適用しない。\n粗大ごみは有料・申込制で定期カレンダーに日付がない。町の窓口又は許可業者で収集日・料金・条件を確認する。最終処分場への直接搬入は毎週金曜14〜16時（祝日を除く）、10kgごと20円（端数切上げ）で可燃ごみは搬入不可。可燃ごみは八幡浜市環境センターへの前営業日までの事前申請で別途搬入。家電リサイクル4品目は町の施設への持込も不可（2023年更新ページ）。\n2026年度の検証済み日付だけを使い、年末年始・祝日もPDFの印字を優先する。条件不足は追加質問又は判定保留とする。共通の出し方に書かれた別品目の分類は対象本体の分類根拠にしない。\n状態は利用者の原文を優先する。「水洗いした」「洗浄済み」のものを、根拠の「汚れの落ちないもの」の例外へ振り分けない。洗って汚れを落とした白色発泡トレイはstyrofoam、洗った飲料缶はcans。汚れた・ひどく破れた古着はburnable。単に古着という理由でpaper_textilesを適用しない。バケツ等の袋サイズが未回答なら確認し、壊れたという語だけで粗大にしない。無関係なコンクリート片・浴槽等の候補はバケツの分類根拠にならない。",
+      "size_question": "町指定のごみ袋に入る大きさですか？（埋立ごみ袋は30リットル）",
+      "categories": {
+        "burnable": {
+          "name": "可燃ごみ",
+          "color": "#EF8200",
+          "collection_type_id": "burnable",
+          "cutoff": "08:00"
+        },
+        "landfill": {
+          "name": "埋立ごみ",
+          "color": "#008CCF",
+          "collection_type_id": "landfill",
+          "cutoff": "08:00"
+        },
+        "bottles": {
+          "name": "びん類",
+          "color": "#FFC600",
+          "collection_type_id": "bottles",
+          "cutoff": "08:00"
+        },
+        "cans": {
+          "name": "かん類",
+          "color": "#918378",
+          "collection_type_id": "cans",
+          "cutoff": "08:00"
+        },
+        "pet_bottles": {
+          "name": "ペットボトル",
+          "color": "#00AF50",
+          "collection_type_id": "pet_bottles",
+          "cutoff": "08:00"
+        },
+        "plastic_packaging": {
+          "name": "プラスチック製容器包装",
+          "color": "#9082BC",
+          "collection_type_id": "plastic_packaging",
+          "cutoff": "08:00"
+        },
+        "styrofoam": {
+          "name": "発泡スチロール",
+          "color": "#95BE16",
+          "collection_type_id": "styrofoam",
+          "cutoff": "08:00"
+        },
+        "paper_textiles": {
+          "name": "古紙・古着類",
+          "color": "#AA9649",
+          "collection_type_id": "paper_textiles",
+          "cutoff": "08:00"
+        },
+        "hazardous": {
+          "name": "有害ごみ",
+          "color": "#298D59",
+          "collection_type_id": "hazardous",
+          "cutoff": "08:00"
+        },
+        "bulky": {
+          "name": "粗大ごみ",
+          "color": "#655B87",
+          "answer_note": "粗大ごみは申込制・有料です。2026年度の地区別PDFには粗大ごみの収集日の記載がないため、町民課・各支所又は許可業者へ申込み時に確認してください。直接搬入は最終処分場で金曜14〜16時（祝日を除く）、有料です。"
+        },
+        "not_collected": {
+          "name": "排出禁止物",
+          "color": "#E60012",
+          "answer_note": "町の定期収集へは出せません。販売店・専門業者など、公式の品目別案内を確認してください。"
+        }
+      },
+      "bulky_waste": {
+        "category_code": "bulky",
+        "config": {
+          "municipality_id": "38442",
+          "municipality_name": "伊方町",
+          "collection_frequency": "申込制・有料（収集日は申込先に確認）",
+          "reception_hours": "町民課・各支所の開庁時間にご相談ください。",
+          "collection_rules": "町民課・各支所又は許可業者で収集日・料金・場所を確認してください。定期カレンダーには粗大ごみの収集日の記載がありません。",
+          "fee_structure_type": "size_based",
+          "application_method": "phone",
+          "phone_number": "0894-38-0211",
+          "information_url": "https://www.town.ikata.ehime.jp/soshiki/32/11452.html",
+          "steps": [
+            {
+              "step_number": 1,
+              "title": "対象品目と収集方法を確認",
+              "description": "町指定埋立ごみ袋（30リットル）に入らないもの等が対象。家電リサイクル4品目、充電式電池、農漁業用品などの禁止品は出せません。"
+            },
+            {
+              "step_number": 2,
+              "title": "町の窓口又は許可業者へ連絡",
+              "description": "町民課・各支所に電話又は窓口で申し込むか、許可業者に依頼します。収集日・場所・手数料は申込先に確認してください。このアプリからは申し込めません。"
+            },
+            {
+              "step_number": 3,
+              "title": "納付券など申込先の指示を確認",
+              "description": "町の収集では許可証・手数料納付券（シール）・納付書の案内に従い、手数料を納付してシールを貼ります。2026年度PDFには粗大ごみの収集日がないため、日付を推測しません。"
+            },
+            {
+              "step_number": 4,
+              "title": "直接搬入する場合",
+              "description": "伊方町一般廃棄物最終処分場（九町2番耕地117番地2）は毎週金曜14〜16時、祝日を除きます。10kgにつき20円、端数は10kgへ切上げ。可燃ごみ・禁止品は搬入できません。最新の条件を公式案内で確認してください。"
+            }
+          ]
+        }
+      }
+    },
+    "misaki": {
+      "items_path": "knowledge/items.csv",
+      "embedding_index_path": "knowledge/item_embeddings.npz",
+      "index_profile_id": "townwide",
+      "calendar_path": "generated/calendar-2026.json",
+      "knowledge_title": "伊方町公式ごみ分別ガイドブック・ごみ分別辞典",
+      "classification_rules": "伊方町のごみ分別ガイドブック（現在公開の全ページ版・分冊）、2026年度カレンダー、関連更新ページを根拠とする。他自治体の分類・袋・施設・手数料を適用しない。\n分類と収集方法を区別し、個別品目の注記・禁止指定を共通案内より優先する。指定埋立ごみ袋は30リットル。袋に入らないものを粗大とする条件と、品目自体の固定分類を混同しない。農漁業の器具・資材、家電リサイクル対象品は大きさで粗大へ変更しない。\nプラスチック製品と容器包装を区別する。製品（バケツ・歯ブラシ・玩具等）は埋立。プラマーク付き容器包装はプラ、白色発泡トレイは発泡スチロール、白色以外の発泡トレイはプラ。洗えない・汚れの落ちないPET本体・プラ容器包装・発泡スチロールは原則可燃。ただし辞典の特定品目に汚れの落ちないものは埋立とある場合はその個別注記を優先し、矛盾を推測で解消しない。\n飲料・食料用のびんはびん類。化粧品びん、ほ乳びん、ガラスコップ、割れたびんは埋立。飲料・食料缶とスプレー缶はかん類。スプレーは町の資料に従って使い切り、火気のない場所でガス抜きを案内する。ペンキ缶等の汚れが取れない缶は埋立。\nPETマーク付きのボトル本体と外した部品を分ける。プラスチック製キャップ・外したラベルはプラ、金属キャップは埋立。付属物の分類をボトル本体へ誤適用しない。利用者が確認した表示・材質・状態を画像からの推測と混同しない。\n古紙・古着類にはシュレッダー紙も含む。汚れ・濡れ・ひどい破れのある古着、下着・肌着・ストッキング等は可燃。内側にアルミ箔のある紙パックは可燃。品目別の袋サイズ条件を優先する。\nアルカリ・マンガン乾電池と蛍光管・白熱電球は有害、LED球とデジタル体温計は埋立。充電式・ボタン型電池は排出禁止で販売店等へ相談する。電池の種類が不明な場合は確認し、他自治体の充電池回収ルールを適用しない。\n粗大ごみは有料・申込制で定期カレンダーに日付がない。町の窓口又は許可業者で収集日・料金・条件を確認する。最終処分場への直接搬入は毎週金曜14〜16時（祝日を除く）、10kgごと20円（端数切上げ）で可燃ごみは搬入不可。可燃ごみは八幡浜市環境センターへの前営業日までの事前申請で別途搬入。家電リサイクル4品目は町の施設への持込も不可（2023年更新ページ）。\n2026年度の検証済み日付だけを使い、年末年始・祝日もPDFの印字を優先する。条件不足は追加質問又は判定保留とする。共通の出し方に書かれた別品目の分類は対象本体の分類根拠にしない。\n状態は利用者の原文を優先する。「水洗いした」「洗浄済み」のものを、根拠の「汚れの落ちないもの」の例外へ振り分けない。洗って汚れを落とした白色発泡トレイはstyrofoam、洗った飲料缶はcans。汚れた・ひどく破れた古着はburnable。単に古着という理由でpaper_textilesを適用しない。バケツ等の袋サイズが未回答なら確認し、壊れたという語だけで粗大にしない。無関係なコンクリート片・浴槽等の候補はバケツの分類根拠にならない。",
+      "size_question": "町指定のごみ袋に入る大きさですか？（埋立ごみ袋は30リットル）",
+      "categories": {
+        "burnable": {
+          "name": "可燃ごみ",
+          "color": "#EF8200",
+          "collection_type_id": "burnable",
+          "cutoff": "08:00"
+        },
+        "landfill": {
+          "name": "埋立ごみ",
+          "color": "#008CCF",
+          "collection_type_id": "landfill",
+          "cutoff": "08:00"
+        },
+        "bottles": {
+          "name": "びん類",
+          "color": "#FFC600",
+          "collection_type_id": "bottles",
+          "cutoff": "08:00"
+        },
+        "cans": {
+          "name": "かん類",
+          "color": "#918378",
+          "collection_type_id": "cans",
+          "cutoff": "08:00"
+        },
+        "pet_bottles": {
+          "name": "ペットボトル",
+          "color": "#00AF50",
+          "collection_type_id": "pet_bottles",
+          "cutoff": "08:00"
+        },
+        "plastic_packaging": {
+          "name": "プラスチック製容器包装",
+          "color": "#9082BC",
+          "collection_type_id": "plastic_packaging",
+          "cutoff": "08:00"
+        },
+        "styrofoam": {
+          "name": "発泡スチロール",
+          "color": "#95BE16",
+          "collection_type_id": "styrofoam",
+          "cutoff": "08:00"
+        },
+        "paper_textiles": {
+          "name": "古紙・古着類",
+          "color": "#AA9649",
+          "collection_type_id": "paper_textiles",
+          "cutoff": "08:00"
+        },
+        "hazardous": {
+          "name": "有害ごみ",
+          "color": "#298D59",
+          "collection_type_id": "hazardous",
+          "cutoff": "08:00"
+        },
+        "bulky": {
+          "name": "粗大ごみ",
+          "color": "#655B87",
+          "answer_note": "粗大ごみは申込制・有料です。2026年度の地区別PDFには粗大ごみの収集日の記載がないため、町民課・各支所又は許可業者へ申込み時に確認してください。直接搬入は最終処分場で金曜14〜16時（祝日を除く）、有料です。"
+        },
+        "not_collected": {
+          "name": "排出禁止物",
+          "color": "#E60012",
+          "answer_note": "町の定期収集へは出せません。販売店・専門業者など、公式の品目別案内を確認してください。"
+        }
+      },
+      "bulky_waste": {
+        "category_code": "bulky",
+        "config": {
+          "municipality_id": "38442",
+          "municipality_name": "伊方町",
+          "collection_frequency": "申込制・有料（収集日は申込先に確認）",
+          "reception_hours": "町民課・各支所の開庁時間にご相談ください。",
+          "collection_rules": "町民課・各支所又は許可業者で収集日・料金・場所を確認してください。定期カレンダーには粗大ごみの収集日の記載がありません。",
+          "fee_structure_type": "size_based",
+          "application_method": "phone",
+          "phone_number": "0894-38-0211",
+          "information_url": "https://www.town.ikata.ehime.jp/soshiki/32/11452.html",
+          "steps": [
+            {
+              "step_number": 1,
+              "title": "対象品目と収集方法を確認",
+              "description": "町指定埋立ごみ袋（30リットル）に入らないもの等が対象。家電リサイクル4品目、充電式電池、農漁業用品などの禁止品は出せません。"
+            },
+            {
+              "step_number": 2,
+              "title": "町の窓口又は許可業者へ連絡",
+              "description": "町民課・各支所に電話又は窓口で申し込むか、許可業者に依頼します。収集日・場所・手数料は申込先に確認してください。このアプリからは申し込めません。"
+            },
+            {
+              "step_number": 3,
+              "title": "納付券など申込先の指示を確認",
+              "description": "町の収集では許可証・手数料納付券（シール）・納付書の案内に従い、手数料を納付してシールを貼ります。2026年度PDFには粗大ごみの収集日がないため、日付を推測しません。"
+            },
+            {
+              "step_number": 4,
+              "title": "直接搬入する場合",
+              "description": "伊方町一般廃棄物最終処分場（九町2番耕地117番地2）は毎週金曜14〜16時、祝日を除きます。10kgにつき20円、端数は10kgへ切上げ。可燃ごみ・禁止品は搬入できません。最新の条件を公式案内で確認してください。"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

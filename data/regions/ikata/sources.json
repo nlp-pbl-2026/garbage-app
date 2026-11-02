@@ -1,0 +1,204 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38442",
+  "reviewed_at": "2026-11-03",
+  "license_status": "unconfirmed",
+  "sources": [
+    {
+      "file": "26164.html",
+      "url": "https://www.town.ikata.ehime.jp/soshiki/32/26164.html",
+      "sha256": "da5a9188d99b68d6ce3f0a66e943cf27d7b0af53662fa1b4fb3c95b76b8962ca"
+    },
+    {
+      "file": "16660.pdf",
+      "url": "https://www.town.ikata.ehime.jp/uploaded/attachment/16660.pdf",
+      "sha256": "80c624fa52af73244ebb2f5cb0f359fc23e18698c89526586526098f3be23d1c"
+    },
+    {
+      "file": "16661.pdf",
+      "url": "https://www.town.ikata.ehime.jp/uploaded/attachment/16661.pdf",
+      "sha256": "16dd565c374f069c6804254e77249e73eedfe96b7331f87e4f8e9a152e536241"
+    },
+    {
+      "file": "16662.pdf",
+      "url": "https://www.town.ikata.ehime.jp/uploaded/attachment/16662.pdf",
+      "sha256": "e4b600de73f8798b4f48004c7f867f226c5e061fd87d9dc074814061ae6a5636"
+    },
+    {
+      "file": "16664.pdf",
+      "url": "https://www.town.ikata.ehime.jp/uploaded/attachment/16664.pdf",
+      "sha256": "10d4c3140eb07f7fd25dc6c786089bb0f48ef9c5736fd670236f6868a2fd9d6a"
+    },
+    {
+      "file": "16665.pdf",
+      "url": "https://www.town.ikata.ehime.jp/uploaded/attachment/16665.pdf",
+      "sha256": "e1a4c4257dcd45611febd9b4ff782a1643813f691aa6a53a3450a5ec8d199fe0"
+    },
+    {
+      "file": "16667.pdf",
+      "url": "https://www.town.ikata.ehime.jp/uploaded/attachment/16667.pdf",
+      "sha256": "530103cb5ca8539f426217823a7ed8e895c2e0cf4c897a9a118764181fa3b159"
+    },
+    {
+      "file": "16668.pdf",
+      "url": "https://www.town.ikata.ehime.jp/uploaded/attachment/16668.pdf",
+      "sha256": "c5d8381be534e9497380d2e91a7a9bfd9dddaf87ab34f1bc43c21f503992eba1"
+    },
+    {
+      "file": "16669.pdf",
+      "url": "https://www.town.ikata.ehime.jp/uploaded/attachment/16669.pdf",
+      "sha256": "f19d54b0edecfbc2f082367f91049772872fe0ad9467ef7ac4c608af471e7f03"
+    },
+    {
+      "file": "11452.html",
+      "url": "https://www.town.ikata.ehime.jp/soshiki/32/11452.html",
+      "sha256": "b1a4a650d619d5f69c0a77352f27dcc92dd9ff82355f71be4794dc8c38cdd1a6"
+    },
+    {
+      "file": "14759.pdf",
+      "url": "https://www.town.ikata.ehime.jp/uploaded/attachment/14759.pdf",
+      "sha256": "78fbcd0291c23e4efc1a592aa556927764ff9a91b223b34af162853f370a6e7d"
+    },
+    {
+      "file": "10396.pdf",
+      "url": "https://www.town.ikata.ehime.jp/uploaded/attachment/10396.pdf",
+      "sha256": "9c92bf6ca40eb8bcb9ad9a8611608d375557cd99ec89d86a20a8e53e20d2b74b"
+    },
+    {
+      "file": "14760.pdf",
+      "url": "https://www.town.ikata.ehime.jp/uploaded/attachment/14760.pdf",
+      "sha256": "383d80902196dce909735e72dc435286bb405a01d6ab8676984a3dbe442ad420"
+    },
+    {
+      "file": "10398.pdf",
+      "url": "https://www.town.ikata.ehime.jp/uploaded/attachment/10398.pdf",
+      "sha256": "072c0c42c7e6b832160952d95856e33a7ee4edd01342197dec0ecb84d2f2d924"
+    },
+    {
+      "file": "10399.pdf",
+      "url": "https://www.town.ikata.ehime.jp/uploaded/attachment/10399.pdf",
+      "sha256": "9ccdf5016aed4a7d6fa41a747b2858e15d2eb9320b51bdb419c0e4ccaf409a87"
+    },
+    {
+      "file": "10400.pdf",
+      "url": "https://www.town.ikata.ehime.jp/uploaded/attachment/10400.pdf",
+      "sha256": "78e45f82e3e2734af07c5cb465db19a3bce782edda5f547556643b8b5491d3e0"
+    },
+    {
+      "file": "10401.pdf",
+      "url": "https://www.town.ikata.ehime.jp/uploaded/attachment/10401.pdf",
+      "sha256": "e37999539ea422f79f445dafa445a824f5e5ceac9416ae3faf95307751e5404b"
+    },
+    {
+      "file": "10402.pdf",
+      "url": "https://www.town.ikata.ehime.jp/uploaded/attachment/10402.pdf",
+      "sha256": "1f780be1c7de59f10d4182cac9a06e516b43d277cbc513669114ad12e32c4295"
+    },
+    {
+      "file": "10403.pdf",
+      "url": "https://www.town.ikata.ehime.jp/uploaded/attachment/10403.pdf",
+      "sha256": "14deadd12eb2a46d3e4527ba00c87d4f1515c7ed4c38b383f5cc583e226796eb"
+    },
+    {
+      "file": "10404.pdf",
+      "url": "https://www.town.ikata.ehime.jp/uploaded/attachment/10404.pdf",
+      "sha256": "27e595a00c067d45619cff59d199df5584826b27679f1ed7e660bc07c96c9950"
+    },
+    {
+      "file": "10405.pdf",
+      "url": "https://www.town.ikata.ehime.jp/uploaded/attachment/10405.pdf",
+      "sha256": "4d67649a43ced52816f74a4674ed3e2ac1481a5734758d91e17539376d90bf8a"
+    },
+    {
+      "file": "10406.pdf",
+      "url": "https://www.town.ikata.ehime.jp/uploaded/attachment/10406.pdf",
+      "sha256": "c6de55f3f6e7d32720e4a4d90592e79f0023aba7a3f67f81895e88b312043042"
+    },
+    {
+      "file": "10407.pdf",
+      "url": "https://www.town.ikata.ehime.jp/uploaded/attachment/10407.pdf",
+      "sha256": "273ec0dbe6d14058941f05ba26cc8ecd4c6ffa66adfbc20cd95e9c5e5d4db6b3"
+    },
+    {
+      "file": "10410.pdf",
+      "url": "https://www.town.ikata.ehime.jp/uploaded/attachment/10410.pdf",
+      "sha256": "d61be71d0ee458a5b492d0fac3960708d07bfa21662da2619968f19cc7be0acd"
+    },
+    {
+      "file": "10411.pdf",
+      "url": "https://www.town.ikata.ehime.jp/uploaded/attachment/10411.pdf",
+      "sha256": "1b417f93a022007b52949ae9888fd669dd2ab34bbc489d8b0952c2e8fd59cd96"
+    },
+    {
+      "file": "10412.pdf",
+      "url": "https://www.town.ikata.ehime.jp/uploaded/attachment/10412.pdf",
+      "sha256": "9407ef0450dccda3d64c657b57aa47c05714fa9818a122ad13cf60a612c536cc"
+    },
+    {
+      "file": "10413.pdf",
+      "url": "https://www.town.ikata.ehime.jp/uploaded/attachment/10413.pdf",
+      "sha256": "9ab145b63c3eafbbf510b290e3df0d05406f5552dfbabea6aba28907992cab53"
+    },
+    {
+      "file": "10414.pdf",
+      "url": "https://www.town.ikata.ehime.jp/uploaded/attachment/10414.pdf",
+      "sha256": "64e57a923ed58e45a59258ce40f2c2358cca473c5d1f9aa7d758af7e719fecc5"
+    },
+    {
+      "file": "10415.pdf",
+      "url": "https://www.town.ikata.ehime.jp/uploaded/attachment/10415.pdf",
+      "sha256": "337858ae3bb4f89eccd87644654a63bce32271ca5bea8b0937860e773fee78ed"
+    },
+    {
+      "file": "10416.pdf",
+      "url": "https://www.town.ikata.ehime.jp/uploaded/attachment/10416.pdf",
+      "sha256": "4ac59cf066e0481d94ff88919cd2a7fc4066dbb546e711a812041640063a67c1"
+    },
+    {
+      "file": "10417.pdf",
+      "url": "https://www.town.ikata.ehime.jp/uploaded/attachment/10417.pdf",
+      "sha256": "4d5f2e26a06f9be4d685466967ac9b4aa63a0e4d747b2369b27689d30184eb48"
+    },
+    {
+      "file": "office.html",
+      "url": "https://www.town.ikata.ehime.jp/soshiki/32/index-2.html",
+      "sha256": "d15424aecd126b2126667da94e5850b1f3ce6c258034481efc0ee2a2b2820aa5"
+    },
+    {
+      "file": "licensed.html",
+      "url": "https://www.town.ikata.ehime.jp/soshiki/32/11475.html",
+      "sha256": "41a18b91006f6f45880eed2528e20efa19468bcb61ae30d3cc2181c340afe3cc"
+    },
+    {
+      "file": "small-appliances.html",
+      "url": "https://www.town.ikata.ehime.jp/soshiki/32/8171.html",
+      "sha256": "d9ac2585d6beb91a547c3c320333aa508d2c8b373cfaf06d755f3d64b940f9dc"
+    },
+    {
+      "file": "fee-rules.html",
+      "url": "https://www.town.ikata.ehime.jp/reiki_int/reiki_honbun/r099RG00000646.html",
+      "sha256": "c3c7ee0c1386676f59a0af738f20336bbe4d21c83168b8468b381c77ede74d3f"
+    },
+    {
+      "file": "appliance-law.html",
+      "url": "https://www.town.ikata.ehime.jp/soshiki/32/11415.html",
+      "sha256": "35eec84ece2207594e041540643a8e56e7302c59a6addee275a07fb9da9714a4"
+    },
+    {
+      "file": "carry-in.html",
+      "url": "https://www.town.ikata.ehime.jp/soshiki/32/269.html",
+      "sha256": "fd730468fbced670c8ed0a8277ca9cc380ffa073c99d6a97d5083c2291cdc2dd"
+    },
+    {
+      "file": "recycling-plan.html",
+      "url": "https://www.town.ikata.ehime.jp/soshiki/32/6871.html",
+      "sha256": "7de9df0270aebc6b5b32d5a5cd9bcea57eeea80879f0713e659e2110cba0ba99"
+    },
+    {
+      "file": "16411.pdf",
+      "url": "https://www.town.ikata.ehime.jp/uploaded/attachment/16411.pdf",
+      "sha256": "85e857e7dc0f2834fc7a8f598209c7c0aff86c0b1a019e9577fed81252c42869"
+    }
+  ],
+  "retrieved_on": "2026-11-03"
+}
