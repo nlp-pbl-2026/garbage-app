@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38506",
+  "version": "ainan-2026.1",
+  "valid_from": "2026-01-01",
+  "valid_to": "2026-12-31",
+  "license_status": "permission_required_for_redistribution",
+  "copyright_url": "https://www.town.ainan.ehime.jp/kurashi/hpnitsuite/chosakuken/",
+  "sources": [
+    {
+      "file": "collection-rules.pdf",
+      "url": "https://www.town.ainan.ehime.jp/kurashi/tetsuduki/kankyoeisei/gomi/files/gominoshushubi202004.pdf",
+      "sha256": "f4f6d29129e60d851760f05501fc67a7ea6795e952573e947b4ad46c81322920",
+      "retrieved_at": "2026-11-02T12:41:48.508343+00:00"
+    },
+    {
+      "file": "copyright.html",
+      "url": "https://www.town.ainan.ehime.jp/kurashi/hpnitsuite/chosakuken/",
+      "sha256": "dcd096f8cbd8f50aecd6be319f51f041507636f0ec9eb921d5c2168e0abd1ada",
+      "retrieved_at": "2026-11-02T12:41:48.897063+00:00"
+    },
+    {
+      "file": "item-table.pdf",
+      "url": "https://www.town.ainan.ehime.jp/kurashi/tetsuduki/kankyoeisei/gomi/files/r6.8.8gomibunnbetuhayamihyo.pdf",
+      "sha256": "86ccd83533fe06fdb8fecfbfc731cc3d0e4db665ba45c392085fcd96138669fb",
+      "retrieved_at": "2026-11-02T12:41:49.377593+00:00"
+    },
+    {
+      "file": "items-page.html",
+      "url": "https://www.town.ainan.ehime.jp/kurashi/tetsuduki/kankyoeisei/gomi/R412bunbetsu.html",
+      "sha256": "005f82b472ceeea94ce3578eb26cbde52d3b86341887a353692b70df158bd508",
+      "retrieved_at": "2026-11-02T12:41:47.881704+00:00"
+    },
+    {
+      "file": "paper-battery-2026.pdf",
+      "url": "https://www.town.ainan.ehime.jp/kurashi/tetsuduki/kankyoeisei/gomi/files/2026shinbunshushu.pdf",
+      "sha256": "79edba9b1b91fbdee30d3668ec1b3cba1f9a5b3a9dd985366802f706eab7a1d7",
+      "retrieved_at": "2026-11-02T12:41:48.995820+00:00"
+    },
+    {
+      "file": "schedule-page.html",
+      "url": "https://www.town.ainan.ehime.jp/kurashi/tetsuduki/kankyoeisei/gomi/gomishushunittei.html",
+      "sha256": "dceff1d5a41d6d0006d9b205199b093b2b272a8d2d8b20b24f11af0559c4b966",
+      "retrieved_at": "2026-11-02T12:41:47.956386+00:00"
+    },
+    {
+      "file": "sorting-guide.pdf",
+      "url": "https://www.town.ainan.ehime.jp/kurashi/tetsuduki/kankyoeisei/gomi/files/gomibunnbetu2020.pdf",
+      "sha256": "9d96fe47b3bdf8959bff6720623a2be6602ea2af28d75e36d7dc8b20dba177c0",
+      "retrieved_at": "2026-11-02T12:41:48.562146+00:00"
+    }
+  ]
+}
