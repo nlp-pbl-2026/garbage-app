@@ -1,0 +1,480 @@
+{
+  "schema_version": 1,
+  "version": "ozu-2026.1",
+  "calendars": {
+    "ozu-main-01": {
+      "source_sha256": "dc04f7f695c7b98686d296c232aff2780f634c9da1c5b031fcc4c0043a4f70c4",
+      "days_sha256": "524ef62eff7ea06a4960c9c72f9afc1eaf63c84495eb32a43fd1130ef1038243",
+      "family": "vector-icons",
+      "collection_dates": {
+        "burnable": 102,
+        "non_burnable": 24,
+        "hazardous": 24,
+        "cans_bottles": 24,
+        "pet_styro": 24,
+        "paper_cloth": 12
+      },
+      "dated_cells": 365,
+      "mapped_category_marks": 210,
+      "source_url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46551.pdf"
+    },
+    "ozu-main-02": {
+      "source_sha256": "32e9f1b4ba55dea26f0815951e6b6bd0f1be8b38583a52ecb05758426aa6dec7",
+      "days_sha256": "d3b5b0b20f5313ec2eceef4d4811c90e91b4c58b997462b1f2cab32d0d851b81",
+      "family": "vector-icons",
+      "collection_dates": {
+        "burnable": 102,
+        "non_burnable": 24,
+        "hazardous": 24,
+        "cans_bottles": 24,
+        "pet_styro": 24,
+        "paper_cloth": 12
+      },
+      "dated_cells": 365,
+      "mapped_category_marks": 210,
+      "source_url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46552.pdf"
+    },
+    "ozu-main-03": {
+      "source_sha256": "98afaa7371b2aac094d21b718b570d482b83daf2b1698d4b3380619cc1b2eabb",
+      "days_sha256": "d11ef52dfaaf43db772ce7ca7046417213e99427ab064869c3b841979f8bfdd4",
+      "family": "vector-icons",
+      "collection_dates": {
+        "burnable": 101,
+        "non_burnable": 24,
+        "hazardous": 24,
+        "cans_bottles": 24,
+        "pet_styro": 24,
+        "paper_cloth": 12
+      },
+      "dated_cells": 365,
+      "mapped_category_marks": 209,
+      "source_url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46553.pdf"
+    },
+    "ozu-main-04": {
+      "source_sha256": "712000697b2736b224e40ecbb698c966db734fe82ab6ae46da8b8d5fbb9587d5",
+      "days_sha256": "5c53481c024aea9b207e1256fbf8042794b870dab0164c1d60010d24e68bfc67",
+      "family": "vector-icons",
+      "collection_dates": {
+        "burnable": 101,
+        "non_burnable": 24,
+        "hazardous": 24,
+        "cans_bottles": 24,
+        "pet_styro": 24,
+        "paper_cloth": 12
+      },
+      "dated_cells": 365,
+      "mapped_category_marks": 209,
+      "source_url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46554.pdf"
+    },
+    "ozu-main-05": {
+      "source_sha256": "3e871fa64b47be57a4010645012a96fadc2a742574c3fd814b8b15f141643b8d",
+      "days_sha256": "6e23d409e96f9dc8996326ef3734c6ed683241c758d61c71a184e9cb6dcc0985",
+      "family": "vector-icons",
+      "collection_dates": {
+        "burnable": 103,
+        "non_burnable": 24,
+        "hazardous": 24,
+        "cans_bottles": 24,
+        "pet_styro": 24,
+        "paper_cloth": 12
+      },
+      "dated_cells": 365,
+      "mapped_category_marks": 211,
+      "source_url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46555.pdf"
+    },
+    "ozu-main-06": {
+      "source_sha256": "6b2f89ecb987c34b3a39b24ae4dc64f4071e4897938bc5a309892a7da9ccde0e",
+      "days_sha256": "86fc9773fce1da5e141452d281be7e1efa910423bdf1329311f72c74ec76601a",
+      "family": "vector-icons",
+      "collection_dates": {
+        "burnable": 103,
+        "non_burnable": 24,
+        "hazardous": 24,
+        "cans_bottles": 24,
+        "pet_styro": 24,
+        "paper_cloth": 12
+      },
+      "dated_cells": 365,
+      "mapped_category_marks": 211,
+      "source_url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46556.pdf"
+    },
+    "ozu-main-07": {
+      "source_sha256": "4728fc77fa70b9aff6ba67547ae467fe4c10b7cb4070f3c71f9661f886879ec4",
+      "days_sha256": "084ae3db3a38ff6a89cf64c5c10e37a775d58e5554b38f812812c43c43c95e77",
+      "family": "vector-icons",
+      "collection_dates": {
+        "burnable": 101,
+        "non_burnable": 24,
+        "hazardous": 24,
+        "cans_bottles": 24,
+        "pet_styro": 24,
+        "paper_cloth": 12
+      },
+      "dated_cells": 365,
+      "mapped_category_marks": 209,
+      "source_url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46557.pdf"
+    },
+    "ozu-main-08": {
+      "source_sha256": "95ce5582ae324f3a63b7de6141c8650a6bf04c298b68e264bb6b2e23c4256994",
+      "days_sha256": "3dc61c0c5f507126cdefc7ea842088bc46d3a2f03477c902b8a9d6c71b1c45e0",
+      "family": "vector-icons",
+      "collection_dates": {
+        "non_burnable": 23,
+        "hazardous": 23,
+        "cans_bottles": 23,
+        "pet_styro": 23,
+        "burnable": 102,
+        "paper_cloth": 12
+      },
+      "dated_cells": 365,
+      "mapped_category_marks": 206,
+      "source_url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46558.pdf"
+    },
+    "ozu-main-09": {
+      "source_sha256": "21e76096527f6efc860acbd1bf0ae2f282319a16b548fe994e8c80160a6404ef",
+      "days_sha256": "fd1ddbcd67f2e626137ece2e16e38effd4aab699d23afe3c8c8a29bf7e05a04d",
+      "family": "vector-icons",
+      "collection_dates": {
+        "burnable": 103,
+        "non_burnable": 23,
+        "hazardous": 23,
+        "cans_bottles": 23,
+        "pet_styro": 23,
+        "paper_cloth": 12
+      },
+      "dated_cells": 365,
+      "mapped_category_marks": 207,
+      "source_url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46559.pdf"
+    },
+    "ozu-main-10": {
+      "source_sha256": "4a792ce64eec2ea69a90c499fa34b043e0c9afc2e29e2e183a7834046e7be1cd",
+      "days_sha256": "e1b6d206f07bebfa013039310e7df6c09c50203f3b1e59102930b3c7c68760ef",
+      "family": "vector-icons",
+      "collection_dates": {
+        "burnable": 101,
+        "non_burnable": 24,
+        "hazardous": 24,
+        "cans_bottles": 24,
+        "pet_styro": 24,
+        "paper_cloth": 12
+      },
+      "dated_cells": 365,
+      "mapped_category_marks": 209,
+      "source_url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46560.pdf"
+    },
+    "ozu-main-11": {
+      "source_sha256": "8d7b76cbc75b91371055d91db649c2ed34ae9a72002e18e9e26c98cb38a09031",
+      "days_sha256": "da58733195efc1ff9a6d95cdd92c283cafbba465b75ec224d59884b8fcb96e1b",
+      "family": "vector-icons",
+      "collection_dates": {
+        "burnable": 103,
+        "non_burnable": 24,
+        "hazardous": 24,
+        "cans_bottles": 24,
+        "pet_styro": 24,
+        "paper_cloth": 12
+      },
+      "dated_cells": 365,
+      "mapped_category_marks": 211,
+      "source_url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46561.pdf"
+    },
+    "ozu-main-12": {
+      "source_sha256": "5f58989c61968a10e130ccc30dae1f06e6e3ca6f8a7cae698564787261da5782",
+      "days_sha256": "9da2157b49a93c17f4d0a56e9b0c2f6b26940ee0969bcd40107d3a664db21bd2",
+      "family": "vector-icons",
+      "collection_dates": {
+        "burnable": 103,
+        "non_burnable": 24,
+        "hazardous": 24,
+        "cans_bottles": 24,
+        "pet_styro": 24,
+        "paper_cloth": 12
+      },
+      "dated_cells": 365,
+      "mapped_category_marks": 211,
+      "source_url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46562.pdf"
+    },
+    "ozu-main-13": {
+      "source_sha256": "f67e53227762f564b69c14e1772f5ad6fda61b4b74ce45fe079a22e6164a26a9",
+      "days_sha256": "0cfc4003dfe01d88061fba37f31fb0c569db7b601da9e8e333c67e1bb4b2edd9",
+      "family": "vector-icons",
+      "collection_dates": {
+        "burnable": 102,
+        "non_burnable": 24,
+        "hazardous": 24,
+        "cans_bottles": 24,
+        "pet_styro": 24,
+        "paper_cloth": 12
+      },
+      "dated_cells": 365,
+      "mapped_category_marks": 210,
+      "source_url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46563.pdf"
+    },
+    "ozu-main-14": {
+      "source_sha256": "cfdc3ef7a35e193ddb2a05bde84d25592e314b170efdcd65840124b607c15c22",
+      "days_sha256": "04d0c0612466ee82f84d89c245ae6635d980d74d7fc7abc0176c56550bad9e69",
+      "family": "vector-icons",
+      "collection_dates": {
+        "burnable": 102,
+        "non_burnable": 24,
+        "hazardous": 24,
+        "cans_bottles": 24,
+        "pet_styro": 24,
+        "paper_cloth": 12
+      },
+      "dated_cells": 365,
+      "mapped_category_marks": 210,
+      "source_url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46564.pdf"
+    },
+    "ozu-nagahama-01": {
+      "source_sha256": "4c499953c4ae4830d1f7b4b0eff606506438bc34a3fd766c288ddf2f71f248b2",
+      "days_sha256": "64382bb3d8a0240a3af40273f46af996cd2631033de3a764fd7a95cca8aa37c0",
+      "family": "vector-icons",
+      "collection_dates": {
+        "burnable": 102,
+        "cans_bottles": 24,
+        "pet_styro": 24,
+        "non_burnable": 12,
+        "paper_cloth": 12,
+        "hazardous": 12,
+        "bulky": 12
+      },
+      "dated_cells": 365,
+      "mapped_category_marks": 198,
+      "source_url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46567.pdf"
+    },
+    "ozu-nagahama-02": {
+      "source_sha256": "8f24e347d96b123c7d767d803bf0e83cb3331b2e60da03ea1e80c0553ffa7ff1",
+      "days_sha256": "dd32212c65efa92ec540d3506a27fea1037134b309d2fad0ca1f19fef69a721d",
+      "family": "vector-icons",
+      "collection_dates": {
+        "burnable": 101,
+        "cans_bottles": 24,
+        "pet_styro": 24,
+        "non_burnable": 12,
+        "hazardous": 12,
+        "bulky": 12,
+        "paper_cloth": 12
+      },
+      "dated_cells": 365,
+      "mapped_category_marks": 197,
+      "source_url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46568.pdf"
+    },
+    "ozu-hijikawa-01": {
+      "source_sha256": "bf2e24e29cfe884cd8788b188348d9dcbe4598b108a89634803cbc287debc109",
+      "days_sha256": "ea039ac3e610772c77d38c6d61381a5ac83e6a8cace499135dc05c4e86d1c236",
+      "family": "embedded-images",
+      "collection_dates": {
+        "burnable": 101,
+        "paper_cloth": 12,
+        "non_burnable": 24,
+        "cans_bottles": 24,
+        "pet_styro": 24,
+        "hazardous": 24
+      },
+      "dated_cells": 365,
+      "mapped_category_marks": 209,
+      "source_url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46571.pdf"
+    },
+    "ozu-hijikawa-02": {
+      "source_sha256": "98e15ae6f9a5cc79939acf2ead40c7ff479649ac4a2c1543b59f994420b69df4",
+      "days_sha256": "324b114944e99e429b249e647ee24e70eb8b57c1bfec2ff4f9f8843fd4ff8ef8",
+      "family": "embedded-images",
+      "collection_dates": {
+        "burnable": 101,
+        "non_burnable": 12,
+        "cans_bottles": 12,
+        "pet_styro": 12,
+        "hazardous": 12,
+        "paper_cloth": 12
+      },
+      "dated_cells": 365,
+      "mapped_category_marks": 161,
+      "source_url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46572.pdf"
+    },
+    "ozu-hijikawa-03": {
+      "source_sha256": "66e7714197f7306d16b5f3a8177e82adee17496f8222f58355f1e0f21a5f59df",
+      "days_sha256": "324b114944e99e429b249e647ee24e70eb8b57c1bfec2ff4f9f8843fd4ff8ef8",
+      "family": "embedded-images",
+      "collection_dates": {
+        "burnable": 101,
+        "non_burnable": 12,
+        "cans_bottles": 12,
+        "pet_styro": 12,
+        "hazardous": 12,
+        "paper_cloth": 12
+      },
+      "dated_cells": 365,
+      "mapped_category_marks": 161,
+      "source_url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46622.pdf"
+    },
+    "ozu-hijikawa-04": {
+      "source_sha256": "b7714710a896d92cc0c5f37e562b4937844bca3ad4a7bef15c456f3233a75b3e",
+      "days_sha256": "f09ab83bf4d3f013ea7fc32506760b3dd3d458ecf63afff21058fd8d6c467786",
+      "family": "embedded-images",
+      "collection_dates": {
+        "burnable": 100,
+        "non_burnable": 12,
+        "cans_bottles": 12,
+        "pet_styro": 12,
+        "hazardous": 12,
+        "paper_cloth": 12
+      },
+      "dated_cells": 365,
+      "mapped_category_marks": 160,
+      "source_url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46574.pdf"
+    },
+    "ozu-hijikawa-05": {
+      "source_sha256": "ce51690cbad97f3c2fa0c11bd667f1e92ab7ae45cce76c0c5e791b0fe7623963",
+      "days_sha256": "7b0874105c2f648a5af2ab5134710276f51712ece7ea0335d72897bffd996508",
+      "family": "embedded-images",
+      "collection_dates": {
+        "burnable": 101,
+        "paper_cloth": 12,
+        "non_burnable": 12,
+        "cans_bottles": 12,
+        "pet_styro": 12,
+        "hazardous": 12
+      },
+      "dated_cells": 365,
+      "mapped_category_marks": 161,
+      "source_url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46576.pdf"
+    },
+    "ozu-hijikawa-06": {
+      "source_sha256": "04d6ffec24c8d56fc410783ecbee330652deef7096acf9acad0eb6af28369b8b",
+      "days_sha256": "7b0874105c2f648a5af2ab5134710276f51712ece7ea0335d72897bffd996508",
+      "family": "embedded-images",
+      "collection_dates": {
+        "burnable": 101,
+        "paper_cloth": 12,
+        "non_burnable": 12,
+        "cans_bottles": 12,
+        "pet_styro": 12,
+        "hazardous": 12
+      },
+      "dated_cells": 365,
+      "mapped_category_marks": 161,
+      "source_url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46577.pdf"
+    },
+    "ozu-hijikawa-07": {
+      "source_sha256": "a289324a9d9e2ed00776c8c08f92ad4f5003e1c3919e170fe5e9f615ba8167b1",
+      "days_sha256": "45384d2a3fc7f868e31649ca4c28730c27f7e59c7f84d1b43b9d36cb9b12bec2",
+      "family": "embedded-images",
+      "collection_dates": {
+        "burnable": 50,
+        "non_burnable": 12,
+        "cans_bottles": 12,
+        "pet_styro": 12,
+        "hazardous": 12,
+        "paper_cloth": 12
+      },
+      "dated_cells": 365,
+      "mapped_category_marks": 110,
+      "source_url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46578.pdf"
+    },
+    "ozu-hijikawa-08": {
+      "source_sha256": "d3532af1596c8f5c4acd94f482a2233328157a2a91170d75c39cfaf2164c9666",
+      "days_sha256": "8274c06d85949270827abcc5d3ea5dc801061c90ed0182f0bde5044af0c158cd",
+      "family": "embedded-images",
+      "collection_dates": {
+        "burnable": 51,
+        "non_burnable": 12,
+        "cans_bottles": 12,
+        "pet_styro": 12,
+        "hazardous": 12,
+        "paper_cloth": 12
+      },
+      "dated_cells": 365,
+      "mapped_category_marks": 111,
+      "source_url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46579.pdf"
+    },
+    "ozu-hijikawa-09": {
+      "source_sha256": "e27d5a8804ab8a09149d548f47b91c1a9303e7b6805819b408a90ec920e250dd",
+      "days_sha256": "8274c06d85949270827abcc5d3ea5dc801061c90ed0182f0bde5044af0c158cd",
+      "family": "embedded-images",
+      "collection_dates": {
+        "burnable": 51,
+        "non_burnable": 12,
+        "cans_bottles": 12,
+        "pet_styro": 12,
+        "hazardous": 12,
+        "paper_cloth": 12
+      },
+      "dated_cells": 365,
+      "mapped_category_marks": 111,
+      "source_url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46580.pdf"
+    },
+    "ozu-hijikawa-10": {
+      "source_sha256": "75f8dc5b858b1fd731b261cbf0a9192912fa5c25fb65ba459b81aa973e582e4e",
+      "days_sha256": "540c6ea63e152f55b5b4271e6528ff4519bc9d418f557c32fb3b830dbc4fb193",
+      "family": "embedded-images",
+      "collection_dates": {
+        "burnable": 51,
+        "paper_cloth": 12,
+        "non_burnable": 12,
+        "cans_bottles": 12,
+        "pet_styro": 12,
+        "hazardous": 12
+      },
+      "dated_cells": 365,
+      "mapped_category_marks": 111,
+      "source_url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46581.pdf"
+    },
+    "ozu-hijikawa-11": {
+      "source_sha256": "bd7d0bd2e0db1eddb9284387466286204196a6e1114e8803997d87c00ea264f9",
+      "days_sha256": "b2eb8c66c2436b5252126a345e226ab6efd4702ab75c9b806b26e03b30266b48",
+      "family": "embedded-images",
+      "collection_dates": {
+        "burnable": 51,
+        "paper_cloth": 12,
+        "non_burnable": 12,
+        "cans_bottles": 12,
+        "pet_styro": 12,
+        "hazardous": 12
+      },
+      "dated_cells": 365,
+      "mapped_category_marks": 111,
+      "source_url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46582.pdf"
+    },
+    "ozu-hijikawa-12": {
+      "source_sha256": "a3e35228d748ae2835f79bfcf42eaa69a5fe212ca3e999b97a53882fac300d9d",
+      "days_sha256": "b2eb8c66c2436b5252126a345e226ab6efd4702ab75c9b806b26e03b30266b48",
+      "family": "embedded-images",
+      "collection_dates": {
+        "burnable": 51,
+        "paper_cloth": 12,
+        "non_burnable": 12,
+        "cans_bottles": 12,
+        "pet_styro": 12,
+        "hazardous": 12
+      },
+      "dated_cells": 365,
+      "mapped_category_marks": 111,
+      "source_url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46623.pdf"
+    },
+    "ozu-kawabe-01": {
+      "source_sha256": "b8f62854c88ac10f7c266978af7e3dbdb92ed0f836e374cef5f3626eb5d36a6d",
+      "days_sha256": "6218be051e199d10f37b64de74dac4d8db45841e6e58d85a32848f50cb9fadc6",
+      "family": "vector-icons",
+      "collection_dates": {
+        "burnable": 101,
+        "paper_cloth": 12,
+        "cans_bottles": 24,
+        "pet_styro": 24,
+        "non_burnable": 24,
+        "hazardous": 24,
+        "bulky": 12
+      },
+      "dated_cells": 365,
+      "mapped_category_marks": 221,
+      "source_url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46584.pdf"
+    }
+  },
+  "verification": {
+    "method": "PDF calendar rules reconstructed from vector lines; repeated collection icons mapped by vector signatures or embedded-image dimensions",
+    "coverage": "29 PDFs x 365 dates = 10585 dated cells, including blank days",
+    "visual_review": "Representative Ozu, Nagahama, Hijikawa and Kawabe first pages compared date-by-date for April 2026",
+    "limitations": "Annual PDFs are authoritative for planned dates; later weather, disaster or emergency changes are not inferred",
+    "reviewed_at": "2026-11-02"
+  }
+}

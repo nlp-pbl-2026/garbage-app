@@ -1,0 +1,221 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38207",
+  "version": "ozu-2026.1",
+  "valid_from": "2026-04-01",
+  "valid_to": "2027-03-31",
+  "license_status": "permission_required_for_redistribution",
+  "copyright_url": "https://www.city.ozu.ehime.jp/site/userguide/copyright.html",
+  "sources": [
+    {
+      "file": "calendar-46551.pdf",
+      "url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46551.pdf",
+      "sha256": "dc04f7f695c7b98686d296c232aff2780f634c9da1c5b031fcc4c0043a4f70c4",
+      "retrieved_at": "2026-11-02T05:36:31.993999+00:00"
+    },
+    {
+      "file": "calendar-46552.pdf",
+      "url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46552.pdf",
+      "sha256": "32e9f1b4ba55dea26f0815951e6b6bd0f1be8b38583a52ecb05758426aa6dec7",
+      "retrieved_at": "2026-11-02T05:36:34.777410+00:00"
+    },
+    {
+      "file": "calendar-46553.pdf",
+      "url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46553.pdf",
+      "sha256": "98afaa7371b2aac094d21b718b570d482b83daf2b1698d4b3380619cc1b2eabb",
+      "retrieved_at": "2026-11-02T05:36:34.778410+00:00"
+    },
+    {
+      "file": "calendar-46554.pdf",
+      "url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46554.pdf",
+      "sha256": "712000697b2736b224e40ecbb698c966db734fe82ab6ae46da8b8d5fbb9587d5",
+      "retrieved_at": "2026-11-02T05:36:34.523128+00:00"
+    },
+    {
+      "file": "calendar-46555.pdf",
+      "url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46555.pdf",
+      "sha256": "3e871fa64b47be57a4010645012a96fadc2a742574c3fd814b8b15f141643b8d",
+      "retrieved_at": "2026-11-02T05:36:35.286327+00:00"
+    },
+    {
+      "file": "calendar-46556.pdf",
+      "url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46556.pdf",
+      "sha256": "6b2f89ecb987c34b3a39b24ae4dc64f4071e4897938bc5a309892a7da9ccde0e",
+      "retrieved_at": "2026-11-02T05:36:39.226099+00:00"
+    },
+    {
+      "file": "calendar-46557.pdf",
+      "url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46557.pdf",
+      "sha256": "4728fc77fa70b9aff6ba67547ae467fe4c10b7cb4070f3c71f9661f886879ec4",
+      "retrieved_at": "2026-11-02T05:36:37.249821+00:00"
+    },
+    {
+      "file": "calendar-46558.pdf",
+      "url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46558.pdf",
+      "sha256": "95ce5582ae324f3a63b7de6141c8650a6bf04c298b68e264bb6b2e23c4256994",
+      "retrieved_at": "2026-11-02T05:36:41.695109+00:00"
+    },
+    {
+      "file": "calendar-46559.pdf",
+      "url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46559.pdf",
+      "sha256": "21e76096527f6efc860acbd1bf0ae2f282319a16b548fe994e8c80160a6404ef",
+      "retrieved_at": "2026-11-02T05:36:40.014004+00:00"
+    },
+    {
+      "file": "calendar-46560.pdf",
+      "url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46560.pdf",
+      "sha256": "4a792ce64eec2ea69a90c499fa34b043e0c9afc2e29e2e183a7834046e7be1cd",
+      "retrieved_at": "2026-11-02T05:36:40.218368+00:00"
+    },
+    {
+      "file": "calendar-46561.pdf",
+      "url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46561.pdf",
+      "sha256": "8d7b76cbc75b91371055d91db649c2ed34ae9a72002e18e9e26c98cb38a09031",
+      "retrieved_at": "2026-11-02T05:36:41.620750+00:00"
+    },
+    {
+      "file": "calendar-46562.pdf",
+      "url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46562.pdf",
+      "sha256": "5f58989c61968a10e130ccc30dae1f06e6e3ca6f8a7cae698564787261da5782",
+      "retrieved_at": "2026-11-02T05:36:46.058693+00:00"
+    },
+    {
+      "file": "calendar-46563.pdf",
+      "url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46563.pdf",
+      "sha256": "f67e53227762f564b69c14e1772f5ad6fda61b4b74ce45fe079a22e6164a26a9",
+      "retrieved_at": "2026-11-02T05:36:42.980100+00:00"
+    },
+    {
+      "file": "calendar-46564.pdf",
+      "url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46564.pdf",
+      "sha256": "cfdc3ef7a35e193ddb2a05bde84d25592e314b170efdcd65840124b607c15c22",
+      "retrieved_at": "2026-11-02T05:36:46.524777+00:00"
+    },
+    {
+      "file": "calendar-46567.pdf",
+      "url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46567.pdf",
+      "sha256": "4c499953c4ae4830d1f7b4b0eff606506438bc34a3fd766c288ddf2f71f248b2",
+      "retrieved_at": "2026-11-02T05:36:45.808182+00:00"
+    },
+    {
+      "file": "calendar-46568.pdf",
+      "url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46568.pdf",
+      "sha256": "8f24e347d96b123c7d767d803bf0e83cb3331b2e60da03ea1e80c0553ffa7ff1",
+      "retrieved_at": "2026-11-02T05:36:46.728244+00:00"
+    },
+    {
+      "file": "calendar-46571.pdf",
+      "url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46571.pdf",
+      "sha256": "bf2e24e29cfe884cd8788b188348d9dcbe4598b108a89634803cbc287debc109",
+      "retrieved_at": "2026-11-02T05:36:46.397427+00:00"
+    },
+    {
+      "file": "calendar-46572.pdf",
+      "url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46572.pdf",
+      "sha256": "98e15ae6f9a5cc79939acf2ead40c7ff479649ac4a2c1543b59f994420b69df4",
+      "retrieved_at": "2026-11-02T05:36:46.716421+00:00"
+    },
+    {
+      "file": "calendar-46574.pdf",
+      "url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46574.pdf",
+      "sha256": "b7714710a896d92cc0c5f37e562b4937844bca3ad4a7bef15c456f3233a75b3e",
+      "retrieved_at": "2026-11-02T05:36:47.249430+00:00"
+    },
+    {
+      "file": "calendar-46576.pdf",
+      "url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46576.pdf",
+      "sha256": "ce51690cbad97f3c2fa0c11bd667f1e92ab7ae45cce76c0c5e791b0fe7623963",
+      "retrieved_at": "2026-11-02T05:36:47.315915+00:00"
+    },
+    {
+      "file": "calendar-46577.pdf",
+      "url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46577.pdf",
+      "sha256": "04d6ffec24c8d56fc410783ecbee330652deef7096acf9acad0eb6af28369b8b",
+      "retrieved_at": "2026-11-02T05:36:47.125288+00:00"
+    },
+    {
+      "file": "calendar-46578.pdf",
+      "url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46578.pdf",
+      "sha256": "a289324a9d9e2ed00776c8c08f92ad4f5003e1c3919e170fe5e9f615ba8167b1",
+      "retrieved_at": "2026-11-02T05:36:47.348340+00:00"
+    },
+    {
+      "file": "calendar-46579.pdf",
+      "url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46579.pdf",
+      "sha256": "d3532af1596c8f5c4acd94f482a2233328157a2a91170d75c39cfaf2164c9666",
+      "retrieved_at": "2026-11-02T05:36:47.610825+00:00"
+    },
+    {
+      "file": "calendar-46580.pdf",
+      "url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46580.pdf",
+      "sha256": "e27d5a8804ab8a09149d548f47b91c1a9303e7b6805819b408a90ec920e250dd",
+      "retrieved_at": "2026-11-02T05:36:47.724100+00:00"
+    },
+    {
+      "file": "calendar-46581.pdf",
+      "url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46581.pdf",
+      "sha256": "75f8dc5b858b1fd731b261cbf0a9192912fa5c25fb65ba459b81aa973e582e4e",
+      "retrieved_at": "2026-11-02T05:36:47.901319+00:00"
+    },
+    {
+      "file": "calendar-46582.pdf",
+      "url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46582.pdf",
+      "sha256": "bd7d0bd2e0db1eddb9284387466286204196a6e1114e8803997d87c00ea264f9",
+      "retrieved_at": "2026-11-02T05:36:47.805394+00:00"
+    },
+    {
+      "file": "calendar-46584.pdf",
+      "url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46584.pdf",
+      "sha256": "b8f62854c88ac10f7c266978af7e3dbdb92ed0f836e374cef5f3626eb5d36a6d",
+      "retrieved_at": "2026-11-02T05:36:50.091296+00:00"
+    },
+    {
+      "file": "calendar-46622.pdf",
+      "url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46622.pdf",
+      "sha256": "66e7714197f7306d16b5f3a8177e82adee17496f8222f58355f1e0f21a5f59df",
+      "retrieved_at": "2026-11-02T05:36:46.811815+00:00"
+    },
+    {
+      "file": "calendar-46623.pdf",
+      "url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46623.pdf",
+      "sha256": "a3e35228d748ae2835f79bfcf42eaa69a5fe212ca3e999b97a53882fac300d9d",
+      "retrieved_at": "2026-11-02T05:36:47.991257+00:00"
+    },
+    {
+      "file": "dictionary.html",
+      "url": "https://www.city.ozu.ehime.jp/soshiki/kankyo/0745.html",
+      "sha256": "610bddf317115310f2d5c3beefa43109ff0f9ac7a3779368f28b5938a8b1842f",
+      "retrieved_at": "2026-11-02T05:36:29.077475+00:00"
+    },
+    {
+      "file": "dictionary.pdf",
+      "url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46102.pdf",
+      "sha256": "fe1efdbdf063f8a70eef815309759397c5e2883c46e9d55fbca8b38137dfce96",
+      "retrieved_at": "2026-11-02T05:36:30.344988+00:00"
+    },
+    {
+      "file": "hijikawa.html",
+      "url": "https://www.city.ozu.ehime.jp/soshiki/kankyo/65773.html",
+      "sha256": "49c4c85266ed0c94d5c6c2fdbce9040ddf65a70ea746bbdd82fcdbaade51633f",
+      "retrieved_at": "2026-11-02T05:36:28.812587+00:00"
+    },
+    {
+      "file": "kawabe.html",
+      "url": "https://www.city.ozu.ehime.jp/soshiki/kankyo/65774.html",
+      "sha256": "52d56f79134c54176d58c29c65dffdc1bd01d4d7e14d82b53f0988fecf97e2b9",
+      "retrieved_at": "2026-11-02T05:36:28.814058+00:00"
+    },
+    {
+      "file": "nagahama.html",
+      "url": "https://www.city.ozu.ehime.jp/soshiki/kankyo/65772.html",
+      "sha256": "611e23983085c6802e0a4ade9bd6f61cab096024413204761cfe5c646d2f3cb1",
+      "retrieved_at": "2026-11-02T05:36:28.835949+00:00"
+    },
+    {
+      "file": "ozu.html",
+      "url": "https://www.city.ozu.ehime.jp/soshiki/kankyo/65775.html",
+      "sha256": "95888d2cbcfd93f5ddd0449268474aeb20449c3ee9ffae38cfc44008f61cb7cf",
+      "retrieved_at": "2026-11-02T05:36:28.843732+00:00"
+    }
+  ]
+}
