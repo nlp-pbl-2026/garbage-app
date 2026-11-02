@@ -885,7 +885,11 @@ class WasteGuideService:
             documents=documents,
             region=region,
         )
-        conditional_question = self._conditional_evidence_question(
+        conditional_question = self._carry_condition_question(
+            query=query,
+            clarifications=clarification_items,
+            documents=documents,
+        ) or self._conditional_evidence_question(
             query=detail_query,
             clarifications=clarification_items,
             documents=documents,
@@ -1135,6 +1139,61 @@ class WasteGuideService:
         if "容器" in text:
             return "容器は、プラスチック製・ガラス製・金属製のどれですか？"
         return None
+
+    @classmethod
+    def _carry_condition_question(
+        cls,
+        *,
+        query: str,
+        clarifications: list[dict],
+        documents: list[RetrievedDocument],
+    ) -> str | None:
+        """Keep an explicit carryability branch unresolved until the user answers.
+
+        Only the highest structured candidate with no fixed classification and
+        both conditional codes opts in. Fixed-category entries and existing
+        Matsuyama evidence are unchanged. Rewritten text/image inference is not
+        confirmation of a user's ability to carry the item.
+        """
+        structured = next((d for d in documents if d.text.startswith("品目:")), None)
+        if structured is None:
+            return None
+        lines = structured.text.splitlines()
+        primary = next((line.removeprefix("分類コード:").strip() for line in lines
+                        if line.startswith("分類コード:")), None)
+        encoded = next((line.removeprefix("条件付き分類コード:").strip() for line in lines
+                        if line.startswith("条件付き分類コード:")), "[]")
+        try:
+            options = json.loads(encoded)
+        except (ValueError, TypeError):
+            return None
+        evidence = unicodedata.normalize("NFKC", structured.text)
+        if (primary != "" or not isinstance(options, list)
+                or not all(isinstance(option, str) for option in options)
+                or not {"bulky", "not_collected"}.issubset(options)
+                or "大人1人" not in evidence
+                or not re.search(r"持ち運べる|運べる|運搬できる", evidence)
+                or not re.search(r"持ち運びできない|持ち運べない|運べない|運搬できない", evidence)):
+            return None
+
+        def normalize(value):
+            return re.sub(r"\s+", "", unicodedata.normalize("NFKC", str(value)))
+
+        explicit = re.compile(r"(?:大人)?[1一]人(?:で(?:は|も)?|だけで)"
+                              r"(?:持ち運(?:べ|びでき)|運(?:べ|搬でき)|持て)(?:ます|ません|る|ない)")
+        uncertain = re.compile(r"か(?:どうか)?(?:は)?(?:分か[らり]|わか[らり]|不明)|かもしれ|と思う")
+        texts = [query] + [item.get("answer", "") for item in clarifications]
+        if any(explicit.search(normalize(text)) and not uncertain.search(normalize(text)) for text in texts):
+            return None
+        for item in clarifications:
+            question, answer = normalize(item.get("question", "")), normalize(item.get("answer", ""))
+            if re.search(r"分か[らり]|わか[らり]|不明|かもしれ|と思う", answer):
+                continue
+            if (re.search(r"[1一]人", question) and re.search(r"運べ|運搬|持ち運|持て", question)
+                    and (re.match(r"^(?:はい|いいえ)(?:[、。!！]|$)", answer)
+                         or answer.rstrip("。!") in {"運べます", "運べません", "持ち運べます", "持ち運べません"})):
+                return None
+        return "大人1人で持ち運べる重さ・大きさですか？"
 
     @classmethod
     def _conditional_evidence_question(
