@@ -1,0 +1,683 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38442",
+  "version": "ikata-2026.1",
+  "reviewed_on": "2026-11-03",
+  "scope": "Initial 24 (Ikata 21 + existing cities 3); after fixes only the eight listed cases were rerun. Not a complete final-version 24-case rerun.",
+  "model_settings": {
+    "nova": "amazon.nova-lite-v1:0",
+    "embedding": "amazon.titan-embed-text-v2:0",
+    "dimensions": 1024,
+    "top_k": 8,
+    "min_similarity": 0.15,
+    "confidence_threshold": 0.75,
+    "use_bedrock_knowledge_base": false,
+    "lexical_search_enabled": false
+  },
+  "runs": [
+    {
+      "name": "initial",
+      "case_count": 24,
+      "passed": 20,
+      "failed_cases": [
+        4,
+        12,
+        18,
+        21
+      ],
+      "datasets": {
+        "data/regions/ikata/registry.json": "9d613e290b5a2204f011d70738000c2462f53d3b192f064628c500f205932099",
+        "data/regions/ikata/knowledge/items.csv": "18731f71ab6d90d2076d5ba3ba76b0abbac169e29921922dc96d94a5453e156b",
+        "data/regions/ikata/knowledge/item_embeddings.npz": "17c835f7aac177182108dca42c235682bc7117428265ea87937557c4afc08a49"
+      }
+    },
+    {
+      "name": "condition-fix",
+      "case_count": 8,
+      "passed": 8,
+      "case_ids": [
+        4,
+        12,
+        13,
+        14,
+        18,
+        19,
+        20,
+        21
+      ],
+      "dataset_sha256": {
+        "registry.json": "185a0fb32f505d91d7f2741abd6fed54672a550e0b3c62157539042cf11ab0b0",
+        "knowledge/items.csv": "c86fac31300fad306afe4364ac0a51164d8461318f6ceee244a8f7d3d568881c",
+        "knowledge/item_embeddings.npz": "18bc4f22be405d88744435c998a5778b0369c77b95bbb7b3f8881e347ebcbeff"
+      },
+      "waste_guide_code_sha256": "3bc5602f7ab47a08fcd12c333243c79d14f40032cbdbe8918d35d97903651bff"
+    }
+  ],
+  "cost": {
+    "approved_combined_cap_usd": 1,
+    "index_call_limit": 1250,
+    "evaluation_call_limit": 100,
+    "index_attempts": 1218,
+    "index_successes": 1215,
+    "index_reserved_upper_usd": 0.04084020000000001,
+    "evaluation_nova_calls": 64,
+    "evaluation_query_embedding_calls": 32,
+    "nova_usage_tokens": 144779,
+    "evaluation_upper_usd": 0.1459646,
+    "combined_conservative_upper_usd": 0.1868048,
+    "actual_bill_checked": false
+  },
+  "changes": [
+    "洗浄済み白色発泡トレイの確認済み根拠から汚れ例外を分離",
+    "古着と明記された辞典7行へ13ページの汚れ・濡れ・破れ条件を補足",
+    "プラ製バケツの袋サイズ条件と洗浄済み飲料缶の確認済み例を追加",
+    "松山市以外の条件チェックで検索用言い換え文を利用者の確認事実にしない",
+    "袋サイズの質問へのはい・いいえだけを回答済みとして扱う"
+  ],
+  "case_results": [
+    {
+      "case": 1,
+      "input": {
+        "municipality_id": "38442",
+        "district_id": "38442-01",
+        "query": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+        "clarifications": []
+      },
+      "expected": "pet_bottles",
+      "check_type": "classification",
+      "image": false,
+      "initial": {
+        "http": 200,
+        "pass": true,
+        "status": "answered",
+        "category": "pet_bottles",
+        "question": null,
+        "next_date": "2026-11-06",
+        "collection_status": "scheduled"
+      },
+      "after_fix": null
+    },
+    {
+      "case": 2,
+      "input": {
+        "municipality_id": "38442",
+        "district_id": "38442-02",
+        "query": "洗えず汚れの落ちない飲料用ペットボトル本体（PETマーク付き）",
+        "clarifications": []
+      },
+      "expected": "burnable",
+      "check_type": "classification",
+      "image": false,
+      "initial": {
+        "http": 200,
+        "pass": true,
+        "status": "answered",
+        "category": "burnable",
+        "question": null,
+        "next_date": "2026-11-03",
+        "collection_status": "scheduled"
+      },
+      "after_fix": null
+    },
+    {
+      "case": 3,
+      "input": {
+        "municipality_id": "38442",
+        "district_id": "38442-03",
+        "query": "水洗いした、ペットボトルから外したプラスチック製キャップだけ（プラマーク付き）",
+        "clarifications": []
+      },
+      "expected": "plastic_packaging",
+      "check_type": "classification",
+      "image": false,
+      "initial": {
+        "http": 200,
+        "pass": true,
+        "status": "answered",
+        "category": "plastic_packaging",
+        "question": null,
+        "next_date": "2026-11-12",
+        "collection_status": "scheduled"
+      },
+      "after_fix": null
+    },
+    {
+      "case": 4,
+      "input": {
+        "municipality_id": "38442",
+        "district_id": "38442-04",
+        "query": "水洗いした白色の発泡スチロール食品トレイ",
+        "clarifications": []
+      },
+      "expected": "styrofoam",
+      "check_type": "classification",
+      "image": false,
+      "initial": {
+        "http": 200,
+        "pass": false,
+        "status": "answered",
+        "category": "burnable",
+        "question": null,
+        "next_date": "2026-11-05",
+        "collection_status": "scheduled"
+      },
+      "after_fix": {
+        "http": 200,
+        "pass": true,
+        "status": "answered",
+        "category": "styrofoam",
+        "question": null,
+        "next_date": "2026-11-10",
+        "collection_status": "scheduled"
+      }
+    },
+    {
+      "case": 5,
+      "input": {
+        "municipality_id": "38442",
+        "district_id": "38442-05",
+        "query": "水洗いした青色の発泡食品トレイ（プラマーク付き、白色以外）",
+        "clarifications": []
+      },
+      "expected": "plastic_packaging",
+      "check_type": "classification",
+      "image": false,
+      "initial": {
+        "http": 200,
+        "pass": true,
+        "status": "answered",
+        "category": "plastic_packaging",
+        "question": null,
+        "next_date": "2026-11-14",
+        "collection_status": "scheduled"
+      },
+      "after_fix": null
+    },
+    {
+      "case": 6,
+      "input": {
+        "municipality_id": "38442",
+        "district_id": "38442-06",
+        "query": "ジャムが入っていた空のガラスびん。中を水洗い済み、割れていません",
+        "clarifications": []
+      },
+      "expected": "bottles",
+      "check_type": "classification",
+      "image": false,
+      "initial": {
+        "http": 200,
+        "pass": true,
+        "status": "answered",
+        "category": "bottles",
+        "question": null,
+        "next_date": "2026-11-24",
+        "collection_status": "scheduled"
+      },
+      "after_fix": null
+    },
+    {
+      "case": 7,
+      "input": {
+        "municipality_id": "38442",
+        "district_id": "38442-07",
+        "query": "使い終わった空の化粧品のガラスびん",
+        "clarifications": []
+      },
+      "expected": "landfill",
+      "check_type": "classification",
+      "image": false,
+      "initial": {
+        "http": 200,
+        "pass": true,
+        "status": "answered",
+        "category": "landfill",
+        "question": null,
+        "next_date": "2026-11-04",
+        "collection_status": "scheduled"
+      },
+      "after_fix": null
+    },
+    {
+      "case": 8,
+      "input": {
+        "municipality_id": "38442",
+        "district_id": "38442-08",
+        "query": "割れたジャムのガラスびん",
+        "clarifications": []
+      },
+      "expected": "landfill",
+      "check_type": "classification",
+      "image": false,
+      "initial": {
+        "http": 200,
+        "pass": true,
+        "status": "answered",
+        "category": "landfill",
+        "question": null,
+        "next_date": "2026-12-07",
+        "collection_status": "scheduled"
+      },
+      "after_fix": null
+    },
+    {
+      "case": 9,
+      "input": {
+        "municipality_id": "38442",
+        "district_id": "38442-01",
+        "query": "水洗いした空の飲料用アルミ缶（ジュースの缶）",
+        "clarifications": []
+      },
+      "expected": "cans",
+      "check_type": "classification",
+      "image": false,
+      "initial": {
+        "http": 200,
+        "pass": true,
+        "status": "answered",
+        "category": "cans",
+        "question": null,
+        "next_date": "2026-11-17",
+        "collection_status": "scheduled"
+      },
+      "after_fix": null
+    },
+    {
+      "case": 10,
+      "input": {
+        "municipality_id": "38442",
+        "district_id": "38442-02",
+        "query": "中身を使い切ってガス抜きした金属製ヘアスプレー缶",
+        "clarifications": []
+      },
+      "expected": "cans",
+      "check_type": "classification",
+      "image": false,
+      "initial": {
+        "http": 200,
+        "pass": true,
+        "status": "answered",
+        "category": "cans",
+        "question": null,
+        "next_date": "2026-11-18",
+        "collection_status": "scheduled"
+      },
+      "after_fix": null
+    },
+    {
+      "case": 11,
+      "input": {
+        "municipality_id": "38442",
+        "district_id": "38442-03",
+        "query": "シュレッダーで細かくした紙",
+        "clarifications": []
+      },
+      "expected": "paper_textiles",
+      "check_type": "classification",
+      "image": false,
+      "initial": {
+        "http": 200,
+        "pass": true,
+        "status": "answered",
+        "category": "paper_textiles",
+        "question": null,
+        "next_date": "2026-11-03",
+        "collection_status": "scheduled"
+      },
+      "after_fix": null
+    },
+    {
+      "case": 12,
+      "input": {
+        "municipality_id": "38442",
+        "district_id": "38442-04",
+        "query": "汚れてひどく破れた古い綿のシャツ",
+        "clarifications": []
+      },
+      "expected": "burnable",
+      "check_type": "classification",
+      "image": false,
+      "initial": {
+        "http": 200,
+        "pass": false,
+        "status": "answered",
+        "category": "paper_textiles",
+        "question": null,
+        "next_date": "2026-11-11",
+        "collection_status": "scheduled"
+      },
+      "after_fix": {
+        "http": 200,
+        "pass": true,
+        "status": "answered",
+        "category": "burnable",
+        "question": null,
+        "next_date": "2026-11-05",
+        "collection_status": "scheduled"
+      }
+    },
+    {
+      "case": 13,
+      "input": {
+        "municipality_id": "38442",
+        "district_id": "38442-05",
+        "query": "壊れた硬いプラスチック製バケツ。町指定の30リットル埋立ごみ袋に入ります",
+        "clarifications": []
+      },
+      "expected": "landfill",
+      "check_type": "classification",
+      "image": false,
+      "initial": {
+        "http": 200,
+        "pass": true,
+        "status": "answered",
+        "category": "landfill",
+        "question": null,
+        "next_date": "2026-11-04",
+        "collection_status": "scheduled"
+      },
+      "after_fix": {
+        "http": 200,
+        "pass": true,
+        "status": "answered",
+        "category": "landfill",
+        "question": null,
+        "next_date": "2026-11-04",
+        "collection_status": "scheduled"
+      }
+    },
+    {
+      "case": 14,
+      "input": {
+        "municipality_id": "38442",
+        "district_id": "38442-06",
+        "query": "壊れた硬いプラスチック製バケツ。町指定の30リットル埋立ごみ袋に入らない大きさです",
+        "clarifications": []
+      },
+      "expected": "bulky",
+      "check_type": "classification",
+      "image": false,
+      "initial": {
+        "http": 200,
+        "pass": true,
+        "status": "answered",
+        "category": "bulky",
+        "question": null,
+        "next_date": null,
+        "collection_status": "not_scheduled"
+      },
+      "after_fix": {
+        "http": 200,
+        "pass": true,
+        "status": "answered",
+        "category": "bulky",
+        "question": null,
+        "next_date": null,
+        "collection_status": "not_scheduled"
+      }
+    },
+    {
+      "case": 15,
+      "input": {
+        "municipality_id": "38442",
+        "district_id": "38442-07",
+        "query": "使い終わったアルカリ乾電池",
+        "clarifications": []
+      },
+      "expected": "hazardous",
+      "check_type": "classification",
+      "image": false,
+      "initial": {
+        "http": 200,
+        "pass": true,
+        "status": "answered",
+        "category": "hazardous",
+        "question": null,
+        "next_date": "2026-12-28",
+        "collection_status": "scheduled"
+      },
+      "after_fix": null
+    },
+    {
+      "case": 16,
+      "input": {
+        "municipality_id": "38442",
+        "district_id": "38442-08",
+        "query": "使い終わった取り外し済みのリチウムイオン充電池",
+        "clarifications": []
+      },
+      "expected": "not_collected",
+      "check_type": "classification",
+      "image": false,
+      "initial": {
+        "http": 200,
+        "pass": true,
+        "status": "answered",
+        "category": "not_collected",
+        "question": null,
+        "next_date": null,
+        "collection_status": "not_scheduled"
+      },
+      "after_fix": null
+    },
+    {
+      "case": 17,
+      "input": {
+        "municipality_id": "38442",
+        "district_id": "38442-01",
+        "query": "家庭用の古い液晶テレビ",
+        "clarifications": []
+      },
+      "expected": "not_collected",
+      "check_type": "classification",
+      "image": false,
+      "initial": {
+        "http": 200,
+        "pass": true,
+        "status": "answered",
+        "category": "not_collected",
+        "question": null,
+        "next_date": null,
+        "collection_status": "not_scheduled"
+      },
+      "after_fix": null
+    },
+    {
+      "case": 18,
+      "input": {
+        "municipality_id": "38442",
+        "district_id": "38442-02",
+        "query": "壊れたプラスチック製バケツ",
+        "clarifications": []
+      },
+      "expected": null,
+      "check_type": "missing_size",
+      "image": false,
+      "initial": {
+        "http": 200,
+        "pass": false,
+        "status": "answered",
+        "category": "bulky",
+        "question": null,
+        "next_date": null,
+        "collection_status": "not_scheduled"
+      },
+      "after_fix": {
+        "http": 200,
+        "pass": true,
+        "status": "needs_clarification",
+        "category": null,
+        "question": "町指定のごみ袋に入る大きさですか？（埋立ごみ袋は30リットル）",
+        "next_date": null,
+        "collection_status": null
+      }
+    },
+    {
+      "case": 19,
+      "input": {
+        "municipality_id": "38442",
+        "district_id": "38442-03",
+        "query": "壊れたプラスチック製バケツ",
+        "clarifications": [
+          {
+            "question": "町指定の埋立ごみ袋（30リットル）に入りますか？",
+            "answer": "はい"
+          }
+        ]
+      },
+      "expected": "landfill",
+      "check_type": "classification",
+      "image": false,
+      "initial": {
+        "http": 200,
+        "pass": true,
+        "status": "answered",
+        "category": "landfill",
+        "question": null,
+        "next_date": "2026-12-07",
+        "collection_status": "scheduled"
+      },
+      "after_fix": {
+        "http": 200,
+        "pass": true,
+        "status": "answered",
+        "category": "landfill",
+        "question": null,
+        "next_date": "2026-12-07",
+        "collection_status": "scheduled"
+      }
+    },
+    {
+      "case": 20,
+      "input": {
+        "municipality_id": "38442",
+        "district_id": "38442-04",
+        "query": "",
+        "clarifications": []
+      },
+      "expected": null,
+      "check_type": "image_response",
+      "image": true,
+      "initial": {
+        "http": 200,
+        "pass": true,
+        "status": "answered",
+        "category": "cans",
+        "question": null,
+        "next_date": "2026-11-17",
+        "collection_status": "scheduled"
+      },
+      "after_fix": {
+        "http": 200,
+        "pass": true,
+        "status": "answered",
+        "category": "cans",
+        "question": null,
+        "next_date": "2026-11-17",
+        "collection_status": "scheduled"
+      }
+    },
+    {
+      "case": 21,
+      "input": {
+        "municipality_id": "38442",
+        "district_id": "38442-05",
+        "query": "水洗いした空の飲料用アルミ缶です",
+        "clarifications": []
+      },
+      "expected": "cans",
+      "check_type": "classification",
+      "image": true,
+      "initial": {
+        "http": 200,
+        "pass": false,
+        "status": "answered",
+        "category": "landfill",
+        "question": null,
+        "next_date": "2026-11-04",
+        "collection_status": "scheduled"
+      },
+      "after_fix": {
+        "http": 200,
+        "pass": true,
+        "status": "answered",
+        "category": "cans",
+        "question": null,
+        "next_date": "2026-11-18",
+        "collection_status": "scheduled"
+      }
+    },
+    {
+      "case": 22,
+      "input": {
+        "municipality_id": "38201",
+        "district_id": "38201-08",
+        "query": "PETマーク付き飲料用ペットボトル本体。キャップとラベルは外しました",
+        "clarifications": []
+      },
+      "expected": "ペット",
+      "check_type": "classification",
+      "image": false,
+      "initial": {
+        "http": 200,
+        "pass": true,
+        "status": "answered",
+        "category": "ペット",
+        "question": null,
+        "next_date": "2026-11-04",
+        "collection_status": "scheduled"
+      },
+      "after_fix": null
+    },
+    {
+      "case": 23,
+      "input": {
+        "municipality_id": "38204",
+        "district_id": "38204-01",
+        "query": "水洗いした空の飲料用アルミ缶",
+        "clarifications": []
+      },
+      "expected": "cans",
+      "check_type": "classification",
+      "image": false,
+      "initial": {
+        "http": 200,
+        "pass": true,
+        "status": "answered",
+        "category": "cans",
+        "question": null,
+        "next_date": "2026-11-25",
+        "collection_status": "scheduled"
+      },
+      "after_fix": null
+    },
+    {
+      "case": 24,
+      "input": {
+        "municipality_id": "38210",
+        "district_id": "38210-iyo-central",
+        "query": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+        "clarifications": []
+      },
+      "expected": "pet_bottles",
+      "check_type": "classification",
+      "image": false,
+      "initial": {
+        "http": 200,
+        "pass": true,
+        "status": "answered",
+        "category": "pet_bottles",
+        "question": null,
+        "next_date": "2026-11-18",
+        "collection_status": "scheduled"
+      },
+      "after_fix": null
+    }
+  ],
+  "limits": [
+    "最終版で全24件は再実施していない",
+    "全1,196品目の回答成功率を測定したものではない",
+    "画像は公式缶イラスト1点の経路確認で、実写全般の評価ではない",
+    "端末通知・共有シートと実ブラウザ手動操作は未検証",
+    "AWSデプロイは実施していない"
+  ]
+}
