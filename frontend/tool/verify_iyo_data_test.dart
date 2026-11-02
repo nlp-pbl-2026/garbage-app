@@ -133,4 +133,50 @@ void main() {
     expect(
         fifth.map((e) => e.category.toJsonString()), isNot(contains('paper')));
   });
+
+  test(
+      'all fiscal-year notification windows and iCal exclude the five unknown streams',
+      () async {
+    tz_data.initializeTimeZones();
+    tz.setLocalLocation(tz.getLocation('Asia/Tokyo'));
+    final data = MunicipalityDataService();
+    const id = '38210-iyo-hiraoka';
+    final schedule = ScheduleService(
+        data: data, municipalityId: '38210', clock: () => DateTime(2026, 4, 1));
+    final categories = await data.categories(id, municipalityId: '38210');
+    final statuses = await schedule.collectionStatuses(id);
+    final unknown =
+        categories.where((c) => statuses[c.id]!.isUnverified).toList();
+    expect(unknown.length, 5);
+    final ical =
+        await IcalExportService(schedule, now: () => DateTime(2026, 4, 1))
+            .generateIcalString(id, months: 12);
+    for (final category in unknown) {
+      expect(ical, isNot(contains('-${category.id}@garbageapp')));
+    }
+    final bodies = <String>[];
+    for (var now = DateTime(2026, 4, 1);
+        now.isBefore(DateTime(2027, 4, 1));
+        now = now.add(const Duration(days: 7))) {
+      final plans = await NotificationService.computeScheduleWindow(
+        districtId: id,
+        municipalityId: '38210',
+        now: now,
+        eveningTime: (hour: 20, minute: 0),
+        morningTime: (hour: 8, minute: 0),
+        eveningEnabledCategories: categories,
+        morningEnabledCategories: categories,
+        entriesForDate: schedule.getScheduleForDate,
+      );
+      bodies.addAll(plans.map((p) => p.body));
+      for (final plan in plans) {
+        for (final category in unknown) {
+          expect(plan.body, isNot(contains(category.displayName!)));
+        }
+      }
+    }
+    for (final known in ['燃えるごみ', 'プラスチック製容器包装', '布類', 'かん類']) {
+      expect(bodies.any((body) => body.contains(known)), isTrue, reason: known);
+    }
+  });
 }
