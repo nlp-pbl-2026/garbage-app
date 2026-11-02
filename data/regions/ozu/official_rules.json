@@ -1,0 +1,170 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38207",
+  "version": "ozu-2026.1",
+  "source_urls": [
+    "https://www.city.ozu.ehime.jp/soshiki/kankyo/0745.html",
+    "https://www.city.ozu.ehime.jp/uploaded/attachment/46102.pdf",
+    "https://www.city.ozu.ehime.jp/soshiki/kankyo/65775.html",
+    "https://www.city.ozu.ehime.jp/soshiki/kankyo/65772.html",
+    "https://www.city.ozu.ehime.jp/soshiki/kankyo/65773.html",
+    "https://www.city.ozu.ehime.jp/soshiki/kankyo/65774.html"
+  ],
+  "classification_rules": "大洲市公式ごみ分別辞典と、選択した地区の令和8年度ごみ出しカレンダーに従う。大洲市は、もやすごみ、もやさないごみ、資源ごみ（缶・びん類）、資源ごみ（ペットボトル・発泡スチロール容器）、資源ごみ（古紙・古布・紙パック類）、有害ごみ（廃乾電池）、粗大ごみの7種分別である。品目表の素材・大きさ・汚れ・回収方法の条件を確認し、条件を利用者の説明や画像から確認できない場合は推測せず質問する。品目表に『収集しません』『回収ボックス』『拠点回収』『メーカー回収』の指定がある場合は定期収集へ変更しない。家庭ごみはカレンダー記載の収集日当日、朝8時までに決められた場所へ出す。粗大ごみは事前予約が必要で、地区により電話番号が異なる。大洲・肱川・河辺地域は0893-24-0530、長浜地域は0893-52-1113へ、平日9時から17時までに申し込む。粗大ごみ処理券は1個1,050円で、予約時に案内された場所へ収集日の朝8時までに出す。家電リサイクル法対象品、パソコン、販売店回収品などを大きさだけで粗大ごみに変更しない。",
+  "categories": {
+    "burnable": {
+      "name": "もやすごみ",
+      "collection_type_id": "burnable",
+      "cutoff": "08:00",
+      "color": "#E8895B",
+      "instructions": "大洲市指定のもやすごみ袋に入れ、地区別カレンダーの収集日当日、朝8時までに決められた場所へ出す。"
+    },
+    "non_burnable": {
+      "name": "もやさないごみ",
+      "collection_type_id": "non_burnable",
+      "cutoff": "08:00",
+      "color": "#6E9ECF",
+      "instructions": "大洲市指定のもやさないごみ袋に入れ、地区別カレンダーの収集日当日、朝8時までに決められた場所へ出す。"
+    },
+    "cans_bottles": {
+      "name": "資源ごみ（缶・びん類）",
+      "collection_type_id": "cans_bottles",
+      "cutoff": "08:00",
+      "color": "#D89C4B",
+      "instructions": "食品・飲料用等の缶・びんは中を洗ってきれいにし、公式分別辞典の指定に従って袋に入れ、朝8時までに出す。"
+    },
+    "pet_styro": {
+      "name": "資源ごみ（ペットボトル・発泡スチロール容器）",
+      "collection_type_id": "pet_styro",
+      "cutoff": "08:00",
+      "color": "#67A982",
+      "instructions": "ペットボトルまたは発泡スチロール容器であることを確認し、公式分別辞典の出し方に従って朝8時までに出す。"
+    },
+    "paper_cloth": {
+      "name": "資源ごみ（古紙・古布・紙パック類）",
+      "collection_type_id": "paper_cloth",
+      "cutoff": "08:00",
+      "color": "#B89A6B",
+      "instructions": "古紙等はひもで縛るなど、品目ごとの公式分別辞典の指示に従い、地区別カレンダーの収集日当日、朝8時までに出す。"
+    },
+    "hazardous": {
+      "name": "有害ごみ（廃乾電池）",
+      "collection_type_id": "hazardous",
+      "cutoff": "08:00",
+      "color": "#9A7DAE",
+      "instructions": "廃乾電池は指定袋の外袋等、公式分別表の指定に従い、地区別カレンダーの収集日当日、朝8時までに出す。リチウムイオン電池はこの区分へ推測で変更しない。"
+    },
+    "bulky": {
+      "name": "粗大ごみ",
+      "collection_type_id": "bulky",
+      "cutoff": "08:00",
+      "color": "#7B8794",
+      "answer_note": "事前予約が必要です。大洲・肱川・河辺地域は0893-24-0530、長浜地域は0893-52-1113へ、平日9時から17時までに申し込んでください。",
+      "instructions": "予約後、粗大ごみ処理券（1個1,050円）を購入して貼り、予約時に案内された場所へ収集日の朝8時までに出す。"
+    },
+    "collection_box": {
+      "name": "回収ボックス・拠点回収",
+      "answer_note": "定期収集ではありません。品目表に記載された回収ボックスまたは持込先を確認してください。",
+      "instructions": "公式分別辞典に記載された回収ボックス・拠点へ持ち込む。"
+    },
+    "not_collected": {
+      "name": "市では収集しないもの",
+      "answer_note": "市の定期収集には出せません。販売店、メーカー、指定引取先など、品目表に記載された窓口へ相談してください。",
+      "instructions": "大洲市の定期収集へ出さず、公式分別辞典に記載された販売店・メーカー等へ相談する。"
+    }
+  },
+  "examples": [
+    {
+      "id": "ozu-rule-burnable",
+      "item": "もやすごみの対象品と出し方",
+      "category": "burnable",
+      "note": "大洲市指定のもやすごみ袋に入れ、地区別カレンダーの収集日当日、朝8時までに決められた場所へ出す。",
+      "source_url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46102.pdf"
+    },
+    {
+      "id": "ozu-rule-non-burnable",
+      "item": "もやさないごみの対象品と出し方",
+      "category": "non_burnable",
+      "note": "大洲市指定のもやさないごみ袋に入れ、地区別カレンダーの収集日当日、朝8時までに決められた場所へ出す。",
+      "source_url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46102.pdf"
+    },
+    {
+      "id": "ozu-rule-cans-bottles",
+      "item": "資源ごみの缶・びん類",
+      "category": "cans_bottles",
+      "note": "食品・飲料用等の缶・びんは中を洗ってきれいにし、公式分別辞典の指定に従って出す。",
+      "source_url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46102.pdf"
+    },
+    {
+      "id": "ozu-rule-pet-styro",
+      "item": "ペットボトル・発泡スチロール容器",
+      "category": "pet_styro",
+      "note": "品目の材質と用途を確認し、公式分別辞典の出し方に従う。",
+      "source_url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46102.pdf"
+    },
+    {
+      "id": "ozu-rule-paper-cloth",
+      "item": "古紙・古布・紙パック類",
+      "category": "paper_cloth",
+      "note": "古紙等はひもで縛るなど、品目ごとの公式分別辞典の指示に従う。",
+      "source_url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46102.pdf"
+    },
+    {
+      "id": "ozu-rule-hazardous",
+      "item": "廃乾電池",
+      "category": "hazardous",
+      "note": "廃乾電池は有害ごみ。リチウムイオン電池は同じ扱いと推測せず、品目表の個別指定を確認する。",
+      "source_url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46102.pdf"
+    },
+    {
+      "id": "ozu-rule-bulky",
+      "item": "指定袋に入らない家具などの粗大ごみ",
+      "category": "bulky",
+      "note": "事前予約と粗大ごみ処理券が必要。地区別の予約電話番号を確認し、案内された場所へ収集日の朝8時までに出す。",
+      "source_url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46102.pdf"
+    },
+    {
+      "id": "ozu-rule-not-collected",
+      "item": "家電リサイクル法対象品・パソコン・販売店回収品",
+      "category": "not_collected",
+      "note": "市の定期収集へ出さず、公式分別辞典に記載された販売店・メーカー・指定引取先へ相談する。",
+      "source_url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46102.pdf"
+    }
+  ],
+  "bulky_config": {
+    "municipality_id": "38207",
+    "municipality_name": "大洲市",
+    "collection_frequency": "地区別カレンダーの予約収集日（事前予約制）",
+    "reception_hours": "予約受付：月～金 9:00～17:00（祝日を除く）",
+    "collection_rules": "大洲・肱川・河辺地域は0893-24-0530へ予約し、1個につき1,050円の粗大ごみ処理券を貼って、案内された場所へ収集日の朝8時までに出します。",
+    "fee_structure_type": "fixed",
+    "application_method": "phone",
+    "phone_number": "0893-24-0530",
+    "web_form_url": null,
+    "information_url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46102.pdf",
+    "steps": [
+      {
+        "step_number": 1,
+        "title": "対象品目を確認",
+        "description": "公式分別辞典で粗大ごみか、市が収集しない品目かを確認します。"
+      },
+      {
+        "step_number": 2,
+        "title": "地区別の窓口へ電話予約",
+        "description": "大洲・肱川・河辺地域は0893-24-0530、長浜地域は0893-52-1113へ、平日9時から17時までに申し込みます。"
+      },
+      {
+        "step_number": 3,
+        "title": "粗大ごみ処理券を購入",
+        "description": "1個につき1,050円の処理券を購入し、氏名を記入して品物に貼ります。"
+      },
+      {
+        "step_number": 4,
+        "title": "予約日に搬出",
+        "description": "予約時に案内された場所へ、収集日の朝8時までに出します。"
+      }
+    ]
+  },
+  "nagahama_bulky_collection_rules": "長浜地域は0893-52-1113へ予約し、1個につき1,050円の粗大ごみ処理券を貼って、案内された場所へ収集日の朝8時までに出します。",
+  "license_status": "permission_required_for_redistribution"
+}
