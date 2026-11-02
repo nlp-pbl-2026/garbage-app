@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38402",
+  "version": "tobe-2026.1",
+  "valid_from": "2026-04-01",
+  "valid_to": "2027-03-31",
+  "license_status": "permission_required_for_redistribution",
+  "copyright_url": "https://www.town.tobe.ehime.jp/gyoseijoho/koho_johokokai_ikemboshu/6/3254.html",
+  "sources": [
+    {
+      "file": "calendar-2026-04.pdf",
+      "url": "https://www.town.tobe.ehime.jp/material/files/group/1/koho202604calendar.pdf",
+      "sha256": "400f94b375506002c527c9df81802a1d6934c91fb4fa5dace83faa5b08179d52",
+      "retrieved_at": "2026-11-02T07:45:14.761880+00:00"
+    },
+    {
+      "file": "calendar-2026-05.pdf",
+      "url": "https://www.town.tobe.ehime.jp/material/files/group/1/koho202605_care.pdf",
+      "sha256": "b8904a3b0553c78ce0e5d4f4121c5d571f519d20b7d1e7b44ddb08ad7bd761e1",
+      "retrieved_at": "2026-11-02T07:45:16.576439+00:00"
+    },
+    {
+      "file": "calendar-2026-06.pdf",
+      "url": "https://www.town.tobe.ehime.jp/material/files/group/1/koho202606_0.pdf",
+      "sha256": "6a5a322c63002553fbc6c1030cf72b62fd0eeabd15021e3d99840c38af69ee02",
+      "retrieved_at": "2026-11-02T07:45:14.544084+00:00"
+    },
+    {
+      "file": "calendar-2026-07.pdf",
+      "url": "https://www.town.tobe.ehime.jp/material/files/group/1/koho2026_07_000.pdf",
+      "sha256": "4b46ffa3d275f4f151704f4eb33b2e9084bac04a2fd8d8b2d7408d5d99fc23cb",
+      "retrieved_at": "2026-11-02T07:45:21.087269+00:00"
+    },
+    {
+      "file": "calendar-2026-08.pdf",
+      "url": "https://www.town.tobe.ehime.jp/material/files/group/1/koho2026_08_00.pdf",
+      "sha256": "e4692a5ad99fed3a3ba86fabec476c5a2093ea2e95b2926549d0b616a198d2cd",
+      "retrieved_at": "2026-11-02T07:45:15.723509+00:00"
+    },
+    {
+      "file": "calendar-2026-09.pdf",
+      "url": "https://www.town.tobe.ehime.jp/material/files/group/1/koho2026_09_0.pdf",
+      "sha256": "24c4946c9cb1568db8ff6da66e3da5229f1c2c47a532b40472681ab8472ed1cb",
+      "retrieved_at": "2026-11-02T07:45:16.426253+00:00"
+    },
+    {
+      "file": "calendar-2026-10.pdf",
+      "url": "https://www.town.tobe.ehime.jp/material/files/group/1/koho2026_10_000.pdf",
+      "sha256": "8f83c8a3f2f305a10dbf90469e96a49f83da05db31452cb2fa018801c8b9d356",
+      "retrieved_at": "2026-11-02T07:45:16.927230+00:00"
+    },
+    {
+      "file": "calendar-2026-11.pdf",
+      "url": "https://www.town.tobe.ehime.jp/material/files/group/1/koho2026_11_0.pdf",
+      "sha256": "52e8519c86dd6725eb5be5d22793b1bc81be3ee1f819e82f46347c1876f0b902",
+      "retrieved_at": "2026-11-02T07:45:19.057557+00:00"
+    },
+    {
+      "file": "calendar-page.html",
+      "url": "https://www.town.tobe.ehime.jp/gomi_search/4959.html",
+      "sha256": "7cf31dced5dbbcfe2edf03a729eeb9372809d8c8a4a3f9aa3978e67c35374ccc",
+      "retrieved_at": "2026-11-02T07:44:45.452554+00:00"
+    },
+    {
+      "file": "carry-in.html",
+      "url": "https://www.town.tobe.ehime.jp/kurashi_tetsuzuki/gomi_risaikuru_kankyo/1/1745.html",
+      "sha256": "4a2b927099313d250ece3097b5b3cb8e2767307bc96340b3d3743ded54f8f115",
+      "retrieved_at": "2026-11-02T07:44:48.369149+00:00"
+    },
+    {
+      "file": "dictionary.pdf",
+      "url": "https://www.town.tobe.ehime.jp/material/files/group/12/22532.pdf",
+      "sha256": "462a6862098c05f1dada6afd39f73530e7ea1e1adeafa268186a50217df2445b",
+      "retrieved_at": "2026-11-02T07:45:07.741853+00:00"
+    },
+    {
+      "file": "handbook.pdf",
+      "url": "https://www.town.tobe.ehime.jp/material/files/group/12/gomibunbetuchou.pdf",
+      "sha256": "14b3008e3d70a2af2daed400352224376af140534833d41c30d9e4cf4f001c45",
+      "retrieved_at": "2026-11-02T07:45:13.054433+00:00"
+    },
+    {
+      "file": "licensed-haulers.html",
+      "url": "https://www.town.tobe.ehime.jp/soshikikarasagasu/chominka/gomi/850.html",
+      "sha256": "7daacfdcd3ac9fe00c88a4df538ba0f3c7df15d67b2bbc88772a222c1cb273f2",
+      "retrieved_at": "2026-11-02T07:44:53.306892+00:00"
+    },
+    {
+      "file": "rules-page.html",
+      "url": "https://www.town.tobe.ehime.jp/soshikikarasagasu/chominka/gomi/871.html",
+      "sha256": "907a4756d084738a590050ec63e8d6b5164d55412079fc4d0c22e45db0e3631d",
+      "retrieved_at": "2026-11-02T07:44:47.244001+00:00"
+    },
+    {
+      "file": "separation-table.pdf",
+      "url": "https://www.town.tobe.ehime.jp/material/files/group/12/22241.pdf",
+      "sha256": "ea77c704d96e2e0bc50614ee238ab482fb1bcb42ededb311573ac705ce65e3cd",
+      "retrieved_at": "2026-11-02T07:44:58.776790+00:00"
+    }
+  ]
+}

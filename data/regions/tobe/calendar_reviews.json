@@ -1,0 +1,661 @@
+{
+  "schema_version": 1,
+  "version": "tobe-2026.1",
+  "valid_from": "2026-04-01",
+  "valid_to": "2026-12-06",
+  "published_months": [
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+  ],
+  "monthly_sources": {
+    "2026-04": {
+      "source_sha256": "400f94b375506002c527c9df81802a1d6934c91fb4fa5dace83faa5b08179d52",
+      "source_url": "https://www.town.tobe.ehime.jp/material/files/group/1/koho202604calendar.pdf",
+      "dated_rows": 36,
+      "collection_marks": {
+        "tobe-asou": {
+          "containers": 3,
+          "plastic_packaging": 5,
+          "burnable": 10,
+          "hazardous": 2,
+          "pruning": 5,
+          "paper_cloth": 2,
+          "miscellaneous": 1
+        },
+        "tobe-miyauchi-tobe": {
+          "containers": 3,
+          "burnable": 10,
+          "plastic_packaging": 5,
+          "hazardous": 2,
+          "pruning": 5,
+          "paper_cloth": 2,
+          "miscellaneous": 1
+        },
+        "tobe-hirota-weekly-1": {
+          "plastic_packaging": 5,
+          "containers": 2,
+          "burnable": 5,
+          "pruning": 5,
+          "paper_cloth": 1,
+          "hazardous": 1,
+          "miscellaneous": 1
+        },
+        "tobe-hirota-weekly-2": {
+          "burnable": 10,
+          "plastic_packaging": 5,
+          "containers": 2,
+          "pruning": 5,
+          "paper_cloth": 1,
+          "hazardous": 1,
+          "miscellaneous": 1
+        },
+        "tobe-tanoura": {
+          "burnable": 2,
+          "pruning": 2,
+          "plastic_packaging": 2,
+          "containers": 2,
+          "paper_cloth": 2,
+          "hazardous": 2,
+          "miscellaneous": 2
+        },
+        "tobe-ohira": {
+          "burnable": 2,
+          "pruning": 2,
+          "plastic_packaging": 2,
+          "containers": 2,
+          "paper_cloth": 2,
+          "hazardous": 2,
+          "miscellaneous": 2
+        },
+        "tobe-unosaki": {}
+      }
+    },
+    "2026-05": {
+      "source_sha256": "b8904a3b0553c78ce0e5d4f4121c5d571f519d20b7d1e7b44ddb08ad7bd761e1",
+      "source_url": "https://www.town.tobe.ehime.jp/material/files/group/1/koho202605_care.pdf",
+      "dated_rows": 36,
+      "collection_marks": {
+        "tobe-asou": {
+          "burnable": 11,
+          "hazardous": 1,
+          "pruning": 5,
+          "containers": 3,
+          "plastic_packaging": 5,
+          "miscellaneous": 1,
+          "paper_cloth": 2
+        },
+        "tobe-miyauchi-tobe": {
+          "plastic_packaging": 6,
+          "hazardous": 1,
+          "burnable": 10,
+          "pruning": 5,
+          "containers": 3,
+          "paper_cloth": 2,
+          "miscellaneous": 1
+        },
+        "tobe-hirota-weekly-1": {
+          "containers": 2,
+          "burnable": 5,
+          "pruning": 5,
+          "plastic_packaging": 5,
+          "paper_cloth": 1,
+          "hazardous": 1,
+          "miscellaneous": 1
+        },
+        "tobe-hirota-weekly-2": {
+          "containers": 2,
+          "burnable": 10,
+          "pruning": 5,
+          "plastic_packaging": 5,
+          "paper_cloth": 1,
+          "hazardous": 1,
+          "miscellaneous": 1
+        },
+        "tobe-tanoura": {
+          "burnable": 2,
+          "pruning": 2,
+          "plastic_packaging": 2,
+          "containers": 2,
+          "paper_cloth": 2,
+          "hazardous": 2,
+          "miscellaneous": 2
+        },
+        "tobe-ohira": {
+          "burnable": 2,
+          "pruning": 2,
+          "plastic_packaging": 2,
+          "containers": 2,
+          "paper_cloth": 2,
+          "hazardous": 2,
+          "miscellaneous": 2
+        },
+        "tobe-unosaki": {}
+      }
+    },
+    "2026-06": {
+      "source_sha256": "6a5a322c63002553fbc6c1030cf72b62fd0eeabd15021e3d99840c38af69ee02",
+      "source_url": "https://www.town.tobe.ehime.jp/material/files/group/1/koho202606_0.pdf",
+      "dated_rows": 36,
+      "collection_marks": {
+        "tobe-asou": {
+          "pruning": 6,
+          "burnable": 10,
+          "containers": 3,
+          "plastic_packaging": 5,
+          "hazardous": 2,
+          "paper_cloth": 2,
+          "miscellaneous": 1
+        },
+        "tobe-miyauchi-tobe": {
+          "burnable": 11,
+          "pruning": 5,
+          "containers": 3,
+          "plastic_packaging": 5,
+          "hazardous": 2,
+          "paper_cloth": 2,
+          "miscellaneous": 1
+        },
+        "tobe-hirota-weekly-1": {
+          "burnable": 6,
+          "pruning": 6,
+          "plastic_packaging": 5,
+          "containers": 2,
+          "paper_cloth": 1,
+          "hazardous": 1,
+          "miscellaneous": 1
+        },
+        "tobe-hirota-weekly-2": {
+          "burnable": 11,
+          "pruning": 6,
+          "plastic_packaging": 5,
+          "containers": 2,
+          "paper_cloth": 1,
+          "hazardous": 1,
+          "miscellaneous": 1
+        },
+        "tobe-tanoura": {
+          "burnable": 2,
+          "pruning": 2,
+          "plastic_packaging": 2,
+          "containers": 2,
+          "paper_cloth": 2,
+          "hazardous": 2,
+          "miscellaneous": 2
+        },
+        "tobe-ohira": {
+          "burnable": 2,
+          "pruning": 2,
+          "plastic_packaging": 2,
+          "containers": 2,
+          "paper_cloth": 2,
+          "hazardous": 2,
+          "miscellaneous": 2
+        },
+        "tobe-unosaki": {
+          "burnable": 1,
+          "pruning": 1,
+          "plastic_packaging": 1,
+          "containers": 1,
+          "paper_cloth": 1,
+          "hazardous": 1,
+          "miscellaneous": 1
+        }
+      }
+    },
+    "2026-07": {
+      "source_sha256": "4b46ffa3d275f4f151704f4eb33b2e9084bac04a2fd8d8b2d7408d5d99fc23cb",
+      "source_url": "https://www.town.tobe.ehime.jp/material/files/group/1/koho2026_07_000.pdf",
+      "dated_rows": 36,
+      "collection_marks": {
+        "tobe-asou": {
+          "containers": 3,
+          "plastic_packaging": 5,
+          "burnable": 10,
+          "hazardous": 2,
+          "pruning": 5,
+          "paper_cloth": 2,
+          "miscellaneous": 1
+        },
+        "tobe-miyauchi-tobe": {
+          "containers": 3,
+          "burnable": 10,
+          "plastic_packaging": 5,
+          "hazardous": 2,
+          "pruning": 5,
+          "paper_cloth": 2,
+          "miscellaneous": 1
+        },
+        "tobe-hirota-weekly-1": {
+          "plastic_packaging": 5,
+          "containers": 1,
+          "burnable": 5,
+          "pruning": 5,
+          "paper_cloth": 1,
+          "hazardous": 1,
+          "miscellaneous": 1
+        },
+        "tobe-hirota-weekly-2": {
+          "burnable": 10,
+          "plastic_packaging": 5,
+          "containers": 1,
+          "pruning": 5,
+          "paper_cloth": 1,
+          "hazardous": 1,
+          "miscellaneous": 1
+        },
+        "tobe-tanoura": {
+          "burnable": 1,
+          "pruning": 1,
+          "plastic_packaging": 1,
+          "containers": 1,
+          "paper_cloth": 1,
+          "hazardous": 1,
+          "miscellaneous": 1
+        },
+        "tobe-ohira": {
+          "burnable": 2,
+          "pruning": 2,
+          "plastic_packaging": 2,
+          "containers": 2,
+          "paper_cloth": 2,
+          "hazardous": 2,
+          "miscellaneous": 2
+        },
+        "tobe-unosaki": {
+          "burnable": 1,
+          "pruning": 1,
+          "plastic_packaging": 1,
+          "containers": 1,
+          "paper_cloth": 1,
+          "hazardous": 1,
+          "miscellaneous": 1
+        }
+      }
+    },
+    "2026-08": {
+      "source_sha256": "e4692a5ad99fed3a3ba86fabec476c5a2093ea2e95b2926549d0b616a198d2cd",
+      "source_url": "https://www.town.tobe.ehime.jp/material/files/group/1/koho2026_08_00.pdf",
+      "dated_rows": 36,
+      "collection_marks": {
+        "tobe-asou": {
+          "hazardous": 2,
+          "pruning": 5,
+          "burnable": 10,
+          "containers": 3,
+          "plastic_packaging": 5,
+          "miscellaneous": 1,
+          "paper_cloth": 2
+        },
+        "tobe-miyauchi-tobe": {
+          "hazardous": 2,
+          "burnable": 10,
+          "pruning": 5,
+          "containers": 3,
+          "plastic_packaging": 5,
+          "paper_cloth": 2,
+          "miscellaneous": 1
+        },
+        "tobe-hirota-weekly-1": {
+          "burnable": 5,
+          "pruning": 5,
+          "plastic_packaging": 5,
+          "containers": 2,
+          "paper_cloth": 1,
+          "hazardous": 1,
+          "miscellaneous": 1
+        },
+        "tobe-hirota-weekly-2": {
+          "burnable": 10,
+          "pruning": 5,
+          "plastic_packaging": 5,
+          "containers": 2,
+          "paper_cloth": 1,
+          "hazardous": 1,
+          "miscellaneous": 1
+        },
+        "tobe-tanoura": {
+          "burnable": 2,
+          "pruning": 2,
+          "plastic_packaging": 2,
+          "containers": 2,
+          "paper_cloth": 2,
+          "hazardous": 2,
+          "miscellaneous": 2
+        },
+        "tobe-ohira": {
+          "burnable": 2,
+          "pruning": 2,
+          "plastic_packaging": 2,
+          "containers": 2,
+          "paper_cloth": 2,
+          "hazardous": 2,
+          "miscellaneous": 2
+        },
+        "tobe-unosaki": {
+          "burnable": 1,
+          "pruning": 1,
+          "plastic_packaging": 1,
+          "containers": 1,
+          "paper_cloth": 1,
+          "hazardous": 1,
+          "miscellaneous": 1
+        }
+      }
+    },
+    "2026-09": {
+      "source_sha256": "24c4946c9cb1568db8ff6da66e3da5229f1c2c47a532b40472681ab8472ed1cb",
+      "source_url": "https://www.town.tobe.ehime.jp/material/files/group/1/koho2026_09_0.pdf",
+      "dated_rows": 36,
+      "collection_marks": {
+        "tobe-asou": {
+          "burnable": 11,
+          "containers": 2,
+          "plastic_packaging": 5,
+          "hazardous": 2,
+          "pruning": 5,
+          "paper_cloth": 2,
+          "miscellaneous": 1
+        },
+        "tobe-miyauchi-tobe": {
+          "pruning": 6,
+          "containers": 2,
+          "burnable": 10,
+          "plastic_packaging": 5,
+          "hazardous": 2,
+          "paper_cloth": 2,
+          "miscellaneous": 1
+        },
+        "tobe-hirota-weekly-1": {
+          "plastic_packaging": 5,
+          "containers": 2,
+          "burnable": 5,
+          "pruning": 5,
+          "paper_cloth": 1,
+          "hazardous": 1,
+          "miscellaneous": 1
+        },
+        "tobe-hirota-weekly-2": {
+          "burnable": 10,
+          "plastic_packaging": 5,
+          "containers": 2,
+          "pruning": 5,
+          "paper_cloth": 1,
+          "hazardous": 1,
+          "miscellaneous": 1
+        },
+        "tobe-tanoura": {
+          "burnable": 2,
+          "pruning": 2,
+          "plastic_packaging": 2,
+          "containers": 2,
+          "paper_cloth": 2,
+          "hazardous": 2,
+          "miscellaneous": 2
+        },
+        "tobe-ohira": {
+          "burnable": 2,
+          "pruning": 2,
+          "plastic_packaging": 2,
+          "containers": 2,
+          "paper_cloth": 2,
+          "hazardous": 2,
+          "miscellaneous": 2
+        },
+        "tobe-unosaki": {
+          "burnable": 1,
+          "pruning": 1,
+          "plastic_packaging": 1,
+          "containers": 1,
+          "paper_cloth": 1,
+          "hazardous": 1,
+          "miscellaneous": 1
+        }
+      }
+    },
+    "2026-10": {
+      "source_sha256": "8f83c8a3f2f305a10dbf90469e96a49f83da05db31452cb2fa018801c8b9d356",
+      "source_url": "https://www.town.tobe.ehime.jp/material/files/group/1/koho2026_10_000.pdf",
+      "dated_rows": 36,
+      "collection_marks": {
+        "tobe-asou": {
+          "plastic_packaging": 6,
+          "burnable": 10,
+          "hazardous": 1,
+          "pruning": 5,
+          "miscellaneous": 1,
+          "paper_cloth": 2,
+          "containers": 2
+        },
+        "tobe-miyauchi-tobe": {
+          "burnable": 11,
+          "plastic_packaging": 5,
+          "hazardous": 1,
+          "pruning": 5,
+          "paper_cloth": 2,
+          "containers": 2,
+          "miscellaneous": 1
+        },
+        "tobe-hirota-weekly-1": {
+          "plastic_packaging": 6,
+          "containers": 1,
+          "burnable": 5,
+          "pruning": 5,
+          "paper_cloth": 1,
+          "hazardous": 1,
+          "miscellaneous": 1
+        },
+        "tobe-hirota-weekly-2": {
+          "burnable": 11,
+          "plastic_packaging": 6,
+          "containers": 1,
+          "pruning": 5,
+          "paper_cloth": 1,
+          "hazardous": 1,
+          "miscellaneous": 1
+        },
+        "tobe-tanoura": {
+          "burnable": 1,
+          "pruning": 1,
+          "plastic_packaging": 1,
+          "containers": 1,
+          "paper_cloth": 1,
+          "hazardous": 1,
+          "miscellaneous": 1
+        },
+        "tobe-ohira": {
+          "burnable": 2,
+          "pruning": 2,
+          "plastic_packaging": 2,
+          "containers": 2,
+          "paper_cloth": 2,
+          "hazardous": 2,
+          "miscellaneous": 2
+        },
+        "tobe-unosaki": {
+          "burnable": 1,
+          "pruning": 1,
+          "plastic_packaging": 1,
+          "containers": 1,
+          "paper_cloth": 1,
+          "hazardous": 1,
+          "miscellaneous": 1
+        }
+      }
+    },
+    "2026-11": {
+      "source_sha256": "52e8519c86dd6725eb5be5d22793b1bc81be3ee1f819e82f46347c1876f0b902",
+      "source_url": "https://www.town.tobe.ehime.jp/material/files/group/1/koho2026_11_0.pdf",
+      "dated_rows": 36,
+      "collection_marks": {
+        "tobe-asou": {
+          "pruning": 5,
+          "burnable": 10,
+          "containers": 3,
+          "plastic_packaging": 5,
+          "hazardous": 2,
+          "paper_cloth": 2,
+          "miscellaneous": 1
+        },
+        "tobe-miyauchi-tobe": {
+          "burnable": 10,
+          "pruning": 5,
+          "containers": 3,
+          "plastic_packaging": 5,
+          "hazardous": 2,
+          "paper_cloth": 2,
+          "miscellaneous": 1
+        },
+        "tobe-hirota-weekly-1": {
+          "burnable": 5,
+          "pruning": 5,
+          "plastic_packaging": 5,
+          "containers": 2,
+          "paper_cloth": 1,
+          "hazardous": 1,
+          "miscellaneous": 1
+        },
+        "tobe-hirota-weekly-2": {
+          "burnable": 10,
+          "pruning": 5,
+          "plastic_packaging": 5,
+          "containers": 2,
+          "paper_cloth": 1,
+          "hazardous": 1,
+          "miscellaneous": 1
+        },
+        "tobe-tanoura": {
+          "burnable": 2,
+          "pruning": 2,
+          "plastic_packaging": 2,
+          "containers": 2,
+          "paper_cloth": 2,
+          "hazardous": 2,
+          "miscellaneous": 2
+        },
+        "tobe-ohira": {
+          "burnable": 2,
+          "pruning": 2,
+          "plastic_packaging": 2,
+          "containers": 2,
+          "paper_cloth": 2,
+          "hazardous": 2,
+          "miscellaneous": 2
+        },
+        "tobe-unosaki": {
+          "burnable": 1,
+          "pruning": 1,
+          "plastic_packaging": 1,
+          "containers": 1,
+          "paper_cloth": 1,
+          "hazardous": 1,
+          "miscellaneous": 1
+        }
+      }
+    }
+  },
+  "calendars": {
+    "tobe-asou": {
+      "days_sha256": "7b884588b094e131921bb120104b9991618b26f2ce9b1027419bb0acb3433206",
+      "dated_cells": 250,
+      "collection_dates": {
+        "containers": 16,
+        "plastic_packaging": 36,
+        "burnable": 71,
+        "hazardous": 9,
+        "pruning": 35,
+        "paper_cloth": 16,
+        "miscellaneous": 8
+      }
+    },
+    "tobe-miyauchi-tobe": {
+      "days_sha256": "49cdcbac1e83963a4f57933e287ef03ff68a2053dcd2831bbd6640efaa862be7",
+      "dated_cells": 250,
+      "collection_dates": {
+        "containers": 16,
+        "burnable": 71,
+        "plastic_packaging": 36,
+        "hazardous": 9,
+        "pruning": 35,
+        "paper_cloth": 16,
+        "miscellaneous": 8
+      }
+    },
+    "tobe-hirota-weekly-1": {
+      "days_sha256": "98b91f02f637394d7715dad15f9edfe116e40b8d178e7cc98c54a16983647ca6",
+      "dated_cells": 250,
+      "collection_dates": {
+        "plastic_packaging": 36,
+        "containers": 9,
+        "burnable": 35,
+        "pruning": 35,
+        "paper_cloth": 8,
+        "hazardous": 8,
+        "miscellaneous": 8
+      }
+    },
+    "tobe-hirota-weekly-2": {
+      "days_sha256": "31b40f956e91a00e2d63b36bf4dcaa470fe2a56582f37ee1e53cb023e90a296e",
+      "dated_cells": 250,
+      "collection_dates": {
+        "burnable": 71,
+        "plastic_packaging": 36,
+        "containers": 9,
+        "pruning": 35,
+        "paper_cloth": 8,
+        "hazardous": 8,
+        "miscellaneous": 8
+      }
+    },
+    "tobe-tanoura": {
+      "days_sha256": "b29109defdb009d9ba04b590b753f0fc7e440d9943422419e9143560121044d7",
+      "dated_cells": 250,
+      "collection_dates": {
+        "burnable": 9,
+        "pruning": 9,
+        "plastic_packaging": 9,
+        "containers": 9,
+        "paper_cloth": 9,
+        "hazardous": 9,
+        "miscellaneous": 9
+      }
+    },
+    "tobe-ohira": {
+      "days_sha256": "f04d2c68b86f141fe963a0529dc4a8dcfe0472281cf74c280bbd9a993006bea2",
+      "dated_cells": 250,
+      "collection_dates": {
+        "burnable": 16,
+        "pruning": 16,
+        "plastic_packaging": 16,
+        "containers": 16,
+        "paper_cloth": 16,
+        "hazardous": 16,
+        "miscellaneous": 16
+      }
+    },
+    "tobe-unosaki": {
+      "days_sha256": "b13677d09637afbdb835f3980a983e29c64f69a0792716c4703db675072badba",
+      "dated_cells": 250,
+      "collection_dates": {
+        "burnable": 6,
+        "pruning": 6,
+        "plastic_packaging": 6,
+        "containers": 6,
+        "paper_cloth": 6,
+        "hazardous": 6,
+        "miscellaneous": 6
+      }
+    }
+  },
+  "verification": {
+    "method": "Official monthly life-calendar ruled tables and printed cell text",
+    "coverage": "Published FY2026 issues through 2026-12-06; no recurrence inferred beyond printed dates",
+    "limitations": "Months not yet published by Tobe Town are outside this registry validity period",
+    "reviewed_at": "2026-11-02"
+  }
+}

@@ -1,0 +1,272 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38402",
+  "municipality_name": "砥部町",
+  "prefecture_id": "38",
+  "prefecture_name": "愛媛県",
+  "version": "tobe-2026.1",
+  "valid_from": "2026-04-01",
+  "valid_to": "2026-12-06",
+  "collection_areas": [
+    {
+      "id": "38402-asou",
+      "name": "麻生小校区",
+      "display_name": "麻生小校区（田ノ浦を除く）",
+      "calendar_id": "tobe-asou",
+      "rule_profile_id": "tobe",
+      "address_labels": [
+        "麻生小校区（田ノ浦を除く）"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.tobe.ehime.jp/gomi_search/4959.html"
+    },
+    {
+      "id": "38402-miyauchi-tobe",
+      "name": "宮内小・砥部小校区",
+      "display_name": "宮内小・砥部小校区（大平・鵜ノ崎を除く）",
+      "calendar_id": "tobe-miyauchi-tobe",
+      "rule_profile_id": "tobe",
+      "address_labels": [
+        "宮内小・砥部小校区（大平・鵜ノ崎を除く）"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.tobe.ehime.jp/gomi_search/4959.html"
+    },
+    {
+      "id": "38402-hirota-weekly-1",
+      "name": "広田地域 可燃週1回",
+      "display_name": "広田地域（可燃ごみ週1回）",
+      "calendar_id": "tobe-hirota-weekly-1",
+      "rule_profile_id": "tobe",
+      "address_labels": [
+        "広田地域（可燃ごみ週1回）"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.tobe.ehime.jp/gomi_search/4959.html"
+    },
+    {
+      "id": "38402-hirota-weekly-2",
+      "name": "広田地域 可燃週2回",
+      "display_name": "広田地域（可燃ごみ週2回）",
+      "calendar_id": "tobe-hirota-weekly-2",
+      "rule_profile_id": "tobe",
+      "address_labels": [
+        "広田地域（可燃ごみ週2回）"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.tobe.ehime.jp/gomi_search/4959.html"
+    },
+    {
+      "id": "38402-tanoura",
+      "name": "田ノ浦",
+      "display_name": "田ノ浦",
+      "calendar_id": "tobe-tanoura",
+      "rule_profile_id": "tobe",
+      "address_labels": [
+        "田ノ浦"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.tobe.ehime.jp/gomi_search/4959.html"
+    },
+    {
+      "id": "38402-ohira",
+      "name": "大平",
+      "display_name": "大平",
+      "calendar_id": "tobe-ohira",
+      "rule_profile_id": "tobe",
+      "address_labels": [
+        "大平"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.tobe.ehime.jp/gomi_search/4959.html"
+    },
+    {
+      "id": "38402-unosaki",
+      "name": "鵜ノ崎",
+      "display_name": "鵜ノ崎",
+      "calendar_id": "tobe-unosaki",
+      "rule_profile_id": "tobe",
+      "address_labels": [
+        "鵜ノ崎"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.tobe.ehime.jp/gomi_search/4959.html"
+    }
+  ],
+  "calendars": [
+    {
+      "id": "tobe-asou",
+      "rule_profile_id": "tobe"
+    },
+    {
+      "id": "tobe-miyauchi-tobe",
+      "rule_profile_id": "tobe"
+    },
+    {
+      "id": "tobe-hirota-weekly-1",
+      "rule_profile_id": "tobe"
+    },
+    {
+      "id": "tobe-hirota-weekly-2",
+      "rule_profile_id": "tobe"
+    },
+    {
+      "id": "tobe-tanoura",
+      "rule_profile_id": "tobe"
+    },
+    {
+      "id": "tobe-ohira",
+      "rule_profile_id": "tobe"
+    },
+    {
+      "id": "tobe-unosaki",
+      "rule_profile_id": "tobe"
+    }
+  ],
+  "rule_profiles": {
+    "tobe": {
+      "items_path": "knowledge/items.csv",
+      "embedding_index_path": "knowledge/item_embeddings.npz",
+      "index_profile_id": "citywide",
+      "calendar_path": "generated/calendar-2026.json",
+      "classification_rules": "砥部町公式のごみ分別辞典、分別帳、選択した地区のくらしのカレンダーに従う。辞典の14分別（可燃ごみ、剪定枝・葉・草、プラスチック製容器包装、空きびん、空き缶、金属くず、ペットボトル、段ボール、紙パック、新聞・チラシ、雑誌・雑がみ、古着・古布、危険ごみ、雑ごみ）を保持し、素材・汚れ・大きさ・電池の有無などの条件を確認する。条件を利用者の説明や画像から確認できない場合は推測せず質問する。ごみは収集日当日の午前7時30分までに決められた集積場所へ出す。可燃ごみと雑ごみは砥部町指定袋を使う。指定袋に入らない大きな雑ごみ、20kg以上のごみ、一時多量ごみ、辞典で美化センター等への持込が指定された品目は、ごみステーションへ出さず施設へ直接持ち込むか町の許可業者へ依頼する。排出禁止物、家電4品目、リチウムイオン電池等を大きさだけで雑ごみや持込ごみに変更しない。",
+      "size_question": "砥部町の指定ごみ袋に入りますか？重さは20kg未満ですか？",
+      "knowledge_title": "砥部町公式ごみ分別辞典",
+      "categories": {
+        "burnable": {
+          "name": "可燃ごみ",
+          "collection_type_id": "burnable",
+          "cutoff": "07:30",
+          "color": "#E8895B"
+        },
+        "pruning": {
+          "name": "剪定枝・葉・草",
+          "collection_type_id": "pruning",
+          "cutoff": "07:30",
+          "color": "#8FB36A"
+        },
+        "plastic_packaging": {
+          "name": "プラスチック製容器包装",
+          "collection_type_id": "plastic_packaging",
+          "cutoff": "07:30",
+          "color": "#67A982"
+        },
+        "bottles": {
+          "name": "空きびん",
+          "collection_type_id": "containers",
+          "cutoff": "07:30",
+          "color": "#6E9ECF"
+        },
+        "cans": {
+          "name": "空き缶",
+          "collection_type_id": "containers",
+          "cutoff": "07:30",
+          "color": "#D89C4B"
+        },
+        "metals": {
+          "name": "金属くず",
+          "collection_type_id": "containers",
+          "cutoff": "07:30",
+          "color": "#8C9199"
+        },
+        "pet_bottles": {
+          "name": "ペットボトル",
+          "collection_type_id": "containers",
+          "cutoff": "07:30",
+          "color": "#4DA3A3"
+        },
+        "cardboard": {
+          "name": "段ボール",
+          "collection_type_id": "paper_cloth",
+          "cutoff": "07:30",
+          "color": "#B89A6B"
+        },
+        "paper_cartons": {
+          "name": "紙パック",
+          "collection_type_id": "paper_cloth",
+          "cutoff": "07:30",
+          "color": "#C7A96C"
+        },
+        "newspaper": {
+          "name": "新聞・チラシ",
+          "collection_type_id": "paper_cloth",
+          "cutoff": "07:30",
+          "color": "#A88F69"
+        },
+        "magazines": {
+          "name": "雑誌・雑がみ",
+          "collection_type_id": "paper_cloth",
+          "cutoff": "07:30",
+          "color": "#9D8A70"
+        },
+        "textiles": {
+          "name": "古着・古布",
+          "collection_type_id": "paper_cloth",
+          "cutoff": "07:30",
+          "color": "#B08AA5"
+        },
+        "hazardous": {
+          "name": "危険ごみ",
+          "collection_type_id": "hazardous",
+          "cutoff": "07:30",
+          "color": "#9A7DAE"
+        },
+        "miscellaneous": {
+          "name": "雑ごみ",
+          "collection_type_id": "miscellaneous",
+          "cutoff": "07:30",
+          "color": "#7B8794"
+        },
+        "collection_box": {
+          "name": "小型家電・電池等の拠点回収",
+          "answer_note": "定期収集とは別の回収方法です。品目ごとの対象条件と公式ページ記載の回収場所を確認してください。"
+        },
+        "facility_dropoff": {
+          "name": "施設へ持ち込むごみ",
+          "answer_note": "ごみステーションでは収集しません。美化センターまたは品目に応じた施設へ直接持ち込むか、町の許可業者へ依頼してください。"
+        },
+        "not_collected": {
+          "name": "町では処理できないもの",
+          "answer_note": "ごみステーションや町の処理施設には出せません。販売店、メーカー、専門業者など公式辞典記載の窓口へ相談してください。"
+        }
+      },
+      "bulky_waste": {
+        "category_code": "facility_dropoff",
+        "config": {
+          "municipality_id": "38402",
+          "municipality_name": "砥部町",
+          "collection_frequency": "ごみステーションでの定期収集なし",
+          "reception_hours": "美化センター：月～金・第2/第4日曜 9:00～16:00（年末年始を除く）",
+          "collection_rules": "指定袋に入らない大きな雑ごみ、20kg以上、一時多量ごみは、美化センター等へ直接持ち込むか、町の許可を受けた収集運搬業者へ依頼します。",
+          "fee_structure_type": "weight_based",
+          "application_method": "direct_dropoff",
+          "phone_number": "089-962-5168",
+          "web_form_url": null,
+          "information_url": "https://www.town.tobe.ehime.jp/kurashi_tetsuzuki/gomi_risaikuru_kankyo/1/1745.html",
+          "steps": [
+            {
+              "step_number": 1,
+              "title": "対象と持込先を確認",
+              "description": "指定袋に入らない雑ごみ、20kg以上、引越し等の一時多量ごみは美化センターが主な持込先です。ブロック・瓦・石等は千里埋立処分場の対象です。"
+            },
+            {
+              "step_number": 2,
+              "title": "受付日と費用を確認",
+              "description": "施設の受付日、休業日、重量制の処理手数料を公式ページで確認してください。"
+            },
+            {
+              "step_number": 3,
+              "title": "直接持ち込む",
+              "description": "受付で計量後、自分で分別ごとの場所へ降ろします。指定ごみ袋は不要です。"
+            },
+            {
+              "step_number": 4,
+              "title": "運搬を依頼する場合",
+              "description": "町の一般廃棄物収集運搬許可業者だけに依頼してください。料金は業者へ直接確認します。"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
