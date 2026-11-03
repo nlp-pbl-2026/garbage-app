@@ -1,0 +1,636 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38422",
+  "municipality_name": "内子町",
+  "prefecture_id": "38",
+  "prefecture_name": "愛媛県",
+  "version": "uchiko-2026.1",
+  "valid_from": "2026-01-01",
+  "valid_to": "2026-12-31",
+  "collection_areas": [
+    {
+      "id": "38422-uchiko-a",
+      "name": "内子 1～4区・5区中町通り沿い・12～19区・20区通常収集場所",
+      "display_name": "内子 1～4区・5区中町通り沿い・12～19区・20区通常収集場所",
+      "calendar_id": "uchiko-uchiko-a",
+      "rule_profile_id": "uchiko",
+      "address_labels": [
+        "1～4区",
+        "5区（中町通り沿い）",
+        "12～19区",
+        "20区（元・堀川医院道路向かい収集場所を除く）"
+      ],
+      "parent_area": "内子自治センター",
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.uchiko.ehime.jp/uploaded/life/145277_324783_misc.pdf",
+      "mapping_note": "20区の元・堀川医院道路向かい収集場所は別選択"
+    },
+    {
+      "id": "38422-uchiko-20-horikawa",
+      "name": "内子 20区（元・堀川医院道路向かい収集場所）",
+      "display_name": "内子 20区（元・堀川医院道路向かい収集場所）",
+      "calendar_id": "uchiko-uchiko-20-horikawa",
+      "rule_profile_id": "uchiko",
+      "address_labels": [
+        "20区",
+        "元・堀川医院道路向かい収集場所"
+      ],
+      "parent_area": "内子自治センター",
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.uchiko.ehime.jp/uploaded/life/145277_324783_misc.pdf",
+      "mapping_note": "収集場所単位の例外のため現地確認が必要"
+    },
+    {
+      "id": "38422-uchiko-b",
+      "name": "内子 5区中町通り沿い以外・6～11区",
+      "display_name": "内子 5区中町通り沿い以外・6～11区",
+      "calendar_id": "uchiko-uchiko-b",
+      "rule_profile_id": "uchiko",
+      "address_labels": [
+        "5区（中町通り沿い以外）",
+        "6～11区"
+      ],
+      "parent_area": "内子自治センター",
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.uchiko.ehime.jp/uploaded/life/145277_324783_misc.pdf"
+    },
+    {
+      "id": "38422-uchiko-21",
+      "name": "内子 21区",
+      "display_name": "内子 21区",
+      "calendar_id": "uchiko-uchiko-21",
+      "rule_profile_id": "uchiko",
+      "address_labels": [
+        "21区"
+      ],
+      "parent_area": "内子自治センター",
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.uchiko.ehime.jp/uploaded/life/145277_324783_misc.pdf"
+    },
+    {
+      "id": "38422-uchiko-22",
+      "name": "内子 22区",
+      "display_name": "内子 22区",
+      "calendar_id": "uchiko-uchiko-22",
+      "rule_profile_id": "uchiko",
+      "address_labels": [
+        "22区"
+      ],
+      "parent_area": "内子自治センター",
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.uchiko.ehime.jp/uploaded/life/145277_324783_misc.pdf"
+    },
+    {
+      "id": "38422-uchiko-east-bio",
+      "name": "内子東 松尾（生ごみ収集区域）・田中・護国・岡・大岡",
+      "display_name": "内子東 松尾（生ごみ収集区域）・田中・護国・岡・大岡",
+      "calendar_id": "uchiko-uchiko-east-bio",
+      "rule_profile_id": "uchiko",
+      "address_labels": [
+        "松尾（生ごみ収集区域）",
+        "田中",
+        "護国",
+        "岡",
+        "大岡"
+      ],
+      "parent_area": "内子東自治センター",
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.uchiko.ehime.jp/uploaded/life/145277_324784_misc.pdf"
+    },
+    {
+      "id": "38422-uchiko-east-route56",
+      "name": "内子東 立川（国道56号沿い）・宿茂",
+      "display_name": "内子東 立川（国道56号沿い）・宿茂",
+      "calendar_id": "uchiko-uchiko-east-route56",
+      "rule_profile_id": "uchiko",
+      "address_labels": [
+        "立川（立川中央国道56号沿い）",
+        "宿茂"
+      ],
+      "parent_area": "内子東自治センター",
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.uchiko.ehime.jp/uploaded/life/145277_324784_misc.pdf"
+    },
+    {
+      "id": "38422-uchiko-east-matsuo-other",
+      "name": "内子東 松尾（生ごみ収集区域以外）",
+      "display_name": "内子東 松尾（生ごみ収集区域以外）",
+      "calendar_id": "uchiko-uchiko-east-matsuo-other",
+      "rule_profile_id": "uchiko",
+      "address_labels": [
+        "松尾（生ごみ収集区域以外）"
+      ],
+      "parent_area": "内子東自治センター",
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.uchiko.ehime.jp/uploaded/life/145277_324784_misc.pdf"
+    },
+    {
+      "id": "38422-uchiko-east-tachikawa-mitsuho",
+      "name": "内子東 立川（国道56号沿い以外）・満穂（論田・河内・石畳）",
+      "display_name": "内子東 立川（国道56号沿い以外）・満穂（論田・河内・石畳）",
+      "calendar_id": "uchiko-uchiko-east-tachikawa-mitsuho",
+      "rule_profile_id": "uchiko",
+      "address_labels": [
+        "立川（立川中央国道56号沿い以外）",
+        "満穂（論田・河内・石畳）"
+      ],
+      "parent_area": "内子東自治センター",
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.uchiko.ehime.jp/uploaded/life/145277_324784_misc.pdf"
+    },
+    {
+      "id": "38422-uchiko-east-tominaka-tominaga",
+      "name": "内子東 富中・富長",
+      "display_name": "内子東 富中・富長",
+      "calendar_id": "uchiko-uchiko-east-tominaka-tominaga",
+      "rule_profile_id": "uchiko",
+      "address_labels": [
+        "富中",
+        "富長"
+      ],
+      "parent_area": "内子東自治センター",
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.uchiko.ehime.jp/uploaded/life/145277_324784_misc.pdf"
+    },
+    {
+      "id": "38422-uchiko-east-nagata",
+      "name": "内子東 長田",
+      "display_name": "内子東 長田",
+      "calendar_id": "uchiko-uchiko-east-nagata",
+      "rule_profile_id": "uchiko",
+      "address_labels": [
+        "長田"
+      ],
+      "parent_area": "内子東自治センター",
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.uchiko.ehime.jp/uploaded/life/145277_324784_misc.pdf"
+    },
+    {
+      "id": "38422-ose-main",
+      "name": "大瀬 本町1（高中除く）・本町2・本町3・乙成",
+      "display_name": "大瀬 本町1（高中除く）・本町2・本町3・乙成",
+      "calendar_id": "uchiko-ose-main",
+      "rule_profile_id": "uchiko",
+      "address_labels": [
+        "本町1（高中を除く）",
+        "本町2",
+        "本町3",
+        "乙成"
+      ],
+      "parent_area": "大瀬自治センター",
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.uchiko.ehime.jp/uploaded/life/145277_324785_misc.pdf"
+    },
+    {
+      "id": "38422-ose-thursday",
+      "name": "大瀬 本町1高中・中野・江子・村前・川登今岡",
+      "display_name": "大瀬 本町1高中・中野・江子・村前・川登今岡",
+      "calendar_id": "uchiko-ose-thursday",
+      "rule_profile_id": "uchiko",
+      "address_labels": [
+        "本町1（高中）",
+        "中野",
+        "江子",
+        "村前自治会",
+        "川登自治会（今岡）"
+      ],
+      "parent_area": "大瀬自治センター",
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.uchiko.ehime.jp/uploaded/life/145277_324785_misc.pdf"
+    },
+    {
+      "id": "38422-ose-friday",
+      "name": "大瀬 大久保・鵜川・程内",
+      "display_name": "大瀬 大久保・鵜川・程内",
+      "calendar_id": "uchiko-ose-friday",
+      "rule_profile_id": "uchiko",
+      "address_labels": [
+        "大久保",
+        "鵜川",
+        "程内自治会"
+      ],
+      "parent_area": "大瀬自治センター",
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.uchiko.ehime.jp/uploaded/life/145277_324785_misc.pdf"
+    },
+    {
+      "id": "38422-ose-wada-kogaidani",
+      "name": "大瀬 和田自治会（小貝谷）",
+      "display_name": "大瀬 和田自治会（小貝谷）",
+      "calendar_id": "uchiko-ose-wada-kogaidani",
+      "rule_profile_id": "uchiko",
+      "address_labels": [
+        "和田自治会（小貝谷）",
+        "小貝谷"
+      ],
+      "parent_area": "大瀬自治センター",
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.uchiko.ehime.jp/uploaded/life/145277_324785_misc.pdf"
+    },
+    {
+      "id": "38422-ose-tue-fri",
+      "name": "大瀬 和田（北深・小貝谷除く）・川登（路木・川登・梅津）",
+      "display_name": "大瀬 和田（北深・小貝谷除く）・川登（路木・川登・梅津）",
+      "calendar_id": "uchiko-ose-tue-fri",
+      "rule_profile_id": "uchiko",
+      "address_labels": [
+        "和田自治会（北深・小貝谷を除く）",
+        "路木",
+        "川登",
+        "梅津"
+      ],
+      "parent_area": "大瀬自治センター",
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.uchiko.ehime.jp/uploaded/life/145277_324785_misc.pdf"
+    },
+    {
+      "id": "38422-ose-wada-kitafuka",
+      "name": "大瀬 和田自治会（北深）",
+      "display_name": "大瀬 和田自治会（北深）",
+      "calendar_id": "uchiko-ose-wada-kitafuka",
+      "rule_profile_id": "uchiko",
+      "address_labels": [
+        "和田自治会（北深）",
+        "北深"
+      ],
+      "parent_area": "大瀬自治センター",
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.uchiko.ehime.jp/uploaded/life/145277_324785_misc.pdf"
+    },
+    {
+      "id": "38422-ose-ikeda",
+      "name": "大瀬 池田自治会",
+      "display_name": "大瀬 池田自治会",
+      "calendar_id": "uchiko-ose-ikeda",
+      "rule_profile_id": "uchiko",
+      "address_labels": [
+        "池田自治会"
+      ],
+      "parent_area": "大瀬自治センター",
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.uchiko.ehime.jp/uploaded/life/145277_324785_misc.pdf"
+    },
+    {
+      "id": "38422-ikazaki-side",
+      "name": "五十崎側（龍王・新町・中央・神南以外）",
+      "display_name": "五十崎側（龍王・新町・中央・神南以外）",
+      "calendar_id": "uchiko-ikazaki-side",
+      "rule_profile_id": "uchiko",
+      "address_labels": [
+        "龍王自治会",
+        "新町自治会",
+        "中央自治会",
+        "神南自治会（神南以外）"
+      ],
+      "parent_area": "五十崎自治センター",
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.uchiko.ehime.jp/uploaded/life/145277_324786_misc.pdf"
+    },
+    {
+      "id": "38422-ikazaki-kannan",
+      "name": "五十崎 神南自治会（神南）",
+      "display_name": "五十崎 神南自治会（神南）",
+      "calendar_id": "uchiko-ikazaki-kannan",
+      "rule_profile_id": "uchiko",
+      "address_labels": [
+        "神南自治会（神南）",
+        "神南"
+      ],
+      "parent_area": "五十崎自治センター",
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.uchiko.ehime.jp/uploaded/life/145277_324786_misc.pdf",
+      "mapping_note": "燃えるごみは山間部、資源・燃えないごみは五十崎側"
+    },
+    {
+      "id": "38422-ikazaki-tenjin",
+      "name": "五十崎 天神側",
+      "display_name": "五十崎 天神側",
+      "calendar_id": "uchiko-ikazaki-tenjin",
+      "rule_profile_id": "uchiko",
+      "address_labels": [
+        "平岡自治会",
+        "東沖自治会",
+        "西沖自治会",
+        "柿原自治会",
+        "重松自治会（駄場）",
+        "宿福自治会（福岡以外）",
+        "御祓自治会（御祓団地）"
+      ],
+      "parent_area": "五十崎自治センター",
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.uchiko.ehime.jp/uploaded/life/145277_324786_misc.pdf"
+    },
+    {
+      "id": "38422-ikazaki-mountain",
+      "name": "五十崎 山間部",
+      "display_name": "五十崎 山間部",
+      "calendar_id": "uchiko-ikazaki-mountain",
+      "rule_profile_id": "uchiko",
+      "address_labels": [
+        "重松自治会（上重松・下重松・亀井・池窪）",
+        "宿福自治会（福岡）",
+        "御祓自治会（御祓団地以外）"
+      ],
+      "parent_area": "五十崎自治センター",
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.uchiko.ehime.jp/uploaded/life/145277_324786_misc.pdf"
+    },
+    {
+      "id": "38422-oda-upper",
+      "name": "小田 上川・中川・本川",
+      "display_name": "小田 上川・中川・本川",
+      "calendar_id": "uchiko-oda-upper",
+      "rule_profile_id": "uchiko",
+      "address_labels": [
+        "上川",
+        "中川",
+        "本川"
+      ],
+      "parent_area": "小田自治センター",
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.uchiko.ehime.jp/uploaded/life/145277_324787_misc.pdf"
+    },
+    {
+      "id": "38422-oda-hirano-oda",
+      "name": "小田 平野・小田",
+      "display_name": "小田 平野・小田",
+      "calendar_id": "uchiko-oda-hirano-oda",
+      "rule_profile_id": "uchiko",
+      "address_labels": [
+        "平野",
+        "小田"
+      ],
+      "parent_area": "小田自治センター",
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.uchiko.ehime.jp/uploaded/life/145277_324787_misc.pdf"
+    },
+    {
+      "id": "38422-oda-minamiyama",
+      "name": "小田 南山",
+      "display_name": "小田 南山",
+      "calendar_id": "uchiko-oda-minamiyama",
+      "rule_profile_id": "uchiko",
+      "address_labels": [
+        "南山"
+      ],
+      "parent_area": "小田自治センター",
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.uchiko.ehime.jp/uploaded/life/145277_324787_misc.pdf"
+    },
+    {
+      "id": "38422-oda-other",
+      "name": "小田 寺村・立石・吉野川・中田渡・上田渡・臼杵",
+      "display_name": "小田 寺村・立石・吉野川・中田渡・上田渡・臼杵",
+      "calendar_id": "uchiko-oda-other",
+      "rule_profile_id": "uchiko",
+      "address_labels": [
+        "寺村",
+        "立石",
+        "吉野川",
+        "中田渡",
+        "上田渡",
+        "臼杵"
+      ],
+      "parent_area": "小田自治センター",
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.uchiko.ehime.jp/uploaded/life/145277_324787_misc.pdf"
+    }
+  ],
+  "calendars": [
+    {
+      "id": "uchiko-uchiko-a",
+      "rule_profile_id": "uchiko"
+    },
+    {
+      "id": "uchiko-uchiko-20-horikawa",
+      "rule_profile_id": "uchiko"
+    },
+    {
+      "id": "uchiko-uchiko-b",
+      "rule_profile_id": "uchiko"
+    },
+    {
+      "id": "uchiko-uchiko-21",
+      "rule_profile_id": "uchiko"
+    },
+    {
+      "id": "uchiko-uchiko-22",
+      "rule_profile_id": "uchiko"
+    },
+    {
+      "id": "uchiko-uchiko-east-bio",
+      "rule_profile_id": "uchiko"
+    },
+    {
+      "id": "uchiko-uchiko-east-route56",
+      "rule_profile_id": "uchiko"
+    },
+    {
+      "id": "uchiko-uchiko-east-matsuo-other",
+      "rule_profile_id": "uchiko"
+    },
+    {
+      "id": "uchiko-uchiko-east-tachikawa-mitsuho",
+      "rule_profile_id": "uchiko"
+    },
+    {
+      "id": "uchiko-uchiko-east-tominaka-tominaga",
+      "rule_profile_id": "uchiko"
+    },
+    {
+      "id": "uchiko-uchiko-east-nagata",
+      "rule_profile_id": "uchiko"
+    },
+    {
+      "id": "uchiko-ose-main",
+      "rule_profile_id": "uchiko"
+    },
+    {
+      "id": "uchiko-ose-thursday",
+      "rule_profile_id": "uchiko"
+    },
+    {
+      "id": "uchiko-ose-friday",
+      "rule_profile_id": "uchiko"
+    },
+    {
+      "id": "uchiko-ose-wada-kogaidani",
+      "rule_profile_id": "uchiko"
+    },
+    {
+      "id": "uchiko-ose-tue-fri",
+      "rule_profile_id": "uchiko"
+    },
+    {
+      "id": "uchiko-ose-wada-kitafuka",
+      "rule_profile_id": "uchiko"
+    },
+    {
+      "id": "uchiko-ose-ikeda",
+      "rule_profile_id": "uchiko"
+    },
+    {
+      "id": "uchiko-ikazaki-side",
+      "rule_profile_id": "uchiko"
+    },
+    {
+      "id": "uchiko-ikazaki-kannan",
+      "rule_profile_id": "uchiko"
+    },
+    {
+      "id": "uchiko-ikazaki-tenjin",
+      "rule_profile_id": "uchiko"
+    },
+    {
+      "id": "uchiko-ikazaki-mountain",
+      "rule_profile_id": "uchiko"
+    },
+    {
+      "id": "uchiko-oda-upper",
+      "rule_profile_id": "uchiko"
+    },
+    {
+      "id": "uchiko-oda-hirano-oda",
+      "rule_profile_id": "uchiko"
+    },
+    {
+      "id": "uchiko-oda-minamiyama",
+      "rule_profile_id": "uchiko"
+    },
+    {
+      "id": "uchiko-oda-other",
+      "rule_profile_id": "uchiko"
+    }
+  ],
+  "rule_profiles": {
+    "uchiko": {
+      "items_path": "knowledge/items.csv",
+      "embedding_index_path": "knowledge/item_embeddings.npz",
+      "index_profile_id": "citywide",
+      "calendar_path": "generated/calendar-2026.json",
+      "classification_rules": "内子町公式の令和8年5月更新『ごみ分別辞典』を正とする。公式区分と品目ごとの備考を保持し、素材、指定袋に入る大きさ、電池・冷媒の有無、家電4品目かどうかを優先する。『（素材）』は材質を確認してから可燃・不燃等を判断し、推測で確定しない。生ごみ区分は生ごみ分別収集区域だけに適用し、その他の地区では公式備考どおり可燃として扱う。カレンダーは2026年1月～12月の暦年資料であり、2027年へ流用しない。",
+      "size_question": "内子町の指定袋に入りますか？素材、生ごみ収集区域、家電4品目かを確認できますか？",
+      "knowledge_title": "内子町ごみ分別辞典（令和8年5月更新）",
+      "categories": {
+        "burnable": {
+          "name": "可燃",
+          "collection_type_id": "burnable",
+          "color": "#F39C12"
+        },
+        "nonburnable": {
+          "name": "不燃",
+          "collection_type_id": "nonburnable",
+          "color": "#2962FF"
+        },
+        "organic": {
+          "name": "生ごみ",
+          "collection_type_id": "organic",
+          "color": "#8BC34A",
+          "answer_note": "生ごみ分別収集区域だけの区分です。その他の地区では可燃ごみとして出します。"
+        },
+        "cans": {
+          "name": "資源かん",
+          "collection_type_id": "cans",
+          "color": "#607D8B"
+        },
+        "bottles": {
+          "name": "資源びん",
+          "collection_type_id": "bottles",
+          "color": "#8B4513"
+        },
+        "pet_bottles": {
+          "name": "資源ペットボトル",
+          "collection_type_id": "pet_bottles",
+          "color": "#00A651"
+        },
+        "white_trays": {
+          "name": "資源白色トレイ",
+          "collection_type_id": "white_trays",
+          "color": "#00BCD4"
+        },
+        "textiles": {
+          "name": "資源布・古着",
+          "collection_type_id": "textiles",
+          "color": "#9C27B0"
+        },
+        "waste_paper": {
+          "name": "資源雑誌等",
+          "collection_type_id": "waste_paper",
+          "color": "#795548"
+        },
+        "newspapers": {
+          "name": "資源新聞",
+          "collection_type_id": "waste_paper",
+          "color": "#795548"
+        },
+        "cardboard": {
+          "name": "資源ダンボール",
+          "collection_type_id": "waste_paper",
+          "color": "#795548"
+        },
+        "paper_cartons": {
+          "name": "資源紙パック",
+          "collection_type_id": "waste_paper",
+          "color": "#795548"
+        },
+        "waste_oil": {
+          "name": "廃食油",
+          "color": "#FF9800",
+          "answer_note": "自治会館などの指定回収へ出します。"
+        },
+        "material_dependent": {
+          "name": "素材による",
+          "color": "#9E9E9E",
+          "answer_note": "素材を確認するまで分類を確定できません。木・プラスチック等は可燃、金属・ガラス・陶磁器等は不燃が基本ですが、品目の備考を優先します。"
+        },
+        "bulky": {
+          "name": "粗大",
+          "color": "#757575",
+          "answer_note": "町の粗大ごみ収集またはクリーンセンターへの直接持込を利用します。持込不可品があります。"
+        },
+        "appliance_recycling": {
+          "name": "家電4品目",
+          "color": "#3F51B5",
+          "answer_note": "テレビ、エアコン、冷蔵庫・冷凍庫、洗濯機・衣類乾燥機は家電リサイクル法の対象です。"
+        },
+        "not_collected": {
+          "name": "禁止",
+          "color": "#F44336",
+          "answer_note": "内子町では収集できません。備考に従い環境政策室、販売店、専門業者等へ相談してください。"
+        }
+      },
+      "bulky_waste": {
+        "category_code": "bulky",
+        "config": {
+          "municipality_id": "38422",
+          "municipality_name": "内子町",
+          "collection_frequency": "地域別の申込収集",
+          "reception_hours": "クリーンセンター持込は月～土曜8:30～12:00、13:00～16:30（休業日を除く）",
+          "collection_rules": "指定袋に入らないもの等は粗大ごみ。品目により直接持込不可のため分別辞典を確認します。",
+          "fee_structure_type": "item_or_direct_dropoff",
+          "application_method": "municipal_collection_or_direct_dropoff",
+          "phone_number": "0893-44-6159",
+          "web_form_url": null,
+          "information_url": "https://www.town.uchiko.ehime.jp/soshiki/10/gomibunnbetu.html",
+          "steps": [
+            {
+              "step_number": 1,
+              "title": "品目を確認",
+              "description": "分別辞典で粗大区分と持込可否を確認します。"
+            },
+            {
+              "step_number": 2,
+              "title": "町の収集へ申込",
+              "description": "町の粗大ごみ収集を利用する場合は環境政策室へ確認します。"
+            },
+            {
+              "step_number": 3,
+              "title": "直接持込も選択",
+              "description": "持込可能品は内子町クリーンセンターの受付日時を確認します。"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

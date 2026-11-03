@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38422",
+  "version": "uchiko-2026.1",
+  "source_urls": [
+    "https://www.town.uchiko.ehime.jp/soshiki/10/gomibunnbetu.html",
+    "https://www.town.uchiko.ehime.jp/uploaded/life/139240_284629_misc.pdf",
+    "https://www.town.uchiko.ehime.jp/soshiki/10/145277.html"
+  ],
+  "classification_rules": "内子町公式の令和8年5月更新『ごみ分別辞典』を正とする。公式区分と品目ごとの備考を保持し、素材、指定袋に入る大きさ、電池・冷媒の有無、家電4品目かどうかを優先する。『（素材）』は材質を確認してから可燃・不燃等を判断し、推測で確定しない。生ごみ区分は生ごみ分別収集区域だけに適用し、その他の地区では公式備考どおり可燃として扱う。カレンダーは2026年1月～12月の暦年資料であり、2027年へ流用しない。",
+  "categories": {
+    "burnable": {
+      "name": "可燃",
+      "collection_type_id": "burnable",
+      "color": "#F39C12",
+      "instructions": "内子町指定の燃やせるごみ袋に入れ、地区の収集時刻までに指定場所へ出します。"
+    },
+    "nonburnable": {
+      "name": "不燃",
+      "collection_type_id": "nonburnable",
+      "color": "#2962FF",
+      "instructions": "缶・びん・燃えないごみ専用袋を使用します。刃物や割れ物は紙などで包み、電池は外して絶縁します。"
+    },
+    "organic": {
+      "name": "生ごみ",
+      "collection_type_id": "organic",
+      "color": "#8BC34A",
+      "answer_note": "生ごみ分別収集区域だけの区分です。その他の地区では可燃ごみとして出します。",
+      "instructions": "生ごみ分別収集区域では十分に水切りして出します。区域外では燃やせるごみです。"
+    },
+    "cans": {
+      "name": "資源かん",
+      "collection_type_id": "cans",
+      "color": "#607D8B",
+      "instructions": "飲食料品用の缶はふたを外してすすぎ、専用袋へ入れます。一辺20cm以上は不燃です。"
+    },
+    "bottles": {
+      "name": "資源びん",
+      "collection_type_id": "bottles",
+      "color": "#8B4513",
+      "instructions": "飲食料品用のびんはふたを外してすすぎ、専用袋へ入れます。割れたびんは不燃です。"
+    },
+    "pet_bottles": {
+      "name": "資源ペットボトル",
+      "collection_type_id": "pet_bottles",
+      "color": "#00A651",
+      "instructions": "PETマークを確認し、ふたとラベルを外してすすぎ、専用袋へ入れます。"
+    },
+    "white_trays": {
+      "name": "資源白色トレイ",
+      "collection_type_id": "white_trays",
+      "color": "#00BCD4",
+      "instructions": "白色の食品トレイを洗って乾かし、専用袋へ入れます。色柄付きは分別辞典の品目条件を確認します。"
+    },
+    "textiles": {
+      "name": "資源布・古着",
+      "collection_type_id": "textiles",
+      "color": "#9C27B0",
+      "instructions": "そのまま使えるきれいな衣類・布を専用袋へ入れます。対象外素材は分別辞典を確認します。"
+    },
+    "waste_paper": {
+      "name": "資源雑誌等",
+      "collection_type_id": "waste_paper",
+      "color": "#795548",
+      "instructions": "雑誌・冊子・厚紙・雑紙等をひもで十字に縛って出します。"
+    },
+    "newspapers": {
+      "name": "資源新聞",
+      "collection_type_id": "waste_paper",
+      "color": "#795548",
+      "instructions": "新聞紙・チラシをひもで十字に縛って出します。"
+    },
+    "cardboard": {
+      "name": "資源ダンボール",
+      "collection_type_id": "waste_paper",
+      "color": "#795548",
+      "instructions": "断面が波状のダンボールをひもで十字に縛って出します。"
+    },
+    "paper_cartons": {
+      "name": "資源紙パック",
+      "collection_type_id": "waste_paper",
+      "color": "#795548",
+      "instructions": "内側が白色で500ml以上の紙パックを切り開いてすすぎ、ひもで縛ります。"
+    },
+    "waste_oil": {
+      "name": "廃食油",
+      "color": "#FF9800",
+      "answer_note": "自治会館などの指定回収へ出します。",
+      "instructions": "使用済み食用油を自治会館等の回収場所へ持ち込みます。"
+    },
+    "material_dependent": {
+      "name": "素材による",
+      "color": "#9E9E9E",
+      "answer_note": "素材を確認するまで分類を確定できません。木・プラスチック等は可燃、金属・ガラス・陶磁器等は不燃が基本ですが、品目の備考を優先します。",
+      "instructions": "材質と大きさを確認し、分別辞典の備考に従います。"
+    },
+    "bulky": {
+      "name": "粗大",
+      "color": "#757575",
+      "answer_note": "町の粗大ごみ収集またはクリーンセンターへの直接持込を利用します。持込不可品があります。",
+      "instructions": "町の粗大ごみ収集へ申し込むか、持込可能品は内子町クリーンセンターへ持ち込みます。"
+    },
+    "appliance_recycling": {
+      "name": "家電4品目",
+      "color": "#3F51B5",
+      "answer_note": "テレビ、エアコン、冷蔵庫・冷凍庫、洗濯機・衣類乾燥機は家電リサイクル法の対象です。",
+      "instructions": "販売店等へ引き取りを依頼します。町の収集・クリーンセンター持込はできません。"
+    },
+    "not_collected": {
+      "name": "禁止",
+      "color": "#F44336",
+      "answer_note": "内子町では収集できません。備考に従い環境政策室、販売店、専門業者等へ相談してください。",
+      "instructions": "町の収集へ出さず、品目の備考に記載された相談先へ確認します。"
+    }
+  }
+}

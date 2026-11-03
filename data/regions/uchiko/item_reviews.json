@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "version": "uchiko-2026.1",
+  "official_items": 876,
+  "items_sha256": "bbfa171782435a80553257fd72e138dc711d3109e80a1bf7b62a794b78fa7aa2",
+  "primary_categories": {
+    "burnable": 267,
+    "nonburnable": 253,
+    "cans": 5,
+    "bottles": 5,
+    "bulky": 108,
+    "material_dependent": 87,
+    "waste_paper": 25,
+    "waste_oil": 4,
+    "textiles": 11,
+    "appliance_recycling": 12,
+    "paper_cartons": 3,
+    "not_collected": 80,
+    "newspapers": 3,
+    "organic": 7,
+    "white_trays": 4,
+    "cardboard": 1,
+    "pet_bottles": 1
+  },
+  "conditional_records": 212,
+  "records_with_notes": 455,
+  "source_pdf_pages": "2-13",
+  "extraction_method": "pdfplumber ruled-table extraction with split-parenthesis repair",
+  "reviewed_at": "2026-11-03"
+}

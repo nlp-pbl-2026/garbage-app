@@ -1,0 +1,1100 @@
+{
+  "schema_version": 1,
+  "version": "uchiko-2026.1",
+  "valid_from": "2026-01-01",
+  "valid_to": "2026-12-31",
+  "source_url": "https://www.town.uchiko.ehime.jp/soshiki/10/145277.html",
+  "areas": [
+    {
+      "calendar_id": "uchiko-uchiko-a",
+      "center": "内子自治センター",
+      "display_name": "内子 1～4区・5区中町通り沿い・12～19区・20区通常収集場所",
+      "address_labels": [
+        "1～4区",
+        "5区（中町通り沿い）",
+        "12～19区",
+        "20区（元・堀川医院道路向かい収集場所を除く）"
+      ],
+      "rules": {
+        "organic": "毎週火・金",
+        "burnable": "毎週月",
+        "waste_paper": "第 1 金曜日",
+        "cans": "第 2 金曜日",
+        "bottles": "第 3 金曜日",
+        "pet_bottles": "第 3 金曜日",
+        "white_trays": "第 3 金曜日",
+        "textiles": "第 3 金曜日",
+        "nonburnable": "第 4 金曜日"
+      },
+      "excluded_dates": {
+        "organic": [
+          "2026-01-02",
+          "2026-05-05"
+        ]
+      },
+      "resource_table": {
+        "file": "calendar-1.pdf",
+        "index": 0
+      },
+      "days_sha256": "7030d74a80aecb50b1d9f85379480766f7738493eea7d38a777590b42c26c803",
+      "dated_cells": 154,
+      "collection_dates": {
+        "burnable": 52,
+        "organic": 102,
+        "waste_paper": 12,
+        "cans": 12,
+        "bottles": 12,
+        "pet_bottles": 12,
+        "textiles": 12,
+        "white_trays": 12,
+        "nonburnable": 12
+      }
+    },
+    {
+      "calendar_id": "uchiko-uchiko-20-horikawa",
+      "center": "内子自治センター",
+      "display_name": "内子 20区（元・堀川医院道路向かい収集場所）",
+      "address_labels": [
+        "20区",
+        "元・堀川医院道路向かい収集場所"
+      ],
+      "rules": {
+        "organic": "毎週火・金",
+        "burnable": "毎週木",
+        "waste_paper": "第 1 金曜日",
+        "cans": "第 2 金曜日",
+        "bottles": "第 3 金曜日",
+        "pet_bottles": "第 3 金曜日",
+        "white_trays": "第 3 金曜日",
+        "textiles": "第 3 金曜日",
+        "nonburnable": "第 4 金曜日"
+      },
+      "excluded_dates": {
+        "organic": [
+          "2026-01-02",
+          "2026-05-05"
+        ],
+        "burnable": [
+          "2026-01-01",
+          "2026-12-31"
+        ]
+      },
+      "resource_table": {
+        "file": "calendar-1.pdf",
+        "index": 0
+      },
+      "days_sha256": "0fc6c0654e87dbedc7d4f39831e05358c18f8e095e1fd43ff98b7640867fdeb4",
+      "dated_cells": 153,
+      "collection_dates": {
+        "organic": 102,
+        "burnable": 51,
+        "waste_paper": 12,
+        "cans": 12,
+        "bottles": 12,
+        "pet_bottles": 12,
+        "textiles": 12,
+        "white_trays": 12,
+        "nonburnable": 12
+      }
+    },
+    {
+      "calendar_id": "uchiko-uchiko-b",
+      "center": "内子自治センター",
+      "display_name": "内子 5区中町通り沿い以外・6～11区",
+      "address_labels": [
+        "5区（中町通り沿い以外）",
+        "6～11区"
+      ],
+      "rules": {
+        "organic": "毎週水・土",
+        "burnable": "毎週木",
+        "waste_paper": "第 1 金曜日",
+        "cans": "第 2 金曜日",
+        "bottles": "第 3 金曜日",
+        "pet_bottles": "第 3 金曜日",
+        "white_trays": "第 3 金曜日",
+        "textiles": "第 3 金曜日",
+        "nonburnable": "第 4 金曜日"
+      },
+      "excluded_dates": {
+        "organic": [
+          "2026-01-03",
+          "2026-08-15"
+        ],
+        "burnable": [
+          "2026-01-01",
+          "2026-12-31"
+        ]
+      },
+      "resource_table": {
+        "file": "calendar-1.pdf",
+        "index": 0
+      },
+      "days_sha256": "e0416a8ad517355150d2f879c1058ce967e5a165c4b09df27e516cf2cea0033d",
+      "dated_cells": 201,
+      "collection_dates": {
+        "organic": 102,
+        "burnable": 51,
+        "waste_paper": 12,
+        "cans": 12,
+        "bottles": 12,
+        "pet_bottles": 12,
+        "textiles": 12,
+        "white_trays": 12,
+        "nonburnable": 12
+      }
+    },
+    {
+      "calendar_id": "uchiko-uchiko-21",
+      "center": "内子自治センター",
+      "display_name": "内子 21区",
+      "address_labels": [
+        "21区"
+      ],
+      "rules": {
+        "organic": "毎週水・土",
+        "burnable": "毎週木",
+        "waste_paper": "第 1 月曜日",
+        "cans": "第 2 月曜日",
+        "bottles": "第 3 月曜日",
+        "pet_bottles": "第 3 月曜日",
+        "white_trays": "第 3 月曜日",
+        "textiles": "第 3 月曜日",
+        "nonburnable": "第 4 月曜日"
+      },
+      "excluded_dates": {
+        "organic": [
+          "2026-01-03",
+          "2026-08-15"
+        ],
+        "burnable": [
+          "2026-01-01",
+          "2026-12-31"
+        ]
+      },
+      "resource_table": {
+        "file": "calendar-1.pdf",
+        "index": 1
+      },
+      "days_sha256": "7170171d15967a52904247bfae6a34cd66128e0e1ec66b1909580879e66c7756",
+      "dated_cells": 201,
+      "collection_dates": {
+        "waste_paper": 12,
+        "organic": 102,
+        "burnable": 51,
+        "cans": 12,
+        "bottles": 12,
+        "pet_bottles": 12,
+        "textiles": 12,
+        "white_trays": 12,
+        "nonburnable": 12
+      }
+    },
+    {
+      "calendar_id": "uchiko-uchiko-22",
+      "center": "内子自治センター",
+      "display_name": "内子 22区",
+      "address_labels": [
+        "22区"
+      ],
+      "rules": {
+        "burnable": "毎週火",
+        "waste_paper": "第 1 木曜日",
+        "cans": "第 2 木曜日",
+        "bottles": "第 3 木曜日",
+        "pet_bottles": "第 3 木曜日",
+        "white_trays": "第 3 木曜日",
+        "textiles": "第 3 木曜日",
+        "nonburnable": "第 4 木曜日"
+      },
+      "excluded_dates": {
+        "burnable": [
+          "2026-05-05"
+        ]
+      },
+      "resource_table": {
+        "file": "calendar-1.pdf",
+        "index": 2
+      },
+      "days_sha256": "e6471efb4ee7cd8b6d4da9fc23ecf9f5b628c04a9e5727ac4984edd3fd7c250b",
+      "dated_cells": 99,
+      "collection_dates": {
+        "burnable": 51,
+        "waste_paper": 12,
+        "cans": 12,
+        "bottles": 12,
+        "pet_bottles": 12,
+        "textiles": 12,
+        "white_trays": 12,
+        "nonburnable": 12
+      }
+    },
+    {
+      "calendar_id": "uchiko-uchiko-east-bio",
+      "center": "内子東自治センター",
+      "display_name": "内子東 松尾（生ごみ収集区域）・田中・護国・岡・大岡",
+      "address_labels": [
+        "松尾（生ごみ収集区域）",
+        "田中",
+        "護国",
+        "岡",
+        "大岡"
+      ],
+      "rules": {
+        "organic": "毎週水・土",
+        "burnable": "毎週木",
+        "waste_paper": "第 1 月曜日",
+        "cans": "第 2 月曜日",
+        "bottles": "第 3 月曜日",
+        "pet_bottles": "第 3 月曜日",
+        "white_trays": "第 3 月曜日",
+        "textiles": "第 3 月曜日",
+        "nonburnable": "第 4 月曜日"
+      },
+      "excluded_dates": {
+        "organic": [
+          "2026-01-03",
+          "2026-08-15"
+        ],
+        "burnable": [
+          "2026-01-01",
+          "2026-12-31"
+        ]
+      },
+      "resource_table": {
+        "file": "calendar-2.pdf",
+        "index": 0
+      },
+      "days_sha256": "7170171d15967a52904247bfae6a34cd66128e0e1ec66b1909580879e66c7756",
+      "dated_cells": 201,
+      "collection_dates": {
+        "waste_paper": 12,
+        "organic": 102,
+        "burnable": 51,
+        "cans": 12,
+        "bottles": 12,
+        "pet_bottles": 12,
+        "textiles": 12,
+        "white_trays": 12,
+        "nonburnable": 12
+      }
+    },
+    {
+      "calendar_id": "uchiko-uchiko-east-route56",
+      "center": "内子東自治センター",
+      "display_name": "内子東 立川（国道56号沿い）・宿茂",
+      "address_labels": [
+        "立川（立川中央国道56号沿い）",
+        "宿茂"
+      ],
+      "rules": {
+        "burnable": "毎週水・土",
+        "waste_paper": "第 1 月曜日",
+        "cans": "第 2 月曜日",
+        "bottles": "第 3 月曜日",
+        "pet_bottles": "第 3 月曜日",
+        "white_trays": "第 3 月曜日",
+        "textiles": "第 3 月曜日",
+        "nonburnable": "第 4 月曜日"
+      },
+      "excluded_dates": {
+        "burnable": [
+          "2026-01-03",
+          "2026-08-15"
+        ]
+      },
+      "resource_table": {
+        "file": "calendar-2.pdf",
+        "index": 0
+      },
+      "days_sha256": "f331a6fbe3975aadd689591fe03aea2072a47cf10018e0260ee81e9f45a19594",
+      "dated_cells": 150,
+      "collection_dates": {
+        "waste_paper": 12,
+        "burnable": 102,
+        "cans": 12,
+        "bottles": 12,
+        "pet_bottles": 12,
+        "textiles": 12,
+        "white_trays": 12,
+        "nonburnable": 12
+      }
+    },
+    {
+      "calendar_id": "uchiko-uchiko-east-matsuo-other",
+      "center": "内子東自治センター",
+      "display_name": "内子東 松尾（生ごみ収集区域以外）",
+      "address_labels": [
+        "松尾（生ごみ収集区域以外）"
+      ],
+      "rules": {
+        "burnable": "毎週水・土",
+        "waste_paper": "第 1 木曜日",
+        "cans": "第 2 木曜日",
+        "bottles": "第 3 木曜日",
+        "pet_bottles": "第 3 木曜日",
+        "white_trays": "第 3 木曜日",
+        "textiles": "第 3 木曜日",
+        "nonburnable": "第 4 木曜日"
+      },
+      "excluded_dates": {
+        "burnable": [
+          "2026-01-03",
+          "2026-08-15"
+        ]
+      },
+      "resource_table": {
+        "file": "calendar-2.pdf",
+        "index": 1
+      },
+      "days_sha256": "f066d9faa7940bf7fc05567579b2bdf22f0a6739215148080ce41cc1318bd645",
+      "dated_cells": 150,
+      "collection_dates": {
+        "burnable": 102,
+        "waste_paper": 12,
+        "cans": 12,
+        "bottles": 12,
+        "pet_bottles": 12,
+        "textiles": 12,
+        "white_trays": 12,
+        "nonburnable": 12
+      }
+    },
+    {
+      "calendar_id": "uchiko-uchiko-east-tachikawa-mitsuho",
+      "center": "内子東自治センター",
+      "display_name": "内子東 立川（国道56号沿い以外）・満穂（論田・河内・石畳）",
+      "address_labels": [
+        "立川（立川中央国道56号沿い以外）",
+        "満穂（論田・河内・石畳）"
+      ],
+      "rules": {
+        "burnable": "毎週火",
+        "waste_paper": "第 1 木曜日",
+        "cans": "第 2 木曜日",
+        "bottles": "第 3 木曜日",
+        "pet_bottles": "第 3 木曜日",
+        "white_trays": "第 3 木曜日",
+        "textiles": "第 3 木曜日",
+        "nonburnable": "第 4 木曜日"
+      },
+      "excluded_dates": {
+        "burnable": [
+          "2026-05-05"
+        ]
+      },
+      "resource_table": {
+        "file": "calendar-2.pdf",
+        "index": 1
+      },
+      "days_sha256": "e6471efb4ee7cd8b6d4da9fc23ecf9f5b628c04a9e5727ac4984edd3fd7c250b",
+      "dated_cells": 99,
+      "collection_dates": {
+        "burnable": 51,
+        "waste_paper": 12,
+        "cans": 12,
+        "bottles": 12,
+        "pet_bottles": 12,
+        "textiles": 12,
+        "white_trays": 12,
+        "nonburnable": 12
+      }
+    },
+    {
+      "calendar_id": "uchiko-uchiko-east-tominaka-tominaga",
+      "center": "内子東自治センター",
+      "display_name": "内子東 富中・富長",
+      "address_labels": [
+        "富中",
+        "富長"
+      ],
+      "rules": {
+        "burnable": "毎週火・金",
+        "waste_paper": "第 1 木曜日",
+        "cans": "第 2 木曜日",
+        "bottles": "第 3 木曜日",
+        "pet_bottles": "第 3 木曜日",
+        "white_trays": "第 3 木曜日",
+        "textiles": "第 3 木曜日",
+        "nonburnable": "第 4 木曜日"
+      },
+      "excluded_dates": {
+        "burnable": [
+          "2026-01-02",
+          "2026-05-05"
+        ]
+      },
+      "resource_table": {
+        "file": "calendar-2.pdf",
+        "index": 1
+      },
+      "days_sha256": "6e7f0cb5452c9cf9fbc0c0eb7d243c562dada1553039f18a32f8f653d3517a7f",
+      "dated_cells": 150,
+      "collection_dates": {
+        "burnable": 102,
+        "waste_paper": 12,
+        "cans": 12,
+        "bottles": 12,
+        "pet_bottles": 12,
+        "textiles": 12,
+        "white_trays": 12,
+        "nonburnable": 12
+      }
+    },
+    {
+      "calendar_id": "uchiko-uchiko-east-nagata",
+      "center": "内子東自治センター",
+      "display_name": "内子東 長田",
+      "address_labels": [
+        "長田"
+      ],
+      "rules": {
+        "burnable": "毎週水",
+        "waste_paper": "第 1 水曜日",
+        "cans": "第 2 水曜日",
+        "bottles": "第 3 水曜日",
+        "pet_bottles": "第 3 水曜日",
+        "white_trays": "第 3 水曜日",
+        "textiles": "第 3 水曜日",
+        "nonburnable": "第４水曜日"
+      },
+      "excluded_dates": {},
+      "resource_table": {
+        "file": "calendar-2.pdf",
+        "index": 2
+      },
+      "days_sha256": "39572bc65fd9ffcb0069c660939f405e254a079b5b5d8e933a338e8aee4b4c0f",
+      "dated_cells": 52,
+      "collection_dates": {
+        "burnable": 52,
+        "waste_paper": 12,
+        "cans": 12,
+        "bottles": 12,
+        "pet_bottles": 12,
+        "textiles": 12,
+        "white_trays": 12,
+        "nonburnable": 12
+      }
+    },
+    {
+      "calendar_id": "uchiko-ose-main",
+      "center": "大瀬自治センター",
+      "display_name": "大瀬 本町1（高中除く）・本町2・本町3・乙成",
+      "address_labels": [
+        "本町1（高中を除く）",
+        "本町2",
+        "本町3",
+        "乙成"
+      ],
+      "rules": {
+        "burnable": "毎週火・金",
+        "waste_paper": "第 1 月曜日",
+        "cans": "第 2 月曜日",
+        "bottles": "第 3 月曜日",
+        "pet_bottles": "第 3 月曜日",
+        "white_trays": "第 3 月曜日",
+        "textiles": "第 3 月曜日",
+        "nonburnable": "第 4 月曜日"
+      },
+      "excluded_dates": {
+        "burnable": [
+          "2026-01-02",
+          "2026-05-05"
+        ]
+      },
+      "resource_table": {
+        "file": "calendar-3.pdf",
+        "index": 0
+      },
+      "days_sha256": "9426c079e90be7617091b02a9c28b8bbb14e65a30cae8eabcad7639b97149fac",
+      "dated_cells": 150,
+      "collection_dates": {
+        "waste_paper": 12,
+        "burnable": 102,
+        "cans": 12,
+        "bottles": 12,
+        "pet_bottles": 12,
+        "textiles": 12,
+        "white_trays": 12,
+        "nonburnable": 12
+      }
+    },
+    {
+      "calendar_id": "uchiko-ose-thursday",
+      "center": "大瀬自治センター",
+      "display_name": "大瀬 本町1高中・中野・江子・村前・川登今岡",
+      "address_labels": [
+        "本町1（高中）",
+        "中野",
+        "江子",
+        "村前自治会",
+        "川登自治会（今岡）"
+      ],
+      "rules": {
+        "burnable": "毎週木",
+        "waste_paper": "第 1 木曜日",
+        "cans": "第 2 木曜日",
+        "bottles": "第 3 木曜日",
+        "pet_bottles": "第 3 木曜日",
+        "white_trays": "第 3 木曜日",
+        "textiles": "第 3 木曜日",
+        "nonburnable": "第 4 木曜日"
+      },
+      "excluded_dates": {
+        "burnable": [
+          "2026-01-01",
+          "2026-12-31"
+        ]
+      },
+      "resource_table": {
+        "file": "calendar-3.pdf",
+        "index": 1
+      },
+      "days_sha256": "d0f24f4280ec7b0e7c62bdec8960fab1558d29be355e760afd9642a99d72a7a7",
+      "dated_cells": 51,
+      "collection_dates": {
+        "burnable": 51,
+        "waste_paper": 12,
+        "cans": 12,
+        "bottles": 12,
+        "pet_bottles": 12,
+        "textiles": 12,
+        "white_trays": 12,
+        "nonburnable": 12
+      }
+    },
+    {
+      "calendar_id": "uchiko-ose-friday",
+      "center": "大瀬自治センター",
+      "display_name": "大瀬 大久保・鵜川・程内",
+      "address_labels": [
+        "大久保",
+        "鵜川",
+        "程内自治会"
+      ],
+      "rules": {
+        "burnable": "毎週金",
+        "waste_paper": "第 1 木曜日",
+        "cans": "第 2 木曜日",
+        "bottles": "第 3 木曜日",
+        "pet_bottles": "第 3 木曜日",
+        "white_trays": "第 3 木曜日",
+        "textiles": "第 3 木曜日",
+        "nonburnable": "第 4 木曜日"
+      },
+      "excluded_dates": {
+        "burnable": [
+          "2026-01-02"
+        ]
+      },
+      "resource_table": {
+        "file": "calendar-3.pdf",
+        "index": 1
+      },
+      "days_sha256": "00c05ac343765158932f25bd6edaf3722fd3af3941c889496b57e9a5fe31033a",
+      "dated_cells": 99,
+      "collection_dates": {
+        "waste_paper": 12,
+        "burnable": 51,
+        "cans": 12,
+        "bottles": 12,
+        "pet_bottles": 12,
+        "textiles": 12,
+        "white_trays": 12,
+        "nonburnable": 12
+      }
+    },
+    {
+      "calendar_id": "uchiko-ose-wada-kogaidani",
+      "center": "大瀬自治センター",
+      "display_name": "大瀬 和田自治会（小貝谷）",
+      "address_labels": [
+        "和田自治会（小貝谷）",
+        "小貝谷"
+      ],
+      "rules": {
+        "burnable": "毎週水",
+        "waste_paper": "第 1 木曜日",
+        "cans": "第 2 木曜日",
+        "bottles": "第 3 木曜日",
+        "pet_bottles": "第 3 木曜日",
+        "white_trays": "第 3 木曜日",
+        "textiles": "第 3 木曜日",
+        "nonburnable": "第 4 木曜日"
+      },
+      "excluded_dates": {},
+      "resource_table": {
+        "file": "calendar-3.pdf",
+        "index": 1
+      },
+      "days_sha256": "50c842c79932588a6bde9ae5eaa816f53e92fd8316d4a66cb9c1a3ed14ed4f88",
+      "dated_cells": 100,
+      "collection_dates": {
+        "burnable": 52,
+        "waste_paper": 12,
+        "cans": 12,
+        "bottles": 12,
+        "pet_bottles": 12,
+        "textiles": 12,
+        "white_trays": 12,
+        "nonburnable": 12
+      }
+    },
+    {
+      "calendar_id": "uchiko-ose-tue-fri",
+      "center": "大瀬自治センター",
+      "display_name": "大瀬 和田（北深・小貝谷除く）・川登（路木・川登・梅津）",
+      "address_labels": [
+        "和田自治会（北深・小貝谷を除く）",
+        "路木",
+        "川登",
+        "梅津"
+      ],
+      "rules": {
+        "burnable": "毎週火・金",
+        "waste_paper": "第 1 木曜日",
+        "cans": "第 2 木曜日",
+        "bottles": "第 3 木曜日",
+        "pet_bottles": "第 3 木曜日",
+        "white_trays": "第 3 木曜日",
+        "textiles": "第 3 木曜日",
+        "nonburnable": "第 4 木曜日"
+      },
+      "excluded_dates": {
+        "burnable": [
+          "2026-01-02",
+          "2026-05-05"
+        ]
+      },
+      "resource_table": {
+        "file": "calendar-3.pdf",
+        "index": 1
+      },
+      "days_sha256": "6e7f0cb5452c9cf9fbc0c0eb7d243c562dada1553039f18a32f8f653d3517a7f",
+      "dated_cells": 150,
+      "collection_dates": {
+        "burnable": 102,
+        "waste_paper": 12,
+        "cans": 12,
+        "bottles": 12,
+        "pet_bottles": 12,
+        "textiles": 12,
+        "white_trays": 12,
+        "nonburnable": 12
+      }
+    },
+    {
+      "calendar_id": "uchiko-ose-wada-kitafuka",
+      "center": "大瀬自治センター",
+      "display_name": "大瀬 和田自治会（北深）",
+      "address_labels": [
+        "和田自治会（北深）",
+        "北深"
+      ],
+      "rules": {
+        "burnable": "毎週水",
+        "waste_paper": "第 1 水曜日",
+        "cans": "第 2 水曜日",
+        "bottles": "第 3 水曜日",
+        "pet_bottles": "第 3 水曜日",
+        "white_trays": "第 3 水曜日",
+        "textiles": "第 3 水曜日",
+        "nonburnable": "第 4 水曜日"
+      },
+      "excluded_dates": {},
+      "resource_table": {
+        "file": "calendar-3.pdf",
+        "index": 2
+      },
+      "days_sha256": "39572bc65fd9ffcb0069c660939f405e254a079b5b5d8e933a338e8aee4b4c0f",
+      "dated_cells": 52,
+      "collection_dates": {
+        "burnable": 52,
+        "waste_paper": 12,
+        "cans": 12,
+        "bottles": 12,
+        "pet_bottles": 12,
+        "textiles": 12,
+        "white_trays": 12,
+        "nonburnable": 12
+      }
+    },
+    {
+      "calendar_id": "uchiko-ose-ikeda",
+      "center": "大瀬自治センター",
+      "display_name": "大瀬 池田自治会",
+      "address_labels": [
+        "池田自治会"
+      ],
+      "rules": {
+        "burnable": "毎週土",
+        "waste_paper": "第 1 土曜日",
+        "cans": "第 2 土曜日",
+        "bottles": "第 3 土曜日",
+        "pet_bottles": "第 3 土曜日",
+        "white_trays": "第 3 土曜日",
+        "textiles": "第 3 土曜日",
+        "nonburnable": "第 4 土曜日"
+      },
+      "excluded_dates": {
+        "burnable": [
+          "2026-01-03",
+          "2026-08-15"
+        ]
+      },
+      "resource_table": {
+        "file": "calendar-3.pdf",
+        "index": 3
+      },
+      "days_sha256": "2cedc276bbcf44f245da60f603cc37dbd09b2576aa0ae43c5f0fba5a3e07aa78",
+      "dated_cells": 50,
+      "collection_dates": {
+        "burnable": 50,
+        "waste_paper": 12,
+        "cans": 12,
+        "bottles": 12,
+        "pet_bottles": 12,
+        "textiles": 12,
+        "white_trays": 12,
+        "nonburnable": 12
+      }
+    },
+    {
+      "calendar_id": "uchiko-ikazaki-side",
+      "center": "五十崎自治センター",
+      "display_name": "五十崎側（龍王・新町・中央・神南以外）",
+      "address_labels": [
+        "龍王自治会",
+        "新町自治会",
+        "中央自治会",
+        "神南自治会（神南以外）"
+      ],
+      "rules": {
+        "burnable": "毎週月・木",
+        "waste_paper": "第 1 火曜日",
+        "cans": "第 2 火曜日",
+        "bottles": "第 3 火曜日",
+        "pet_bottles": "第 3 火曜日",
+        "white_trays": "第 3 火曜日",
+        "textiles": "第 3 火曜日",
+        "nonburnable": "第 4 火曜日"
+      },
+      "excluded_dates": {
+        "burnable": [
+          "2026-01-01",
+          "2026-12-31"
+        ]
+      },
+      "resource_table": {
+        "file": "calendar-4.pdf",
+        "index": 0
+      },
+      "days_sha256": "2a708983318d61e5c22a03b144ac36e0ea397b0433c7c467616ff77daa445edf",
+      "dated_cells": 151,
+      "collection_dates": {
+        "burnable": 103,
+        "waste_paper": 12,
+        "cans": 12,
+        "bottles": 12,
+        "pet_bottles": 12,
+        "textiles": 12,
+        "white_trays": 12,
+        "nonburnable": 12
+      }
+    },
+    {
+      "calendar_id": "uchiko-ikazaki-kannan",
+      "center": "五十崎自治センター",
+      "display_name": "五十崎 神南自治会（神南）",
+      "address_labels": [
+        "神南自治会（神南）",
+        "神南"
+      ],
+      "rules": {
+        "burnable": "毎週月",
+        "waste_paper": "第 1 火曜日",
+        "cans": "第 2 火曜日",
+        "bottles": "第 3 火曜日",
+        "pet_bottles": "第 3 火曜日",
+        "white_trays": "第 3 火曜日",
+        "textiles": "第 3 火曜日",
+        "nonburnable": "第 4 火曜日"
+      },
+      "excluded_dates": {},
+      "resource_table": {
+        "file": "calendar-4.pdf",
+        "index": 0
+      },
+      "days_sha256": "1dae581f5d0481694b1969b046615ba1f3178a8f1480f8e0681a1676536746be",
+      "dated_cells": 100,
+      "collection_dates": {
+        "burnable": 52,
+        "waste_paper": 12,
+        "cans": 12,
+        "bottles": 12,
+        "pet_bottles": 12,
+        "textiles": 12,
+        "white_trays": 12,
+        "nonburnable": 12
+      }
+    },
+    {
+      "calendar_id": "uchiko-ikazaki-tenjin",
+      "center": "五十崎自治センター",
+      "display_name": "五十崎 天神側",
+      "address_labels": [
+        "平岡自治会",
+        "東沖自治会",
+        "西沖自治会",
+        "柿原自治会",
+        "重松自治会（駄場）",
+        "宿福自治会（福岡以外）",
+        "御祓自治会（御祓団地）"
+      ],
+      "rules": {
+        "burnable": "毎週火・金",
+        "waste_paper": "第 1 水曜日",
+        "cans": "第 2 水曜日",
+        "bottles": "第 3 水曜日",
+        "pet_bottles": "第 3 水曜日",
+        "white_trays": "第 3 水曜日",
+        "textiles": "第 3 水曜日",
+        "nonburnable": "第 4 水曜日"
+      },
+      "excluded_dates": {
+        "burnable": [
+          "2026-01-02",
+          "2026-05-05"
+        ]
+      },
+      "resource_table": {
+        "file": "calendar-4.pdf",
+        "index": 1
+      },
+      "days_sha256": "bed49b013482a2bdc71faec2d05b4a8a4dd64e8bbfe664cc576ec79b3f69d389",
+      "dated_cells": 150,
+      "collection_dates": {
+        "burnable": 102,
+        "waste_paper": 12,
+        "cans": 12,
+        "bottles": 12,
+        "pet_bottles": 12,
+        "textiles": 12,
+        "white_trays": 12,
+        "nonburnable": 12
+      }
+    },
+    {
+      "calendar_id": "uchiko-ikazaki-mountain",
+      "center": "五十崎自治センター",
+      "display_name": "五十崎 山間部",
+      "address_labels": [
+        "重松自治会（上重松・下重松・亀井・池窪）",
+        "宿福自治会（福岡）",
+        "御祓自治会（御祓団地以外）"
+      ],
+      "rules": {
+        "burnable": "毎週月",
+        "waste_paper": "第 1 水曜日",
+        "cans": "第 2 水曜日",
+        "bottles": "第 3 水曜日",
+        "pet_bottles": "第 3 水曜日",
+        "white_trays": "第 3 水曜日",
+        "textiles": "第 3 水曜日",
+        "nonburnable": "第 4 水曜日"
+      },
+      "excluded_dates": {},
+      "resource_table": {
+        "file": "calendar-4.pdf",
+        "index": 1
+      },
+      "days_sha256": "69a9fa537537d44ea79d754db4b024cf543995f799153982b4d639c88c58cd0a",
+      "dated_cells": 100,
+      "collection_dates": {
+        "burnable": 52,
+        "waste_paper": 12,
+        "cans": 12,
+        "bottles": 12,
+        "pet_bottles": 12,
+        "textiles": 12,
+        "white_trays": 12,
+        "nonburnable": 12
+      }
+    },
+    {
+      "calendar_id": "uchiko-oda-upper",
+      "center": "小田自治センター",
+      "display_name": "小田 上川・中川・本川",
+      "address_labels": [
+        "上川",
+        "中川",
+        "本川"
+      ],
+      "rules": {
+        "burnable": "毎週月・木",
+        "waste_paper": "第 1 火曜日",
+        "cans": "第 2 火曜日",
+        "bottles": "第 3 火曜日",
+        "pet_bottles": "第 3 火曜日",
+        "white_trays": "第 3 火曜日",
+        "textiles": "第 3 火曜日",
+        "nonburnable": "第 4 火曜日"
+      },
+      "excluded_dates": {
+        "burnable": [
+          "2026-01-01",
+          "2026-12-31"
+        ]
+      },
+      "resource_table": {
+        "file": "calendar-5.pdf",
+        "index": 0
+      },
+      "days_sha256": "ee7a46168aad1ccd490774fc903d131b88eb7c702381b59509edda65c7224127",
+      "dated_cells": 151,
+      "collection_dates": {
+        "burnable": 103,
+        "waste_paper": 12,
+        "cans": 12,
+        "bottles": 12,
+        "pet_bottles": 12,
+        "textiles": 12,
+        "white_trays": 12,
+        "nonburnable": 12
+      }
+    },
+    {
+      "calendar_id": "uchiko-oda-hirano-oda",
+      "center": "小田自治センター",
+      "display_name": "小田 平野・小田",
+      "address_labels": [
+        "平野",
+        "小田"
+      ],
+      "rules": {
+        "burnable": "毎週月・木",
+        "waste_paper": "第 1 水曜日",
+        "cans": "第 2 水曜日",
+        "bottles": "第 3 水曜日",
+        "pet_bottles": "第 3 水曜日",
+        "white_trays": "第 3 水曜日",
+        "textiles": "第 3 水曜日",
+        "nonburnable": "第 4 水曜日"
+      },
+      "excluded_dates": {
+        "burnable": [
+          "2026-01-01",
+          "2026-12-31"
+        ]
+      },
+      "resource_table": {
+        "file": "calendar-5.pdf",
+        "index": 1
+      },
+      "days_sha256": "d911801e6d80d0e312cdcd97b0dbc8cf47793a08c9c3a4464a4152281bb7a38f",
+      "dated_cells": 151,
+      "collection_dates": {
+        "burnable": 103,
+        "waste_paper": 12,
+        "cans": 12,
+        "bottles": 12,
+        "pet_bottles": 12,
+        "textiles": 12,
+        "white_trays": 12,
+        "nonburnable": 12
+      }
+    },
+    {
+      "calendar_id": "uchiko-oda-minamiyama",
+      "center": "小田自治センター",
+      "display_name": "小田 南山",
+      "address_labels": [
+        "南山"
+      ],
+      "rules": {
+        "burnable": "毎週火・金",
+        "waste_paper": "第 1 水曜日",
+        "cans": "第 2 水曜日",
+        "bottles": "第 3 水曜日",
+        "pet_bottles": "第 3 水曜日",
+        "white_trays": "第 3 水曜日",
+        "textiles": "第 3 水曜日",
+        "nonburnable": "第 4 水曜日"
+      },
+      "excluded_dates": {
+        "burnable": [
+          "2026-01-02",
+          "2026-05-05"
+        ]
+      },
+      "resource_table": {
+        "file": "calendar-5.pdf",
+        "index": 1
+      },
+      "days_sha256": "bed49b013482a2bdc71faec2d05b4a8a4dd64e8bbfe664cc576ec79b3f69d389",
+      "dated_cells": 150,
+      "collection_dates": {
+        "burnable": 102,
+        "waste_paper": 12,
+        "cans": 12,
+        "bottles": 12,
+        "pet_bottles": 12,
+        "textiles": 12,
+        "white_trays": 12,
+        "nonburnable": 12
+      }
+    },
+    {
+      "calendar_id": "uchiko-oda-other",
+      "center": "小田自治センター",
+      "display_name": "小田 寺村・立石・吉野川・中田渡・上田渡・臼杵",
+      "address_labels": [
+        "寺村",
+        "立石",
+        "吉野川",
+        "中田渡",
+        "上田渡",
+        "臼杵"
+      ],
+      "rules": {
+        "burnable": "毎週火・金",
+        "waste_paper": "第 1 木曜日",
+        "cans": "第 2 木曜日",
+        "bottles": "第 3 木曜日",
+        "pet_bottles": "第 3 木曜日",
+        "white_trays": "第 3 木曜日",
+        "textiles": "第 3 木曜日",
+        "nonburnable": "第 4 木曜日"
+      },
+      "excluded_dates": {
+        "burnable": [
+          "2026-01-02",
+          "2026-05-05"
+        ]
+      },
+      "resource_table": {
+        "file": "calendar-5.pdf",
+        "index": 2
+      },
+      "days_sha256": "6e7f0cb5452c9cf9fbc0c0eb7d243c562dada1553039f18a32f8f653d3517a7f",
+      "dated_cells": 150,
+      "collection_dates": {
+        "burnable": 102,
+        "waste_paper": 12,
+        "cans": 12,
+        "bottles": 12,
+        "pet_bottles": 12,
+        "textiles": 12,
+        "white_trays": 12,
+        "nonburnable": 12
+      }
+    }
+  ],
+  "verification": {
+    "method": "Literal resource/nonburnable dates extracted from five official PDFs; weekly organic/burnable rules expanded with explicit no-collection dates",
+    "coverage": "Five community-center jurisdictions represented by 26 schedule combinations",
+    "limitations": "Address-to-community-center mapping and named collection-place exceptions require local confirmation",
+    "calendar_basis": "Calendar year 2026, not fiscal year 2026",
+    "reviewed_at": "2026-11-03"
+  }
+}
