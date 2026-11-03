@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38484",
+  "version": "matsuno-2026.1",
+  "valid_from": "2026-04-01",
+  "valid_to": "2027-03-31",
+  "license_status": "permission_required_for_redistribution",
+  "copyright_url": "https://www.town.matsuno.ehime.jp/soshiki/1/1176.html",
+  "sources": [
+    {
+      "file": "calendar.pdf",
+      "url": "https://www.town.matsuno.ehime.jp/uploaded/attachment/1714.pdf",
+      "sha256": "382789a67ac06bbfdaf632b8222493c573d7cac206f1352fd62ffcd2cde0e366",
+      "retrieved_at": "2026-11-03T03:13:31.338888+00:00"
+    },
+    {
+      "file": "copyright.html",
+      "url": "https://www.town.matsuno.ehime.jp/soshiki/1/1176.html",
+      "sha256": "b0e65fc398e9ffab192a42e9392a8ae2f0ee062129c7884390da1b07fd55c58e",
+      "retrieved_at": "2026-11-03T03:13:30.730632+00:00"
+    },
+    {
+      "file": "sorting-book.pdf",
+      "url": "https://www.town.matsuno.ehime.jp/uploaded/attachment/7083.pdf",
+      "sha256": "074eda88cc0b0dbea321c3f97167ee84c2c75ddc8b69d3181681253756c89daf",
+      "retrieved_at": "2026-11-03T03:13:40.982579+00:00"
+    },
+    {
+      "file": "waste-page.html",
+      "url": "https://www.town.matsuno.ehime.jp/soshiki/9/1333.html",
+      "sha256": "d6a7f5ffaeed12e11b8f0f29d064b75e7359b691f9fd8e9d91b547812be8f914",
+      "retrieved_at": "2026-11-03T03:13:30.548705+00:00"
+    }
+  ],
+  "source_notes": {
+    "sorting-book.pdf": "Current source of truth effective 2026-04-01",
+    "calendar.pdf": "Official page still links this 2017 reference; not used to generate 2026 dates"
+  }
+}

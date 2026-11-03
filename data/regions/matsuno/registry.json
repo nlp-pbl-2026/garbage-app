@@ -1,0 +1,299 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38484",
+  "municipality_name": "松野町",
+  "prefecture_id": "38",
+  "prefecture_name": "愛媛県",
+  "version": "matsuno-2026.1",
+  "valid_from": "2026-04-01",
+  "valid_to": "2027-03-31",
+  "collection_areas": [
+    {
+      "id": "38484-matsumaru",
+      "name": "松丸",
+      "display_name": "松丸",
+      "calendar_id": "matsuno-matsumaru",
+      "rule_profile_id": "matsuno",
+      "address_labels": [
+        "松丸"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.matsuno.ehime.jp/uploaded/attachment/7083.pdf#page=3"
+    },
+    {
+      "id": "38484-nobunono",
+      "name": "延野々",
+      "display_name": "延野々",
+      "calendar_id": "matsuno-nobunono",
+      "rule_profile_id": "matsuno",
+      "address_labels": [
+        "延野々"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.matsuno.ehime.jp/uploaded/attachment/7083.pdf#page=3"
+    },
+    {
+      "id": "38484-toyooka-ushiro",
+      "name": "豊岡後",
+      "display_name": "豊岡後",
+      "calendar_id": "matsuno-toyooka-ushiro",
+      "rule_profile_id": "matsuno",
+      "address_labels": [
+        "豊岡後"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.matsuno.ehime.jp/uploaded/attachment/7083.pdf#page=3"
+    },
+    {
+      "id": "38484-toyooka-mae",
+      "name": "豊岡前",
+      "display_name": "豊岡前",
+      "calendar_id": "matsuno-toyooka-mae",
+      "rule_profile_id": "matsuno",
+      "address_labels": [
+        "豊岡前"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.matsuno.ehime.jp/uploaded/attachment/7083.pdf#page=3"
+    },
+    {
+      "id": "38484-tomioka",
+      "name": "富岡",
+      "display_name": "富岡",
+      "calendar_id": "matsuno-tomioka",
+      "rule_profile_id": "matsuno",
+      "address_labels": [
+        "富岡"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.matsuno.ehime.jp/uploaded/attachment/7083.pdf#page=3"
+    },
+    {
+      "id": "38484-kamieji",
+      "name": "上家地",
+      "display_name": "上家地",
+      "calendar_id": "matsuno-kamieji",
+      "rule_profile_id": "matsuno",
+      "address_labels": [
+        "上家地"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.matsuno.ehime.jp/uploaded/attachment/7083.pdf#page=3"
+    },
+    {
+      "id": "38484-meguro",
+      "name": "目黒",
+      "display_name": "目黒",
+      "calendar_id": "matsuno-meguro",
+      "rule_profile_id": "matsuno",
+      "address_labels": [
+        "目黒"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.matsuno.ehime.jp/uploaded/attachment/7083.pdf#page=3"
+    },
+    {
+      "id": "38484-yoshino",
+      "name": "吉野",
+      "display_name": "吉野（葛川地区を除く）",
+      "calendar_id": "matsuno-yoshino",
+      "rule_profile_id": "matsuno",
+      "address_labels": [
+        "吉野（葛川地区を除く）"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.matsuno.ehime.jp/uploaded/attachment/7083.pdf#page=3"
+    },
+    {
+      "id": "38484-kuzukawa",
+      "name": "葛川地区",
+      "display_name": "葛川地区（吉野内）",
+      "calendar_id": "matsuno-kuzukawa",
+      "rule_profile_id": "matsuno",
+      "address_labels": [
+        "葛川",
+        "葛川地区"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.matsuno.ehime.jp/uploaded/attachment/7083.pdf#page=3"
+    },
+    {
+      "id": "38484-warabiu",
+      "name": "蕨生",
+      "display_name": "蕨生",
+      "calendar_id": "matsuno-warabiu",
+      "rule_profile_id": "matsuno",
+      "address_labels": [
+        "蕨生"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.matsuno.ehime.jp/uploaded/attachment/7083.pdf#page=3"
+    },
+    {
+      "id": "38484-okunogawa",
+      "name": "奥野川",
+      "display_name": "奥野川",
+      "calendar_id": "matsuno-okunogawa",
+      "rule_profile_id": "matsuno",
+      "address_labels": [
+        "奥野川"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.matsuno.ehime.jp/uploaded/attachment/7083.pdf#page=3"
+    }
+  ],
+  "calendars": [
+    {
+      "id": "matsuno-matsumaru",
+      "rule_profile_id": "matsuno"
+    },
+    {
+      "id": "matsuno-nobunono",
+      "rule_profile_id": "matsuno"
+    },
+    {
+      "id": "matsuno-toyooka-ushiro",
+      "rule_profile_id": "matsuno"
+    },
+    {
+      "id": "matsuno-toyooka-mae",
+      "rule_profile_id": "matsuno"
+    },
+    {
+      "id": "matsuno-tomioka",
+      "rule_profile_id": "matsuno"
+    },
+    {
+      "id": "matsuno-kamieji",
+      "rule_profile_id": "matsuno"
+    },
+    {
+      "id": "matsuno-meguro",
+      "rule_profile_id": "matsuno"
+    },
+    {
+      "id": "matsuno-yoshino",
+      "rule_profile_id": "matsuno"
+    },
+    {
+      "id": "matsuno-kuzukawa",
+      "rule_profile_id": "matsuno"
+    },
+    {
+      "id": "matsuno-warabiu",
+      "rule_profile_id": "matsuno"
+    },
+    {
+      "id": "matsuno-okunogawa",
+      "rule_profile_id": "matsuno"
+    }
+  ],
+  "rule_profiles": {
+    "matsuno": {
+      "items_path": "knowledge/items.csv",
+      "embedding_index_path": "knowledge/item_embeddings.npz",
+      "index_profile_id": "citywide",
+      "calendar_path": "generated/calendar-2026.json",
+      "classification_rules": "松野町公式の令和8年4月1日改定『家庭ごみ分別・分類ブック』を正とする。公式10区分（可燃、不燃、PET、びん・かん、古紙、資源、プラ、家電、粗大、禁止）を保持し、指定袋に入るか、材質、汚れ、電池の有無などの品目固有条件を優先する。条件を利用者の説明や画像から確認できない場合は推測せず質問する。可燃・不燃・PET・びんかんは町指定袋を使用し、収集日の午前8時までに地域のごみステーションへ出す。古紙は雨天時に収集されず、積雪や臨時変更は回覧・防災無線等の最新情報を確認する。",
+      "size_question": "松野町の指定ごみ袋に入りますか？素材、汚れ、電池の有無を確認できますか？",
+      "knowledge_title": "松野町家庭ごみ分別・分類ブック（令和8年4月版）",
+      "categories": {
+        "burnable": {
+          "name": "可燃",
+          "collection_type_id": "burnable",
+          "cutoff": "08:00",
+          "color": "#F39C12"
+        },
+        "nonburnable": {
+          "name": "不燃",
+          "collection_type_id": "nonburnable",
+          "cutoff": "08:00",
+          "color": "#2962FF"
+        },
+        "pet_bottles": {
+          "name": "PET",
+          "collection_type_id": "pet_bottles",
+          "cutoff": "08:00",
+          "color": "#00A651"
+        },
+        "containers": {
+          "name": "びん・かん",
+          "collection_type_id": "containers",
+          "cutoff": "08:00",
+          "color": "#8B4513"
+        },
+        "waste_paper": {
+          "name": "古紙",
+          "collection_type_id": "waste_paper",
+          "cutoff": "08:00",
+          "color": "#7030A0",
+          "answer_note": "古紙は雨天時には収集されません。最新の天候と町からの案内を確認してください。"
+        },
+        "resources": {
+          "name": "資源",
+          "collection_type_id": "resources",
+          "cutoff": "08:00",
+          "color": "#E754E8",
+          "answer_note": "乾電池、蛍光管、廃食用油などは品目ごとの回収方法・回収ボックスを確認してください。"
+        },
+        "plastic": {
+          "name": "プラ",
+          "color": "#FFF200",
+          "answer_note": "きれいな容器包装プラスチックと製品プラスチックは、森の国エコステーション等の回収拠点へ持ち込みます。"
+        },
+        "small_appliances": {
+          "name": "家電",
+          "color": "#FFFFFF",
+          "answer_note": "小型家電は粗大ごみ収集日または町の回収ボックスを利用します。家電リサイクル法対象品は別途処理が必要です。"
+        },
+        "bulky": {
+          "name": "粗大",
+          "color": "#999999",
+          "answer_note": "粗大ごみの町収集は年2回で、日程は回覧で周知されます。公式の最新案内を確認してください。"
+        },
+        "not_collected": {
+          "name": "禁止",
+          "color": "#FF0000",
+          "answer_note": "松野町では処理できません。販売店、メーカー、専門業者などへ相談してください。"
+        }
+      },
+      "bulky_waste": {
+        "category_code": "bulky",
+        "config": {
+          "municipality_id": "38484",
+          "municipality_name": "松野町",
+          "collection_frequency": "年2回（回覧で周知）",
+          "reception_hours": "環境センターへの直接持込は月～土曜日13:00～16:30（祝祭日・年末年始を除く）",
+          "collection_rules": "町の粗大ごみ収集日は回覧で確認します。直接持ち込む場合は幅1m×高さ80cm×長さ2.5m以内です。",
+          "fee_structure_type": "weight_based",
+          "application_method": "circular_notice_or_direct_dropoff",
+          "phone_number": "0895-42-1115",
+          "web_form_url": null,
+          "information_url": "https://www.town.matsuno.ehime.jp/soshiki/9/1333.html",
+          "steps": [
+            {
+              "step_number": 1,
+              "title": "町の回覧を確認",
+              "description": "年2回の粗大ごみ収集日は回覧で周知されます。"
+            },
+            {
+              "step_number": 2,
+              "title": "直接持込も選択",
+              "description": "宇和島地区広域事務組合環境センターへ持ち込む場合は、種類ごとに分別します。"
+            },
+            {
+              "step_number": 3,
+              "title": "料金とサイズを確認",
+              "description": "家庭ごみは10kgあたり50円で、粗大ごみの受入可能サイズを確認します。"
+            },
+            {
+              "step_number": 4,
+              "title": "運搬が難しい場合",
+              "description": "町の許可業者へ料金を確認して依頼します。"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

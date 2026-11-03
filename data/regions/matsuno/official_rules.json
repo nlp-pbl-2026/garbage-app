@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38484",
+  "version": "matsuno-2026.1",
+  "source_urls": [
+    "https://www.town.matsuno.ehime.jp/soshiki/9/1333.html",
+    "https://www.town.matsuno.ehime.jp/uploaded/attachment/7083.pdf"
+  ],
+  "classification_rules": "松野町公式の令和8年4月1日改定『家庭ごみ分別・分類ブック』を正とする。公式10区分（可燃、不燃、PET、びん・かん、古紙、資源、プラ、家電、粗大、禁止）を保持し、指定袋に入るか、材質、汚れ、電池の有無などの品目固有条件を優先する。条件を利用者の説明や画像から確認できない場合は推測せず質問する。可燃・不燃・PET・びんかんは町指定袋を使用し、収集日の午前8時までに地域のごみステーションへ出す。古紙は雨天時に収集されず、積雪や臨時変更は回覧・防災無線等の最新情報を確認する。",
+  "categories": {
+    "burnable": {
+      "name": "可燃",
+      "collection_type_id": "burnable",
+      "cutoff": "08:00",
+      "color": "#F39C12",
+      "instructions": "町指定の可燃ごみ袋（オレンジ色）に入れ、収集日の午前8時までに地域のごみステーションへ出します。指定袋に入らないものは粗大ごみです。"
+    },
+    "nonburnable": {
+      "name": "不燃",
+      "collection_type_id": "nonburnable",
+      "cutoff": "08:00",
+      "color": "#2962FF",
+      "instructions": "町指定の不燃ごみ袋（青色）に入れます。ガラス・刃物などは紙や布で包み『キケン』と表示します。"
+    },
+    "pet_bottles": {
+      "name": "PET",
+      "collection_type_id": "pet_bottles",
+      "cutoff": "08:00",
+      "color": "#00A651",
+      "instructions": "PETマークを確認し、キャップとラベルを外してすすぎ、町指定のペットボトル袋（緑色）へ入れます。"
+    },
+    "containers": {
+      "name": "びん・かん",
+      "collection_type_id": "containers",
+      "cutoff": "08:00",
+      "color": "#8B4513",
+      "instructions": "びんとかんをすすぎ、町指定のびん・かん袋（茶色）へ一緒に入れます。金属製のびんのふたは不燃、プラ製はプラスチック回収です。"
+    },
+    "waste_paper": {
+      "name": "古紙",
+      "collection_type_id": "waste_paper",
+      "cutoff": "08:00",
+      "color": "#7030A0",
+      "answer_note": "古紙は雨天時には収集されません。最新の天候と町からの案内を確認してください。",
+      "instructions": "新聞・雑誌・段ボール等に分け、ひもで縛って出します。雨天時は収集されません。"
+    },
+    "resources": {
+      "name": "資源",
+      "collection_type_id": "resources",
+      "cutoff": "08:00",
+      "color": "#E754E8",
+      "answer_note": "乾電池、蛍光管、廃食用油などは品目ごとの回収方法・回収ボックスを確認してください。",
+      "instructions": "乾電池・蛍光管等は中身が見える市販の袋を使用します。廃食用油は指定回収場所も利用できます。"
+    },
+    "plastic": {
+      "name": "プラ",
+      "color": "#FFF200",
+      "answer_note": "きれいな容器包装プラスチックと製品プラスチックは、森の国エコステーション等の回収拠点へ持ち込みます。",
+      "instructions": "洗って汚れを落とし、乾燥させて回収拠点へ持ち込みます。汚れが落ちないものは可燃ごみです。"
+    },
+    "small_appliances": {
+      "name": "家電",
+      "color": "#FFFFFF",
+      "answer_note": "小型家電は粗大ごみ収集日または町の回収ボックスを利用します。家電リサイクル法対象品は別途処理が必要です。",
+      "instructions": "取り外せる電池は外し、粗大ごみ収集日または指定回収ボックスへ出します。"
+    },
+    "bulky": {
+      "name": "粗大",
+      "color": "#999999",
+      "answer_note": "粗大ごみの町収集は年2回で、日程は回覧で周知されます。公式の最新案内を確認してください。",
+      "instructions": "年2回の町収集を利用するか、宇和島地区広域事務組合環境センターへ直接持ち込みます。"
+    },
+    "not_collected": {
+      "name": "禁止",
+      "color": "#FF0000",
+      "answer_note": "松野町では処理できません。販売店、メーカー、専門業者などへ相談してください。",
+      "instructions": "町で処理できないため、品目の備考に記載された販売店・処理業者等へ相談します。"
+    }
+  }
+}
