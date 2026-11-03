@@ -890,7 +890,10 @@ class WasteGuideService:
             clarifications=clarification_items,
             documents=documents,
         ) or self._conditional_evidence_question(
-            query=detail_query,
+            # A rewritten search term is not confirmation of the user's size
+            # or material. Preserve the legacy Matsuyama path; regional data
+            # must use the original input and answers for condition checks.
+            query=detail_query if municipality_id == "38201" else query,
             clarifications=clarification_items,
             documents=documents,
             region=region,
@@ -1277,7 +1280,14 @@ class WasteGuideService:
             "cm",
             "センチ",
         )
-        if size_branch and not any(answer in context for answer in size_answers):
+        size_answered = any(answer in context for answer in size_answers)
+        if region and region.municipality_id != "38201":
+            size_answered = size_answered or any(
+                re.search(r"袋.*入[るり]", str(item.get("question", "")))
+                and re.fullmatch(r"\s*(?:はい|いいえ)[。！!]?\s*", str(item.get("answer", "")))
+                for item in clarifications
+            )
+        if size_branch and not size_answered:
             return region.rules.size_question if region else "松山市の指定ごみ袋に入る大きさですか？"
 
         explicitly_non_plastic = any(
