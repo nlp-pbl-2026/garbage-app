@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38401",
+  "version": "masaki-2026.1",
+  "valid_from": "2026-04-01",
+  "valid_to": "2027-03-31",
+  "license_status": "permission_required_for_redistribution",
+  "copyright_url": "https://www.town.masaki.ehime.jp/soshiki/3/web.html",
+  "sources": [
+    {
+      "file": "bulky-page.html",
+      "url": "https://www.town.masaki.ehime.jp/site/gomi/10385.html",
+      "sha256": "b2bb2b1df48c8e4cd14e448f623f27e98b1cb76978e37b5e47b49eefea2cec40",
+      "retrieved_at": "2026-11-03T12:46:18.966990+00:00"
+    },
+    {
+      "file": "calendar-kitaiyo-okada.pdf",
+      "url": "https://www.town.masaki.ehime.jp/uploaded/attachment/24136.pdf",
+      "sha256": "2b0a5d2905cb35954922a9654e95e2cf3abcb184dc251140a8d9feeced198cfb",
+      "retrieved_at": "2026-11-03T12:46:44.712357+00:00"
+    },
+    {
+      "file": "calendar-masaki.pdf",
+      "url": "https://www.town.masaki.ehime.jp/uploaded/attachment/24135.pdf",
+      "sha256": "e14f56a72111fd31b151f30a91a617300320e952d500132bcf005d0d70dfbd65",
+      "retrieved_at": "2026-11-03T12:46:14.282727+00:00"
+    },
+    {
+      "file": "calendar-page.html",
+      "url": "https://www.town.masaki.ehime.jp/site/hikkoshisumai/gomi-calendar-h30.html",
+      "sha256": "afc4bed15642b6beb35f9d4048a4e58d9296c2c92781681f6ee8d63334c66fc7",
+      "retrieved_at": "2026-11-03T12:46:13.215912+00:00"
+    },
+    {
+      "file": "copyright.html",
+      "url": "https://www.town.masaki.ehime.jp/soshiki/3/web.html",
+      "sha256": "9e932083496baf9396f3f7a8cb402bbd370625d87349d6d50a3f3bccbe5f374e",
+      "retrieved_at": "2026-11-03T12:46:19.748632+00:00"
+    },
+    {
+      "file": "guide-2021.pdf",
+      "url": "https://www.town.masaki.ehime.jp/uploaded/attachment/16014.pdf",
+      "sha256": "1bee1099fd5fa92860f445ceca78731c2c8223bd673645313f6a18813c3d79cb",
+      "retrieved_at": "2026-11-03T12:46:43.547227+00:00"
+    },
+    {
+      "file": "separation-2024.pdf",
+      "url": "https://www.town.masaki.ehime.jp/uploaded/attachment/21989.pdf",
+      "sha256": "564d4efe1784bdfde9c1bc4796109febbe76a9792083660ab4543a9b6852bf4b",
+      "retrieved_at": "2026-11-03T12:46:19.215182+00:00"
+    },
+    {
+      "file": "waste-plan-2026.pdf",
+      "url": "https://www.town.masaki.ehime.jp/uploaded/attachment/24411.pdf",
+      "sha256": "756841623f03499791f93b76bb7f00b081ba6485f489d14eedb75207673c8d97",
+      "retrieved_at": "2026-11-03T12:46:15.807569+00:00"
+    }
+  ],
+  "source_notes": {
+    "guide-2021.pdf": "Item names and primary classifications from the 2021 revised official guide",
+    "calendar-page.html": "Current notice includes the April 2023 dirty-plastic rule override",
+    "separation-2024.pdf": "Current summary table confirming the post-2023 separation rules",
+    "waste-plan-2026.pdf": "FY2026 statutory schedule and disposal-method table",
+    "calendar-masaki.pdf": "Literal FY2026 Masaki school-zone calendar",
+    "calendar-kitaiyo-okada.pdf": "Literal FY2026 Kitaiyo/Okada school-zone calendar"
+  }
+}

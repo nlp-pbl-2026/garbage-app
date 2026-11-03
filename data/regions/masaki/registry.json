@@ -1,0 +1,198 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38401",
+  "municipality_name": "松前町",
+  "prefecture_id": "38",
+  "prefecture_name": "愛媛県",
+  "version": "masaki-2026.1",
+  "valid_from": "2026-04-01",
+  "valid_to": "2027-03-31",
+  "collection_areas": [
+    {
+      "id": "38401-masaki-school",
+      "name": "松前校区",
+      "display_name": "松前校区",
+      "calendar_id": "masaki-masaki-school",
+      "rule_profile_id": "masaki",
+      "address_labels": [
+        "松前校区"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.masaki.ehime.jp/uploaded/attachment/24135.pdf",
+      "mapping_note": "町内住所から校区への自動判定は未実装のため、公式資料または現地で校区確認が必要"
+    },
+    {
+      "id": "38401-kitaiyo-okada-school",
+      "name": "北伊予・岡田校区",
+      "display_name": "北伊予・岡田校区",
+      "calendar_id": "masaki-kitaiyo-okada-school",
+      "rule_profile_id": "masaki",
+      "address_labels": [
+        "北伊予・岡田校区"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.masaki.ehime.jp/uploaded/attachment/24136.pdf",
+      "mapping_note": "町内住所から校区への自動判定は未実装のため、公式資料または現地で校区確認が必要"
+    }
+  ],
+  "calendars": [
+    {
+      "id": "masaki-masaki-school",
+      "rule_profile_id": "masaki"
+    },
+    {
+      "id": "masaki-kitaiyo-okada-school",
+      "rule_profile_id": "masaki"
+    }
+  ],
+  "rule_profiles": {
+    "masaki": {
+      "items_path": "knowledge/items.csv",
+      "embedding_index_path": "knowledge/item_embeddings.npz",
+      "index_profile_id": "citywide",
+      "calendar_path": "generated/calendar-2026.json",
+      "classification_rules": "松前町公式の『ごみ分別の手引き』に掲載された品目名と主分類を基礎とし、令和5年4月以降の現行ルールおよび令和8年度の公式分別表・一般廃棄物処理実施計画を優先する。特に、プラスチック製容器包装は旧手引きの『汚れが取れないときは可燃』を適用せず、汚れを取り除いてプラスチック類として出す。45L以下の袋に入らないもの、材質、電池の有無、家電4品目、町が収集しない品目などの条件は品目固有の備考を優先する。条件を確認できない場合は推測せず利用者に質問する。定期収集は松前校区と北伊予・岡田校区で一部曜日が異なり、住所から校区を推測しない。",
+      "size_question": "松前町の45L袋に入りますか？材質、汚れ、電池の有無、校区を確認できますか？",
+      "knowledge_title": "松前町ごみ分別の手引き（現行ルール補正済み）",
+      "categories": {
+        "burnable": {
+          "name": "可燃ごみ",
+          "collection_type_id": "burnable",
+          "cutoff": "07:00",
+          "color": "#F39C12"
+        },
+        "newspapers": {
+          "name": "紙類（新聞紙）",
+          "collection_type_id": "waste_paper",
+          "cutoff": "07:00",
+          "color": "#795548"
+        },
+        "cardboard": {
+          "name": "紙類（段ボール）",
+          "collection_type_id": "waste_paper",
+          "cutoff": "07:00",
+          "color": "#795548"
+        },
+        "paper_cartons": {
+          "name": "紙類（紙パック）",
+          "collection_type_id": "waste_paper",
+          "cutoff": "07:00",
+          "color": "#795548"
+        },
+        "mixed_paper": {
+          "name": "紙類（雑誌類・雑がみ）",
+          "collection_type_id": "waste_paper",
+          "cutoff": "07:00",
+          "color": "#795548"
+        },
+        "plastic": {
+          "name": "プラスチック類",
+          "collection_type_id": "plastic",
+          "cutoff": "07:00",
+          "color": "#00A651",
+          "answer_note": "令和5年4月以降、プラスチック製容器包装は汚れを取り除いてプラスチック類へ出します。旧手引きの可燃ごみへの振替は適用しません。"
+        },
+        "pet_bottles": {
+          "name": "ペットボトル",
+          "collection_type_id": "pet_bottles",
+          "cutoff": "07:00",
+          "color": "#00A651"
+        },
+        "cans": {
+          "name": "かん類",
+          "collection_type_id": "cans",
+          "cutoff": "07:00",
+          "color": "#607D8B"
+        },
+        "bottles": {
+          "name": "びん類",
+          "collection_type_id": "bottles",
+          "cutoff": "07:00",
+          "color": "#8B4513"
+        },
+        "metal": {
+          "name": "金属類・スプレー缶",
+          "collection_type_id": "metal",
+          "cutoff": "07:00",
+          "color": "#607D8B"
+        },
+        "textiles": {
+          "name": "古着・古布類",
+          "collection_type_id": "textiles",
+          "cutoff": "07:00",
+          "color": "#9C27B0"
+        },
+        "pruning": {
+          "name": "せんてい枝",
+          "collection_type_id": "pruning",
+          "cutoff": "07:00",
+          "color": "#8BC34A"
+        },
+        "hazardous": {
+          "name": "有害ごみ",
+          "collection_type_id": "hazardous",
+          "cutoff": "07:00",
+          "color": "#2962FF"
+        },
+        "landfill": {
+          "name": "埋立ごみ",
+          "collection_type_id": "landfill",
+          "cutoff": "07:00",
+          "color": "#7E57C2"
+        },
+        "bulky": {
+          "name": "粗大ごみ",
+          "color": "#FF9800",
+          "answer_note": "45L以下の袋に入らないものは、選択校区の申込期間を確認して戸別収集を申し込みます。"
+        },
+        "not_collected": {
+          "name": "収集しない排出禁止物",
+          "color": "#F44336",
+          "answer_note": "松前町では収集しません。備考に従い販売店、メーカー、専門業者などへ相談してください。"
+        },
+        "waste_oil": {
+          "name": "廃食用油",
+          "color": "#FF9800",
+          "answer_note": "植物性の廃食用油は町の指定回収場所へ持ち込めます。"
+        }
+      },
+      "bulky_waste": {
+        "category_code": "bulky",
+        "config": {
+          "municipality_id": "38401",
+          "municipality_name": "松前町",
+          "collection_frequency": "公式カレンダー記載の申込期間ごとの戸別収集",
+          "reception_hours": "申込期間は選択地区の令和8年度ごみカレンダーで確認",
+          "collection_rules": "45L以下の袋に入らないものが対象。1回の申込期間につき1世帯5点まで、長さ3m以内かつ大人2人で運べる大きさです。",
+          "fee_structure_type": "free_collection_sticker",
+          "application_method": "electronic_application_or_postcard",
+          "phone_number": "089-985-4117",
+          "web_form_url": null,
+          "information_url": "https://www.town.masaki.ehime.jp/site/gomi/10385.html",
+          "steps": [
+            {
+              "step_number": 1,
+              "title": "申込期間を確認",
+              "description": "選択した校区のごみカレンダーで黄色表示の申込期間を確認します。"
+            },
+            {
+              "step_number": 2,
+              "title": "電子申請またははがきで申込",
+              "description": "1点ずつ品目を記載し、排出場所を指定します。申込後の追加・変更はできません。"
+            },
+            {
+              "step_number": 3,
+              "title": "通知を確認",
+              "description": "町から届く粗大ごみ収集通知はがきで収集日を確認します。"
+            },
+            {
+              "step_number": 4,
+              "title": "シールを貼って排出",
+              "description": "氏名を記入したシールを貼り、指定場所へ収集日の午前7時までに出します。"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

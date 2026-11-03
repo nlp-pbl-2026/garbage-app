@@ -1,0 +1,119 @@
+{
+  "schema_version": 1,
+  "version": "masaki-2026.1",
+  "valid_from": "2026-04-01",
+  "valid_to": "2027-03-31",
+  "source_page_url": "https://www.town.masaki.ehime.jp/site/hikkoshisumai/gomi-calendar-h30.html",
+  "areas": [
+    {
+      "calendar_id": "masaki-masaki-school",
+      "display_name": "松前校区",
+      "source_file": "calendar-masaki.pdf",
+      "source_sha256": "e14f56a72111fd31b151f30a91a617300320e952d500132bcf005d0d70dfbd65",
+      "rules": {
+        "burnable": "毎週月・木",
+        "waste_paper": "第1・第3火",
+        "bottles": "第2土",
+        "cans": "第1土",
+        "metal": "第4土",
+        "textiles": "第2火",
+        "hazardous": "第3土",
+        "landfill": "第4火",
+        "pet_bottles": "第1・第3金",
+        "plastic": "毎週水",
+        "pruning": "第2・第4金"
+      },
+      "closures": [
+        {
+          "date": "2026-12-31",
+          "collection_type": "burnable"
+        },
+        {
+          "date": "2027-01-01",
+          "collection_type": "pet_bottles"
+        },
+        {
+          "date": "2027-01-02",
+          "collection_type": "cans"
+        },
+        {
+          "date": "2027-01-16",
+          "collection_type": "hazardous"
+        }
+      ],
+      "days_sha256": "e3b846a9e9f2bba5c1eebbe4909ba551bf849e98c0c3988ad7d027943bcab47b",
+      "dated_cells": 297,
+      "collection_dates": {
+        "plastic": 53,
+        "burnable": 103,
+        "pet_bottles": 23,
+        "cans": 11,
+        "waste_paper": 24,
+        "pruning": 24,
+        "bottles": 12,
+        "textiles": 12,
+        "hazardous": 11,
+        "metal": 12,
+        "landfill": 12
+      }
+    },
+    {
+      "calendar_id": "masaki-kitaiyo-okada-school",
+      "display_name": "北伊予・岡田校区",
+      "source_file": "calendar-kitaiyo-okada.pdf",
+      "source_sha256": "2b0a5d2905cb35954922a9654e95e2cf3abcb184dc251140a8d9feeced198cfb",
+      "rules": {
+        "burnable": "毎週月・木",
+        "waste_paper": "第1・第3火",
+        "bottles": "第2土",
+        "cans": "第1土",
+        "metal": "第4土",
+        "textiles": "第2火",
+        "hazardous": "第3土",
+        "landfill": "第4火",
+        "pet_bottles": "第1・第3水",
+        "plastic": "毎週金",
+        "pruning": "第2・第4水"
+      },
+      "closures": [
+        {
+          "date": "2026-12-31",
+          "collection_type": "burnable"
+        },
+        {
+          "date": "2027-01-01",
+          "collection_type": "plastic"
+        },
+        {
+          "date": "2027-01-02",
+          "collection_type": "cans"
+        },
+        {
+          "date": "2027-01-16",
+          "collection_type": "hazardous"
+        }
+      ],
+      "days_sha256": "04fdb009253e92da8303b8e94c8de62b514b989ea86d026c73e4ff7fd99a8d80",
+      "dated_cells": 296,
+      "collection_dates": {
+        "pet_bottles": 24,
+        "burnable": 103,
+        "plastic": 51,
+        "cans": 11,
+        "waste_paper": 24,
+        "pruning": 24,
+        "bottles": 12,
+        "textiles": 12,
+        "hazardous": 11,
+        "metal": 12,
+        "landfill": 12
+      }
+    }
+  ],
+  "verification": {
+    "method": "FY2026 official calendar month grids checked against weekly/nth-weekday rules; printed collection holidays retained as explicit exceptions",
+    "calendar_pdf_pages": "3, 5, 7-10 (April 2026 through March 2027)",
+    "limitations": "School-zone membership is not inferred from an address; temporary weather or operational changes require current municipal confirmation",
+    "reviewed_at": "2026-11-03"
+  }
+}
