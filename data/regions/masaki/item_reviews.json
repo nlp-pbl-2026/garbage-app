@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "version": "masaki-2026.1",
+  "official_items": 1384,
+  "items_sha256": "bf525accd1f236a03ff14eb1e36f8ab3fddb2181617eeed542391cb0e6a4c459",
+  "primary_categories": {
+    "landfill": 354,
+    "metal": 200,
+    "burnable": 315,
+    "plastic": 133,
+    "bulky": 139,
+    "not_collected": 67,
+    "mixed_paper": 64,
+    "waste_oil": 5,
+    "bottles": 26,
+    "cans": 7,
+    "textiles": 40,
+    "paper_cartons": 7,
+    "pruning": 10,
+    "hazardous": 8,
+    "cardboard": 2,
+    "newspapers": 4,
+    "pet_bottles": 3
+  },
+  "conditional_records": 201,
+  "current_rule_overrides": 32,
+  "source_pdf_pages": "20-38",
+  "extraction_method": "Poppler Unicode words aligned to PyMuPDF ruled-table geometry; no OCR",
+  "reviewed_at": "2026-11-03"
+}

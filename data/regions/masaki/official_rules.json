@@ -1,0 +1,131 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38401",
+  "version": "masaki-2026.1",
+  "source_urls": [
+    "https://www.town.masaki.ehime.jp/site/hikkoshisumai/gomi-calendar-h30.html",
+    "https://www.town.masaki.ehime.jp/uploaded/attachment/16014.pdf",
+    "https://www.town.masaki.ehime.jp/uploaded/attachment/21989.pdf",
+    "https://www.town.masaki.ehime.jp/uploaded/attachment/24411.pdf"
+  ],
+  "classification_rules": "松前町公式の『ごみ分別の手引き』に掲載された品目名と主分類を基礎とし、令和5年4月以降の現行ルールおよび令和8年度の公式分別表・一般廃棄物処理実施計画を優先する。特に、プラスチック製容器包装は旧手引きの『汚れが取れないときは可燃』を適用せず、汚れを取り除いてプラスチック類として出す。45L以下の袋に入らないもの、材質、電池の有無、家電4品目、町が収集しない品目などの条件は品目固有の備考を優先する。条件を確認できない場合は推測せず利用者に質問する。定期収集は松前校区と北伊予・岡田校区で一部曜日が異なり、住所から校区を推測しない。",
+  "categories": {
+    "burnable": {
+      "name": "可燃ごみ",
+      "collection_type_id": "burnable",
+      "cutoff": "07:00",
+      "color": "#F39C12",
+      "instructions": "松前町指定の可燃ごみ袋に入れ、収集日の午前7時までに指定場所へ出します。"
+    },
+    "newspapers": {
+      "name": "紙類（新聞紙）",
+      "collection_type_id": "waste_paper",
+      "cutoff": "07:00",
+      "color": "#795548",
+      "instructions": "新聞紙と折込広告・情報誌をまとめ、ひもで十字に縛って出します。"
+    },
+    "cardboard": {
+      "name": "紙類（段ボール）",
+      "collection_type_id": "waste_paper",
+      "cutoff": "07:00",
+      "color": "#795548",
+      "instructions": "段ボールだけをまとめ、ひもで十字に縛って出します。"
+    },
+    "paper_cartons": {
+      "name": "紙類（紙パック）",
+      "collection_type_id": "waste_paper",
+      "cutoff": "07:00",
+      "color": "#795548",
+      "instructions": "内側が白い500mL以上の紙パックを洗って開き、乾かしてひもで縛ります。"
+    },
+    "mixed_paper": {
+      "name": "紙類（雑誌類・雑がみ）",
+      "collection_type_id": "waste_paper",
+      "cutoff": "07:00",
+      "color": "#795548",
+      "instructions": "新聞・段ボール・紙パック以外の再生可能な紙をまとめます。小さな紙は封筒に入れ、ひもで縛って出します。"
+    },
+    "plastic": {
+      "name": "プラスチック類",
+      "collection_type_id": "plastic",
+      "cutoff": "07:00",
+      "color": "#00A651",
+      "answer_note": "令和5年4月以降、プラスチック製容器包装は汚れを取り除いてプラスチック類へ出します。旧手引きの可燃ごみへの振替は適用しません。",
+      "instructions": "プラマークのある容器包装は中身を使い切り、汚れを取り除いて、無色または白色半透明の袋へ入れます。"
+    },
+    "pet_bottles": {
+      "name": "ペットボトル",
+      "collection_type_id": "pet_bottles",
+      "cutoff": "07:00",
+      "color": "#00A651",
+      "instructions": "PETマークを確認し、キャップとラベルを外して洗い、つぶして無色または白色半透明の袋へ入れます。"
+    },
+    "cans": {
+      "name": "かん類",
+      "collection_type_id": "cans",
+      "cutoff": "07:00",
+      "color": "#607D8B",
+      "instructions": "飲食物用のアルミ・スチール缶を洗い、無色または白色半透明の袋へ入れます。"
+    },
+    "bottles": {
+      "name": "びん類",
+      "collection_type_id": "bottles",
+      "cutoff": "07:00",
+      "color": "#8B4513",
+      "instructions": "飲食物用のびんを洗い、無色または白色半透明の袋へ入れます。ふたは材質別に分けます。"
+    },
+    "metal": {
+      "name": "金属類・スプレー缶",
+      "collection_type_id": "metal",
+      "cutoff": "07:00",
+      "color": "#607D8B",
+      "instructions": "金属類は無色または白色半透明の袋へ入れます。スプレー缶・カセットボンベは中身を使い切り、穴を開けず、金属類とは別の袋で同じ収集日に出します。"
+    },
+    "textiles": {
+      "name": "古着・古布類",
+      "collection_type_id": "textiles",
+      "cutoff": "07:00",
+      "color": "#9C27B0",
+      "instructions": "洗濯して乾かし、無色または白色半透明の袋へ入れます。破れ・汚れ・濡れのあるものは可燃ごみです。"
+    },
+    "pruning": {
+      "name": "せんてい枝",
+      "collection_type_id": "pruning",
+      "cutoff": "07:00",
+      "color": "#8BC34A",
+      "instructions": "枝や幹は直径約10cm、長さ約1m以内にしてひもで束ねます。枯葉や雑草は土を落として袋へ入れます。"
+    },
+    "hazardous": {
+      "name": "有害ごみ",
+      "collection_type_id": "hazardous",
+      "cutoff": "07:00",
+      "color": "#2962FF",
+      "instructions": "蛍光灯、水銀使用の温度計、ボタン電池・乾電池などを無色または白色半透明の袋へ入れます。蛍光灯とその他は袋を分けます。"
+    },
+    "landfill": {
+      "name": "埋立ごみ",
+      "collection_type_id": "landfill",
+      "cutoff": "07:00",
+      "color": "#7E57C2",
+      "instructions": "割れたガラス・陶磁器、硬質プラスチック、小型電気製品などを無色または白色半透明の45L以下の袋へ入れます。危険物は包んで『きけん』と表示します。"
+    },
+    "bulky": {
+      "name": "粗大ごみ",
+      "color": "#FF9800",
+      "answer_note": "45L以下の袋に入らないものは、選択校区の申込期間を確認して戸別収集を申し込みます。",
+      "instructions": "電子申請またはカレンダー付属のはがきで申し込み、通知された収集日にシールを貼って午前7時までに指定場所へ出します。"
+    },
+    "not_collected": {
+      "name": "収集しない排出禁止物",
+      "color": "#F44336",
+      "answer_note": "松前町では収集しません。備考に従い販売店、メーカー、専門業者などへ相談してください。",
+      "instructions": "家電4品目、パソコン、処理困難物、事業系ごみなどは町の収集対象外です。品目ごとの公式案内に従います。"
+    },
+    "waste_oil": {
+      "name": "廃食用油",
+      "color": "#FF9800",
+      "answer_note": "植物性の廃食用油は町の指定回収場所へ持ち込めます。",
+      "instructions": "指定回収場所へ持ち込むか、紙・布に染み込ませるか凝固剤で固めて可燃ごみとして出します。"
+    }
+  }
+}
