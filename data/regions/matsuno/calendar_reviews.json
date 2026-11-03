@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "version": "matsuno-2026.1",
+  "valid_from": "2026-04-01",
+  "valid_to": "2027-03-31",
+  "source_url": "https://www.town.matsuno.ehime.jp/uploaded/attachment/7083.pdf#page=3",
+  "areas": [
+    {
+      "calendar_id": "matsuno-matsumaru",
+      "display_name": "松丸",
+      "address_labels": ["松丸"],
+      "rules": {"burnable": "毎週火・金", "nonburnable": "毎週月", "resources": "毎週月", "pet_bottles": "毎週水", "containers": "毎週水", "waste_paper": "毎週木"},
+      "days_sha256": "596294c2de11e49951085c90e32e81376fc568c00ffcd0da36584329032aee09",
+      "dated_cells": 259,
+      "collection_dates": {"containers": 53, "pet_bottles": 53, "waste_paper": 51, "burnable": 103, "nonburnable": 52, "resources": 52}
+    },
+    {
+      "calendar_id": "matsuno-nobunono",
+      "display_name": "延野々",
+      "address_labels": ["延野々"],
+      "rules": {"burnable": "毎週月・木", "nonburnable": "毎週金", "resources": "毎週金", "pet_bottles": "毎週水", "containers": "毎週水", "waste_paper": "毎週火"},
+      "days_sha256": "97aa3976da2bccabf84a6f30f3b6dcd9ed735376ad8279b7e691be31aa0c826f",
+      "dated_cells": 259,
+      "collection_dates": {"containers": 53, "pet_bottles": 53, "burnable": 103, "nonburnable": 51, "resources": 51, "waste_paper": 52}
+    },
+    {
+      "calendar_id": "matsuno-toyooka-ushiro",
+      "display_name": "豊岡後",
+      "address_labels": ["豊岡後"],
+      "rules": {"burnable": "毎週月・木", "nonburnable": "毎週金", "resources": "毎週金", "pet_bottles": "毎週水", "containers": "毎週水", "waste_paper": "毎週火"},
+      "days_sha256": "97aa3976da2bccabf84a6f30f3b6dcd9ed735376ad8279b7e691be31aa0c826f",
+      "dated_cells": 259,
+      "collection_dates": {"containers": 53, "pet_bottles": 53, "burnable": 103, "nonburnable": 51, "resources": 51, "waste_paper": 52}
+    },
+    {
+      "calendar_id": "matsuno-toyooka-mae",
+      "display_name": "豊岡前",
+      "address_labels": ["豊岡前"],
+      "rules": {"burnable": "毎週月・木", "nonburnable": "毎週金", "resources": "毎週金", "pet_bottles": "毎週水", "containers": "毎週水", "waste_paper": "毎週火"},
+      "days_sha256": "97aa3976da2bccabf84a6f30f3b6dcd9ed735376ad8279b7e691be31aa0c826f",
+      "dated_cells": 259,
+      "collection_dates": {"containers": 53, "pet_bottles": 53, "burnable": 103, "nonburnable": 51, "resources": 51, "waste_paper": 52}
+    },
+    {
+      "calendar_id": "matsuno-tomioka",
+      "display_name": "富岡",
+      "address_labels": ["富岡"],
+      "rules": {"burnable": "毎週月・木", "nonburnable": "毎週金", "resources": "毎週金", "pet_bottles": "毎週水", "containers": "毎週水", "waste_paper": "毎週火"},
+      "days_sha256": "97aa3976da2bccabf84a6f30f3b6dcd9ed735376ad8279b7e691be31aa0c826f",
+      "dated_cells": 259,
+      "collection_dates": {"containers": 53, "pet_bottles": 53, "burnable": 103, "nonburnable": 51, "resources": 51, "waste_paper": 52}
+    },
+    {
+      "calendar_id": "matsuno-kamieji",
+      "display_name": "上家地",
+      "address_labels": ["上家地"],
+      "rules": {"burnable": "毎週月・木", "nonburnable": "第1・第3金", "resources": "第1・第3金", "pet_bottles": "第2・第4水", "containers": "第2・第4水", "waste_paper": "第2火"},
+      "days_sha256": "325a7690cded74d455b336201786d49bfb31039c83ac16f2beadae6454847124",
+      "dated_cells": 162,
+      "collection_dates": {"burnable": 103, "nonburnable": 23, "resources": 23, "containers": 24, "pet_bottles": 24, "waste_paper": 12}
+    },
+    {
+      "calendar_id": "matsuno-meguro",
+      "display_name": "目黒",
+      "address_labels": ["目黒"],
+      "rules": {"burnable": "毎週月・木", "nonburnable": "毎週金", "resources": "毎週金", "pet_bottles": "毎週水", "containers": "毎週水", "waste_paper": "毎週火"},
+      "days_sha256": "97aa3976da2bccabf84a6f30f3b6dcd9ed735376ad8279b7e691be31aa0c826f",
+      "dated_cells": 259,
+      "collection_dates": {"containers": 53, "pet_bottles": 53, "burnable": 103, "nonburnable": 51, "resources": 51, "waste_paper": 52}
+    },
+    {
+      "calendar_id": "matsuno-yoshino",
+      "display_name": "吉野（葛川地区を除く）",
+      "address_labels": ["吉野（葛川地区を除く）"],
+      "rules": {"burnable": "毎週火・金", "nonburnable": "毎週月", "resources": "毎週月", "pet_bottles": "毎週水", "containers": "毎週水", "waste_paper": "毎週木"},
+      "days_sha256": "596294c2de11e49951085c90e32e81376fc568c00ffcd0da36584329032aee09",
+      "dated_cells": 259,
+      "collection_dates": {"containers": 53, "pet_bottles": 53, "waste_paper": 51, "burnable": 103, "nonburnable": 52, "resources": 52}
+    },
+    {
+      "calendar_id": "matsuno-kuzukawa",
+      "display_name": "葛川地区（吉野内）",
+      "address_labels": ["葛川", "葛川地区"],
+      "rules": {"burnable": "毎週火", "nonburnable": "第2・第4月", "resources": "第2・第4月", "pet_bottles": "第1・第3水", "containers": "第1・第3水", "waste_paper": "第1木"},
+      "days_sha256": "504352ae96acc55f3c740e8a0e63bc164ca57ef7cd8baf18eeb5ff3e6da9049c",
+      "dated_cells": 112,
+      "collection_dates": {"containers": 24, "pet_bottles": 24, "waste_paper": 12, "burnable": 52, "nonburnable": 24, "resources": 24}
+    },
+    {
+      "calendar_id": "matsuno-warabiu",
+      "display_name": "蕨生",
+      "address_labels": ["蕨生"],
+      "rules": {"burnable": "毎週火・金", "nonburnable": "毎週月", "resources": "毎週月", "pet_bottles": "毎週水", "containers": "毎週水", "waste_paper": "毎週木"},
+      "days_sha256": "596294c2de11e49951085c90e32e81376fc568c00ffcd0da36584329032aee09",
+      "dated_cells": 259,
+      "collection_dates": {"containers": 53, "pet_bottles": 53, "waste_paper": 51, "burnable": 103, "nonburnable": 52, "resources": 52}
+    },
+    {
+      "calendar_id": "matsuno-okunogawa",
+      "display_name": "奥野川",
+      "address_labels": ["奥野川"],
+      "rules": {"burnable": "毎週火・金", "nonburnable": "毎週月", "resources": "毎週月", "pet_bottles": "毎週水", "containers": "毎週水", "waste_paper": "毎週木"},
+      "days_sha256": "596294c2de11e49951085c90e32e81376fc568c00ffcd0da36584329032aee09",
+      "dated_cells": 259,
+      "collection_dates": {"containers": 53, "pet_bottles": 53, "waste_paper": 51, "burnable": 103, "nonburnable": 52, "resources": 52}
+    }
+  ],
+  "closed_dates": ["2026-08-15", "2026-12-31", "2027-01-01", "2027-01-02", "2027-01-03"],
+  "verification": {
+    "method": "Current April 2026 book schedule converted from weekly and nth-weekday rules",
+    "coverage": "Ten named settlements plus the Kuzukawa exception within Yoshino",
+    "limitations": "Rain cancels waste-paper collection; snow and temporary changes are announced separately and are not inferred",
+    "stale_source_excluded": "https://www.town.matsuno.ehime.jp/uploaded/attachment/1714.pdf",
+    "reviewed_at": "2026-11-03"
+  }
+}

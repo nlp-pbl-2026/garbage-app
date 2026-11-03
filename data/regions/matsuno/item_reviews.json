@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "version": "matsuno-2026.1",
+  "official_items": 1434,
+  "items_sha256": "c25774ac33825cc8b2727e5e2325f978f8476c3639125eab07b6df96467eddba",
+  "primary_categories": {
+    "small_appliances": 162,
+    "burnable": 478,
+    "nonburnable": 246,
+    "bulky": 159,
+    "not_collected": 96,
+    "waste_paper": 109,
+    "resources": 12,
+    "containers": 49,
+    "plastic": 120,
+    "pet_bottles": 3
+  },
+  "conditional_records": 365,
+  "records_with_notes": 775,
+  "source_pdf_pages": "22-63",
+  "extraction_method": "pdfplumber ruled-table extraction with merged category-cell continuation recovery",
+  "reviewed_at": "2026-11-03"
+}
