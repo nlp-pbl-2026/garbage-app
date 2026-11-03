@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38422",
+  "version": "uchiko-2026.1",
+  "valid_from": "2026-01-01",
+  "valid_to": "2026-12-31",
+  "license_status": "permission_required_for_redistribution",
+  "copyright_url": "https://www.town.uchiko.ehime.jp/soshiki/1/cyosakuken-menseki.html",
+  "sources": [
+    {
+      "file": "calendar-1.pdf",
+      "url": "https://www.town.uchiko.ehime.jp/uploaded/life/145277_324783_misc.pdf",
+      "sha256": "755e521cc056c202a62242abe9b28086a8818aac4bc60f088ac0521d7717665b",
+      "retrieved_at": "2026-11-03T03:30:09.223116+00:00"
+    },
+    {
+      "file": "calendar-2.pdf",
+      "url": "https://www.town.uchiko.ehime.jp/uploaded/life/145277_324784_misc.pdf",
+      "sha256": "c7da29901833cdbf366f7b4efeeceec15620a080fbeb8033d79876e54f912645",
+      "retrieved_at": "2026-11-03T03:30:12.472841+00:00"
+    },
+    {
+      "file": "calendar-3.pdf",
+      "url": "https://www.town.uchiko.ehime.jp/uploaded/life/145277_324785_misc.pdf",
+      "sha256": "2d873d6e726031f5a5a8b068d709fb41c1349d9cc88e7dcf358a7d210a7a668d",
+      "retrieved_at": "2026-11-03T03:30:13.790276+00:00"
+    },
+    {
+      "file": "calendar-4.pdf",
+      "url": "https://www.town.uchiko.ehime.jp/uploaded/life/145277_324786_misc.pdf",
+      "sha256": "0c2b54963c765ca87d8ff97c712bab31754c59fe4cfedb8ecc65489aaef5d134",
+      "retrieved_at": "2026-11-03T03:30:14.988618+00:00"
+    },
+    {
+      "file": "calendar-5.pdf",
+      "url": "https://www.town.uchiko.ehime.jp/uploaded/life/145277_324787_misc.pdf",
+      "sha256": "6cbe8ecccc51d9da5e4fb15e7fea12590a856885a049671ae263587643da620c",
+      "retrieved_at": "2026-11-03T03:30:15.607780+00:00"
+    },
+    {
+      "file": "calendar-page.html",
+      "url": "https://www.town.uchiko.ehime.jp/soshiki/10/145277.html",
+      "sha256": "ee991dcaa54d1a599e7159ba5f4ed4e38265d365979a849000f3d0933bd3b452",
+      "retrieved_at": "2026-11-03T03:30:10.934196+00:00"
+    },
+    {
+      "file": "copyright.html",
+      "url": "https://www.town.uchiko.ehime.jp/soshiki/1/cyosakuken-menseki.html",
+      "sha256": "d9f7984909e1e5bbee5415583e61e559c8c4f101024113beb6f460def571f773",
+      "retrieved_at": "2026-11-03T03:30:14.769586+00:00"
+    },
+    {
+      "file": "dictionary-current.pdf",
+      "url": "https://www.town.uchiko.ehime.jp/uploaded/life/139240_284629_misc.pdf",
+      "sha256": "b1ab45f6f5a3a2644a5dde54c02192ba5aab28dd1d3fd11acf7b3e3ea094691a",
+      "retrieved_at": "2026-11-03T03:30:13.461137+00:00"
+    },
+    {
+      "file": "rules-current.pdf",
+      "url": "https://www.town.uchiko.ehime.jp/uploaded/life/139240_324562_misc.pdf",
+      "sha256": "4be875bdef9823df4a194914a8a60ce2887f20f71fc4b67a52b50794b793c5f3",
+      "retrieved_at": "2026-11-03T03:30:15.884474+00:00"
+    },
+    {
+      "file": "sorting-page.html",
+      "url": "https://www.town.uchiko.ehime.jp/soshiki/10/gomibunnbetu.html",
+      "sha256": "406c8cea605723c6c5350434db79bbe1b16d153b13bf8d4b10a1ed74217253dc",
+      "retrieved_at": "2026-11-03T03:30:10.508707+00:00"
+    }
+  ],
+  "source_notes": {
+    "dictionary-current.pdf": "Item dictionary updated 2026-05-28",
+    "calendar-1.pdf": "Calendar-year source: 2026-01-01 through 2026-12-31",
+    "calendar-2.pdf": "Calendar-year source: 2026-01-01 through 2026-12-31",
+    "calendar-3.pdf": "Calendar-year source: 2026-01-01 through 2026-12-31",
+    "calendar-4.pdf": "Calendar-year source: 2026-01-01 through 2026-12-31",
+    "calendar-5.pdf": "Calendar-year source: 2026-01-01 through 2026-12-31"
+  }
+}
