@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "version": "kihoku-2026.1",
+  "official_items": 1219,
+  "items_sha256": "fe62b3528c1e083890aa2784f809d85441f83680c5aa0e9485d10700ca81d58d",
+  "primary_categories": {
+    "resources": 147,
+    "burnable": 487,
+    "waste_paper": 91,
+    "nonburnable": 246,
+    "bulky": 138,
+    "containers": 45,
+    "not_collected": 62,
+    "pet_bottles": 3
+  },
+  "records_with_notes": 655,
+  "source_pdf_pages": "3-31",
+  "extraction_method": "Poppler TSV coordinates over the official two-column ruled item table",
+  "current_rule_supplements": [
+    "Clean plastic drop-off effective 2026-04-01",
+    "Separated lithium-ion and other small rechargeable-battery collection effective 2026-04-01"
+  ],
+  "reviewed_at": "2026-11-03"
+}

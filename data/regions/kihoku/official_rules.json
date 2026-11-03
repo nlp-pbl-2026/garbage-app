@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38488",
+  "version": "kihoku-2026.1",
+  "source_urls": [
+    "https://www.town.kihoku.ehime.jp/soshiki/kankyou/58.html",
+    "https://www.town.kihoku.ehime.jp/uploaded/attachment/6289.pdf",
+    "https://www.town.kihoku.ehime.jp/soshiki/kankyou/33929.html",
+    "https://www.town.kihoku.ehime.jp/soshiki/kankyou/34157.html",
+    "https://www.town.kihoku.ehime.jp/soshiki/kankyou/15663.html"
+  ],
+  "classification_rules": "鬼北町公式の家庭ごみ分別早見表と、選択した地区の収集曜日に従う。公式分類（可燃、不燃、びん・缶、ペットボトル、古紙、資源、粗大、禁止）を保持し、指定袋に入るか、素材、汚れ、電池の有無などの条件を確認する。条件を利用者の説明や画像から確認できない場合は推測せず質問する。可燃・不燃・びん缶は町指定袋を使い、収集日の午前8時までに指定場所へ出す。ペットボトルはキャップとラベルを外し、すすいで乾かしてつぶす。令和8年4月から、汚れを落として乾かした容器包装プラスチックとプラスチック製品は地区別拠点へ持ち込めるが、従来どおり可燃ごみでも回収される。ペットボトル、異素材を多く含むもの、厚さ5mm以上のもの、強化プラスチック、在宅医療品、電化製品、事業系ごみは拠点回収の対象外。小型充電式電池は令和8年4月開始の分別回収方法に従い、可燃・不燃の指定袋へ混ぜない。臨時の休日・年末年始変更は公式発表を確認する。",
+  "categories": {
+    "burnable": {
+      "name": "可燃",
+      "collection_type_id": "burnable",
+      "cutoff": "08:00",
+      "color": "#E74C3C",
+      "instructions": "町指定の燃えるごみ袋（赤色）に入れ、収集日の午前8時までに指定場所へ出します。令和8年4月から対象となるきれいなプラスチックは拠点回収も選べます。"
+    },
+    "nonburnable": {
+      "name": "不燃",
+      "collection_type_id": "nonburnable",
+      "cutoff": "08:00",
+      "color": "#4B78C2",
+      "instructions": "町指定の燃えないごみ袋（青色）に入れます。刃物や割れたガラスは紙や布で包み「キケン」と表示します。"
+    },
+    "containers": {
+      "name": "びん・缶",
+      "collection_type_id": "containers",
+      "cutoff": "08:00",
+      "color": "#8B5A2B",
+      "instructions": "びんはキャップを外してすすぎ、缶も中をすすいで、町指定のびん・缶袋（茶色）へ入れます。スプレー缶等は最新の公式注意事項を確認します。"
+    },
+    "pet_bottles": {
+      "name": "ペットボトル",
+      "collection_type_id": "pet_bottles",
+      "cutoff": "08:00",
+      "color": "#36A852",
+      "instructions": "キャップとラベルを外し、すすいで乾かしてつぶし、町指定のペットボトル袋（緑色）へ入れます。"
+    },
+    "waste_paper": {
+      "name": "古紙",
+      "color": "#D5B56B",
+      "answer_note": "地区別の偶数月・奇数月の回収、または本庁・日吉支所の毎月第2・第4土曜日回収を確認してください。",
+      "instructions": "新聞・段ボール・雑誌等に分けてひもで縛り、指定日の午前8時までに出します。"
+    },
+    "resources": {
+      "name": "資源",
+      "color": "#65B9C7",
+      "answer_note": "廃蛍光管、乾電池、古着、小型家電、廃食用油は対象品と回収場所を確認してください。",
+      "instructions": "品目に応じて役場本庁、日吉支所、各公民館などの指定回収場所へ持ち込みます。"
+    },
+    "clean_plastic": {
+      "name": "きれいなプラスチック",
+      "color": "#8BC34A",
+      "answer_note": "令和8年4月開始の地区別拠点回収です。対象外条件を確認し、容器包装とプラスチック製品に分けます。",
+      "instructions": "汚れを落として乾かし、地区の回収拠点へ持ち込みます。従来どおり可燃ごみとして出すこともできます。"
+    },
+    "rechargeable_batteries": {
+      "name": "小型充電式電池",
+      "color": "#F0A43A",
+      "answer_note": "令和8年4月開始の専用分別回収です。可燃・不燃ごみに混ぜず、端子を絶縁して指定場所へ持ち込みます。膨らんだ電池は事務所へ直接持ち込んでください。",
+      "instructions": "ニカド・ニッケル水素・リチウムイオン等の二次電池は、ビニールテープ等で端子部を絶縁します。取り外せない場合は小型家電として出し、膨らんだものは環境保全課・各公民館・日吉支所の事務所へ持ち込みます。"
+    },
+    "bulky": {
+      "name": "粗大",
+      "color": "#8D8D8D",
+      "answer_note": "指定袋に入らないものは、役場等への持込、予約制の水曜回収、または許可業者への依頼を確認してください。",
+      "instructions": "処理手数料は品目ごとに500円からです。広域環境センターへの直接持込は重量制です。"
+    },
+    "not_collected": {
+      "name": "禁止",
+      "color": "#222222",
+      "answer_note": "鬼北町では収集・処理しません。販売店、メーカー、専門業者などへ相談してください。",
+      "instructions": "農機具、車両・部品、タイヤ、バッテリー、農薬、ガスボンベ、建設廃材などは公式案内の取扱先へ相談します。"
+    }
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38488",
+  "version": "kihoku-2026.1",
+  "valid_from": "2026-04-01",
+  "valid_to": "2026-12-31",
+  "license_status": "permission_required_for_redistribution",
+  "copyright_url": "https://www.town.kihoku.ehime.jp/site/userguide/info.html",
+  "sources": [
+    {
+      "file": "battery-guide.pdf",
+      "url": "https://www.town.kihoku.ehime.jp/uploaded/attachment/18393.pdf",
+      "sha256": "a60c18a703c0c0121848cd8bfede0e1be13f21436d8447e0dffc4b4626c3c6b7",
+      "retrieved_at": "2026-11-02T17:27:05.275423+00:00"
+    },
+    {
+      "file": "battery-page.html",
+      "url": "https://www.town.kihoku.ehime.jp/soshiki/kankyou/34157.html",
+      "sha256": "57079e230d3ab1c6ed7441d007d4b6c6f4a2208230b7252c5ac1587459916a45",
+      "retrieved_at": "2026-11-02T17:26:57.820670+00:00"
+    },
+    {
+      "file": "copyright.html",
+      "url": "https://www.town.kihoku.ehime.jp/site/userguide/info.html",
+      "sha256": "b4f8ea1f380287afaa97459da615c0dabad6acacdbaa8a8931c8213b0192775d",
+      "retrieved_at": "2026-11-02T17:27:04.751771+00:00"
+    },
+    {
+      "file": "item-table.pdf",
+      "url": "https://www.town.kihoku.ehime.jp/uploaded/attachment/6289.pdf",
+      "sha256": "a0c7a634431d87f65d8b9e3c14c5b0f83a92b45c8d8023a95c7e6cd33308f568",
+      "retrieved_at": "2026-11-02T17:27:14.514438+00:00"
+    },
+    {
+      "file": "large-waste-page.html",
+      "url": "https://www.town.kihoku.ehime.jp/soshiki/kankyou/15663.html",
+      "sha256": "0f8282aef5401a230c41c9cbdcd3d45bd47963ac3e003b8b4e4e8399152d5c85",
+      "retrieved_at": "2026-11-02T17:27:01.057814+00:00"
+    },
+    {
+      "file": "plastic-guide.pdf",
+      "url": "https://www.town.kihoku.ehime.jp/uploaded/attachment/18327.pdf",
+      "sha256": "48b363b89f0dd310b4bf90727ab4afa23e9ac6ae2cb2fb6108d5a4cff7255703",
+      "retrieved_at": "2026-11-02T17:27:01.506151+00:00"
+    },
+    {
+      "file": "plastic-page.html",
+      "url": "https://www.town.kihoku.ehime.jp/soshiki/kankyou/33929.html",
+      "sha256": "0eee12fa91e137e47b033b6fb078865156d278a2d5c5de1b917aa016758e15dd",
+      "retrieved_at": "2026-11-02T17:26:57.660785+00:00"
+    },
+    {
+      "file": "resource-page.html",
+      "url": "https://www.town.kihoku.ehime.jp/soshiki/kankyou/264.html",
+      "sha256": "f591aec70b6c8985524325c199afbf4e9f753ae769b1815d7d4c85be2d42203f",
+      "retrieved_at": "2026-11-02T17:26:57.896298+00:00"
+    },
+    {
+      "file": "sorting-guide.pdf",
+      "url": "https://www.town.kihoku.ehime.jp/uploaded/attachment/8646.pdf",
+      "sha256": "e274dd7eaa2dc95886a4d79e3196c86c3a903f4be1183b993d63f4a0cb0b3552",
+      "retrieved_at": "2026-11-02T17:27:03.921377+00:00"
+    },
+    {
+      "file": "waste-page.html",
+      "url": "https://www.town.kihoku.ehime.jp/soshiki/kankyou/58.html",
+      "sha256": "55bac83fa0c946922a09adcd043d5e0ed9b0688b65d583357cf8459a8869ffd6",
+      "retrieved_at": "2026-11-02T17:26:57.685082+00:00"
+    }
+  ]
+}
