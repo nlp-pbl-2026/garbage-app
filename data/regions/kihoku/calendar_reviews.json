@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "version": "kihoku-2026.1",
+  "valid_from": "2026-04-01",
+  "valid_to": "2026-12-31",
+  "source_url": "https://www.town.kihoku.ehime.jp/soshiki/kankyou/58.html",
+  "areas": [
+    {
+      "calendar_id": "kihoku-izumi",
+      "display_name": "泉地区",
+      "address_labels": ["泉地区"],
+      "rules": {"burnable": "月・木", "nonburnable": "火", "pet_bottles": "第1・第3金", "containers": "水"},
+      "days_sha256": "02bed80374437af58c36c56bec808ca12c9526e178e15347f691a4e9d97899d7",
+      "dated_cells": 176,
+      "collection_dates": {"containers": 40, "burnable": 79, "pet_bottles": 18, "nonburnable": 39}
+    },
+    {
+      "calendar_id": "kihoku-aiji",
+      "display_name": "愛治地区",
+      "address_labels": ["愛治地区"],
+      "rules": {"burnable": "月・木", "nonburnable": "月", "pet_bottles": "第2・第4金", "containers": "水"},
+      "days_sha256": "20e39d8225b7943ee42a903aa6a254115b1adcbc432708d5bb2df5f6c26327cc",
+      "dated_cells": 137,
+      "collection_dates": {"containers": 40, "burnable": 79, "nonburnable": 39, "pet_bottles": 18}
+    },
+    {
+      "calendar_id": "kihoku-yoshifuji",
+      "display_name": "好藤地区（年則を含む）",
+      "address_labels": ["好藤地区", "年則"],
+      "rules": {"burnable": "火・金", "nonburnable": "月", "pet_bottles": "第2・第4金", "containers": "水"},
+      "days_sha256": "1277c42a4ac547737dc6960d3449314c51e95e0f8b9da81b5a1feff28474dd26",
+      "dated_cells": 157,
+      "collection_dates": {"containers": 40, "burnable": 78, "nonburnable": 39, "pet_bottles": 18}
+    },
+    {
+      "calendar_id": "kihoku-mishima",
+      "display_name": "三島地区",
+      "address_labels": ["三島地区"],
+      "rules": {"burnable": "火・金", "nonburnable": "木", "pet_bottles": "第2・第4金", "containers": "水"},
+      "days_sha256": "8180555c2c01877790ed218638c09b09f73bc679e286eb50285593097275c370",
+      "dated_cells": 158,
+      "collection_dates": {"containers": 40, "nonburnable": 40, "burnable": 78, "pet_bottles": 18}
+    },
+    {
+      "calendar_id": "kihoku-hiyoshi",
+      "display_name": "日吉地区",
+      "address_labels": ["日吉地区"],
+      "rules": {"burnable": "火・金", "nonburnable": "木", "pet_bottles": "第1・第3金", "containers": "水"},
+      "days_sha256": "bde2a4feebb44c30a5594cca87c04076c0b9e6e9374e758f3bee55c23e555024",
+      "dated_cells": 158,
+      "collection_dates": {"containers": 40, "nonburnable": 40, "burnable": 78, "pet_bottles": 18}
+    },
+    {
+      "calendar_id": "kihoku-chikanaga-sakae-asahi",
+      "display_name": "近永地区（栄町・旭町）",
+      "address_labels": ["栄町", "旭町"],
+      "rules": {"burnable": "火・金", "nonburnable": "火", "pet_bottles": "第1・第3金", "containers": "水"},
+      "days_sha256": "0b66d494fbe4a355fed9be99c63365ec7e451f1de05776ae0536dad92c83d2a6",
+      "dated_cells": 118,
+      "collection_dates": {"containers": 40, "burnable": 78, "pet_bottles": 18, "nonburnable": 39}
+    },
+    {
+      "calendar_id": "kihoku-chikanaga-central",
+      "display_name": "近永地区（新町・本町・南町・鬼北の里）",
+      "address_labels": ["新町", "本町", "南町", "鬼北の里"],
+      "rules": {"burnable": "月・木", "nonburnable": "火", "pet_bottles": "第1・第3金", "containers": "水"},
+      "days_sha256": "02bed80374437af58c36c56bec808ca12c9526e178e15347f691a4e9d97899d7",
+      "dated_cells": 176,
+      "collection_dates": {"containers": 40, "burnable": 79, "pet_bottles": 18, "nonburnable": 39}
+    },
+    {
+      "calendar_id": "kihoku-chikanaga-outer",
+      "display_name": "近永地区（牛野川・水分・北川・成川・今在家・奈良・芝・中野川・永野市）",
+      "address_labels": ["牛野川", "水分", "北川", "成川", "今在家", "奈良", "芝", "中野川", "永野市"],
+      "rules": {"burnable": "月・木", "nonburnable": "金", "pet_bottles": "第1・第3金", "containers": "水"},
+      "days_sha256": "19f04914ad58d5424ca48c7836132b8e2bdb2151794bcd5ebaa32d467b958200",
+      "dated_cells": 158,
+      "collection_dates": {"containers": 40, "burnable": 79, "nonburnable": 39, "pet_bottles": 18}
+    }
+  ],
+  "verification": {
+    "method": "Official HTML district tables converted from weekly and first/third or second/fourth Friday rules",
+    "coverage": "Eight district combinations; burnable, nonburnable, PET bottles and bottles/cans",
+    "limitations": "The official page publishes recurring weekdays, not a dated annual calendar; temporary holiday and year-end changes are not inferred",
+    "reviewed_at": "2026-11-03"
+  }
+}

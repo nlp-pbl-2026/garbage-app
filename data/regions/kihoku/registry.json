@@ -1,0 +1,259 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38488",
+  "municipality_name": "鬼北町",
+  "prefecture_id": "38",
+  "prefecture_name": "愛媛県",
+  "version": "kihoku-2026.1",
+  "valid_from": "2026-04-01",
+  "valid_to": "2026-12-31",
+  "collection_areas": [
+    {
+      "id": "38488-izumi",
+      "name": "泉地区",
+      "display_name": "泉地区",
+      "calendar_id": "kihoku-izumi",
+      "rule_profile_id": "kihoku",
+      "address_labels": [
+        "泉地区"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.kihoku.ehime.jp/soshiki/kankyou/58.html"
+    },
+    {
+      "id": "38488-aiji",
+      "name": "愛治地区",
+      "display_name": "愛治地区",
+      "calendar_id": "kihoku-aiji",
+      "rule_profile_id": "kihoku",
+      "address_labels": [
+        "愛治地区"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.kihoku.ehime.jp/soshiki/kankyou/58.html"
+    },
+    {
+      "id": "38488-yoshifuji",
+      "name": "好藤地区",
+      "display_name": "好藤地区（年則を含む）",
+      "calendar_id": "kihoku-yoshifuji",
+      "rule_profile_id": "kihoku",
+      "address_labels": [
+        "好藤地区",
+        "年則"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.kihoku.ehime.jp/soshiki/kankyou/58.html"
+    },
+    {
+      "id": "38488-mishima",
+      "name": "三島地区",
+      "display_name": "三島地区",
+      "calendar_id": "kihoku-mishima",
+      "rule_profile_id": "kihoku",
+      "address_labels": [
+        "三島地区"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.kihoku.ehime.jp/soshiki/kankyou/58.html"
+    },
+    {
+      "id": "38488-hiyoshi",
+      "name": "日吉地区",
+      "display_name": "日吉地区",
+      "calendar_id": "kihoku-hiyoshi",
+      "rule_profile_id": "kihoku",
+      "address_labels": [
+        "日吉地区"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.kihoku.ehime.jp/soshiki/kankyou/58.html"
+    },
+    {
+      "id": "38488-chikanaga-sakae-asahi",
+      "name": "近永地区 栄町・旭町",
+      "display_name": "近永地区（栄町・旭町）",
+      "calendar_id": "kihoku-chikanaga-sakae-asahi",
+      "rule_profile_id": "kihoku",
+      "address_labels": [
+        "栄町",
+        "旭町"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.kihoku.ehime.jp/soshiki/kankyou/58.html"
+    },
+    {
+      "id": "38488-chikanaga-central",
+      "name": "近永地区 中心部",
+      "display_name": "近永地区（新町・本町・南町・鬼北の里）",
+      "calendar_id": "kihoku-chikanaga-central",
+      "rule_profile_id": "kihoku",
+      "address_labels": [
+        "新町",
+        "本町",
+        "南町",
+        "鬼北の里"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.kihoku.ehime.jp/soshiki/kankyou/58.html"
+    },
+    {
+      "id": "38488-chikanaga-outer",
+      "name": "近永地区 周辺部",
+      "display_name": "近永地区（牛野川・水分・北川・成川・今在家・奈良・芝・中野川・永野市）",
+      "calendar_id": "kihoku-chikanaga-outer",
+      "rule_profile_id": "kihoku",
+      "address_labels": [
+        "牛野川",
+        "水分",
+        "北川",
+        "成川",
+        "今在家",
+        "奈良",
+        "芝",
+        "中野川",
+        "永野市"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.kihoku.ehime.jp/soshiki/kankyou/58.html"
+    }
+  ],
+  "calendars": [
+    {
+      "id": "kihoku-izumi",
+      "rule_profile_id": "kihoku"
+    },
+    {
+      "id": "kihoku-aiji",
+      "rule_profile_id": "kihoku"
+    },
+    {
+      "id": "kihoku-yoshifuji",
+      "rule_profile_id": "kihoku"
+    },
+    {
+      "id": "kihoku-mishima",
+      "rule_profile_id": "kihoku"
+    },
+    {
+      "id": "kihoku-hiyoshi",
+      "rule_profile_id": "kihoku"
+    },
+    {
+      "id": "kihoku-chikanaga-sakae-asahi",
+      "rule_profile_id": "kihoku"
+    },
+    {
+      "id": "kihoku-chikanaga-central",
+      "rule_profile_id": "kihoku"
+    },
+    {
+      "id": "kihoku-chikanaga-outer",
+      "rule_profile_id": "kihoku"
+    }
+  ],
+  "rule_profiles": {
+    "kihoku": {
+      "items_path": "knowledge/items.csv",
+      "embedding_index_path": "knowledge/item_embeddings.npz",
+      "index_profile_id": "citywide",
+      "calendar_path": "generated/calendar-2026.json",
+      "classification_rules": "鬼北町公式の家庭ごみ分別早見表と、選択した地区の収集曜日に従う。公式分類（可燃、不燃、びん・缶、ペットボトル、古紙、資源、粗大、禁止）を保持し、指定袋に入るか、素材、汚れ、電池の有無などの条件を確認する。条件を利用者の説明や画像から確認できない場合は推測せず質問する。可燃・不燃・びん缶は町指定袋を使い、収集日の午前8時までに指定場所へ出す。ペットボトルはキャップとラベルを外し、すすいで乾かしてつぶす。令和8年4月から、汚れを落として乾かした容器包装プラスチックとプラスチック製品は地区別拠点へ持ち込めるが、従来どおり可燃ごみでも回収される。ペットボトル、異素材を多く含むもの、厚さ5mm以上のもの、強化プラスチック、在宅医療品、電化製品、事業系ごみは拠点回収の対象外。小型充電式電池は令和8年4月開始の分別回収方法に従い、可燃・不燃の指定袋へ混ぜない。臨時の休日・年末年始変更は公式発表を確認する。",
+      "size_question": "鬼北町の指定ごみ袋に入りますか？素材や汚れ、電池の有無を確認できますか？",
+      "knowledge_title": "鬼北町公式家庭ごみ分別早見表",
+      "categories": {
+        "burnable": {
+          "name": "可燃",
+          "collection_type_id": "burnable",
+          "cutoff": "08:00",
+          "color": "#E74C3C"
+        },
+        "nonburnable": {
+          "name": "不燃",
+          "collection_type_id": "nonburnable",
+          "cutoff": "08:00",
+          "color": "#4B78C2"
+        },
+        "containers": {
+          "name": "びん・缶",
+          "collection_type_id": "containers",
+          "cutoff": "08:00",
+          "color": "#8B5A2B"
+        },
+        "pet_bottles": {
+          "name": "ペットボトル",
+          "collection_type_id": "pet_bottles",
+          "cutoff": "08:00",
+          "color": "#36A852"
+        },
+        "waste_paper": {
+          "name": "古紙",
+          "color": "#D5B56B",
+          "answer_note": "地区別の偶数月・奇数月の回収、または本庁・日吉支所の毎月第2・第4土曜日回収を確認してください。"
+        },
+        "resources": {
+          "name": "資源",
+          "color": "#65B9C7",
+          "answer_note": "廃蛍光管、乾電池、古着、小型家電、廃食用油は対象品と回収場所を確認してください。"
+        },
+        "clean_plastic": {
+          "name": "きれいなプラスチック",
+          "color": "#8BC34A",
+          "answer_note": "令和8年4月開始の地区別拠点回収です。対象外条件を確認し、容器包装とプラスチック製品に分けます。"
+        },
+        "rechargeable_batteries": {
+          "name": "小型充電式電池",
+          "color": "#F0A43A",
+          "answer_note": "令和8年4月開始の専用分別回収です。可燃・不燃ごみに混ぜず、端子を絶縁して指定場所へ持ち込みます。膨らんだ電池は事務所へ直接持ち込んでください。"
+        },
+        "bulky": {
+          "name": "粗大",
+          "color": "#8D8D8D",
+          "answer_note": "指定袋に入らないものは、役場等への持込、予約制の水曜回収、または許可業者への依頼を確認してください。"
+        },
+        "not_collected": {
+          "name": "禁止",
+          "color": "#222222",
+          "answer_note": "鬼北町では収集・処理しません。販売店、メーカー、専門業者などへ相談してください。"
+        }
+      },
+      "bulky_waste": {
+        "category_code": "bulky",
+        "config": {
+          "municipality_id": "38488",
+          "municipality_name": "鬼北町",
+          "collection_frequency": "予約制・水曜日（祝日を除く）",
+          "reception_hours": "役場への直接持込は開庁時間内。広域環境センターの受付条件は公式案内で確認",
+          "collection_rules": "指定袋に入らない粗大ごみは、役場環境保全課・日吉支所または広域環境センターへ直接持ち込むか、町委託業者・許可業者へ依頼します。",
+          "fee_structure_type": "item_or_weight_based",
+          "application_method": "phone_or_direct_dropoff",
+          "phone_number": "0895-45-1111",
+          "web_form_url": null,
+          "information_url": "https://www.town.kihoku.ehime.jp/soshiki/kankyou/15663.html",
+          "steps": [
+            {
+              "step_number": 1,
+              "title": "処理方法を選ぶ",
+              "description": "自分で持ち込むか、環境保全課の予約回収または町の許可業者への依頼を選びます。"
+            },
+            {
+              "step_number": 2,
+              "title": "料金と受付条件を確認",
+              "description": "町で処理する粗大ごみは1品500円からです。広域環境センターは10kgあたり50円です。"
+            },
+            {
+              "step_number": 3,
+              "title": "予約または直接持込",
+              "description": "町委託業者の回収は祝日を除く水曜日限定で、事前予約が必要です。"
+            },
+            {
+              "step_number": 4,
+              "title": "運搬を依頼する場合",
+              "description": "運搬手数料または許可業者の見積額を確認してから依頼します。"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
