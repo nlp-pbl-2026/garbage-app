@@ -1,0 +1,352 @@
+{
+  "schema_version": 1,
+  "evaluation_time": "2026-11-04T07:00:00+09:00",
+  "cases": [
+    {
+      "case": 1,
+      "input": {
+        "municipality_id": "38205",
+        "district_id": "38205-01",
+        "query": "使い終わったモバイルバッテリー",
+        "clarifications": []
+      },
+      "expected": "hazardous",
+      "check_type": "classification",
+      "image": false
+    },
+    {
+      "case": 2,
+      "input": {
+        "municipality_id": "38205",
+        "district_id": "38205-02",
+        "query": "家庭で使った自動車用の鉛バッテリー",
+        "clarifications": []
+      },
+      "expected": "not_collected",
+      "check_type": "classification",
+      "image": false
+    },
+    {
+      "case": 3,
+      "input": {
+        "municipality_id": "38205",
+        "district_id": "38205-03",
+        "query": "使い終わったボタン電池",
+        "clarifications": []
+      },
+      "expected": "hazardous",
+      "check_type": "classification",
+      "image": false
+    },
+    {
+      "case": 4,
+      "input": {
+        "municipality_id": "38205",
+        "district_id": "38205-04",
+        "query": "使い切ったカセット式ガスボンベ",
+        "clarifications": []
+      },
+      "expected": "bottles_cans",
+      "check_type": "classification",
+      "image": false
+    },
+    {
+      "case": 5,
+      "input": {
+        "municipality_id": "38205",
+        "district_id": "38205-05",
+        "query": "キャップ・ラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+        "clarifications": []
+      },
+      "expected": "pet_bottles",
+      "check_type": "classification",
+      "image": false
+    },
+    {
+      "case": 6,
+      "input": {
+        "municipality_id": "38205",
+        "district_id": "38205-06",
+        "query": "ペットボトルから外したプラスチック製キャップだけ",
+        "clarifications": []
+      },
+      "expected": "plastic_packaging",
+      "check_type": "classification",
+      "image": false
+    },
+    {
+      "case": 7,
+      "input": {
+        "municipality_id": "38205",
+        "district_id": "38205-07",
+        "query": "洗った白色の発泡食品トレイ",
+        "clarifications": []
+      },
+      "expected": "plastic_packaging",
+      "check_type": "classification",
+      "image": false
+    },
+    {
+      "case": 8,
+      "input": {
+        "municipality_id": "38205",
+        "district_id": "38205-08",
+        "query": "20cmのプラスチック製バケツ",
+        "clarifications": []
+      },
+      "expected": "burnable",
+      "check_type": "classification",
+      "image": false
+    },
+    {
+      "case": 9,
+      "input": {
+        "municipality_id": "38205",
+        "district_id": "38205-09",
+        "query": "40cmのプラスチック製バケツ",
+        "clarifications": []
+      },
+      "expected": "bulky",
+      "check_type": "classification",
+      "image": false
+    },
+    {
+      "case": 10,
+      "input": {
+        "municipality_id": "38205",
+        "district_id": "38205-10",
+        "query": "壊れたプラスチック製バケツ",
+        "clarifications": []
+      },
+      "expected": null,
+      "check_type": "missing_size",
+      "image": false
+    },
+    {
+      "case": 11,
+      "input": {
+        "municipality_id": "38205",
+        "district_id": "38205-11",
+        "query": "壊れたプラスチック製バケツ",
+        "clarifications": [
+          {
+            "question": "取っ手も含め30cm以下ですか？",
+            "answer": "はい"
+          }
+        ]
+      },
+      "expected": "burnable",
+      "check_type": "classification",
+      "image": false
+    },
+    {
+      "case": 12,
+      "input": {
+        "municipality_id": "38205",
+        "district_id": "38205-12",
+        "query": "壊れたプラスチック製バケツ",
+        "clarifications": [
+          {
+            "question": "取っ手も含め30cm以下ですか？",
+            "answer": "いいえ"
+          }
+        ]
+      },
+      "expected": "bulky",
+      "check_type": "classification",
+      "image": false
+    },
+    {
+      "case": 13,
+      "input": {
+        "municipality_id": "38205",
+        "district_id": "38205-13",
+        "query": "汚れてひどく破れた古い綿のシャツ",
+        "clarifications": []
+      },
+      "expected": "burnable",
+      "check_type": "classification",
+      "image": false
+    },
+    {
+      "case": 14,
+      "input": {
+        "municipality_id": "38205",
+        "district_id": "38205-14",
+        "query": "使わなくなった冬物のセーター",
+        "clarifications": []
+      },
+      "expected": "burnable",
+      "check_type": "classification",
+      "image": false
+    },
+    {
+      "case": 15,
+      "input": {
+        "municipality_id": "38205",
+        "district_id": "38205-15",
+        "query": "洗濯済みで汚れ・破れのない夏物の綿のシャツ",
+        "clarifications": []
+      },
+      "expected": "textiles",
+      "check_type": "classification",
+      "image": false
+    },
+    {
+      "case": 16,
+      "input": {
+        "municipality_id": "38205",
+        "district_id": "38205-13",
+        "query": "内側が白く容量1リットルの牛乳パック",
+        "clarifications": []
+      },
+      "expected": "paper",
+      "check_type": "classification",
+      "image": false
+    },
+    {
+      "case": 17,
+      "input": {
+        "municipality_id": "38205",
+        "district_id": "38205-14",
+        "query": "内側が銀色のアルミコーティングされた飲料用紙パック",
+        "clarifications": []
+      },
+      "expected": "burnable",
+      "check_type": "classification",
+      "image": false
+    },
+    {
+      "case": 18,
+      "input": {
+        "municipality_id": "38205",
+        "district_id": "38205-15",
+        "query": "取っ手も含め25cmの金属製フライパン",
+        "clarifications": []
+      },
+      "expected": "non_burnable",
+      "check_type": "classification",
+      "image": false
+    },
+    {
+      "case": 19,
+      "input": {
+        "municipality_id": "38205",
+        "district_id": "38205-01",
+        "query": "取っ手も含め40cmの金属製フライパン",
+        "clarifications": []
+      },
+      "expected": "bulky",
+      "check_type": "classification",
+      "image": false
+    },
+    {
+      "case": 20,
+      "input": {
+        "municipality_id": "38205",
+        "district_id": "38205-02",
+        "query": "家庭で使用した古いマッサージチェア",
+        "clarifications": []
+      },
+      "expected": "self_delivery",
+      "check_type": "classification",
+      "image": false
+    },
+    {
+      "case": 21,
+      "input": {
+        "municipality_id": "38205",
+        "district_id": "38205-03",
+        "query": "家庭用の古い液晶テレビ",
+        "clarifications": []
+      },
+      "expected": "not_collected",
+      "check_type": "classification",
+      "image": false
+    },
+    {
+      "case": 22,
+      "input": {
+        "municipality_id": "38205",
+        "district_id": "38205-04",
+        "query": "割れていない使用済み蛍光灯",
+        "clarifications": []
+      },
+      "expected": "hazardous",
+      "check_type": "classification",
+      "image": false
+    },
+    {
+      "case": 23,
+      "input": {
+        "municipality_id": "38205",
+        "district_id": "38205-05",
+        "query": "",
+        "clarifications": []
+      },
+      "expected": null,
+      "check_type": "image_response",
+      "image": true
+    },
+    {
+      "case": 24,
+      "input": {
+        "municipality_id": "38205",
+        "district_id": "38205-06",
+        "query": "使い切ったスプレー缶です",
+        "clarifications": []
+      },
+      "expected": "bottles_cans",
+      "check_type": "classification",
+      "image": true
+    },
+    {
+      "case": 25,
+      "input": {
+        "municipality_id": "38201",
+        "district_id": "38201-08",
+        "query": "PETマーク付き飲料用ペットボトル本体。キャップとラベルは外しました",
+        "clarifications": []
+      },
+      "expected": "ペット",
+      "check_type": "classification",
+      "image": false
+    },
+    {
+      "case": 26,
+      "input": {
+        "municipality_id": "38204",
+        "district_id": "38204-01",
+        "query": "水洗いした空の飲料用アルミ缶",
+        "clarifications": []
+      },
+      "expected": "cans",
+      "check_type": "classification",
+      "image": false
+    },
+    {
+      "case": 27,
+      "input": {
+        "municipality_id": "38210",
+        "district_id": "38210-iyo-central",
+        "query": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+        "clarifications": []
+      },
+      "expected": "pet_bottles",
+      "check_type": "classification",
+      "image": false
+    },
+    {
+      "case": 28,
+      "input": {
+        "municipality_id": "38442",
+        "district_id": "38442-01",
+        "query": "使い終わったアルカリ乾電池",
+        "clarifications": []
+      },
+      "expected": "hazardous",
+      "check_type": "classification",
+      "image": false
+    }
+  ]
+}

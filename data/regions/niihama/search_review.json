@@ -1,0 +1,385 @@
+{
+  "schema_version": 1,
+  "evaluation_date": "2026-11-04",
+  "model": "amazon.nova-lite-v1:0",
+  "embedding_model": "amazon.titan-embed-text-v2:0",
+  "rag_settings": {
+    "use_bedrock_knowledge_base": false,
+    "lexical_search_enabled": false,
+    "top_k": 8,
+    "min_similarity": 0.15,
+    "confidence_threshold": 0.75
+  },
+  "initial": {
+    "attempted": 28,
+    "passed": 22,
+    "failed_cases": [
+      2,
+      3,
+      20,
+      23,
+      26,
+      27
+    ],
+    "source_records": 1362
+  },
+  "followup": {
+    "attempted": 8,
+    "passed": 6,
+    "case_ids": [
+      1,
+      2,
+      3,
+      20,
+      23,
+      24,
+      26,
+      27
+    ],
+    "source_records": 1364
+  },
+  "latest_observations": {
+    "niihama_passed": 23,
+    "niihama_total": 24,
+    "existing_passed": 3,
+    "existing_total": 4,
+    "not_a_full_final_version_rerun": true
+  },
+  "cases": [
+    {
+      "case": 1,
+      "query": "使い終わったモバイルバッテリー",
+      "municipality_id": "38205",
+      "expected": "hazardous",
+      "initial_pass": true,
+      "latest_pass": true,
+      "latest_status": "answered",
+      "latest_category": "hazardous",
+      "retested_after_condition_fix": true
+    },
+    {
+      "case": 2,
+      "query": "家庭で使った自動車用の鉛バッテリー",
+      "municipality_id": "38205",
+      "expected": "not_collected",
+      "initial_pass": false,
+      "latest_pass": true,
+      "latest_status": "answered",
+      "latest_category": "not_collected",
+      "retested_after_condition_fix": true
+    },
+    {
+      "case": 3,
+      "query": "使い終わったボタン電池",
+      "municipality_id": "38205",
+      "expected": "hazardous",
+      "initial_pass": false,
+      "latest_pass": true,
+      "latest_status": "answered",
+      "latest_category": "hazardous",
+      "retested_after_condition_fix": true
+    },
+    {
+      "case": 4,
+      "query": "使い切ったカセット式ガスボンベ",
+      "municipality_id": "38205",
+      "expected": "bottles_cans",
+      "initial_pass": true,
+      "latest_pass": true,
+      "latest_status": "answered",
+      "latest_category": "bottles_cans",
+      "retested_after_condition_fix": false
+    },
+    {
+      "case": 5,
+      "query": "キャップ・ラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+      "municipality_id": "38205",
+      "expected": "pet_bottles",
+      "initial_pass": true,
+      "latest_pass": true,
+      "latest_status": "answered",
+      "latest_category": "pet_bottles",
+      "retested_after_condition_fix": false
+    },
+    {
+      "case": 6,
+      "query": "ペットボトルから外したプラスチック製キャップだけ",
+      "municipality_id": "38205",
+      "expected": "plastic_packaging",
+      "initial_pass": true,
+      "latest_pass": true,
+      "latest_status": "answered",
+      "latest_category": "plastic_packaging",
+      "retested_after_condition_fix": false
+    },
+    {
+      "case": 7,
+      "query": "洗った白色の発泡食品トレイ",
+      "municipality_id": "38205",
+      "expected": "plastic_packaging",
+      "initial_pass": true,
+      "latest_pass": true,
+      "latest_status": "answered",
+      "latest_category": "plastic_packaging",
+      "retested_after_condition_fix": false
+    },
+    {
+      "case": 8,
+      "query": "20cmのプラスチック製バケツ",
+      "municipality_id": "38205",
+      "expected": "burnable",
+      "initial_pass": true,
+      "latest_pass": true,
+      "latest_status": "answered",
+      "latest_category": "burnable",
+      "retested_after_condition_fix": false
+    },
+    {
+      "case": 9,
+      "query": "40cmのプラスチック製バケツ",
+      "municipality_id": "38205",
+      "expected": "bulky",
+      "initial_pass": true,
+      "latest_pass": true,
+      "latest_status": "answered",
+      "latest_category": "bulky",
+      "retested_after_condition_fix": false
+    },
+    {
+      "case": 10,
+      "query": "壊れたプラスチック製バケツ",
+      "municipality_id": "38205",
+      "expected": null,
+      "initial_pass": true,
+      "latest_pass": true,
+      "latest_status": "needs_clarification",
+      "latest_category": null,
+      "retested_after_condition_fix": false
+    },
+    {
+      "case": 11,
+      "query": "壊れたプラスチック製バケツ",
+      "municipality_id": "38205",
+      "expected": "burnable",
+      "initial_pass": true,
+      "latest_pass": true,
+      "latest_status": "answered",
+      "latest_category": "burnable",
+      "retested_after_condition_fix": false
+    },
+    {
+      "case": 12,
+      "query": "壊れたプラスチック製バケツ",
+      "municipality_id": "38205",
+      "expected": "bulky",
+      "initial_pass": true,
+      "latest_pass": true,
+      "latest_status": "answered",
+      "latest_category": "bulky",
+      "retested_after_condition_fix": false
+    },
+    {
+      "case": 13,
+      "query": "汚れてひどく破れた古い綿のシャツ",
+      "municipality_id": "38205",
+      "expected": "burnable",
+      "initial_pass": true,
+      "latest_pass": true,
+      "latest_status": "answered",
+      "latest_category": "burnable",
+      "retested_after_condition_fix": false
+    },
+    {
+      "case": 14,
+      "query": "使わなくなった冬物のセーター",
+      "municipality_id": "38205",
+      "expected": "burnable",
+      "initial_pass": true,
+      "latest_pass": true,
+      "latest_status": "answered",
+      "latest_category": "burnable",
+      "retested_after_condition_fix": false
+    },
+    {
+      "case": 15,
+      "query": "洗濯済みで汚れ・破れのない夏物の綿のシャツ",
+      "municipality_id": "38205",
+      "expected": "textiles",
+      "initial_pass": true,
+      "latest_pass": true,
+      "latest_status": "answered",
+      "latest_category": "textiles",
+      "retested_after_condition_fix": false
+    },
+    {
+      "case": 16,
+      "query": "内側が白く容量1リットルの牛乳パック",
+      "municipality_id": "38205",
+      "expected": "paper",
+      "initial_pass": true,
+      "latest_pass": true,
+      "latest_status": "answered",
+      "latest_category": "paper",
+      "retested_after_condition_fix": false
+    },
+    {
+      "case": 17,
+      "query": "内側が銀色のアルミコーティングされた飲料用紙パック",
+      "municipality_id": "38205",
+      "expected": "burnable",
+      "initial_pass": true,
+      "latest_pass": true,
+      "latest_status": "answered",
+      "latest_category": "burnable",
+      "retested_after_condition_fix": false
+    },
+    {
+      "case": 18,
+      "query": "取っ手も含め25cmの金属製フライパン",
+      "municipality_id": "38205",
+      "expected": "non_burnable",
+      "initial_pass": true,
+      "latest_pass": true,
+      "latest_status": "answered",
+      "latest_category": "non_burnable",
+      "retested_after_condition_fix": false
+    },
+    {
+      "case": 19,
+      "query": "取っ手も含め40cmの金属製フライパン",
+      "municipality_id": "38205",
+      "expected": "bulky",
+      "initial_pass": true,
+      "latest_pass": true,
+      "latest_status": "answered",
+      "latest_category": "bulky",
+      "retested_after_condition_fix": false
+    },
+    {
+      "case": 20,
+      "query": "家庭で使用した古いマッサージチェア",
+      "municipality_id": "38205",
+      "expected": "self_delivery",
+      "initial_pass": false,
+      "latest_pass": true,
+      "latest_status": "answered",
+      "latest_category": "self_delivery",
+      "retested_after_condition_fix": true
+    },
+    {
+      "case": 21,
+      "query": "家庭用の古い液晶テレビ",
+      "municipality_id": "38205",
+      "expected": "not_collected",
+      "initial_pass": true,
+      "latest_pass": true,
+      "latest_status": "answered",
+      "latest_category": "not_collected",
+      "retested_after_condition_fix": false
+    },
+    {
+      "case": 22,
+      "query": "割れていない使用済み蛍光灯",
+      "municipality_id": "38205",
+      "expected": "hazardous",
+      "initial_pass": true,
+      "latest_pass": true,
+      "latest_status": "answered",
+      "latest_category": "hazardous",
+      "retested_after_condition_fix": false
+    },
+    {
+      "case": 23,
+      "query": "",
+      "municipality_id": "38205",
+      "expected": null,
+      "initial_pass": false,
+      "latest_pass": false,
+      "latest_status": "answered",
+      "latest_category": "burnable",
+      "retested_after_condition_fix": true
+    },
+    {
+      "case": 24,
+      "query": "使い切ったスプレー缶です",
+      "municipality_id": "38205",
+      "expected": "bottles_cans",
+      "initial_pass": true,
+      "latest_pass": true,
+      "latest_status": "answered",
+      "latest_category": "bottles_cans",
+      "retested_after_condition_fix": true
+    },
+    {
+      "case": 25,
+      "query": "PETマーク付き飲料用ペットボトル本体。キャップとラベルは外しました",
+      "municipality_id": "38201",
+      "expected": "ペット",
+      "initial_pass": true,
+      "latest_pass": true,
+      "latest_status": "answered",
+      "latest_category": "ペット",
+      "retested_after_condition_fix": false
+    },
+    {
+      "case": 26,
+      "query": "水洗いした空の飲料用アルミ缶",
+      "municipality_id": "38204",
+      "expected": "cans",
+      "initial_pass": false,
+      "latest_pass": true,
+      "latest_status": "answered",
+      "latest_category": "cans",
+      "retested_after_condition_fix": true
+    },
+    {
+      "case": 27,
+      "query": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+      "municipality_id": "38210",
+      "expected": "pet_bottles",
+      "initial_pass": false,
+      "latest_pass": false,
+      "latest_status": "needs_clarification",
+      "latest_category": null,
+      "retested_after_condition_fix": true
+    },
+    {
+      "case": 28,
+      "query": "使い終わったアルカリ乾電池",
+      "municipality_id": "38442",
+      "expected": "hazardous",
+      "initial_pass": true,
+      "latest_pass": true,
+      "latest_status": "answered",
+      "latest_category": "hazardous",
+      "retested_after_condition_fix": false
+    }
+  ],
+  "notes": [
+    "初回ケース3は店頭回収案内を市収集不可と誤解した評価期待値。辞典の有害区分を確認して期待値を訂正し、追試でも有害を確認。初回成績は当時の誤期待値を含むまま保持。",
+    "初回23は画像のみの分類応答が600トークンで切れHTTP503。追試はHTTP200だが缶を化粧ポーチと誤認し燃やすごみ。画像だけの認識精度は未解決。説明付き同じ画像24は初回・追試とも成功。",
+    "伊予市27はPET本体にプラマークの不要な追加質問が残る。既存自治体のデータ・索引・通常判定プロンプトは変更していない。八幡浜26は初回不燃、追試缶で変動。",
+    "28例を初回実施し8例を追試。最終版で全28例を再実行した結果ではない。",
+    "画像は公式ガイド5ページの缶イラスト1点。実写・多品目画像の精度や実機UIは検証していない。"
+  ],
+  "cost": {
+    "approved_usd": 1,
+    "index_attempts": 1370,
+    "index_successful_calls": 1367,
+    "local_auth_failures_before_inference": 3,
+    "evaluation_cases": 36,
+    "evaluation_model_calls": 108,
+    "evaluation_nova_calls": 72,
+    "evaluation_titan_calls": 36,
+    "conservative_combined_usd": 0.2131624,
+    "cost_note": "請求額そのものではない。TitanはUTF-8バイト数+128を用いる保守的枠、Novaは成功時の実績トークン数をUSD1/百万トークンで換算。認証失敗の予約額も保持。",
+    "nova_input_tokens": 155483,
+    "nova_output_tokens": 6154,
+    "index_input_tokens": 32593
+  },
+  "post_evaluation_changes": [
+    "辞典※2「切るかたたんで30cm以下のもの」の条件付き分類コードを補正。品目名・注記・Embeddingテキストは変更せず、既存ベクトルからmanifestを更新。合成テストと公式データ検証を実施し、実APIは再評価していない。",
+    "寸法が不明という回答の扱いと、単位を省略した数値回答を合成テストで追加確認。",
+    "定期搬出期限を分別設定ごとの判定ルールへ明記（別子山9時、市街地・大島7時30分）。公式データ/APIテストで確認。追試後のプロンプト変更であり、この状態で実API全件を再評価していない。"
+  ]
+}
