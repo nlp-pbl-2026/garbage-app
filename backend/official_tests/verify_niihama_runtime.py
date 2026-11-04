@@ -42,6 +42,11 @@ def test_all_15_areas_profiles_and_shared_frontend_calendar():
         cal = CalendarService(region=ctx)
         assert ctx.version == "niihama-2026.1" and cal.availability == "available"
         assert ctx.rules.index_profile_id == "citywide"
+        assert ctx.rules.classification_rules.endswith(
+            "定期収集の搬出期限は当日9時です。"
+            if area["rule_profile_id"] == "besshiyama"
+            else "定期収集の搬出期限は当日7時30分です。"
+        )
         assert "niihama/knowledge" in str(ctx.rules.items_path)
         for code in ("bulky", "not_collected", "self_delivery", "consultation"):
             assert cal.next_collection(code, from_date=date(2026, 4, 1)) is None

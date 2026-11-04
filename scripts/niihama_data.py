@@ -336,7 +336,12 @@ def registry_record(areas):
             "index_profile_id": "citywide",
             "calendar_path": "generated/calendar-2026.json",
             "knowledge_title": "新居浜市公式ごみ分別大辞典・2026年度カレンダー",
-            "classification_rules": rules["classification_rules"],
+            "classification_rules": rules["classification_rules"]
+            + (
+                "\nこの分別設定は別子山地域です。定期収集の搬出期限は当日9時です。"
+                if key == "besshiyama"
+                else "\nこの分別設定の定期収集の搬出期限は当日7時30分です。"
+            ),
             "size_threshold_cm": 30,
             "size_question": "品物の最も長い部分は30cm以下ですか？（取っ手などを含めて測ってください）",
             "categories": categories,
