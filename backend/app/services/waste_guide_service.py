@@ -388,6 +388,15 @@ class BedrockGateway:
             if region is None or region.municipality_id == "38201" else
             "根拠にある素材・大きさ・表示・排出元による分類の変更は、注意書きではなく分岐条件である。"
         )
+        dimension_based = region is not None and region.rules.size_threshold_cm is not None
+        size_check = (
+            f"{region.rules.size_question}。検索根拠に大きさによる分類の分岐があるか。"
+            if dimension_based else "指定袋に入るかどうかで、通常ごみと粗大ごみに分かれないか。"
+        )
+        size_question_rule = (
+            "素材によって分類が変わるなら素材を聞く。大きさによって変わるなら、地域資料にある寸法の条件を聞く。"
+            if dimension_based else "素材によって分類が変わるなら素材を聞く。大きさによって変わるなら指定袋に入るかを聞く。"
+        )
         prompt = f"""
 あなたは{region.municipality_label if region else '松山市'}のごみ分別判定器です。検索根拠だけを使い、品目の分類を判定してください。
 人間や人物など、ごみとして扱えない対象について分別の追加質問を生成してはいけません。
@@ -403,7 +412,7 @@ class BedrockGateway:
    - 品物の特定: 一般名詞だけで、具体的な品目・用途・使用場面が複数残っていないか。
    - 素材・構成: プラスチック、紙、木、布、金属、ガラス、陶器などで分類が分かれないか。
    - 製品か容器包装か: 同じプラスチックでも、繰り返し使う製品と商品を包んだ容器包装を区別できるか。
-   - 大きさ: 指定袋に入るかどうかで、通常ごみと粗大ごみに分かれないか。
+   - 大きさ: {size_check}
    - 状態: 汚れを取り除けるか、割れているかなどで、分類や受入可否が変わらないか。
    - 中身: 液体、油、薬品、ガス、燃料などが残っているかどうかで扱いが変わらないか。
    - 識別表示: PET表示、プラマーク、材質表示などを確認しないと候補を区別できないか。
@@ -425,7 +434,7 @@ class BedrockGateway:
 
 追加質問の規則:
 - 一度に質問する論点は一つだけにし、可能なら根拠に存在する選択肢を短く示す。
-- 素材によって分類が変わるなら素材を聞く。大きさによって変わるなら指定袋に入るかを聞く。
+- {size_question_rule}
 - 既に質問または補足で回答された情報を再質問しない。同じ意味の質問を言い換えて繰り返さない。
 - 回答によって分類が変わらず、「すすぐ」「使い切る」「電池を外す」等の出し方だけが変わる場合は、
   その確認を質問せず、分類確定後の disposal_instructions で案内する。
@@ -897,6 +906,7 @@ class WasteGuideService:
             clarifications=clarification_items,
             documents=documents,
             region=region,
+            selected_evidence_indexes=decision.evidence_indexes,
         )
         required_question = conditional_question
         if required_question is None and ambiguity_question and (
@@ -1206,6 +1216,7 @@ class WasteGuideService:
         clarifications: list[dict],
         documents: list[RetrievedDocument],
         region: RegionContext | None = None,
+        selected_evidence_indexes: tuple[int, ...] = (),
     ) -> str | None:
         """地域資料の分類分岐条件が未回答なら、確定前に一つ確認する。"""
 
@@ -1231,6 +1242,29 @@ class WasteGuideService:
         item_name = lines[0].removeprefix("品目:").strip()
         display_item = re.sub(r"[（(].*$", "", item_name).strip() or "品物"
         evidence = unicodedata.normalize("NFKC", structured.text)
+
+        # Explicit opt-in for municipalities with a dimensional boundary.
+        # Search rewrites and image estimates never count as a measured size.
+        threshold = getattr(region.rules, "size_threshold_cm", None) if region else None
+        selected = next((documents[index - 1] for index in selected_evidence_indexes
+                         if 1 <= index <= len(documents)), structured)
+        item_evidence = unicodedata.normalize("NFKC", selected.text).split("区分共通の出し方", 1)[0]
+        if (threshold and "条件付き分類コード:" in item_evidence
+                and re.search(rf"{threshold}cm(?:以下|超)", item_evidence)):
+            uncertain = re.compile(r"(?:cm|センチ).{0,12}(?:わから|分から|不明|かもしれ)")
+            measured = bool(re.search(r"\d+(?:\.\d+)?\s*(?:cm|センチ)", context)) and not uncertain.search(context)
+            measured = measured or any(
+                re.search(rf"{threshold}\s*cm.*(?:以下|超)", unicodedata.normalize("NFKC", str(item.get("question", ""))).lower())
+                and re.fullmatch(r"\s*(?:はい|いいえ)[。！!]?\s*", str(item.get("answer", "")))
+                for item in clarifications
+            )
+            measured = measured or any(
+                "cm" in unicodedata.normalize("NFKC", str(item.get("question", ""))).lower()
+                and re.fullmatch(r"\s*\d+(?:\.\d+)?\s*", str(item.get("answer", "")))
+                for item in clarifications
+            )
+            if not measured:
+                return region.rules.size_question
 
         material_branches = (
             "金属製のものは",

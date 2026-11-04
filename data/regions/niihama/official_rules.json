@@ -1,0 +1,209 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38205",
+  "version": "niihama-2026.1",
+  "license_status": "unconfirmed",
+  "categories": {
+    "burnable": {
+      "name": "燃やすごみ",
+      "color": "#F19EC2",
+      "instructions": "透明又は白色半透明の45L以下の袋で可燃ごみステーションへ。原則30cm以下。木製品等は品目別条件を確認。",
+      "collection_type_id": "burnable",
+      "cutoff": "07:30"
+    },
+    "non_burnable": {
+      "name": "不燃ごみ",
+      "color": "#FFF100",
+      "instructions": "原則30cm以下。刃物や割れ物は危険のないように包み、不燃ごみステーションへ。",
+      "collection_type_id": "non_burnable",
+      "cutoff": "07:30"
+    },
+    "textiles": {
+      "name": "布類",
+      "color": "#C7D1EB",
+      "instructions": "洗濯してタンスにしまえる状態の衣類・布類。雨天はなるべく次回へ。冬物・制服・汚れ・破れ・濡れたものは燃やすごみ。",
+      "collection_type_id": "textiles",
+      "cutoff": "07:30"
+    },
+    "plastic_packaging": {
+      "name": "プラスチック製容器包装",
+      "color": "#9FD9F7",
+      "instructions": "容器の中身を取り除き軽く水洗いし、汚れを落とす。二重袋にしない。大きい容器包装は30cm以下へ。",
+      "collection_type_id": "plastic_packaging",
+      "cutoff": "07:30"
+    },
+    "bottles_cans": {
+      "name": "びん・缶",
+      "color": "#D7E8AF",
+      "instructions": "飲食用びんは水洗いし色別コンテナへ。缶はネットへ。スプレー缶・カセット式ボンベは使い切る（穴あけ不要）。",
+      "collection_type_id": "bottles_cans",
+      "cutoff": "07:30"
+    },
+    "pet_bottles": {
+      "name": "ペットボトル",
+      "color": "#F8B86D",
+      "instructions": "PET本体はキャップ・ラベルを外し、水洗いして軽くつぶしネットへ。",
+      "collection_type_id": "pet_bottles",
+      "cutoff": "07:30"
+    },
+    "paper": {
+      "name": "古紙類",
+      "color": "#22AC38",
+      "instructions": "新聞・雑誌雑がみ・段ボール・紙パックを種類ごとにしばる。紙パックは内側白色で500ml以上。",
+      "collection_type_id": "paper",
+      "cutoff": "07:30"
+    },
+    "hazardous": {
+      "name": "有害ごみ",
+      "color": "#DDDDDD",
+      "instructions": "蛍光灯・乾電池・水銀式体温計・モバイルバッテリー。種類別の透明袋でコンテナへ。電池の端子を絶縁する。",
+      "collection_type_id": "hazardous",
+      "cutoff": "07:30"
+    },
+    "bulky": {
+      "name": "大型ごみ",
+      "color": "#7030A0",
+      "instructions": "有料の戸別収集は事前申込制。1点200円の大型ごみ処理券。申込先の指定日に午前9時までに指定場所へ。定期ステーション収集へ出さない。",
+      "answer_note": "有料の戸別収集は事前申込制。1点200円の大型ごみ処理券。申込先の指定日に午前9時までに指定場所へ。定期ステーション収集へ出さない。"
+    },
+    "self_delivery": {
+      "name": "自己搬入",
+      "color": "#984807",
+      "instructions": "ステーション収集の対象外。品目別の条件に従って清掃センター又は最終処分場へ直接搬入。施設の開業日を収集日として案内しない。",
+      "answer_note": "ステーション収集の対象外。品目別の条件に従って清掃センター又は最終処分場へ直接搬入。施設の開業日を収集日として案内しない。"
+    },
+    "not_collected": {
+      "name": "市で収集しないもの",
+      "color": "#808080",
+      "instructions": "市のステーション収集に出せません。販売店や専門業者等に相談。施設搬入の可否も品目別に確認。",
+      "answer_note": "市のステーション収集に出せません。販売店や専門業者等に相談。施設搬入の可否も品目別に確認。"
+    },
+    "consultation": {
+      "name": "市へ相談",
+      "color": "#666666",
+      "instructions": "分類を自己判断せず、新居浜市廃棄物対策課へ相談してください。定期収集日は設定しません。",
+      "answer_note": "分類を自己判断せず、新居浜市廃棄物対策課へ相談してください。定期収集日は設定しません。"
+    }
+  },
+  "classification_rules": "新居浜市の現行公開分別大辞典、2026年度カレンダー、現在の市公式案内だけを根拠にする。他自治体の分類・袋・料金・収集方法を適用しない。\n個別品目の条件を優先する。原則30cm以下は普通ごみ、30cmを超える処理可能品は大型だが、飲食用びん・菓子缶・蛍光灯等は例外。分類条件の大きさはcmで確認し、他市の指定袋サイズを質問しない。取っ手を含める鍋類は全体を測る。辞典の30cm以下/超えを使い、サイズ不明なら追加質問する。\nプラスチック製品は原則燃やすごみ、容器包装はプラスチック製容器包装。汚れを水洗いする案内から、資料にない汚れの代替分類を作らない。PET本体と外したキャップ・ラベルを分ける。付属品の注意書きを本体へ誤適用しない。\n飲食用のびん・缶はbottles_cans。化粧品びん、ガラスコップは不燃。スプレー缶とカセット式ガスボンベも使い切ってびん・缶（穴あけ不要）。一升びん等の品目別例外は一般30cmルールより優先する。\nモバイルバッテリーは2026年1月から有害ごみ。小型充電式電池・ボタン電池も辞典の分類は有害ごみ。13ページは店頭回収も案内しており、これを市の収集禁止という分類へ置換しない。該当する電池には端子絶縁と店頭回収先も案内する。車用バッテリーは収集しない。モバイルバッテリーの変更を別種類の電池へ拡張しない。蛍光灯は有害（割れたものは不燃）、LED電球・白熱球は不燃。\n布類は洗濯済みで汚れ・破れのない非冬物等。冬物・制服・汚れ・破れ・濡れた衣類は燃やすごみ。毛布やふとんは大型（30cm以下に切る又はたたむ場合は燃やすごみ）。紙パックは内側白色かつ500ml以上が古紙、内側銀色又は500ml未満は燃やすごみ。\n大型ごみは申込制で1点200円、通常収集日はない。30cm超の品目すべてが大型とは限らない。マッサージチェア・家庭用パソコン等は自己搬入、家電リサイクル4品目や禁止品は大型へ変更しない。戸別収集は1回10点まで、次回申込は2か月後、指定日の午前9時までに指定場所へ。施設の開業日や搬入記号を収集日として返さない。\n寸法上限180cmについてはガイドが180cm以下、公式大型ごみページが180cm未満と異なるため、ちょうど180cmの受付可否は市へ確認し確定しない。※1の寸法・金属厚さ上限や処理困難物の条件が不明な場合も確認又は保留する。未確認条件を画像や検索の言い換えから補わない。\n市街地と大島は定期ごみ7時30分まで、別子山は9時まで。大型ごみ9時と定期収集の期限を混同しない。年度外の日付を生成しない。",
+  "examples": [
+    {
+      "id": "nh-rule-pet",
+      "item": "水洗いしたPETマーク付き飲料用ペットボトル本体",
+      "category": "pet_bottles",
+      "note": "キャップ・ラベルを外した本体が対象。付属品と混同しない。",
+      "source_url": "https://www.city.niihama.lg.jp/uploaded/attachment/79657.pdf#page=6"
+    },
+    {
+      "id": "nh-rule-cap",
+      "item": "ペットボトルから外したプラスチック製キャップ・ラベル",
+      "category": "plastic_packaging",
+      "note": "外したプラスチック製の部品だけ。本体はペットボトル。",
+      "source_url": "https://www.city.niihama.lg.jp/uploaded/attachment/79657.pdf#page=6"
+    },
+    {
+      "id": "nh-rule-tray",
+      "item": "水洗いした白色発泡食品トレイ",
+      "category": "plastic_packaging",
+      "note": "白色も色付きも容器包装としてプラスチック製容器包装。",
+      "source_url": "https://www.city.niihama.lg.jp/uploaded/attachment/79657.pdf#page=4"
+    },
+    {
+      "id": "nh-rule-winter",
+      "item": "古い冬物のセーター・コート・マフラー",
+      "category": "burnable",
+      "note": "冬物は布類の対象外。",
+      "source_url": "https://www.city.niihama.lg.jp/uploaded/attachment/79657.pdf#page=3"
+    },
+    {
+      "id": "nh-rule-dirty-shirt",
+      "item": "汚れた・破れた・濡れたシャツ",
+      "category": "burnable",
+      "note": "汚れた、破れた、濡れた衣類は布類に出せず燃やすごみ。",
+      "source_url": "https://www.city.niihama.lg.jp/uploaded/attachment/79657.pdf#page=3"
+    },
+    {
+      "id": "nh-rule-clean-shirt",
+      "item": "洗濯済みで汚れや破れのない綿のシャツ",
+      "category": "textiles",
+      "note": "冬物や制服ではなく、タンスにしまえる状態のもの。",
+      "source_url": "https://www.city.niihama.lg.jp/uploaded/attachment/79657.pdf#page=3"
+    },
+    {
+      "id": "nh-rule-mobile",
+      "item": "使用済みモバイルバッテリー",
+      "category": "hazardous",
+      "note": "2026年1月から有害ごみ。端子を絶縁し透明袋に分け有害ごみコンテナへ。",
+      "source_url": "https://www.city.niihama.lg.jp/uploaded/attachment/79657.pdf#page=8"
+    },
+    {
+      "id": "nh-rule-can",
+      "item": "水洗いした空の飲料用アルミ缶",
+      "category": "bottles_cans",
+      "note": "飲食用の空き缶を水洗いしてネットへ。",
+      "source_url": "https://www.city.niihama.lg.jp/uploaded/attachment/79657.pdf#page=5"
+    },
+    {
+      "id": "nh-rule-spray",
+      "item": "使い切ったスプレー缶・カセット式ガスボンベ",
+      "category": "bottles_cans",
+      "note": "中身を使い切る。穴あけ不要。中身が残る場合は市に相談。",
+      "source_url": "https://www.city.niihama.lg.jp/uploaded/attachment/79657.pdf#page=5"
+    },
+    {
+      "id": "nh-rule-pack-white",
+      "item": "内側が白い500ml以上の飲料用紙パック",
+      "category": "paper",
+      "note": "水洗いして開き乾かしてしばる。",
+      "source_url": "https://www.city.niihama.lg.jp/uploaded/attachment/79657.pdf#page=7"
+    },
+    {
+      "id": "nh-rule-pack-small",
+      "item": "500ml未満又は内側がアルミコーティングの飲料用紙パック",
+      "category": "burnable",
+      "note": "500ml未満と内側銀色は古紙に出さない。",
+      "source_url": "https://www.city.niihama.lg.jp/uploaded/attachment/79657.pdf#page=7"
+    },
+    {
+      "id": "nh-rule-small-bucket",
+      "item": "プラスチック製バケツ",
+      "category": "burnable",
+      "note": "30cm以下は燃やすごみ、30cm超えは大型ごみ。大きさが不明なら確認する。",
+      "source_url": "https://www.city.niihama.lg.jp/uploaded/attachment/79657.pdf#page=1",
+      "category_options": [
+        "bulky"
+      ]
+    },
+    {
+      "id": "nh-rule-pan",
+      "item": "取っ手を含めた大きさを測った金属製フライパン",
+      "category": "non_burnable",
+      "note": "取っ手を含め30cm以下は不燃ごみ、30cm超えは大型ごみ。",
+      "source_url": "https://www.city.niihama.lg.jp/uploaded/attachment/79657.pdf#page=2",
+      "category_options": [
+        "bulky"
+      ]
+    },
+    {
+      "id": "nh-rule-vehicle-battery",
+      "item": "自動車・車・単車・船に使う鉛バッテリー",
+      "category": "not_collected",
+      "note": "車・単車・船用バッテリーは市で収集しない。販売店等へ相談する。",
+      "source_url": "https://www.city.niihama.lg.jp/uploaded/attachment/79661.pdf#page=15"
+    },
+    {
+      "id": "nh-rule-massage-chair",
+      "item": "家庭用マッサージチェア・ソファー式マッサージ機",
+      "category": "self_delivery",
+      "note": "市の大型ごみでは収集しない。清掃センターへ自己搬入。1家庭年1台まで、自己荷降ろしが必要。携帯式マッサージ器とは別。",
+      "source_url": "https://www.city.niihama.lg.jp/uploaded/attachment/80127.pdf#page=1"
+    }
+  ],
+  "review_notes": [
+    "ガイド現行公開版（2026-02-19更新）はモバイルバッテリーを有害に改訂済み。辞典1349行にも有害を確認。",
+    "2026年度ページの裏面リンク見出しに令和7年度が残るが、表面は裏面が保存版で翌年度も利用と明記。裏面の収集ルールを現行辞典・表面で照合し、過年度の日付は使用しない。",
+    "辞典見出しの※1〜4は画像のため文字抽出外。全ページ共通凡例をレンダリングして照合し、該当行だけへ展開する。",
+    "180cmちょうどの受付可否はガイドと大型ごみHTMLで表現が異なる。市への確認が必要であり、推測で受付可能としない。",
+    "ボタン電池・充電式電池は辞典の有害区分を保持。ガイド13ページの店頭回収案内を禁止区分へ誤変換せず、品目別注記に併記する。"
+  ]
+}

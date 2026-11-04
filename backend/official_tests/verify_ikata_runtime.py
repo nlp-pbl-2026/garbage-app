@@ -26,7 +26,7 @@ CITY = '38442'
 
 def test_all_areas_catalog_profiles_and_calendar_assets_are_isolated():
     catalog = get_registry(); registry = catalog.registry(CITY)
-    assert set(catalog.entries) == {'38201', '38204', '38210', CITY}
+    assert {'38201', '38204', '38210', CITY} <= set(catalog.entries)
     assert len(registry.areas) == 8 and len(registry.calendars) == 8
     assert set(registry.profiles) == {'ikata', 'seto', 'misaki'}
     backend = ROOT/'data/regions/ikata/generated/calendar-2026.json'

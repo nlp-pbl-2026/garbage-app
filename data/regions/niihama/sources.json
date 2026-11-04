@@ -1,0 +1,166 @@
+{
+  "municipality_id": "38205",
+  "retrieved_at": "2026-11-04",
+  "license_status": "unconfirmed",
+  "sources": [
+    {
+      "file": "calendar.html",
+      "url": "https://www.city.niihama.lg.jp/soshiki/haiki/gomika.html",
+      "sha256": "122816818fcb8eaddce420ec19769ab3288d3e784294f2c90792a7b6c11cb3fb"
+    },
+    {
+      "file": "79961.pdf",
+      "url": "https://www.city.niihama.lg.jp/uploaded/attachment/79961.pdf",
+      "sha256": "a12e5e7d13f1faf41428a9fb44039ef1713a1c41cff67dc6c4a3cc1373282e2a",
+      "title": "Aタイプ [PDFファイル／84KB]"
+    },
+    {
+      "file": "79962.pdf",
+      "url": "https://www.city.niihama.lg.jp/uploaded/attachment/79962.pdf",
+      "sha256": "4acdbe2f5f2d702c676c577abfb251b5a9c868666e19cfc2bb64f33f263c339f",
+      "title": "Bタイプ [PDFファイル／85KB]"
+    },
+    {
+      "file": "79963.pdf",
+      "url": "https://www.city.niihama.lg.jp/uploaded/attachment/79963.pdf",
+      "sha256": "cc5b436960f227dbe868c927518cd5de2fd1ec14a0a83a982374e2da54e29d1c",
+      "title": "Cタイプ [PDFファイル／86KB]"
+    },
+    {
+      "file": "79964.pdf",
+      "url": "https://www.city.niihama.lg.jp/uploaded/attachment/79964.pdf",
+      "sha256": "04b3fadbdd66d89e692c079054a3769e406fb88d58486f16c12578e9275d4c2b",
+      "title": "Dタイプ [PDFファイル／85KB]"
+    },
+    {
+      "file": "79965.pdf",
+      "url": "https://www.city.niihama.lg.jp/uploaded/attachment/79965.pdf",
+      "sha256": "5766a862344308d65edeff348f68d15e4aff08bd942d2c081d66fd03d5af7083",
+      "title": "Eタイプ [PDFファイル／86KB]"
+    },
+    {
+      "file": "79966.pdf",
+      "url": "https://www.city.niihama.lg.jp/uploaded/attachment/79966.pdf",
+      "sha256": "6009cbee9b57104f1790bbec6be97a465f0f39dd2d93153df2aade2b3d98fcb0",
+      "title": "Fタイプ [PDFファイル／87KB]"
+    },
+    {
+      "file": "79967.pdf",
+      "url": "https://www.city.niihama.lg.jp/uploaded/attachment/79967.pdf",
+      "sha256": "fd3602c1e79bdad2b7cdea93291f14bd646698b0b16148bac1998351d24934d7",
+      "title": "Gタイプ [PDFファイル／84KB]"
+    },
+    {
+      "file": "79968.pdf",
+      "url": "https://www.city.niihama.lg.jp/uploaded/attachment/79968.pdf",
+      "sha256": "e5f9da3435efd299ff35c543945268a46db8add23915147111c2fac8490564cf",
+      "title": "Hタイプ [PDFファイル／85KB]"
+    },
+    {
+      "file": "79969.pdf",
+      "url": "https://www.city.niihama.lg.jp/uploaded/attachment/79969.pdf",
+      "sha256": "35d1546d69c44dedd455788be16eee684c40177d75a3ebe46732f7a96d1e3a75",
+      "title": "Iタイプ [PDFファイル／85KB]"
+    },
+    {
+      "file": "79970.pdf",
+      "url": "https://www.city.niihama.lg.jp/uploaded/attachment/79970.pdf",
+      "sha256": "2cb52bb55929782affe439100c4712d2e262bdaf7bfdf89d5bd164f9cacb2fc6",
+      "title": "Jタイプ [PDFファイル／86KB]"
+    },
+    {
+      "file": "79971.pdf",
+      "url": "https://www.city.niihama.lg.jp/uploaded/attachment/79971.pdf",
+      "sha256": "025461c5d1234b4f17b9af20e3952222795908dc376067ec6f5412dc53fe7b79",
+      "title": "Kタイプ [PDFファイル／86KB]"
+    },
+    {
+      "file": "79972.pdf",
+      "url": "https://www.city.niihama.lg.jp/uploaded/attachment/79972.pdf",
+      "sha256": "ffd46046cf824ab0fd0050f5c1a1034d5f4cdcc9fa6819ecae03cfdc8c838d08",
+      "title": "Lタイプ [PDFファイル／85KB]"
+    },
+    {
+      "file": "79973.pdf",
+      "url": "https://www.city.niihama.lg.jp/uploaded/attachment/79973.pdf",
+      "sha256": "3a5861c74a705225c0b17c384352bf1cac2888764920ba97a02342ffc6acc7d5",
+      "title": "大島1 [PDFファイル／81KB]"
+    },
+    {
+      "file": "79974.pdf",
+      "url": "https://www.city.niihama.lg.jp/uploaded/attachment/79974.pdf",
+      "sha256": "11ac10a7672a21edb000b4d4182ea2bb7b641c4ee32140083db1c0e84c2a5850",
+      "title": "大島2 [PDFファイル／81KB]"
+    },
+    {
+      "file": "79975.pdf",
+      "url": "https://www.city.niihama.lg.jp/uploaded/attachment/79975.pdf",
+      "sha256": "5d8825e7a19994c78a3c3457e0aee9dc369a1d6a665fe2827aeb340562b4d255",
+      "title": "別子山 [PDFファイル／81KB]"
+    },
+    {
+      "file": "79993.pdf",
+      "url": "https://www.city.niihama.lg.jp/uploaded/attachment/79993.pdf",
+      "sha256": "e4059bd9c6336c9f96cb5dbf897ee37588d8c31eb7c07805c9084976c1f935cc",
+      "title": "A～Lタイプ（裏面） [PDFファイル／939KB]"
+    },
+    {
+      "file": "79994.pdf",
+      "url": "https://www.city.niihama.lg.jp/uploaded/attachment/79994.pdf",
+      "sha256": "2129d60ced7eea409d879098e3ba3df30cd30ad821a7c31a4f301417818cd2ff",
+      "title": "大島1・2（裏面） [PDFファイル／940KB]"
+    },
+    {
+      "file": "79995.pdf",
+      "url": "https://www.city.niihama.lg.jp/uploaded/attachment/79995.pdf",
+      "sha256": "674134aed484d8619404d142db826121790ce13aff951ce814cafa4f7bfd38f4",
+      "title": "別子山（裏面） [PDFファイル／939KB]"
+    },
+    {
+      "file": "guide.html",
+      "url": "https://www.city.niihama.lg.jp/soshiki/haiki/pamphlet.html",
+      "sha256": "ea90c8e3dbcafc047779203594516dc5d33a268b214aaa192dc411e831df0b5b"
+    },
+    {
+      "file": "79656.pdf",
+      "url": "https://www.city.niihama.lg.jp/uploaded/attachment/79656.pdf",
+      "sha256": "63ef0aafb1ac736f1f518c682ae3206d15d1d2d532a0ebb25ea9692fa7b5afa5",
+      "title": "表紙～5ページ [PDFファイル／1.25MB]"
+    },
+    {
+      "file": "79657.pdf",
+      "url": "https://www.city.niihama.lg.jp/uploaded/attachment/79657.pdf",
+      "sha256": "b8e6604c3d51d7e06bc79fe00de14bbd290af9fb41f886f61bbdc0888cfb65b2",
+      "title": "6～15ページ [PDFファイル／3.49MB]"
+    },
+    {
+      "file": "80127.pdf",
+      "url": "https://www.city.niihama.lg.jp/uploaded/attachment/80127.pdf",
+      "sha256": "9720bc2a5589e84f6260024b36ae823e1a04742fb6e073337eb4cae84afcee79",
+      "title": "16～22ページ [PDFファイル／2.13MB]"
+    },
+    {
+      "file": "79660.pdf",
+      "url": "https://www.city.niihama.lg.jp/uploaded/attachment/79660.pdf",
+      "sha256": "56d7e2bbba6805ea724430941eea92065fbb4c889c5b24dbbccba580bf691cd7",
+      "title": "23～26ページ [PDFファイル／2.48MB]"
+    },
+    {
+      "file": "79661.pdf",
+      "url": "https://www.city.niihama.lg.jp/uploaded/attachment/79661.pdf",
+      "sha256": "2576c57a69710693a82af8065f93f9520cdc91864371f06fe1418e7d0b6996e4",
+      "title": "27～裏表紙 [PDFファイル／2.43MB]"
+    },
+    {
+      "file": "bulky.html",
+      "url": "https://www.city.niihama.lg.jp/soshiki/haiki/dasikata-oogata.html",
+      "sha256": "c18a98981b7d5e449ec159beab72fa71687211a7f10d555b22862d42864538c8"
+    },
+    {
+      "file": "82658.pdf",
+      "url": "https://www.city.niihama.lg.jp/uploaded/attachment/82658.pdf",
+      "sha256": "1e62181b2b202f0eab3b54d4c579c8ba3592a4a21cf2f0a087ed855ad76e28c1",
+      "title": "民間の廃棄物処理業者"
+    }
+  ]
+}
