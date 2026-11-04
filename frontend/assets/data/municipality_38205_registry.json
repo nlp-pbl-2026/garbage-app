@@ -1,0 +1,209 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38205",
+  "municipality_name": "新居浜市",
+  "prefecture_id": "38",
+  "prefecture_name": "愛媛県",
+  "version": "niihama-2026.1",
+  "valid_from": "2026-04-01",
+  "valid_to": "2027-03-31",
+  "collection_areas": [
+    {
+      "id": "38205-01",
+      "name": "大生院、大永山、萩生（国道11号線より南）",
+      "display_name": "大生院、大永山、萩生（国道11号線より南）",
+      "calendar_id": "nh-01",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.niihama.lg.jp/uploaded/attachment/79961.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38205-02",
+      "name": "上原、御蔵町、土橋2丁目、中萩町、中村、萩生（国道11号線より北）",
+      "display_name": "上原、御蔵町、土橋2丁目、中萩町、中村、萩生（国道11号線より北）",
+      "calendar_id": "nh-02",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.niihama.lg.jp/uploaded/attachment/79962.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38205-03",
+      "name": "喜光地町2丁目、北内町、西連寺町、篠場町、角野新田町、立川町、種子川町、中筋町、中西町、西泉町、宮原町、山田町、山根町、吉岡町",
+      "display_name": "喜光地町2丁目、北内町、西連寺町、篠場町、角野新田町、立川町、種子川町、中筋町、中西町、西泉町、宮原町、山田町、山根町、吉岡町",
+      "calendar_id": "nh-03",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.niihama.lg.jp/uploaded/attachment/79963.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38205-04",
+      "name": "上泉町、喜光地町1丁目、岸の上町、寿町、坂井町3丁目、下泉町、城下町、瀬戸町、外山町、西喜光地町、星原町、松木町、松原町",
+      "display_name": "上泉町、喜光地町1丁目、岸の上町、寿町、坂井町3丁目、下泉町、城下町、瀬戸町、外山町、西喜光地町、星原町、松木町、松原町",
+      "calendar_id": "nh-04",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.niihama.lg.jp/uploaded/attachment/79964.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38205-05",
+      "name": "観音原町、光明寺、国領、郷4・5丁目、七宝台町、東雲町3丁目、角野（番地）、東田、船木",
+      "display_name": "観音原町、光明寺、国領、郷4・5丁目、七宝台町、東雲町3丁目、角野（番地）、東田、船木",
+      "calendar_id": "nh-05",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.niihama.lg.jp/uploaded/attachment/79965.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38205-06",
+      "name": "阿島、落神町、清住町、楠崎、黒島、郷1・2・3丁目、郷（番地）、神郷、東雲町2丁目、多喜浜、長岩町、荷内町、又野、松神子1・2・3丁目",
+      "display_name": "阿島、落神町、清住町、楠崎、黒島、郷1・2・3丁目、郷（番地）、神郷、東雲町2丁目、多喜浜、長岩町、荷内町、又野、松神子1・2・3丁目",
+      "calendar_id": "nh-06",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.niihama.lg.jp/uploaded/attachment/79966.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38205-07",
+      "name": "宇高町1丁目、高田、田の上、八幡、垣生、松神子4丁目",
+      "display_name": "宇高町1丁目、高田、田の上、八幡、垣生、松神子4丁目",
+      "calendar_id": "nh-07",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.niihama.lg.jp/uploaded/attachment/79967.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38205-08",
+      "name": "宇高町2・3・4・5丁目、桜木町、沢津町、東雲町1丁目、清水町、高津町、松の木町、南小松原町",
+      "display_name": "宇高町2・3・4・5丁目、桜木町、沢津町、東雲町1丁目、清水町、高津町、松の木町、南小松原町",
+      "calendar_id": "nh-08",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.niihama.lg.jp/uploaded/attachment/79968.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38205-09",
+      "name": "坂井町1・2丁目、庄内町、新須賀町4丁目（4番～）、田所町、平形町、八雲町",
+      "display_name": "坂井町1・2丁目、庄内町、新須賀町4丁目（4番～）、田所町、平形町、八雲町",
+      "calendar_id": "nh-09",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.niihama.lg.jp/uploaded/attachment/79969.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38205-10",
+      "name": "泉池町、泉宮町、菊本町、繁本町、新須賀町1・2・3丁目・4丁目（1番～3番）、徳常町、中須賀町、西原町、西町、港町、宮西町、若水町",
+      "display_name": "市街地：泉池町、泉宮町、菊本町、繁本町、新須賀町1・2・3丁目・4丁目（1番～3番）、徳常町、中須賀町、西原町、西町、港町、宮西町、若水町",
+      "calendar_id": "nh-10",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.niihama.lg.jp/uploaded/attachment/79970.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38205-11",
+      "name": "磯浦町、江口町、王子町、北新町、河内町、新田町、惣開町、滝の宮町、西の土居町、星越町、前田町",
+      "display_name": "磯浦町、江口町、王子町、北新町、河内町、新田町、惣開町、滝の宮町、西の土居町、星越町、前田町",
+      "calendar_id": "nh-11",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.niihama.lg.jp/uploaded/attachment/79971.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38205-12",
+      "name": "一宮町、久保田町、高木町、土橋1丁目、中村松木、本郷、政枝町、横水町",
+      "display_name": "一宮町、久保田町、高木町、土橋1丁目、中村松木、本郷、政枝町、横水町",
+      "calendar_id": "nh-12",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.niihama.lg.jp/uploaded/attachment/79972.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38205-13",
+      "name": "上之町、中之町",
+      "display_name": "大島：上之町、中之町",
+      "calendar_id": "nh-13",
+      "rule_profile_id": "oshima",
+      "source_url": "https://www.city.niihama.lg.jp/uploaded/attachment/79973.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38205-14",
+      "name": "宮西町、西之町、築之町",
+      "display_name": "大島：宮西町、西之町、築之町",
+      "calendar_id": "nh-14",
+      "rule_profile_id": "oshima",
+      "source_url": "https://www.city.niihama.lg.jp/uploaded/attachment/79974.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38205-15",
+      "name": "別子山",
+      "display_name": "別子山",
+      "calendar_id": "nh-15",
+      "rule_profile_id": "besshiyama",
+      "source_url": "https://www.city.niihama.lg.jp/uploaded/attachment/79975.pdf",
+      "needs_local_confirmation": true
+    }
+  ],
+  "calendars": [
+    {
+      "id": "nh-01",
+      "rule_profile_id": "mainland"
+    },
+    {
+      "id": "nh-02",
+      "rule_profile_id": "mainland"
+    },
+    {
+      "id": "nh-03",
+      "rule_profile_id": "mainland"
+    },
+    {
+      "id": "nh-04",
+      "rule_profile_id": "mainland"
+    },
+    {
+      "id": "nh-05",
+      "rule_profile_id": "mainland"
+    },
+    {
+      "id": "nh-06",
+      "rule_profile_id": "mainland"
+    },
+    {
+      "id": "nh-07",
+      "rule_profile_id": "mainland"
+    },
+    {
+      "id": "nh-08",
+      "rule_profile_id": "mainland"
+    },
+    {
+      "id": "nh-09",
+      "rule_profile_id": "mainland"
+    },
+    {
+      "id": "nh-10",
+      "rule_profile_id": "mainland"
+    },
+    {
+      "id": "nh-11",
+      "rule_profile_id": "mainland"
+    },
+    {
+      "id": "nh-12",
+      "rule_profile_id": "mainland"
+    },
+    {
+      "id": "nh-13",
+      "rule_profile_id": "oshima"
+    },
+    {
+      "id": "nh-14",
+      "rule_profile_id": "oshima"
+    },
+    {
+      "id": "nh-15",
+      "rule_profile_id": "besshiyama"
+    }
+  ]
+}
