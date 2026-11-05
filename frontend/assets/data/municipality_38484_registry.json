@@ -1,0 +1,191 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38484",
+  "municipality_name": "松野町",
+  "prefecture_id": "38",
+  "prefecture_name": "愛媛県",
+  "version": "matsuno-2026.1",
+  "valid_from": "2026-04-01",
+  "valid_to": "2027-03-31",
+  "collection_areas": [
+    {
+      "id": "38484-matsumaru",
+      "name": "松丸",
+      "display_name": "松丸",
+      "calendar_id": "matsuno-matsumaru",
+      "rule_profile_id": "matsuno",
+      "address_labels": [
+        "松丸"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.matsuno.ehime.jp/uploaded/attachment/7083.pdf#page=3"
+    },
+    {
+      "id": "38484-nobunono",
+      "name": "延野々",
+      "display_name": "延野々",
+      "calendar_id": "matsuno-nobunono",
+      "rule_profile_id": "matsuno",
+      "address_labels": [
+        "延野々"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.matsuno.ehime.jp/uploaded/attachment/7083.pdf#page=3"
+    },
+    {
+      "id": "38484-toyooka-ushiro",
+      "name": "豊岡後",
+      "display_name": "豊岡後",
+      "calendar_id": "matsuno-toyooka-ushiro",
+      "rule_profile_id": "matsuno",
+      "address_labels": [
+        "豊岡後"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.matsuno.ehime.jp/uploaded/attachment/7083.pdf#page=3"
+    },
+    {
+      "id": "38484-toyooka-mae",
+      "name": "豊岡前",
+      "display_name": "豊岡前",
+      "calendar_id": "matsuno-toyooka-mae",
+      "rule_profile_id": "matsuno",
+      "address_labels": [
+        "豊岡前"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.matsuno.ehime.jp/uploaded/attachment/7083.pdf#page=3"
+    },
+    {
+      "id": "38484-tomioka",
+      "name": "富岡",
+      "display_name": "富岡",
+      "calendar_id": "matsuno-tomioka",
+      "rule_profile_id": "matsuno",
+      "address_labels": [
+        "富岡"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.matsuno.ehime.jp/uploaded/attachment/7083.pdf#page=3"
+    },
+    {
+      "id": "38484-kamieji",
+      "name": "上家地",
+      "display_name": "上家地",
+      "calendar_id": "matsuno-kamieji",
+      "rule_profile_id": "matsuno",
+      "address_labels": [
+        "上家地"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.matsuno.ehime.jp/uploaded/attachment/7083.pdf#page=3"
+    },
+    {
+      "id": "38484-meguro",
+      "name": "目黒",
+      "display_name": "目黒",
+      "calendar_id": "matsuno-meguro",
+      "rule_profile_id": "matsuno",
+      "address_labels": [
+        "目黒"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.matsuno.ehime.jp/uploaded/attachment/7083.pdf#page=3"
+    },
+    {
+      "id": "38484-yoshino",
+      "name": "吉野",
+      "display_name": "吉野（葛川地区を除く）",
+      "calendar_id": "matsuno-yoshino",
+      "rule_profile_id": "matsuno",
+      "address_labels": [
+        "吉野（葛川地区を除く）"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.matsuno.ehime.jp/uploaded/attachment/7083.pdf#page=3"
+    },
+    {
+      "id": "38484-kuzukawa",
+      "name": "葛川地区",
+      "display_name": "葛川地区（吉野内）",
+      "calendar_id": "matsuno-kuzukawa",
+      "rule_profile_id": "matsuno",
+      "address_labels": [
+        "葛川",
+        "葛川地区"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.matsuno.ehime.jp/uploaded/attachment/7083.pdf#page=3"
+    },
+    {
+      "id": "38484-warabiu",
+      "name": "蕨生",
+      "display_name": "蕨生",
+      "calendar_id": "matsuno-warabiu",
+      "rule_profile_id": "matsuno",
+      "address_labels": [
+        "蕨生"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.matsuno.ehime.jp/uploaded/attachment/7083.pdf#page=3"
+    },
+    {
+      "id": "38484-okunogawa",
+      "name": "奥野川",
+      "display_name": "奥野川",
+      "calendar_id": "matsuno-okunogawa",
+      "rule_profile_id": "matsuno",
+      "address_labels": [
+        "奥野川"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.matsuno.ehime.jp/uploaded/attachment/7083.pdf#page=3"
+    }
+  ],
+  "calendars": [
+    {
+      "id": "matsuno-matsumaru",
+      "rule_profile_id": "matsuno"
+    },
+    {
+      "id": "matsuno-nobunono",
+      "rule_profile_id": "matsuno"
+    },
+    {
+      "id": "matsuno-toyooka-ushiro",
+      "rule_profile_id": "matsuno"
+    },
+    {
+      "id": "matsuno-toyooka-mae",
+      "rule_profile_id": "matsuno"
+    },
+    {
+      "id": "matsuno-tomioka",
+      "rule_profile_id": "matsuno"
+    },
+    {
+      "id": "matsuno-kamieji",
+      "rule_profile_id": "matsuno"
+    },
+    {
+      "id": "matsuno-meguro",
+      "rule_profile_id": "matsuno"
+    },
+    {
+      "id": "matsuno-yoshino",
+      "rule_profile_id": "matsuno"
+    },
+    {
+      "id": "matsuno-kuzukawa",
+      "rule_profile_id": "matsuno"
+    },
+    {
+      "id": "matsuno-warabiu",
+      "rule_profile_id": "matsuno"
+    },
+    {
+      "id": "matsuno-okunogawa",
+      "rule_profile_id": "matsuno"
+    }
+  ]
+}

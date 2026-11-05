@@ -1,0 +1,536 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38207",
+  "municipality_name": "大洲市",
+  "prefecture_id": "38",
+  "prefecture_name": "愛媛県",
+  "version": "ozu-2026.1",
+  "valid_from": "2026-04-01",
+  "valid_to": "2027-03-31",
+  "collection_areas": [
+    {
+      "id": "38207-main-01",
+      "name": "大洲地域 1：肱南地区１",
+      "display_name": "大洲１、大洲２、大洲３、大洲４、大洲５、大洲６、大洲７、大洲８、大洲９、大洲10、城山、大洲11、大洲12、大洲13、大洲14南、大洲14北、大洲15、大洲16、大洲17、大洲18",
+      "calendar_id": "ozu-main-01",
+      "rule_profile_id": "standard",
+      "official_calendar_number": 1,
+      "official_calendar_title": "令和８年度　肱南地区１",
+      "address_labels": [
+        "大洲１、大洲２、大洲３、大洲４、大洲５、大洲６、大洲７、大洲８、大洲９、大洲10、城山、大洲11、大洲12、大洲13、大洲14南、大洲14北、大洲15、大洲16、大洲17、大洲18"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.ozu.ehime.jp/soshiki/kankyo/65775.html"
+    },
+    {
+      "id": "38207-main-02",
+      "name": "大洲地域 2：肱南地区２",
+      "display_name": "柚木19、柚木20、柚木21東、柚木21西、椎の森、八尾",
+      "calendar_id": "ozu-main-02",
+      "rule_profile_id": "standard",
+      "official_calendar_number": 2,
+      "official_calendar_title": "令和８年度　肱南地区２",
+      "address_labels": [
+        "柚木19、柚木20、柚木21東、柚木21西、椎の森、八尾"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.ozu.ehime.jp/soshiki/kankyo/65775.html"
+    },
+    {
+      "id": "38207-main-03",
+      "name": "大洲地域 3：久米地区１・平野地区",
+      "display_name": "【久米地区１】下山辺、上山辺、安場、丸山、札場、関谷 【平野地区】全域",
+      "calendar_id": "ozu-main-03",
+      "rule_profile_id": "standard",
+      "official_calendar_number": 3,
+      "official_calendar_title": "令和８年度　久米地区１・平野地区",
+      "address_labels": [
+        "【久米地区１】下山辺、上山辺、安場、丸山、札場、関谷 【平野地区】全域"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.ozu.ehime.jp/soshiki/kankyo/65775.html"
+    },
+    {
+      "id": "38207-main-04",
+      "name": "大洲地域 4：久米地区２・喜多地区１・上須戒地区",
+      "display_name": "【久米地区２】阿蔵全域、高山全域 【喜多地区１】玉川、五郎1・2・3・4・慶雲寺 【上須戒】全域",
+      "calendar_id": "ozu-main-04",
+      "rule_profile_id": "standard",
+      "official_calendar_number": 4,
+      "official_calendar_title": "令和８年度　久米地区２・喜多地区１・上須戒地区",
+      "address_labels": [
+        "【久米地区２】阿蔵全域、高山全域 【喜多地区１】玉川、五郎1・2・3・4・慶雲寺 【上須戒】全域"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.ozu.ehime.jp/soshiki/kankyo/65775.html"
+    },
+    {
+      "id": "38207-main-05",
+      "name": "大洲地域 5：肱北地区",
+      "display_name": "中村全域、常磐町全域",
+      "calendar_id": "ozu-main-05",
+      "rule_profile_id": "standard",
+      "official_calendar_number": 5,
+      "official_calendar_title": "令和８年度　肱北地区",
+      "address_labels": [
+        "中村全域、常磐町全域"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.ozu.ehime.jp/soshiki/kankyo/65775.html"
+    },
+    {
+      "id": "38207-main-06",
+      "name": "大洲地域 6：喜多地区２",
+      "display_name": "新町1・2・3、堀の内1・2",
+      "calendar_id": "ozu-main-06",
+      "rule_profile_id": "standard",
+      "official_calendar_number": 6,
+      "official_calendar_title": "令和８年度　喜多地区２",
+      "address_labels": [
+        "新町1・2・3、堀の内1・2"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.ozu.ehime.jp/soshiki/kankyo/65775.html"
+    },
+    {
+      "id": "38207-main-07",
+      "name": "大洲地域 7：喜多地区３",
+      "display_name": "若宮上の1・2、若宮中の1・2、若宮下の1・2、日の出1・2、東大洲、東若宮 河内の一部（東大洲側）、天満の一部（東大洲側）、山根の一部（東大洲側）",
+      "calendar_id": "ozu-main-07",
+      "rule_profile_id": "standard",
+      "official_calendar_number": 7,
+      "official_calendar_title": "令和８年度　喜多地区３",
+      "address_labels": [
+        "若宮上の1・2、若宮中の1・2、若宮下の1・2、日の出1・2、東大洲、東若宮 河内の一部（東大洲側）、天満の一部（東大洲側）、山根の一部（東大洲側）"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.ozu.ehime.jp/soshiki/kankyo/65775.html"
+    },
+    {
+      "id": "38207-main-08",
+      "name": "大洲地域 8：喜多地区４・平地区１",
+      "display_name": "【喜多地区４】白方、多賀、立岡、河内の一部（北中側）、中ケ市、天満の一部（城戸眼科側）、山根の一部（元地方局側）、神宮、西岡、石田口平坂、平曽、平畑、森 【平地区１】中山西、小鳥越、西松ヶ花、中山東の一部（ママ太郎側）",
+      "calendar_id": "ozu-main-08",
+      "rule_profile_id": "standard",
+      "official_calendar_number": 8,
+      "official_calendar_title": "令和８年度　喜多地区４・平地区１",
+      "address_labels": [
+        "【喜多地区４】白方、多賀、立岡、河内の一部（北中側）、中ケ市、天満の一部（城戸眼科側）、山根の一部（元地方局側）、神宮、西岡、石田口平坂、平曽、平畑、森 【平地区１】中山西、小鳥越、西松ヶ花、中山東の一部（ママ太郎側）"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.ozu.ehime.jp/soshiki/kankyo/65775.html"
+    },
+    {
+      "id": "38207-main-09",
+      "name": "大洲地域 9：平地区２",
+      "display_name": "中山東の一部（丸三産業側）、城1・2・3、野田、土肥、野久保",
+      "calendar_id": "ozu-main-09",
+      "rule_profile_id": "standard",
+      "official_calendar_number": 9,
+      "official_calendar_title": "令和８年度　平地区２",
+      "address_labels": [
+        "中山東の一部（丸三産業側）、城1・2・3、野田、土肥、野久保"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.ozu.ehime.jp/soshiki/kankyo/65775.html"
+    },
+    {
+      "id": "38207-main-10",
+      "name": "大洲地域 10：喜多地区５・三善地区・八多喜地区",
+      "display_name": "【喜多地区５】五郎５区 【三善地区】全域 【八多喜地区】全域",
+      "calendar_id": "ozu-main-10",
+      "rule_profile_id": "standard",
+      "official_calendar_number": 10,
+      "official_calendar_title": "令和８年度　喜多地区５・三善地区・八多喜地区",
+      "address_labels": [
+        "【喜多地区５】五郎５区 【三善地区】全域 【八多喜地区】全域"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.ozu.ehime.jp/soshiki/kankyo/65775.html"
+    },
+    {
+      "id": "38207-main-11",
+      "name": "大洲地域 11：南久米地区・大川地区",
+      "display_name": "【南久米地区】全域 【大川地区】全域",
+      "calendar_id": "ozu-main-11",
+      "rule_profile_id": "standard",
+      "official_calendar_number": 11,
+      "official_calendar_title": "令和８年度　南久米地区・大川地区",
+      "address_labels": [
+        "【南久米地区】全域 【大川地区】全域"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.ozu.ehime.jp/soshiki/kankyo/65775.html"
+    },
+    {
+      "id": "38207-main-12",
+      "name": "大洲地域 12：菅田地区",
+      "display_name": "【菅田地区】全域",
+      "calendar_id": "ozu-main-12",
+      "rule_profile_id": "standard",
+      "official_calendar_number": 12,
+      "official_calendar_title": "令和８年度　菅田地区",
+      "address_labels": [
+        "【菅田地区】全域"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.ozu.ehime.jp/soshiki/kankyo/65775.html"
+    },
+    {
+      "id": "38207-main-13",
+      "name": "大洲地域 13：新谷地区１・柳沢地区",
+      "display_name": "【新谷地区１】惣谷、田合、山口、麓、喜多山、二軒茶屋 【柳沢地区】全域",
+      "calendar_id": "ozu-main-13",
+      "rule_profile_id": "standard",
+      "official_calendar_number": 13,
+      "official_calendar_title": "令和８年度　新谷地区１・柳沢地区",
+      "address_labels": [
+        "【新谷地区１】惣谷、田合、山口、麓、喜多山、二軒茶屋 【柳沢地区】全域"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.ozu.ehime.jp/soshiki/kankyo/65775.html"
+    },
+    {
+      "id": "38207-main-14",
+      "name": "大洲地域 14：新谷地区２",
+      "display_name": "【新谷地区２】小貝、都、中組、上組、大久保、新谷町、和田1・2、西和田東・西、古町、川西、川東、城山、神南、東松ケ花",
+      "calendar_id": "ozu-main-14",
+      "rule_profile_id": "standard",
+      "official_calendar_number": 14,
+      "official_calendar_title": "令和８年度　新谷地区２",
+      "address_labels": [
+        "【新谷地区２】小貝、都、中組、上組、大久保、新谷町、和田1・2、西和田東・西、古町、川西、川東、城山、神南、東松ケ花"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.ozu.ehime.jp/soshiki/kankyo/65775.html"
+    },
+    {
+      "id": "38207-nagahama-01",
+      "name": "長浜地域 1：長浜１",
+      "display_name": "長浜の一部、仁久、小浦、櫛生、須沢、出海、下平、白滝、戒川、下須戒",
+      "calendar_id": "ozu-nagahama-01",
+      "rule_profile_id": "nagahama",
+      "official_calendar_number": 1,
+      "official_calendar_title": "令和８年度　長浜１",
+      "address_labels": [
+        "長浜の一部、仁久、小浦、櫛生、須沢、出海、下平、白滝、戒川、下須戒"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.ozu.ehime.jp/soshiki/kankyo/65772.html"
+    },
+    {
+      "id": "38207-nagahama-02",
+      "name": "長浜地域 2：長浜２",
+      "display_name": "長浜の一部、黒田、大屋、沖浦、今坊、穂積、大越、豊茂、柴、上老松",
+      "calendar_id": "ozu-nagahama-02",
+      "rule_profile_id": "nagahama",
+      "official_calendar_number": 2,
+      "official_calendar_title": "令和８年度　長浜２",
+      "address_labels": [
+        "長浜の一部、黒田、大屋、沖浦、今坊、穂積、大越、豊茂、柴、上老松"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.ozu.ehime.jp/soshiki/kankyo/65772.html"
+    },
+    {
+      "id": "38207-hijikawa-01",
+      "name": "肱川地域 1：中央地区",
+      "display_name": "【中央地区】 下鹿野川・上鹿野川・鹿野川第２団地・下石丸・中野（国道・県道沿い）",
+      "calendar_id": "ozu-hijikawa-01",
+      "rule_profile_id": "standard",
+      "official_calendar_number": 1,
+      "official_calendar_title": "令和８年度　中央地区",
+      "address_labels": [
+        "【中央地区】 下鹿野川・上鹿野川・鹿野川第２団地・下石丸・中野（国道・県道沿い）"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.ozu.ehime.jp/soshiki/kankyo/65773.html"
+    },
+    {
+      "id": "38207-hijikawa-02",
+      "name": "肱川地域 2：予子林地区",
+      "display_name": "【予子林地区】 柳・郷・市之畦・瓜生谷・町・藤野原",
+      "calendar_id": "ozu-hijikawa-02",
+      "rule_profile_id": "standard",
+      "official_calendar_number": 2,
+      "official_calendar_title": "令和８年度　予子林地区",
+      "address_labels": [
+        "【予子林地区】 柳・郷・市之畦・瓜生谷・町・藤野原"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.ozu.ehime.jp/soshiki/kankyo/65773.html"
+    },
+    {
+      "id": "38207-hijikawa-03",
+      "name": "肱川地域 3：中央地区・正山地区",
+      "display_name": "【中央地区】 八重栗 【正山地区】 瓜畦団地・道野尾・山槌（県道沿い）",
+      "calendar_id": "ozu-hijikawa-03",
+      "rule_profile_id": "standard",
+      "official_calendar_number": 3,
+      "official_calendar_title": "令和８年度　中央地区・正山地区",
+      "address_labels": [
+        "【中央地区】 八重栗 【正山地区】 瓜畦団地・道野尾・山槌（県道沿い）"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.ozu.ehime.jp/soshiki/kankyo/65773.html"
+    },
+    {
+      "id": "38207-hijikawa-04",
+      "name": "肱川地域 4：岩谷地区",
+      "display_name": "【岩谷地区】 下敷水（敷水バス停）・橡の木瀬・菟野尾（岩谷自治センター前）",
+      "calendar_id": "ozu-hijikawa-04",
+      "rule_profile_id": "standard",
+      "official_calendar_number": 4,
+      "official_calendar_title": "令和８年度　岩谷地区",
+      "address_labels": [
+        "【岩谷地区】 下敷水（敷水バス停）・橡の木瀬・菟野尾（岩谷自治センター前）"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.ozu.ehime.jp/soshiki/kankyo/65773.html"
+    },
+    {
+      "id": "38207-hijikawa-05",
+      "name": "肱川地域 5：大谷地区",
+      "display_name": "【大谷地区】 全域（影地集会所・久保集会所を除く）",
+      "calendar_id": "ozu-hijikawa-05",
+      "rule_profile_id": "standard",
+      "official_calendar_number": 5,
+      "official_calendar_title": "令和８年度　大谷地区",
+      "address_labels": [
+        "【大谷地区】 全域（影地集会所・久保集会所を除く）"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.ozu.ehime.jp/soshiki/kankyo/65773.html"
+    },
+    {
+      "id": "38207-hijikawa-06",
+      "name": "肱川地域 6：中央地区",
+      "display_name": "【中央地区】 萩野尾（旧特産センター）・汗生（国道沿い）・小薮（小薮温泉上）",
+      "calendar_id": "ozu-hijikawa-06",
+      "rule_profile_id": "standard",
+      "official_calendar_number": 6,
+      "official_calendar_title": "令和８年度　中央地区",
+      "address_labels": [
+        "【中央地区】 萩野尾（旧特産センター）・汗生（国道沿い）・小薮（小薮温泉上）"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.ozu.ehime.jp/soshiki/kankyo/65773.html"
+    },
+    {
+      "id": "38207-hijikawa-07",
+      "name": "肱川地域 7：中央地区・正山地区",
+      "display_name": "【中央地区】 上森山 【正山地区】 山槌（大成口、谷）・共栄（瓜畦団地を除く）・協生・嘉城・中居谷",
+      "calendar_id": "ozu-hijikawa-07",
+      "rule_profile_id": "standard",
+      "official_calendar_number": 7,
+      "official_calendar_title": "令和８年度　中央地区・正山地区",
+      "address_labels": [
+        "【中央地区】 上森山 【正山地区】 山槌（大成口、谷）・共栄（瓜畦団地を除く）・協生・嘉城・中居谷"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.ozu.ehime.jp/soshiki/kankyo/65773.html"
+    },
+    {
+      "id": "38207-hijikawa-08",
+      "name": "肱川地域 8：岩谷地区",
+      "display_name": "【岩谷地区】 下敷水（敷水バス停以外）・敷水・上敷水・上嵯峨谷・下嵯峨谷１・下嵯峨谷２",
+      "calendar_id": "ozu-hijikawa-08",
+      "rule_profile_id": "standard",
+      "official_calendar_number": 8,
+      "official_calendar_title": "令和８年度　岩谷地区",
+      "address_labels": [
+        "【岩谷地区】 下敷水（敷水バス停以外）・敷水・上敷水・上嵯峨谷・下嵯峨谷１・下嵯峨谷２"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.ozu.ehime.jp/soshiki/kankyo/65773.html"
+    },
+    {
+      "id": "38207-hijikawa-09",
+      "name": "肱川地域 9：中央地区",
+      "display_name": "【中央地区】 京造・月野尾・見の越",
+      "calendar_id": "ozu-hijikawa-09",
+      "rule_profile_id": "standard",
+      "official_calendar_number": 9,
+      "official_calendar_title": "令和８年度　中央地区",
+      "address_labels": [
+        "【中央地区】 京造・月野尾・見の越"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.ozu.ehime.jp/soshiki/kankyo/65773.html"
+    },
+    {
+      "id": "38207-hijikawa-10",
+      "name": "肱川地域 10：予子林地区",
+      "display_name": "【予子林地区】 中津・小倉",
+      "calendar_id": "ozu-hijikawa-10",
+      "rule_profile_id": "standard",
+      "official_calendar_number": 10,
+      "official_calendar_title": "令和８年度　予子林地区",
+      "address_labels": [
+        "【予子林地区】 中津・小倉"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.ozu.ehime.jp/soshiki/kankyo/65773.html"
+    },
+    {
+      "id": "38207-hijikawa-11",
+      "name": "肱川地域 11：中央地区",
+      "display_name": "【中央地区】 上中野・師走野・中小薮、上小薮・上石丸・久下・肱栄・小畑井・萩野尾（萩野尾バス停）・汗生（国道沿い以外）",
+      "calendar_id": "ozu-hijikawa-11",
+      "rule_profile_id": "standard",
+      "official_calendar_number": 11,
+      "official_calendar_title": "令和８年度　中央地区",
+      "address_labels": [
+        "【中央地区】 上中野・師走野・中小薮、上小薮・上石丸・久下・肱栄・小畑井・萩野尾（萩野尾バス停）・汗生（国道沿い以外）"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.ozu.ehime.jp/soshiki/kankyo/65773.html"
+    },
+    {
+      "id": "38207-hijikawa-12",
+      "name": "肱川地域 12：大谷地区",
+      "display_name": "【大谷地区】 影地集会所・久保集会所",
+      "calendar_id": "ozu-hijikawa-12",
+      "rule_profile_id": "standard",
+      "official_calendar_number": 12,
+      "official_calendar_title": "令和８年度　大谷地区",
+      "address_labels": [
+        "【大谷地区】 影地集会所・久保集会所"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.ozu.ehime.jp/soshiki/kankyo/65773.html"
+    },
+    {
+      "id": "38207-kawabe-01",
+      "name": "河辺地域 1：河辺地区",
+      "display_name": "【河辺地区】全域",
+      "calendar_id": "ozu-kawabe-01",
+      "rule_profile_id": "standard",
+      "official_calendar_number": 1,
+      "official_calendar_title": "令和８年度　河辺地区",
+      "address_labels": [
+        "【河辺地区】全域"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.ozu.ehime.jp/soshiki/kankyo/65774.html"
+    }
+  ],
+  "calendars": [
+    {
+      "id": "ozu-main-01",
+      "rule_profile_id": "standard"
+    },
+    {
+      "id": "ozu-main-02",
+      "rule_profile_id": "standard"
+    },
+    {
+      "id": "ozu-main-03",
+      "rule_profile_id": "standard"
+    },
+    {
+      "id": "ozu-main-04",
+      "rule_profile_id": "standard"
+    },
+    {
+      "id": "ozu-main-05",
+      "rule_profile_id": "standard"
+    },
+    {
+      "id": "ozu-main-06",
+      "rule_profile_id": "standard"
+    },
+    {
+      "id": "ozu-main-07",
+      "rule_profile_id": "standard"
+    },
+    {
+      "id": "ozu-main-08",
+      "rule_profile_id": "standard"
+    },
+    {
+      "id": "ozu-main-09",
+      "rule_profile_id": "standard"
+    },
+    {
+      "id": "ozu-main-10",
+      "rule_profile_id": "standard"
+    },
+    {
+      "id": "ozu-main-11",
+      "rule_profile_id": "standard"
+    },
+    {
+      "id": "ozu-main-12",
+      "rule_profile_id": "standard"
+    },
+    {
+      "id": "ozu-main-13",
+      "rule_profile_id": "standard"
+    },
+    {
+      "id": "ozu-main-14",
+      "rule_profile_id": "standard"
+    },
+    {
+      "id": "ozu-nagahama-01",
+      "rule_profile_id": "nagahama"
+    },
+    {
+      "id": "ozu-nagahama-02",
+      "rule_profile_id": "nagahama"
+    },
+    {
+      "id": "ozu-hijikawa-01",
+      "rule_profile_id": "standard"
+    },
+    {
+      "id": "ozu-hijikawa-02",
+      "rule_profile_id": "standard"
+    },
+    {
+      "id": "ozu-hijikawa-03",
+      "rule_profile_id": "standard"
+    },
+    {
+      "id": "ozu-hijikawa-04",
+      "rule_profile_id": "standard"
+    },
+    {
+      "id": "ozu-hijikawa-05",
+      "rule_profile_id": "standard"
+    },
+    {
+      "id": "ozu-hijikawa-06",
+      "rule_profile_id": "standard"
+    },
+    {
+      "id": "ozu-hijikawa-07",
+      "rule_profile_id": "standard"
+    },
+    {
+      "id": "ozu-hijikawa-08",
+      "rule_profile_id": "standard"
+    },
+    {
+      "id": "ozu-hijikawa-09",
+      "rule_profile_id": "standard"
+    },
+    {
+      "id": "ozu-hijikawa-10",
+      "rule_profile_id": "standard"
+    },
+    {
+      "id": "ozu-hijikawa-11",
+      "rule_profile_id": "standard"
+    },
+    {
+      "id": "ozu-hijikawa-12",
+      "rule_profile_id": "standard"
+    },
+    {
+      "id": "ozu-kawabe-01",
+      "rule_profile_id": "standard"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38401",
+  "municipality_name": "松前町",
+  "prefecture_id": "38",
+  "prefecture_name": "愛媛県",
+  "version": "masaki-2026.1",
+  "valid_from": "2026-04-01",
+  "valid_to": "2027-03-31",
+  "collection_areas": [
+    {
+      "id": "38401-masaki-school",
+      "name": "松前校区",
+      "display_name": "松前校区",
+      "calendar_id": "masaki-masaki-school",
+      "rule_profile_id": "masaki",
+      "address_labels": [
+        "松前校区"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.masaki.ehime.jp/uploaded/attachment/24135.pdf",
+      "mapping_note": "町内住所から校区への自動判定は未実装のため、公式資料または現地で校区確認が必要"
+    },
+    {
+      "id": "38401-kitaiyo-okada-school",
+      "name": "北伊予・岡田校区",
+      "display_name": "北伊予・岡田校区",
+      "calendar_id": "masaki-kitaiyo-okada-school",
+      "rule_profile_id": "masaki",
+      "address_labels": [
+        "北伊予・岡田校区"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.masaki.ehime.jp/uploaded/attachment/24136.pdf",
+      "mapping_note": "町内住所から校区への自動判定は未実装のため、公式資料または現地で校区確認が必要"
+    }
+  ],
+  "calendars": [
+    {
+      "id": "masaki-masaki-school",
+      "rule_profile_id": "masaki"
+    },
+    {
+      "id": "masaki-kitaiyo-okada-school",
+      "rule_profile_id": "masaki"
+    }
+  ]
+}

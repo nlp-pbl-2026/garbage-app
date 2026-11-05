@@ -450,7 +450,7 @@ def bulky_config():
         "reception_hours": "愛南町環境衛生センター：月～土 9:00～16:00（予約必要、休業日あり）",
         "collection_rules": "指定ごみ袋に収まらない原則100×80×250cm以内の粗大ごみは、環境衛生センター等へ直接持ち込むか、町の許可業者へ収集運搬を依頼します。",
         "fee_structure_type": "weight_based",
-        "application_method": "direct_dropoff",
+        "application_method": "guide_only",
         "phone_number": "0895-72-6955",
         "web_form_url": None,
         "information_url": ITEMS_PAGE_URL,

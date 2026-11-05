@@ -266,7 +266,7 @@
           "reception_hours": "環境センターへの直接持込は月～土曜日13:00～16:30（祝祭日・年末年始を除く）",
           "collection_rules": "町の粗大ごみ収集日は回覧で確認します。直接持ち込む場合は幅1m×高さ80cm×長さ2.5m以内です。",
           "fee_structure_type": "weight_based",
-          "application_method": "circular_notice_or_direct_dropoff",
+          "application_method": "guide_only",
           "phone_number": "0895-42-1115",
           "web_form_url": null,
           "information_url": "https://www.town.matsuno.ehime.jp/soshiki/9/1333.html",

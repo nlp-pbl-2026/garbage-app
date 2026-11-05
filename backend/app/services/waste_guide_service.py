@@ -624,6 +624,7 @@ class WasteGuideService:
         )
         documents = self.retrieve(
             rewritten_query=rewritten_query,
+            original_query=query,
             municipality_id=municipality_id,
             district_id=district_id,
         )
@@ -659,6 +660,7 @@ class WasteGuideService:
         self,
         *,
         rewritten_query: str,
+        original_query: str | None = None,
         municipality_id: str,
         district_id: str,
     ) -> list[RetrievedDocument]:
@@ -727,18 +729,29 @@ class WasteGuideService:
                     title="中島地域 2026年度共通分別ルール",
                 ))
             return documents
-        # 既定は意味検索(Embedding)単体。表層一致は設定で併用可能。
+        # 意味検索は表現の揺れに強い一方、LLMの言い換えが公式品目名を
+        # 落とすことがある。元入力に公式品目名が明記されている場合だけは、
+        # 設定にかかわらず同じ自治体のCSVから完全一致候補を補う。
         lexical_documents: list[RetrievedDocument] = []
+        exact_documents: list[RetrievedDocument] = []
+        if municipality_id != "38201":
+            try:
+                search = self._regional_item_search(region)
+            except (OSError, ValueError, KeyError) as error:
+                raise WasteGuideError("Verified regional item index is unavailable") from error
+            exact_documents = self._exact_item_documents(
+                search=search,
+                query=original_query or rewritten_query,
+                region=region,
+            )
         if config.LEXICAL_SEARCH_ENABLED:
             try:
                 if municipality_id == "38201" and self._item_search is not None:
                     search = self._item_search
+                elif municipality_id == "38201":
+                    search = ItemSearchService()
                 else:
-                    key = (municipality_id, region.rule_profile_id, region.version, region.asset_path("items_path"))
-                    if key not in self._regional_item_searches:
-                        self._regional_item_searches[key] = ItemSearchService(
-                            items_path=region.asset_path("items_path"), municipality_id=municipality_id)
-                    search = self._regional_item_searches[key]
+                    search = self._regional_item_search(region)
             except (OSError, ValueError, KeyError) as error:
                 raise WasteGuideError("Regional item data is unavailable") from error
             lexical_documents = [
@@ -753,9 +766,64 @@ class WasteGuideService:
                     rewritten_query, limit=config.LEXICAL_SEARCH_TOP_K
                 )
             ]
+        lexical_documents = self._deduplicate_documents(
+            [*exact_documents, *lexical_documents]
+        )
         vector_documents = (self._gateway.retrieve(rewritten_query, region=region)
                             if isinstance(self._gateway, BedrockGateway) else self._gateway.retrieve(rewritten_query))
         return self._fuse_documents(lexical_documents, vector_documents)
+
+    def _regional_item_search(self, region: RegionContext) -> ItemSearchService:
+        key = (
+            region.municipality_id,
+            region.rule_profile_id,
+            region.version,
+            region.asset_path("items_path"),
+        )
+        if key not in self._regional_item_searches:
+            self._regional_item_searches[key] = ItemSearchService(
+                items_path=region.asset_path("items_path"),
+                municipality_id=region.municipality_id,
+            )
+        return self._regional_item_searches[key]
+
+    @classmethod
+    def _exact_item_documents(
+        cls,
+        *,
+        search: ItemSearchService,
+        query: str,
+        region: RegionContext,
+    ) -> list[RetrievedDocument]:
+        normalized_query = cls._normalize_item_key(query)
+        documents: list[RetrievedDocument] = []
+        for match in search.search(query, limit=24):
+            base_name = re.sub(r"[（(].*$", "", match.item).strip()
+            if not cls._item_name_matches_query(base_name, normalized_query):
+                continue
+            documents.append(
+                RetrievedDocument(
+                    text=match.evidence_text,
+                    score=match.score,
+                    uri=f"{region.evidence_prefix}items/{match.item_id}",
+                    title=(
+                        region.rules.knowledge_title
+                        or f"{region.municipality_label}ごみ分別辞典"
+                    )
+                    + "（品目名一致）",
+                )
+            )
+        return documents
+
+    @staticmethod
+    def _deduplicate_documents(
+        documents: list[RetrievedDocument],
+    ) -> list[RetrievedDocument]:
+        unique: dict[str, RetrievedDocument] = {}
+        for document in documents:
+            key = document.uri or document.text
+            unique.setdefault(key, document)
+        return list(unique.values())
 
     @staticmethod
     def _fuse_documents(
@@ -885,6 +953,42 @@ class WasteGuideService:
             decision = self._gateway.classify(query, clarification_items, documents, image=image)
         if decision.category_code and decision.category_code not in region.category_codes:
             decision = replace(decision, is_resolved=False, category_code="")
+        if municipality_id != "38201":
+            explicit_detail = bool(clarification_items) or any(
+                marker in unicodedata.normalize("NFKC", query).lower()
+                for marker in (
+                    "袋に入",
+                    "袋に収ま",
+                    "cm",
+                    "センチ",
+                    "木製",
+                    "紙製",
+                    "プラスチック",
+                    "金属",
+                    "ガラス",
+                    "陶器",
+                    "汚れ",
+                    "洗った",
+                    "すすいだ",
+                    "マーク",
+                )
+            )
+            exact_decision = (
+                self._resolve_exact_structured_decision(
+                    query=query,
+                    clarifications=clarification_items,
+                    documents=documents,
+                    region=region,
+                )
+                if decision.is_resolved or explicit_detail
+                else None
+            )
+            if exact_decision is not None:
+                logger.info(
+                    "Resolved classification from exact regional evidence: %s",
+                    query,
+                )
+                decision = exact_decision
         detail_query = " ".join(
             part for part in (query, rewritten_query) if part.strip()
         )
@@ -1015,6 +1119,292 @@ class WasteGuideService:
     def _normalize_question(question: str) -> str:
         value = unicodedata.normalize("NFKC", question).lower()
         return re.sub(r"[\s\W_]+", "", value)
+
+    @classmethod
+    def _normalize_item_key(cls, value: str) -> str:
+        return cls._normalize_question(value).replace("衣裳", "衣装")
+
+    @classmethod
+    def _item_name_matches_query(cls, item_name: str, query: str) -> bool:
+        normalized_item = cls._normalize_item_key(item_name)
+        normalized_query = cls._normalize_item_key(query)
+        if len(normalized_item) >= 2 and normalized_item in normalized_query:
+            return True
+        # 「油容器（プラ製）」に対する「油のプラスチック容器」のように、
+        # 素材語が品目名の途中へ入る自然な表現を同じ容器として扱う。
+        if normalized_item.endswith("容器"):
+            prefix = normalized_item.removesuffix("容器")
+            return len(prefix) >= 1 and prefix in normalized_query and "容器" in normalized_query
+        return False
+
+    @classmethod
+    def _matching_structured_documents(
+        cls,
+        *,
+        query: str,
+        documents: list[RetrievedDocument],
+    ) -> list[tuple[int, RetrievedDocument, str]]:
+        """Return official rows whose base item name occurs in the user input."""
+
+        normalized_query = cls._normalize_item_key(query)
+        matches: list[tuple[int, RetrievedDocument, str]] = []
+        for index, document in enumerate(documents, start=1):
+            first_line = document.text.splitlines()[0] if document.text else ""
+            if not first_line.startswith("品目:"):
+                continue
+            item_name = first_line.removeprefix("品目:").strip()
+            base_name = re.sub(r"[（(].*$", "", item_name).strip()
+            if cls._item_name_matches_query(base_name, normalized_query):
+                matches.append((index, document, item_name))
+        return matches
+
+    @staticmethod
+    def _structured_values(document: RetrievedDocument) -> dict[str, str]:
+        values: dict[str, str] = {}
+        for line in document.text.splitlines()[1:]:
+            key, separator, value = line.partition(":")
+            if separator:
+                values[key.strip()] = value.strip()
+        return values
+
+    @staticmethod
+    def _material_in_context(context: str) -> bool:
+        return any(
+            marker in context
+            for marker in (
+                "プラスチック",
+                "プラ製",
+                "樹脂",
+                "金属",
+                "アルミ",
+                "スチール",
+                "ガラス",
+                "陶器",
+                "セラミック",
+                "紙製",
+                "紙の",
+                "木製",
+                "木の",
+                "布製",
+                "革製",
+                "ゴム製",
+            )
+        )
+
+    @classmethod
+    def _exact_material_question(
+        cls,
+        *,
+        query: str,
+        clarifications: list[dict],
+        documents: list[RetrievedDocument],
+    ) -> str | None:
+        matches = cls._matching_structured_documents(query=query, documents=documents)
+        if len(matches) < 2:
+            return None
+        context = unicodedata.normalize(
+            "NFKC",
+            " ".join([query] + [str(item.get("answer", "")) for item in clarifications]),
+        ).lower()
+        if cls._material_in_context(context):
+            return None
+        bases: dict[str, list[str]] = {}
+        for _, _, item_name in matches:
+            base_name = re.sub(r"[（(].*$", "", item_name).strip()
+            qualifier_match = re.search(r"[（(]([^）)]+)[）)]", item_name)
+            qualifier = qualifier_match.group(1) if qualifier_match else ""
+            if qualifier and any(
+                marker in qualifier
+                for marker in ("紙", "プラ", "樹脂", "金属", "木", "ガラス", "陶器")
+            ):
+                bases.setdefault(base_name, []).append(qualifier)
+        ambiguous = next(
+            ((base, qualifiers) for base, qualifiers in bases.items() if len(set(qualifiers)) >= 2),
+            None,
+        )
+        if ambiguous is None:
+            return None
+        base_name, qualifiers = ambiguous
+        examples = "・".join(dict.fromkeys(qualifiers))
+        return f"{base_name}は何製ですか？（{examples}）"
+
+    @classmethod
+    def _resolve_exact_structured_decision(
+        cls,
+        *,
+        query: str,
+        clarifications: list[dict],
+        documents: list[RetrievedDocument],
+        region: RegionContext,
+    ) -> ClassificationDecision | None:
+        """Apply an explicit user condition to an exact official catalog row.
+
+        This never invents a rule: the primary category and every branch are read
+        from the selected municipality's structured evidence.
+        """
+
+        matches = cls._matching_structured_documents(query=query, documents=documents)
+        if not matches:
+            return None
+        context = unicodedata.normalize(
+            "NFKC",
+            " ".join([query] + [str(item.get("answer", "")) for item in clarifications]),
+        ).lower()
+
+        material_markers = {
+            "紙": ("紙製", "紙の"),
+            "プラ": ("プラスチック", "プラ製", "樹脂"),
+            "金属": ("金属", "アルミ", "スチール"),
+            "木": ("木製", "木の"),
+            "ガラス": ("ガラス",),
+            "陶器": ("陶器", "セラミック"),
+        }
+        selected = matches[0]
+        selected_by_explicit_material = False
+        if len(matches) > 1:
+            selected_by_material = []
+            for candidate in matches:
+                item_name = candidate[2]
+                qualifier_match = re.search(r"[（(]([^）)]+)[）)]", item_name)
+                qualifier = qualifier_match.group(1) if qualifier_match else ""
+                if any(
+                    label in qualifier and any(marker in context for marker in markers)
+                    for label, markers in material_markers.items()
+                ):
+                    selected_by_material.append(candidate)
+            if len(selected_by_material) == 1:
+                selected = selected_by_material[0]
+                selected_by_explicit_material = True
+            elif cls._exact_material_question(
+                query=query,
+                clarifications=clarifications,
+                documents=documents,
+            ):
+                return None
+
+        evidence_index, document, _ = selected
+        values = cls._structured_values(document)
+        primary = values.get("分類コード", "")
+        if primary not in region.category_codes:
+            return None
+        item_evidence = unicodedata.normalize("NFKC", document.text).split(
+            "区分共通の出し方", 1
+        )[0]
+        try:
+            options = json.loads(values.get("条件付き分類コード", "[]"))
+        except (TypeError, ValueError):
+            options = []
+        if not isinstance(options, list):
+            options = []
+
+        def category_in(text: str, allowed: list[str] | None = None) -> str | None:
+            allowed_codes = set(allowed or region.category_codes)
+            for code, label in sorted(
+                region.category_names.items(), key=lambda item: len(item[1]), reverse=True
+            ):
+                if code in allowed_codes and (label in text or code in text):
+                    return code
+            return None
+
+        def after_first(markers: tuple[str, ...]) -> str:
+            positions = [item_evidence.find(marker) for marker in markers]
+            positions = [position for position in positions if position >= 0]
+            return item_evidence[min(positions) : min(positions) + 120] if positions else ""
+
+        question_answers = [
+            (
+                unicodedata.normalize("NFKC", str(item.get("question", ""))),
+                unicodedata.normalize("NFKC", str(item.get("answer", ""))).strip(),
+            )
+            for item in clarifications
+        ]
+        negative_size = any(
+            marker in context
+            for marker in ("袋に入らない", "袋に入りません", "袋に収まらない", "袋に収まりません")
+        ) or any(
+            re.search(r"袋.*(?:入|収ま)", question)
+            and (
+                re.match(r"いいえ(?:[、。！!]|$)", answer)
+                or any(marker in answer for marker in ("入りません", "収まりません", "入らない", "収まらない"))
+            )
+            for question, answer in question_answers
+        )
+        positive_size = any(
+            marker in context
+            for marker in ("袋に入る", "袋に入ります", "袋に収まる", "袋に収まります")
+        ) or any(
+            re.search(r"袋.*(?:入|収ま)", question)
+            and (
+                re.match(r"はい(?:[、。！!]|$)", answer)
+                or any(marker in answer for marker in ("入ります", "収まります", "入る", "収まる"))
+            )
+            for question, answer in question_answers
+        )
+        size_condition = bool(
+            re.search(r"袋.{0,8}(?:入ら|入れ|収まら|収まれ|収まな)", item_evidence)
+        )
+        material_condition = bool(
+            re.search(r"(?:木|紙|プラ|樹脂|金属|ガラス|陶器)製.{0,8}(?:なら|は)", item_evidence)
+        )
+        dirty_condition = "汚れが落ちない" in item_evidence
+        mark_condition = "プラマーク" in item_evidence
+
+        category = primary
+        if negative_size and size_condition:
+            tail = after_first(("袋に入ら", "袋に収まら", "袋に入れ"))
+            category = category_in(tail, options) or (
+                "facility_dropoff"
+                if "facility_dropoff" in region.category_codes
+                and any(marker in tail for marker in ("美化センター", "持込", "許可業者"))
+                else "bulky" if "bulky" in options else primary
+            )
+        elif positive_size and size_condition:
+            category = primary
+        elif size_condition:
+            return None
+
+        material_branches = (
+            (("木製", "木の"), ("木製なら", "木製は")),
+            (("プラスチック", "プラ製", "樹脂"), ("プラスチック製", "プラ製", "樹脂製")),
+            (("金属", "アルミ", "スチール"), ("金属製",)),
+            (("紙製", "紙の"), ("紙製",)),
+            (("ガラス",), ("ガラス製",)),
+            (("陶器", "セラミック"), ("陶器製",)),
+        )
+        if material_condition and not selected_by_explicit_material:
+            resolved_material = False
+            for answers, evidence_markers in material_branches:
+                if not any(answer in context for answer in answers):
+                    continue
+                tail = after_first(evidence_markers)
+                material_category = category_in(tail, options or None)
+                if material_category:
+                    category = material_category
+                    resolved_material = True
+                    break
+            if not resolved_material:
+                return None
+
+        if dirty_condition:
+            if any(marker in context for marker in ("汚れが落ちない", "汚れを落とせない", "汚れが取れない")):
+                category = category_in(after_first(("汚れが落ちない",))) or category
+            elif not any(marker in context for marker in ("洗った", "すすいだ", "汚れを取り除", "きれい")):
+                return None
+
+        if mark_condition and not any(
+            marker in context for marker in ("プラマーク", "プラ表示", "マークあり", "マークなし")
+        ):
+            return None
+        if category not in region.category_codes:
+            return None
+        return ClassificationDecision(
+            is_resolved=True,
+            item_name=re.sub(r"を?(?:捨て|処分).*$", "", query).strip() or query.strip(),
+            category_code=category,
+            disposal_instructions=values.get("出し方・注意", ""),
+            confidence=max(0.9, document.score or 0.0),
+            evidence_indexes=(evidence_index,),
+        )
 
     @staticmethod
     def _is_out_of_scope(query: str) -> bool:
@@ -1227,7 +1617,28 @@ class WasteGuideService:
                 + [str(item.get("answer", "")) for item in clarifications]
             ),
         ).lower()
-        structured = next(
+        material_question = cls._exact_material_question(
+            query=query,
+            clarifications=clarifications,
+            documents=documents,
+        )
+        if material_question:
+            return material_question
+
+        exact_matches = cls._matching_structured_documents(
+            query=query,
+            documents=documents,
+        )
+        selected = next(
+            (
+                documents[index - 1]
+                for index in selected_evidence_indexes
+                if 1 <= index <= len(documents)
+                and documents[index - 1].text.startswith("品目:")
+            ),
+            None,
+        )
+        structured = (exact_matches[0][1] if exact_matches else selected) or next(
             (
                 document
                 for document in documents
@@ -1241,14 +1652,16 @@ class WasteGuideService:
         lines = structured.text.splitlines()
         item_name = lines[0].removeprefix("品目:").strip()
         display_item = re.sub(r"[（(].*$", "", item_name).strip() or "品物"
-        evidence = unicodedata.normalize("NFKC", structured.text)
+        evidence = unicodedata.normalize("NFKC", structured.text).split(
+            "区分共通の出し方", 1
+        )[0]
 
         # Explicit opt-in for municipalities with a dimensional boundary.
         # Search rewrites and image estimates never count as a measured size.
         threshold = getattr(region.rules, "size_threshold_cm", None) if region else None
-        selected = next((documents[index - 1] for index in selected_evidence_indexes
-                         if 1 <= index <= len(documents)), structured)
-        item_evidence = unicodedata.normalize("NFKC", selected.text).split("区分共通の出し方", 1)[0]
+        item_evidence = unicodedata.normalize("NFKC", structured.text).split(
+            "区分共通の出し方", 1
+        )[0]
         if (threshold and "条件付き分類コード:" in item_evidence
                 and re.search(rf"{threshold}cm(?:以下|超)", item_evidence)):
             uncertain = re.compile(r"(?:cm|センチ).{0,12}(?:わから|分から|不明|かもしれ)")
@@ -1273,6 +1686,9 @@ class WasteGuideService:
             "木・プラスチック製",
             "紙製は",
             "紙製のものは",
+            "木製なら",
+            "木製は",
+            "プラ製は",
             "ガラス製のものは",
             "陶器製のものは",
         )
@@ -1301,7 +1717,16 @@ class WasteGuideService:
                 "（木・プラスチック・金属など）"
             )
 
-        size_branch = "袋に入らない" in evidence or "袋に入らない場合" in evidence
+        size_branch = any(
+            marker in evidence
+            for marker in (
+                "袋に入らない",
+                "袋に入らなければ",
+                "袋に収まらない",
+                "袋に収まらなければ",
+                "袋に入れば",
+            )
+        )
         size_answers = (
             "袋に入る",
             "袋に入ります",
@@ -1323,6 +1748,20 @@ class WasteGuideService:
             )
         if size_branch and not size_answered:
             return region.rules.size_question if region else "松山市の指定ごみ袋に入る大きさですか？"
+
+        if "汚れが落ちない" in evidence and not any(
+            marker in context
+            for marker in (
+                "汚れが落ちない",
+                "汚れを落とせない",
+                "汚れが取れない",
+                "洗った",
+                "すすいだ",
+                "汚れを取り除",
+                "きれい",
+            )
+        ):
+            return f"{display_item}の汚れは水ですすいで落とせますか？"
 
         explicitly_non_plastic = any(
             marker in context

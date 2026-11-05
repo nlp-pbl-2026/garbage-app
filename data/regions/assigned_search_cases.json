@@ -1,0 +1,391 @@
+{
+  "schema_version": 1,
+  "evaluation_time": "2026-11-05T12:00:00+09:00",
+  "description": "大洲市・砥部町・愛南町・鬼北町・松野町・内子町・松前町の専用索引を使う実API評価。通常品目、紛らわしい品目、追加質問、収集対象外を各自治体で確認する。",
+  "cases": [
+    {
+      "case": 1,
+      "municipality": "大洲市",
+      "kind": "normal",
+      "input": {"municipality_id": "38207", "district_id": "38207-main-01", "query": "読み終わった新聞紙はどう出す？", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "paper_cloth",
+      "source_url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46102.pdf"
+    },
+    {
+      "case": 2,
+      "municipality": "大洲市",
+      "kind": "not_collected",
+      "input": {"municipality_id": "38207", "district_id": "38207-main-01", "query": "リチウムイオン電池を捨てたい", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "not_collected",
+      "source_url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46102.pdf"
+    },
+    {
+      "case": 3,
+      "municipality": "大洲市",
+      "kind": "clarification",
+      "input": {"municipality_id": "38207", "district_id": "38207-main-01", "query": "扇風機を捨てたい", "clarifications": []},
+      "expected_status": "needs_clarification",
+      "question_contains_any": ["袋", "大きさ"],
+      "source_url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46102.pdf"
+    },
+    {
+      "case": 4,
+      "municipality": "大洲市",
+      "kind": "clarified",
+      "input": {"municipality_id": "38207", "district_id": "38207-main-01", "query": "扇風機を捨てたい", "clarifications": [{"question": "指定ごみ袋に入る大きさですか？", "answer": "いいえ、入りません"}]},
+      "expected_status": "answered",
+      "expected_category": "bulky",
+      "source_url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46102.pdf"
+    },
+    {
+      "case": 5,
+      "municipality": "大洲市",
+      "kind": "clarified",
+      "input": {"municipality_id": "38207", "district_id": "38207-main-01", "query": "指定ごみ袋に入る扇風機", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "non_burnable",
+      "source_url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46102.pdf"
+    },
+    {
+      "case": 6,
+      "municipality": "大洲市",
+      "kind": "normal",
+      "input": {"municipality_id": "38207", "district_id": "38207-main-01", "query": "使い終わった乾電池", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "hazardous",
+      "source_url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46102.pdf"
+    },
+
+    {
+      "case": 7,
+      "municipality": "砥部町",
+      "kind": "normal",
+      "input": {"municipality_id": "38402", "district_id": "38402-asou", "query": "読み終わった情報誌リビング", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "newspaper",
+      "source_url": "https://www.town.tobe.ehime.jp/material/files/group/12/22532.pdf#page=11"
+    },
+    {
+      "case": 8,
+      "municipality": "砥部町",
+      "kind": "normal",
+      "input": {"municipality_id": "38402", "district_id": "38402-asou", "query": "使い終わったアルカリ電池", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "hazardous",
+      "source_url": "https://www.town.tobe.ehime.jp/material/files/group/12/22532.pdf#page=1"
+    },
+    {
+      "case": 9,
+      "municipality": "砥部町",
+      "kind": "not_collected",
+      "input": {"municipality_id": "38402", "district_id": "38402-asou", "query": "壊れた液晶テレビ", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "not_collected",
+      "source_url": "https://www.town.tobe.ehime.jp/material/files/group/12/22532.pdf#page=3"
+    },
+    {
+      "case": 10,
+      "municipality": "砥部町",
+      "kind": "clarification",
+      "input": {"municipality_id": "38402", "district_id": "38402-asou", "query": "衣装ケースを捨てたい", "clarifications": []},
+      "expected_status": "needs_clarification",
+      "question_contains_any": ["袋", "大きさ"],
+      "source_url": "https://www.town.tobe.ehime.jp/material/files/group/12/22532.pdf#page=1"
+    },
+    {
+      "case": 11,
+      "municipality": "砥部町",
+      "kind": "clarified",
+      "input": {"municipality_id": "38402", "district_id": "38402-asou", "query": "衣装ケースを捨てたい", "clarifications": [{"question": "砥部町の指定袋に入る大きさですか？", "answer": "いいえ、入りません"}]},
+      "expected_status": "answered",
+      "expected_category": "facility_dropoff",
+      "source_url": "https://www.town.tobe.ehime.jp/material/files/group/12/22532.pdf#page=1"
+    },
+    {
+      "case": 12,
+      "municipality": "砥部町",
+      "kind": "condition",
+      "input": {"municipality_id": "38402", "district_id": "38402-asou", "query": "汚れが落ちない油のプラスチック容器", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "burnable",
+      "source_url": "https://www.town.tobe.ehime.jp/material/files/group/12/22532.pdf#page=1"
+    },
+
+    {
+      "case": 13,
+      "municipality": "愛南町",
+      "kind": "normal",
+      "input": {"municipality_id": "38506", "district_id": "38506-block-1", "query": "空のペットボトル", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "pet_bottles",
+      "source_url": "https://www.town.ainan.ehime.jp/kurashi/tetsuduki/kankyoeisei/gomi/files/r6.8.8gomibunnbetuhayamihyo.pdf#page=30"
+    },
+    {
+      "case": 14,
+      "municipality": "愛南町",
+      "kind": "not_collected",
+      "input": {"municipality_id": "38506", "district_id": "38506-block-1", "query": "農業用のあぜシート", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "not_collected",
+      "source_url": "https://www.town.ainan.ehime.jp/kurashi/tetsuduki/kankyoeisei/gomi/files/r6.8.8gomibunnbetuhayamihyo.pdf#page=4"
+    },
+    {
+      "case": 15,
+      "municipality": "愛南町",
+      "kind": "clarification",
+      "input": {"municipality_id": "38506", "district_id": "38506-block-1", "query": "ガステーブルを捨てたい", "clarifications": []},
+      "expected_status": "needs_clarification",
+      "question_contains_any": ["袋", "大きさ"],
+      "source_url": "https://www.town.ainan.ehime.jp/kurashi/tetsuduki/kankyoeisei/gomi/files/r6.8.8gomibunnbetuhayamihyo.pdf#page=8"
+    },
+    {
+      "case": 16,
+      "municipality": "愛南町",
+      "kind": "clarified",
+      "input": {"municipality_id": "38506", "district_id": "38506-block-1", "query": "ガステーブルを捨てたい", "clarifications": [{"question": "愛南町の指定袋に入る大きさですか？", "answer": "いいえ、入りません"}]},
+      "expected_status": "answered",
+      "expected_category": "bulky",
+      "source_url": "https://www.town.ainan.ehime.jp/kurashi/tetsuduki/kankyoeisei/gomi/files/r6.8.8gomibunnbetuhayamihyo.pdf#page=8"
+    },
+    {
+      "case": 17,
+      "municipality": "愛南町",
+      "kind": "material",
+      "input": {"municipality_id": "38506", "district_id": "38506-block-1", "query": "木製で指定袋に入るテニスラケット", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "burnable",
+      "source_url": "https://www.town.ainan.ehime.jp/kurashi/tetsuduki/kankyoeisei/gomi/files/r6.8.8gomibunnbetuhayamihyo.pdf#page=23"
+    },
+    {
+      "case": 18,
+      "municipality": "愛南町",
+      "kind": "alternative_route",
+      "input": {"municipality_id": "38506", "district_id": "38506-block-1", "query": "小型家電回収に出すアイロン", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "small_appliances",
+      "source_url": "https://www.town.ainan.ehime.jp/kurashi/tetsuduki/kankyoeisei/gomi/files/r6.8.8gomibunnbetuhayamihyo.pdf#page=4"
+    },
+
+    {
+      "case": 19,
+      "municipality": "鬼北町",
+      "kind": "normal",
+      "input": {"municipality_id": "38488", "district_id": "38488-izumi", "query": "空のペットボトル", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "pet_bottles",
+      "source_url": "https://www.town.kihoku.ehime.jp/uploaded/attachment/6289.pdf#page=26"
+    },
+    {
+      "case": 20,
+      "municipality": "鬼北町",
+      "kind": "current_rule",
+      "input": {"municipality_id": "38488", "district_id": "38488-izumi", "query": "使い終わったリチウムイオン電池", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "rechargeable_batteries",
+      "source_url": "https://www.town.kihoku.ehime.jp/uploaded/attachment/18393.pdf#page=2"
+    },
+    {
+      "case": 21,
+      "municipality": "鬼北町",
+      "kind": "not_collected",
+      "input": {"municipality_id": "38488", "district_id": "38488-izumi", "query": "農業用のあぜシート", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "not_collected",
+      "source_url": "https://www.town.kihoku.ehime.jp/uploaded/attachment/6289.pdf#page=3"
+    },
+    {
+      "case": 22,
+      "municipality": "鬼北町",
+      "kind": "clarification",
+      "input": {"municipality_id": "38488", "district_id": "38488-izumi", "query": "衣装ケースを捨てたい", "clarifications": []},
+      "expected_status": "needs_clarification",
+      "question_contains_any": ["袋", "大きさ"],
+      "source_url": "https://www.town.kihoku.ehime.jp/uploaded/attachment/18327.pdf"
+    },
+    {
+      "case": 23,
+      "municipality": "鬼北町",
+      "kind": "clarified",
+      "input": {"municipality_id": "38488", "district_id": "38488-izumi", "query": "衣装ケースを捨てたい", "clarifications": [{"question": "鬼北町の指定袋に入る大きさですか？", "answer": "いいえ、入りません"}]},
+      "expected_status": "answered",
+      "expected_category": "bulky",
+      "source_url": "https://www.town.kihoku.ehime.jp/uploaded/attachment/18327.pdf"
+    },
+    {
+      "case": 24,
+      "municipality": "鬼北町",
+      "kind": "condition",
+      "input": {"municipality_id": "38488", "district_id": "38488-izumi", "query": "洗って乾かした薄いプラスチック製のアイスクリーム容器", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "clean_plastic",
+      "source_url": "https://www.town.kihoku.ehime.jp/uploaded/attachment/18327.pdf"
+    },
+
+    {
+      "case": 25,
+      "municipality": "松野町",
+      "kind": "normal",
+      "input": {"municipality_id": "38484", "district_id": "38484-matsumaru", "query": "すすいだペットボトル", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "pet_bottles",
+      "source_url": "https://www.town.matsuno.ehime.jp/uploaded/attachment/7083.pdf#page=56"
+    },
+    {
+      "case": 26,
+      "municipality": "松野町",
+      "kind": "not_collected",
+      "input": {"municipality_id": "38484", "district_id": "38484-matsumaru", "query": "農業用のあぜシート", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "not_collected",
+      "source_url": "https://www.town.matsuno.ehime.jp/uploaded/attachment/7083.pdf#page=22"
+    },
+    {
+      "case": 27,
+      "municipality": "松野町",
+      "kind": "clarification",
+      "input": {"municipality_id": "38484", "district_id": "38484-matsumaru", "query": "圧力鍋を捨てたい", "clarifications": []},
+      "expected_status": "needs_clarification",
+      "question_contains_any": ["袋", "大きさ"],
+      "source_url": "https://www.town.matsuno.ehime.jp/uploaded/attachment/7083.pdf#page=22"
+    },
+    {
+      "case": 28,
+      "municipality": "松野町",
+      "kind": "clarified",
+      "input": {"municipality_id": "38484", "district_id": "38484-matsumaru", "query": "圧力鍋を捨てたい", "clarifications": [{"question": "松野町の指定袋に入る大きさですか？", "answer": "いいえ、入りません"}]},
+      "expected_status": "answered",
+      "expected_category": "bulky",
+      "source_url": "https://www.town.matsuno.ehime.jp/uploaded/attachment/7083.pdf#page=22"
+    },
+    {
+      "case": 29,
+      "municipality": "松野町",
+      "kind": "material",
+      "input": {"municipality_id": "38484", "district_id": "38484-matsumaru", "query": "金属製ではない布製のアタッシュケース、指定袋に入る", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "burnable",
+      "source_url": "https://www.town.matsuno.ehime.jp/uploaded/attachment/7083.pdf#page=22"
+    },
+    {
+      "case": 30,
+      "municipality": "松野町",
+      "kind": "power_source",
+      "input": {"municipality_id": "38484", "district_id": "38484-matsumaru", "query": "電池式のプラスチック製おもちゃ", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "small_appliances",
+      "source_url": "https://www.town.matsuno.ehime.jp/uploaded/attachment/7083.pdf#page=26"
+    },
+
+    {
+      "case": 31,
+      "municipality": "内子町",
+      "kind": "normal",
+      "input": {"municipality_id": "38422", "district_id": "38422-uchiko-a", "query": "空のペットボトル", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "pet_bottles",
+      "source_url": "https://www.town.uchiko.ehime.jp/uploaded/life/139240_284629_misc.pdf#page=11"
+    },
+    {
+      "case": 32,
+      "municipality": "内子町",
+      "kind": "not_collected",
+      "input": {"municipality_id": "38422", "district_id": "38422-uchiko-a", "query": "壊れた衣類乾燥機", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "appliance_recycling",
+      "source_url": "https://www.town.uchiko.ehime.jp/uploaded/life/139240_284629_misc.pdf#page=2"
+    },
+    {
+      "case": 33,
+      "municipality": "内子町",
+      "kind": "clarification",
+      "input": {"municipality_id": "38422", "district_id": "38422-uchiko-a", "query": "アイロン台を捨てたい", "clarifications": []},
+      "expected_status": "needs_clarification",
+      "question_contains_any": ["袋", "大きさ"],
+      "source_url": "https://www.town.uchiko.ehime.jp/uploaded/life/139240_284629_misc.pdf#page=2"
+    },
+    {
+      "case": 34,
+      "municipality": "内子町",
+      "kind": "clarified",
+      "input": {"municipality_id": "38422", "district_id": "38422-uchiko-a", "query": "アイロン台を捨てたい", "clarifications": [{"question": "内子町の指定袋に入る大きさですか？", "answer": "いいえ、入りません"}]},
+      "expected_status": "answered",
+      "expected_category": "bulky",
+      "source_url": "https://www.town.uchiko.ehime.jp/uploaded/life/139240_284629_misc.pdf#page=2"
+    },
+    {
+      "case": 35,
+      "municipality": "内子町",
+      "kind": "size_boundary",
+      "input": {"municipality_id": "38422", "district_id": "38422-uchiko-a", "query": "一辺30cmの飲食料品用空き缶", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "nonburnable",
+      "source_url": "https://www.town.uchiko.ehime.jp/uploaded/life/139240_284629_misc.pdf#page=2"
+    },
+    {
+      "case": 36,
+      "municipality": "内子町",
+      "kind": "not_collected",
+      "input": {"municipality_id": "38422", "district_id": "38422-uchiko-a", "query": "石製のうすを処分したい", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "not_collected",
+      "source_url": "https://www.town.uchiko.ehime.jp/uploaded/life/139240_284629_misc.pdf#page=2"
+    },
+
+    {
+      "case": 37,
+      "municipality": "松前町",
+      "kind": "normal",
+      "input": {"municipality_id": "38401", "district_id": "38401-masaki-school", "query": "空のペットボトル", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "pet_bottles",
+      "source_url": "https://www.town.masaki.ehime.jp/uploaded/attachment/16014.pdf#page=35"
+    },
+    {
+      "case": 38,
+      "municipality": "松前町",
+      "kind": "not_collected",
+      "input": {"municipality_id": "38401", "district_id": "38401-masaki-school", "query": "家庭で使った医療系廃棄物", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "not_collected",
+      "source_url": "https://www.town.masaki.ehime.jp/uploaded/attachment/16014.pdf#page=20"
+    },
+    {
+      "case": 39,
+      "municipality": "松前町",
+      "kind": "clarification",
+      "input": {"municipality_id": "38401", "district_id": "38401-masaki-school", "query": "IHクッキングヒーターを捨てたい", "clarifications": []},
+      "expected_status": "needs_clarification",
+      "question_contains_any": ["袋", "45", "大きさ"],
+      "source_url": "https://www.town.masaki.ehime.jp/uploaded/attachment/16014.pdf#page=20"
+    },
+    {
+      "case": 40,
+      "municipality": "松前町",
+      "kind": "clarified",
+      "input": {"municipality_id": "38401", "district_id": "38401-masaki-school", "query": "IHクッキングヒーターを捨てたい", "clarifications": [{"question": "45リットルの袋に入る大きさですか？", "answer": "いいえ、入りません"}]},
+      "expected_status": "answered",
+      "expected_category": "bulky",
+      "source_url": "https://www.town.masaki.ehime.jp/uploaded/attachment/16014.pdf#page=20"
+    },
+    {
+      "case": 41,
+      "municipality": "松前町",
+      "kind": "part_removed",
+      "input": {"municipality_id": "38401", "district_id": "38401-masaki-school", "query": "電池を外した泡立て器本体", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "metal",
+      "source_url": "https://www.town.masaki.ehime.jp/uploaded/attachment/16014.pdf#page=20"
+    },
+    {
+      "case": 42,
+      "municipality": "松前町",
+      "kind": "current_rule",
+      "input": {"municipality_id": "38401", "district_id": "38401-masaki-school", "query": "汚れを取り除いた食品用トレイ", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "plastic",
+      "source_url": "https://www.town.masaki.ehime.jp/uploaded/attachment/16014.pdf#page=31"
+    }
+  ]
+}

@@ -75,7 +75,7 @@ def test_ocr_normalisation_fixes_known_windows_ocr_confusions():
     assert _normalise("モバイルバッテリ-") == "モバイルバッテリー"
 
 
-def test_reviewed_registry_has_eight_blocks_without_embedding_registration():
+def test_reviewed_registry_has_eight_registered_blocks():
     registry = json.loads(
         (ROOT / "data/regions/ainan/registry.json").read_text(encoding="utf-8")
     )
@@ -93,7 +93,7 @@ def test_reviewed_registry_has_eight_blocks_without_embedding_registration():
     assert all(area["needs_local_confirmation"] for area in registry["collection_areas"])
     assert len(reviews["blocks"]) == 8
     assert reviews["blocks"][5]["rules"] == reviews["blocks"][1]["rules"]
-    assert all(item["id"] != "38506" for item in catalog["municipalities"])
+    assert any(item["id"] == "38506" for item in catalog["municipalities"])
 
 
 def test_ainan_workflow_never_imports_or_invokes_bedrock():

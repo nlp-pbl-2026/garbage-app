@@ -506,7 +506,11 @@ def inspect_calendars():
             "name": definition["display_name"],
             "display_name": definition["display_name"],
             "calendar_id": identifier,
-            "rule_profile_id": "uchiko",
+            "rule_profile_id": (
+                "uchiko_0800"
+                if definition["center"] == "小田自治センター"
+                else "uchiko_0730"
+            ),
             "address_labels": definition["address_labels"],
             "parent_area": definition["center"],
             "needs_local_confirmation": True,
@@ -518,7 +522,7 @@ def inspect_calendars():
         rules = {**definition["weekly"], **source["rules"]}
         calendars[identifier] = {
             "source_url": source_url,
-            "verification_status": "official_2026_dates_and_reviewed_weekly_rules",
+            "verification_status": "checked",
             "days": days,
             "exceptions": [
                 {
@@ -615,8 +619,8 @@ def bulky_config():
         "collection_frequency": "地域別の申込収集",
         "reception_hours": "クリーンセンター持込は月～土曜8:30～12:00、13:00～16:30（休業日を除く）",
         "collection_rules": "指定袋に入らないもの等は粗大ごみ。品目により直接持込不可のため分別辞典を確認します。",
-        "fee_structure_type": "item_or_direct_dropoff",
-        "application_method": "municipal_collection_or_direct_dropoff",
+        "fee_structure_type": "fixed",
+        "application_method": "phone",
         "phone_number": "0893-44-6159",
         "web_form_url": None,
         "information_url": SORTING_PAGE_URL,
@@ -645,21 +649,30 @@ def build(*, inspect_only=False):
     if read(DATA / "item_reviews.json") != reviewed_items:
         raise ValueError("Uchiko PDF-derived items differ from the approved review")
     rules = read(DATA / "official_rules.json")
-    categories = {
+    base_categories = {
         code: {key: value for key, value in definition.items() if key != "instructions"}
         for code, definition in rules["categories"].items()
     }
-    profile = {
-        "items_path": "knowledge/items.csv",
-        "embedding_index_path": "knowledge/item_embeddings.npz",
-        "index_profile_id": "citywide",
-        "calendar_path": "generated/calendar-2026.json",
-        "classification_rules": rules["classification_rules"],
-        "size_question": "内子町の指定袋に入りますか？素材、生ごみ収集区域、家電4品目かを確認できますか？",
-        "knowledge_title": "内子町ごみ分別辞典（令和8年5月更新）",
-        "categories": categories,
-        "bulky_waste": {"category_code": "bulky", "config": bulky_config()},
-    }
+    profiles = {}
+    for profile_id, cutoff in (("uchiko_0730", "07:30"), ("uchiko_0800", "08:00")):
+        categories = {
+            code: {
+                **definition,
+                **({"cutoff": cutoff} if definition.get("collection_type_id") else {}),
+            }
+            for code, definition in base_categories.items()
+        }
+        profiles[profile_id] = {
+            "items_path": "knowledge/items.csv",
+            "embedding_index_path": "knowledge/item_embeddings.npz",
+            "index_profile_id": "citywide",
+            "calendar_path": "generated/calendar-2026.json",
+            "classification_rules": rules["classification_rules"],
+            "size_question": "内子町の指定袋に入りますか？素材、生ごみ収集区域、家電4品目かを確認できますか？",
+            "knowledge_title": "内子町ごみ分別辞典（令和8年5月更新）",
+            "categories": categories,
+            "bulky_waste": {"category_code": "bulky", "config": bulky_config()},
+        }
     registry = {
         "schema_version": 1,
         "municipality_id": CITY,
@@ -670,8 +683,11 @@ def build(*, inspect_only=False):
         "valid_from": calendar_reviews["valid_from"],
         "valid_to": calendar_reviews["valid_to"],
         "collection_areas": areas,
-        "calendars": [{"id": area["calendar_id"], "rule_profile_id": "uchiko"} for area in areas],
-        "rule_profiles": {"uchiko": profile},
+        "calendars": [
+            {"id": area["calendar_id"], "rule_profile_id": area["rule_profile_id"]}
+            for area in areas
+        ],
+        "rule_profiles": profiles,
     }
     write(DATA / "registry.json", registry)
     write(DATA / "generated/calendar-2026.json", {

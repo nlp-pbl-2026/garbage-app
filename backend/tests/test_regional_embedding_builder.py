@@ -57,3 +57,39 @@ def test_shared_disposal_text_is_evidence_but_does_not_bias_item_embeddings():
         note=row["note"], score=1, disposal_instructions=row["disposal_instructions"])
     assert "指定袋で収集日までに搬出" in match.evidence_text
     assert "品目固有条件を優先" in match.evidence_text
+
+
+def test_concurrent_failure_cancels_queued_paid_requests(tmp_path, monkeypatch):
+    calls = []
+
+    class Runtime:
+        def invoke_model(self, **kwargs):
+            calls.append(kwargs)
+            raise ConnectionError("endpoint unavailable")
+
+    monkeypatch.setattr(boto3, "client", lambda *args, **kwargs: Runtime())
+    monkeypatch.setattr(builder.time, "sleep", lambda _seconds: None)
+    monkeypatch.setattr(builder, "DIMENSIONS", 2)
+    source = tmp_path / "items.csv"
+    source.write_text(
+        "item_id,item,category,note\n"
+        + "".join(f"item-{index},試験品{index},burn,出し方{index}\n" for index in range(20)),
+        encoding="utf-8",
+    )
+    checkpoint = tmp_path / "checkpoint.jsonl"
+
+    with pytest.raises(ConnectionError, match="endpoint unavailable"):
+        builder.build(
+            source,
+            tmp_path / "index.npz",
+            "90001",
+            "test",
+            checkpoint,
+            max_calls=100,
+            budget=1,
+            workers=2,
+        )
+
+    records = [json.loads(line) for line in checkpoint.read_text().splitlines()]
+    assert len(calls) <= 6
+    assert sum(record.get("calls", 0) for record in records) <= 6

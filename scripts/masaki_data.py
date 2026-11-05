@@ -305,7 +305,8 @@ def inspect_calendars():
         ]
         calendars[definition["calendar_id"]] = {
             "source_url": definition["source_url"],
-            "verification_status": "checked_against_literal_calendar",
+            "verification_status": "checked",
+            "verification_method": "checked_against_literal_calendar",
             "days": days,
             "exceptions": exceptions,
         }
@@ -437,8 +438,8 @@ def bulky_config():
         "collection_frequency": "公式カレンダー記載の申込期間ごとの戸別収集",
         "reception_hours": "申込期間は選択地区の令和8年度ごみカレンダーで確認",
         "collection_rules": "45L以下の袋に入らないものが対象。1回の申込期間につき1世帯5点まで、長さ3m以内かつ大人2人で運べる大きさです。",
-        "fee_structure_type": "free_collection_sticker",
-        "application_method": "electronic_application_or_postcard",
+        "fee_structure_type": "fixed",
+        "application_method": "web_form",
         "phone_number": "089-985-4117",
         "web_form_url": None,
         "information_url": BULKY_URL,

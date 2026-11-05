@@ -27,7 +27,7 @@ CITY = "38205"
 def test_all_15_areas_profiles_and_shared_frontend_calendar():
     cat = get_registry()
     reg = cat.registry(CITY)
-    assert set(cat.entries) == {"38201", "38204", "38210", "38442", CITY}
+    assert {"38201", "38204", "38210", "38442", CITY} <= set(cat.entries)
     assert len(reg.areas) == 15 and len(reg.calendars) == 15
     assert set(reg.profiles) == {"mainland", "oshima", "besshiyama"}
     assert (
