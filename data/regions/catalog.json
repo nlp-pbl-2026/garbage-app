@@ -20,6 +20,10 @@
     {
       "id": "38205",
       "registry_path": "niihama/registry.json"
+    },
+    {
+      "id": "38215",
+      "registry_path": "toon/registry.json"
     }
   ]
 }

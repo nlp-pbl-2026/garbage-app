@@ -1163,10 +1163,11 @@ class WasteGuideService:
     ) -> str | None:
         """Keep an explicit carryability branch unresolved until the user answers.
 
-        Only the highest structured candidate with no fixed classification and
-        both conditional codes opts in. Fixed-category entries and existing
-        Matsuyama evidence are unchanged. Rewritten text/image inference is not
-        confirmation of a user's ability to carry the item.
+        The highest structured candidate must have an explicit item-specific
+        carryability branch. One-adult evidence requires no fixed classification;
+        two-adult evidence requires bulky plus a not-collected alternative.
+        Fixed entries without alternatives and Matsuyama evidence are unchanged.
+        Rewritten text/image inference is not user confirmation.
         """
         structured = next((d for d in documents if d.text.startswith("品目:")), None)
         if structured is None:
@@ -1181,6 +1182,28 @@ class WasteGuideService:
         except (ValueError, TypeError):
             return None
         evidence = unicodedata.normalize("NFKC", structured.text)
+        # Opt-in for an explicit two-adult carryability branch. The conditional
+        # metadata and item-specific note (not shared instructions) must both
+        # authorize it; existing one-adult evidence keeps the original path.
+        specific = evidence.split("区分共通の出し方", 1)[0]
+        if (primary == "bulky" and isinstance(options, list)
+                and "not_collected" in options and "大人2人" in specific
+                and re.search(r"運べる|持ち運べる", specific)):
+            def normalized(value):
+                return re.sub(r"\s+", "", unicodedata.normalize("NFKC", str(value)))
+            confirmed = re.compile(r"(?:標準的な)?(?:大人)?[2二]人で(?:は|も)?(?:持ち運べ|運べ)(?:ます|ません|る|ない)")
+            uncertain = re.compile(r"分か[らり]|わか[らり]|不明|かもしれ|と思う")
+            texts = [query] + [item.get("answer", "") for item in clarifications]
+            if any(confirmed.search(normalized(t)) and not uncertain.search(normalized(t)) for t in texts):
+                return None
+            for item in clarifications:
+                q, a = normalized(item.get("question", "")), normalized(item.get("answer", ""))
+                if (re.search(r"[2二]人", q) and re.search(r"運べ|持ち運", q)
+                        and not uncertain.search(a)
+                        and (re.match(r"^(?:はい|いいえ)(?:[、。!！]|$)", a)
+                             or a.rstrip("。!") in {"運べます", "運べません", "持ち運べます", "持ち運べません"})):
+                    return None
+            return "1m程度で、標準的な大人2人で持ち運べる大きさ・重さですか？"
         if (primary != "" or not isinstance(options, list)
                 or not all(isinstance(option, str) for option in options)
                 or not {"bulky", "not_collected"}.issubset(options)
@@ -1456,4 +1479,6 @@ class WasteGuideService:
             lines.append("松山市のごみ集積場所には出せません。")
         else:
             lines.append("公開済みカレンダーの範囲では次回収集日を確認できません。")
+        if region and region.rules.categories[decision.category_code].time_note:
+            lines.append(region.rules.categories[decision.category_code].time_note)
         return "\n".join(lines)

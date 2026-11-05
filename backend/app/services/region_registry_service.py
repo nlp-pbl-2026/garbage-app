@@ -50,6 +50,9 @@ class CategoryDefinition:
     collection_type_id: str | None = None
     cutoff: time | None = None
     answer_note: str = ""
+    cutoff_status: str = "checked"
+    start_time: time | None = None
+    time_note: str = ""
 
 
 @dataclass(frozen=True)
@@ -195,8 +198,17 @@ class RegionRegistry:
                     raise ValueError("Invalid category definition")
                 identifier = definition.get("collection_type_id")
                 cutoff = definition.get("cutoff")
-                if identifier and (not cutoff or len(cutoff) != 5):
+                cutoff_status = definition.get("cutoff_status", "checked")
+                time_note = definition.get("time_note", "")
+                start_time = definition.get("start_time")
+                if cutoff_status not in {"checked", "unverified"} or not isinstance(time_note, str):
+                    raise ValueError("Invalid collection time verification")
+                if identifier and cutoff_status == "unverified" and (cutoff is not None or not time_note):
+                    raise ValueError("Unverified cutoff requires a note and no invented time")
+                if identifier and cutoff_status == "checked" and (not cutoff or len(cutoff) != 5):
                     raise ValueError("Scheduled categories require an HH:MM cutoff")
+                if start_time and (not cutoff or len(start_time) != 5 or time.fromisoformat(start_time) >= time.fromisoformat(cutoff)):
+                    raise ValueError("Invalid collection time window")
                 if not isinstance(code, str) or not isinstance(definition["name"], str):
                     raise ValueError("Category codes and names must be strings")
                 if identifier is not None and (not isinstance(identifier, str) or not identifier):
@@ -206,6 +218,7 @@ class RegionRegistry:
                 categories[code] = CategoryDefinition(
                     definition["name"], identifier, time.fromisoformat(cutoff) if cutoff else None,
                     definition.get("answer_note", ""),
+                    cutoff_status, time.fromisoformat(start_time) if start_time else None, time_note,
                 )
             if not categories or any(not code or not definition.name for code, definition in categories.items()):
                 raise ValueError("Category codes and names are required")
