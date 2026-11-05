@@ -113,6 +113,9 @@ class BedrockGateway:
 「弁当・惣菜の透明なプラスチック製容器のふた」として検索してください。
 複数の解釈が現実的に残る場合は、推測で情報を追加しないでください。
 「{region.municipality_label if region else '松山市'}」「{region.area_name if region else '清水'}地区」「ごみ分別」のような検索対象側で既知の語は追加しないでください。
+「キャップとラベルを外したペットボトル本体」は本体を検索し、外した部品を検索対象として追加しないでください。
+「ペットボトルから外したキャップ」は逆にキャップが対象です。本体と取り外した部品を区別してください。
+マークの「ない」「不明」を「あり」に変換してはいけません。
 画像が添付されている場合は、写っている品物、用途、形状、表示、見た目から確認できる素材だけを
 検索文へ含めてください。画像で確認できない素材や大きさを推測してはいけません。
 利用者の文章は画像より優先し、文章に明記された品物・部位・素材・状態を落とさないでください。
@@ -237,8 +240,6 @@ class BedrockGateway:
             (("ガラス",), "ガラス製"),
             (("金属", "アルミ", "スチール"), "金属製"),
             (("陶器", "陶磁器", "セラミック"), "陶磁器製"),
-            (("petマーク", "pet表示"), "PETマークあり"),
-            (("プラマーク", "プラ表示"), "プラマークあり"),
         )
         additions: list[str] = []
         for markers, canonical in feature_groups:
@@ -246,6 +247,76 @@ class BedrockGateway:
                 marker in normalized_cleaned for marker in markers
             ):
                 additions.append(canonical)
+
+        # Keep presence/absence/unknown as stated, including when the LLM
+        # contradicts it. A bare mark mention is not confirmation of presence.
+        mark_source = re.sub(r"\s+", "", source)
+        for term, aliases in (
+            ("PETマーク", r"pet(?:マーク|表示)"),
+            ("プラマーク", r"プラ(?:マーク|表示)"),
+        ):
+            mark_context = mark_source
+            for answer in reversed(clarifications):
+                question = re.sub(
+                    r"\s+",
+                    "",
+                    unicodedata.normalize("NFKC", str(answer.get("question", ""))),
+                ).lower()
+                reply = re.sub(
+                    r"\s+", "", unicodedata.normalize("NFKC", str(answer.get("answer", "")))
+                ).lower()
+                if re.search(aliases, reply):
+                    mark_context = reply
+                    break
+                if re.search(
+                    aliases + r"(?:は|が)?(?:付いていますか|ついていますか|ありますか)",
+                    question,
+                ) and re.fullmatch(r"(?:はい|いいえ)[。!！]?", reply):
+                    mark_context = term.lower() + (
+                        "あり" if reply.startswith("はい") else "なし"
+                    )
+                    break
+            if not re.search(aliases, mark_context):
+                continue
+            negative = r"(?:は|が|の)?(?:(?:付|つ)いてい(?:ない|ません)|ありません|無い|無し|ない|なし)"
+            positive = r"(?:は|が|の)?(?:付い(?:た|ている|ています)|ついている|付き|ある|あり(?!ません)(?:ます)?)"
+            unknown = (
+                r"(?:は|が)?(?:不明|未確認|わからない|わかりません|分からない|分かりません)"
+            )
+            absent = bool(re.search(aliases + negative, mark_context))
+            present = bool(re.search(aliases + positive, mark_context))
+            uncertain = bool(
+                re.search(
+                    aliases
+                    + r"(?:は|が|の)?(?:(?:付|つ)いているか(?:どうか)?(?:は)?|あるか(?:どうか)?(?:は)?)?(?:不明|未確認|わから|わかりません|分から|分かりません)",
+                    mark_context,
+                )
+            )
+            uncertain = uncertain or bool(
+                re.search(aliases + positive + "か", mark_context)
+            )
+            state = "" if uncertain or absent == present else "なし" if absent else "あり"
+            canonical = term + state
+            if re.search(aliases, cleaned, re.IGNORECASE):
+                cleaned = re.sub(
+                    aliases + r"(?:" + negative + "|" + positive + "|" + unknown + r")?",
+                    canonical,
+                    cleaned,
+                    flags=re.IGNORECASE,
+                )
+            else:
+                additions.append(canonical)
+
+        # An explicitly requested PET body must not gain bare cap/label tokens
+        # merely because the user described removing those parts. This only
+        # preserves retrieval intent; classification still uses regional evidence.
+        pet_body = "ペットボトル" in source and bool(
+            re.search(r"本体(?:です|を(?:捨て|出)|だけ|のみ|[。、!！?？]|$)", source)
+        )
+        pet_body = pet_body and not re.search(
+            r"本体だけではなく|本体(?:と|や|から)|本体(?:は|を)?(?:捨て(?:ない|ません|ず)|残|以外)",
+            source,
+        )
 
         # 「Xが入っていた箱」のような入力では、X本体ではなく包装・部品が対象。
         # 対象部位を落とすと別品目へ寄るため、明示語を必ず検索文へ残す。
@@ -265,8 +336,13 @@ class BedrockGateway:
             "ランプ",
             "電池",
             "バッテリー",
+            "本体",
         )
         for marker in part_markers:
+            if marker == "本体" and not pet_body:
+                continue
+            if pet_body and marker in {"キャップ", "ふた", "蓋"}:
+                continue
             if marker in source and marker not in normalized_cleaned:
                 additions.append(marker)
         return " ".join([cleaned, *dict.fromkeys(additions)]).strip()
@@ -1261,6 +1337,14 @@ class WasteGuideService:
         if structured is None:
             return None
 
+        selected = next((documents[index - 1] for index in selected_evidence_indexes
+                         if 1 <= index <= len(documents)
+                         and documents[index - 1].text.startswith("品目:")), structured)
+        # Regional conditions belong to the evidence actually used for the
+        # decision. A leading cap candidate must not add a plastic-mark question
+        # to a PET-body decision. Keep Matsuyama's established guard unchanged.
+        if region and region.municipality_id != "38201":
+            structured = selected
         lines = structured.text.splitlines()
         item_name = lines[0].removeprefix("品目:").strip()
         display_item = re.sub(r"[（(].*$", "", item_name).strip() or "品物"
@@ -1269,8 +1353,6 @@ class WasteGuideService:
         # Explicit opt-in for municipalities with a dimensional boundary.
         # Search rewrites and image estimates never count as a measured size.
         threshold = getattr(region.rules, "size_threshold_cm", None) if region else None
-        selected = next((documents[index - 1] for index in selected_evidence_indexes
-                         if 1 <= index <= len(documents)), structured)
         item_evidence = unicodedata.normalize("NFKC", selected.text).split("区分共通の出し方", 1)[0]
         if (threshold and "条件付き分類コード:" in item_evidence
                 and re.search(rf"{threshold}cm(?:以下|超)", item_evidence)):
