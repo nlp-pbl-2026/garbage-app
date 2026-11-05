@@ -20,6 +20,34 @@
     {
       "id": "38205",
       "registry_path": "niihama/registry.json"
+    },
+    {
+      "id": "38207",
+      "registry_path": "ozu/registry.json"
+    },
+    {
+      "id": "38402",
+      "registry_path": "tobe/registry.json"
+    },
+    {
+      "id": "38506",
+      "registry_path": "ainan/registry.json"
+    },
+    {
+      "id": "38488",
+      "registry_path": "kihoku/registry.json"
+    },
+    {
+      "id": "38484",
+      "registry_path": "matsuno/registry.json"
+    },
+    {
+      "id": "38422",
+      "registry_path": "uchiko/registry.json"
+    },
+    {
+      "id": "38401",
+      "registry_path": "masaki/registry.json"
     }
   ]
 }

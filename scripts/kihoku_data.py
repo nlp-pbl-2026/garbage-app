@@ -341,7 +341,8 @@ def inspect_calendars():
         })
         calendars[identifier] = {
             "source_url": WASTE_URL,
-            "verification_status": "rule_derived",
+            "verification_status": "checked",
+            "verification_method": "rule_derived",
             "days": days,
             "exceptions": [],
         }
@@ -467,8 +468,8 @@ def bulky_config():
         "collection_frequency": "予約制・水曜日（祝日を除く）",
         "reception_hours": "役場への直接持込は開庁時間内。広域環境センターの受付条件は公式案内で確認",
         "collection_rules": "指定袋に入らない粗大ごみは、役場環境保全課・日吉支所または広域環境センターへ直接持ち込むか、町委託業者・許可業者へ依頼します。",
-        "fee_structure_type": "item_or_weight_based",
-        "application_method": "phone_or_direct_dropoff",
+        "fee_structure_type": "fixed",
+        "application_method": "phone",
         "phone_number": "0895-45-1111",
         "web_form_url": None,
         "information_url": LARGE_WASTE_URL,

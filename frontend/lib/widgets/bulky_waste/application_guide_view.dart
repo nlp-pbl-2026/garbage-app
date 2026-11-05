@@ -27,6 +27,8 @@ class ApplicationGuideView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final guidanceOnly = config.applicationMethod == ApplicationMethod.none ||
+        config.applicationMethod == ApplicationMethod.guideOnly;
     // ステップ番号順にソート
     final sortedSteps = List<ApplicationStep>.from(config.steps)
       ..sort((a, b) => a.stepNumber.compareTo(b.stepNumber));
@@ -38,7 +40,7 @@ class ApplicationGuideView extends StatelessWidget {
         children: [
           // ヘッダー
           Text(
-            config.applicationMethod == ApplicationMethod.none
+            guidanceOnly
                 ? '${config.municipalityName}の粗大ごみの出し方'
                 : '${config.municipalityName}の粗大ごみ申し込み手順',
             style: Theme.of(context).textTheme.titleLarge?.copyWith(
@@ -66,7 +68,7 @@ class ApplicationGuideView extends StatelessWidget {
               )),
           const SizedBox(height: 24),
           // 外部申し込み窓口セクション
-          if (config.applicationMethod != ApplicationMethod.none)
+          if (!guidanceOnly)
             _ExternalLinkSection(
               config: config,
               useOfficialInfoFallback: useOfficialInfoFallback,

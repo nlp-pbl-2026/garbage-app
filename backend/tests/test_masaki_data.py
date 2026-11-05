@@ -53,7 +53,7 @@ def test_item_categories_and_explicit_alternatives_are_preserved():
     ) == ["bulky", "hazardous"]
 
 
-def test_reviewed_registry_has_two_unregistered_school_zones():
+def test_reviewed_registry_has_two_registered_school_zones():
     registry = json.loads(
         (ROOT / "data/regions/masaki/registry.json").read_text(encoding="utf-8")
     )
@@ -80,9 +80,9 @@ def test_reviewed_registry_has_two_unregistered_school_zones():
         area["needs_local_confirmation"]
         for area in registry["collection_areas"]
     )
-    assert all(item["id"] != "38401" for item in catalog["municipalities"])
-    assert not (
-        ROOT / "data/regions/masaki/knowledge/item_embeddings.npz"
+    assert any(item["id"] == "38401" for item in catalog["municipalities"])
+    assert (
+        ROOT / "data/regions/masaki/knowledge/index_manifest.json"
     ).exists()
 
 

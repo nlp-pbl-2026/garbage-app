@@ -56,7 +56,7 @@ def test_two_column_tsv_parser_preserves_item_category_and_note(tmp_path):
     }]
 
 
-def test_reviewed_registry_has_eight_areas_without_embedding_registration():
+def test_reviewed_registry_has_eight_registered_areas():
     registry = json.loads(
         (ROOT / "data/regions/kihoku/registry.json").read_text(encoding="utf-8")
     )
@@ -75,8 +75,8 @@ def test_reviewed_registry_has_eight_areas_without_embedding_registration():
     assert all(area["needs_local_confirmation"] for area in registry["collection_areas"])
     assert len(reviews["areas"]) == 8
     assert item_reviews["official_items"] == 1219
-    assert all(item["id"] != "38488" for item in catalog["municipalities"])
-    assert not (ROOT / "data/regions/kihoku/knowledge/item_embeddings.npz").exists()
+    assert any(item["id"] == "38488" for item in catalog["municipalities"])
+    assert (ROOT / "data/regions/kihoku/knowledge/index_manifest.json").exists()
 
 
 def test_april_2026_notices_override_or_extend_the_older_item_table():

@@ -293,7 +293,8 @@ def inspect_calendars():
         })
         calendars[identifier] = {
             "source_url": f"{SORTING_BOOK_URL}#page=3",
-            "verification_status": "rule_derived_with_weather_confirmation",
+            "verification_status": "checked",
+            "verification_method": "rule_derived_with_weather_confirmation",
             "days": days,
             "exceptions": [
                 {
@@ -384,7 +385,7 @@ def bulky_config():
         "reception_hours": "環境センターへの直接持込は月～土曜日13:00～16:30（祝祭日・年末年始を除く）",
         "collection_rules": "町の粗大ごみ収集日は回覧で確認します。直接持ち込む場合は幅1m×高さ80cm×長さ2.5m以内です。",
         "fee_structure_type": "weight_based",
-        "application_method": "circular_notice_or_direct_dropoff",
+        "application_method": "guide_only",
         "phone_number": "0895-42-1115",
         "web_form_url": None,
         "information_url": WASTE_URL,

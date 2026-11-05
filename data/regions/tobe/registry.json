@@ -239,7 +239,7 @@
           "reception_hours": "美化センター：月～金・第2/第4日曜 9:00～16:00（年末年始を除く）",
           "collection_rules": "指定袋に入らない大きな雑ごみ、20kg以上、一時多量ごみは、美化センター等へ直接持ち込むか、町の許可を受けた収集運搬業者へ依頼します。",
           "fee_structure_type": "weight_based",
-          "application_method": "direct_dropoff",
+          "application_method": "guide_only",
           "phone_number": "089-962-5168",
           "web_form_url": null,
           "information_url": "https://www.town.tobe.ehime.jp/kurashi_tetsuzuki/gomi_risaikuru_kankyo/1/1745.html",

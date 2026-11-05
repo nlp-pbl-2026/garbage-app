@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38506",
+  "profile_id": "citywide",
+  "item_count": 977,
+  "model_id": "amazon.titan-embed-text-v2:0",
+  "dimensions": 1024,
+  "source_sha256": "db4555b0d7a523a6ebe5ac061ca23ee933ea344a9b6377f332fafc63aa39bb11",
+  "index_sha256": "7f6776b1b1e43b0c387a11fc377a681903fe155e250a6c3e9cc0503535907fc9",
+  "verification": "csv_ids_model_dimensions_finite_normalized_checked",
+  "embedding_text": "backend/build_item_embeddings.py:build_document",
+  "generation_calls": 992,
+  "generation_budget_reserve_usd": 0.060759400000000005
+}

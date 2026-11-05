@@ -44,6 +44,7 @@ class _BulkyWasteScreenState extends ConsumerState<BulkyWasteScreen>
     final recordTabLabel =
         switch (configAsync.asData?.value?.data.applicationMethod) {
       ApplicationMethod.none => '収集予定メモ',
+      ApplicationMethod.guideOnly => '確認メモ',
       null => '記録',
       _ => '申込記録',
     };
@@ -177,7 +178,9 @@ class _BulkyWasteScreenState extends ConsumerState<BulkyWasteScreen>
     final message = result.isBundledFallback
         ? result.data.applicationMethod == ApplicationMethod.none
             ? '品目一覧は${result.data.municipalityId == '38201' ? '松山市' : result.data.municipalityName}の分別資料をもとにした参考情報です。収集日と出し方は、地区別の公式カレンダーで確認してください。'
-            : '品目一覧は${result.data.municipalityId == '38201' ? '松山市' : result.data.municipalityName}の分別資料をもとにした参考情報です。収集対象や申込条件、受付期間は自治体の公式サイトで確認してください。'
+            : result.data.applicationMethod == ApplicationMethod.guideOnly
+                ? '品目一覧は${result.data.municipalityName}の分別資料をもとにした参考情報です。持込条件や出し方は自治体の公式案内で確認してください。'
+                : '品目一覧は${result.data.municipalityId == '38201' ? '松山市' : result.data.municipalityName}の分別資料をもとにした参考情報です。収集対象や申込条件、受付期間は自治体の公式サイトで確認してください。'
         : '表示されているデータは以前の取得結果です。最新情報を反映していない可能性があります。';
     return MaterialBanner(
       content: Text(

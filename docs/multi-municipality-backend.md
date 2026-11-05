@@ -1,6 +1,6 @@
 # 複数自治体バックエンドのデータ契約
 
-標準の `data/regions/catalog.json` に登録している実自治体は松山市と八幡浜市です。八幡浜市の対応範囲は[データガイド](yawatahama-data.md)を参照してください。
+標準の `data/regions/catalog.json` には12自治体を登録しています。担当7自治体の件数・公式期間・再生成方法は[接続ガイド](assigned-municipalities-completion.md)を参照してください。
 バックエンドは登録された自治体の台帳・分類・品目CSV・NPZ索引・実日付カレンダーを
 切り替えられます。Flutterも同じ台帳から生成したオフラインカタログで自治体を切り替えます
 （[Flutterのデータ契約](multi-municipality-flutter.md)）。新しい自治体の公式データ整備と

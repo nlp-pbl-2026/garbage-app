@@ -1,0 +1,126 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38402",
+  "municipality_name": "砥部町",
+  "prefecture_id": "38",
+  "prefecture_name": "愛媛県",
+  "version": "tobe-2026.1",
+  "valid_from": "2026-04-01",
+  "valid_to": "2026-12-06",
+  "collection_areas": [
+    {
+      "id": "38402-asou",
+      "name": "麻生小校区",
+      "display_name": "麻生小校区（田ノ浦を除く）",
+      "calendar_id": "tobe-asou",
+      "rule_profile_id": "tobe",
+      "address_labels": [
+        "麻生小校区（田ノ浦を除く）"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.tobe.ehime.jp/gomi_search/4959.html"
+    },
+    {
+      "id": "38402-miyauchi-tobe",
+      "name": "宮内小・砥部小校区",
+      "display_name": "宮内小・砥部小校区（大平・鵜ノ崎を除く）",
+      "calendar_id": "tobe-miyauchi-tobe",
+      "rule_profile_id": "tobe",
+      "address_labels": [
+        "宮内小・砥部小校区（大平・鵜ノ崎を除く）"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.tobe.ehime.jp/gomi_search/4959.html"
+    },
+    {
+      "id": "38402-hirota-weekly-1",
+      "name": "広田地域 可燃週1回",
+      "display_name": "広田地域（可燃ごみ週1回）",
+      "calendar_id": "tobe-hirota-weekly-1",
+      "rule_profile_id": "tobe",
+      "address_labels": [
+        "広田地域（可燃ごみ週1回）"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.tobe.ehime.jp/gomi_search/4959.html"
+    },
+    {
+      "id": "38402-hirota-weekly-2",
+      "name": "広田地域 可燃週2回",
+      "display_name": "広田地域（可燃ごみ週2回）",
+      "calendar_id": "tobe-hirota-weekly-2",
+      "rule_profile_id": "tobe",
+      "address_labels": [
+        "広田地域（可燃ごみ週2回）"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.tobe.ehime.jp/gomi_search/4959.html"
+    },
+    {
+      "id": "38402-tanoura",
+      "name": "田ノ浦",
+      "display_name": "田ノ浦",
+      "calendar_id": "tobe-tanoura",
+      "rule_profile_id": "tobe",
+      "address_labels": [
+        "田ノ浦"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.tobe.ehime.jp/gomi_search/4959.html"
+    },
+    {
+      "id": "38402-ohira",
+      "name": "大平",
+      "display_name": "大平",
+      "calendar_id": "tobe-ohira",
+      "rule_profile_id": "tobe",
+      "address_labels": [
+        "大平"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.tobe.ehime.jp/gomi_search/4959.html"
+    },
+    {
+      "id": "38402-unosaki",
+      "name": "鵜ノ崎",
+      "display_name": "鵜ノ崎",
+      "calendar_id": "tobe-unosaki",
+      "rule_profile_id": "tobe",
+      "address_labels": [
+        "鵜ノ崎"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.tobe.ehime.jp/gomi_search/4959.html"
+    }
+  ],
+  "calendars": [
+    {
+      "id": "tobe-asou",
+      "rule_profile_id": "tobe"
+    },
+    {
+      "id": "tobe-miyauchi-tobe",
+      "rule_profile_id": "tobe"
+    },
+    {
+      "id": "tobe-hirota-weekly-1",
+      "rule_profile_id": "tobe"
+    },
+    {
+      "id": "tobe-hirota-weekly-2",
+      "rule_profile_id": "tobe"
+    },
+    {
+      "id": "tobe-tanoura",
+      "rule_profile_id": "tobe"
+    },
+    {
+      "id": "tobe-ohira",
+      "rule_profile_id": "tobe"
+    },
+    {
+      "id": "tobe-unosaki",
+      "rule_profile_id": "tobe"
+    }
+  ]
+}
