@@ -297,10 +297,15 @@ class MunicipalityCatalog:
     def registry(self, municipality_id: str) -> RegionRegistry:
         if municipality_id not in self.entries:
             raise UnsupportedMunicipalityError("指定された自治体は未対応です。")
+        path = self.path.parent / self.entries[municipality_id]["registry_path"]
+        if municipality_id == "38201" and os.getenv("REGION_REGISTRY_PATH"):
+            path = Path(os.environ["REGION_REGISTRY_PATH"])
+        # A cached registry must not keep an API response alive after its
+        # declared runtime asset disappears (for example, an incomplete deploy).
+        if not path.is_file():
+            self._registries.pop(municipality_id, None)
+            raise RegionalDataError("自治体の地区台帳・分別設定を読み込めません。")
         if municipality_id not in self._registries:
-            path = self.path.parent / self.entries[municipality_id]["registry_path"]
-            if municipality_id == "38201" and os.getenv("REGION_REGISTRY_PATH"):
-                path = Path(os.environ["REGION_REGISTRY_PATH"])
             try:
                 registry = RegionRegistry(path)
                 if registry.data["municipality_id"] != municipality_id:

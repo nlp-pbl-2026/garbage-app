@@ -1,0 +1,216 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38506",
+  "municipality_name": "愛南町",
+  "prefecture_id": "38",
+  "prefecture_name": "愛媛県",
+  "version": "ainan-2026.1",
+  "valid_from": "2026-01-01",
+  "valid_to": "2026-12-31",
+  "collection_areas": [
+    {
+      "id": "38506-block-1",
+      "name": "ブロック1",
+      "display_name": "ブロック1（長月第1～4、上・下永ノ岡、和口第1・2、馬場、上町、本町、寺新町、栄町、貝塚、八幡野）",
+      "calendar_id": "ainan-block-1",
+      "rule_profile_id": "ainan",
+      "address_labels": [
+        "長月第1～4",
+        "上・下永ノ岡",
+        "和口第1・2",
+        "馬場",
+        "上町",
+        "本町",
+        "寺新町",
+        "栄町",
+        "貝塚",
+        "八幡野"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.ainan.ehime.jp/kurashi/tetsuduki/kankyoeisei/gomi/gomishushunittei.html"
+    },
+    {
+      "id": "38506-block-2",
+      "name": "ブロック2",
+      "display_name": "ブロック2（菊川第1～4、平山、長洲、長崎、節崎、馬瀬、深泥、防城成川、赤水、高畑、尻貝、奥の谷、中の谷、高手、灘前、左右水、猿鳴）",
+      "calendar_id": "ainan-block-2",
+      "rule_profile_id": "ainan",
+      "address_labels": [
+        "菊川第1～4",
+        "平山",
+        "長洲",
+        "長崎",
+        "節崎",
+        "馬瀬",
+        "深泥",
+        "防城成川",
+        "赤水",
+        "高畑",
+        "尻貝",
+        "奥の谷",
+        "中の谷",
+        "高手",
+        "灘前",
+        "左右水",
+        "猿鳴"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.ainan.ehime.jp/kurashi/tetsuduki/kankyoeisei/gomi/gomishushunittei.html"
+    },
+    {
+      "id": "38506-block-3",
+      "name": "ブロック3",
+      "display_name": "ブロック3（僧都、山出、梶郷上・下、大道上・下、樫床、樋口、西柳、岡、中緑、当時、下緑、左谷、太場、土居、三島団地、蓮乗寺、東浜、中組、奥前、西浜、鼻前、垣内、岩水、敦盛、柿ノ浦、大浜、中玉、脇本）",
+      "calendar_id": "ainan-block-3",
+      "rule_profile_id": "ainan",
+      "address_labels": [
+        "僧都",
+        "山出",
+        "梶郷上・下",
+        "大道上・下",
+        "樫床",
+        "樋口",
+        "西柳",
+        "岡",
+        "中緑",
+        "当時",
+        "下緑",
+        "左谷",
+        "太場",
+        "土居",
+        "三島団地",
+        "蓮乗寺",
+        "東浜",
+        "中組",
+        "奥前",
+        "西浜",
+        "鼻前",
+        "垣内",
+        "岩水",
+        "敦盛",
+        "柿ノ浦",
+        "大浜",
+        "中玉",
+        "脇本"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.ainan.ehime.jp/kurashi/tetsuduki/kankyoeisei/gomi/gomishushunittei.html"
+    },
+    {
+      "id": "38506-block-4",
+      "name": "ブロック4",
+      "display_name": "ブロック4（豊田、石井手、神越、中の谷、鼻、下長野、伊勢町）",
+      "calendar_id": "ainan-block-4",
+      "rule_profile_id": "ainan",
+      "address_labels": [
+        "豊田",
+        "石井手",
+        "神越",
+        "中の谷",
+        "鼻",
+        "下長野",
+        "伊勢町"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.ainan.ehime.jp/kurashi/tetsuduki/kankyoeisei/gomi/gomishushunittei.html"
+    },
+    {
+      "id": "38506-block-5",
+      "name": "ブロック5",
+      "display_name": "ブロック5（矢ノ町1～3、中町上・下、北裡、後1～3、清水、沖1・2、中原、松本、久保、鳥越、古月、鯆越、日土、大寿浦、真浦、西真浦、新浦）",
+      "calendar_id": "ainan-block-5",
+      "rule_profile_id": "ainan",
+      "address_labels": [
+        "矢ノ町1～3",
+        "中町上・下",
+        "北裡",
+        "後1～3",
+        "清水",
+        "沖1・2",
+        "中原",
+        "松本",
+        "久保",
+        "鳥越",
+        "古月",
+        "鯆越",
+        "日土",
+        "大寿浦",
+        "真浦",
+        "西真浦",
+        "新浦"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.ainan.ehime.jp/kurashi/tetsuduki/kankyoeisei/gomi/gomishushunittei.html"
+    },
+    {
+      "id": "38506-block-6",
+      "name": "ブロック6",
+      "display_name": "ブロック6（一本松全域）",
+      "calendar_id": "ainan-block-6",
+      "rule_profile_id": "ainan",
+      "address_labels": [
+        "一本松全域"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.ainan.ehime.jp/kurashi/tetsuduki/kankyoeisei/gomi/gomishushunittei.html"
+    },
+    {
+      "id": "38506-block-7",
+      "name": "ブロック7",
+      "display_name": "ブロック7（内海全域）",
+      "calendar_id": "ainan-block-7",
+      "rule_profile_id": "ainan",
+      "address_labels": [
+        "内海全域"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.ainan.ehime.jp/kurashi/tetsuduki/kankyoeisei/gomi/gomishushunittei.html"
+    },
+    {
+      "id": "38506-block-8",
+      "name": "ブロック8",
+      "display_name": "ブロック8（西海全域）",
+      "calendar_id": "ainan-block-8",
+      "rule_profile_id": "ainan",
+      "address_labels": [
+        "西海全域"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.ainan.ehime.jp/kurashi/tetsuduki/kankyoeisei/gomi/gomishushunittei.html"
+    }
+  ],
+  "calendars": [
+    {
+      "id": "ainan-block-1",
+      "rule_profile_id": "ainan"
+    },
+    {
+      "id": "ainan-block-2",
+      "rule_profile_id": "ainan"
+    },
+    {
+      "id": "ainan-block-3",
+      "rule_profile_id": "ainan"
+    },
+    {
+      "id": "ainan-block-4",
+      "rule_profile_id": "ainan"
+    },
+    {
+      "id": "ainan-block-5",
+      "rule_profile_id": "ainan"
+    },
+    {
+      "id": "ainan-block-6",
+      "rule_profile_id": "ainan"
+    },
+    {
+      "id": "ainan-block-7",
+      "rule_profile_id": "ainan"
+    },
+    {
+      "id": "ainan-block-8",
+      "rule_profile_id": "ainan"
+    }
+  ]
+}

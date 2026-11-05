@@ -1338,6 +1338,1057 @@
       "addresses_asset": "assets/data/municipality_38205_addresses.json"
     },
     {
+      "id": "38207",
+      "version": "ozu-2026.1",
+      "name": "大洲市",
+      "prefecture_id": "38",
+      "prefecture_name": "愛媛県",
+      "registry_asset": "assets/data/municipality_38207_registry.json",
+      "profiles": {
+        "standard": {
+          "calendar_asset": "assets/data/municipality_38207_0_calendar.json",
+          "categories": {
+            "burnable": {
+              "name": "もやすごみ",
+              "collection_type_id": "burnable",
+              "cutoff": "08:00",
+              "color": "#E8895B"
+            },
+            "non_burnable": {
+              "name": "もやさないごみ",
+              "collection_type_id": "non_burnable",
+              "cutoff": "08:00",
+              "color": "#6E9ECF"
+            },
+            "cans_bottles": {
+              "name": "資源ごみ（缶・びん類）",
+              "collection_type_id": "cans_bottles",
+              "cutoff": "08:00",
+              "color": "#D89C4B"
+            },
+            "pet_styro": {
+              "name": "資源ごみ（ペットボトル・発泡スチロール容器）",
+              "collection_type_id": "pet_styro",
+              "cutoff": "08:00",
+              "color": "#67A982"
+            },
+            "paper_cloth": {
+              "name": "資源ごみ（古紙・古布・紙パック類）",
+              "collection_type_id": "paper_cloth",
+              "cutoff": "08:00",
+              "color": "#B89A6B"
+            },
+            "hazardous": {
+              "name": "有害ごみ（廃乾電池）",
+              "collection_type_id": "hazardous",
+              "cutoff": "08:00",
+              "color": "#9A7DAE"
+            },
+            "bulky": {
+              "name": "粗大ごみ",
+              "collection_type_id": "bulky",
+              "cutoff": "08:00",
+              "color": "#7B8794"
+            },
+            "collection_box": {
+              "name": "回収ボックス・拠点回収"
+            },
+            "not_collected": {
+              "name": "市では収集しないもの"
+            }
+          },
+          "bulky_waste": {
+            "category_code": "bulky",
+            "config": {
+              "municipality_id": "38207",
+              "municipality_name": "大洲市",
+              "collection_frequency": "地区別カレンダーの予約収集日（事前予約制）",
+              "reception_hours": "予約受付：月～金 9:00～17:00（祝日を除く）",
+              "collection_rules": "大洲・肱川・河辺地域は0893-24-0530へ予約し、1個につき1,050円の粗大ごみ処理券を貼って、案内された場所へ収集日の朝8時までに出します。",
+              "fee_structure_type": "fixed",
+              "application_method": "phone",
+              "phone_number": "0893-24-0530",
+              "web_form_url": null,
+              "information_url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46102.pdf",
+              "steps": [
+                {
+                  "step_number": 1,
+                  "title": "対象品目を確認",
+                  "description": "公式分別辞典で粗大ごみか、市が収集しない品目かを確認します。"
+                },
+                {
+                  "step_number": 2,
+                  "title": "地区別の窓口へ電話予約",
+                  "description": "大洲・肱川・河辺地域は0893-24-0530、長浜地域は0893-52-1113へ、平日9時から17時までに申し込みます。"
+                },
+                {
+                  "step_number": 3,
+                  "title": "粗大ごみ処理券を購入",
+                  "description": "1個につき1,050円の処理券を購入し、氏名を記入して品物に貼ります。"
+                },
+                {
+                  "step_number": 4,
+                  "title": "予約日に搬出",
+                  "description": "予約時に案内された場所へ、収集日の朝8時までに出します。"
+                }
+              ]
+            }
+          }
+        },
+        "nagahama": {
+          "calendar_asset": "assets/data/municipality_38207_0_calendar.json",
+          "categories": {
+            "burnable": {
+              "name": "もやすごみ",
+              "collection_type_id": "burnable",
+              "cutoff": "08:00",
+              "color": "#E8895B"
+            },
+            "non_burnable": {
+              "name": "もやさないごみ",
+              "collection_type_id": "non_burnable",
+              "cutoff": "08:00",
+              "color": "#6E9ECF"
+            },
+            "cans_bottles": {
+              "name": "資源ごみ（缶・びん類）",
+              "collection_type_id": "cans_bottles",
+              "cutoff": "08:00",
+              "color": "#D89C4B"
+            },
+            "pet_styro": {
+              "name": "資源ごみ（ペットボトル・発泡スチロール容器）",
+              "collection_type_id": "pet_styro",
+              "cutoff": "08:00",
+              "color": "#67A982"
+            },
+            "paper_cloth": {
+              "name": "資源ごみ（古紙・古布・紙パック類）",
+              "collection_type_id": "paper_cloth",
+              "cutoff": "08:00",
+              "color": "#B89A6B"
+            },
+            "hazardous": {
+              "name": "有害ごみ（廃乾電池）",
+              "collection_type_id": "hazardous",
+              "cutoff": "08:00",
+              "color": "#9A7DAE"
+            },
+            "bulky": {
+              "name": "粗大ごみ",
+              "collection_type_id": "bulky",
+              "cutoff": "08:00",
+              "color": "#7B8794"
+            },
+            "collection_box": {
+              "name": "回収ボックス・拠点回収"
+            },
+            "not_collected": {
+              "name": "市では収集しないもの"
+            }
+          },
+          "bulky_waste": {
+            "category_code": "bulky",
+            "config": {
+              "municipality_id": "38207",
+              "municipality_name": "大洲市",
+              "collection_frequency": "地区別カレンダーの予約収集日（事前予約制）",
+              "reception_hours": "予約受付：月～金 9:00～17:00（祝日を除く）",
+              "collection_rules": "長浜地域は0893-52-1113へ予約し、1個につき1,050円の粗大ごみ処理券を貼って、案内された場所へ収集日の朝8時までに出します。",
+              "fee_structure_type": "fixed",
+              "application_method": "phone",
+              "phone_number": "0893-52-1113",
+              "web_form_url": null,
+              "information_url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46102.pdf",
+              "steps": [
+                {
+                  "step_number": 1,
+                  "title": "対象品目を確認",
+                  "description": "公式分別辞典で粗大ごみか、市が収集しない品目かを確認します。"
+                },
+                {
+                  "step_number": 2,
+                  "title": "地区別の窓口へ電話予約",
+                  "description": "大洲・肱川・河辺地域は0893-24-0530、長浜地域は0893-52-1113へ、平日9時から17時までに申し込みます。"
+                },
+                {
+                  "step_number": 3,
+                  "title": "粗大ごみ処理券を購入",
+                  "description": "1個につき1,050円の処理券を購入し、氏名を記入して品物に貼ります。"
+                },
+                {
+                  "step_number": 4,
+                  "title": "予約日に搬出",
+                  "description": "予約時に案内された場所へ、収集日の朝8時までに出します。"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "38402",
+      "version": "tobe-2026.1",
+      "name": "砥部町",
+      "prefecture_id": "38",
+      "prefecture_name": "愛媛県",
+      "registry_asset": "assets/data/municipality_38402_registry.json",
+      "profiles": {
+        "tobe": {
+          "calendar_asset": "assets/data/municipality_38402_0_calendar.json",
+          "categories": {
+            "burnable": {
+              "name": "可燃ごみ",
+              "collection_type_id": "burnable",
+              "cutoff": "07:30",
+              "color": "#E8895B"
+            },
+            "pruning": {
+              "name": "剪定枝・葉・草",
+              "collection_type_id": "pruning",
+              "cutoff": "07:30",
+              "color": "#8FB36A"
+            },
+            "plastic_packaging": {
+              "name": "プラスチック製容器包装",
+              "collection_type_id": "plastic_packaging",
+              "cutoff": "07:30",
+              "color": "#67A982"
+            },
+            "bottles": {
+              "name": "空きびん",
+              "collection_type_id": "containers",
+              "cutoff": "07:30",
+              "color": "#6E9ECF"
+            },
+            "cans": {
+              "name": "空き缶",
+              "collection_type_id": "containers",
+              "cutoff": "07:30",
+              "color": "#D89C4B"
+            },
+            "metals": {
+              "name": "金属くず",
+              "collection_type_id": "containers",
+              "cutoff": "07:30",
+              "color": "#8C9199"
+            },
+            "pet_bottles": {
+              "name": "ペットボトル",
+              "collection_type_id": "containers",
+              "cutoff": "07:30",
+              "color": "#4DA3A3"
+            },
+            "cardboard": {
+              "name": "段ボール",
+              "collection_type_id": "paper_cloth",
+              "cutoff": "07:30",
+              "color": "#B89A6B"
+            },
+            "paper_cartons": {
+              "name": "紙パック",
+              "collection_type_id": "paper_cloth",
+              "cutoff": "07:30",
+              "color": "#C7A96C"
+            },
+            "newspaper": {
+              "name": "新聞・チラシ",
+              "collection_type_id": "paper_cloth",
+              "cutoff": "07:30",
+              "color": "#A88F69"
+            },
+            "magazines": {
+              "name": "雑誌・雑がみ",
+              "collection_type_id": "paper_cloth",
+              "cutoff": "07:30",
+              "color": "#9D8A70"
+            },
+            "textiles": {
+              "name": "古着・古布",
+              "collection_type_id": "paper_cloth",
+              "cutoff": "07:30",
+              "color": "#B08AA5"
+            },
+            "hazardous": {
+              "name": "危険ごみ",
+              "collection_type_id": "hazardous",
+              "cutoff": "07:30",
+              "color": "#9A7DAE"
+            },
+            "miscellaneous": {
+              "name": "雑ごみ",
+              "collection_type_id": "miscellaneous",
+              "cutoff": "07:30",
+              "color": "#7B8794"
+            },
+            "collection_box": {
+              "name": "小型家電・電池等の拠点回収"
+            },
+            "facility_dropoff": {
+              "name": "施設へ持ち込むごみ"
+            },
+            "not_collected": {
+              "name": "町では処理できないもの"
+            }
+          },
+          "bulky_waste": {
+            "category_code": "facility_dropoff",
+            "config": {
+              "municipality_id": "38402",
+              "municipality_name": "砥部町",
+              "collection_frequency": "ごみステーションでの定期収集なし",
+              "reception_hours": "美化センター：月～金・第2/第4日曜 9:00～16:00（年末年始を除く）",
+              "collection_rules": "指定袋に入らない大きな雑ごみ、20kg以上、一時多量ごみは、美化センター等へ直接持ち込むか、町の許可を受けた収集運搬業者へ依頼します。",
+              "fee_structure_type": "weight_based",
+              "application_method": "guide_only",
+              "phone_number": "089-962-5168",
+              "web_form_url": null,
+              "information_url": "https://www.town.tobe.ehime.jp/kurashi_tetsuzuki/gomi_risaikuru_kankyo/1/1745.html",
+              "steps": [
+                {
+                  "step_number": 1,
+                  "title": "対象と持込先を確認",
+                  "description": "指定袋に入らない雑ごみ、20kg以上、引越し等の一時多量ごみは美化センターが主な持込先です。ブロック・瓦・石等は千里埋立処分場の対象です。"
+                },
+                {
+                  "step_number": 2,
+                  "title": "受付日と費用を確認",
+                  "description": "施設の受付日、休業日、重量制の処理手数料を公式ページで確認してください。"
+                },
+                {
+                  "step_number": 3,
+                  "title": "直接持ち込む",
+                  "description": "受付で計量後、自分で分別ごとの場所へ降ろします。指定ごみ袋は不要です。"
+                },
+                {
+                  "step_number": 4,
+                  "title": "運搬を依頼する場合",
+                  "description": "町の一般廃棄物収集運搬許可業者だけに依頼してください。料金は業者へ直接確認します。"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "38506",
+      "version": "ainan-2026.1",
+      "name": "愛南町",
+      "prefecture_id": "38",
+      "prefecture_name": "愛媛県",
+      "registry_asset": "assets/data/municipality_38506_registry.json",
+      "profiles": {
+        "ainan": {
+          "calendar_asset": "assets/data/municipality_38506_0_calendar.json",
+          "categories": {
+            "burnable": {
+              "name": "可燃",
+              "collection_type_id": "burnable",
+              "cutoff": "07:00",
+              "color": "#FFBC38"
+            },
+            "containers": {
+              "name": "びん・缶",
+              "collection_type_id": "containers",
+              "cutoff": "07:00",
+              "color": "#996345"
+            },
+            "pet_bottles": {
+              "name": "ペットボトル",
+              "collection_type_id": "pet_bottles",
+              "cutoff": "07:00",
+              "color": "#A8D14F"
+            },
+            "nonburnable": {
+              "name": "不燃",
+              "collection_type_id": "nonburnable",
+              "cutoff": "07:00",
+              "color": "#4A518A"
+            },
+            "waste_paper": {
+              "name": "古紙",
+              "color": "#9BC1E7"
+            },
+            "dry_batteries": {
+              "name": "資源（乾電池）",
+              "color": "#9BC1E7"
+            },
+            "small_appliances": {
+              "name": "小型家電",
+              "color": "#FAAFCE"
+            },
+            "bulky": {
+              "name": "粗大",
+              "color": "#F3F3F3"
+            },
+            "not_collected": {
+              "name": "禁止",
+              "color": "#F24234"
+            }
+          },
+          "bulky_waste": {
+            "category_code": "bulky",
+            "config": {
+              "municipality_id": "38506",
+              "municipality_name": "愛南町",
+              "collection_frequency": "ごみステーションでの定期収集なし",
+              "reception_hours": "愛南町環境衛生センター：月～土 9:00～16:00（予約必要、休業日あり）",
+              "collection_rules": "指定ごみ袋に収まらない原則100×80×250cm以内の粗大ごみは、環境衛生センター等へ直接持ち込むか、町の許可業者へ収集運搬を依頼します。",
+              "fee_structure_type": "weight_based",
+              "application_method": "guide_only",
+              "phone_number": "0895-72-6955",
+              "web_form_url": null,
+              "information_url": "https://www.town.ainan.ehime.jp/kurashi/tetsuduki/kankyoeisei/gomi/R412bunbetsu.html",
+              "steps": [
+                {
+                  "step_number": 1,
+                  "title": "品目と大きさを確認",
+                  "description": "指定袋に収まらず、原則100×80×250cm以内のものが粗大ごみです。禁止物は持ち込めません。"
+                },
+                {
+                  "step_number": 2,
+                  "title": "持込先へ予約",
+                  "description": "愛南町環境衛生センターへ持ち込む場合は、受付時間と休業日を確認して事前に予約します。"
+                },
+                {
+                  "step_number": 3,
+                  "title": "分別して持ち込む",
+                  "description": "袋に入る大きさのごみも施設へ持ち込む場合は分別し、中身が見える透明・半透明袋を使用します。"
+                },
+                {
+                  "step_number": 4,
+                  "title": "運搬を依頼する場合",
+                  "description": "家庭系粗大ごみ収集運搬許可業者へ依頼し、料金を各業者へ確認します。"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "38488",
+      "version": "kihoku-2026.1",
+      "name": "鬼北町",
+      "prefecture_id": "38",
+      "prefecture_name": "愛媛県",
+      "registry_asset": "assets/data/municipality_38488_registry.json",
+      "profiles": {
+        "kihoku": {
+          "calendar_asset": "assets/data/municipality_38488_0_calendar.json",
+          "categories": {
+            "burnable": {
+              "name": "可燃",
+              "collection_type_id": "burnable",
+              "cutoff": "08:00",
+              "color": "#E74C3C"
+            },
+            "nonburnable": {
+              "name": "不燃",
+              "collection_type_id": "nonburnable",
+              "cutoff": "08:00",
+              "color": "#4B78C2"
+            },
+            "containers": {
+              "name": "びん・缶",
+              "collection_type_id": "containers",
+              "cutoff": "08:00",
+              "color": "#8B5A2B"
+            },
+            "pet_bottles": {
+              "name": "ペットボトル",
+              "collection_type_id": "pet_bottles",
+              "cutoff": "08:00",
+              "color": "#36A852"
+            },
+            "waste_paper": {
+              "name": "古紙",
+              "color": "#D5B56B"
+            },
+            "resources": {
+              "name": "資源",
+              "color": "#65B9C7"
+            },
+            "clean_plastic": {
+              "name": "きれいなプラスチック",
+              "color": "#8BC34A"
+            },
+            "rechargeable_batteries": {
+              "name": "小型充電式電池",
+              "color": "#F0A43A"
+            },
+            "bulky": {
+              "name": "粗大",
+              "color": "#8D8D8D"
+            },
+            "not_collected": {
+              "name": "禁止",
+              "color": "#222222"
+            }
+          },
+          "bulky_waste": {
+            "category_code": "bulky",
+            "config": {
+              "municipality_id": "38488",
+              "municipality_name": "鬼北町",
+              "collection_frequency": "予約制・水曜日（祝日を除く）",
+              "reception_hours": "役場への直接持込は開庁時間内。広域環境センターの受付条件は公式案内で確認",
+              "collection_rules": "指定袋に入らない粗大ごみは、役場環境保全課・日吉支所または広域環境センターへ直接持ち込むか、町委託業者・許可業者へ依頼します。",
+              "fee_structure_type": "fixed",
+              "application_method": "phone",
+              "phone_number": "0895-45-1111",
+              "web_form_url": null,
+              "information_url": "https://www.town.kihoku.ehime.jp/soshiki/kankyou/15663.html",
+              "steps": [
+                {
+                  "step_number": 1,
+                  "title": "処理方法を選ぶ",
+                  "description": "自分で持ち込むか、環境保全課の予約回収または町の許可業者への依頼を選びます。"
+                },
+                {
+                  "step_number": 2,
+                  "title": "料金と受付条件を確認",
+                  "description": "町で処理する粗大ごみは1品500円からです。広域環境センターは10kgあたり50円です。"
+                },
+                {
+                  "step_number": 3,
+                  "title": "予約または直接持込",
+                  "description": "町委託業者の回収は祝日を除く水曜日限定で、事前予約が必要です。"
+                },
+                {
+                  "step_number": 4,
+                  "title": "運搬を依頼する場合",
+                  "description": "運搬手数料または許可業者の見積額を確認してから依頼します。"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "38484",
+      "version": "matsuno-2026.1",
+      "name": "松野町",
+      "prefecture_id": "38",
+      "prefecture_name": "愛媛県",
+      "registry_asset": "assets/data/municipality_38484_registry.json",
+      "profiles": {
+        "matsuno": {
+          "calendar_asset": "assets/data/municipality_38484_0_calendar.json",
+          "categories": {
+            "burnable": {
+              "name": "可燃",
+              "collection_type_id": "burnable",
+              "cutoff": "08:00",
+              "color": "#F39C12"
+            },
+            "nonburnable": {
+              "name": "不燃",
+              "collection_type_id": "nonburnable",
+              "cutoff": "08:00",
+              "color": "#2962FF"
+            },
+            "pet_bottles": {
+              "name": "PET",
+              "collection_type_id": "pet_bottles",
+              "cutoff": "08:00",
+              "color": "#00A651"
+            },
+            "containers": {
+              "name": "びん・かん",
+              "collection_type_id": "containers",
+              "cutoff": "08:00",
+              "color": "#8B4513"
+            },
+            "waste_paper": {
+              "name": "古紙",
+              "collection_type_id": "waste_paper",
+              "cutoff": "08:00",
+              "color": "#7030A0"
+            },
+            "resources": {
+              "name": "資源",
+              "collection_type_id": "resources",
+              "cutoff": "08:00",
+              "color": "#E754E8"
+            },
+            "plastic": {
+              "name": "プラ",
+              "color": "#FFF200"
+            },
+            "small_appliances": {
+              "name": "家電",
+              "color": "#FFFFFF"
+            },
+            "bulky": {
+              "name": "粗大",
+              "color": "#999999"
+            },
+            "not_collected": {
+              "name": "禁止",
+              "color": "#FF0000"
+            }
+          },
+          "bulky_waste": {
+            "category_code": "bulky",
+            "config": {
+              "municipality_id": "38484",
+              "municipality_name": "松野町",
+              "collection_frequency": "年2回（回覧で周知）",
+              "reception_hours": "環境センターへの直接持込は月～土曜日13:00～16:30（祝祭日・年末年始を除く）",
+              "collection_rules": "町の粗大ごみ収集日は回覧で確認します。直接持ち込む場合は幅1m×高さ80cm×長さ2.5m以内です。",
+              "fee_structure_type": "weight_based",
+              "application_method": "guide_only",
+              "phone_number": "0895-42-1115",
+              "web_form_url": null,
+              "information_url": "https://www.town.matsuno.ehime.jp/soshiki/9/1333.html",
+              "steps": [
+                {
+                  "step_number": 1,
+                  "title": "町の回覧を確認",
+                  "description": "年2回の粗大ごみ収集日は回覧で周知されます。"
+                },
+                {
+                  "step_number": 2,
+                  "title": "直接持込も選択",
+                  "description": "宇和島地区広域事務組合環境センターへ持ち込む場合は、種類ごとに分別します。"
+                },
+                {
+                  "step_number": 3,
+                  "title": "料金とサイズを確認",
+                  "description": "家庭ごみは10kgあたり50円で、粗大ごみの受入可能サイズを確認します。"
+                },
+                {
+                  "step_number": 4,
+                  "title": "運搬が難しい場合",
+                  "description": "町の許可業者へ料金を確認して依頼します。"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "38422",
+      "version": "uchiko-2026.1",
+      "name": "内子町",
+      "prefecture_id": "38",
+      "prefecture_name": "愛媛県",
+      "registry_asset": "assets/data/municipality_38422_registry.json",
+      "profiles": {
+        "uchiko_0730": {
+          "calendar_asset": "assets/data/municipality_38422_0_calendar.json",
+          "categories": {
+            "burnable": {
+              "name": "可燃",
+              "collection_type_id": "burnable",
+              "cutoff": "07:30",
+              "color": "#F39C12"
+            },
+            "nonburnable": {
+              "name": "不燃",
+              "collection_type_id": "nonburnable",
+              "cutoff": "07:30",
+              "color": "#2962FF"
+            },
+            "organic": {
+              "name": "生ごみ",
+              "collection_type_id": "organic",
+              "cutoff": "07:30",
+              "color": "#8BC34A"
+            },
+            "cans": {
+              "name": "資源かん",
+              "collection_type_id": "cans",
+              "cutoff": "07:30",
+              "color": "#607D8B"
+            },
+            "bottles": {
+              "name": "資源びん",
+              "collection_type_id": "bottles",
+              "cutoff": "07:30",
+              "color": "#8B4513"
+            },
+            "pet_bottles": {
+              "name": "資源ペットボトル",
+              "collection_type_id": "pet_bottles",
+              "cutoff": "07:30",
+              "color": "#00A651"
+            },
+            "white_trays": {
+              "name": "資源白色トレイ",
+              "collection_type_id": "white_trays",
+              "cutoff": "07:30",
+              "color": "#00BCD4"
+            },
+            "textiles": {
+              "name": "資源布・古着",
+              "collection_type_id": "textiles",
+              "cutoff": "07:30",
+              "color": "#9C27B0"
+            },
+            "waste_paper": {
+              "name": "資源雑誌等",
+              "collection_type_id": "waste_paper",
+              "cutoff": "07:30",
+              "color": "#795548"
+            },
+            "newspapers": {
+              "name": "資源新聞",
+              "collection_type_id": "waste_paper",
+              "cutoff": "07:30",
+              "color": "#795548"
+            },
+            "cardboard": {
+              "name": "資源ダンボール",
+              "collection_type_id": "waste_paper",
+              "cutoff": "07:30",
+              "color": "#795548"
+            },
+            "paper_cartons": {
+              "name": "資源紙パック",
+              "collection_type_id": "waste_paper",
+              "cutoff": "07:30",
+              "color": "#795548"
+            },
+            "waste_oil": {
+              "name": "廃食油",
+              "color": "#FF9800"
+            },
+            "material_dependent": {
+              "name": "素材による",
+              "color": "#9E9E9E"
+            },
+            "bulky": {
+              "name": "粗大",
+              "color": "#757575"
+            },
+            "appliance_recycling": {
+              "name": "家電4品目",
+              "color": "#3F51B5"
+            },
+            "not_collected": {
+              "name": "禁止",
+              "color": "#F44336"
+            }
+          },
+          "bulky_waste": {
+            "category_code": "bulky",
+            "config": {
+              "municipality_id": "38422",
+              "municipality_name": "内子町",
+              "collection_frequency": "地域別の申込収集",
+              "reception_hours": "クリーンセンター持込は月～土曜8:30～12:00、13:00～16:30（休業日を除く）",
+              "collection_rules": "指定袋に入らないもの等は粗大ごみ。品目により直接持込不可のため分別辞典を確認します。",
+              "fee_structure_type": "fixed",
+              "application_method": "phone",
+              "phone_number": "0893-44-6159",
+              "web_form_url": null,
+              "information_url": "https://www.town.uchiko.ehime.jp/soshiki/10/gomibunnbetu.html",
+              "steps": [
+                {
+                  "step_number": 1,
+                  "title": "品目を確認",
+                  "description": "分別辞典で粗大区分と持込可否を確認します。"
+                },
+                {
+                  "step_number": 2,
+                  "title": "町の収集へ申込",
+                  "description": "町の粗大ごみ収集を利用する場合は環境政策室へ確認します。"
+                },
+                {
+                  "step_number": 3,
+                  "title": "直接持込も選択",
+                  "description": "持込可能品は内子町クリーンセンターの受付日時を確認します。"
+                }
+              ]
+            }
+          }
+        },
+        "uchiko_0800": {
+          "calendar_asset": "assets/data/municipality_38422_0_calendar.json",
+          "categories": {
+            "burnable": {
+              "name": "可燃",
+              "collection_type_id": "burnable",
+              "cutoff": "08:00",
+              "color": "#F39C12"
+            },
+            "nonburnable": {
+              "name": "不燃",
+              "collection_type_id": "nonburnable",
+              "cutoff": "08:00",
+              "color": "#2962FF"
+            },
+            "organic": {
+              "name": "生ごみ",
+              "collection_type_id": "organic",
+              "cutoff": "08:00",
+              "color": "#8BC34A"
+            },
+            "cans": {
+              "name": "資源かん",
+              "collection_type_id": "cans",
+              "cutoff": "08:00",
+              "color": "#607D8B"
+            },
+            "bottles": {
+              "name": "資源びん",
+              "collection_type_id": "bottles",
+              "cutoff": "08:00",
+              "color": "#8B4513"
+            },
+            "pet_bottles": {
+              "name": "資源ペットボトル",
+              "collection_type_id": "pet_bottles",
+              "cutoff": "08:00",
+              "color": "#00A651"
+            },
+            "white_trays": {
+              "name": "資源白色トレイ",
+              "collection_type_id": "white_trays",
+              "cutoff": "08:00",
+              "color": "#00BCD4"
+            },
+            "textiles": {
+              "name": "資源布・古着",
+              "collection_type_id": "textiles",
+              "cutoff": "08:00",
+              "color": "#9C27B0"
+            },
+            "waste_paper": {
+              "name": "資源雑誌等",
+              "collection_type_id": "waste_paper",
+              "cutoff": "08:00",
+              "color": "#795548"
+            },
+            "newspapers": {
+              "name": "資源新聞",
+              "collection_type_id": "waste_paper",
+              "cutoff": "08:00",
+              "color": "#795548"
+            },
+            "cardboard": {
+              "name": "資源ダンボール",
+              "collection_type_id": "waste_paper",
+              "cutoff": "08:00",
+              "color": "#795548"
+            },
+            "paper_cartons": {
+              "name": "資源紙パック",
+              "collection_type_id": "waste_paper",
+              "cutoff": "08:00",
+              "color": "#795548"
+            },
+            "waste_oil": {
+              "name": "廃食油",
+              "color": "#FF9800"
+            },
+            "material_dependent": {
+              "name": "素材による",
+              "color": "#9E9E9E"
+            },
+            "bulky": {
+              "name": "粗大",
+              "color": "#757575"
+            },
+            "appliance_recycling": {
+              "name": "家電4品目",
+              "color": "#3F51B5"
+            },
+            "not_collected": {
+              "name": "禁止",
+              "color": "#F44336"
+            }
+          },
+          "bulky_waste": {
+            "category_code": "bulky",
+            "config": {
+              "municipality_id": "38422",
+              "municipality_name": "内子町",
+              "collection_frequency": "地域別の申込収集",
+              "reception_hours": "クリーンセンター持込は月～土曜8:30～12:00、13:00～16:30（休業日を除く）",
+              "collection_rules": "指定袋に入らないもの等は粗大ごみ。品目により直接持込不可のため分別辞典を確認します。",
+              "fee_structure_type": "fixed",
+              "application_method": "phone",
+              "phone_number": "0893-44-6159",
+              "web_form_url": null,
+              "information_url": "https://www.town.uchiko.ehime.jp/soshiki/10/gomibunnbetu.html",
+              "steps": [
+                {
+                  "step_number": 1,
+                  "title": "品目を確認",
+                  "description": "分別辞典で粗大区分と持込可否を確認します。"
+                },
+                {
+                  "step_number": 2,
+                  "title": "町の収集へ申込",
+                  "description": "町の粗大ごみ収集を利用する場合は環境政策室へ確認します。"
+                },
+                {
+                  "step_number": 3,
+                  "title": "直接持込も選択",
+                  "description": "持込可能品は内子町クリーンセンターの受付日時を確認します。"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "38401",
+      "version": "masaki-2026.1",
+      "name": "松前町",
+      "prefecture_id": "38",
+      "prefecture_name": "愛媛県",
+      "registry_asset": "assets/data/municipality_38401_registry.json",
+      "profiles": {
+        "masaki": {
+          "calendar_asset": "assets/data/municipality_38401_0_calendar.json",
+          "categories": {
+            "burnable": {
+              "name": "可燃ごみ",
+              "collection_type_id": "burnable",
+              "cutoff": "07:00",
+              "color": "#F39C12"
+            },
+            "newspapers": {
+              "name": "紙類（新聞紙）",
+              "collection_type_id": "waste_paper",
+              "cutoff": "07:00",
+              "color": "#795548"
+            },
+            "cardboard": {
+              "name": "紙類（段ボール）",
+              "collection_type_id": "waste_paper",
+              "cutoff": "07:00",
+              "color": "#795548"
+            },
+            "paper_cartons": {
+              "name": "紙類（紙パック）",
+              "collection_type_id": "waste_paper",
+              "cutoff": "07:00",
+              "color": "#795548"
+            },
+            "mixed_paper": {
+              "name": "紙類（雑誌類・雑がみ）",
+              "collection_type_id": "waste_paper",
+              "cutoff": "07:00",
+              "color": "#795548"
+            },
+            "plastic": {
+              "name": "プラスチック類",
+              "collection_type_id": "plastic",
+              "cutoff": "07:00",
+              "color": "#00A651"
+            },
+            "pet_bottles": {
+              "name": "ペットボトル",
+              "collection_type_id": "pet_bottles",
+              "cutoff": "07:00",
+              "color": "#00A651"
+            },
+            "cans": {
+              "name": "かん類",
+              "collection_type_id": "cans",
+              "cutoff": "07:00",
+              "color": "#607D8B"
+            },
+            "bottles": {
+              "name": "びん類",
+              "collection_type_id": "bottles",
+              "cutoff": "07:00",
+              "color": "#8B4513"
+            },
+            "metal": {
+              "name": "金属類・スプレー缶",
+              "collection_type_id": "metal",
+              "cutoff": "07:00",
+              "color": "#607D8B"
+            },
+            "textiles": {
+              "name": "古着・古布類",
+              "collection_type_id": "textiles",
+              "cutoff": "07:00",
+              "color": "#9C27B0"
+            },
+            "pruning": {
+              "name": "せんてい枝",
+              "collection_type_id": "pruning",
+              "cutoff": "07:00",
+              "color": "#8BC34A"
+            },
+            "hazardous": {
+              "name": "有害ごみ",
+              "collection_type_id": "hazardous",
+              "cutoff": "07:00",
+              "color": "#2962FF"
+            },
+            "landfill": {
+              "name": "埋立ごみ",
+              "collection_type_id": "landfill",
+              "cutoff": "07:00",
+              "color": "#7E57C2"
+            },
+            "bulky": {
+              "name": "粗大ごみ",
+              "color": "#FF9800"
+            },
+            "not_collected": {
+              "name": "収集しない排出禁止物",
+              "color": "#F44336"
+            },
+            "waste_oil": {
+              "name": "廃食用油",
+              "color": "#FF9800"
+            }
+          },
+          "bulky_waste": {
+            "category_code": "bulky",
+            "config": {
+              "municipality_id": "38401",
+              "municipality_name": "松前町",
+              "collection_frequency": "公式カレンダー記載の申込期間ごとの戸別収集",
+              "reception_hours": "申込期間は選択地区の令和8年度ごみカレンダーで確認",
+              "collection_rules": "45L以下の袋に入らないものが対象。1回の申込期間につき1世帯5点まで、長さ3m以内かつ大人2人で運べる大きさです。",
+              "fee_structure_type": "fixed",
+              "application_method": "web_form",
+              "phone_number": "089-985-4117",
+              "web_form_url": null,
+              "information_url": "https://www.town.masaki.ehime.jp/site/gomi/10385.html",
+              "steps": [
+                {
+                  "step_number": 1,
+                  "title": "申込期間を確認",
+                  "description": "選択した校区のごみカレンダーで黄色表示の申込期間を確認します。"
+                },
+                {
+                  "step_number": 2,
+                  "title": "電子申請またははがきで申込",
+                  "description": "1点ずつ品目を記載し、排出場所を指定します。申込後の追加・変更はできません。"
+                },
+                {
+                  "step_number": 3,
+                  "title": "通知を確認",
+                  "description": "町から届く粗大ごみ収集通知はがきで収集日を確認します。"
+                },
+                {
+                  "step_number": 4,
+                  "title": "シールを貼って排出",
+                  "description": "氏名を記入したシールを貼り、指定場所へ収集日の午前7時までに出します。"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
       "id": "38215",
       "version": "toon-2026.1",
       "name": "東温市",

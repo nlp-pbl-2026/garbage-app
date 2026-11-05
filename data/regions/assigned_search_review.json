@@ -1,0 +1,1156 @@
+{
+  "schema_version": 1,
+  "run_id": "initial",
+  "case_sha256": "45a256a6e7e01ee885742c2d61ce5832b4215d86bd61043c310ba35c49b7dd2f",
+  "dataset_sha256": {
+    "data\\regions\\ozu\\registry.json": "e75081610a0763d3f964ae06d230c2f843b9a8144603e9072fb0c670f890f80d",
+    "data\\regions\\ozu\\knowledge\\items.csv": "036505bc7f1c3f35de72e613b053b850d2bf6c1071ea01fc4e71a66510a3f59b",
+    "data\\regions\\ozu\\knowledge\\item_embeddings.npz": "bc176cb07a03b436919823b4342022cbdbb807b1212ce09dd62dc5ab3cc82ccb",
+    "data\\regions\\tobe\\registry.json": "c8f1e3325ba4b75a6c6d659bfa96b5d1fd5c68c7e4835a1588971844abc72dd7",
+    "data\\regions\\tobe\\knowledge\\items.csv": "1d89fff57280a4369f696fa107298a03b7a25f7ed8fb1fc3b94ced681b3e3ee1",
+    "data\\regions\\tobe\\knowledge\\item_embeddings.npz": "7ddee4551ec3bd5ee618b1c3c3517a912f4a791d4a1119e22429d00ac9a96311",
+    "data\\regions\\ainan\\registry.json": "e18fc93d10bdd88e302bffc8f23f11ce4c2ce62b99173d4ce14d435d786eb0b9",
+    "data\\regions\\ainan\\knowledge\\items.csv": "db4555b0d7a523a6ebe5ac061ca23ee933ea344a9b6377f332fafc63aa39bb11",
+    "data\\regions\\ainan\\knowledge\\item_embeddings.npz": "7f6776b1b1e43b0c387a11fc377a681903fe155e250a6c3e9cc0503535907fc9",
+    "data\\regions\\kihoku\\registry.json": "d3246343d75965eefa83e30437ae5996fd87da3eda228cb10dd477dba8c51412",
+    "data\\regions\\kihoku\\knowledge\\items.csv": "dffe5916b8e818d1510a818889e49d12ac65575eb715973d31bced5126146be0",
+    "data\\regions\\kihoku\\knowledge\\item_embeddings.npz": "48dbea23b4648e0cec0837df20b36322d4c5f59a66051c2f6d8a74fe6188d010",
+    "data\\regions\\matsuno\\registry.json": "f34be566e3bf68fd72916c22001031a55553f82611896adf1ef9c464f92cae5f",
+    "data\\regions\\matsuno\\knowledge\\items.csv": "f5b3c539e3c416abf72344bac5e91f879f3572b718815b5707b17bef93fa5121",
+    "data\\regions\\matsuno\\knowledge\\item_embeddings.npz": "dea6de6632df7583f8058cfab22d82b855d97a86730b781e075dbbce576b8add",
+    "data\\regions\\uchiko\\registry.json": "53d4cd1de3b6b17c7e6dbd01f21961c98a7128faad1330bf95be3f1ce7a924a1",
+    "data\\regions\\uchiko\\knowledge\\items.csv": "bf51f3492a9fd435f34f10cf6520d935a535a07c2ac535a4f584c938d5ad2939",
+    "data\\regions\\uchiko\\knowledge\\item_embeddings.npz": "b7d3d6efdf77460fad4dd08d2399914b62201654536412abd81c37f19aca0e2b",
+    "data\\regions\\masaki\\registry.json": "18c8bb1666da67a53fd4a9b36dc1608fafa10e42e1d84d15bb9a12fa66ef10d2",
+    "data\\regions\\masaki\\knowledge\\items.csv": "8638540bd98b6ace165a0487572f72c8c4da2b864bc3d0d1b5b1dcfe451ba771",
+    "data\\regions\\masaki\\knowledge\\item_embeddings.npz": "dfafa445ed8770186687e0077dff65cae096511626d0a956c7c7fcaa38a85a5c"
+  },
+  "model_ids": {
+    "rewrite_and_decide": "amazon.nova-lite-v1:0",
+    "embedding": "amazon.titan-embed-text-v2:0"
+  },
+  "summary": {
+    "cases": 42,
+    "passed": 27,
+    "failed": 15
+  },
+  "usage": {
+    "embedding_generation_calls": 7523,
+    "embedding_input_tokens": 385931,
+    "evaluation_model_calls": 126,
+    "evaluation_nova_calls": 84,
+    "evaluation_titan_calls": 42,
+    "estimated_actual_usd": 0.01754144,
+    "conservative_reserved_usd": 0.39478762,
+    "approved_limit_usd": 0.6
+  },
+  "results": [
+    {
+      "case": 1,
+      "municipality": "大洲市",
+      "kind": "normal",
+      "input": {
+        "municipality_id": "38207",
+        "district_id": "38207-main-01",
+        "query": "読み終わった新聞紙はどう出す？",
+        "clarifications": []
+      },
+      "source_url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46102.pdf",
+      "expected": {
+        "status": "answered",
+        "category": "paper_cloth",
+        "question_contains_any": []
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "paper_cloth",
+        "follow_up_question": null,
+        "answer": "読み終わった新聞紙は「資源ごみ（古紙・古布・紙パック類）」です。\nひもで縛ってまとめて出し、地区別カレンダーの収集日当日、朝8時までに出す。\n大洲１、大洲２、大洲３、大洲４、大洲５、大洲６、大洲７、大洲８、大洲９、大洲10、城山、大洲11、大洲12、大洲13、大洲14南、大洲14北、大洲15、大洲16、大洲17、大洲18地区の次回収集日は2026年11月11日（水）です。"
+      },
+      "passed": true
+    },
+    {
+      "case": 2,
+      "municipality": "大洲市",
+      "kind": "not_collected",
+      "input": {
+        "municipality_id": "38207",
+        "district_id": "38207-main-01",
+        "query": "リチウムイオン電池を捨てたい",
+        "clarifications": []
+      },
+      "source_url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46102.pdf",
+      "expected": {
+        "status": "answered",
+        "category": "not_collected",
+        "question_contains_any": []
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "not_collected",
+        "follow_up_question": null,
+        "answer": "リチウムイオン電池は「市では収集しないもの」です。\n大洲市の定期収集へ出さず、公式分別辞典に記載された販売店・メーカー等へ相談する。\n市の定期収集には出せません。販売店、メーカー、指定引取先など、品目表に記載された窓口へ相談してください。"
+      },
+      "passed": true
+    },
+    {
+      "case": 3,
+      "municipality": "大洲市",
+      "kind": "clarification",
+      "input": {
+        "municipality_id": "38207",
+        "district_id": "38207-main-01",
+        "query": "扇風機を捨てたい",
+        "clarifications": []
+      },
+      "source_url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46102.pdf",
+      "expected": {
+        "status": "needs_clarification",
+        "category": null,
+        "question_contains_any": [
+          "袋",
+          "大きさ"
+        ]
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "non_burnable",
+        "follow_up_question": null,
+        "answer": "扇風機は「もやさないごみ」です。\n袋に入らない物は もやさないごみ袋に入れて出す。 「粗大ごみ」\n大洲１、大洲２、大洲３、大洲４、大洲５、大洲６、大洲７、大洲８、大洲９、大洲10、城山、大洲11、大洲12、大洲13、大洲14南、大洲14北、大洲15、大洲16、大洲17、大洲18地区の次回収集日は2026年11月17日（火）です。"
+      },
+      "passed": false
+    },
+    {
+      "case": 4,
+      "municipality": "大洲市",
+      "kind": "clarified",
+      "input": {
+        "municipality_id": "38207",
+        "district_id": "38207-main-01",
+        "query": "扇風機を捨てたい",
+        "clarifications": [
+          {
+            "question": "指定ごみ袋に入る大きさですか？",
+            "answer": "いいえ、入りません"
+          }
+        ]
+      },
+      "source_url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46102.pdf",
+      "expected": {
+        "status": "answered",
+        "category": "bulky",
+        "question_contains_any": []
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "bulky",
+        "follow_up_question": null,
+        "answer": "扇風機は「粗大ごみ」です。\n大洲市指定のもやさないごみ袋に入れ、地区別カレンダーの収集日当日、朝8時までに決められた場所へ出す。\n事前予約が必要です。大洲・肱川・河辺地域は0893-24-0530、長浜地域は0893-52-1113へ、平日9時から17時までに申し込んでください。"
+      },
+      "passed": true
+    },
+    {
+      "case": 5,
+      "municipality": "大洲市",
+      "kind": "clarified",
+      "input": {
+        "municipality_id": "38207",
+        "district_id": "38207-main-01",
+        "query": "指定ごみ袋に入る扇風機",
+        "clarifications": []
+      },
+      "source_url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46102.pdf",
+      "expected": {
+        "status": "answered",
+        "category": "non_burnable",
+        "question_contains_any": []
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "bulky",
+        "follow_up_question": null,
+        "answer": "扇風機は「粗大ごみ」です。\n事前予約と粗大ごみ処理券が必要。地区別の予約電話番号を確認し、案内された場所へ収集日の朝8時までに出す。\n事前予約が必要です。大洲・肱川・河辺地域は0893-24-0530、長浜地域は0893-52-1113へ、平日9時から17時までに申し込んでください。"
+      },
+      "passed": false
+    },
+    {
+      "case": 6,
+      "municipality": "大洲市",
+      "kind": "normal",
+      "input": {
+        "municipality_id": "38207",
+        "district_id": "38207-main-01",
+        "query": "使い終わった乾電池",
+        "clarifications": []
+      },
+      "source_url": "https://www.city.ozu.ehime.jp/uploaded/attachment/46102.pdf",
+      "expected": {
+        "status": "answered",
+        "category": "hazardous",
+        "question_contains_any": []
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "hazardous",
+        "follow_up_question": null,
+        "answer": "使い終わった乾電池は「有害ごみ（廃乾電池）」です。\n廃乾電池は指定袋の外袋等、公式分別表の指定に従い、地区別カレンダーの収集日当日、朝8時までに出す。リチウムイオン電池はこの区分へ推測で変更しない。\n大洲１、大洲２、大洲３、大洲４、大洲５、大洲６、大洲７、大洲８、大洲９、大洲10、城山、大洲11、大洲12、大洲13、大洲14南、大洲14北、大洲15、大洲16、大洲17、大洲18地区の次回収集日は2026年11月17日（火）です。"
+      },
+      "passed": true
+    },
+    {
+      "case": 7,
+      "municipality": "砥部町",
+      "kind": "normal",
+      "input": {
+        "municipality_id": "38402",
+        "district_id": "38402-asou",
+        "query": "読み終わった情報誌リビング",
+        "clarifications": []
+      },
+      "source_url": "https://www.town.tobe.ehime.jp/material/files/group/12/22532.pdf#page=11",
+      "expected": {
+        "status": "answered",
+        "category": "newspaper",
+        "question_contains_any": []
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "newspaper",
+        "follow_up_question": null,
+        "answer": "読み終わった情報誌リビングは「新聞・チラシ」です。\n新聞紙と一緒に出す\n麻生小校区（田ノ浦を除く）地区の次回収集日は2026年11月11日（水）です。"
+      },
+      "passed": true
+    },
+    {
+      "case": 8,
+      "municipality": "砥部町",
+      "kind": "normal",
+      "input": {
+        "municipality_id": "38402",
+        "district_id": "38402-asou",
+        "query": "使い終わったアルカリ電池",
+        "clarifications": []
+      },
+      "source_url": "https://www.town.tobe.ehime.jp/material/files/group/12/22532.pdf#page=1",
+      "expected": {
+        "status": "answered",
+        "category": "hazardous",
+        "question_contains_any": []
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "hazardous",
+        "follow_up_question": null,
+        "answer": "使い終わったアルカリ電池は「危険ごみ」です。\n蛍光灯類、乾電池・ライター、刃物・割れ物等の3区分をそれぞれ別の袋に分け、割れ物や刃物は包んで出します。\n麻生小校区（田ノ浦を除く）地区の次回収集日は2026年11月7日（土）です。"
+      },
+      "passed": true
+    },
+    {
+      "case": 9,
+      "municipality": "砥部町",
+      "kind": "not_collected",
+      "input": {
+        "municipality_id": "38402",
+        "district_id": "38402-asou",
+        "query": "壊れた液晶テレビ",
+        "clarifications": []
+      },
+      "source_url": "https://www.town.tobe.ehime.jp/material/files/group/12/22532.pdf#page=3",
+      "expected": {
+        "status": "answered",
+        "category": "not_collected",
+        "question_contains_any": []
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "not_collected",
+        "follow_up_question": null,
+        "answer": "壊れた液晶テレビは「町では処理できないもの」です。\n25ページをご覧下さい\n販売店、メーカー、指定引取場所、専門の処理業者等へ相談します。\nごみステーションや町の処理施設には出せません。販売店、メーカー、専門業者など公式辞典記載の窓口へ相談してください。"
+      },
+      "passed": true
+    },
+    {
+      "case": 10,
+      "municipality": "砥部町",
+      "kind": "clarification",
+      "input": {
+        "municipality_id": "38402",
+        "district_id": "38402-asou",
+        "query": "衣装ケースを捨てたい",
+        "clarifications": []
+      },
+      "source_url": "https://www.town.tobe.ehime.jp/material/files/group/12/22532.pdf#page=1",
+      "expected": {
+        "status": "needs_clarification",
+        "category": null,
+        "question_contains_any": [
+          "袋",
+          "大きさ"
+        ]
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "needs_clarification",
+        "category": null,
+        "follow_up_question": "品物の名前や用途、素材をもう少し具体的に教えてください。",
+        "answer": null
+      },
+      "passed": false
+    },
+    {
+      "case": 11,
+      "municipality": "砥部町",
+      "kind": "clarified",
+      "input": {
+        "municipality_id": "38402",
+        "district_id": "38402-asou",
+        "query": "衣装ケースを捨てたい",
+        "clarifications": [
+          {
+            "question": "砥部町の指定袋に入る大きさですか？",
+            "answer": "いいえ、入りません"
+          }
+        ]
+      },
+      "source_url": "https://www.town.tobe.ehime.jp/material/files/group/12/22532.pdf#page=1",
+      "expected": {
+        "status": "answered",
+        "category": "facility_dropoff",
+        "question_contains_any": []
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "miscellaneous",
+        "follow_up_question": null,
+        "answer": "衣装ケースは「雑ごみ」です。\n指定袋に入らないものは美化センター持込又は許可業者に委託\n麻生小校区（田ノ浦を除く）地区の次回収集日は2026年11月14日（土）です。"
+      },
+      "passed": false
+    },
+    {
+      "case": 12,
+      "municipality": "砥部町",
+      "kind": "condition",
+      "input": {
+        "municipality_id": "38402",
+        "district_id": "38402-asou",
+        "query": "汚れが落ちない油のプラスチック容器",
+        "clarifications": []
+      },
+      "source_url": "https://www.town.tobe.ehime.jp/material/files/group/12/22532.pdf#page=1",
+      "expected": {
+        "status": "answered",
+        "category": "burnable",
+        "question_contains_any": []
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "needs_clarification",
+        "category": null,
+        "follow_up_question": "プラマークは付いていますか？",
+        "answer": null
+      },
+      "passed": false
+    },
+    {
+      "case": 13,
+      "municipality": "愛南町",
+      "kind": "normal",
+      "input": {
+        "municipality_id": "38506",
+        "district_id": "38506-block-1",
+        "query": "空のペットボトル",
+        "clarifications": []
+      },
+      "source_url": "https://www.town.ainan.ehime.jp/kurashi/tetsuduki/kankyoeisei/gomi/files/r6.8.8gomibunnbetuhayamihyo.pdf#page=30",
+      "expected": {
+        "status": "answered",
+        "category": "pet_bottles",
+        "question_contains_any": []
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "pet_bottles",
+        "follow_up_question": null,
+        "answer": "空のペットボトルは「ペットボトル」です。\nキャップとラベルを外し、すすいで指定袋に入れ、収集日の朝7時までに出します。外したキャップとラベルは可燃ごみです。\nブロック1（長月第1～4、上・下永ノ岡、和口第1・2、馬場、上町、本町、寺新町、栄町、貝塚、八幡野）地区の次回収集日は2026年11月10日（火）です。"
+      },
+      "passed": true
+    },
+    {
+      "case": 14,
+      "municipality": "愛南町",
+      "kind": "not_collected",
+      "input": {
+        "municipality_id": "38506",
+        "district_id": "38506-block-1",
+        "query": "農業用のあぜシート",
+        "clarifications": []
+      },
+      "source_url": "https://www.town.ainan.ehime.jp/kurashi/tetsuduki/kankyoeisei/gomi/files/r6.8.8gomibunnbetuhayamihyo.pdf#page=4",
+      "expected": {
+        "status": "answered",
+        "category": "not_collected",
+        "question_contains_any": []
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "not_collected",
+        "follow_up_question": null,
+        "answer": "農業用のあぜシートは「禁止」です。\n農業系産業廃棄物です。取扱店等へご相談ください\n愛南町の収集や処理施設では受け入れできません。取扱店、メーカー、専門業者などへ相談してください。"
+      },
+      "passed": true
+    },
+    {
+      "case": 15,
+      "municipality": "愛南町",
+      "kind": "clarification",
+      "input": {
+        "municipality_id": "38506",
+        "district_id": "38506-block-1",
+        "query": "ガステーブルを捨てたい",
+        "clarifications": []
+      },
+      "source_url": "https://www.town.ainan.ehime.jp/kurashi/tetsuduki/kankyoeisei/gomi/files/r6.8.8gomibunnbetuhayamihyo.pdf#page=8",
+      "expected": {
+        "status": "needs_clarification",
+        "category": null,
+        "question_contains_any": [
+          "袋",
+          "大きさ"
+        ]
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "needs_clarification",
+        "category": null,
+        "follow_up_question": "品物の名前や用途、素材をもう少し具体的に教えてください。",
+        "answer": null
+      },
+      "passed": false
+    },
+    {
+      "case": 16,
+      "municipality": "愛南町",
+      "kind": "clarified",
+      "input": {
+        "municipality_id": "38506",
+        "district_id": "38506-block-1",
+        "query": "ガステーブルを捨てたい",
+        "clarifications": [
+          {
+            "question": "愛南町の指定袋に入る大きさですか？",
+            "answer": "いいえ、入りません"
+          }
+        ]
+      },
+      "source_url": "https://www.town.ainan.ehime.jp/kurashi/tetsuduki/kankyoeisei/gomi/files/r6.8.8gomibunnbetuhayamihyo.pdf#page=8",
+      "expected": {
+        "status": "answered",
+        "category": "bulky",
+        "question_contains_any": []
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "bulky",
+        "follow_up_question": null,
+        "answer": "ガステーブルは「粗大」です。\n指定袋に入らない場合は粗大ごみです。電池を外してください。指定の不燃袋に入れ、収集日の朝7時までに出します。刃物や割れ物などは紙や布で包み「キケン」と表示します。\nごみステーションでの定期収集はありません。愛南町環境衛生センターまたは宇和島地区広域事務組合環境センターへ持ち込みます。"
+      },
+      "passed": true
+    },
+    {
+      "case": 17,
+      "municipality": "愛南町",
+      "kind": "material",
+      "input": {
+        "municipality_id": "38506",
+        "district_id": "38506-block-1",
+        "query": "木製で指定袋に入るテニスラケット",
+        "clarifications": []
+      },
+      "source_url": "https://www.town.ainan.ehime.jp/kurashi/tetsuduki/kankyoeisei/gomi/files/r6.8.8gomibunnbetuhayamihyo.pdf#page=23",
+      "expected": {
+        "status": "answered",
+        "category": "burnable",
+        "question_contains_any": []
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "nonburnable",
+        "follow_up_question": null,
+        "answer": "テニスラケットは「不燃」です。\n指定の不燃袋に入れ、収集日の朝7時までに出します。\nブロック1（長月第1～4、上・下永ノ岡、和口第1・2、馬場、上町、本町、寺新町、栄町、貝塚、八幡野）地区の次回収集日は2026年11月17日（火）です。"
+      },
+      "passed": false
+    },
+    {
+      "case": 18,
+      "municipality": "愛南町",
+      "kind": "alternative_route",
+      "input": {
+        "municipality_id": "38506",
+        "district_id": "38506-block-1",
+        "query": "小型家電回収に出すアイロン",
+        "clarifications": []
+      },
+      "source_url": "https://www.town.ainan.ehime.jp/kurashi/tetsuduki/kankyoeisei/gomi/files/r6.8.8gomibunnbetuhayamihyo.pdf#page=4",
+      "expected": {
+        "status": "answered",
+        "category": "small_appliances",
+        "question_contains_any": []
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "small_appliances",
+        "follow_up_question": null,
+        "answer": "アイロンは「小型家電」です。\n指定の不燃袋に入れ、収集日の朝7時までに出します。刃物や割れ物などは紙や布で包み「キケン」と表示します。\n役場本庁・各支所・環境衛生センターへ持ち込みます。指定の不燃袋で出す場合は品目別の条件を確認してください。"
+      },
+      "passed": true
+    },
+    {
+      "case": 19,
+      "municipality": "鬼北町",
+      "kind": "normal",
+      "input": {
+        "municipality_id": "38488",
+        "district_id": "38488-izumi",
+        "query": "空のペットボトル",
+        "clarifications": []
+      },
+      "source_url": "https://www.town.kihoku.ehime.jp/uploaded/attachment/6289.pdf#page=26",
+      "expected": {
+        "status": "answered",
+        "category": "pet_bottles",
+        "question_contains_any": []
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "pet_bottles",
+        "follow_up_question": null,
+        "answer": "空のペットボトルは「ペットボトル」です。\nキャップとラベルを外し、すすいで乾かしてつぶし、町指定のペットボトル袋（緑色）へ入れます。\n泉地区地区の次回収集日は2026年11月6日（金）です。"
+      },
+      "passed": true
+    },
+    {
+      "case": 20,
+      "municipality": "鬼北町",
+      "kind": "current_rule",
+      "input": {
+        "municipality_id": "38488",
+        "district_id": "38488-izumi",
+        "query": "使い終わったリチウムイオン電池",
+        "clarifications": []
+      },
+      "source_url": "https://www.town.kihoku.ehime.jp/uploaded/attachment/18393.pdf#page=2",
+      "expected": {
+        "status": "answered",
+        "category": "rechargeable_batteries",
+        "question_contains_any": []
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "rechargeable_batteries",
+        "follow_up_question": null,
+        "answer": "使い終わったリチウムイオン電池は「小型充電式電池」です。\n令和8年4月から小型充電式電池を分別回収。端子をビニールテープ等で絶縁し、環境保全課、各公民館または日吉支所の事務所へ持ち込む。取り外せないものは小型家電として出し、膨らんだ電池は回収ボックスに入れず事務所へ直接持ち込む。\n令和8年4月開始の専用分別回収です。可燃・不燃ごみに混ぜず、端子を絶縁して指定場所へ持ち込みます。膨らんだ電池は事務所へ直接持ち込んでください。"
+      },
+      "passed": true
+    },
+    {
+      "case": 21,
+      "municipality": "鬼北町",
+      "kind": "not_collected",
+      "input": {
+        "municipality_id": "38488",
+        "district_id": "38488-izumi",
+        "query": "農業用のあぜシート",
+        "clarifications": []
+      },
+      "source_url": "https://www.town.kihoku.ehime.jp/uploaded/attachment/6289.pdf#page=3",
+      "expected": {
+        "status": "answered",
+        "category": "not_collected",
+        "question_contains_any": []
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "not_collected",
+        "follow_up_question": null,
+        "answer": "農業用のあぜシートは「禁止」です。\n農業系産廃\n鬼北町では収集・処理しません。販売店、メーカー、専門業者などへ相談してください。"
+      },
+      "passed": true
+    },
+    {
+      "case": 22,
+      "municipality": "鬼北町",
+      "kind": "clarification",
+      "input": {
+        "municipality_id": "38488",
+        "district_id": "38488-izumi",
+        "query": "衣装ケースを捨てたい",
+        "clarifications": []
+      },
+      "source_url": "https://www.town.kihoku.ehime.jp/uploaded/attachment/18327.pdf",
+      "expected": {
+        "status": "needs_clarification",
+        "category": null,
+        "question_contains_any": [
+          "袋",
+          "大きさ"
+        ]
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "bulky",
+        "follow_up_question": null,
+        "answer": "衣装ケースは「粗大」です。\n処理手数料は品目ごとに500円からです。広域環境センターへの直接持込は重量制です。\n指定袋に入らないものは、役場等への持込、予約制の水曜回収、または許可業者への依頼を確認してください。"
+      },
+      "passed": false
+    },
+    {
+      "case": 23,
+      "municipality": "鬼北町",
+      "kind": "clarified",
+      "input": {
+        "municipality_id": "38488",
+        "district_id": "38488-izumi",
+        "query": "衣装ケースを捨てたい",
+        "clarifications": [
+          {
+            "question": "鬼北町の指定袋に入る大きさですか？",
+            "answer": "いいえ、入りません"
+          }
+        ]
+      },
+      "source_url": "https://www.town.kihoku.ehime.jp/uploaded/attachment/18327.pdf",
+      "expected": {
+        "status": "answered",
+        "category": "bulky",
+        "question_contains_any": []
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "bulky",
+        "follow_up_question": null,
+        "answer": "衣装ケースは「粗大」です。\n処理手数料は品目ごとに500円からです。広域環境センターへの直接持込は重量制です。\n指定袋に入らないものは、役場等への持込、予約制の水曜回収、または許可業者への依頼を確認してください。"
+      },
+      "passed": true
+    },
+    {
+      "case": 24,
+      "municipality": "鬼北町",
+      "kind": "condition",
+      "input": {
+        "municipality_id": "38488",
+        "district_id": "38488-izumi",
+        "query": "洗って乾かした薄いプラスチック製のアイスクリーム容器",
+        "clarifications": []
+      },
+      "source_url": "https://www.town.kihoku.ehime.jp/uploaded/attachment/18327.pdf",
+      "expected": {
+        "status": "answered",
+        "category": "clean_plastic",
+        "question_contains_any": []
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "clean_plastic",
+        "follow_up_question": null,
+        "answer": "洗って乾かした薄いプラスチック製のアイスクリーム容器は「きれいなプラスチック」です。\n町指定の燃えるごみ袋（赤色）に入れ、収集日の午前8時までに指定場所へ出します。令和8年4月から対象となるきれいなプラスチックは拠点回収も選べます。\n令和8年4月開始の地区別拠点回収です。対象外条件を確認し、容器包装とプラスチック製品に分けます。"
+      },
+      "passed": true
+    },
+    {
+      "case": 25,
+      "municipality": "松野町",
+      "kind": "normal",
+      "input": {
+        "municipality_id": "38484",
+        "district_id": "38484-matsumaru",
+        "query": "すすいだペットボトル",
+        "clarifications": []
+      },
+      "source_url": "https://www.town.matsuno.ehime.jp/uploaded/attachment/7083.pdf#page=56",
+      "expected": {
+        "status": "answered",
+        "category": "pet_bottles",
+        "question_contains_any": []
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "pet_bottles",
+        "follow_up_question": null,
+        "answer": "すすいだペットボトルは「PET」です。\nPETマークを確認し、キャップとラベルを外してすすぎ、町指定のペットボトル袋（緑色）へ入れます。\n松丸地区の次回収集日は2026年11月11日（水）です。"
+      },
+      "passed": true
+    },
+    {
+      "case": 26,
+      "municipality": "松野町",
+      "kind": "not_collected",
+      "input": {
+        "municipality_id": "38484",
+        "district_id": "38484-matsumaru",
+        "query": "農業用のあぜシート",
+        "clarifications": []
+      },
+      "source_url": "https://www.town.matsuno.ehime.jp/uploaded/attachment/7083.pdf#page=22",
+      "expected": {
+        "status": "answered",
+        "category": "not_collected",
+        "question_contains_any": []
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "not_collected",
+        "follow_up_question": null,
+        "answer": "農業用のあぜシートは「禁止」です。\n町で処理できないため、品目の備考に記載された販売店・処理業者等へ相談します。\n松野町では処理できません。販売店、メーカー、専門業者などへ相談してください。"
+      },
+      "passed": true
+    },
+    {
+      "case": 27,
+      "municipality": "松野町",
+      "kind": "clarification",
+      "input": {
+        "municipality_id": "38484",
+        "district_id": "38484-matsumaru",
+        "query": "圧力鍋を捨てたい",
+        "clarifications": []
+      },
+      "source_url": "https://www.town.matsuno.ehime.jp/uploaded/attachment/7083.pdf#page=22",
+      "expected": {
+        "status": "needs_clarification",
+        "category": null,
+        "question_contains_any": [
+          "袋",
+          "大きさ"
+        ]
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "nonburnable",
+        "follow_up_question": null,
+        "answer": "圧力鍋は「不燃」です。\n町指定の不燃ごみ袋（青色）に入れます。ガラス・刃物などは紙や布で包み『キケン』と表示します。\n松丸地区の次回収集日は2026年11月9日（月）です。"
+      },
+      "passed": false
+    },
+    {
+      "case": 28,
+      "municipality": "松野町",
+      "kind": "clarified",
+      "input": {
+        "municipality_id": "38484",
+        "district_id": "38484-matsumaru",
+        "query": "圧力鍋を捨てたい",
+        "clarifications": [
+          {
+            "question": "松野町の指定袋に入る大きさですか？",
+            "answer": "いいえ、入りません"
+          }
+        ]
+      },
+      "source_url": "https://www.town.matsuno.ehime.jp/uploaded/attachment/7083.pdf#page=22",
+      "expected": {
+        "status": "answered",
+        "category": "bulky",
+        "question_contains_any": []
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "bulky",
+        "follow_up_question": null,
+        "answer": "圧力鍋は「粗大」です。\n町指定の不燃ごみ袋（青色）に入れます。ガラス・刃物などは紙や布で包み『キケン』と表示します。\n粗大ごみの町収集は年2回で、日程は回覧で周知されます。公式の最新案内を確認してください。"
+      },
+      "passed": true
+    },
+    {
+      "case": 29,
+      "municipality": "松野町",
+      "kind": "material",
+      "input": {
+        "municipality_id": "38484",
+        "district_id": "38484-matsumaru",
+        "query": "金属製ではない布製のアタッシュケース、指定袋に入る",
+        "clarifications": []
+      },
+      "source_url": "https://www.town.matsuno.ehime.jp/uploaded/attachment/7083.pdf#page=22",
+      "expected": {
+        "status": "answered",
+        "category": "burnable",
+        "question_contains_any": []
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "burnable",
+        "follow_up_question": null,
+        "answer": "アタッシュケース（布製）は「可燃」です。\n町指定の可燃ごみ袋（オレンジ色）に入れ、収集日の午前8時までに地域のごみステーションへ出します。\n松丸地区の次回収集日は2026年11月6日（金）です。"
+      },
+      "passed": true
+    },
+    {
+      "case": 30,
+      "municipality": "松野町",
+      "kind": "power_source",
+      "input": {
+        "municipality_id": "38484",
+        "district_id": "38484-matsumaru",
+        "query": "電池式のプラスチック製おもちゃ",
+        "clarifications": []
+      },
+      "source_url": "https://www.town.matsuno.ehime.jp/uploaded/attachment/7083.pdf#page=26",
+      "expected": {
+        "status": "answered",
+        "category": "small_appliances",
+        "question_contains_any": []
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "small_appliances",
+        "follow_up_question": null,
+        "answer": "電池式のプラスチック製おもちゃは「家電」です。\n取り外せる電池は外し、粗大ごみ収集日または指定回収ボックスへ出します。\n小型家電は粗大ごみ収集日または町の回収ボックスを利用します。家電リサイクル法対象品は別途処理が必要です。"
+      },
+      "passed": true
+    },
+    {
+      "case": 31,
+      "municipality": "内子町",
+      "kind": "normal",
+      "input": {
+        "municipality_id": "38422",
+        "district_id": "38422-uchiko-a",
+        "query": "空のペットボトル",
+        "clarifications": []
+      },
+      "source_url": "https://www.town.uchiko.ehime.jp/uploaded/life/139240_284629_misc.pdf#page=11",
+      "expected": {
+        "status": "answered",
+        "category": "pet_bottles",
+        "question_contains_any": []
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "needs_clarification",
+        "category": null,
+        "follow_up_question": "素材、大きさ、汚れの有無など、品物の状態をもう少し教えてください。",
+        "answer": null
+      },
+      "passed": false
+    },
+    {
+      "case": 32,
+      "municipality": "内子町",
+      "kind": "not_collected",
+      "input": {
+        "municipality_id": "38422",
+        "district_id": "38422-uchiko-a",
+        "query": "壊れた衣類乾燥機",
+        "clarifications": []
+      },
+      "source_url": "https://www.town.uchiko.ehime.jp/uploaded/life/139240_284629_misc.pdf#page=2",
+      "expected": {
+        "status": "answered",
+        "category": "appliance_recycling",
+        "question_contains_any": []
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "appliance_recycling",
+        "follow_up_question": null,
+        "answer": "壊れた衣類乾燥機は「家電4品目」です。\n販売店などに引き取りを依頼します。町の収集・クリーンセンター持込はできません。\nテレビ、エアコン、冷蔵庫・冷凍庫、洗濯機・衣類乾燥機は家電リサイクル法の対象です。"
+      },
+      "passed": true
+    },
+    {
+      "case": 33,
+      "municipality": "内子町",
+      "kind": "clarification",
+      "input": {
+        "municipality_id": "38422",
+        "district_id": "38422-uchiko-a",
+        "query": "アイロン台を捨てたい",
+        "clarifications": []
+      },
+      "source_url": "https://www.town.uchiko.ehime.jp/uploaded/life/139240_284629_misc.pdf#page=2",
+      "expected": {
+        "status": "needs_clarification",
+        "category": null,
+        "question_contains_any": [
+          "袋",
+          "大きさ"
+        ]
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "needs_clarification",
+        "category": null,
+        "follow_up_question": "品物の名前や用途、素材をもう少し具体的に教えてください。",
+        "answer": null
+      },
+      "passed": false
+    },
+    {
+      "case": 34,
+      "municipality": "内子町",
+      "kind": "clarified",
+      "input": {
+        "municipality_id": "38422",
+        "district_id": "38422-uchiko-a",
+        "query": "アイロン台を捨てたい",
+        "clarifications": [
+          {
+            "question": "内子町の指定袋に入る大きさですか？",
+            "answer": "いいえ、入りません"
+          }
+        ]
+      },
+      "source_url": "https://www.town.uchiko.ehime.jp/uploaded/life/139240_284629_misc.pdf#page=2",
+      "expected": {
+        "status": "answered",
+        "category": "bulky",
+        "question_contains_any": []
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "bulky",
+        "follow_up_question": null,
+        "answer": "アイロン台は「粗大」です。\n袋に入らないものは粗大。町の粗大ごみ収集に申し込む。※クリーンセンターへの持込は不可\n町の粗大ごみ収集またはクリーンセンターへの直接持込を利用します。持込不可品があります。"
+      },
+      "passed": true
+    },
+    {
+      "case": 35,
+      "municipality": "内子町",
+      "kind": "size_boundary",
+      "input": {
+        "municipality_id": "38422",
+        "district_id": "38422-uchiko-a",
+        "query": "一辺30cmの飲食料品用空き缶",
+        "clarifications": []
+      },
+      "source_url": "https://www.town.uchiko.ehime.jp/uploaded/life/139240_284629_misc.pdf#page=2",
+      "expected": {
+        "status": "answered",
+        "category": "nonburnable",
+        "question_contains_any": []
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "nonburnable",
+        "follow_up_question": null,
+        "answer": "飲食料品用空き缶は「不燃」です。\nふたを外し、すすぎ、専用袋へ入れます。※一辺が20cm以上のものは不燃ごみ\n内子 1～4区・5区中町通り沿い・12～19区・20区通常収集場所地区の次回収集日は2026年11月27日（金）です。"
+      },
+      "passed": true
+    },
+    {
+      "case": 36,
+      "municipality": "内子町",
+      "kind": "not_collected",
+      "input": {
+        "municipality_id": "38422",
+        "district_id": "38422-uchiko-a",
+        "query": "石製のうすを処分したい",
+        "clarifications": []
+      },
+      "source_url": "https://www.town.uchiko.ehime.jp/uploaded/life/139240_284629_misc.pdf#page=2",
+      "expected": {
+        "status": "answered",
+        "category": "not_collected",
+        "question_contains_any": []
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "needs_clarification",
+        "category": null,
+        "follow_up_question": "品物の名前や用途、素材をもう少し具体的に教えてください。",
+        "answer": null
+      },
+      "passed": false
+    },
+    {
+      "case": 37,
+      "municipality": "松前町",
+      "kind": "normal",
+      "input": {
+        "municipality_id": "38401",
+        "district_id": "38401-masaki-school",
+        "query": "空のペットボトル",
+        "clarifications": []
+      },
+      "source_url": "https://www.town.masaki.ehime.jp/uploaded/attachment/16014.pdf#page=35",
+      "expected": {
+        "status": "answered",
+        "category": "pet_bottles",
+        "question_contains_any": []
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "pet_bottles",
+        "follow_up_question": null,
+        "answer": "空のペットボトルは「ペットボトル」です。\nPETマークを確認し、キャップとラベルを外して洗い、つぶして無色または白色半透明の袋へ入れます。\n松前校区地区の次回収集日は2026年11月6日（金）です。"
+      },
+      "passed": true
+    },
+    {
+      "case": 38,
+      "municipality": "松前町",
+      "kind": "not_collected",
+      "input": {
+        "municipality_id": "38401",
+        "district_id": "38401-masaki-school",
+        "query": "家庭で使った医療系廃棄物",
+        "clarifications": []
+      },
+      "source_url": "https://www.town.masaki.ehime.jp/uploaded/attachment/16014.pdf#page=20",
+      "expected": {
+        "status": "answered",
+        "category": "not_collected",
+        "question_contains_any": []
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "not_collected",
+        "follow_up_question": null,
+        "answer": "医療系廃棄物は「収集しない排出禁止物」です。\n提供を受けた病院又は薬局へ (P16参照)\n松前町では収集しません。備考に従い販売店、メーカー、専門業者などへ相談してください。"
+      },
+      "passed": true
+    },
+    {
+      "case": 39,
+      "municipality": "松前町",
+      "kind": "clarification",
+      "input": {
+        "municipality_id": "38401",
+        "district_id": "38401-masaki-school",
+        "query": "IHクッキングヒーターを捨てたい",
+        "clarifications": []
+      },
+      "source_url": "https://www.town.masaki.ehime.jp/uploaded/attachment/16014.pdf#page=20",
+      "expected": {
+        "status": "needs_clarification",
+        "category": null,
+        "question_contains_any": [
+          "袋",
+          "45",
+          "大きさ"
+        ]
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "not_collected",
+        "follow_up_question": null,
+        "answer": "IHクッキングヒーターは「収集しない排出禁止物」です。\n家電4品目、パソコン、処理困難物、事業系ごみなどは町の収集対象外です。品目ごとの公式案内に従います。\n松前町では収集しません。備考に従い販売店、メーカー、専門業者などへ相談してください。"
+      },
+      "passed": false
+    },
+    {
+      "case": 40,
+      "municipality": "松前町",
+      "kind": "clarified",
+      "input": {
+        "municipality_id": "38401",
+        "district_id": "38401-masaki-school",
+        "query": "IHクッキングヒーターを捨てたい",
+        "clarifications": [
+          {
+            "question": "45リットルの袋に入る大きさですか？",
+            "answer": "いいえ、入りません"
+          }
+        ]
+      },
+      "source_url": "https://www.town.masaki.ehime.jp/uploaded/attachment/16014.pdf#page=20",
+      "expected": {
+        "status": "answered",
+        "category": "bulky",
+        "question_contains_any": []
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "not_collected",
+        "follow_up_question": null,
+        "answer": "IHクッキングヒーターは「収集しない排出禁止物」です。\n家電4品目（P15ページ参照）\n松前町では収集しません。備考に従い販売店、メーカー、専門業者などへ相談してください。"
+      },
+      "passed": false
+    },
+    {
+      "case": 41,
+      "municipality": "松前町",
+      "kind": "part_removed",
+      "input": {
+        "municipality_id": "38401",
+        "district_id": "38401-masaki-school",
+        "query": "電池を外した泡立て器本体",
+        "clarifications": []
+      },
+      "source_url": "https://www.town.masaki.ehime.jp/uploaded/attachment/16014.pdf#page=20",
+      "expected": {
+        "status": "answered",
+        "category": "metal",
+        "question_contains_any": []
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "metal",
+        "follow_up_question": null,
+        "answer": "泡立て器本体は「金属類・スプレー缶」です。\n金属類は無色または白色半透明の袋へ入れます。\n松前校区地区の次回収集日は2026年11月28日（土）です。"
+      },
+      "passed": true
+    },
+    {
+      "case": 42,
+      "municipality": "松前町",
+      "kind": "current_rule",
+      "input": {
+        "municipality_id": "38401",
+        "district_id": "38401-masaki-school",
+        "query": "汚れを取り除いた食品用トレイ",
+        "clarifications": []
+      },
+      "source_url": "https://www.town.masaki.ehime.jp/uploaded/attachment/16014.pdf#page=31",
+      "expected": {
+        "status": "answered",
+        "category": "plastic",
+        "question_contains_any": []
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "needs_clarification",
+        "category": null,
+        "follow_up_question": "プラマークは付いていますか？",
+        "answer": null
+      },
+      "passed": false
+    }
+  ]
+}

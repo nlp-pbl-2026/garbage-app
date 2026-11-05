@@ -246,6 +246,9 @@ class ItemSearchService:
         normalized = unicodedata.normalize("NFKC", value).lower()
         normalized = normalized.replace("フタ", "ふた").replace("蓋", "ふた")
         normalized = normalized.replace("ビン", "びん").replace("瓶", "びん")
+        # 公開資料には「衣装」と旧字体寄りの「衣裳」が混在する。利用者が
+        # どちらを入力しても同じ公式品目へ到達できるよう、検索時だけ統一する。
+        normalized = normalized.replace("衣裳", "衣装")
         for phrase in cls._ignored_phrases:
             normalized = normalized.replace(phrase.lower(), "")
         normalized = re.sub(r"[\s\W_]+", "", normalized)

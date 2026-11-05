@@ -76,3 +76,25 @@ def test_missing_calendar_stops_generation(tmp_path):
     with pytest.raises(FileNotFoundError):
         module.generate(tmp_path / "catalog.json", tmp_path / "output")
     assert not (tmp_path / "output/municipality_catalog.json").exists()
+
+
+def test_incremental_generation_preserves_unselected_assets(tmp_path):
+    source = tmp_path / "source"
+    for city in ["90001", "90002"]:
+        make_city(source, city)
+    write(source / "catalog.json", {"schema_version": 1, "municipalities": [
+        {"id": city, "registry_path": f"{city}/registry.json"} for city in ["90001", "90002"]]})
+    output = tmp_path / "assets"
+    write(output / "municipality_catalog.json", {"schema_version": 1, "municipalities": [
+        {"id": "80001", "name": "既存市", "registry_asset": "assets/data/existing.json", "profiles": {}}
+    ]})
+    (output / "existing.json").write_text("preserve me", encoding="utf-8")
+
+    catalog = module.generate(
+        source / "catalog.json", output, municipality_ids=["90002"], merge_existing=True,
+    )
+
+    assert [entry["id"] for entry in catalog["municipalities"]] == ["80001", "90002"]
+    assert (output / "existing.json").read_text(encoding="utf-8") == "preserve me"
+    assert not (output / "municipality_90001_registry.json").exists()
+    assert (output / "municipality_90002_registry.json").is_file()

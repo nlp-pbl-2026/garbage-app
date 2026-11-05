@@ -63,7 +63,7 @@ def test_prohibited_category_phrase_is_not_an_alternative():
     assert category_options("汚れたものは可燃へ", "plastic") == ["burnable"]
 
 
-def test_reviewed_registry_has_eleven_areas_without_app_registration():
+def test_reviewed_registry_has_eleven_registered_areas():
     registry = json.loads(
         (ROOT / "data/regions/matsuno/registry.json").read_text(encoding="utf-8")
     )
@@ -85,8 +85,8 @@ def test_reviewed_registry_has_eleven_areas_without_app_registration():
         area["calendar_id"] for area in registry["collection_areas"]
     }
     assert all(area["needs_local_confirmation"] for area in registry["collection_areas"])
-    assert all(item["id"] != "38484" for item in catalog["municipalities"])
-    assert not (ROOT / "data/regions/matsuno/knowledge/item_embeddings.npz").exists()
+    assert any(item["id"] == "38484" for item in catalog["municipalities"])
+    assert (ROOT / "data/regions/matsuno/knowledge/index_manifest.json").exists()
 
 
 def test_stale_standalone_calendar_is_not_used_for_generated_dates():

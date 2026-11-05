@@ -1,6 +1,6 @@
 # Flutterの複数自治体対応
 
-実際に選択できる自治体は松山市と八幡浜市です（[八幡浜市の対応範囲・収集日未確認の区分](yawatahama-data.md)）。架空の2自治体によるテストで、
+実際に選択できる自治体は標準カタログの12自治体です（[担当7自治体の対応範囲](assigned-municipalities-completion.md)）。架空の2自治体によるテストでも、
 同じ地区ID・分別設定ID・収集区分IDを使っても地域を混同しないことを確認します。
 新自治体の公式データ取得・曜日規則の実日付展開・実機での検証は自治体追加時に行います。
 
@@ -22,6 +22,7 @@ backend/.venv/bin/python scripts/generate_frontend_data.py
 - カタログと台帳メタデータはGit管理対象です。カレンダー・住所表はGit管理外の生成物です。
   CSV、NPZ、分類プロンプトはFlutterに同梱しません。
 - `--catalog` と `--output` でテスト用の入力・出力先を指定できます。出力先は独立した生成物用ディレクトリを指定してください。
+- 既存自治体のGit管理外データがない環境で追加分だけを生成する場合は、`--municipality-id` を繰り返し指定し、`--merge-existing` で既存カタログとアセットを保持します。
 
 台帳とカタログの自治体ID・版を照合します。カレンダーは自治体ID・版・適用期間が一致し、
 収集地区のカレンダーが `verification_status=checked` の場合のみ使用します。
@@ -92,7 +93,7 @@ flutter analyze
 生成処理は `backend/tests/test_frontend_data_generation.py` で別途検証します。
 
 実GPS・通知権限と配信・OS共有シートは実機確認が必要です。Webでネイティブ通知の動作は確認できません。
-この作業では実Bedrock・AWS APIを呼んでおらず、他19市町の公式データも追加していません。
+実Bedrock評価は自治体追加ごとの承認済み費用上限内で別途行い、AWSへのデプロイやTerraform操作とは分離します。
 
 ## 一部の収集区分が未確認の場合
 

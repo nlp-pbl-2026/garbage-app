@@ -49,6 +49,10 @@ extension FeeStructureTypeExtension on FeeStructureType {
 enum ApplicationMethod {
   /// Collection by the district calendar; no advance application.
   none,
+
+  /// Official guidance only; no in-app application or scheduled collection.
+  guideOnly,
+
   /// Webフォーム
   webForm,
 
@@ -66,6 +70,8 @@ extension ApplicationMethodExtension on ApplicationMethod {
     switch (this) {
       case ApplicationMethod.none:
         return 'none';
+      case ApplicationMethod.guideOnly:
+        return 'guide_only';
       case ApplicationMethod.webForm:
         return 'web_form';
       case ApplicationMethod.phone:
@@ -80,6 +86,8 @@ extension ApplicationMethodExtension on ApplicationMethod {
     switch (value) {
       case 'none':
         return ApplicationMethod.none;
+      case 'guide_only':
+        return ApplicationMethod.guideOnly;
       case 'web_form':
         return ApplicationMethod.webForm;
       case 'phone':

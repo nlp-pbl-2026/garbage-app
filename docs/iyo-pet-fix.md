@@ -46,3 +46,7 @@
 無料の通常テストは `backend/.venv/bin/python -m pytest backend/tests -q`、公式データを含める場合は `backend/.venv/bin/python -m pytest backend/tests backend/official_tests -q --override-ini='python_files=test_*.py verify_*.py'` です。
 
 有料評価の再実行は別途承認後に限り、`scripts/evaluate_iyo_pet_fix.py --confirm-paid --run after` を使用します。`before` は4再現例、`after` は16例、`recheck --repeat-cases <番号...>` は最大4例です。各評価のmanifestと入力が変わった場合は上書きせず停止します。現在のコードで `before` を実行しても修正前のコードを再現するわけではありません。今回の修正前コードのハッシュと結果は評価記録を参照してください。
+
+## main統合後の確認
+
+後続のmain統合では品目名一致による候補補助・条件補正を保持し、本体/部品の区別をその経路にも適用しました。保存済み16例を有料APIなしで再生して確認しています。[統合内容・未配置データによる検証制限](toon-main-merge.md)を参照してください。

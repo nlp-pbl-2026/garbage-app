@@ -80,7 +80,7 @@ def test_category_options_capture_size_area_and_material_conditions():
     assert category_options("袋に入らないものは粗大", "nonburnable") == ["bulky"]
 
 
-def test_reviewed_registry_has_26_profiles_and_calendar_year_boundary():
+def test_reviewed_registry_has_26_areas_cutoffs_and_calendar_year_boundary():
     registry = json.loads(
         (ROOT / "data/regions/uchiko/registry.json").read_text(encoding="utf-8")
     )
@@ -102,8 +102,21 @@ def test_reviewed_registry_has_26_profiles_and_calendar_year_boundary():
     assert reviews["verification"]["calendar_basis"].startswith("Calendar year")
     assert item_reviews["official_items"] == 876
     assert all(area["needs_local_confirmation"] for area in registry["collection_areas"])
-    assert all(item["id"] != "38422" for item in catalog["municipalities"])
-    assert not (ROOT / "data/regions/uchiko/knowledge/item_embeddings.npz").exists()
+    assert any(item["id"] == "38422" for item in catalog["municipalities"])
+    assert set(registry["rule_profiles"]) == {"uchiko_0730", "uchiko_0800"}
+    assert {
+        profile_id: {
+            category["cutoff"]
+            for category in profile["categories"].values()
+            if "collection_type_id" in category
+        }
+        for profile_id, profile in registry["rule_profiles"].items()
+    } == {"uchiko_0730": {"07:30"}, "uchiko_0800": {"08:00"}}
+    assert all(
+        area["rule_profile_id"]
+        == ("uchiko_0800" if area["parent_area"] == "小田自治センター" else "uchiko_0730")
+        for area in registry["collection_areas"]
+    )
 
 
 def test_uchiko_workflow_never_imports_or_invokes_bedrock():

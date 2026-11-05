@@ -143,13 +143,21 @@ class _ItemListViewState extends ConsumerState<ItemListView> {
     final config = configResult?.data;
     if (config == null) return;
 
-    if (config.applicationMethod == ApplicationMethod.none) {
-      showDialog<void>(context: context, builder: (dialogContext) => AlertDialog(
-        title: Text(item.itemName),
-        content: Text('${item.notes ?? '公式カレンダーで出し方を確認してください。'}\n\n収集日は選択地区のカレンダーで確認してください。'),
-        actions: [TextButton(onPressed: () => Navigator.of(dialogContext).pop(),
-          child: const Text('閉じる'))],
-      ));
+    if (config.applicationMethod == ApplicationMethod.none ||
+        config.applicationMethod == ApplicationMethod.guideOnly) {
+      showDialog<void>(
+          context: context,
+          builder: (dialogContext) => AlertDialog(
+                title: Text(item.itemName),
+                content: Text(config.applicationMethod == ApplicationMethod.none
+                    ? '${item.notes ?? '公式カレンダーで出し方を確認してください。'}\n\n収集日は選択地区のカレンダーで確認してください。'
+                    : '${item.notes ?? '公式案内で出し方を確認してください。'}\n\n持込先や受付条件は自治体の公式案内で確認してください。'),
+                actions: [
+                  TextButton(
+                      onPressed: () => Navigator.of(dialogContext).pop(),
+                      child: const Text('閉じる'))
+                ],
+              ));
       return;
     }
 
@@ -227,9 +235,12 @@ class _ItemListViewState extends ConsumerState<ItemListView> {
                   Text(
                     widget.config.applicationMethod == ApplicationMethod.none
                         ? '${widget.config.municipalityName}の粗大ごみ収集日と出し方は公式カレンダーで確認してください。'
-                        : widget.config.municipalityId == '38201'
-                            ? '粗大ごみとして収集できるか、申込区分、受付期間は松山市公式サイトで確認してください。料金はかかりません。'
-                            : '収集対象、申込条件、料金は自治体の公式サイトで確認してください。',
+                        : widget.config.applicationMethod ==
+                                ApplicationMethod.guideOnly
+                            ? '${widget.config.municipalityName}の持込先や受付条件は公式案内で確認してください。'
+                            : widget.config.municipalityId == '38201'
+                                ? '粗大ごみとして収集できるか、申込区分、受付期間は松山市公式サイトで確認してください。料金はかかりません。'
+                                : '収集対象、申込条件、料金は自治体の公式サイトで確認してください。',
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(height: 20),
@@ -394,7 +405,8 @@ class _ItemListViewState extends ConsumerState<ItemListView> {
         style: TextStyle(fontSize: 13, color: Colors.grey[600]),
       ),
       trailing: Text(
-        widget.config.applicationMethod == ApplicationMethod.none
+        widget.config.applicationMethod == ApplicationMethod.none ||
+                widget.config.applicationMethod == ApplicationMethod.guideOnly
             ? '資料を確認'
             : item.feeAmount > 0
                 ? '${item.feeAmount}円'

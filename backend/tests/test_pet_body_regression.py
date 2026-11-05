@@ -112,7 +112,7 @@ def region(city="90001"):
 
 
 CAP = RetrievedDocument(
-    "品目: キャップ\n分類コード: plastic_packaging\n区分共通の出し方: プラマークのある容器包装が対象",
+    "品目: キャップ\n分類コード: plastic_packaging\n出し方・注意: プラマークがあるか確認\n区分共通の出し方: プラマークのある容器包装が対象",
     0.9,
 )
 PET = RetrievedDocument(

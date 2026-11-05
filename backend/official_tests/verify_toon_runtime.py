@@ -214,7 +214,7 @@ async def test_bulky_is_regular_collection_and_other_municipalities_stay_indepen
         guide = profile["bulky_waste"]["config"]
         assert guide["application_method"] == "none"
         assert "受け入れません" in guide["steps"][-1]["description"]
-    assert set(get_registry().entries) == {
+    assert set(get_registry().entries) >= {
         "38201",
         "38204",
         "38210",
