@@ -1,0 +1,43 @@
+{
+  "official_items": 1349,
+  "search_records": 1364,
+  "source_categories": {
+    "びん・缶": 28,
+    "プラ製容器包装": 46,
+    "ペットボトル": 1,
+    "不燃ごみ": 273,
+    "収集しない": 77,
+    "古紙類": 47,
+    "大型ごみ": 436,
+    "布類": 24,
+    "廃棄物対策": 2,
+    "有害ごみ": 9,
+    "燃やすごみ": 343,
+    "自己搬入": 63
+  },
+  "page_counts": {
+    "27": 68,
+    "28": 64,
+    "29": 69,
+    "30": 68,
+    "31": 62,
+    "32": 61,
+    "33": 72,
+    "34": 71,
+    "35": 65,
+    "36": 71,
+    "37": 66,
+    "38": 68,
+    "39": 67,
+    "40": 66,
+    "41": 69,
+    "42": 68,
+    "43": 71,
+    "44": 65,
+    "45": 68,
+    "46": 70
+  },
+  "conditional_records": 409,
+  "rows_sha256": "3d2c0dad402481ff61c1cf158849fa3d8e906e11f6249337de0f12b98cdf7dfb",
+  "dictionary_audit": "20_pages_row_borders_text_counts_raster_categories; common_image_footnotes_visually_reviewed"
+}

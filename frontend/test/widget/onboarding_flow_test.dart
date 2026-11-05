@@ -45,6 +45,9 @@ void main() {
             (ref) async => [Prefecture(id: '38', name: '愛媛県')],
           ),
           regionSettingProvider.overrideWith((ref) => notifier),
+          districtsProvider('38201').overrideWith((ref) async => [
+                District(id: '38201-08', municipalityId: '38201', name: '清水'),
+              ]),
         ],
         child: const MaterialApp(home: RegionSelectionScreen()),
       ),

@@ -992,6 +992,350 @@
           }
         }
       }
+    },
+    {
+      "id": "38205",
+      "version": "niihama-2026.1",
+      "name": "新居浜市",
+      "prefecture_id": "38",
+      "prefecture_name": "愛媛県",
+      "registry_asset": "assets/data/municipality_38205_registry.json",
+      "profiles": {
+        "mainland": {
+          "calendar_asset": "assets/data/municipality_38205_0_calendar.json",
+          "categories": {
+            "burnable": {
+              "name": "燃やすごみ",
+              "collection_type_id": "burnable",
+              "cutoff": "07:30",
+              "color": "#F19EC2"
+            },
+            "non_burnable": {
+              "name": "不燃ごみ",
+              "collection_type_id": "non_burnable",
+              "cutoff": "07:30",
+              "color": "#FFF100"
+            },
+            "textiles": {
+              "name": "布類",
+              "collection_type_id": "textiles",
+              "cutoff": "07:30",
+              "color": "#C7D1EB"
+            },
+            "plastic_packaging": {
+              "name": "プラスチック製容器包装",
+              "collection_type_id": "plastic_packaging",
+              "cutoff": "07:30",
+              "color": "#9FD9F7"
+            },
+            "bottles_cans": {
+              "name": "びん・缶",
+              "collection_type_id": "bottles_cans",
+              "cutoff": "07:30",
+              "color": "#D7E8AF"
+            },
+            "pet_bottles": {
+              "name": "ペットボトル",
+              "collection_type_id": "pet_bottles",
+              "cutoff": "07:30",
+              "color": "#F8B86D"
+            },
+            "paper": {
+              "name": "古紙類",
+              "collection_type_id": "paper",
+              "cutoff": "07:30",
+              "color": "#22AC38"
+            },
+            "hazardous": {
+              "name": "有害ごみ",
+              "collection_type_id": "hazardous",
+              "cutoff": "07:30",
+              "color": "#DDDDDD"
+            },
+            "bulky": {
+              "name": "大型ごみ",
+              "color": "#7030A0"
+            },
+            "self_delivery": {
+              "name": "自己搬入",
+              "color": "#984807"
+            },
+            "not_collected": {
+              "name": "市で収集しないもの",
+              "color": "#808080"
+            },
+            "consultation": {
+              "name": "市へ相談",
+              "color": "#666666"
+            }
+          },
+          "bulky_waste": {
+            "category_code": "bulky",
+            "config": {
+              "municipality_id": "38205",
+              "municipality_name": "新居浜市",
+              "collection_frequency": "事前申込制・有料（1点200円）",
+              "reception_hours": "開庁日9:00〜14:00",
+              "collection_rules": "確認はがきで指定された日の午前9時までに指定場所へ。通常ステーション収集日は設定しません。",
+              "fee_structure_type": "fixed",
+              "application_method": "both",
+              "web_form_url": "https://www.city.niihama.lg.jp/soshiki/digital/densisinsei.html",
+              "phone_number": "0897-31-5300",
+              "information_url": "https://www.city.niihama.lg.jp/soshiki/haiki/dasikata-oogata.html",
+              "steps": [
+                {
+                  "step_number": 1,
+                  "title": "対象と寸法を確認",
+                  "description": "日常生活の大型ごみが対象。引越し・解体・遺品整理等の大量ごみ、家電リサイクル品や処理困難物等は対象外。180cmちょうどの受付可否は公式資料間で表現が異なるため市へ確認してください。"
+                },
+                {
+                  "step_number": 2,
+                  "title": "電話又は電子申請で申し込む",
+                  "description": "0897-31-5300（開庁日9〜14時）又は公式サイトの電子申請。1回10点まで、次回申込は2か月後。このアプリから申込みはできません。"
+                },
+                {
+                  "step_number": 3,
+                  "title": "確認はがきと処理券を準備",
+                  "description": "はがきの収集日・品目・場所を確認し、1点200円の大型ごみ処理券を購入して貼り付けます。搬入用の処理券とは異なります。"
+                },
+                {
+                  "step_number": 4,
+                  "title": "指定日の午前9時までに出す",
+                  "description": "指定された屋外の場所へ出してください。ステーションの定期収集へ出すものではありません。"
+                },
+                {
+                  "step_number": 5,
+                  "title": "直接搬入する場合",
+                  "description": "市の清掃センター・最終処分場へ品目別の条件を確認。50kgまで500円、超過10kgごと100円。施設の休業日や搬入制限は公式カレンダーで確認してください。"
+                }
+              ]
+            }
+          }
+        },
+        "oshima": {
+          "calendar_asset": "assets/data/municipality_38205_0_calendar.json",
+          "categories": {
+            "burnable": {
+              "name": "燃やすごみ",
+              "collection_type_id": "burnable",
+              "cutoff": "07:30",
+              "color": "#F19EC2"
+            },
+            "non_burnable": {
+              "name": "不燃ごみ",
+              "collection_type_id": "non_burnable",
+              "cutoff": "07:30",
+              "color": "#FFF100"
+            },
+            "textiles": {
+              "name": "布類",
+              "collection_type_id": "textiles",
+              "cutoff": "07:30",
+              "color": "#C7D1EB"
+            },
+            "plastic_packaging": {
+              "name": "プラスチック製容器包装",
+              "collection_type_id": "plastic_packaging",
+              "cutoff": "07:30",
+              "color": "#9FD9F7"
+            },
+            "bottles_cans": {
+              "name": "びん・缶",
+              "collection_type_id": "bottles_cans",
+              "cutoff": "07:30",
+              "color": "#D7E8AF"
+            },
+            "pet_bottles": {
+              "name": "ペットボトル",
+              "collection_type_id": "pet_bottles",
+              "cutoff": "07:30",
+              "color": "#F8B86D"
+            },
+            "paper": {
+              "name": "古紙類",
+              "collection_type_id": "paper",
+              "cutoff": "07:30",
+              "color": "#22AC38"
+            },
+            "hazardous": {
+              "name": "有害ごみ",
+              "collection_type_id": "hazardous",
+              "cutoff": "07:30",
+              "color": "#DDDDDD"
+            },
+            "bulky": {
+              "name": "大型ごみ",
+              "color": "#7030A0"
+            },
+            "self_delivery": {
+              "name": "自己搬入",
+              "color": "#984807"
+            },
+            "not_collected": {
+              "name": "市で収集しないもの",
+              "color": "#808080"
+            },
+            "consultation": {
+              "name": "市へ相談",
+              "color": "#666666"
+            }
+          },
+          "bulky_waste": {
+            "category_code": "bulky",
+            "config": {
+              "municipality_id": "38205",
+              "municipality_name": "新居浜市",
+              "collection_frequency": "事前申込制・有料（1点200円）",
+              "reception_hours": "開庁日9:00〜14:00",
+              "collection_rules": "確認はがきで指定された日の午前9時までに指定場所へ。通常ステーション収集日は設定しません。",
+              "fee_structure_type": "fixed",
+              "application_method": "both",
+              "web_form_url": "https://www.city.niihama.lg.jp/soshiki/digital/densisinsei.html",
+              "phone_number": "0897-31-5300",
+              "information_url": "https://www.city.niihama.lg.jp/soshiki/haiki/dasikata-oogata.html",
+              "steps": [
+                {
+                  "step_number": 1,
+                  "title": "対象と寸法を確認",
+                  "description": "日常生活の大型ごみが対象。引越し・解体・遺品整理等の大量ごみ、家電リサイクル品や処理困難物等は対象外。180cmちょうどの受付可否は公式資料間で表現が異なるため市へ確認してください。"
+                },
+                {
+                  "step_number": 2,
+                  "title": "電話又は電子申請で申し込む",
+                  "description": "0897-31-5300（開庁日9〜14時）又は公式サイトの電子申請。1回10点まで、次回申込は2か月後。このアプリから申込みはできません。"
+                },
+                {
+                  "step_number": 3,
+                  "title": "確認はがきと処理券を準備",
+                  "description": "はがきの収集日・品目・場所を確認し、1点200円の大型ごみ処理券を購入して貼り付けます。搬入用の処理券とは異なります。"
+                },
+                {
+                  "step_number": 4,
+                  "title": "指定日の午前9時までに出す",
+                  "description": "指定された屋外の場所へ出してください。ステーションの定期収集へ出すものではありません。"
+                },
+                {
+                  "step_number": 5,
+                  "title": "直接搬入する場合",
+                  "description": "市の清掃センター・最終処分場へ品目別の条件を確認。50kgまで500円、超過10kgごと100円。施設の休業日や搬入制限は公式カレンダーで確認してください。"
+                }
+              ]
+            }
+          }
+        },
+        "besshiyama": {
+          "calendar_asset": "assets/data/municipality_38205_0_calendar.json",
+          "categories": {
+            "burnable": {
+              "name": "燃やすごみ",
+              "collection_type_id": "burnable",
+              "cutoff": "09:00",
+              "color": "#F19EC2"
+            },
+            "non_burnable": {
+              "name": "不燃ごみ",
+              "collection_type_id": "non_burnable",
+              "cutoff": "09:00",
+              "color": "#FFF100"
+            },
+            "textiles": {
+              "name": "布類",
+              "collection_type_id": "textiles",
+              "cutoff": "09:00",
+              "color": "#C7D1EB"
+            },
+            "plastic_packaging": {
+              "name": "プラスチック製容器包装",
+              "collection_type_id": "plastic_packaging",
+              "cutoff": "09:00",
+              "color": "#9FD9F7"
+            },
+            "bottles_cans": {
+              "name": "びん・缶",
+              "collection_type_id": "bottles_cans",
+              "cutoff": "09:00",
+              "color": "#D7E8AF"
+            },
+            "pet_bottles": {
+              "name": "ペットボトル",
+              "collection_type_id": "pet_bottles",
+              "cutoff": "09:00",
+              "color": "#F8B86D"
+            },
+            "paper": {
+              "name": "古紙類",
+              "collection_type_id": "paper",
+              "cutoff": "09:00",
+              "color": "#22AC38"
+            },
+            "hazardous": {
+              "name": "有害ごみ",
+              "collection_type_id": "hazardous",
+              "cutoff": "09:00",
+              "color": "#DDDDDD"
+            },
+            "bulky": {
+              "name": "大型ごみ",
+              "color": "#7030A0"
+            },
+            "self_delivery": {
+              "name": "自己搬入",
+              "color": "#984807"
+            },
+            "not_collected": {
+              "name": "市で収集しないもの",
+              "color": "#808080"
+            },
+            "consultation": {
+              "name": "市へ相談",
+              "color": "#666666"
+            }
+          },
+          "bulky_waste": {
+            "category_code": "bulky",
+            "config": {
+              "municipality_id": "38205",
+              "municipality_name": "新居浜市",
+              "collection_frequency": "事前申込制・有料（1点200円）",
+              "reception_hours": "開庁日9:00〜14:00",
+              "collection_rules": "確認はがきで指定された日の午前9時までに指定場所へ。通常ステーション収集日は設定しません。",
+              "fee_structure_type": "fixed",
+              "application_method": "both",
+              "web_form_url": "https://www.city.niihama.lg.jp/soshiki/digital/densisinsei.html",
+              "phone_number": "0897-31-5300",
+              "information_url": "https://www.city.niihama.lg.jp/soshiki/haiki/dasikata-oogata.html",
+              "steps": [
+                {
+                  "step_number": 1,
+                  "title": "対象と寸法を確認",
+                  "description": "日常生活の大型ごみが対象。引越し・解体・遺品整理等の大量ごみ、家電リサイクル品や処理困難物等は対象外。180cmちょうどの受付可否は公式資料間で表現が異なるため市へ確認してください。"
+                },
+                {
+                  "step_number": 2,
+                  "title": "電話又は電子申請で申し込む",
+                  "description": "0897-31-5300（開庁日9〜14時）又は公式サイトの電子申請。1回10点まで、次回申込は2か月後。このアプリから申込みはできません。"
+                },
+                {
+                  "step_number": 3,
+                  "title": "確認はがきと処理券を準備",
+                  "description": "はがきの収集日・品目・場所を確認し、1点200円の大型ごみ処理券を購入して貼り付けます。搬入用の処理券とは異なります。"
+                },
+                {
+                  "step_number": 4,
+                  "title": "指定日の午前9時までに出す",
+                  "description": "指定された屋外の場所へ出してください。ステーションの定期収集へ出すものではありません。"
+                },
+                {
+                  "step_number": 5,
+                  "title": "直接搬入する場合",
+                  "description": "市の清掃センター・最終処分場へ品目別の条件を確認。50kgまで500円、超過10kgごと100円。施設の休業日や搬入制限は公式カレンダーで確認してください。"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "addresses_asset": "assets/data/municipality_38205_addresses.json"
     }
   ]
 }

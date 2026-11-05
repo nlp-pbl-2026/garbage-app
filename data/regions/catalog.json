@@ -16,6 +16,10 @@
     {
       "id": "38442",
       "registry_path": "ikata/registry.json"
+    },
+    {
+      "id": "38205",
+      "registry_path": "niihama/registry.json"
     }
   ]
 }

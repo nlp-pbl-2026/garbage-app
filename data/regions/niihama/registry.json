@@ -1,0 +1,577 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38205",
+  "municipality_name": "新居浜市",
+  "prefecture_id": "38",
+  "prefecture_name": "愛媛県",
+  "version": "niihama-2026.1",
+  "valid_from": "2026-04-01",
+  "valid_to": "2027-03-31",
+  "collection_areas": [
+    {
+      "id": "38205-01",
+      "name": "大生院、大永山、萩生（国道11号線より南）",
+      "display_name": "大生院、大永山、萩生（国道11号線より南）",
+      "calendar_id": "nh-01",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.niihama.lg.jp/uploaded/attachment/79961.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38205-02",
+      "name": "上原、御蔵町、土橋2丁目、中萩町、中村、萩生（国道11号線より北）",
+      "display_name": "上原、御蔵町、土橋2丁目、中萩町、中村、萩生（国道11号線より北）",
+      "calendar_id": "nh-02",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.niihama.lg.jp/uploaded/attachment/79962.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38205-03",
+      "name": "喜光地町2丁目、北内町、西連寺町、篠場町、角野新田町、立川町、種子川町、中筋町、中西町、西泉町、宮原町、山田町、山根町、吉岡町",
+      "display_name": "喜光地町2丁目、北内町、西連寺町、篠場町、角野新田町、立川町、種子川町、中筋町、中西町、西泉町、宮原町、山田町、山根町、吉岡町",
+      "calendar_id": "nh-03",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.niihama.lg.jp/uploaded/attachment/79963.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38205-04",
+      "name": "上泉町、喜光地町1丁目、岸の上町、寿町、坂井町3丁目、下泉町、城下町、瀬戸町、外山町、西喜光地町、星原町、松木町、松原町",
+      "display_name": "上泉町、喜光地町1丁目、岸の上町、寿町、坂井町3丁目、下泉町、城下町、瀬戸町、外山町、西喜光地町、星原町、松木町、松原町",
+      "calendar_id": "nh-04",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.niihama.lg.jp/uploaded/attachment/79964.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38205-05",
+      "name": "観音原町、光明寺、国領、郷4・5丁目、七宝台町、東雲町3丁目、角野（番地）、東田、船木",
+      "display_name": "観音原町、光明寺、国領、郷4・5丁目、七宝台町、東雲町3丁目、角野（番地）、東田、船木",
+      "calendar_id": "nh-05",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.niihama.lg.jp/uploaded/attachment/79965.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38205-06",
+      "name": "阿島、落神町、清住町、楠崎、黒島、郷1・2・3丁目、郷（番地）、神郷、東雲町2丁目、多喜浜、長岩町、荷内町、又野、松神子1・2・3丁目",
+      "display_name": "阿島、落神町、清住町、楠崎、黒島、郷1・2・3丁目、郷（番地）、神郷、東雲町2丁目、多喜浜、長岩町、荷内町、又野、松神子1・2・3丁目",
+      "calendar_id": "nh-06",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.niihama.lg.jp/uploaded/attachment/79966.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38205-07",
+      "name": "宇高町1丁目、高田、田の上、八幡、垣生、松神子4丁目",
+      "display_name": "宇高町1丁目、高田、田の上、八幡、垣生、松神子4丁目",
+      "calendar_id": "nh-07",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.niihama.lg.jp/uploaded/attachment/79967.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38205-08",
+      "name": "宇高町2・3・4・5丁目、桜木町、沢津町、東雲町1丁目、清水町、高津町、松の木町、南小松原町",
+      "display_name": "宇高町2・3・4・5丁目、桜木町、沢津町、東雲町1丁目、清水町、高津町、松の木町、南小松原町",
+      "calendar_id": "nh-08",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.niihama.lg.jp/uploaded/attachment/79968.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38205-09",
+      "name": "坂井町1・2丁目、庄内町、新須賀町4丁目（4番～）、田所町、平形町、八雲町",
+      "display_name": "坂井町1・2丁目、庄内町、新須賀町4丁目（4番～）、田所町、平形町、八雲町",
+      "calendar_id": "nh-09",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.niihama.lg.jp/uploaded/attachment/79969.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38205-10",
+      "name": "泉池町、泉宮町、菊本町、繁本町、新須賀町1・2・3丁目・4丁目（1番～3番）、徳常町、中須賀町、西原町、西町、港町、宮西町、若水町",
+      "display_name": "市街地：泉池町、泉宮町、菊本町、繁本町、新須賀町1・2・3丁目・4丁目（1番～3番）、徳常町、中須賀町、西原町、西町、港町、宮西町、若水町",
+      "calendar_id": "nh-10",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.niihama.lg.jp/uploaded/attachment/79970.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38205-11",
+      "name": "磯浦町、江口町、王子町、北新町、河内町、新田町、惣開町、滝の宮町、西の土居町、星越町、前田町",
+      "display_name": "磯浦町、江口町、王子町、北新町、河内町、新田町、惣開町、滝の宮町、西の土居町、星越町、前田町",
+      "calendar_id": "nh-11",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.niihama.lg.jp/uploaded/attachment/79971.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38205-12",
+      "name": "一宮町、久保田町、高木町、土橋1丁目、中村松木、本郷、政枝町、横水町",
+      "display_name": "一宮町、久保田町、高木町、土橋1丁目、中村松木、本郷、政枝町、横水町",
+      "calendar_id": "nh-12",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.niihama.lg.jp/uploaded/attachment/79972.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38205-13",
+      "name": "上之町、中之町",
+      "display_name": "大島：上之町、中之町",
+      "calendar_id": "nh-13",
+      "rule_profile_id": "oshima",
+      "source_url": "https://www.city.niihama.lg.jp/uploaded/attachment/79973.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38205-14",
+      "name": "宮西町、西之町、築之町",
+      "display_name": "大島：宮西町、西之町、築之町",
+      "calendar_id": "nh-14",
+      "rule_profile_id": "oshima",
+      "source_url": "https://www.city.niihama.lg.jp/uploaded/attachment/79974.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38205-15",
+      "name": "別子山",
+      "display_name": "別子山",
+      "calendar_id": "nh-15",
+      "rule_profile_id": "besshiyama",
+      "source_url": "https://www.city.niihama.lg.jp/uploaded/attachment/79975.pdf",
+      "needs_local_confirmation": true
+    }
+  ],
+  "calendars": [
+    {
+      "id": "nh-01",
+      "rule_profile_id": "mainland"
+    },
+    {
+      "id": "nh-02",
+      "rule_profile_id": "mainland"
+    },
+    {
+      "id": "nh-03",
+      "rule_profile_id": "mainland"
+    },
+    {
+      "id": "nh-04",
+      "rule_profile_id": "mainland"
+    },
+    {
+      "id": "nh-05",
+      "rule_profile_id": "mainland"
+    },
+    {
+      "id": "nh-06",
+      "rule_profile_id": "mainland"
+    },
+    {
+      "id": "nh-07",
+      "rule_profile_id": "mainland"
+    },
+    {
+      "id": "nh-08",
+      "rule_profile_id": "mainland"
+    },
+    {
+      "id": "nh-09",
+      "rule_profile_id": "mainland"
+    },
+    {
+      "id": "nh-10",
+      "rule_profile_id": "mainland"
+    },
+    {
+      "id": "nh-11",
+      "rule_profile_id": "mainland"
+    },
+    {
+      "id": "nh-12",
+      "rule_profile_id": "mainland"
+    },
+    {
+      "id": "nh-13",
+      "rule_profile_id": "oshima"
+    },
+    {
+      "id": "nh-14",
+      "rule_profile_id": "oshima"
+    },
+    {
+      "id": "nh-15",
+      "rule_profile_id": "besshiyama"
+    }
+  ],
+  "rule_profiles": {
+    "mainland": {
+      "items_path": "knowledge/items.csv",
+      "embedding_index_path": "knowledge/item_embeddings.npz",
+      "index_profile_id": "citywide",
+      "calendar_path": "generated/calendar-2026.json",
+      "knowledge_title": "新居浜市公式ごみ分別大辞典・2026年度カレンダー",
+      "classification_rules": "新居浜市の現行公開分別大辞典、2026年度カレンダー、現在の市公式案内だけを根拠にする。他自治体の分類・袋・料金・収集方法を適用しない。\n個別品目の条件を優先する。原則30cm以下は普通ごみ、30cmを超える処理可能品は大型だが、飲食用びん・菓子缶・蛍光灯等は例外。分類条件の大きさはcmで確認し、他市の指定袋サイズを質問しない。取っ手を含める鍋類は全体を測る。辞典の30cm以下/超えを使い、サイズ不明なら追加質問する。\nプラスチック製品は原則燃やすごみ、容器包装はプラスチック製容器包装。汚れを水洗いする案内から、資料にない汚れの代替分類を作らない。PET本体と外したキャップ・ラベルを分ける。付属品の注意書きを本体へ誤適用しない。\n飲食用のびん・缶はbottles_cans。化粧品びん、ガラスコップは不燃。スプレー缶とカセット式ガスボンベも使い切ってびん・缶（穴あけ不要）。一升びん等の品目別例外は一般30cmルールより優先する。\nモバイルバッテリーは2026年1月から有害ごみ。小型充電式電池・ボタン電池も辞典の分類は有害ごみ。13ページは店頭回収も案内しており、これを市の収集禁止という分類へ置換しない。該当する電池には端子絶縁と店頭回収先も案内する。車用バッテリーは収集しない。モバイルバッテリーの変更を別種類の電池へ拡張しない。蛍光灯は有害（割れたものは不燃）、LED電球・白熱球は不燃。\n布類は洗濯済みで汚れ・破れのない非冬物等。冬物・制服・汚れ・破れ・濡れた衣類は燃やすごみ。毛布やふとんは大型（30cm以下に切る又はたたむ場合は燃やすごみ）。紙パックは内側白色かつ500ml以上が古紙、内側銀色又は500ml未満は燃やすごみ。\n大型ごみは申込制で1点200円、通常収集日はない。30cm超の品目すべてが大型とは限らない。マッサージチェア・家庭用パソコン等は自己搬入、家電リサイクル4品目や禁止品は大型へ変更しない。戸別収集は1回10点まで、次回申込は2か月後、指定日の午前9時までに指定場所へ。施設の開業日や搬入記号を収集日として返さない。\n寸法上限180cmについてはガイドが180cm以下、公式大型ごみページが180cm未満と異なるため、ちょうど180cmの受付可否は市へ確認し確定しない。※1の寸法・金属厚さ上限や処理困難物の条件が不明な場合も確認又は保留する。未確認条件を画像や検索の言い換えから補わない。\n市街地と大島は定期ごみ7時30分まで、別子山は9時まで。大型ごみ9時と定期収集の期限を混同しない。年度外の日付を生成しない。\nこの分別設定の定期収集の搬出期限は当日7時30分です。",
+      "size_threshold_cm": 30,
+      "size_question": "品物の最も長い部分は30cm以下ですか？（取っ手などを含めて測ってください）",
+      "categories": {
+        "burnable": {
+          "name": "燃やすごみ",
+          "color": "#F19EC2",
+          "collection_type_id": "burnable",
+          "cutoff": "07:30"
+        },
+        "non_burnable": {
+          "name": "不燃ごみ",
+          "color": "#FFF100",
+          "collection_type_id": "non_burnable",
+          "cutoff": "07:30"
+        },
+        "textiles": {
+          "name": "布類",
+          "color": "#C7D1EB",
+          "collection_type_id": "textiles",
+          "cutoff": "07:30"
+        },
+        "plastic_packaging": {
+          "name": "プラスチック製容器包装",
+          "color": "#9FD9F7",
+          "collection_type_id": "plastic_packaging",
+          "cutoff": "07:30"
+        },
+        "bottles_cans": {
+          "name": "びん・缶",
+          "color": "#D7E8AF",
+          "collection_type_id": "bottles_cans",
+          "cutoff": "07:30"
+        },
+        "pet_bottles": {
+          "name": "ペットボトル",
+          "color": "#F8B86D",
+          "collection_type_id": "pet_bottles",
+          "cutoff": "07:30"
+        },
+        "paper": {
+          "name": "古紙類",
+          "color": "#22AC38",
+          "collection_type_id": "paper",
+          "cutoff": "07:30"
+        },
+        "hazardous": {
+          "name": "有害ごみ",
+          "color": "#DDDDDD",
+          "collection_type_id": "hazardous",
+          "cutoff": "07:30"
+        },
+        "bulky": {
+          "name": "大型ごみ",
+          "color": "#7030A0",
+          "answer_note": "有料の戸別収集は事前申込制。1点200円の大型ごみ処理券。申込先の指定日に午前9時までに指定場所へ。定期ステーション収集へ出さない。"
+        },
+        "self_delivery": {
+          "name": "自己搬入",
+          "color": "#984807",
+          "answer_note": "ステーション収集の対象外。品目別の条件に従って清掃センター又は最終処分場へ直接搬入。施設の開業日を収集日として案内しない。"
+        },
+        "not_collected": {
+          "name": "市で収集しないもの",
+          "color": "#808080",
+          "answer_note": "市のステーション収集に出せません。販売店や専門業者等に相談。施設搬入の可否も品目別に確認。"
+        },
+        "consultation": {
+          "name": "市へ相談",
+          "color": "#666666",
+          "answer_note": "分類を自己判断せず、新居浜市廃棄物対策課へ相談してください。定期収集日は設定しません。"
+        }
+      },
+      "bulky_waste": {
+        "category_code": "bulky",
+        "config": {
+          "municipality_id": "38205",
+          "municipality_name": "新居浜市",
+          "collection_frequency": "事前申込制・有料（1点200円）",
+          "reception_hours": "開庁日9:00〜14:00",
+          "collection_rules": "確認はがきで指定された日の午前9時までに指定場所へ。通常ステーション収集日は設定しません。",
+          "fee_structure_type": "fixed",
+          "application_method": "both",
+          "web_form_url": "https://www.city.niihama.lg.jp/soshiki/digital/densisinsei.html",
+          "phone_number": "0897-31-5300",
+          "information_url": "https://www.city.niihama.lg.jp/soshiki/haiki/dasikata-oogata.html",
+          "steps": [
+            {
+              "step_number": 1,
+              "title": "対象と寸法を確認",
+              "description": "日常生活の大型ごみが対象。引越し・解体・遺品整理等の大量ごみ、家電リサイクル品や処理困難物等は対象外。180cmちょうどの受付可否は公式資料間で表現が異なるため市へ確認してください。"
+            },
+            {
+              "step_number": 2,
+              "title": "電話又は電子申請で申し込む",
+              "description": "0897-31-5300（開庁日9〜14時）又は公式サイトの電子申請。1回10点まで、次回申込は2か月後。このアプリから申込みはできません。"
+            },
+            {
+              "step_number": 3,
+              "title": "確認はがきと処理券を準備",
+              "description": "はがきの収集日・品目・場所を確認し、1点200円の大型ごみ処理券を購入して貼り付けます。搬入用の処理券とは異なります。"
+            },
+            {
+              "step_number": 4,
+              "title": "指定日の午前9時までに出す",
+              "description": "指定された屋外の場所へ出してください。ステーションの定期収集へ出すものではありません。"
+            },
+            {
+              "step_number": 5,
+              "title": "直接搬入する場合",
+              "description": "市の清掃センター・最終処分場へ品目別の条件を確認。50kgまで500円、超過10kgごと100円。施設の休業日や搬入制限は公式カレンダーで確認してください。"
+            }
+          ]
+        }
+      }
+    },
+    "oshima": {
+      "items_path": "knowledge/items.csv",
+      "embedding_index_path": "knowledge/item_embeddings.npz",
+      "index_profile_id": "citywide",
+      "calendar_path": "generated/calendar-2026.json",
+      "knowledge_title": "新居浜市公式ごみ分別大辞典・2026年度カレンダー",
+      "classification_rules": "新居浜市の現行公開分別大辞典、2026年度カレンダー、現在の市公式案内だけを根拠にする。他自治体の分類・袋・料金・収集方法を適用しない。\n個別品目の条件を優先する。原則30cm以下は普通ごみ、30cmを超える処理可能品は大型だが、飲食用びん・菓子缶・蛍光灯等は例外。分類条件の大きさはcmで確認し、他市の指定袋サイズを質問しない。取っ手を含める鍋類は全体を測る。辞典の30cm以下/超えを使い、サイズ不明なら追加質問する。\nプラスチック製品は原則燃やすごみ、容器包装はプラスチック製容器包装。汚れを水洗いする案内から、資料にない汚れの代替分類を作らない。PET本体と外したキャップ・ラベルを分ける。付属品の注意書きを本体へ誤適用しない。\n飲食用のびん・缶はbottles_cans。化粧品びん、ガラスコップは不燃。スプレー缶とカセット式ガスボンベも使い切ってびん・缶（穴あけ不要）。一升びん等の品目別例外は一般30cmルールより優先する。\nモバイルバッテリーは2026年1月から有害ごみ。小型充電式電池・ボタン電池も辞典の分類は有害ごみ。13ページは店頭回収も案内しており、これを市の収集禁止という分類へ置換しない。該当する電池には端子絶縁と店頭回収先も案内する。車用バッテリーは収集しない。モバイルバッテリーの変更を別種類の電池へ拡張しない。蛍光灯は有害（割れたものは不燃）、LED電球・白熱球は不燃。\n布類は洗濯済みで汚れ・破れのない非冬物等。冬物・制服・汚れ・破れ・濡れた衣類は燃やすごみ。毛布やふとんは大型（30cm以下に切る又はたたむ場合は燃やすごみ）。紙パックは内側白色かつ500ml以上が古紙、内側銀色又は500ml未満は燃やすごみ。\n大型ごみは申込制で1点200円、通常収集日はない。30cm超の品目すべてが大型とは限らない。マッサージチェア・家庭用パソコン等は自己搬入、家電リサイクル4品目や禁止品は大型へ変更しない。戸別収集は1回10点まで、次回申込は2か月後、指定日の午前9時までに指定場所へ。施設の開業日や搬入記号を収集日として返さない。\n寸法上限180cmについてはガイドが180cm以下、公式大型ごみページが180cm未満と異なるため、ちょうど180cmの受付可否は市へ確認し確定しない。※1の寸法・金属厚さ上限や処理困難物の条件が不明な場合も確認又は保留する。未確認条件を画像や検索の言い換えから補わない。\n市街地と大島は定期ごみ7時30分まで、別子山は9時まで。大型ごみ9時と定期収集の期限を混同しない。年度外の日付を生成しない。\nこの分別設定の定期収集の搬出期限は当日7時30分です。",
+      "size_threshold_cm": 30,
+      "size_question": "品物の最も長い部分は30cm以下ですか？（取っ手などを含めて測ってください）",
+      "categories": {
+        "burnable": {
+          "name": "燃やすごみ",
+          "color": "#F19EC2",
+          "collection_type_id": "burnable",
+          "cutoff": "07:30"
+        },
+        "non_burnable": {
+          "name": "不燃ごみ",
+          "color": "#FFF100",
+          "collection_type_id": "non_burnable",
+          "cutoff": "07:30"
+        },
+        "textiles": {
+          "name": "布類",
+          "color": "#C7D1EB",
+          "collection_type_id": "textiles",
+          "cutoff": "07:30"
+        },
+        "plastic_packaging": {
+          "name": "プラスチック製容器包装",
+          "color": "#9FD9F7",
+          "collection_type_id": "plastic_packaging",
+          "cutoff": "07:30"
+        },
+        "bottles_cans": {
+          "name": "びん・缶",
+          "color": "#D7E8AF",
+          "collection_type_id": "bottles_cans",
+          "cutoff": "07:30"
+        },
+        "pet_bottles": {
+          "name": "ペットボトル",
+          "color": "#F8B86D",
+          "collection_type_id": "pet_bottles",
+          "cutoff": "07:30"
+        },
+        "paper": {
+          "name": "古紙類",
+          "color": "#22AC38",
+          "collection_type_id": "paper",
+          "cutoff": "07:30"
+        },
+        "hazardous": {
+          "name": "有害ごみ",
+          "color": "#DDDDDD",
+          "collection_type_id": "hazardous",
+          "cutoff": "07:30"
+        },
+        "bulky": {
+          "name": "大型ごみ",
+          "color": "#7030A0",
+          "answer_note": "有料の戸別収集は事前申込制。1点200円の大型ごみ処理券。申込先の指定日に午前9時までに指定場所へ。定期ステーション収集へ出さない。"
+        },
+        "self_delivery": {
+          "name": "自己搬入",
+          "color": "#984807",
+          "answer_note": "ステーション収集の対象外。品目別の条件に従って清掃センター又は最終処分場へ直接搬入。施設の開業日を収集日として案内しない。"
+        },
+        "not_collected": {
+          "name": "市で収集しないもの",
+          "color": "#808080",
+          "answer_note": "市のステーション収集に出せません。販売店や専門業者等に相談。施設搬入の可否も品目別に確認。"
+        },
+        "consultation": {
+          "name": "市へ相談",
+          "color": "#666666",
+          "answer_note": "分類を自己判断せず、新居浜市廃棄物対策課へ相談してください。定期収集日は設定しません。"
+        }
+      },
+      "bulky_waste": {
+        "category_code": "bulky",
+        "config": {
+          "municipality_id": "38205",
+          "municipality_name": "新居浜市",
+          "collection_frequency": "事前申込制・有料（1点200円）",
+          "reception_hours": "開庁日9:00〜14:00",
+          "collection_rules": "確認はがきで指定された日の午前9時までに指定場所へ。通常ステーション収集日は設定しません。",
+          "fee_structure_type": "fixed",
+          "application_method": "both",
+          "web_form_url": "https://www.city.niihama.lg.jp/soshiki/digital/densisinsei.html",
+          "phone_number": "0897-31-5300",
+          "information_url": "https://www.city.niihama.lg.jp/soshiki/haiki/dasikata-oogata.html",
+          "steps": [
+            {
+              "step_number": 1,
+              "title": "対象と寸法を確認",
+              "description": "日常生活の大型ごみが対象。引越し・解体・遺品整理等の大量ごみ、家電リサイクル品や処理困難物等は対象外。180cmちょうどの受付可否は公式資料間で表現が異なるため市へ確認してください。"
+            },
+            {
+              "step_number": 2,
+              "title": "電話又は電子申請で申し込む",
+              "description": "0897-31-5300（開庁日9〜14時）又は公式サイトの電子申請。1回10点まで、次回申込は2か月後。このアプリから申込みはできません。"
+            },
+            {
+              "step_number": 3,
+              "title": "確認はがきと処理券を準備",
+              "description": "はがきの収集日・品目・場所を確認し、1点200円の大型ごみ処理券を購入して貼り付けます。搬入用の処理券とは異なります。"
+            },
+            {
+              "step_number": 4,
+              "title": "指定日の午前9時までに出す",
+              "description": "指定された屋外の場所へ出してください。ステーションの定期収集へ出すものではありません。"
+            },
+            {
+              "step_number": 5,
+              "title": "直接搬入する場合",
+              "description": "市の清掃センター・最終処分場へ品目別の条件を確認。50kgまで500円、超過10kgごと100円。施設の休業日や搬入制限は公式カレンダーで確認してください。"
+            }
+          ]
+        }
+      }
+    },
+    "besshiyama": {
+      "items_path": "knowledge/items.csv",
+      "embedding_index_path": "knowledge/item_embeddings.npz",
+      "index_profile_id": "citywide",
+      "calendar_path": "generated/calendar-2026.json",
+      "knowledge_title": "新居浜市公式ごみ分別大辞典・2026年度カレンダー",
+      "classification_rules": "新居浜市の現行公開分別大辞典、2026年度カレンダー、現在の市公式案内だけを根拠にする。他自治体の分類・袋・料金・収集方法を適用しない。\n個別品目の条件を優先する。原則30cm以下は普通ごみ、30cmを超える処理可能品は大型だが、飲食用びん・菓子缶・蛍光灯等は例外。分類条件の大きさはcmで確認し、他市の指定袋サイズを質問しない。取っ手を含める鍋類は全体を測る。辞典の30cm以下/超えを使い、サイズ不明なら追加質問する。\nプラスチック製品は原則燃やすごみ、容器包装はプラスチック製容器包装。汚れを水洗いする案内から、資料にない汚れの代替分類を作らない。PET本体と外したキャップ・ラベルを分ける。付属品の注意書きを本体へ誤適用しない。\n飲食用のびん・缶はbottles_cans。化粧品びん、ガラスコップは不燃。スプレー缶とカセット式ガスボンベも使い切ってびん・缶（穴あけ不要）。一升びん等の品目別例外は一般30cmルールより優先する。\nモバイルバッテリーは2026年1月から有害ごみ。小型充電式電池・ボタン電池も辞典の分類は有害ごみ。13ページは店頭回収も案内しており、これを市の収集禁止という分類へ置換しない。該当する電池には端子絶縁と店頭回収先も案内する。車用バッテリーは収集しない。モバイルバッテリーの変更を別種類の電池へ拡張しない。蛍光灯は有害（割れたものは不燃）、LED電球・白熱球は不燃。\n布類は洗濯済みで汚れ・破れのない非冬物等。冬物・制服・汚れ・破れ・濡れた衣類は燃やすごみ。毛布やふとんは大型（30cm以下に切る又はたたむ場合は燃やすごみ）。紙パックは内側白色かつ500ml以上が古紙、内側銀色又は500ml未満は燃やすごみ。\n大型ごみは申込制で1点200円、通常収集日はない。30cm超の品目すべてが大型とは限らない。マッサージチェア・家庭用パソコン等は自己搬入、家電リサイクル4品目や禁止品は大型へ変更しない。戸別収集は1回10点まで、次回申込は2か月後、指定日の午前9時までに指定場所へ。施設の開業日や搬入記号を収集日として返さない。\n寸法上限180cmについてはガイドが180cm以下、公式大型ごみページが180cm未満と異なるため、ちょうど180cmの受付可否は市へ確認し確定しない。※1の寸法・金属厚さ上限や処理困難物の条件が不明な場合も確認又は保留する。未確認条件を画像や検索の言い換えから補わない。\n市街地と大島は定期ごみ7時30分まで、別子山は9時まで。大型ごみ9時と定期収集の期限を混同しない。年度外の日付を生成しない。\nこの分別設定は別子山地域です。定期収集の搬出期限は当日9時です。",
+      "size_threshold_cm": 30,
+      "size_question": "品物の最も長い部分は30cm以下ですか？（取っ手などを含めて測ってください）",
+      "categories": {
+        "burnable": {
+          "name": "燃やすごみ",
+          "color": "#F19EC2",
+          "collection_type_id": "burnable",
+          "cutoff": "09:00"
+        },
+        "non_burnable": {
+          "name": "不燃ごみ",
+          "color": "#FFF100",
+          "collection_type_id": "non_burnable",
+          "cutoff": "09:00"
+        },
+        "textiles": {
+          "name": "布類",
+          "color": "#C7D1EB",
+          "collection_type_id": "textiles",
+          "cutoff": "09:00"
+        },
+        "plastic_packaging": {
+          "name": "プラスチック製容器包装",
+          "color": "#9FD9F7",
+          "collection_type_id": "plastic_packaging",
+          "cutoff": "09:00"
+        },
+        "bottles_cans": {
+          "name": "びん・缶",
+          "color": "#D7E8AF",
+          "collection_type_id": "bottles_cans",
+          "cutoff": "09:00"
+        },
+        "pet_bottles": {
+          "name": "ペットボトル",
+          "color": "#F8B86D",
+          "collection_type_id": "pet_bottles",
+          "cutoff": "09:00"
+        },
+        "paper": {
+          "name": "古紙類",
+          "color": "#22AC38",
+          "collection_type_id": "paper",
+          "cutoff": "09:00"
+        },
+        "hazardous": {
+          "name": "有害ごみ",
+          "color": "#DDDDDD",
+          "collection_type_id": "hazardous",
+          "cutoff": "09:00"
+        },
+        "bulky": {
+          "name": "大型ごみ",
+          "color": "#7030A0",
+          "answer_note": "有料の戸別収集は事前申込制。1点200円の大型ごみ処理券。申込先の指定日に午前9時までに指定場所へ。定期ステーション収集へ出さない。"
+        },
+        "self_delivery": {
+          "name": "自己搬入",
+          "color": "#984807",
+          "answer_note": "ステーション収集の対象外。品目別の条件に従って清掃センター又は最終処分場へ直接搬入。施設の開業日を収集日として案内しない。"
+        },
+        "not_collected": {
+          "name": "市で収集しないもの",
+          "color": "#808080",
+          "answer_note": "市のステーション収集に出せません。販売店や専門業者等に相談。施設搬入の可否も品目別に確認。"
+        },
+        "consultation": {
+          "name": "市へ相談",
+          "color": "#666666",
+          "answer_note": "分類を自己判断せず、新居浜市廃棄物対策課へ相談してください。定期収集日は設定しません。"
+        }
+      },
+      "bulky_waste": {
+        "category_code": "bulky",
+        "config": {
+          "municipality_id": "38205",
+          "municipality_name": "新居浜市",
+          "collection_frequency": "事前申込制・有料（1点200円）",
+          "reception_hours": "開庁日9:00〜14:00",
+          "collection_rules": "確認はがきで指定された日の午前9時までに指定場所へ。通常ステーション収集日は設定しません。",
+          "fee_structure_type": "fixed",
+          "application_method": "both",
+          "web_form_url": "https://www.city.niihama.lg.jp/soshiki/digital/densisinsei.html",
+          "phone_number": "0897-31-5300",
+          "information_url": "https://www.city.niihama.lg.jp/soshiki/haiki/dasikata-oogata.html",
+          "steps": [
+            {
+              "step_number": 1,
+              "title": "対象と寸法を確認",
+              "description": "日常生活の大型ごみが対象。引越し・解体・遺品整理等の大量ごみ、家電リサイクル品や処理困難物等は対象外。180cmちょうどの受付可否は公式資料間で表現が異なるため市へ確認してください。"
+            },
+            {
+              "step_number": 2,
+              "title": "電話又は電子申請で申し込む",
+              "description": "0897-31-5300（開庁日9〜14時）又は公式サイトの電子申請。1回10点まで、次回申込は2か月後。このアプリから申込みはできません。"
+            },
+            {
+              "step_number": 3,
+              "title": "確認はがきと処理券を準備",
+              "description": "はがきの収集日・品目・場所を確認し、1点200円の大型ごみ処理券を購入して貼り付けます。搬入用の処理券とは異なります。"
+            },
+            {
+              "step_number": 4,
+              "title": "指定日の午前9時までに出す",
+              "description": "指定された屋外の場所へ出してください。ステーションの定期収集へ出すものではありません。"
+            },
+            {
+              "step_number": 5,
+              "title": "直接搬入する場合",
+              "description": "市の清掃センター・最終処分場へ品目別の条件を確認。50kgまで500円、超過10kgごと100円。施設の休業日や搬入制限は公式カレンダーで確認してください。"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

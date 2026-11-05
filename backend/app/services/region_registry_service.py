@@ -63,6 +63,7 @@ class RuleProfile:
     knowledge_title: str = ""
     knowledge_base_id: str = ""
     index_profile_id: str = ""
+    size_threshold_cm: int | None = None
 
 
 def matsuyama_profile(profile_id: str, root: Path | None = None) -> RuleProfile:
@@ -221,6 +222,9 @@ class RegionRegistry:
             for field in ("size_question", "knowledge_title", "knowledge_base_id", "index_profile_id"):
                 if field in raw and not isinstance(raw[field], str):
                     raise ValueError(f"{field} must be text")
+            threshold = raw.get("size_threshold_cm")
+            if threshold is not None and (type(threshold) is not int or threshold <= 0):
+                raise ValueError("size_threshold_cm must be a positive integer")
             profiles[key] = RuleProfile(
                 categories, asset("items_path"), asset("embedding_index_path"), asset("calendar_path"),
                 classification_rules=raw["classification_rules"],
@@ -228,6 +232,7 @@ class RegionRegistry:
                 knowledge_title=raw.get("knowledge_title", ""),
                 knowledge_base_id=raw.get("knowledge_base_id", ""),
                 index_profile_id=raw.get("index_profile_id", key),
+                size_threshold_cm=threshold,
             )
         return profiles
 
