@@ -10,16 +10,22 @@ class GarbageCategory {
   final String? scope;
   final String? displayName;
   final int? colorValue;
-  final String cutoff;
+  final String? cutoff;
+  final String? startTime;
+  final String timeNote;
   const GarbageCategory._(this.id, {this.cutoff = '08:00'})
       : scope = null,
         displayName = null,
-        colorValue = null;
+        colorValue = null,
+        startTime = null,
+        timeNote = '';
   const GarbageCategory.regional(
       {required this.id,
       required this.scope,
       required this.displayName,
       required this.cutoff,
+      this.startTime,
+      this.timeNote = '',
       this.colorValue});
 
   static const burnable = GarbageCategory._('burnable', cutoff: '07:00');
@@ -49,15 +55,23 @@ class GarbageCategory {
     bulky
   ];
 
-  int get cutoffMinutes {
-    final parts = cutoff.split(':');
+  int? get cutoffMinutes {
+    if (cutoff == null) return null;
+    final parts = cutoff!.split(':');
     return int.parse(parts[0]) * 60 + int.parse(parts[1]);
   }
 
   String get deadlineLabel {
-    final parts = cutoff.split(':');
+    if (cutoff == null) return '搬出時刻は地域で確認';
+    final parts = cutoff!.split(':');
     return '${int.parse(parts[0])}時${parts[1] == '00' ? '' : '${int.parse(parts[1])}分'}';
   }
+
+  String get disposalTimeDescription => timeNote.isNotEmpty
+      ? timeNote
+      : cutoff == null
+          ? '搬出時刻は地域で確認してください。'
+          : '$deadlineLabelまでに出してください。';
 
   @override
   bool operator ==(Object other) =>

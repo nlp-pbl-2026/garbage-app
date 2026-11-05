@@ -1081,6 +1081,9 @@ class CalendarScreen extends ConsumerWidget {
                     color: color,
                   ),
                 ),
+                if (entry.category.timeNote.isNotEmpty)
+                  Text(entry.category.disposalTimeDescription,
+                      style: const TextStyle(fontSize: 12)),
               ],
             ),
           ),

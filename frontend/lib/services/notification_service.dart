@@ -492,10 +492,12 @@ class NotificationService {
             try {
               final categoryNames =
                   eveningEntries.map((e) => resolveLabel(e.category)).join('・');
+              final notes = eveningEntries.map((e) => e.category.timeNote)
+                  .where((note) => note.isNotEmpty).toSet().join(' ');
               planned.add(
                 PlannedNotification(
                   title: '明日のゴミ出し',
-                  body: '明日は$categoryNamesの日です',
+                  body: '明日は$categoryNamesの日です${notes.isEmpty ? '' : '。$notes'}',
                   scheduledDate: eveningBefore,
                   payload: payload,
                   isEvening: true,
@@ -512,8 +514,9 @@ class NotificationService {
       final morningEntries = entries
           .where((e) =>
               morningEnabledCategories.contains(e.category) &&
+              e.category.cutoffMinutes != null &&
               morningTime.hour * 60 + morningTime.minute <
-                  e.category.cutoffMinutes)
+                  e.category.cutoffMinutes!)
           .toList();
 
       if (morningEntries.isNotEmpty) {
@@ -532,10 +535,12 @@ class NotificationService {
           try {
             final categoryNames =
                 morningEntries.map((e) => resolveLabel(e.category)).join('・');
+            final notes = morningEntries.map((e) => e.category.timeNote)
+                .where((note) => note.isNotEmpty).toSet().join(' ');
             planned.add(
               PlannedNotification(
                 title: '今日のゴミ出し',
-                body: '今日は$categoryNamesの日です',
+                body: '今日は$categoryNamesの日です${notes.isEmpty ? '' : '。$notes'}',
                 scheduledDate: morningOf,
                 payload: payload,
                 isEvening: false,

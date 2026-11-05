@@ -68,7 +68,8 @@ class ScheduleService {
     final today = DateTime(now.year, now.month, now.day);
     if (date.isAfter(today)) return true;
     if (date.isBefore(today)) return false;
-    return now.hour * 60 + now.minute < entry.category.cutoffMinutes;
+    final cutoff = entry.category.cutoffMinutes;
+    return cutoff != null && now.hour * 60 + now.minute < cutoff;
   }
 
   Future<List<ScheduleEntry>> _upcoming(String districtId) async {

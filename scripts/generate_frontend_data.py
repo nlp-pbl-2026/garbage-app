@@ -43,7 +43,10 @@ def generate(catalog_path: Path, output: Path):
                 "categories": {code: {
                     "name": category.name,
                     **({"collection_type_id": category.collection_type_id,
-                        "cutoff": category.cutoff.strftime("%H:%M")} if category.collection_type_id else {}),
+                        **({"cutoff": category.cutoff.strftime("%H:%M")} if category.cutoff else {
+                            "cutoff_status": "unverified"})} if category.collection_type_id else {}),
+                    **({"start_time": category.start_time.strftime("%H:%M")} if category.start_time else {}),
+                    **({"time_note": category.time_note} if category.time_note else {}),
                     **({"collection_name": ui["categories"][code]["collection_name"]}
                        if "collection_name" in ui.get("categories", {}).get(code, {}) else {}),
                     **({"color": ui["categories"][code]["color"]}
