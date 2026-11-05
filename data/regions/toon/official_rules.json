@@ -1,0 +1,283 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38215",
+  "version": "toon-2026.1",
+  "license_status": "unconfirmed",
+  "categories": {
+    "burnable": {
+      "name": "燃やすごみ",
+      "color": "#FF0000",
+      "instructions": "東温市指定ごみ袋に地区名・名前を書いて出す。生ごみは水切りし、木の枝は直径5cm・長さ50cm以内にして束ねる。",
+      "collection_type_id": "burnable",
+      "cutoff": "08:00"
+    },
+    "paper": {
+      "name": "紙類",
+      "color": "#FF3399",
+      "instructions": "種類別にひもで十文字に縛る。紙パックは500ml以上かつ内側が銀色でないもの。汚れた紙等は燃やすごみ。",
+      "collection_type_id": "paper",
+      "cutoff": "08:00"
+    },
+    "metals": {
+      "name": "空き缶・金属類",
+      "color": "#00B050",
+      "instructions": "コンテナへ。中身を使い切り汚れを除く。スプレー缶・カセットボンベは使い切り、火気のない風通しのよい屋外で穴をあける。無理な作業はせず、使い切れない場合はメーカー等へ相談。",
+      "collection_type_id": "metals",
+      "cutoff": "08:00"
+    },
+    "bottles_glass": {
+      "name": "びん・ガラス類",
+      "color": "#0066B3",
+      "instructions": "びんはコンテナへ、ガラス類は45L以下の無色透明袋へ。川内のびんは無色・茶色・その他の色に分ける。割れ物は包んで表示。陶磁器はその他燃やさないごみ。",
+      "collection_type_id": "bottles_glass",
+      "cutoff": "08:00"
+    },
+    "pet_bottles": {
+      "name": "ペットボトル",
+      "color": "#FFFF00",
+      "instructions": "PET本体はキャップ・ラベルを外し水洗いし軽くつぶしてネットへ。外したプラ製の部品はプラスチック類。",
+      "collection_type_id": "pet_bottles",
+      "cutoff": "08:00"
+    },
+    "plastic_packaging": {
+      "name": "プラスチック類",
+      "color": "#FFFF00",
+      "instructions": "2026年度は商品を入れた容器包装が対象。汚れを取り除き45L以下の無色透明袋に「プラ」・地区名・名前を書く。二重袋にしない。硬質プラ製品はその他燃やさないごみ。",
+      "collection_type_id": "plastic_packaging",
+      "cutoff": "08:00"
+    },
+    "non_burnable": {
+      "name": "その他燃やさないごみ",
+      "color": "#C65911",
+      "instructions": "45L以下の無色透明袋で地区名・名前を記入。電池・バッテリーは外す。割れた陶磁器は危険のないように包む。",
+      "collection_type_id": "non_burnable",
+      "cutoff": "08:00"
+    },
+    "bulky": {
+      "name": "粗大ごみ",
+      "color": "#C65911",
+      "instructions": "地区の粗大収集日に、箱等に入れず集積場へ。1m程度で標準的な大人2人が運べるものに限る。多量ごみ・禁止品は出さない。リサイクルセンターも粗大は受入不可。",
+      "collection_type_id": "bulky",
+      "cutoff": "08:00"
+    },
+    "mercury": {
+      "name": "蛍光灯・鏡",
+      "color": "#0066B3",
+      "instructions": "蛍光灯は箱等で保護し、鏡は枠を外し割れ物を包む。重信は回収容器、川内は45L以下の無色透明袋へ。",
+      "collection_type_id": "mercury",
+      "cutoff": "08:00",
+      "collection_name": "蛍光灯・鏡・体温計"
+    },
+    "batteries": {
+      "name": "乾電池類",
+      "color": "#00B050",
+      "instructions": "乾電池・ボタン電池が対象。充電池や車用バッテリーは混ぜない。地域別の回収方法を確認。",
+      "collection_type_id": "batteries",
+      "cutoff": "08:00"
+    },
+    "thermometers": {
+      "name": "水銀式体温計",
+      "color": "#0066B3",
+      "instructions": "水銀式体温計。電子式は電池を外してその他燃やさないごみ。重信は乾電池・体温計、川内は蛍光灯・鏡・体温計の収集区分へ。",
+      "collection_type_id": "thermometers",
+      "cutoff": "08:00"
+    },
+    "mercury_instruments": {
+      "name": "水銀使用の計測器",
+      "color": "#777777",
+      "instructions": "辞典の分類は水銀。温度計・湿度計と水銀血圧計について、カレンダーのどの水銀関連日程に出すかは確認できていません。市環境保全課に確認してください。",
+      "collection_type_id": "mercury_instruments",
+      "cutoff": "08:00"
+    },
+    "not_collected": {
+      "name": "市で収集しないもの",
+      "color": "#808080",
+      "instructions": "市の定期ステーション収集の対象外。品目ごとに販売店・メーカー・専門業者等へ相談してください。",
+      "answer_note": "市の定期ステーション収集の対象外。品目ごとに販売店・メーカー・専門業者等へ相談してください。"
+    },
+    "small_device_dropoff": {
+      "name": "電池内蔵小型家電の窓口回収",
+      "color": "#5E4FA2",
+      "instructions": "リチウムイオン電池等を内蔵した小型家電は、市役所環境保全課又は川内支所で回収。単体電池は販売店・協力店の回収へ。燃やす・その他燃やさないごみへ混ぜない。",
+      "answer_note": "リチウムイオン電池等を内蔵した小型家電は、市役所環境保全課又は川内支所で回収。単体電池は販売店・協力店の回収へ。燃やす・その他燃やさないごみへ混ぜない。"
+    }
+  },
+  "classification_rules": "東温市の2026年度の公式資料だけを分類根拠にする。他自治体の分類・袋・収集方法は使わない。2027年4月の製品プラスチック変更は先取りせず、現在の硬質プラ製品はその他燃やさないごみ。\n品目固有の条件を共通案内より優先。素材、用途、大きさ、汚れ、電池の有無等で本体の区分が変わる場合だけ確認する。外したふた・電池の区分を本体へ誤適用しない。既に確認済みの情報を再質問しない。通常の小さいストロー・歯ブラシ・飲料缶は、分類に影響しないサイズ質問を繰り返さない。\n燃やすごみは東温市指定袋。プラ類は容器包装であり、45L以下の透明袋。プラ容器包装は汚れを取り除いて出す。汚れが取れない容器の代替分類を推測で燃やすへ変更しない。絵の具の紙箱は個別注記に従い汚れたものは燃やす。硬質プラ製品・ストロー・バケツはその他。PET表示の本体と外したプラ製キャップ・ラベルを区別する。\n紙パックは500ml以上かつ内側が銀色でないものが紙類。500ml未満、銀色、汚れた紙は燃やす。缶・金属類はmetals。スプレー缶・カセットボンベも使い切りガスを出し切った後、火気のない風通しのよい屋外で穴あけ。処理が困難ならメーカー等へ相談。\nガラスコップや割れたガラスもbottles_glass。陶磁器はnon_burnable。川内のびんは色別。乾電池・ボタン電池はbatteries。水銀式体温計はthermometersで、電子式は電池を外してその他。蛍光灯・鏡はmercury。水銀使用の温度計・湿度計・血圧計はmercury_instrumentsで収集日未確認。\n2026年3月公式案内を優先し、モバイルバッテリーやリチウムイオン電池内蔵のスマートフォン・ゲーム機等はsmall_device_dropoffとして市役所環境保全課・川内支所の回収へ。外したリチウムイオン電池・充電池は販売店・協力店へ。普通の乾電池と混同しない。市窓口回収と通常の集積場収集を区別する。\n粗大ごみは地区カレンダーの収集日に集積場へ出す。申込制や戸別収集という他市の案内を使わない。1m程度、標準的な大人2人で持ち運べるもの。大きさ・運搬可否が不明な大型家具は確認し、運べない重量物や多量ごみは専門業者へ。リサイクルセンターは粗大を受け入れない。\n家電リサイクル4品目、家庭用パソコン本体、農業用品・事業ごみ等はnot_collected。パソコン周辺機器はその他又は粗大。液晶モニターはモニターと表示、ブラウン管モニターは市の収集不可。\n検索の言い換えと画像から推測したサイズ・材質を利用者が確認した情報として扱わない。分類欄が空欄の卵パックは推測で固定分類を埋めない。根拠不足は追加質問又は判定保留。\n川内の全定期区分と重信の燃やす・紙類は当日午前6〜8時。重信のそれ以外は地区で決めた時刻を確認する。収集日と搬出時刻の確認状態を混同しない。施設の搬入受付時間を集積場の搬出時間にしない。\n検索対象の品目名を最優先し、袋の説明や運搬条件だけが似ている別品目の分類を流用しない。袋に入る陶器製コップはその他で、粗大ではない。バケツは袋に入るならその他、入らず1m程度・大人2人で運べるなら粗大。補足の「いいえ」は質問された袋に入る条件を否定し、運べるという明示情報を否定しない。",
+  "examples": [
+    {
+      "id": "tn-rule-mobile",
+      "item": "不要になったモバイルバッテリー（電池内蔵小型家電）",
+      "category": "small_device_dropoff",
+      "note": "2026年3月の公式案内：市役所環境保全課又は川内支所の窓口回収。定期集積場には出さない。",
+      "source_url": "https://www.city.toon.ehime.jp/site/141/26315.html",
+      "category_options": []
+    },
+    {
+      "id": "tn-rule-smartphone",
+      "item": "電池を外せないスマートフォン・携帯ゲーム機",
+      "category": "small_device_dropoff",
+      "note": "リチウムイオン電池を内蔵する小型家電は市役所環境保全課又は川内支所で回収。",
+      "source_url": "https://www.city.toon.ehime.jp/site/141/26315.html",
+      "category_options": []
+    },
+    {
+      "id": "tn-rule-loose-lithium",
+      "item": "機器から取り外したリチウムイオン充電池",
+      "category": "not_collected",
+      "note": "販売店又は協力店で店頭回収。集積場の乾電池類へ混ぜない。内蔵小型家電の市窓口回収と区別する。",
+      "source_url": "https://www.city.toon.ehime.jp/site/141/26315.html",
+      "category_options": []
+    },
+    {
+      "id": "tn-rule-pet",
+      "item": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+      "category": "pet_bottles",
+      "note": "キャップ・ラベルを外した本体が対象。外した部品と分類を混同しない。",
+      "source_url": "https://www.city.toon.ehime.jp/uploaded/attachment/22090.pdf#page=8",
+      "category_options": []
+    },
+    {
+      "id": "tn-rule-pet-cap",
+      "item": "ペットボトルから外したプラスチック製キャップ・ラベル",
+      "category": "plastic_packaging",
+      "note": "外したプラスチック製部品だけ。本体とは別。",
+      "source_url": "https://www.city.toon.ehime.jp/uploaded/attachment/22090.pdf#page=8",
+      "category_options": []
+    },
+    {
+      "id": "tn-rule-tray",
+      "item": "水洗いした白色又は色付き発泡食品トレイ",
+      "category": "plastic_packaging",
+      "note": "商品を入れた食品トレイはプラスチック類。",
+      "source_url": "https://www.city.toon.ehime.jp/uploaded/attachment/22090.pdf#page=9",
+      "category_options": []
+    },
+    {
+      "id": "tn-rule-dirty-paper",
+      "item": "絵の具で汚れた紙箱",
+      "category": "burnable",
+      "note": "絵の具の紙箱の個別注記は、汚れたものは燃やす。プラ容器の汚れとは別。",
+      "source_url": "https://www.city.toon.ehime.jp/uploaded/attachment/22090.pdf#page=20",
+      "category_options": []
+    },
+    {
+      "id": "tn-rule-can",
+      "item": "水洗いした空の飲料用アルミ缶・スチール缶",
+      "category": "metals",
+      "note": "飲食用の缶を使い切り、汚れを取り除いてコンテナへ。",
+      "source_url": "https://www.city.toon.ehime.jp/uploaded/attachment/22090.pdf#page=6",
+      "category_options": []
+    },
+    {
+      "id": "tn-rule-spray",
+      "item": "使い切りガスを抜いた金属製スプレー缶・カセットボンベ",
+      "category": "metals",
+      "note": "使い切り、火気のない風通しのよい屋外で穴をあけて金属へ。",
+      "source_url": "https://www.city.toon.ehime.jp/site/141/1120.html",
+      "category_options": []
+    },
+    {
+      "id": "tn-rule-bucket",
+      "item": "プラスチック製バケツ・ポリバケツ",
+      "category": "non_burnable",
+      "note": "2026年度は硬質プラ製品。45Lの無色透明袋に入るものはその他、袋に入らないものは粗大。大きさ不明なら確認する。",
+      "source_url": "https://www.city.toon.ehime.jp/uploaded/attachment/22090.pdf#page=10",
+      "category_options": [
+        "bulky"
+      ]
+    },
+    {
+      "id": "tn-rule-straw",
+      "item": "普通の小さいプラスチック製ストロー・歯ブラシ",
+      "category": "non_burnable",
+      "note": "2026年度は硬質プラ製品としてその他燃やさないごみ。2027年4月の製品プラ変更はまだ適用しない。",
+      "source_url": "https://www.city.toon.ehime.jp/uploaded/attachment/22090.pdf#page=10",
+      "category_options": []
+    },
+    {
+      "id": "tn-rule-pack-white",
+      "item": "内側が白い容量500ml以上の飲料用紙パック",
+      "category": "paper",
+      "note": "水洗いして乾かし種類別に十文字に縛る。",
+      "source_url": "https://www.city.toon.ehime.jp/uploaded/attachment/22090.pdf#page=5",
+      "category_options": []
+    },
+    {
+      "id": "tn-rule-pack-silver",
+      "item": "内側が銀色又は500ml未満の飲料用紙パック",
+      "category": "burnable",
+      "note": "紙類の対象外。燃やすごみとして指定袋で出す。",
+      "source_url": "https://www.city.toon.ehime.jp/uploaded/attachment/22090.pdf#page=5",
+      "category_options": []
+    },
+    {
+      "id": "tn-rule-glass",
+      "item": "ジャムが入っていた空のガラスびん",
+      "category": "bottles_glass",
+      "note": "内容物を使い切り洗う。重信はびん用コンテナ、川内は色別のコンテナへ。",
+      "source_url": "https://www.city.toon.ehime.jp/uploaded/attachment/22090.pdf#page=7",
+      "category_options": []
+    },
+    {
+      "id": "tn-rule-broken-glass",
+      "item": "割れたガラスコップ・割れガラス",
+      "category": "bottles_glass",
+      "note": "割れ物を包み、割れガラスと表示して45L以下の無色透明袋へ。",
+      "source_url": "https://www.city.toon.ehime.jp/uploaded/attachment/22090.pdf#page=7",
+      "category_options": []
+    },
+    {
+      "id": "tn-rule-furniture",
+      "item": "1m程度の木製の壊れた家具",
+      "category": "bulky",
+      "note": "地区の粗大収集日に集積場へ。標準的な大人2人で運べる大きさ・重さに限る。運べない重量物は市で収集せず専門業者へ。",
+      "source_url": "https://www.city.toon.ehime.jp/uploaded/attachment/22090.pdf#page=13",
+      "category_options": [
+        "not_collected"
+      ]
+    },
+    {
+      "id": "tn-rule-pc",
+      "item": "家庭用パソコン本体（ノート・デスクトップ）",
+      "category": "not_collected",
+      "note": "市では収集しない。販売店又はメーカーに処分依頼。周辺機器や液晶モニターとは別。",
+      "source_url": "https://www.city.toon.ehime.jp/site/141/1304.html",
+      "category_options": []
+    },
+    {
+      "id": "tn-rule-lcd-monitor",
+      "item": "ブラウン管ではない液晶パソコン用ディスプレイ・モニター",
+      "category": "bulky",
+      "note": "モニター又はディスプレイと表示して地区の粗大収集へ。ブラウン管は市では収集しない。",
+      "source_url": "https://www.city.toon.ehime.jp/site/141/1304.html",
+      "category_options": []
+    },
+    {
+      "id": "tn-rule-ceramic-cup",
+      "item": "45Lの無色透明袋に入る小さい陶器製コップ・茶碗",
+      "category": "non_burnable",
+      "note": "陶磁器はその他。ガラスのコップと区別。袋に入るものを粗大にしない。",
+      "source_url": "https://www.city.toon.ehime.jp/uploaded/attachment/22090.pdf#page=10",
+      "category_options": []
+    },
+    {
+      "id": "tn-rule-large-bucket",
+      "item": "45Lの無色透明袋に入らないプラスチック製バケツ",
+      "category": "bulky",
+      "note": "袋に入らないもの。1m程度で標準的な大人2人で運べる大きさ・重さに限る。運べない重量物は市の収集不可。袋に入るものはその他。",
+      "source_url": "https://www.city.toon.ehime.jp/uploaded/attachment/22090.pdf#page=13",
+      "category_options": [
+        "non_burnable",
+        "not_collected"
+      ]
+    }
+  ],
+  "review_notes": [
+    "2026年1月のはやわかり帳を基本とし、2026年3月のリチウムイオン電池・内蔵小型家電の案内を追加。",
+    "2022年分別表は現行辞典と照合して地域別の出し方を確認し、後日の電池ルールを優先する。",
+    "2027-04-01の製品プラスチック変更は別年度として本データへ適用しない。",
+    "重信の水銀式体温計は乾電池・体温計、川内では蛍光灯・鏡・体温計へ。温度計・湿度計、水銀血圧計の収集日との対応は未確認として保持。",
+    "原本の分類欄空欄1件（卵パック・プラ製）はそのまま保持。",
+    "重信の燃やす・紙以外は搬出時刻が地区ごとに異なるため未確認扱い。日付は利用し、当日朝通知は生成しない。"
+  ]
+}

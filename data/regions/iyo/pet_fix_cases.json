@@ -1,0 +1,213 @@
+{
+  "evaluation_time": "2026-11-05T07:00:00+09:00",
+  "before_cases": [
+    1,
+    2,
+    5,
+    8
+  ],
+  "cases": [
+    {
+      "case": 1,
+      "input": {
+        "municipality_id": "38210",
+        "district_id": "38210-iyo-south",
+        "query": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+        "clarifications": []
+      },
+      "expected": "pet_bottles",
+      "source_url": "https://www.city.iyo.lg.jp/shiminseikatsu/kurashi/gomi/bunbetsu/shigen/petbottle.html",
+      "reason": "食品用PET本体と外したキャップ・ラベルを区別。用途又は識別表示が不明なら追加質問。"
+    },
+    {
+      "case": 2,
+      "input": {
+        "municipality_id": "38210",
+        "district_id": "38210-iyo-south",
+        "query": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体。プラマークはありません",
+        "clarifications": []
+      },
+      "expected": "pet_bottles",
+      "source_url": "https://www.city.iyo.lg.jp/shiminseikatsu/kurashi/gomi/bunbetsu/shigen/petbottle.html",
+      "reason": "食品用PET本体と外したキャップ・ラベルを区別。用途又は識別表示が不明なら追加質問。"
+    },
+    {
+      "case": 3,
+      "input": {
+        "municipality_id": "38210",
+        "district_id": "38210-iyo-south",
+        "query": "飲料用のPETマークのあるペットボトル本体",
+        "clarifications": []
+      },
+      "expected": "pet_bottles",
+      "source_url": "https://www.city.iyo.lg.jp/shiminseikatsu/kurashi/gomi/bunbetsu/shigen/petbottle.html",
+      "reason": "食品用PET本体と外したキャップ・ラベルを区別。用途又は識別表示が不明なら追加質問。"
+    },
+    {
+      "case": 4,
+      "input": {
+        "municipality_id": "38210",
+        "district_id": "38210-iyo-south",
+        "query": "食品用のPET表示が付いたペットボトル。ラベルを剥がしてふたを取り外した本体",
+        "clarifications": []
+      },
+      "expected": "pet_bottles",
+      "source_url": "https://www.city.iyo.lg.jp/shiminseikatsu/kurashi/gomi/bunbetsu/shigen/petbottle.html",
+      "reason": "食品用PET本体と外したキャップ・ラベルを区別。用途又は識別表示が不明なら追加質問。"
+    },
+    {
+      "case": 5,
+      "input": {
+        "municipality_id": "38210",
+        "district_id": "38210-iyo-south",
+        "query": "ペットボトルから外したプラマーク付きのキャップだけ",
+        "clarifications": []
+      },
+      "expected": "plastic_packaging",
+      "source_url": "https://www.city.iyo.lg.jp/shiminseikatsu/kurashi/gomi/bunbetsu/shigen/petbottle.html",
+      "reason": "食品用PET本体と外したキャップ・ラベルを区別。用途又は識別表示が不明なら追加質問。"
+    },
+    {
+      "case": 6,
+      "input": {
+        "municipality_id": "38210",
+        "district_id": "38210-iyo-south",
+        "query": "飲料用ペットボトルからはがしたプラ製ラベルだけ。プラマークあり",
+        "clarifications": []
+      },
+      "expected": "plastic_packaging",
+      "source_url": "https://www.city.iyo.lg.jp/shiminseikatsu/kurashi/gomi/bunbetsu/shigen/petbottle.html",
+      "reason": "食品用PET本体と外したキャップ・ラベルを区別。用途又は識別表示が不明なら追加質問。"
+    },
+    {
+      "case": 7,
+      "input": {
+        "municipality_id": "38210",
+        "district_id": "38210-iyo-south",
+        "query": "飲料用の空き容器",
+        "clarifications": []
+      },
+      "expected": null,
+      "source_url": "https://www.city.iyo.lg.jp/shiminseikatsu/kurashi/gomi/bunbetsu/shigen/petbottle.html",
+      "reason": "食品用PET本体と外したキャップ・ラベルを区別。用途又は識別表示が不明なら追加質問。"
+    },
+    {
+      "case": 8,
+      "input": {
+        "municipality_id": "38210",
+        "district_id": "38210-iyo-south",
+        "query": "飲み終わったボトル",
+        "clarifications": [
+          {
+            "question": "ペットボトル・プラスチック容器・ガラスびんのどれですか？",
+            "answer": "PETマーク付きの飲料用ペットボトル本体です"
+          }
+        ]
+      },
+      "expected": "pet_bottles",
+      "source_url": "https://www.city.iyo.lg.jp/shiminseikatsu/kurashi/gomi/bunbetsu/shigen/petbottle.html",
+      "reason": "食品用PET本体と外したキャップ・ラベルを区別。用途又は識別表示が不明なら追加質問。"
+    },
+    {
+      "case": 9,
+      "input": {
+        "municipality_id": "38210",
+        "district_id": "38210-iyo-south",
+        "query": "食品用PETマーク付きのペットボトル。ふたとラベルはまだ外していません。本体を捨てたい",
+        "clarifications": []
+      },
+      "expected": "pet_bottles",
+      "source_url": "https://www.city.iyo.lg.jp/shiminseikatsu/kurashi/gomi/bunbetsu/shigen/petbottle.html",
+      "reason": "食品用PET本体と外したキャップ・ラベルを区別。用途又は識別表示が不明なら追加質問。"
+    },
+    {
+      "case": 10,
+      "input": {
+        "municipality_id": "38210",
+        "district_id": "38210-iyo-south",
+        "query": "PETマークのない、用途不明のプラスチック製ボトル",
+        "clarifications": []
+      },
+      "expected": null,
+      "source_url": "https://www.city.iyo.lg.jp/shiminseikatsu/kurashi/gomi/bunbetsu/shigen/petbottle.html",
+      "reason": "食品用PET本体と外したキャップ・ラベルを区別。用途又は識別表示が不明なら追加質問。"
+    },
+    {
+      "case": 11,
+      "input": {
+        "municipality_id": "38210",
+        "district_id": "38210-iyo-south",
+        "query": "キャップとラベルを外した飲料用ペットボトル本体",
+        "clarifications": [
+          {
+            "question": "PETマークはありますか？",
+            "answer": "はい"
+          }
+        ]
+      },
+      "expected": "pet_bottles",
+      "source_url": "https://www.city.iyo.lg.jp/shiminseikatsu/kurashi/gomi/bunbetsu/shigen/petbottle.html",
+      "reason": "食品用PET本体と外したキャップ・ラベルを区別。用途又は識別表示が不明なら追加質問。"
+    },
+    {
+      "case": 12,
+      "input": {
+        "municipality_id": "38215",
+        "district_id": "38215-30",
+        "query": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+        "clarifications": []
+      },
+      "expected": "pet_bottles",
+      "source_url": "https://www.city.toon.ehime.jp/site/141/1130.html",
+      "reason": "既存自治体のPET本体分類・根拠自治体・次回収集日の回帰確認。"
+    },
+    {
+      "case": 13,
+      "input": {
+        "municipality_id": "38201",
+        "district_id": "38201-08",
+        "query": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+        "clarifications": []
+      },
+      "expected": "ペット",
+      "source_url": "https://www.city.matsuyama.ehime.jp/kurashi/gomi/dashikata/kateigomi_matsuyama.html",
+      "reason": "既存自治体のPET本体分類・根拠自治体・次回収集日の回帰確認。"
+    },
+    {
+      "case": 14,
+      "input": {
+        "municipality_id": "38204",
+        "district_id": "38204-01",
+        "query": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+        "clarifications": []
+      },
+      "expected": "pet_bottles",
+      "source_url": "https://www.city.yawatahama.ehime.jp/doc/2021022400010/",
+      "reason": "既存自治体のPET本体分類・根拠自治体・次回収集日の回帰確認。"
+    },
+    {
+      "case": 15,
+      "input": {
+        "municipality_id": "38442",
+        "district_id": "38442-01",
+        "query": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+        "clarifications": []
+      },
+      "expected": "pet_bottles",
+      "source_url": "https://www.town.ikata.ehime.jp/soshiki/32/11452.html",
+      "reason": "既存自治体のPET本体分類・根拠自治体・次回収集日の回帰確認。"
+    },
+    {
+      "case": 16,
+      "input": {
+        "municipality_id": "38205",
+        "district_id": "38205-01",
+        "query": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+        "clarifications": []
+      },
+      "expected": "pet_bottles",
+      "source_url": "https://www.city.niihama.lg.jp/soshiki/haiki/pamphlet.html",
+      "reason": "既存自治体のPET本体分類・根拠自治体・次回収集日の回帰確認。"
+    }
+  ]
+}

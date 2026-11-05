@@ -113,6 +113,9 @@ class BedrockGateway:
 「弁当・惣菜の透明なプラスチック製容器のふた」として検索してください。
 複数の解釈が現実的に残る場合は、推測で情報を追加しないでください。
 「{region.municipality_label if region else '松山市'}」「{region.area_name if region else '清水'}地区」「ごみ分別」のような検索対象側で既知の語は追加しないでください。
+「キャップとラベルを外したペットボトル本体」は本体を検索し、外した部品を検索対象として追加しないでください。
+「ペットボトルから外したキャップ」は逆にキャップが対象です。本体と取り外した部品を区別してください。
+マークの「ない」「不明」を「あり」に変換してはいけません。
 画像が添付されている場合は、写っている品物、用途、形状、表示、見た目から確認できる素材だけを
 検索文へ含めてください。画像で確認できない素材や大きさを推測してはいけません。
 利用者の文章は画像より優先し、文章に明記された品物・部位・素材・状態を落とさないでください。
@@ -237,8 +240,6 @@ class BedrockGateway:
             (("ガラス",), "ガラス製"),
             (("金属", "アルミ", "スチール"), "金属製"),
             (("陶器", "陶磁器", "セラミック"), "陶磁器製"),
-            (("petマーク", "pet表示"), "PETマークあり"),
-            (("プラマーク", "プラ表示"), "プラマークあり"),
         )
         additions: list[str] = []
         for markers, canonical in feature_groups:
@@ -246,6 +247,70 @@ class BedrockGateway:
                 marker in normalized_cleaned for marker in markers
             ):
                 additions.append(canonical)
+
+        # Keep presence/absence/unknown as stated, including when the LLM
+        # contradicts it. A bare mark mention is not confirmation of presence.
+        mark_source = re.sub(r"\s+", "", source)
+        for term, aliases in (
+            ("PETマーク", r"pet(?:マーク|表示)"),
+            ("プラマーク", r"プラ(?:マーク|表示)"),
+        ):
+            mark_context = mark_source
+            for answer in reversed(clarifications):
+                question = re.sub(
+                    r"\s+",
+                    "",
+                    unicodedata.normalize("NFKC", str(answer.get("question", ""))),
+                ).lower()
+                reply = re.sub(
+                    r"\s+", "", unicodedata.normalize("NFKC", str(answer.get("answer", "")))
+                ).lower()
+                if re.search(aliases, reply):
+                    mark_context = reply
+                    break
+                if re.search(
+                    aliases + r"(?:は|が)?(?:付いていますか|ついていますか|ありますか)",
+                    question,
+                ) and re.fullmatch(r"(?:はい|いいえ)[。!！]?", reply):
+                    mark_context = term.lower() + (
+                        "あり" if reply.startswith("はい") else "なし"
+                    )
+                    break
+            if not re.search(aliases, mark_context):
+                continue
+            negative = r"(?:は|が|の)?(?:(?:付|つ)いてい(?:ない|ません)|ありません|無い|無し|ない|なし)"
+            positive = r"(?:は|が|の)?(?:付い(?:た|ている|ています)|ついている|付き|ある|あり(?!ません)(?:ます)?)"
+            unknown = (
+                r"(?:は|が)?(?:不明|未確認|わからない|わかりません|分からない|分かりません)"
+            )
+            absent = bool(re.search(aliases + negative, mark_context))
+            present = bool(re.search(aliases + positive, mark_context))
+            uncertain = bool(
+                re.search(
+                    aliases
+                    + r"(?:は|が|の)?(?:(?:付|つ)いているか(?:どうか)?(?:は)?|あるか(?:どうか)?(?:は)?)?(?:不明|未確認|わから|わかりません|分から|分かりません)",
+                    mark_context,
+                )
+            )
+            uncertain = uncertain or bool(
+                re.search(aliases + positive + "か", mark_context)
+            )
+            state = "" if uncertain or absent == present else "なし" if absent else "あり"
+            canonical = term + state
+            if re.search(aliases, cleaned, re.IGNORECASE):
+                cleaned = re.sub(
+                    aliases + r"(?:" + negative + "|" + positive + "|" + unknown + r")?",
+                    canonical,
+                    cleaned,
+                    flags=re.IGNORECASE,
+                )
+            else:
+                additions.append(canonical)
+
+        # An explicitly requested PET body must not gain bare cap/label tokens
+        # merely because the user described removing those parts. This only
+        # preserves retrieval intent; classification still uses regional evidence.
+        pet_body = BedrockGateway._pet_body_is_target(source)
 
         # 「Xが入っていた箱」のような入力では、X本体ではなく包装・部品が対象。
         # 対象部位を落とすと別品目へ寄るため、明示語を必ず検索文へ残す。
@@ -265,11 +330,25 @@ class BedrockGateway:
             "ランプ",
             "電池",
             "バッテリー",
+            "本体",
         )
         for marker in part_markers:
+            if marker == "本体" and not pet_body:
+                continue
+            if pet_body and marker in {"キャップ", "ふた", "蓋"}:
+                continue
             if marker in source and marker not in normalized_cleaned:
                 additions.append(marker)
         return " ".join([cleaned, *dict.fromkeys(additions)]).strip()
+
+    @staticmethod
+    def _pet_body_is_target(value: str) -> bool:
+        source = unicodedata.normalize("NFKC", value).lower()
+        return "ペットボトル" in source and bool(re.search(
+            r"本体(?:です|を(?:捨て|出)|だけ|のみ|[。、!！?？]|$)", source
+        )) and not re.search(
+            r"本体だけではなく|本体(?:と|や|から)|本体(?:は|を)?(?:捨て(?:ない|ません|ず)|残|以外)", source
+        )
 
     def retrieve(self, query: str, *, region: RegionContext | None = None) -> list[RetrievedDocument]:
         """クエリの意味検索。既定は自前Embedding、任意でマネージドKBを併用。"""
@@ -799,7 +878,7 @@ class WasteGuideService:
         documents: list[RetrievedDocument] = []
         for match in search.search(query, limit=24):
             base_name = re.sub(r"[（(].*$", "", match.item).strip()
-            if not cls._item_name_matches_query(base_name, normalized_query):
+            if not cls._item_name_matches_query(base_name, query):
                 continue
             documents.append(
                 RetrievedDocument(
@@ -1128,6 +1207,19 @@ class WasteGuideService:
     def _item_name_matches_query(cls, item_name: str, query: str) -> bool:
         normalized_item = cls._normalize_item_key(item_name)
         normalized_query = cls._normalize_item_key(query)
+        # Exact CSV supplements must preserve the requested part as well as the
+        # item name. A cap mentioned while describing its removal is not the
+        # disposal target of an explicitly requested PET body, and vice versa.
+        context = unicodedata.normalize("NFKC", query).lower()
+        if "ペットボトル" in context:
+            body_target = BedrockGateway._pet_body_is_target(context)
+            part_target = not body_target and re.search(
+                r"(?:キャップ|ラベル|ふた|蓋)(?:だけ|のみ|です|を(?:捨て|出)|[。、!！?？]|$)", context
+            )
+            if body_target and any(part in item_name for part in ("キャップ", "ラベル", "ふた", "蓋")):
+                return False
+            if part_target and "本体" in item_name:
+                return False
         if len(normalized_item) >= 2 and normalized_item in normalized_query:
             return True
         # 「油容器（プラ製）」に対する「油のプラスチック容器」のように、
@@ -1154,7 +1246,7 @@ class WasteGuideService:
                 continue
             item_name = first_line.removeprefix("品目:").strip()
             base_name = re.sub(r"[（(].*$", "", item_name).strip()
-            if cls._item_name_matches_query(base_name, normalized_query):
+            if cls._item_name_matches_query(base_name, query):
                 matches.append((index, document, item_name))
         return matches
 
@@ -1348,6 +1440,13 @@ class WasteGuideService:
         )
         dirty_condition = "汚れが落ちない" in item_evidence
         mark_condition = "プラマーク" in item_evidence
+        # Do not override Nova with the primary row when this deterministic
+        # supplement cannot evaluate its official branch (e.g. Toon carryability
+        # or paper-pack lining). Existing conditional guards still ask as needed.
+        if options and not (size_condition or material_condition or dirty_condition or mark_condition):
+            return None
+        if options and re.search(r"大人[12]人", item_evidence):
+            return None
 
         category = primary
         if negative_size and size_condition:
@@ -1388,7 +1487,7 @@ class WasteGuideService:
         if dirty_condition:
             if any(marker in context for marker in ("汚れが落ちない", "汚れを落とせない", "汚れが取れない")):
                 category = category_in(after_first(("汚れが落ちない",))) or category
-            elif not any(marker in context for marker in ("洗った", "すすいだ", "汚れを取り除", "きれい")):
+            elif not any(marker in context for marker in ("洗った", "すすいだ", "水洗いした", "水洗いしました", "水洗い済み", "汚れを取り除", "きれい")):
                 return None
 
         if mark_condition and not any(
@@ -1397,11 +1496,17 @@ class WasteGuideService:
             return None
         if category not in region.category_codes:
             return None
+        instructions = values.get("出し方・注意", "")
+        if category == primary:
+            # Keep the official preparation/deadline guidance on an exact match.
+            # Do not attach the primary stream's guidance to an alternate branch.
+            shared = document.text.partition("区分共通の出し方")[2].partition(":")[2].strip()
+            instructions = "\n".join(dict.fromkeys(part for part in (instructions, shared) if part))
         return ClassificationDecision(
             is_resolved=True,
             item_name=re.sub(r"を?(?:捨て|処分).*$", "", query).strip() or query.strip(),
             category_code=category,
-            disposal_instructions=values.get("出し方・注意", ""),
+            disposal_instructions=instructions,
             confidence=max(0.9, document.score or 0.0),
             evidence_indexes=(evidence_index,),
         )
@@ -1553,10 +1658,11 @@ class WasteGuideService:
     ) -> str | None:
         """Keep an explicit carryability branch unresolved until the user answers.
 
-        Only the highest structured candidate with no fixed classification and
-        both conditional codes opts in. Fixed-category entries and existing
-        Matsuyama evidence are unchanged. Rewritten text/image inference is not
-        confirmation of a user's ability to carry the item.
+        The highest structured candidate must have an explicit item-specific
+        carryability branch. One-adult evidence requires no fixed classification;
+        two-adult evidence requires bulky plus a not-collected alternative.
+        Fixed entries without alternatives and Matsuyama evidence are unchanged.
+        Rewritten text/image inference is not user confirmation.
         """
         structured = next((d for d in documents if d.text.startswith("品目:")), None)
         if structured is None:
@@ -1571,6 +1677,28 @@ class WasteGuideService:
         except (ValueError, TypeError):
             return None
         evidence = unicodedata.normalize("NFKC", structured.text)
+        # Opt-in for an explicit two-adult carryability branch. The conditional
+        # metadata and item-specific note (not shared instructions) must both
+        # authorize it; existing one-adult evidence keeps the original path.
+        specific = evidence.split("区分共通の出し方", 1)[0]
+        if (primary == "bulky" and isinstance(options, list)
+                and "not_collected" in options and "大人2人" in specific
+                and re.search(r"運べる|持ち運べる", specific)):
+            def normalized(value):
+                return re.sub(r"\s+", "", unicodedata.normalize("NFKC", str(value)))
+            confirmed = re.compile(r"(?:標準的な)?(?:大人)?[2二]人で(?:は|も)?(?:持ち運べ|運べ)(?:ます|ません|る|ない)")
+            uncertain = re.compile(r"分か[らり]|わか[らり]|不明|かもしれ|と思う")
+            texts = [query] + [item.get("answer", "") for item in clarifications]
+            if any(confirmed.search(normalized(t)) and not uncertain.search(normalized(t)) for t in texts):
+                return None
+            for item in clarifications:
+                q, a = normalized(item.get("question", "")), normalized(item.get("answer", ""))
+                if (re.search(r"[2二]人", q) and re.search(r"運べ|持ち運", q)
+                        and not uncertain.search(a)
+                        and (re.match(r"^(?:はい|いいえ)(?:[、。!！]|$)", a)
+                             or a.rstrip("。!") in {"運べます", "運べません", "持ち運べます", "持ち運べません"})):
+                    return None
+            return "1m程度で、標準的な大人2人で持ち運べる大きさ・重さですか？"
         if (primary != "" or not isinstance(options, list)
                 or not all(isinstance(option, str) for option in options)
                 or not {"bulky", "not_collected"}.issubset(options)
@@ -1617,49 +1745,35 @@ class WasteGuideService:
                 + [str(item.get("answer", "")) for item in clarifications]
             ),
         ).lower()
-        material_question = cls._exact_material_question(
-            query=query,
-            clarifications=clarifications,
-            documents=documents,
-        )
-        if material_question:
-            return material_question
-
-        exact_matches = cls._matching_structured_documents(
-            query=query,
-            documents=documents,
-        )
-        selected = next(
-            (
-                documents[index - 1]
-                for index in selected_evidence_indexes
-                if 1 <= index <= len(documents)
-                and documents[index - 1].text.startswith("品目:")
-            ),
-            None,
-        )
-        structured = (exact_matches[0][1] if exact_matches else selected) or next(
-            (
-                document
-                for document in documents
-                if document.text.startswith("品目:")
-            ),
-            None,
-        )
+        structured = next((doc for doc in documents if doc.text.startswith("品目:")), None)
         if structured is None:
             return None
-
+        selected = next((documents[index - 1] for index in selected_evidence_indexes
+                         if 1 <= index <= len(documents)
+                         and documents[index - 1].text.startswith("品目:")), structured)
+        regional = region is not None and region.municipality_id != "38201"
+        if regional:
+            material_question = cls._exact_material_question(
+                query=query, clarifications=clarifications, documents=documents,
+            )
+            if material_question:
+                return material_question
+            exact_matches = cls._matching_structured_documents(query=query, documents=documents)
+            # Use an exact requested item when present; otherwise use the cited
+            # item, never an unrelated leading cap candidate. Matsuyama retains
+            # its existing first-candidate guard.
+            structured = exact_matches[0][1] if exact_matches else selected
         lines = structured.text.splitlines()
         item_name = lines[0].removeprefix("品目:").strip()
         display_item = re.sub(r"[（(].*$", "", item_name).strip() or "品物"
-        evidence = unicodedata.normalize("NFKC", structured.text).split(
-            "区分共通の出し方", 1
-        )[0]
+        evidence = unicodedata.normalize("NFKC", structured.text)
+        if regional:
+            evidence = evidence.split("区分共通の出し方", 1)[0]
 
         # Explicit opt-in for municipalities with a dimensional boundary.
         # Search rewrites and image estimates never count as a measured size.
         threshold = getattr(region.rules, "size_threshold_cm", None) if region else None
-        item_evidence = unicodedata.normalize("NFKC", structured.text).split(
+        item_evidence = unicodedata.normalize("NFKC", selected.text).split(
             "区分共通の出し方", 1
         )[0]
         if (threshold and "条件付き分類コード:" in item_evidence
@@ -1757,6 +1871,9 @@ class WasteGuideService:
                 "汚れが取れない",
                 "洗った",
                 "すすいだ",
+                "水洗いした",
+                "水洗いしました",
+                "水洗い済み",
                 "汚れを取り除",
                 "きれい",
             )
@@ -1895,4 +2012,6 @@ class WasteGuideService:
             lines.append("松山市のごみ集積場所には出せません。")
         else:
             lines.append("公開済みカレンダーの範囲では次回収集日を確認できません。")
+        if region and region.rules.categories[decision.category_code].time_note:
+            lines.append(region.rules.categories[decision.category_code].time_note)
         return "\n".join(lines)

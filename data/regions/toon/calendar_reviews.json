@@ -1,0 +1,938 @@
+{
+  "schema_version": 1,
+  "version": "toon-2026.1",
+  "calendars": {
+    "tn-01": {
+      "printed_dates": 365,
+      "raster_dates": 365,
+      "hidden_unpainted_labels": [
+        {
+          "date": "2026-05-09",
+          "symbol": "紙類収集"
+        },
+        {
+          "date": "2026-11-15",
+          "symbol": "その他"
+        }
+      ],
+      "closed_dates": [
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03"
+      ],
+      "simultaneous_dates": 47,
+      "collection_counts": {
+        "batteries": 12,
+        "bottles_glass": 24,
+        "bulky": 12,
+        "burnable": 103,
+        "mercury": 12,
+        "metals": 24,
+        "non_burnable": 24,
+        "paper": 24,
+        "pet_bottles": 24,
+        "plastic_packaging": 24
+      },
+      "image_labels_checked": 283,
+      "source_sha256": "aa13565f0ae03c049a6384b9dd01db26e539d02bdd049db452ccab6c7a2870de",
+      "days_sha256": "261c2ddf00735eb8126b81da90ac39c7e0b3620faea6d3bf10cb056a806fe4bc"
+    },
+    "tn-02": {
+      "printed_dates": 365,
+      "raster_dates": 365,
+      "hidden_unpainted_labels": [
+        {
+          "date": "2026-05-09",
+          "symbol": "紙類収集"
+        }
+      ],
+      "closed_dates": [
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03"
+      ],
+      "simultaneous_dates": 47,
+      "collection_counts": {
+        "batteries": 47,
+        "bottles_glass": 12,
+        "bulky": 12,
+        "burnable": 103,
+        "mercury": 12,
+        "metals": 12,
+        "non_burnable": 24,
+        "paper": 24,
+        "pet_bottles": 24,
+        "plastic_packaging": 24
+      },
+      "image_labels_checked": 294,
+      "source_sha256": "65fd81a55fef03bc123f532d75603320a03c6bbbe95c181f48f2f9178cb6c159",
+      "days_sha256": "7e2424e19b08206fadde6a4da302b97af734abc64d048e7caab95288c009cecf"
+    },
+    "tn-03": {
+      "printed_dates": 365,
+      "raster_dates": 365,
+      "hidden_unpainted_labels": [
+        {
+          "date": "2026-05-09",
+          "symbol": "紙類収集"
+        }
+      ],
+      "closed_dates": [
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03"
+      ],
+      "simultaneous_dates": 24,
+      "collection_counts": {
+        "batteries": 24,
+        "bottles_glass": 24,
+        "bulky": 24,
+        "burnable": 103,
+        "mercury": 24,
+        "metals": 24,
+        "non_burnable": 24,
+        "paper": 24,
+        "pet_bottles": 24,
+        "plastic_packaging": 24
+      },
+      "image_labels_checked": 319,
+      "source_sha256": "bda6bed43189afc82a41374903cca278220768abcf412162e2056fcdb5a3c237",
+      "days_sha256": "a2723fb79164fdaa1bfaeaa9ea4f4b7f8c8df7b5bbc064148145325dac91a9de"
+    },
+    "tn-04": {
+      "printed_dates": 365,
+      "raster_dates": 365,
+      "hidden_unpainted_labels": [
+        {
+          "date": "2026-05-09",
+          "symbol": "紙類収集"
+        }
+      ],
+      "closed_dates": [
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03"
+      ],
+      "simultaneous_dates": 47,
+      "collection_counts": {
+        "batteries": 47,
+        "bottles_glass": 24,
+        "bulky": 24,
+        "burnable": 103,
+        "mercury": 12,
+        "metals": 24,
+        "non_burnable": 24,
+        "paper": 24,
+        "pet_bottles": 24,
+        "plastic_packaging": 24
+      },
+      "image_labels_checked": 330,
+      "source_sha256": "7b8e9fdea14251c5117c6c12a1967f7d44cfee6575a63f2e6fac7f6888beef82",
+      "days_sha256": "ef7c237e4b5b6870c6f191ae824f1b86e39f29fd25368ed9e2d66fb9011ae84d"
+    },
+    "tn-05": {
+      "printed_dates": 365,
+      "raster_dates": 365,
+      "hidden_unpainted_labels": [
+        {
+          "date": "2026-05-09",
+          "symbol": "紙類収集"
+        }
+      ],
+      "closed_dates": [
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03"
+      ],
+      "simultaneous_dates": 24,
+      "collection_counts": {
+        "batteries": 24,
+        "bottles_glass": 24,
+        "bulky": 24,
+        "burnable": 103,
+        "mercury": 24,
+        "metals": 24,
+        "non_burnable": 24,
+        "paper": 24,
+        "pet_bottles": 24,
+        "plastic_packaging": 24
+      },
+      "image_labels_checked": 319,
+      "source_sha256": "62779d4688b2f589e59f6e61f33f02ca6b7930d1bbea78422cca55a1ba4a4d46",
+      "days_sha256": "a2723fb79164fdaa1bfaeaa9ea4f4b7f8c8df7b5bbc064148145325dac91a9de"
+    },
+    "tn-06": {
+      "printed_dates": 365,
+      "raster_dates": 365,
+      "hidden_unpainted_labels": [
+        {
+          "date": "2026-05-09",
+          "symbol": "紙類収集"
+        }
+      ],
+      "closed_dates": [
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03"
+      ],
+      "simultaneous_dates": 47,
+      "collection_counts": {
+        "batteries": 47,
+        "bottles_glass": 24,
+        "bulky": 24,
+        "burnable": 103,
+        "mercury": 12,
+        "metals": 24,
+        "non_burnable": 24,
+        "paper": 24,
+        "pet_bottles": 24,
+        "plastic_packaging": 24
+      },
+      "image_labels_checked": 330,
+      "source_sha256": "c90f0ea48235a8f455845e260a16186770f78279492c296729b07cb4698eff24",
+      "days_sha256": "ef7c237e4b5b6870c6f191ae824f1b86e39f29fd25368ed9e2d66fb9011ae84d"
+    },
+    "tn-07": {
+      "printed_dates": 365,
+      "raster_dates": 365,
+      "hidden_unpainted_labels": [
+        {
+          "date": "2026-05-09",
+          "symbol": "紙類収集"
+        }
+      ],
+      "closed_dates": [
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03"
+      ],
+      "simultaneous_dates": 47,
+      "collection_counts": {
+        "batteries": 12,
+        "bottles_glass": 24,
+        "bulky": 12,
+        "burnable": 103,
+        "mercury": 12,
+        "metals": 24,
+        "non_burnable": 24,
+        "paper": 24,
+        "pet_bottles": 24,
+        "plastic_packaging": 24
+      },
+      "image_labels_checked": 283,
+      "source_sha256": "2c688efd05d4c9a2a9d83ce8d0ef69ea09a5e014794c9edf6e056005608fa63c",
+      "days_sha256": "261c2ddf00735eb8126b81da90ac39c7e0b3620faea6d3bf10cb056a806fe4bc"
+    },
+    "tn-08": {
+      "printed_dates": 365,
+      "raster_dates": 365,
+      "hidden_unpainted_labels": [],
+      "closed_dates": [
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03"
+      ],
+      "simultaneous_dates": 47,
+      "collection_counts": {
+        "batteries": 12,
+        "bottles_glass": 24,
+        "bulky": 12,
+        "burnable": 103,
+        "mercury": 12,
+        "metals": 24,
+        "non_burnable": 24,
+        "paper": 24,
+        "pet_bottles": 24,
+        "plastic_packaging": 24
+      },
+      "image_labels_checked": 283,
+      "source_sha256": "284adfadf287b8ccba8de70748172bae8e8c33767af322fcac633f013a0e4c6c",
+      "days_sha256": "a5fb5584082523d75fb5172ec0c9d612856afdb97c8746072cdb5a3dd49c7655"
+    },
+    "tn-09": {
+      "printed_dates": 365,
+      "raster_dates": 365,
+      "hidden_unpainted_labels": [],
+      "closed_dates": [
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03"
+      ],
+      "simultaneous_dates": 35,
+      "collection_counts": {
+        "batteries": 12,
+        "bottles_glass": 12,
+        "bulky": 12,
+        "burnable": 104,
+        "mercury": 12,
+        "metals": 12,
+        "non_burnable": 24,
+        "paper": 24,
+        "pet_bottles": 24,
+        "plastic_packaging": 24
+      },
+      "image_labels_checked": 260,
+      "source_sha256": "eab23f27129523dd8a4729f590b1a1a87c7ab5152d046c8a001b5eb0b0bf8f1f",
+      "days_sha256": "e92ac8adff4d4602117137324098ab342c3d670909e2a51bb5fca94514793e0f"
+    },
+    "tn-10": {
+      "printed_dates": 365,
+      "raster_dates": 365,
+      "hidden_unpainted_labels": [
+        {
+          "date": "2026-05-09",
+          "symbol": "紙類収集"
+        }
+      ],
+      "closed_dates": [
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03"
+      ],
+      "simultaneous_dates": 24,
+      "collection_counts": {
+        "batteries": 24,
+        "bottles_glass": 24,
+        "bulky": 24,
+        "burnable": 103,
+        "mercury": 24,
+        "metals": 24,
+        "non_burnable": 24,
+        "paper": 24,
+        "pet_bottles": 24,
+        "plastic_packaging": 24
+      },
+      "image_labels_checked": 319,
+      "source_sha256": "ce208c330d32ac1c83f73500f68ccc2c2e7195cd6ed903f52cd6f888b9d36d79",
+      "days_sha256": "a2723fb79164fdaa1bfaeaa9ea4f4b7f8c8df7b5bbc064148145325dac91a9de"
+    },
+    "tn-11": {
+      "printed_dates": 365,
+      "raster_dates": 365,
+      "hidden_unpainted_labels": [],
+      "closed_dates": [
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03"
+      ],
+      "simultaneous_dates": 24,
+      "collection_counts": {
+        "batteries": 24,
+        "bottles_glass": 24,
+        "bulky": 24,
+        "burnable": 103,
+        "mercury": 24,
+        "metals": 24,
+        "non_burnable": 24,
+        "paper": 24,
+        "pet_bottles": 24,
+        "plastic_packaging": 24
+      },
+      "image_labels_checked": 319,
+      "source_sha256": "8e505b1107c876689bfb5a929bcb536eb0ee6e0297eeb3afd3f51ecebaaf0444",
+      "days_sha256": "f1f38f66843cfb6c52de5c8d65b7ebde972e91d2171a048cee8c2bde6a76cd29"
+    },
+    "tn-12": {
+      "printed_dates": 365,
+      "raster_dates": 365,
+      "hidden_unpainted_labels": [],
+      "closed_dates": [
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03"
+      ],
+      "simultaneous_dates": 24,
+      "collection_counts": {
+        "batteries": 24,
+        "bottles_glass": 24,
+        "bulky": 24,
+        "burnable": 104,
+        "mercury": 24,
+        "metals": 24,
+        "non_burnable": 24,
+        "paper": 24,
+        "pet_bottles": 24,
+        "plastic_packaging": 24
+      },
+      "image_labels_checked": 320,
+      "source_sha256": "bb19028fcc8609fd92f3f5256891f58ef2f78ca422da676166e1ec8649317284",
+      "days_sha256": "987b3f274d5b1001d2cb2b4c91c8ded73d6577a50251748b27e55e927f96fef6"
+    },
+    "tn-13": {
+      "printed_dates": 365,
+      "raster_dates": 365,
+      "hidden_unpainted_labels": [],
+      "closed_dates": [
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03"
+      ],
+      "simultaneous_dates": 47,
+      "collection_counts": {
+        "batteries": 12,
+        "bottles_glass": 24,
+        "bulky": 12,
+        "burnable": 104,
+        "mercury": 12,
+        "metals": 24,
+        "non_burnable": 24,
+        "paper": 24,
+        "pet_bottles": 24,
+        "plastic_packaging": 24
+      },
+      "image_labels_checked": 284,
+      "source_sha256": "abe6de5ed58cc0c456ea040a596756e47f052ea73c1f73a33bec09450efd50db",
+      "days_sha256": "b6bf075b7601076948d2a3996a17ba1070dd1a68f7aa6aff66818d9e9375b138"
+    },
+    "tn-14": {
+      "printed_dates": 365,
+      "raster_dates": 365,
+      "hidden_unpainted_labels": [],
+      "closed_dates": [
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03"
+      ],
+      "simultaneous_dates": 47,
+      "collection_counts": {
+        "batteries": 12,
+        "bottles_glass": 24,
+        "bulky": 12,
+        "burnable": 103,
+        "mercury": 12,
+        "metals": 24,
+        "non_burnable": 24,
+        "paper": 24,
+        "pet_bottles": 24,
+        "plastic_packaging": 24
+      },
+      "image_labels_checked": 283,
+      "source_sha256": "e9edaff00b8431e48c04e12cee9f19a6596c9b35b170e27dbc718dc82574172e",
+      "days_sha256": "fc9fd2dbbc85e5d8e2a7fc80abdc83586f87ad4c8e1b13435daf00266cc1d24e"
+    },
+    "tn-15": {
+      "printed_dates": 365,
+      "raster_dates": 365,
+      "hidden_unpainted_labels": [],
+      "closed_dates": [
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03"
+      ],
+      "simultaneous_dates": 59,
+      "collection_counts": {
+        "batteries": 47,
+        "bottles_glass": 24,
+        "bulky": 12,
+        "burnable": 103,
+        "mercury": 12,
+        "metals": 24,
+        "non_burnable": 24,
+        "paper": 24,
+        "pet_bottles": 24,
+        "plastic_packaging": 24
+      },
+      "image_labels_checked": 318,
+      "source_sha256": "ad9fb504160afacdf1b59bfd61823dcbd10b192d5b77b39e5a7b325eb513a703",
+      "days_sha256": "73eeebcf460baed1fb1ec1b8c7e2c621783c75b9535c72dbff0f1b024501a3af"
+    },
+    "tn-16": {
+      "printed_dates": 365,
+      "raster_dates": 365,
+      "hidden_unpainted_labels": [],
+      "closed_dates": [
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03"
+      ],
+      "simultaneous_dates": 47,
+      "collection_counts": {
+        "batteries": 12,
+        "bottles_glass": 24,
+        "bulky": 12,
+        "burnable": 103,
+        "mercury": 12,
+        "metals": 24,
+        "non_burnable": 24,
+        "paper": 24,
+        "pet_bottles": 24,
+        "plastic_packaging": 24
+      },
+      "image_labels_checked": 283,
+      "source_sha256": "fce2f7a89eb07727ab3c0270025466dcf0c20a3cede459fba689c21975432072",
+      "days_sha256": "a5fb5584082523d75fb5172ec0c9d612856afdb97c8746072cdb5a3dd49c7655"
+    },
+    "tn-17": {
+      "printed_dates": 365,
+      "raster_dates": 365,
+      "hidden_unpainted_labels": [],
+      "closed_dates": [
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03"
+      ],
+      "simultaneous_dates": 47,
+      "collection_counts": {
+        "batteries": 12,
+        "bottles_glass": 24,
+        "bulky": 12,
+        "burnable": 103,
+        "mercury": 12,
+        "metals": 24,
+        "non_burnable": 24,
+        "paper": 24,
+        "pet_bottles": 24,
+        "plastic_packaging": 24
+      },
+      "image_labels_checked": 283,
+      "source_sha256": "71bb36b80e124f5650d1d5e5d650316bff6dec6799040dba863bc23633c49b79",
+      "days_sha256": "a5fb5584082523d75fb5172ec0c9d612856afdb97c8746072cdb5a3dd49c7655"
+    },
+    "tn-18": {
+      "printed_dates": 365,
+      "raster_dates": 365,
+      "hidden_unpainted_labels": [],
+      "closed_dates": [
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03"
+      ],
+      "simultaneous_dates": 47,
+      "collection_counts": {
+        "batteries": 12,
+        "bottles_glass": 24,
+        "bulky": 12,
+        "burnable": 103,
+        "mercury": 12,
+        "metals": 24,
+        "non_burnable": 24,
+        "paper": 24,
+        "pet_bottles": 24,
+        "plastic_packaging": 24
+      },
+      "image_labels_checked": 283,
+      "source_sha256": "e3d19057ec019f7ee5357641e1a75216563b611994c22233285bdc5de1a7c680",
+      "days_sha256": "a5fb5584082523d75fb5172ec0c9d612856afdb97c8746072cdb5a3dd49c7655"
+    },
+    "tn-19": {
+      "printed_dates": 365,
+      "raster_dates": 365,
+      "hidden_unpainted_labels": [],
+      "closed_dates": [
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03"
+      ],
+      "simultaneous_dates": 47,
+      "collection_counts": {
+        "batteries": 12,
+        "bottles_glass": 24,
+        "bulky": 12,
+        "burnable": 103,
+        "mercury": 12,
+        "metals": 24,
+        "non_burnable": 24,
+        "paper": 24,
+        "pet_bottles": 24,
+        "plastic_packaging": 24
+      },
+      "image_labels_checked": 283,
+      "source_sha256": "0a04a49a521385243088f85778f94d8de1eece25228501293950cd3589545af8",
+      "days_sha256": "a5fb5584082523d75fb5172ec0c9d612856afdb97c8746072cdb5a3dd49c7655"
+    },
+    "tn-20": {
+      "printed_dates": 365,
+      "raster_dates": 365,
+      "hidden_unpainted_labels": [],
+      "closed_dates": [
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03"
+      ],
+      "simultaneous_dates": 47,
+      "collection_counts": {
+        "batteries": 12,
+        "bottles_glass": 24,
+        "bulky": 12,
+        "burnable": 103,
+        "mercury": 12,
+        "metals": 24,
+        "non_burnable": 24,
+        "paper": 24,
+        "pet_bottles": 24,
+        "plastic_packaging": 24
+      },
+      "image_labels_checked": 283,
+      "source_sha256": "9ce0e468763a24843f6cee7a64e6a0f1fa43bee7ab6885dc1ea7f121b4791e95",
+      "days_sha256": "a5fb5584082523d75fb5172ec0c9d612856afdb97c8746072cdb5a3dd49c7655"
+    },
+    "tn-21": {
+      "printed_dates": 365,
+      "raster_dates": 365,
+      "hidden_unpainted_labels": [],
+      "closed_dates": [
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03"
+      ],
+      "simultaneous_dates": 59,
+      "collection_counts": {
+        "batteries": 59,
+        "bottles_glass": 24,
+        "bulky": 12,
+        "burnable": 103,
+        "mercury": 12,
+        "metals": 24,
+        "non_burnable": 24,
+        "paper": 24,
+        "pet_bottles": 24,
+        "plastic_packaging": 24
+      },
+      "image_labels_checked": 330,
+      "source_sha256": "8c30a4ce1d049487adae89416a9f5574ce1fcf703e9089841ce1d0f46e91a5ec",
+      "days_sha256": "15c248bee3f42f904ce4f55949cc8a33ab143e8700df7809ac4350f289101340"
+    },
+    "tn-22": {
+      "printed_dates": 365,
+      "raster_dates": 365,
+      "hidden_unpainted_labels": [],
+      "closed_dates": [
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03"
+      ],
+      "simultaneous_dates": 47,
+      "collection_counts": {
+        "batteries": 12,
+        "bottles_glass": 24,
+        "bulky": 12,
+        "burnable": 103,
+        "mercury": 12,
+        "metals": 24,
+        "non_burnable": 24,
+        "paper": 24,
+        "pet_bottles": 24,
+        "plastic_packaging": 24
+      },
+      "image_labels_checked": 283,
+      "source_sha256": "ed8970710631a2f2dc12063dcde10e63a570eaa919eeb190757e75e87bd6378c",
+      "days_sha256": "a5fb5584082523d75fb5172ec0c9d612856afdb97c8746072cdb5a3dd49c7655"
+    },
+    "tn-23": {
+      "printed_dates": 365,
+      "raster_dates": 365,
+      "hidden_unpainted_labels": [],
+      "closed_dates": [
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03"
+      ],
+      "simultaneous_dates": 59,
+      "collection_counts": {
+        "batteries": 24,
+        "bottles_glass": 24,
+        "bulky": 24,
+        "burnable": 104,
+        "mercury": 24,
+        "metals": 24,
+        "non_burnable": 24,
+        "paper": 24,
+        "pet_bottles": 24,
+        "plastic_packaging": 24
+      },
+      "image_labels_checked": 320,
+      "source_sha256": "2986833a7b36e2e1b39716f18e5ad12162607e4ac1d2bfb657d7a452307dfe01",
+      "days_sha256": "c480a113eb075bdf17b75c90ab20092911242e98dd38ee8f3998bb479b7def5d"
+    },
+    "tn-24": {
+      "printed_dates": 365,
+      "raster_dates": 365,
+      "hidden_unpainted_labels": [],
+      "closed_dates": [
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03"
+      ],
+      "simultaneous_dates": 59,
+      "collection_counts": {
+        "batteries": 12,
+        "bottles_glass": 24,
+        "bulky": 12,
+        "burnable": 104,
+        "mercury": 12,
+        "metals": 24,
+        "non_burnable": 24,
+        "paper": 24,
+        "pet_bottles": 24,
+        "plastic_packaging": 24
+      },
+      "image_labels_checked": 284,
+      "source_sha256": "19c9173278348c384915cfe63f9a5b6eb1880c8d7817578a533eff792f9d9cae",
+      "days_sha256": "ffff16111b472eb7c83fe81033443c7032b9869c6bbba7ef95856056b3af43c3"
+    },
+    "tn-25": {
+      "printed_dates": 365,
+      "raster_dates": 365,
+      "hidden_unpainted_labels": [],
+      "closed_dates": [
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03"
+      ],
+      "simultaneous_dates": 35,
+      "collection_counts": {
+        "batteries": 12,
+        "bottles_glass": 12,
+        "bulky": 12,
+        "burnable": 104,
+        "mercury": 12,
+        "metals": 12,
+        "non_burnable": 24,
+        "paper": 24,
+        "pet_bottles": 24,
+        "plastic_packaging": 24
+      },
+      "image_labels_checked": 260,
+      "source_sha256": "9d4e2ed3e1bfbc22ef45915b7d30d849ce973982a03bf71f1cd3534b4efb349a",
+      "days_sha256": "ba32ac885e4d7c92a7b828a2a7c4b553815cfd951229d974497b3f8750b05b32"
+    },
+    "tn-26": {
+      "printed_dates": 365,
+      "raster_dates": 365,
+      "hidden_unpainted_labels": [
+        {
+          "date": "2026-05-09",
+          "symbol": "紙類収集"
+        }
+      ],
+      "closed_dates": [
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03"
+      ],
+      "simultaneous_dates": 47,
+      "collection_counts": {
+        "batteries": 47,
+        "bottles_glass": 24,
+        "bulky": 24,
+        "burnable": 103,
+        "mercury": 12,
+        "metals": 24,
+        "non_burnable": 24,
+        "paper": 24,
+        "pet_bottles": 24,
+        "plastic_packaging": 24
+      },
+      "image_labels_checked": 330,
+      "source_sha256": "f27da01c3229c6a2ae2b75fe45998e362703e0c55f4ffec939074bbdb2ea7fa9",
+      "days_sha256": "ef7c237e4b5b6870c6f191ae824f1b86e39f29fd25368ed9e2d66fb9011ae84d"
+    },
+    "tn-27": {
+      "printed_dates": 365,
+      "raster_dates": 365,
+      "hidden_unpainted_labels": [
+        {
+          "date": "2026-05-09",
+          "symbol": "紙類収集"
+        }
+      ],
+      "closed_dates": [
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03"
+      ],
+      "simultaneous_dates": 47,
+      "collection_counts": {
+        "batteries": 12,
+        "bottles_glass": 24,
+        "bulky": 12,
+        "burnable": 103,
+        "mercury": 12,
+        "metals": 24,
+        "non_burnable": 24,
+        "paper": 24,
+        "pet_bottles": 24,
+        "plastic_packaging": 24
+      },
+      "image_labels_checked": 283,
+      "source_sha256": "61176778d2a8a0d8434e673e610bcc2e08fcb3a526989e7cf19f8c007698a6c5",
+      "days_sha256": "261c2ddf00735eb8126b81da90ac39c7e0b3620faea6d3bf10cb056a806fe4bc"
+    },
+    "tn-28": {
+      "printed_dates": 365,
+      "raster_dates": 365,
+      "hidden_unpainted_labels": [],
+      "closed_dates": [
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03"
+      ],
+      "simultaneous_dates": 47,
+      "collection_counts": {
+        "batteries": 12,
+        "bottles_glass": 24,
+        "bulky": 12,
+        "burnable": 104,
+        "mercury": 12,
+        "metals": 24,
+        "non_burnable": 24,
+        "paper": 24,
+        "pet_bottles": 24,
+        "plastic_packaging": 24
+      },
+      "image_labels_checked": 284,
+      "source_sha256": "2c4043465a04325692e5df59d24c75e78847fcf39ebd769cc7f959825e5d9210",
+      "days_sha256": "188dfbbe8f8b1ac88c43c042d5b66e92b0dea517ac84fd8473b8f83fde896224"
+    },
+    "tn-29": {
+      "printed_dates": 365,
+      "raster_dates": 365,
+      "hidden_unpainted_labels": [],
+      "closed_dates": [
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03"
+      ],
+      "simultaneous_dates": 59,
+      "collection_counts": {
+        "batteries": 59,
+        "bottles_glass": 24,
+        "bulky": 12,
+        "burnable": 103,
+        "mercury": 12,
+        "metals": 24,
+        "non_burnable": 24,
+        "paper": 24,
+        "pet_bottles": 24,
+        "plastic_packaging": 24
+      },
+      "image_labels_checked": 330,
+      "source_sha256": "f3b5f6b7a25aaad01f6e2672033cc5ba11ddea37cf6e9a0a98673fc114ccc5ef",
+      "days_sha256": "15c248bee3f42f904ce4f55949cc8a33ab143e8700df7809ac4350f289101340"
+    },
+    "tn-30": {
+      "printed_dates": 365,
+      "raster_dates": 365,
+      "hidden_unpainted_labels": [
+        {
+          "date": "2026-07-04",
+          "symbol": "燃やすごみ"
+        }
+      ],
+      "closed_dates": [
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03"
+      ],
+      "simultaneous_dates": 60,
+      "collection_counts": {
+        "batteries": 12,
+        "bottles_glass": 12,
+        "bulky": 12,
+        "burnable": 103,
+        "mercury": 12,
+        "metals": 12,
+        "non_burnable": 12,
+        "paper": 24,
+        "pet_bottles": 24,
+        "plastic_packaging": 24
+      },
+      "image_labels_checked": 247,
+      "source_sha256": "7bb1aeac09050cf1d8054e34a2a8d2acd1e33fe682faa75837a4483ebfc90fda",
+      "days_sha256": "ea3684d93662589da24a7e25ebe325a159ee0eb68078881149516b7334fecff7"
+    },
+    "tn-31": {
+      "printed_dates": 365,
+      "raster_dates": 365,
+      "hidden_unpainted_labels": [
+        {
+          "date": "2026-07-04",
+          "symbol": "燃やすごみ"
+        },
+        {
+          "date": "2027-03-01",
+          "symbol": "燃やすごみ"
+        }
+      ],
+      "closed_dates": [
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03"
+      ],
+      "simultaneous_dates": 60,
+      "collection_counts": {
+        "batteries": 12,
+        "bottles_glass": 12,
+        "bulky": 12,
+        "burnable": 103,
+        "mercury": 12,
+        "metals": 12,
+        "non_burnable": 12,
+        "paper": 24,
+        "pet_bottles": 24,
+        "plastic_packaging": 24
+      },
+      "image_labels_checked": 247,
+      "source_sha256": "03c2e5c0bd7060d7a8d396d6f6ee08b6311b23ff6eb841c900ed7a67351afe20",
+      "days_sha256": "937e8ae715a0d5988806fdd7bd6394d796240b76f792420637466a4a8abb2aa3"
+    },
+    "tn-32": {
+      "printed_dates": 365,
+      "raster_dates": 365,
+      "hidden_unpainted_labels": [],
+      "closed_dates": [
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03"
+      ],
+      "simultaneous_dates": 60,
+      "collection_counts": {
+        "batteries": 12,
+        "bottles_glass": 12,
+        "bulky": 12,
+        "burnable": 104,
+        "mercury": 12,
+        "metals": 12,
+        "non_burnable": 12,
+        "paper": 24,
+        "pet_bottles": 24,
+        "plastic_packaging": 24
+      },
+      "image_labels_checked": 248,
+      "source_sha256": "d55bd376f42278d05a907956f9e6151e1fdf3f110f32bc5e3e5e072156b26c2e",
+      "days_sha256": "13f73426be7e1b0cee5097170d75a0f25f30586f853cea128474fa00a2e976ea"
+    }
+  }
+}

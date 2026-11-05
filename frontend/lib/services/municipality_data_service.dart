@@ -127,7 +127,9 @@ class MunicipalityDataService {
       final id = definition['collection_type_id'] as String?;
       if (id == null) continue;
       final cutoff = definition['cutoff'] as String?;
-      if (cutoff == null ||
+      final unknown = definition['cutoff_status'] == 'unverified';
+      final timeNote = definition['time_note'] as String? ?? '';
+      if (unknown ? cutoff != null || timeNote.isEmpty : cutoff == null ||
           !RegExp(r'^(?:[01]\d|2[0-3]):[0-5]\d$').hasMatch(cutoff)) {
         throw const FormatException('Invalid collection cutoff');
       }
@@ -154,6 +156,8 @@ class MunicipalityDataService {
             scope: '$municipalityId/$profileId',
             displayName: (definition['collection_name'] ?? definition['name']) as String,
             cutoff: cutoff,
+            startTime: definition['start_time'] as String?,
+            timeNote: timeNote,
             colorValue: color == null
                 ? null
                 : int.parse('FF${color.substring(1)}', radix: 16));

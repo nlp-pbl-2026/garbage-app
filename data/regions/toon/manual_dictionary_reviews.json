@@ -1,0 +1,61 @@
+{
+  "source_file": "22090.pdf",
+  "reviewed_at": "2026-11-05",
+  "entries": {
+    "tn-p18-2-1-14": {
+      "category": "金属",
+      "method": "rendered_row_visually_checked_after_ocr_miss"
+    },
+    "tn-p18-2-1-19": {
+      "category": "金属",
+      "method": "rendered_row_visually_checked_after_ocr_miss"
+    },
+    "tn-p19-2-2-02": {
+      "category": "金属",
+      "method": "rendered_row_visually_checked_after_ocr_miss"
+    },
+    "tn-p20-1-2-10": {
+      "category": "金属",
+      "method": "rendered_row_visually_checked_after_ocr_miss"
+    },
+    "tn-p26-1-2-14": {
+      "category": "金属",
+      "method": "rendered_row_visually_checked_after_ocr_miss"
+    },
+    "tn-p39-2-1-04": {
+      "category": "金属",
+      "method": "rendered_row_visually_checked_after_ocr_miss"
+    },
+    "tn-p41-2-2-01": {
+      "category": "金属",
+      "method": "rendered_row_visually_checked_after_ocr_miss"
+    },
+    "tn-p42-2-2-07": {
+      "category": "金属",
+      "method": "rendered_row_visually_checked_after_ocr_miss"
+    },
+    "tn-p44-2-2-04": {
+      "category": "金属",
+      "method": "rendered_row_visually_checked_after_ocr_miss"
+    },
+    "tn-p45-2-1-04": {
+      "category": "不可",
+      "method": "rendered_row_visually_checked_after_ocr_miss"
+    },
+    "tn-p47-2-2-07": {
+      "category": "金属",
+      "method": "rendered_row_visually_checked_after_ocr_miss"
+    },
+    "tn-p48-2-1-09": {
+      "category": "金属",
+      "method": "rendered_row_visually_checked_after_ocr_miss"
+    },
+    "tn-p49-2-1-19": {
+      "category": "金属",
+      "method": "rendered_row_visually_checked_after_ocr_miss"
+    }
+  },
+  "blank_classification": {
+    "tn-p36-2-1-07": "卵パック（プラ製）の分類欄は原本でも空欄。推測で埋めない。"
+  }
+}

@@ -37,7 +37,7 @@ ASSIGNED = {
     "38422": {"slug": "uchiko", "name": "内子町", "items": 876, "areas": 26},
     "38401": {"slug": "masaki", "name": "松前町", "items": 1384, "areas": 2},
 }
-EXISTING = {"38201", "38204", "38210", "38442", "38205"}
+EXISTING = {"38201", "38204", "38210", "38442", "38205", "38215"}
 
 
 def sha256(path: Path) -> str:

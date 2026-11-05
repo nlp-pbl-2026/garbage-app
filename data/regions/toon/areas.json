@@ -1,0 +1,464 @@
+{
+  "areas": [
+    {
+      "id": "38215-01",
+      "name": "山之内",
+      "display_name": "重信：山之内",
+      "calendar_id": "tn-01",
+      "rule_profile_id": "shigenobu",
+      "source_file": "23149.pdf",
+      "official_title": "山之内",
+      "official_places": [
+        "山之内"
+      ],
+      "updated_at": "2026-09-14",
+      "pdf_area_title": "山之内"
+    },
+    {
+      "id": "38215-02",
+      "name": "樋口",
+      "display_name": "重信：樋口",
+      "calendar_id": "tn-02",
+      "rule_profile_id": "shigenobu",
+      "source_file": "23150.pdf",
+      "official_title": "樋口",
+      "official_places": [
+        "樋口"
+      ],
+      "updated_at": "2026-09-14",
+      "pdf_area_title": "樋口"
+    },
+    {
+      "id": "38215-03",
+      "name": "横河原",
+      "display_name": "重信：横河原",
+      "calendar_id": "tn-03",
+      "rule_profile_id": "shigenobu",
+      "source_file": "21683.pdf",
+      "official_title": "横河原",
+      "official_places": [
+        "横河原"
+      ],
+      "updated_at": "2026-03-19",
+      "pdf_area_title": "横河原"
+    },
+    {
+      "id": "38215-04",
+      "name": "志津川",
+      "display_name": "重信：志津川",
+      "calendar_id": "tn-04",
+      "rule_profile_id": "shigenobu",
+      "source_file": "21684.pdf",
+      "official_title": "志津川",
+      "official_places": [
+        "志津川"
+      ],
+      "updated_at": "2026-03-19",
+      "pdf_area_title": "志津川"
+    },
+    {
+      "id": "38215-05",
+      "name": "八反地",
+      "display_name": "重信：八反地",
+      "calendar_id": "tn-05",
+      "rule_profile_id": "shigenobu",
+      "source_file": "21685.pdf",
+      "official_title": "八反地",
+      "official_places": [
+        "八反地"
+      ],
+      "updated_at": "2026-03-19",
+      "pdf_area_title": "八反地"
+    },
+    {
+      "id": "38215-06",
+      "name": "志津川南",
+      "display_name": "重信：志津川南",
+      "calendar_id": "tn-06",
+      "rule_profile_id": "shigenobu",
+      "source_file": "21687.pdf",
+      "official_title": "志津川南",
+      "official_places": [
+        "志津川南"
+      ],
+      "updated_at": "2026-03-19",
+      "pdf_area_title": "志津川南"
+    },
+    {
+      "id": "38215-07",
+      "name": "西岡（燃やすごみ月・木）",
+      "display_name": "重信：西岡（燃やすごみ月・木）",
+      "calendar_id": "tn-07",
+      "rule_profile_id": "shigenobu",
+      "source_file": "23151.pdf",
+      "official_title": "西岡（燃やすごみ月・木）",
+      "official_places": [
+        "西岡（燃やすごみ月・木）"
+      ],
+      "updated_at": "2026-09-14",
+      "pdf_area_title": "西岡"
+    },
+    {
+      "id": "38215-08",
+      "name": "西岡（燃やすごみ火・金）",
+      "display_name": "重信：西岡（燃やすごみ火・金）",
+      "calendar_id": "tn-08",
+      "rule_profile_id": "shigenobu",
+      "source_file": "21689.pdf",
+      "official_title": "西岡（燃やすごみ火・金）",
+      "official_places": [
+        "西岡（燃やすごみ火・金）"
+      ],
+      "updated_at": "2026-03-19",
+      "pdf_area_title": "西岡"
+    },
+    {
+      "id": "38215-09",
+      "name": "見奈良",
+      "display_name": "重信：見奈良",
+      "calendar_id": "tn-09",
+      "rule_profile_id": "shigenobu",
+      "source_file": "23152.pdf",
+      "official_title": "見奈良",
+      "official_places": [
+        "見奈良"
+      ],
+      "updated_at": "2026-09-14",
+      "pdf_area_title": "見奈良"
+    },
+    {
+      "id": "38215-10",
+      "name": "田窪（燃やすごみ月・木）",
+      "display_name": "重信：田窪（燃やすごみ月・木）",
+      "calendar_id": "tn-10",
+      "rule_profile_id": "shigenobu",
+      "source_file": "21691.pdf",
+      "official_title": "田窪（燃やすごみ月・木）",
+      "official_places": [
+        "田窪（燃やすごみ月・木）"
+      ],
+      "updated_at": "2026-03-19",
+      "pdf_area_title": "田窪"
+    },
+    {
+      "id": "38215-11",
+      "name": "田窪（燃やすごみ火・金）",
+      "display_name": "重信：田窪（燃やすごみ火・金）",
+      "calendar_id": "tn-11",
+      "rule_profile_id": "shigenobu",
+      "source_file": "21692.pdf",
+      "official_title": "田窪（燃やすごみ火・金）",
+      "official_places": [
+        "田窪（燃やすごみ火・金）"
+      ],
+      "updated_at": "2026-03-19",
+      "pdf_area_title": "田窪"
+    },
+    {
+      "id": "38215-12",
+      "name": "田窪（燃やすごみ水・土）",
+      "display_name": "重信：田窪（燃やすごみ水・土）",
+      "calendar_id": "tn-12",
+      "rule_profile_id": "shigenobu",
+      "source_file": "21693.pdf",
+      "official_title": "田窪（燃やすごみ水・土）",
+      "official_places": [
+        "田窪（燃やすごみ水・土）"
+      ],
+      "updated_at": "2026-03-19",
+      "pdf_area_title": "田窪"
+    },
+    {
+      "id": "38215-13",
+      "name": "田窪団地",
+      "display_name": "重信：田窪団地",
+      "calendar_id": "tn-13",
+      "rule_profile_id": "shigenobu",
+      "source_file": "21694.pdf",
+      "official_title": "田窪団地",
+      "official_places": [
+        "田窪団地"
+      ],
+      "updated_at": "2026-03-19",
+      "pdf_area_title": "田窪団地"
+    },
+    {
+      "id": "38215-14",
+      "name": "牛渕・堀池",
+      "display_name": "重信：牛渕・堀池",
+      "calendar_id": "tn-14",
+      "rule_profile_id": "shigenobu",
+      "source_file": "22919.pdf",
+      "official_title": "牛渕・堀池",
+      "official_places": [
+        "牛渕・堀池"
+      ],
+      "updated_at": "2026-07-31",
+      "pdf_area_title": "牛渕・堀池"
+    },
+    {
+      "id": "38215-15",
+      "name": "牛渕団地",
+      "display_name": "重信：牛渕団地",
+      "calendar_id": "tn-15",
+      "rule_profile_id": "shigenobu",
+      "source_file": "21696.pdf",
+      "official_title": "牛渕団地",
+      "official_places": [
+        "牛渕団地"
+      ],
+      "updated_at": "2026-03-19",
+      "pdf_area_title": "牛渕団地"
+    },
+    {
+      "id": "38215-16",
+      "name": "播磨台団地",
+      "display_name": "重信：播磨台団地",
+      "calendar_id": "tn-16",
+      "rule_profile_id": "shigenobu",
+      "source_file": "21697.pdf",
+      "official_title": "播磨台団地",
+      "official_places": [
+        "播磨台団地"
+      ],
+      "updated_at": "2026-03-19",
+      "pdf_area_title": "播磨台団地"
+    },
+    {
+      "id": "38215-17",
+      "name": "上樋",
+      "display_name": "重信：上樋",
+      "calendar_id": "tn-17",
+      "rule_profile_id": "shigenobu",
+      "source_file": "23153.pdf",
+      "official_title": "上樋",
+      "official_places": [
+        "上樋"
+      ],
+      "updated_at": "2026-09-14",
+      "pdf_area_title": "上樋"
+    },
+    {
+      "id": "38215-18",
+      "name": "南野田",
+      "display_name": "重信：南野田",
+      "calendar_id": "tn-18",
+      "rule_profile_id": "shigenobu",
+      "source_file": "23154.pdf",
+      "official_title": "南野田",
+      "official_places": [
+        "南野田"
+      ],
+      "updated_at": "2026-09-14",
+      "pdf_area_title": "南野田"
+    },
+    {
+      "id": "38215-19",
+      "name": "北野田",
+      "display_name": "重信：北野田",
+      "calendar_id": "tn-19",
+      "rule_profile_id": "shigenobu",
+      "source_file": "21700.pdf",
+      "official_title": "北野田",
+      "official_places": [
+        "北野田"
+      ],
+      "updated_at": "2026-03-19",
+      "pdf_area_title": "北野田"
+    },
+    {
+      "id": "38215-20",
+      "name": "野田1・2丁目",
+      "display_name": "重信：野田1・2丁目",
+      "calendar_id": "tn-20",
+      "rule_profile_id": "shigenobu",
+      "source_file": "21701.pdf",
+      "official_title": "野田1・2丁目",
+      "official_places": [
+        "野田1・2丁目"
+      ],
+      "updated_at": "2026-03-19",
+      "pdf_area_title": "野田1・2丁目"
+    },
+    {
+      "id": "38215-21",
+      "name": "新村・野田3丁目",
+      "display_name": "重信：新村・野田3丁目",
+      "calendar_id": "tn-21",
+      "rule_profile_id": "shigenobu",
+      "source_file": "21702.pdf",
+      "official_title": "新村・野田3丁目",
+      "official_places": [
+        "新村・野田3丁目"
+      ],
+      "updated_at": "2026-03-19",
+      "pdf_area_title": "新村・野田3丁目"
+    },
+    {
+      "id": "38215-22",
+      "name": "北野台団地",
+      "display_name": "重信：北野台団地",
+      "calendar_id": "tn-22",
+      "rule_profile_id": "shigenobu",
+      "source_file": "23155.pdf",
+      "official_title": "北野台団地",
+      "official_places": [
+        "北野台団地"
+      ],
+      "updated_at": "2026-09-14",
+      "pdf_area_title": "北野台団地"
+    },
+    {
+      "id": "38215-23",
+      "name": "下林",
+      "display_name": "重信：下林",
+      "calendar_id": "tn-23",
+      "rule_profile_id": "shigenobu",
+      "source_file": "22920.pdf",
+      "official_title": "下林",
+      "official_places": [
+        "下林"
+      ],
+      "updated_at": "2026-07-31",
+      "pdf_area_title": "下林"
+    },
+    {
+      "id": "38215-24",
+      "name": "上林",
+      "display_name": "重信：上林",
+      "calendar_id": "tn-24",
+      "rule_profile_id": "shigenobu",
+      "source_file": "23156.pdf",
+      "official_title": "上林",
+      "official_places": [
+        "上林"
+      ],
+      "updated_at": "2026-09-14",
+      "pdf_area_title": "上林"
+    },
+    {
+      "id": "38215-25",
+      "name": "上村",
+      "display_name": "重信：上村",
+      "calendar_id": "tn-25",
+      "rule_profile_id": "shigenobu",
+      "source_file": "22921.pdf",
+      "official_title": "上村",
+      "official_places": [
+        "上村"
+      ],
+      "updated_at": "2026-07-31",
+      "pdf_area_title": "上村"
+    },
+    {
+      "id": "38215-26",
+      "name": "愛大医学部看護師宿舎",
+      "display_name": "重信：愛大医学部看護師宿舎",
+      "calendar_id": "tn-26",
+      "rule_profile_id": "shigenobu",
+      "source_file": "21707.pdf",
+      "official_title": "愛大医学部看護師宿舎",
+      "official_places": [
+        "愛大医学部看護師宿舎"
+      ],
+      "updated_at": "2026-03-19",
+      "pdf_area_title": "愛大病院看護宿舎"
+    },
+    {
+      "id": "38215-27",
+      "name": "自衛隊官舎",
+      "display_name": "重信：自衛隊官舎",
+      "calendar_id": "tn-27",
+      "rule_profile_id": "shigenobu",
+      "source_file": "21708.pdf",
+      "official_title": "自衛隊官舎",
+      "official_places": [
+        "自衛隊官舎"
+      ],
+      "updated_at": "2026-03-19",
+      "pdf_area_title": "自衛隊官舎"
+    },
+    {
+      "id": "38215-28",
+      "name": "刑務所官舎",
+      "display_name": "重信：刑務所官舎",
+      "calendar_id": "tn-28",
+      "rule_profile_id": "shigenobu",
+      "source_file": "21709.pdf",
+      "official_title": "刑務所官舎",
+      "official_places": [
+        "刑務所官舎"
+      ],
+      "updated_at": "2026-03-19",
+      "pdf_area_title": "刑務所官舎"
+    },
+    {
+      "id": "38215-29",
+      "name": "県営天神団地",
+      "display_name": "重信：県営天神団地",
+      "calendar_id": "tn-29",
+      "rule_profile_id": "shigenobu",
+      "source_file": "21710.pdf",
+      "official_title": "県営天神団地",
+      "official_places": [
+        "県営天神団地"
+      ],
+      "updated_at": "2026-03-19",
+      "pdf_area_title": "天神団地"
+    },
+    {
+      "id": "38215-30",
+      "name": "河之内・土谷・滑川・則之内東・則之内西・井内・奥松瀬川",
+      "display_name": "川内：河之内・土谷・滑川・則之内東・則之内西・井内・奥松瀬川",
+      "calendar_id": "tn-30",
+      "rule_profile_id": "kawauchi",
+      "source_file": "21663.pdf",
+      "official_title": "A地区",
+      "official_places": [
+        "河之内",
+        "土谷",
+        "滑川",
+        "則之内東",
+        "則之内西",
+        "井内",
+        "奥松瀬川"
+      ],
+      "updated_at": "2026-03-18",
+      "pdf_area_title": "A地区"
+    },
+    {
+      "id": "38215-31",
+      "name": "北方東・北方西・南方東・南方西",
+      "display_name": "川内：北方東・北方西・南方東・南方西",
+      "calendar_id": "tn-31",
+      "rule_profile_id": "kawauchi",
+      "source_file": "21664.pdf",
+      "official_title": "B地区",
+      "official_places": [
+        "北方東",
+        "北方西",
+        "南方東",
+        "南方西"
+      ],
+      "updated_at": "2026-03-18",
+      "pdf_area_title": "B地区"
+    },
+    {
+      "id": "38215-32",
+      "name": "町東・町西・前松瀬川・横灘団地",
+      "display_name": "川内：町東・町西・前松瀬川・横灘団地",
+      "calendar_id": "tn-32",
+      "rule_profile_id": "kawauchi",
+      "source_file": "21665.pdf",
+      "official_title": "C地区",
+      "official_places": [
+        "町東",
+        "町西",
+        "前松瀬川",
+        "横灘団地"
+      ],
+      "updated_at": "2026-03-18",
+      "pdf_area_title": "C地区"
+    }
+  ]
+}

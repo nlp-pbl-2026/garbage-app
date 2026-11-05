@@ -1,0 +1,1988 @@
+{
+  "reviewed_at": "2026-11-05",
+  "official_source": "https://www.city.iyo.lg.jp/shiminseikatsu/kurashi/gomi/bunbetsu/shigen/petbottle.html",
+  "conclusion": "食品用PET表示のある本体はpet_bottles。外したキャップ・ラベルはplastic_packaging。",
+  "data_changes": "既存全自治体のCSV・NPZ・manifest・ルール・カレンダーを変更していない。",
+  "causes": [
+    "検索語補完がプラマークなしをありに反転した。",
+    "外した部品の名称を本体検索の検索語へ再追加し、本体という対象を落としていた。",
+    "追加質問の条件判定が、モデルが採用した根拠ではなく先頭候補のプラマーク条件を適用していた。"
+  ],
+  "fix": [
+    "マークの有無・未確認と、該当する質問へのはい・いいえを区別して保持。",
+    "明示したPET本体の検索対象を保持し、取り外した部品だけの検索と区別。",
+    "松山市以外の条件判定は採用した構造化根拠を参照。松山市の従来の条件ガードは維持。"
+  ],
+  "model_settings": [
+    "amazon.nova-lite-v1:0",
+    "amazon.titan-embed-text-v2:0",
+    8,
+    0.15,
+    0.75,
+    false,
+    false
+  ],
+  "index_calls": 0,
+  "evaluation_calls": {
+    "nova": 40,
+    "titan": 20
+  },
+  "evaluation_cases": 20,
+  "conservative_cost_usd": 0.0938508,
+  "limits": {
+    "model_calls": 72,
+    "cases": 24,
+    "estimated_usd": 0.5
+  },
+  "phase_metadata": {
+    "before": {
+      "case_sha256": "0605b7adb2cb4a5540d439bda87fb074732d1528b169e88cb1ab7168f408aa9c",
+      "model_settings": [
+        "amazon.nova-lite-v1:0",
+        "amazon.titan-embed-text-v2:0",
+        8,
+        0.15,
+        0.75,
+        false,
+        false
+      ],
+      "evaluation_time": "2026-11-05T07:00:00+09:00",
+      "combined_budget_usd": 0.5,
+      "max_evaluation_calls": 72,
+      "index_regenerated": false,
+      "code_sha256": "0f51fd1eebf1bfa60ca1682aa4956c5c39d89ec6a3dca792b81c43a8a3059abc",
+      "case_ids": [
+        1,
+        2,
+        5,
+        8
+      ],
+      "dataset_sha256": {
+        "data/regions/iyo/knowledge/items.csv": "478e92ebfa83180d8576557ec5ff5394c0943cd95c79319f1342625a7165b254",
+        "data/regions/iyo/knowledge/item_embeddings.npz": "10fe774db4afc002cda3454cfb04d9f40bf9dbc0731a15e8e8d894034cc9c44d",
+        "data/regions/iyo/generated/calendar-2026.json": "d7c8468a207f40071b2ea530e2baa66f6f732889b2cebedf06891f89decfb04f",
+        "data/regions/toon/knowledge/items.csv": "a3ea19ad5f6e57b0673da8b7025665940d587e5bf0fc0bbcd23e05dfe39ad7fb",
+        "data/regions/toon/knowledge/item_embeddings.npz": "279751635524d0ea7a0ad751d97083b8b1144d67e1b13939d35fd9d27417f57f",
+        "data/regions/toon/generated/calendar-2026.json": "4f98e74348535d672105448536e3dc31fe87f331a5a1e5f630e0932e441cb795",
+        "data/regions/matsuyama/common/knowledge/items.csv": "fd38e95346a5674ecd025e40a46c0174022a7f2b6e230fda9358371539d38e3f",
+        "data/regions/matsuyama/common/knowledge/item_embeddings.npz": "0723ed68cdbedea2a84d67c13d06f7b9f9d62a576c800b5cb33666d7d473f283",
+        "data/regions/matsuyama/generated/calendar-2026.json": "e974fd44a8edfbb63d08d7168917cb8f74c54a7ba5d93aeecfdd79d755a41d42",
+        "data/regions/yawatahama/knowledge/items.csv": "2f36dccd7b2647fc1878c52fdee825c9688e76a4df37625d269072f9c18a0db2",
+        "data/regions/yawatahama/knowledge/item_embeddings.npz": "581de598878513f4c14ec6ac8c591fd635fabb0ef268cfe5f2e191a522aebd68",
+        "data/regions/yawatahama/generated/calendar-2026.json": "f3ab7d418b234c517d6d65ef383fe8da571ad38445a15b82f91fa7cc5fe5f5fd",
+        "data/regions/ikata/knowledge/items.csv": "c86fac31300fad306afe4364ac0a51164d8461318f6ceee244a8f7d3d568881c",
+        "data/regions/ikata/knowledge/item_embeddings.npz": "18bc4f22be405d88744435c998a5778b0369c77b95bbb7b3f8881e347ebcbeff",
+        "data/regions/ikata/generated/calendar-2026.json": "c227fe6ecb608057ebd6c660b2c84e8c1e8cff86099dec69d961046dd41a6a66",
+        "data/regions/niihama/knowledge/items.csv": "9f02de71f9babb8d0f13b0644b14e245d08b7b85a57accc12d6bfacd4410cbed",
+        "data/regions/niihama/knowledge/item_embeddings.npz": "f5d13a07a8a6813dfc310db147566aa01690952b76bccdad350c2a341d32d35c",
+        "data/regions/niihama/generated/calendar-2026.json": "d448bac9eae27ab509c2455ccb92050acc4ced89e24f0d8601cdbd0052415e68"
+      }
+    },
+    "after": {
+      "case_sha256": "6e525898e00eaca5824eb5921a50490730968cbdb7d7cd8c820bfdd8b156e116",
+      "model_settings": [
+        "amazon.nova-lite-v1:0",
+        "amazon.titan-embed-text-v2:0",
+        8,
+        0.15,
+        0.75,
+        false,
+        false
+      ],
+      "evaluation_time": "2026-11-05T07:00:00+09:00",
+      "combined_budget_usd": 0.5,
+      "max_evaluation_calls": 72,
+      "index_regenerated": false,
+      "code_sha256": "ab791faca8195f9ae16ed2b1ef838f816d44817a064dff87d4c1595ca6134529",
+      "case_ids": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "dataset_sha256": {
+        "data/regions/iyo/knowledge/items.csv": "478e92ebfa83180d8576557ec5ff5394c0943cd95c79319f1342625a7165b254",
+        "data/regions/iyo/knowledge/item_embeddings.npz": "10fe774db4afc002cda3454cfb04d9f40bf9dbc0731a15e8e8d894034cc9c44d",
+        "data/regions/iyo/generated/calendar-2026.json": "d7c8468a207f40071b2ea530e2baa66f6f732889b2cebedf06891f89decfb04f",
+        "data/regions/toon/knowledge/items.csv": "a3ea19ad5f6e57b0673da8b7025665940d587e5bf0fc0bbcd23e05dfe39ad7fb",
+        "data/regions/toon/knowledge/item_embeddings.npz": "279751635524d0ea7a0ad751d97083b8b1144d67e1b13939d35fd9d27417f57f",
+        "data/regions/toon/generated/calendar-2026.json": "4f98e74348535d672105448536e3dc31fe87f331a5a1e5f630e0932e441cb795",
+        "data/regions/matsuyama/common/knowledge/items.csv": "fd38e95346a5674ecd025e40a46c0174022a7f2b6e230fda9358371539d38e3f",
+        "data/regions/matsuyama/common/knowledge/item_embeddings.npz": "0723ed68cdbedea2a84d67c13d06f7b9f9d62a576c800b5cb33666d7d473f283",
+        "data/regions/matsuyama/generated/calendar-2026.json": "e974fd44a8edfbb63d08d7168917cb8f74c54a7ba5d93aeecfdd79d755a41d42",
+        "data/regions/yawatahama/knowledge/items.csv": "2f36dccd7b2647fc1878c52fdee825c9688e76a4df37625d269072f9c18a0db2",
+        "data/regions/yawatahama/knowledge/item_embeddings.npz": "581de598878513f4c14ec6ac8c591fd635fabb0ef268cfe5f2e191a522aebd68",
+        "data/regions/yawatahama/generated/calendar-2026.json": "f3ab7d418b234c517d6d65ef383fe8da571ad38445a15b82f91fa7cc5fe5f5fd",
+        "data/regions/ikata/knowledge/items.csv": "c86fac31300fad306afe4364ac0a51164d8461318f6ceee244a8f7d3d568881c",
+        "data/regions/ikata/knowledge/item_embeddings.npz": "18bc4f22be405d88744435c998a5778b0369c77b95bbb7b3f8881e347ebcbeff",
+        "data/regions/ikata/generated/calendar-2026.json": "c227fe6ecb608057ebd6c660b2c84e8c1e8cff86099dec69d961046dd41a6a66",
+        "data/regions/niihama/knowledge/items.csv": "9f02de71f9babb8d0f13b0644b14e245d08b7b85a57accc12d6bfacd4410cbed",
+        "data/regions/niihama/knowledge/item_embeddings.npz": "f5d13a07a8a6813dfc310db147566aa01690952b76bccdad350c2a341d32d35c",
+        "data/regions/niihama/generated/calendar-2026.json": "d448bac9eae27ab509c2455ccb92050acc4ced89e24f0d8601cdbd0052415e68"
+      }
+    }
+  },
+  "runs": {
+    "before": [
+      {
+        "case": 1,
+        "input": {
+          "municipality_id": "38210",
+          "district_id": "38210-iyo-south",
+          "query": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+          "clarifications": []
+        },
+        "expected": "pet_bottles",
+        "pass": false,
+        "http_status": 200,
+        "status": "needs_clarification",
+        "rewritten_query": "ペットボトル 飲料用透明ボトル PETマークあり キャップ",
+        "classification": null,
+        "follow_up_question": "プラマークは付いていますか？",
+        "next_collection": null,
+        "collection_status": null,
+        "sources": [
+          {
+            "title": "伊予市公式ごみ分別の手引き・辞典・更新情報（意味検索）",
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-0525",
+            "snippet": "品目: 酒類の容器（ペット製）\n分類コード: pet_bottles\n分類: ペットボトル\n出し方・注意: すすいでから出す\n区分共通の出し方（上記の品目固有条件を優先）: PETマーク付きの食品・飲料容器。さっと水洗いし、キャップとラベルは外してプラスチック製容器包装へ。本体と分ける。収集日の午前8時30分までに地域の所定の場所へ。一度に45リットル以下の袋3つまで。",
+            "score": 0.34296441078186035
+          },
+          {
+            "title": "伊予市公式ごみ分別の手引き・辞典・更新情報（意味検索）",
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-0884",
+            "snippet": "品目: 調味料の容器（ペット製）\n分類コード: pet_bottles\n分類: ペットボトル\n出し方・注意: すすいでから出す\n区分共通の出し方（上記の品目固有条件を優先）: PETマーク付きの食品・飲料容器。さっと水洗いし、キャップとラベルは外してプラスチック製容器包装へ。本体と分ける。収集日の午前8時30分までに地域の所定の場所へ。一度に45リットル以下の袋3つまで。",
+            "score": 0.31155622005462646
+          },
+          {
+            "title": "伊予市公式ごみ分別の手引き・辞典・更新情報（意味検索）",
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1363",
+            "snippet": "品目: ペットボトル類の本体\n分類コード: pet_bottles\n分類: ペットボトル\n出し方・注意: すすいでから出す\n区分共通の出し方（上記の品目固有条件を優先）: PETマーク付きの食品・飲料容器。さっと水洗いし、キャップとラベルは外してプラスチック製容器包装へ。本体と分ける。収集日の午前8時30分までに地域の所定の場所へ。一度に45リットル以下の袋3つまで。",
+            "score": 0.28310585021972656
+          }
+        ],
+        "retrieved_candidates": [
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1361",
+            "item": "ペットボトル類のキャップ",
+            "score": 0.5702779293060303
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1362",
+            "item": "ペットボトルのラベル",
+            "score": 0.4792562425136566
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-0525",
+            "item": "酒類の容器（ペット製）",
+            "score": 0.34296441078186035
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1358",
+            "item": "ペットフードの袋（紙製）",
+            "score": 0.3137577176094055
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-0884",
+            "item": "調味料の容器（ペット製）",
+            "score": 0.31155622005462646
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-0309",
+            "item": "キャップ（金属製）",
+            "score": 0.3051282465457916
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1286",
+            "item": "ふた・キャップ（プラ製）",
+            "score": 0.2864169478416443
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1363",
+            "item": "ペットボトル類の本体",
+            "score": 0.28310585021972656
+          }
+        ]
+      },
+      {
+        "case": 2,
+        "input": {
+          "municipality_id": "38210",
+          "district_id": "38210-iyo-south",
+          "query": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体。プラマークはありません",
+          "clarifications": []
+        },
+        "expected": "pet_bottles",
+        "pass": false,
+        "http_status": 200,
+        "status": "answered",
+        "rewritten_query": "ペットボトル 飲料用透明ボトル PETマークあり プラマークあり キャップ",
+        "classification": {
+          "item_name": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+          "category_code": "plastic_packaging",
+          "category_name": "プラスチック製容器包装",
+          "disposal_instructions": "中身を残さず洗って水切りし、45リットル以下の無色透明・白色半透明の袋へ。内袋・二重袋にしない。収集日の午前8時30分までに地域の所定の場所へ。一度に45リットル以下の袋3つまで。",
+          "confidence": 0.95
+        },
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-11",
+          "display_date": "2026年11月11日（水）",
+          "collection_type": "プラスチック製容器包装"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "sources": [
+          {
+            "title": "伊予市公式ごみ分別の手引き・辞典・更新情報（意味検索）",
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1361",
+            "snippet": "品目: ペットボトル類のキャップ\n分類コード: plastic_packaging\n分類: プラスチック製容器包装\n区分共通の出し方（上記の品目固有条件を優先）: プラマークのある容器包装が対象。中身を残さず洗って水切りし、45リットル以下の無色透明・白色半透明の袋へ。内袋・二重袋にしない。収集日の午前8時30分までに地域の所定の場所へ。一度に45リットル以下の袋3つまで。",
+            "score": 0.48862510919570923
+          },
+          {
+            "title": "伊予市公式ごみ分別の手引き・辞典・更新情報（意味検索）",
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1362",
+            "snippet": "品目: ペットボトルのラベル\n分類コード: plastic_packaging\n分類: プラスチック製容器包装\n区分共通の出し方（上記の品目固有条件を優先）: プラマークのある容器包装が対象。中身を残さず洗って水切りし、45リットル以下の無色透明・白色半透明の袋へ。内袋・二重袋にしない。収集日の午前8時30分までに地域の所定の場所へ。一度に45リットル以下の袋3つまで。",
+            "score": 0.45952078700065613
+          },
+          {
+            "title": "伊予市公式ごみ分別の手引き・辞典・更新情報（意味検索）",
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1286",
+            "snippet": "品目: ふた・キャップ（プラ製）\n分類コード: plastic_packaging\n分類: プラスチック製容器包装\n条件付き分類コード: [\"non_burnable\"]\n出し方・注意: プラマークのないものは「その他」\n区分共通の出し方（上記の品目固有条件を優先）: プラマークのある容器包装が対象。中身を残さず洗って水切りし、45リットル以下の無色透明・白色半透明の袋へ。内袋・二重袋にしない。収集日の午前8時30分までに地域の所定の場所へ。一度に45リットル以下の袋3つまで",
+            "score": 0.4241436719894409
+          }
+        ],
+        "retrieved_candidates": [
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1361",
+            "item": "ペットボトル類のキャップ",
+            "score": 0.48862510919570923
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1362",
+            "item": "ペットボトルのラベル",
+            "score": 0.45952078700065613
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1286",
+            "item": "ふた・キャップ（プラ製）",
+            "score": 0.4241436719894409
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1407",
+            "item": "防虫剤のケース（プラ製）",
+            "score": 0.41321003437042236
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1548",
+            "item": "目薬の容器",
+            "score": 0.4029945731163025
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1246",
+            "item": "肥料袋（プラ製）",
+            "score": 0.4008750319480896
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-0697",
+            "item": "スティックのりの キャップ",
+            "score": 0.3943147659301758
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-0817",
+            "item": "たい肥袋・容器（プラ製）",
+            "score": 0.391421914100647
+          }
+        ]
+      },
+      {
+        "case": 5,
+        "input": {
+          "municipality_id": "38210",
+          "district_id": "38210-iyo-south",
+          "query": "ペットボトルから外したプラマーク付きのキャップだけ",
+          "clarifications": []
+        },
+        "expected": "plastic_packaging",
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "rewritten_query": "容器のキャップ ペットボトル用 プラマーク付き",
+        "classification": {
+          "item_name": "ペットボトルから外したプラマーク付きのキャップ",
+          "category_code": "plastic_packaging",
+          "category_name": "プラスチック製容器包装",
+          "disposal_instructions": "プラマークのある容器包装が対象。中身を残さず洗って水切りし、45リットル以下の無色透明・白色半透明の袋へ。内袋・二重袋にしない。収集日の午前8時30分までに地域の所定の場所へ。一度に45リットル以下の袋3つまで。",
+          "confidence": 0.95
+        },
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-11",
+          "display_date": "2026年11月11日（水）",
+          "collection_type": "プラスチック製容器包装"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "sources": [
+          {
+            "title": "伊予市公式ごみ分別の手引き・辞典・更新情報（意味検索）",
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1361",
+            "snippet": "品目: ペットボトル類のキャップ\n分類コード: plastic_packaging\n分類: プラスチック製容器包装\n区分共通の出し方（上記の品目固有条件を優先）: プラマークのある容器包装が対象。中身を残さず洗って水切りし、45リットル以下の無色透明・白色半透明の袋へ。内袋・二重袋にしない。収集日の午前8時30分までに地域の所定の場所へ。一度に45リットル以下の袋3つまで。",
+            "score": 0.5980845093727112
+          },
+          {
+            "title": "伊予市公式ごみ分別の手引き・辞典・更新情報（意味検索）",
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1156",
+            "snippet": "品目: 発砲スチロール ［プラマーク有り］\n分類コード: plastic_packaging\n分類: プラスチック製容器包装\n出し方・注意: 汚れているものは洗って出す\n区分共通の出し方（上記の品目固有条件を優先）: プラマークのある容器包装が対象。中身を残さず洗って水切りし、45リットル以下の無色透明・白色半透明の袋へ。内袋・二重袋にしない。収集日の午前8時30分までに地域の所定の場所へ。一度に45リットル以下の袋3つまで。",
+            "score": 0.4431181848049164
+          },
+          {
+            "title": "伊予市公式ごみ分別の手引き・辞典・更新情報（意味検索）",
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1548",
+            "snippet": "品目: 目薬の容器\n分類コード: non_burnable\n分類: 燃えないその他ごみ\n条件付き分類コード: [\"plastic_packaging\"]\n出し方・注意: 中身を使い切る プラマークのあるものは「プラ」\n区分共通の出し方（上記の品目固有条件を優先）: 金属・陶磁器・ガラス・硬いプラスチック等。無色透明・白色半透明の袋へ。刃物・割れ物は紙や布で包み「キケン」「ワレモノ」と書く。スプレー缶等は火気のない屋外で使い切る。充電池を取り外せない製品は無理に分解しない。LE",
+            "score": 0.44201523065567017
+          }
+        ],
+        "retrieved_candidates": [
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1361",
+            "item": "ペットボトル類のキャップ",
+            "score": 0.5980845093727112
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1156",
+            "item": "発砲スチロール ［プラマーク有り］",
+            "score": 0.4431181848049164
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1548",
+            "item": "目薬の容器",
+            "score": 0.44201523065567017
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1407",
+            "item": "防虫剤のケース（プラ製）",
+            "score": 0.42617765069007874
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-0697",
+            "item": "スティックのりの キャップ",
+            "score": 0.4077984094619751
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1432",
+            "item": "墨汁の容器",
+            "score": 0.4045138657093048
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1286",
+            "item": "ふた・キャップ（プラ製）",
+            "score": 0.40431737899780273
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1340",
+            "item": "ヘアスプレーのキャップ （プラ製）",
+            "score": 0.39354783296585083
+          }
+        ]
+      },
+      {
+        "case": 8,
+        "input": {
+          "municipality_id": "38210",
+          "district_id": "38210-iyo-south",
+          "query": "飲み終わったボトル",
+          "clarifications": [
+            {
+              "question": "ペットボトル・プラスチック容器・ガラスびんのどれですか？",
+              "answer": "PETマーク付きの飲料用ペットボトル本体です"
+            }
+          ]
+        },
+        "expected": "pet_bottles",
+        "pass": false,
+        "http_status": 200,
+        "status": "needs_clarification",
+        "rewritten_query": "飲料用ペットボトル 飲み終わった本体 PETマークあり",
+        "classification": null,
+        "follow_up_question": "プラマークは付いていますか？",
+        "next_collection": null,
+        "collection_status": null,
+        "sources": [
+          {
+            "title": "伊予市公式ごみ分別の手引き・辞典・更新情報（意味検索）",
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1363",
+            "snippet": "品目: ペットボトル類の本体\n分類コード: pet_bottles\n分類: ペットボトル\n出し方・注意: すすいでから出す\n区分共通の出し方（上記の品目固有条件を優先）: PETマーク付きの食品・飲料容器。さっと水洗いし、キャップとラベルは外してプラスチック製容器包装へ。本体と分ける。収集日の午前8時30分までに地域の所定の場所へ。一度に45リットル以下の袋3つまで。",
+            "score": 0.3759395182132721
+          },
+          {
+            "title": "伊予市公式ごみ分別の手引き・辞典・更新情報（意味検索）",
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-0525",
+            "snippet": "品目: 酒類の容器（ペット製）\n分類コード: pet_bottles\n分類: ペットボトル\n出し方・注意: すすいでから出す\n区分共通の出し方（上記の品目固有条件を優先）: PETマーク付きの食品・飲料容器。さっと水洗いし、キャップとラベルは外してプラスチック製容器包装へ。本体と分ける。収集日の午前8時30分までに地域の所定の場所へ。一度に45リットル以下の袋3つまで。",
+            "score": 0.35886213183403015
+          },
+          {
+            "title": "伊予市公式ごみ分別の手引き・辞典・更新情報（意味検索）",
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-0884",
+            "snippet": "品目: 調味料の容器（ペット製）\n分類コード: pet_bottles\n分類: ペットボトル\n出し方・注意: すすいでから出す\n区分共通の出し方（上記の品目固有条件を優先）: PETマーク付きの食品・飲料容器。さっと水洗いし、キャップとラベルは外してプラスチック製容器包装へ。本体と分ける。収集日の午前8時30分までに地域の所定の場所へ。一度に45リットル以下の袋3つまで。",
+            "score": 0.2764274477958679
+          }
+        ],
+        "retrieved_candidates": [
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1362",
+            "item": "ペットボトルのラベル",
+            "score": 0.3930063247680664
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1363",
+            "item": "ペットボトル類の本体",
+            "score": 0.3759395182132721
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-0525",
+            "item": "酒類の容器（ペット製）",
+            "score": 0.35886213183403015
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1378",
+            "item": "ペンキの缶",
+            "score": 0.3202870190143585
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-0884",
+            "item": "調味料の容器（ペット製）",
+            "score": 0.2764274477958679
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-0524",
+            "item": "酒類の容器（びん製）",
+            "score": 0.2682453691959381
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1359",
+            "item": "ペットフードの袋 （プラ製）",
+            "score": 0.26093804836273193
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1064",
+            "item": "入浴剤の容器（その他）",
+            "score": 0.25112634897232056
+          }
+        ]
+      }
+    ],
+    "after": [
+      {
+        "case": 1,
+        "input": {
+          "municipality_id": "38210",
+          "district_id": "38210-iyo-south",
+          "query": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+          "clarifications": []
+        },
+        "expected": "pet_bottles",
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "rewritten_query": "ペットボトル 飲料用透明ボトル 水洗い済み PETマークあり 本体",
+        "classification": {
+          "item_name": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+          "category_code": "pet_bottles",
+          "category_name": "ペットボトル",
+          "disposal_instructions": "根拠に基づく出し方と注意点: すすいでから出す",
+          "confidence": 0.95
+        },
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-17",
+          "display_date": "2026年11月17日（火）",
+          "collection_type": "ペットボトル"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "sources": [
+          {
+            "title": "伊予市公式ごみ分別の手引き・辞典・更新情報（意味検索）",
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1363",
+            "snippet": "品目: ペットボトル類の本体\n分類コード: pet_bottles\n分類: ペットボトル\n出し方・注意: すすいでから出す\n区分共通の出し方（上記の品目固有条件を優先）: PETマーク付きの食品・飲料容器。さっと水洗いし、キャップとラベルは外してプラスチック製容器包装へ。本体と分ける。収集日の午前8時30分までに地域の所定の場所へ。一度に45リットル以下の袋3つまで。",
+            "score": 0.5018957257270813
+          },
+          {
+            "title": "伊予市公式ごみ分別の手引き・辞典・更新情報（意味検索）",
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-0525",
+            "snippet": "品目: 酒類の容器（ペット製）\n分類コード: pet_bottles\n分類: ペットボトル\n出し方・注意: すすいでから出す\n区分共通の出し方（上記の品目固有条件を優先）: PETマーク付きの食品・飲料容器。さっと水洗いし、キャップとラベルは外してプラスチック製容器包装へ。本体と分ける。収集日の午前8時30分までに地域の所定の場所へ。一度に45リットル以下の袋3つまで。",
+            "score": 0.3384771943092346
+          },
+          {
+            "title": "伊予市公式ごみ分別の手引き・辞典・更新情報（意味検索）",
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1362",
+            "snippet": "品目: ペットボトルのラベル\n分類コード: plastic_packaging\n分類: プラスチック製容器包装\n区分共通の出し方（上記の品目固有条件を優先）: プラマークのある容器包装が対象。中身を残さず洗って水切りし、45リットル以下の無色透明・白色半透明の袋へ。内袋・二重袋にしない。収集日の午前8時30分までに地域の所定の場所へ。一度に45リットル以下の袋3つまで。",
+            "score": 0.44144386053085327
+          }
+        ],
+        "retrieved_candidates": [
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1363",
+            "item": "ペットボトル類の本体",
+            "score": 0.5018957257270813
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1362",
+            "item": "ペットボトルのラベル",
+            "score": 0.44144386053085327
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-0525",
+            "item": "酒類の容器（ペット製）",
+            "score": 0.3384771943092346
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-0817",
+            "item": "たい肥袋・容器（プラ製）",
+            "score": 0.3284924328327179
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1156",
+            "item": "発砲スチロール ［プラマーク有り］",
+            "score": 0.32277464866638184
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1359",
+            "item": "ペットフードの袋 （プラ製）",
+            "score": 0.3092506527900696
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-0203",
+            "item": "菓子箱（プラ製）",
+            "score": 0.30584004521369934
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1063",
+            "item": "入浴剤の容器（プラ製）",
+            "score": 0.29725033044815063
+          }
+        ]
+      },
+      {
+        "case": 2,
+        "input": {
+          "municipality_id": "38210",
+          "district_id": "38210-iyo-south",
+          "query": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体。プラマークはありません",
+          "clarifications": []
+        },
+        "expected": "pet_bottles",
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "rewritten_query": "ペットボトル 飲料用透明ボトル 水洗い済み PETマークあり プラマークなし 本体",
+        "classification": {
+          "item_name": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+          "category_code": "pet_bottles",
+          "category_name": "ペットボトル",
+          "disposal_instructions": "すすいでから出す",
+          "confidence": 0.95
+        },
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-17",
+          "display_date": "2026年11月17日（火）",
+          "collection_type": "ペットボトル"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "sources": [
+          {
+            "title": "伊予市公式ごみ分別の手引き・辞典・更新情報（意味検索）",
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1363",
+            "snippet": "品目: ペットボトル類の本体\n分類コード: pet_bottles\n分類: ペットボトル\n出し方・注意: すすいでから出す\n区分共通の出し方（上記の品目固有条件を優先）: PETマーク付きの食品・飲料容器。さっと水洗いし、キャップとラベルは外してプラスチック製容器包装へ。本体と分ける。収集日の午前8時30分までに地域の所定の場所へ。一度に45リットル以下の袋3つまで。",
+            "score": 0.4517193138599396
+          },
+          {
+            "title": "伊予市公式ごみ分別の手引き・辞典・更新情報（意味検索）",
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-0774",
+            "snippet": "品目: 洗剤の容器（プラ製）\n分類コード: plastic_packaging\n分類: プラスチック製容器包装\n条件付き分類コード: [\"non_burnable\"]\n出し方・注意: プラマークのないものは「その他」\n区分共通の出し方（上記の品目固有条件を優先）: プラマークのある容器包装が対象。中身を残さず洗って水切りし、45リットル以下の無色透明・白色半透明の袋へ。内袋・二重袋にしない。収集日の午前8時30分までに地域の所定の場所へ。一度に45リットル以下の袋3つまで。",
+            "score": 0.48524266481399536
+          },
+          {
+            "title": "伊予市公式ごみ分別の手引き・辞典・更新情報（意味検索）",
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1156",
+            "snippet": "品目: 発砲スチロール ［プラマーク有り］\n分類コード: plastic_packaging\n分類: プラスチック製容器包装\n出し方・注意: 汚れているものは洗って出す\n区分共通の出し方（上記の品目固有条件を優先）: プラマークのある容器包装が対象。中身を残さず洗って水切りし、45リットル以下の無色透明・白色半透明の袋へ。内袋・二重袋にしない。収集日の午前8時30分までに地域の所定の場所へ。一度に45リットル以下の袋3つまで。",
+            "score": 0.48169851303100586
+          }
+        ],
+        "retrieved_candidates": [
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-0774",
+            "item": "洗剤の容器（プラ製）",
+            "score": 0.48524266481399536
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1156",
+            "item": "発砲スチロール ［プラマーク有り］",
+            "score": 0.48169851303100586
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1246",
+            "item": "肥料袋（プラ製）",
+            "score": 0.4688016176223755
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1063",
+            "item": "入浴剤の容器（プラ製）",
+            "score": 0.45733487606048584
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1548",
+            "item": "目薬の容器",
+            "score": 0.4558393955230713
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-0817",
+            "item": "たい肥袋・容器（プラ製）",
+            "score": 0.4529595375061035
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1363",
+            "item": "ペットボトル類の本体",
+            "score": 0.4517193138599396
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1432",
+            "item": "墨汁の容器",
+            "score": 0.4477004408836365
+          }
+        ]
+      },
+      {
+        "case": 3,
+        "input": {
+          "municipality_id": "38210",
+          "district_id": "38210-iyo-south",
+          "query": "飲料用のPETマークのあるペットボトル本体",
+          "clarifications": []
+        },
+        "expected": "pet_bottles",
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "rewritten_query": "ペットボトル 飲料用透明ボトル PETマークあり 本体",
+        "classification": {
+          "item_name": "飲料用のPETマークのあるペットボトル本体",
+          "category_code": "pet_bottles",
+          "category_name": "ペットボトル",
+          "disposal_instructions": "すすいでから出す",
+          "confidence": 0.95
+        },
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-17",
+          "display_date": "2026年11月17日（火）",
+          "collection_type": "ペットボトル"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "sources": [
+          {
+            "title": "伊予市公式ごみ分別の手引き・辞典・更新情報（意味検索）",
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1363",
+            "snippet": "品目: ペットボトル類の本体\n分類コード: pet_bottles\n分類: ペットボトル\n出し方・注意: すすいでから出す\n区分共通の出し方（上記の品目固有条件を優先）: PETマーク付きの食品・飲料容器。さっと水洗いし、キャップとラベルは外してプラスチック製容器包装へ。本体と分ける。収集日の午前8時30分までに地域の所定の場所へ。一度に45リットル以下の袋3つまで。",
+            "score": 0.4739322066307068
+          },
+          {
+            "title": "伊予市公式ごみ分別の手引き・辞典・更新情報（意味検索）",
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-0525",
+            "snippet": "品目: 酒類の容器（ペット製）\n分類コード: pet_bottles\n分類: ペットボトル\n出し方・注意: すすいでから出す\n区分共通の出し方（上記の品目固有条件を優先）: PETマーク付きの食品・飲料容器。さっと水洗いし、キャップとラベルは外してプラスチック製容器包装へ。本体と分ける。収集日の午前8時30分までに地域の所定の場所へ。一度に45リットル以下の袋3つまで。",
+            "score": 0.3499827980995178
+          },
+          {
+            "title": "伊予市公式ごみ分別の手引き・辞典・更新情報（意味検索）",
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1362",
+            "snippet": "品目: ペットボトルのラベル\n分類コード: plastic_packaging\n分類: プラスチック製容器包装\n区分共通の出し方（上記の品目固有条件を優先）: プラマークのある容器包装が対象。中身を残さず洗って水切りし、45リットル以下の無色透明・白色半透明の袋へ。内袋・二重袋にしない。収集日の午前8時30分までに地域の所定の場所へ。一度に45リットル以下の袋3つまで。",
+            "score": 0.489666223526001
+          }
+        ],
+        "retrieved_candidates": [
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1362",
+            "item": "ペットボトルのラベル",
+            "score": 0.489666223526001
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1363",
+            "item": "ペットボトル類の本体",
+            "score": 0.4739322066307068
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-0525",
+            "item": "酒類の容器（ペット製）",
+            "score": 0.3499827980995178
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1378",
+            "item": "ペンキの缶",
+            "score": 0.3110433518886566
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1359",
+            "item": "ペットフードの袋 （プラ製）",
+            "score": 0.30449315905570984
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-0817",
+            "item": "たい肥袋・容器（プラ製）",
+            "score": 0.30439963936805725
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1246",
+            "item": "肥料袋（プラ製）",
+            "score": 0.3040800392627716
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1548",
+            "item": "目薬の容器",
+            "score": 0.3028576374053955
+          }
+        ]
+      },
+      {
+        "case": 4,
+        "input": {
+          "municipality_id": "38210",
+          "district_id": "38210-iyo-south",
+          "query": "食品用のPET表示が付いたペットボトル。ラベルを剥がしてふたを取り外した本体",
+          "clarifications": []
+        },
+        "expected": "pet_bottles",
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "rewritten_query": "食品用 PET ボトル 飲料用 透明ボトル 本体 PETマークあり",
+        "classification": {
+          "item_name": "食品用のPET表示が付いたペットボトルの本体",
+          "category_code": "pet_bottles",
+          "category_name": "ペットボトル",
+          "disposal_instructions": "すすいでから出す\n収集日の午前8時30分までに地域の所定の場所へ。\n一度に45リットル以下の袋3つまで。",
+          "confidence": 0.95
+        },
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-17",
+          "display_date": "2026年11月17日（火）",
+          "collection_type": "ペットボトル"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "sources": [
+          {
+            "title": "伊予市公式ごみ分別の手引き・辞典・更新情報（意味検索）",
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1363",
+            "snippet": "品目: ペットボトル類の本体\n分類コード: pet_bottles\n分類: ペットボトル\n出し方・注意: すすいでから出す\n区分共通の出し方（上記の品目固有条件を優先）: PETマーク付きの食品・飲料容器。さっと水洗いし、キャップとラベルは外してプラスチック製容器包装へ。本体と分ける。収集日の午前8時30分までに地域の所定の場所へ。一度に45リットル以下の袋3つまで。",
+            "score": 0.35435882210731506
+          },
+          {
+            "title": "伊予市公式ごみ分別の手引き・辞典・更新情報（意味検索）",
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-0525",
+            "snippet": "品目: 酒類の容器（ペット製）\n分類コード: pet_bottles\n分類: ペットボトル\n出し方・注意: すすいでから出す\n区分共通の出し方（上記の品目固有条件を優先）: PETマーク付きの食品・飲料容器。さっと水洗いし、キャップとラベルは外してプラスチック製容器包装へ。本体と分ける。収集日の午前8時30分までに地域の所定の場所へ。一度に45リットル以下の袋3つまで。",
+            "score": 0.31335824728012085
+          },
+          {
+            "title": "伊予市公式ごみ分別の手引き・辞典・更新情報（意味検索）",
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1362",
+            "snippet": "品目: ペットボトルのラベル\n分類コード: plastic_packaging\n分類: プラスチック製容器包装\n区分共通の出し方（上記の品目固有条件を優先）: プラマークのある容器包装が対象。中身を残さず洗って水切りし、45リットル以下の無色透明・白色半透明の袋へ。内袋・二重袋にしない。収集日の午前8時30分までに地域の所定の場所へ。一度に45リットル以下の袋3つまで。",
+            "score": 0.39394837617874146
+          }
+        ],
+        "retrieved_candidates": [
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1362",
+            "item": "ペットボトルのラベル",
+            "score": 0.39394837617874146
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1363",
+            "item": "ペットボトル類の本体",
+            "score": 0.35435882210731506
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1246",
+            "item": "肥料袋（プラ製）",
+            "score": 0.33811262249946594
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-0817",
+            "item": "たい肥袋・容器（プラ製）",
+            "score": 0.3299516439437866
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-0063",
+            "item": "インスタント食品の 袋・容器",
+            "score": 0.32680177688598633
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-0525",
+            "item": "酒類の容器（ペット製）",
+            "score": 0.31335824728012085
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1378",
+            "item": "ペンキの缶",
+            "score": 0.30863168835639954
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1548",
+            "item": "目薬の容器",
+            "score": 0.3010992109775543
+          }
+        ]
+      },
+      {
+        "case": 5,
+        "input": {
+          "municipality_id": "38210",
+          "district_id": "38210-iyo-south",
+          "query": "ペットボトルから外したプラマーク付きのキャップだけ",
+          "clarifications": []
+        },
+        "expected": "plastic_packaging",
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "rewritten_query": "プラマークありのペットボトルキャップ",
+        "classification": {
+          "item_name": "ペットボトルから外したプラマーク付きのキャップ",
+          "category_code": "plastic_packaging",
+          "category_name": "プラスチック製容器包装",
+          "disposal_instructions": "プラマークのある容器包装が対象。中身を残さず洗って水切りし、45リットル以下の無色透明・白色半透明の袋へ。内袋・二重袋にしない。収集日の午前8時30分までに地域の所定の場所へ。一度に45リットル以下の袋3つまで。",
+          "confidence": 0.95
+        },
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-11",
+          "display_date": "2026年11月11日（水）",
+          "collection_type": "プラスチック製容器包装"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "sources": [
+          {
+            "title": "伊予市公式ごみ分別の手引き・辞典・更新情報（意味検索）",
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1361",
+            "snippet": "品目: ペットボトル類のキャップ\n分類コード: plastic_packaging\n分類: プラスチック製容器包装\n区分共通の出し方（上記の品目固有条件を優先）: プラマークのある容器包装が対象。中身を残さず洗って水切りし、45リットル以下の無色透明・白色半透明の袋へ。内袋・二重袋にしない。収集日の午前8時30分までに地域の所定の場所へ。一度に45リットル以下の袋3つまで。",
+            "score": 0.6338067650794983
+          },
+          {
+            "title": "伊予市公式ごみ分別の手引き・辞典・更新情報（意味検索）",
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-0697",
+            "snippet": "品目: スティックのりの キャップ\n分類コード: plastic_packaging\n分類: プラスチック製容器包装\n条件付き分類コード: [\"burnable\"]\n出し方・注意: プラマークのないものは「可燃」\n区分共通の出し方（上記の品目固有条件を優先）: プラマークのある容器包装が対象。中身を残さず洗って水切りし、45リットル以下の無色透明・白色半透明の袋へ。内袋・二重袋にしない。収集日の午前8時30分までに地域の所定の場所へ。一度に45リットル以下の袋3つまで。",
+            "score": 0.4572159945964813
+          },
+          {
+            "title": "伊予市公式ごみ分別の手引き・辞典・更新情報（意味検索）",
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1156",
+            "snippet": "品目: 発砲スチロール ［プラマーク有り］\n分類コード: plastic_packaging\n分類: プラスチック製容器包装\n出し方・注意: 汚れているものは洗って出す\n区分共通の出し方（上記の品目固有条件を優先）: プラマークのある容器包装が対象。中身を残さず洗って水切りし、45リットル以下の無色透明・白色半透明の袋へ。内袋・二重袋にしない。収集日の午前8時30分までに地域の所定の場所へ。一度に45リットル以下の袋3つまで。",
+            "score": 0.44792890548706055
+          }
+        ],
+        "retrieved_candidates": [
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1361",
+            "item": "ペットボトル類のキャップ",
+            "score": 0.6338067650794983
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-0697",
+            "item": "スティックのりの キャップ",
+            "score": 0.4572159945964813
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1156",
+            "item": "発砲スチロール ［プラマーク有り］",
+            "score": 0.44792890548706055
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1286",
+            "item": "ふた・キャップ（プラ製）",
+            "score": 0.44451260566711426
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1407",
+            "item": "防虫剤のケース（プラ製）",
+            "score": 0.4334103465080261
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1362",
+            "item": "ペットボトルのラベル",
+            "score": 0.419057697057724
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1340",
+            "item": "ヘアスプレーのキャップ （プラ製）",
+            "score": 0.41557008028030396
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1548",
+            "item": "目薬の容器",
+            "score": 0.3883346915245056
+          }
+        ]
+      },
+      {
+        "case": 6,
+        "input": {
+          "municipality_id": "38210",
+          "district_id": "38210-iyo-south",
+          "query": "飲料用ペットボトルからはがしたプラ製ラベルだけ。プラマークあり",
+          "clarifications": []
+        },
+        "expected": "plastic_packaging",
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "rewritten_query": "ラベル 飲料用ペットボトル用 プラマークあり",
+        "classification": {
+          "item_name": "飲料用ペットボトルからはがしたプラ製ラベル",
+          "category_code": "plastic_packaging",
+          "category_name": "プラスチック製容器包装",
+          "disposal_instructions": "プラマークのある容器包装が対象。中身を残さず洗って水切りし、45リットル以下の無色透明・白色半透明の袋へ。内袋・二重袋にしない。収集日の午前8時30分までに地域の所定の場所へ。一度に45リットル以下の袋3つまで。",
+          "confidence": 0.95
+        },
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-11",
+          "display_date": "2026年11月11日（水）",
+          "collection_type": "プラスチック製容器包装"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "sources": [
+          {
+            "title": "伊予市公式ごみ分別の手引き・辞典・更新情報（意味検索）",
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1362",
+            "snippet": "品目: ペットボトルのラベル\n分類コード: plastic_packaging\n分類: プラスチック製容器包装\n区分共通の出し方（上記の品目固有条件を優先）: プラマークのある容器包装が対象。中身を残さず洗って水切りし、45リットル以下の無色透明・白色半透明の袋へ。内袋・二重袋にしない。収集日の午前8時30分までに地域の所定の場所へ。一度に45リットル以下の袋3つまで。",
+            "score": 0.5653244256973267
+          },
+          {
+            "title": "伊予市公式ごみ分別の手引き・辞典・更新情報（意味検索）",
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1407",
+            "snippet": "品目: 防虫剤のケース（プラ製）\n分類コード: plastic_packaging\n分類: プラスチック製容器包装\n出し方・注意: プラマークのあるもの\n区分共通の出し方（上記の品目固有条件を優先）: プラマークのある容器包装が対象。中身を残さず洗って水切りし、45リットル以下の無色透明・白色半透明の袋へ。内袋・二重袋にしない。収集日の午前8時30分までに地域の所定の場所へ。一度に45リットル以下の袋3つまで。",
+            "score": 0.4821575880050659
+          },
+          {
+            "title": "伊予市公式ごみ分別の手引き・辞典・更新情報（意味検索）",
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1548",
+            "snippet": "品目: 目薬の容器\n分類コード: non_burnable\n分類: 燃えないその他ごみ\n条件付き分類コード: [\"plastic_packaging\"]\n出し方・注意: 中身を使い切る プラマークのあるものは「プラ」\n区分共通の出し方（上記の品目固有条件を優先）: 金属・陶磁器・ガラス・硬いプラスチック等。無色透明・白色半透明の袋へ。刃物・割れ物は紙や布で包み「キケン」「ワレモノ」と書く。スプレー缶等は火気のない屋外で使い切る。充電池を取り外せない製品は無理に分解しない。LE",
+            "score": 0.4816068112850189
+          }
+        ],
+        "retrieved_candidates": [
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1362",
+            "item": "ペットボトルのラベル",
+            "score": 0.5653244256973267
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1407",
+            "item": "防虫剤のケース（プラ製）",
+            "score": 0.4821575880050659
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1548",
+            "item": "目薬の容器",
+            "score": 0.4816068112850189
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1156",
+            "item": "発砲スチロール ［プラマーク有り］",
+            "score": 0.45615720748901367
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1246",
+            "item": "肥料袋（プラ製）",
+            "score": 0.43949270248413086
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-0774",
+            "item": "洗剤の容器（プラ製）",
+            "score": 0.4205619692802429
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1432",
+            "item": "墨汁の容器",
+            "score": 0.41183367371559143
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-0203",
+            "item": "菓子箱（プラ製）",
+            "score": 0.4083731174468994
+          }
+        ]
+      },
+      {
+        "case": 7,
+        "input": {
+          "municipality_id": "38210",
+          "district_id": "38210-iyo-south",
+          "query": "飲料用の空き容器",
+          "clarifications": []
+        },
+        "expected": null,
+        "pass": true,
+        "http_status": 200,
+        "status": "needs_clarification",
+        "rewritten_query": "飲料用空き容器",
+        "classification": null,
+        "follow_up_question": "飲料用の空き容器は、ペットボトル、プラスチック製容器、ガラスびん、金属缶のどれですか？",
+        "next_collection": null,
+        "collection_status": null,
+        "sources": [
+          {
+            "title": "伊予市公式ごみ分別の手引き・辞典・更新情報（意味検索）",
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-0526",
+            "snippet": "品目: 酒類の容器 （紙パック製500ml以上）\n分類コード: paper\n分類: 紙類\n出し方・注意: すすいで広げて乾燥して出す\n区分共通の出し方（上記の品目固有条件を優先）: 新聞・雑誌・段ボール・紙パックを種類別にひもでしばる。雑紙は紙袋等へ。シュレッダー紙も紙類。汚れた紙・防水加工紙等は燃えるごみ。収集日の午前8時30分までに地域の所定の場所へ。一度に45リットル以下の袋3つまで。",
+            "score": 0.4320738613605499
+          },
+          {
+            "title": "伊予市公式ごみ分別の手引き・辞典・更新情報（意味検索）",
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-0885",
+            "snippet": "品目: 調味料の容器（陶器製）\n分類コード: non_burnable\n分類: 燃えないその他ごみ\n出し方・注意: すすいでから出す\n区分共通の出し方（上記の品目固有条件を優先）: 金属・陶磁器・ガラス・硬いプラスチック等。無色透明・白色半透明の袋へ。刃物・割れ物は紙や布で包み「キケン」「ワレモノ」と書く。スプレー缶等は火気のない屋外で使い切る。充電池を取り外せない製品は無理に分解しない。LEDはこの区分。収集日の午前8時30分までに地域の所定の場所へ。一度に45リットル以下",
+            "score": 0.4298199415206909
+          },
+          {
+            "title": "伊予市公式ごみ分別の手引き・辞典・更新情報（意味検索）",
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-0883",
+            "snippet": "品目: 調味料の容器（びん製）\n分類コード: bottles\n分類: びん類\n出し方・注意: すすいでから出す\n区分共通の出し方（上記の品目固有条件を優先）: 食品・飲料・薬・化粧品の空きびんをさっと水洗いし、キャップを外す。対象品目と例外は品目別の注記を確認する。45リットル以下の無色透明・白色半透明の袋に入れ、収集日の午前8時30分までに所定の場所へ。一度に3袋まで。",
+            "score": 0.3900827169418335
+          }
+        ],
+        "retrieved_candidates": [
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-0526",
+            "item": "酒類の容器 （紙パック製500ml以上）",
+            "score": 0.4320738613605499
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-0885",
+            "item": "調味料の容器（陶器製）",
+            "score": 0.4298199415206909
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-0883",
+            "item": "調味料の容器（びん製）",
+            "score": 0.3900827169418335
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-0882",
+            "item": "調味料の容器（かん製）",
+            "score": 0.3857489228248596
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-0527",
+            "item": "酒類の容器 （紙パック製500ml未満）",
+            "score": 0.3844641447067261
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-0525",
+            "item": "酒類の容器（ペット製）",
+            "score": 0.3832125663757324
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-0094",
+            "item": "液体肥料の容器",
+            "score": 0.3749416768550873
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-0523",
+            "item": "酒類の容器（かん製）",
+            "score": 0.3731951415538788
+          }
+        ]
+      },
+      {
+        "case": 8,
+        "input": {
+          "municipality_id": "38210",
+          "district_id": "38210-iyo-south",
+          "query": "飲み終わったボトル",
+          "clarifications": [
+            {
+              "question": "ペットボトル・プラスチック容器・ガラスびんのどれですか？",
+              "answer": "PETマーク付きの飲料用ペットボトル本体です"
+            }
+          ]
+        },
+        "expected": "pet_bottles",
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "rewritten_query": "飲料用ペットボトル本体 PETマークあり",
+        "classification": {
+          "item_name": "飲み終わったボトル",
+          "category_code": "pet_bottles",
+          "category_name": "ペットボトル",
+          "disposal_instructions": "根拠に基づく出し方と注意点: PETマーク付きの食品・飲料容器。さっと水洗いし、キャップとラベルは外してプラスチック製容器包装へ。本体と分ける。収集日の午前8時30分までに地域の所定の場所へ。一度に45リットル以下の袋3つまで。",
+          "confidence": 0.95
+        },
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-17",
+          "display_date": "2026年11月17日（火）",
+          "collection_type": "ペットボトル"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "sources": [
+          {
+            "title": "伊予市公式ごみ分別の手引き・辞典・更新情報（意味検索）",
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1363",
+            "snippet": "品目: ペットボトル類の本体\n分類コード: pet_bottles\n分類: ペットボトル\n出し方・注意: すすいでから出す\n区分共通の出し方（上記の品目固有条件を優先）: PETマーク付きの食品・飲料容器。さっと水洗いし、キャップとラベルは外してプラスチック製容器包装へ。本体と分ける。収集日の午前8時30分までに地域の所定の場所へ。一度に45リットル以下の袋3つまで。",
+            "score": 0.42422887682914734
+          },
+          {
+            "title": "伊予市公式ごみ分別の手引き・辞典・更新情報（意味検索）",
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-0525",
+            "snippet": "品目: 酒類の容器（ペット製）\n分類コード: pet_bottles\n分類: ペットボトル\n出し方・注意: すすいでから出す\n区分共通の出し方（上記の品目固有条件を優先）: PETマーク付きの食品・飲料容器。さっと水洗いし、キャップとラベルは外してプラスチック製容器包装へ。本体と分ける。収集日の午前8時30分までに地域の所定の場所へ。一度に45リットル以下の袋3つまで。",
+            "score": 0.3699038028717041
+          },
+          {
+            "title": "伊予市公式ごみ分別の手引き・辞典・更新情報（意味検索）",
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-0884",
+            "snippet": "品目: 調味料の容器（ペット製）\n分類コード: pet_bottles\n分類: ペットボトル\n出し方・注意: すすいでから出す\n区分共通の出し方（上記の品目固有条件を優先）: PETマーク付きの食品・飲料容器。さっと水洗いし、キャップとラベルは外してプラスチック製容器包装へ。本体と分ける。収集日の午前8時30分までに地域の所定の場所へ。一度に45リットル以下の袋3つまで。",
+            "score": 0.30918627977371216
+          }
+        ],
+        "retrieved_candidates": [
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1362",
+            "item": "ペットボトルのラベル",
+            "score": 0.5436280965805054
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1363",
+            "item": "ペットボトル類の本体",
+            "score": 0.42422887682914734
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-0525",
+            "item": "酒類の容器（ペット製）",
+            "score": 0.3699038028717041
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1378",
+            "item": "ペンキの缶",
+            "score": 0.3377401530742645
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-0884",
+            "item": "調味料の容器（ペット製）",
+            "score": 0.30918627977371216
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1359",
+            "item": "ペットフードの袋 （プラ製）",
+            "score": 0.3055315613746643
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-0817",
+            "item": "たい肥袋・容器（プラ製）",
+            "score": 0.30130380392074585
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1246",
+            "item": "肥料袋（プラ製）",
+            "score": 0.29850465059280396
+          }
+        ]
+      },
+      {
+        "case": 9,
+        "input": {
+          "municipality_id": "38210",
+          "district_id": "38210-iyo-south",
+          "query": "食品用PETマーク付きのペットボトル。ふたとラベルはまだ外していません。本体を捨てたい",
+          "clarifications": []
+        },
+        "expected": "pet_bottles",
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "rewritten_query": "食品用PETマークありのペットボトル 飲料用透明ボトル キャップとラベル付き 本体",
+        "classification": {
+          "item_name": "ペットボトル",
+          "category_code": "pet_bottles",
+          "category_name": "ペットボトル",
+          "disposal_instructions": "すすいでから出す",
+          "confidence": 0.95
+        },
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-17",
+          "display_date": "2026年11月17日（火）",
+          "collection_type": "ペットボトル"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "sources": [
+          {
+            "title": "伊予市公式ごみ分別の手引き・辞典・更新情報（意味検索）",
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1363",
+            "snippet": "品目: ペットボトル類の本体\n分類コード: pet_bottles\n分類: ペットボトル\n出し方・注意: すすいでから出す\n区分共通の出し方（上記の品目固有条件を優先）: PETマーク付きの食品・飲料容器。さっと水洗いし、キャップとラベルは外してプラスチック製容器包装へ。本体と分ける。収集日の午前8時30分までに地域の所定の場所へ。一度に45リットル以下の袋3つまで。",
+            "score": 0.4218682646751404
+          },
+          {
+            "title": "伊予市公式ごみ分別の手引き・辞典・更新情報（意味検索）",
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-0525",
+            "snippet": "品目: 酒類の容器（ペット製）\n分類コード: pet_bottles\n分類: ペットボトル\n出し方・注意: すすいでから出す\n区分共通の出し方（上記の品目固有条件を優先）: PETマーク付きの食品・飲料容器。さっと水洗いし、キャップとラベルは外してプラスチック製容器包装へ。本体と分ける。収集日の午前8時30分までに地域の所定の場所へ。一度に45リットル以下の袋3つまで。",
+            "score": 0.36216670274734497
+          },
+          {
+            "title": "伊予市公式ごみ分別の手引き・辞典・更新情報（意味検索）",
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-0884",
+            "snippet": "品目: 調味料の容器（ペット製）\n分類コード: pet_bottles\n分類: ペットボトル\n出し方・注意: すすいでから出す\n区分共通の出し方（上記の品目固有条件を優先）: PETマーク付きの食品・飲料容器。さっと水洗いし、キャップとラベルは外してプラスチック製容器包装へ。本体と分ける。収集日の午前8時30分までに地域の所定の場所へ。一度に45リットル以下の袋3つまで。",
+            "score": 0.3437451720237732
+          }
+        ],
+        "retrieved_candidates": [
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1362",
+            "item": "ペットボトルのラベル",
+            "score": 0.5324344635009766
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1363",
+            "item": "ペットボトル類の本体",
+            "score": 0.4218682646751404
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1361",
+            "item": "ペットボトル類のキャップ",
+            "score": 0.4151459336280823
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-0525",
+            "item": "酒類の容器（ペット製）",
+            "score": 0.36216670274734497
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1358",
+            "item": "ペットフードの袋（紙製）",
+            "score": 0.3514758348464966
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-0884",
+            "item": "調味料の容器（ペット製）",
+            "score": 0.3437451720237732
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1359",
+            "item": "ペットフードの袋 （プラ製）",
+            "score": 0.3130783140659332
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-0274",
+            "item": "缶［飲料・食品用］",
+            "score": 0.29459309577941895
+          }
+        ]
+      },
+      {
+        "case": 10,
+        "input": {
+          "municipality_id": "38210",
+          "district_id": "38210-iyo-south",
+          "query": "PETマークのない、用途不明のプラスチック製ボトル",
+          "clarifications": []
+        },
+        "expected": null,
+        "pass": true,
+        "http_status": 200,
+        "status": "needs_clarification",
+        "rewritten_query": "プラスチックボトル 用途不明 PETマークなし",
+        "classification": null,
+        "follow_up_question": "プラマークは付いていますか？",
+        "next_collection": null,
+        "collection_status": null,
+        "sources": [
+          {
+            "title": "伊予市公式ごみ分別の手引き・辞典・更新情報（意味検索）",
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-0774",
+            "snippet": "品目: 洗剤の容器（プラ製）\n分類コード: plastic_packaging\n分類: プラスチック製容器包装\n条件付き分類コード: [\"non_burnable\"]\n出し方・注意: プラマークのないものは「その他」\n区分共通の出し方（上記の品目固有条件を優先）: プラマークのある容器包装が対象。中身を残さず洗って水切りし、45リットル以下の無色透明・白色半透明の袋へ。内袋・二重袋にしない。収集日の午前8時30分までに地域の所定の場所へ。一度に45リットル以下の袋3つまで。",
+            "score": 0.3610613942146301
+          },
+          {
+            "title": "伊予市公式ごみ分別の手引き・辞典・更新情報（意味検索）",
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1063",
+            "snippet": "品目: 入浴剤の容器（プラ製）\n分類コード: plastic_packaging\n分類: プラスチック製容器包装\n条件付き分類コード: [\"non_burnable\"]\n出し方・注意: すすいでから出す プラマークのないものは「その他」\n区分共通の出し方（上記の品目固有条件を優先）: プラマークのある容器包装が対象。中身を残さず洗って水切りし、45リットル以下の無色透明・白色半透明の袋へ。内袋・二重袋にしない。収集日の午前8時30分までに地域の所定の場所へ。一度に45リットル",
+            "score": 0.3377324938774109
+          },
+          {
+            "title": "伊予市公式ごみ分別の手引き・辞典・更新情報（意味検索）",
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1432",
+            "snippet": "品目: 墨汁の容器\n分類コード: plastic_packaging\n分類: プラスチック製容器包装\n条件付き分類コード: [\"non_burnable\"]\n出し方・注意: プラマークのないものは「その他」\n区分共通の出し方（上記の品目固有条件を優先）: プラマークのある容器包装が対象。中身を残さず洗って水切りし、45リットル以下の無色透明・白色半透明の袋へ。内袋・二重袋にしない。収集日の午前8時30分までに地域の所定の場所へ。一度に45リットル以下の袋3つまで。",
+            "score": 0.3366087079048157
+          }
+        ],
+        "retrieved_candidates": [
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1246",
+            "item": "肥料袋（プラ製）",
+            "score": 0.38040995597839355
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-0774",
+            "item": "洗剤の容器（プラ製）",
+            "score": 0.3610613942146301
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1063",
+            "item": "入浴剤の容器（プラ製）",
+            "score": 0.3377324938774109
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1432",
+            "item": "墨汁の容器",
+            "score": 0.3366087079048157
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-0817",
+            "item": "たい肥袋・容器（プラ製）",
+            "score": 0.3337278962135315
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-0770",
+            "item": "洗顔料の容器",
+            "score": 0.3285035789012909
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-0651",
+            "item": "除湿剤の容器",
+            "score": 0.3272647559642792
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1157",
+            "item": "発砲スチロール ［プラマーク無し］",
+            "score": 0.32714760303497314
+          }
+        ]
+      },
+      {
+        "case": 11,
+        "input": {
+          "municipality_id": "38210",
+          "district_id": "38210-iyo-south",
+          "query": "キャップとラベルを外した飲料用ペットボトル本体",
+          "clarifications": [
+            {
+              "question": "PETマークはありますか？",
+              "answer": "はい"
+            }
+          ]
+        },
+        "expected": "pet_bottles",
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "rewritten_query": "ペットボトル 飲料用透明ボトル 本体 キャップとラベルを外した PETマークあり",
+        "classification": {
+          "item_name": "キャップとラベルを外した飲料用ペットボトル本体",
+          "category_code": "pet_bottles",
+          "category_name": "ペットボトル",
+          "disposal_instructions": "根拠に基づく出し方と注意点: すすいでから出す",
+          "confidence": 0.95
+        },
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-17",
+          "display_date": "2026年11月17日（火）",
+          "collection_type": "ペットボトル"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "sources": [
+          {
+            "title": "伊予市公式ごみ分別の手引き・辞典・更新情報（意味検索）",
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1363",
+            "snippet": "品目: ペットボトル類の本体\n分類コード: pet_bottles\n分類: ペットボトル\n出し方・注意: すすいでから出す\n区分共通の出し方（上記の品目固有条件を優先）: PETマーク付きの食品・飲料容器。さっと水洗いし、キャップとラベルは外してプラスチック製容器包装へ。本体と分ける。収集日の午前8時30分までに地域の所定の場所へ。一度に45リットル以下の袋3つまで。",
+            "score": 0.4484504759311676
+          },
+          {
+            "title": "伊予市公式ごみ分別の手引き・辞典・更新情報（意味検索）",
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-0525",
+            "snippet": "品目: 酒類の容器（ペット製）\n分類コード: pet_bottles\n分類: ペットボトル\n出し方・注意: すすいでから出す\n区分共通の出し方（上記の品目固有条件を優先）: PETマーク付きの食品・飲料容器。さっと水洗いし、キャップとラベルは外してプラスチック製容器包装へ。本体と分ける。収集日の午前8時30分までに地域の所定の場所へ。一度に45リットル以下の袋3つまで。",
+            "score": 0.34554004669189453
+          },
+          {
+            "title": "伊予市公式ごみ分別の手引き・辞典・更新情報（意味検索）",
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1362",
+            "snippet": "品目: ペットボトルのラベル\n分類コード: plastic_packaging\n分類: プラスチック製容器包装\n区分共通の出し方（上記の品目固有条件を優先）: プラマークのある容器包装が対象。中身を残さず洗って水切りし、45リットル以下の無色透明・白色半透明の袋へ。内袋・二重袋にしない。収集日の午前8時30分までに地域の所定の場所へ。一度に45リットル以下の袋3つまで。",
+            "score": 0.4601159989833832
+          }
+        ],
+        "retrieved_candidates": [
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1362",
+            "item": "ペットボトルのラベル",
+            "score": 0.4601159989833832
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1363",
+            "item": "ペットボトル類の本体",
+            "score": 0.4484504759311676
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1378",
+            "item": "ペンキの缶",
+            "score": 0.3650110960006714
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1359",
+            "item": "ペットフードの袋 （プラ製）",
+            "score": 0.34705469012260437
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-0525",
+            "item": "酒類の容器（ペット製）",
+            "score": 0.34554004669189453
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1361",
+            "item": "ペットボトル類のキャップ",
+            "score": 0.33857911825180054
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-1246",
+            "item": "肥料袋（プラ製）",
+            "score": 0.3074924349784851
+          },
+          {
+            "uri": "regional://38210/iyo/iyo-2026.1/items/iy-0697",
+            "item": "スティックのりの キャップ",
+            "score": 0.30420172214508057
+          }
+        ]
+      },
+      {
+        "case": 12,
+        "input": {
+          "municipality_id": "38215",
+          "district_id": "38215-30",
+          "query": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+          "clarifications": []
+        },
+        "expected": "pet_bottles",
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "rewritten_query": "ペットボトル 飲料用透明ボトル キャップとラベルを外した本体 PETマークあり",
+        "classification": {
+          "item_name": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+          "category_code": "pet_bottles",
+          "category_name": "ペットボトル",
+          "disposal_instructions": "キャップ・ラベルを外し水洗いし軽くつぶしてネットへ。",
+          "confidence": 0.95
+        },
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-06",
+          "display_date": "2026年11月6日（金）",
+          "collection_type": "ペットボトル"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "sources": [
+          {
+            "title": "東温市公式ごみ分別はやわかり帳・2026年度カレンダー（意味検索）",
+            "uri": "regional://38215/kawauchi/toon-2026.1/items/tn-rule-pet",
+            "snippet": "品目: キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体\n分類コード: pet_bottles\n分類: ペットボトル\n出し方・注意: キャップ・ラベルを外した本体が対象。外した部品と分類を混同しない。",
+            "score": 0.6791709065437317
+          },
+          {
+            "title": "東温市公式ごみ分別はやわかり帳・2026年度カレンダー（意味検索）",
+            "uri": "regional://38215/kawauchi/toon-2026.1/items/tn-p48-1-1-02",
+            "snippet": "品目: ペットボトル\n分類コード: pet_bottles\n分類: ペットボトル\n区分共通の出し方（上記の品目固有条件を優先）: PET本体はキャップ・ラベルを外し水洗いし軽くつぶしてネットへ。外したプラ製の部品はプラスチック類。",
+            "score": 0.4138990640640259
+          },
+          {
+            "title": "東温市公式ごみ分別はやわかり帳・2026年度カレンダー（意味検索）",
+            "uri": "regional://38215/kawauchi/toon-2026.1/items/tn-p41-1-1-01",
+            "snippet": "品目: 乳酸菌飲料の容器（ペットボトル製）\n分類コード: pet_bottles\n分類: ペットボトル\n出し方・注意: すすいで出す\n区分共通の出し方（上記の品目固有条件を優先）: PET本体はキャップ・ラベルを外し水洗いし軽くつぶしてネットへ。外したプラ製の部品はプラスチック類。",
+            "score": 0.33101943135261536
+          }
+        ],
+        "retrieved_candidates": [
+          {
+            "uri": "regional://38215/kawauchi/toon-2026.1/items/tn-rule-pet",
+            "item": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+            "score": 0.6791709065437317
+          },
+          {
+            "uri": "regional://38215/kawauchi/toon-2026.1/items/tn-rule-pet-cap",
+            "item": "ペットボトルから外したプラスチック製キャップ・ラベル",
+            "score": 0.5246425271034241
+          },
+          {
+            "uri": "regional://38215/kawauchi/toon-2026.1/items/tn-p48-1-1-02",
+            "item": "ペットボトル",
+            "score": 0.4138990640640259
+          },
+          {
+            "uri": "regional://38215/kawauchi/toon-2026.1/items/tn-p42-2-1-01",
+            "item": "飲むヨーグルトのボトル・ドリンクタイプの発酵乳（プラ製）",
+            "score": 0.3934485912322998
+          },
+          {
+            "uri": "regional://38215/kawauchi/toon-2026.1/items/tn-p41-1-1-01",
+            "item": "乳酸菌飲料の容器（ペットボトル製）",
+            "score": 0.33101943135261536
+          },
+          {
+            "uri": "regional://38215/kawauchi/toon-2026.1/items/tn-p48-1-1-03",
+            "item": "ペットボトルのキャップ",
+            "score": 0.3222551941871643
+          },
+          {
+            "uri": "regional://38215/kawauchi/toon-2026.1/items/tn-p31-2-1-03",
+            "item": "しょうゆの容器（ペットボトル）",
+            "score": 0.30849897861480713
+          },
+          {
+            "uri": "regional://38215/kawauchi/toon-2026.1/items/tn-p49-2-1-11",
+            "item": "ポテトチップなどの袋（プラ製）",
+            "score": 0.2967836260795593
+          }
+        ]
+      },
+      {
+        "case": 13,
+        "input": {
+          "municipality_id": "38201",
+          "district_id": "38201-08",
+          "query": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+          "clarifications": []
+        },
+        "expected": "ペット",
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "rewritten_query": "ペットボトル 飲料用透明ボトル 水洗い済み PETマークあり 本体",
+        "classification": {
+          "item_name": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+          "category_code": "ペット",
+          "category_name": "ペットボトル",
+          "disposal_instructions": "根拠に基づく出し方と注意点: ラベル・キャップははずし「プラ」 ボトルはすすいで出す",
+          "confidence": 0.95
+        },
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-18",
+          "display_date": "2026年11月18日（水）",
+          "collection_type": "ペットボトル"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "sources": [
+          {
+            "title": "松山市ごみ分別辞典（意味検索）",
+            "uri": "local://items/item_1402",
+            "snippet": "品目: ペットボトル\n分類コード: ペット\n分類: ペットボトル\n出し方・注意: ラベル・キャップはは ずし「プラ」 ボトルはすすいで出す",
+            "score": 0.3036039471626282
+          },
+          {
+            "title": "松山市ごみ分別辞典（意味検索）",
+            "uri": "local://items/item_1679",
+            "snippet": "品目: 料理酒の容器（ペットボトル）\n分類コード: ペット\n分類: ペットボトル\n出し方・注意: キャップははずして「プラ」 ボトルはすすいで出す",
+            "score": 0.2988763451576233
+          },
+          {
+            "title": "松山市ごみ分別辞典（意味検索）",
+            "uri": "local://items/item_1359",
+            "snippet": "品目: ペットボトルのラベル\n分類コード: プラ\n分類: プラスチック製容器包装",
+            "score": 0.44144386053085327
+          }
+        ],
+        "retrieved_candidates": [
+          {
+            "uri": "local://items/item_1359",
+            "item": "ペットボトルのラベル",
+            "score": 0.44144386053085327
+          },
+          {
+            "uri": "local://items/item_1666",
+            "item": "ラベル（ペットボトル）",
+            "score": 0.3685181736946106
+          },
+          {
+            "uri": "local://items/item_1019",
+            "item": "トレイ（プラスチック製の食品トレイ）",
+            "score": 0.3065134882926941
+          },
+          {
+            "uri": "local://items/item_1402",
+            "item": "ペットボトル",
+            "score": 0.3036039471626282
+          },
+          {
+            "uri": "local://items/item_1679",
+            "item": "料理酒の容器（ペットボトル）",
+            "score": 0.2988763451576233
+          },
+          {
+            "uri": "local://items/item_1398",
+            "item": "ペットフードの袋（プラスチック製）",
+            "score": 0.28556960821151733
+          },
+          {
+            "uri": "local://items/item_0900",
+            "item": "詰め替えパック・ボトル（プラスチック製）",
+            "score": 0.27630355954170227
+          },
+          {
+            "uri": "local://items/item_1389",
+            "item": "ペットのトイレ",
+            "score": 0.271567165851593
+          }
+        ]
+      },
+      {
+        "case": 14,
+        "input": {
+          "municipality_id": "38204",
+          "district_id": "38204-01",
+          "query": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+          "clarifications": []
+        },
+        "expected": "pet_bottles",
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "rewritten_query": "ペットボトル 飲料用透明ボトル 水洗い済み PETマークあり 本体",
+        "classification": {
+          "item_name": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+          "category_code": "pet_bottles",
+          "category_name": "ペットボトル",
+          "disposal_instructions": "PET表示を確認し、ふたを外して中を洗い、無色透明の袋またはコンテナに入れる。ラベルは付いたままでもよく、外したラベルはプラスチック製容器包装へ出す。ペットボトルとプラスチック製容器包装は別の袋にする。家庭から出たものに限り、収集日の午前8時までに地域の指定場所へ出す。一度に出せる量は3袋まで",
+          "confidence": 0.95
+        },
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-18",
+          "display_date": "2026年11月18日（水）",
+          "collection_type": "ペットボトル"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "sources": [
+          {
+            "title": "八幡浜市公式ごみ分別品目一覧・ガイドブック（意味検索）",
+            "uri": "regional://38204/standard/yawatahama-2026.2/items/yh-rule-pet_bottles",
+            "snippet": "品目: ペットボトルの対象品と出し方\n分類コード: pet_bottles\n分類: ペットボトル\n条件付き分類コード: [\"plastic_packaging\"]\n出し方・注意: PET表示を確認し、ふたを外して中を洗い、無色透明の袋またはコンテナに入れる。ラベルは付いたままでもよく、外したラベルはプラスチック製容器包装へ出す。ペットボトルとプラスチック製容器包装は別の袋にする。家庭から出たものに限り、収集日の午前8時までに地域の指定場所へ出す。一度に出せる量は3袋まで",
+            "score": 0.417760968208313
+          },
+          {
+            "title": "八幡浜市公式ごみ分別品目一覧・ガイドブック（意味検索）",
+            "uri": "regional://38204/standard/yawatahama-2026.2/items/yh-0621",
+            "snippet": "品目: ペットボトル\n分類コード: pet_bottles\n分類: ペットボトル\n条件付き分類コード: [\"burnable\", \"plastic_packaging\"]\n出し方・注意: 中を洗って。汚れが落ちないものは可燃ごみ\n区分共通の出し方（上記の品目固有条件を優先）: PET表示を確認し、ふたを外して中を洗い、無色透明の袋またはコンテナに入れる。ラベルは付いたままでもよく、外したラベルはプラスチック製容器包装へ出す。ペットボトルとプラスチック製容器包装は別の袋にする。",
+            "score": 0.403133362531662
+          },
+          {
+            "title": "八幡浜市公式ごみ分別品目一覧・ガイドブック（意味検索）",
+            "uri": "regional://38204/standard/yawatahama-2026.2/items/yh-0097",
+            "snippet": "品目: 菓子箱（紙製、紙マークなし）\n分類コード: magazines\n分類: 雑誌\n条件付き分類コード: [\"burnable\"]\n出し方・注意: 汚れているものは可燃ごみ\n区分共通の出し方（上記の品目固有条件を優先）: 広告チラシ・書籍等も含む。ひもでしばって出す。家庭から出たものに限り、収集日の午前8時までに地域の指定場所へ出す。一度に出せる量は3袋まで",
+            "score": 0.31072384119033813
+          }
+        ],
+        "retrieved_candidates": [
+          {
+            "uri": "regional://38204/standard/yawatahama-2026.2/items/yh-rule-pet_bottles",
+            "item": "ペットボトルの対象品と出し方",
+            "score": 0.417760968208313
+          },
+          {
+            "uri": "regional://38204/standard/yawatahama-2026.2/items/yh-0621",
+            "item": "ペットボトル",
+            "score": 0.403133362531662
+          },
+          {
+            "uri": "regional://38204/standard/yawatahama-2026.2/items/yh-0097",
+            "item": "菓子箱（紙製、紙マークなし）",
+            "score": 0.31072384119033813
+          },
+          {
+            "uri": "regional://38204/standard/yawatahama-2026.2/items/yh-0096",
+            "item": "菓子箱（紙製、紙マークあり）",
+            "score": 0.2977287173271179
+          },
+          {
+            "uri": "regional://38204/standard/yawatahama-2026.2/items/yh-0492",
+            "item": "乳酸菌飲料の容器（プラスチック製）",
+            "score": 0.28675577044487
+          },
+          {
+            "uri": "regional://38204/standard/yawatahama-2026.2/items/yh-0100",
+            "item": "菓子袋（紙製、紙マークあり）",
+            "score": 0.284961074590683
+          },
+          {
+            "uri": "regional://38204/standard/yawatahama-2026.2/items/yh-0293",
+            "item": "食用油の容器（プラスチック製）",
+            "score": 0.2656972408294678
+          },
+          {
+            "uri": "regional://38204/standard/yawatahama-2026.2/items/yh-0496",
+            "item": "入浴剤の容器（プラスチック製）",
+            "score": 0.2574390769004822
+          }
+        ]
+      },
+      {
+        "case": 15,
+        "input": {
+          "municipality_id": "38442",
+          "district_id": "38442-01",
+          "query": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+          "clarifications": []
+        },
+        "expected": "pet_bottles",
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "rewritten_query": "ペットボトル 飲料用透明ボトル 水洗い済み PETマークあり 本体",
+        "classification": {
+          "item_name": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+          "category_code": "pet_bottles",
+          "category_name": "ペットボトル",
+          "disposal_instructions": "ラベル・キャップを外し、さっとすすぎ、つぶさず45リットルの市販の無色透明袋へ。収集日当日の午前8時までに地域のごみステーションへ。前夜には出さない。",
+          "confidence": 0.95
+        },
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-06",
+          "display_date": "2026年11月6日（金）",
+          "collection_type": "ペットボトル"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "sources": [
+          {
+            "title": "伊方町公式ごみ分別ガイドブック・ごみ分別辞典（意味検索）",
+            "uri": "regional://38442/ikata/ikata-2026.1/items/ik-rule-pet-clean",
+            "snippet": "品目: PETマーク付き飲料用ペットボトル本体（キャップ・ラベルを外したもの）\n分類コード: pet_bottles\n分類: ペットボトル\n条件付き分類コード: [\"burnable\"]\n出し方・注意: 本体はペット。外したプラ製キャップとラベルとは別にする。洗えないもの・汚れの落ちないものは可燃。",
+            "score": 0.6700358390808105
+          },
+          {
+            "title": "伊方町公式ごみ分別ガイドブック・ごみ分別辞典（意味検索）",
+            "uri": "regional://38442/ikata/ikata-2026.1/items/ik-p43-17",
+            "snippet": "品目: ペットボトル（飲料・酒類・醤油用）\n分類コード: pet_bottles\n分類: ペットボトル\n出し方・注意: ラベル・キャップを外し、すすいで\n区分共通の出し方（上記の品目固有条件を優先）: PETマーク付きの飲料・酒類・しょうゆ用等のボトル本体。キャップとラベルを外し、さっとすすぎ、つぶさず45リットルの市販の無色透明袋へ。収集日当日の午前8時までに地域のごみステーションへ。前夜には出さない。",
+            "score": 0.4338062107563019
+          },
+          {
+            "title": "伊方町公式ごみ分別ガイドブック・ごみ分別辞典（意味検索）",
+            "uri": "regional://38442/ikata/ikata-2026.1/items/ik-p43-14",
+            "snippet": "品目: ペットフードの袋（プラスチック製）\n分類コード: plastic_packaging\n分類: プラスチック製容器包装\n出し方・注意: 中身を残さないで\n区分共通の出し方（上記の品目固有条件を優先）: プラマーク付きの商品の容器・包装をさっとすすぎ、十分に水切りし、45リットルの市販の無色透明袋へ。半透明袋・レジ袋・二重袋は使わない。出す対象が本体か付属品かを区別する。収集日当日の午前8時までに地域のごみステーションへ。前夜には出さない。",
+            "score": 0.34476438164711
+          }
+        ],
+        "retrieved_candidates": [
+          {
+            "uri": "regional://38442/ikata/ikata-2026.1/items/ik-rule-pet-clean",
+            "item": "PETマーク付き飲料用ペットボトル本体（キャップ・ラベルを外したもの）",
+            "score": 0.6700358390808105
+          },
+          {
+            "uri": "regional://38442/ikata/ikata-2026.1/items/ik-p43-17",
+            "item": "ペットボトル（飲料・酒類・醤油用）",
+            "score": 0.4338062107563019
+          },
+          {
+            "uri": "regional://38442/ikata/ikata-2026.1/items/ik-p43-14",
+            "item": "ペットフードの袋（プラスチック製）",
+            "score": 0.34476438164711
+          },
+          {
+            "uri": "regional://38442/ikata/ikata-2026.1/items/ik-p43-18",
+            "item": "ペットボトルのふた・ラベル",
+            "score": 0.3410298526287079
+          },
+          {
+            "uri": "regional://38442/ikata/ikata-2026.1/items/ik-rule-foam-color",
+            "item": "洗った白色以外の発泡食品トレイ（プラマーク付き）",
+            "score": 0.3153284788131714
+          },
+          {
+            "uri": "regional://38442/ikata/ikata-2026.1/items/ik-p43-13",
+            "item": "ペットフードの袋（紙製）",
+            "score": 0.30358564853668213
+          },
+          {
+            "uri": "regional://38442/ikata/ikata-2026.1/items/ik-rule-pet-cap",
+            "item": "ペットボトルから外したプラスチック製キャップ・ラベル",
+            "score": 0.28877881169319153
+          },
+          {
+            "uri": "regional://38442/ikata/ikata-2026.1/items/ik-p44-34",
+            "item": "ポリタンク（灯油・水入れ）",
+            "score": 0.27804118394851685
+          }
+        ]
+      },
+      {
+        "case": 16,
+        "input": {
+          "municipality_id": "38205",
+          "district_id": "38205-01",
+          "query": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+          "clarifications": []
+        },
+        "expected": "pet_bottles",
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "rewritten_query": "ペットボトル 飲料用透明ボトル 水洗い済み PETマークあり 本体",
+        "classification": {
+          "item_name": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+          "category_code": "pet_bottles",
+          "category_name": "ペットボトル",
+          "disposal_instructions": "容器の中身を取り除き軽く水洗いし、汚れを落とす。二重袋にしない。大きい容器包装は30cm以下へ。",
+          "confidence": 0.95
+        },
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-05",
+          "display_date": "2026年11月5日（木）",
+          "collection_type": "ペットボトル"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "sources": [
+          {
+            "title": "新居浜市公式ごみ分別大辞典・2026年度カレンダー（意味検索）",
+            "uri": "regional://38205/mainland/niihama-2026.1/items/nh-rule-pet",
+            "snippet": "品目: 水洗いしたPETマーク付き飲料用ペットボトル本体\n分類コード: pet_bottles\n分類: ペットボトル\n出し方・注意: キャップ・ラベルを外した本体が対象。付属品と混同しない。",
+            "score": 0.594542384147644
+          },
+          {
+            "title": "新居浜市公式ごみ分別大辞典・2026年度カレンダー（意味検索）",
+            "uri": "regional://38205/mainland/niihama-2026.1/items/nh-rule-cap",
+            "snippet": "品目: ペットボトルから外したプラスチック製キャップ・ラベル\n分類コード: plastic_packaging\n分類: プラスチック製容器包装\n出し方・注意: 外したプラスチック製の部品だけ。本体はペットボトル。",
+            "score": 0.3484792113304138
+          },
+          {
+            "title": "新居浜市公式ごみ分別大辞典・2026年度カレンダー（意味検索）",
+            "uri": "regional://38205/mainland/niihama-2026.1/items/nh-p43-1-36",
+            "snippet": "品目: ペットボトルのラベル\n分類コード: plastic_packaging\n分類: プラスチック製容器包装\n出し方・注意: 9ページ参照\n区分共通の出し方（上記の品目固有条件を優先）: 容器の中身を取り除き軽く水洗いし、汚れを落とす。二重袋にしない。大きい容器包装は30cm以下へ。",
+            "score": 0.348043292760849
+          }
+        ],
+        "retrieved_candidates": [
+          {
+            "uri": "regional://38205/mainland/niihama-2026.1/items/nh-rule-pet",
+            "item": "水洗いしたPETマーク付き飲料用ペットボトル本体",
+            "score": 0.594542384147644
+          },
+          {
+            "uri": "regional://38205/mainland/niihama-2026.1/items/nh-rule-cap",
+            "item": "ペットボトルから外したプラスチック製キャップ・ラベル",
+            "score": 0.3484792113304138
+          },
+          {
+            "uri": "regional://38205/mainland/niihama-2026.1/items/nh-p43-1-36",
+            "item": "ペットボトルのラベル",
+            "score": 0.348043292760849
+          },
+          {
+            "uri": "regional://38205/mainland/niihama-2026.1/items/nh-p44-1-05",
+            "item": "ポータブルトイレ",
+            "score": 0.2922358512878418
+          },
+          {
+            "uri": "regional://38205/mainland/niihama-2026.1/items/nh-rule-can",
+            "item": "水洗いした空の飲料用アルミ缶",
+            "score": 0.28903183341026306
+          },
+          {
+            "uri": "regional://38205/mainland/niihama-2026.1/items/nh-rule-pack-white",
+            "item": "内側が白い500ml以上の飲料用紙パック",
+            "score": 0.2830158472061157
+          },
+          {
+            "uri": "regional://38205/mainland/niihama-2026.1/items/nh-rule-tray",
+            "item": "水洗いした白色発泡食品トレイ",
+            "score": 0.27884289622306824
+          },
+          {
+            "uri": "regional://38205/mainland/niihama-2026.1/items/nh-p31-1-28",
+            "item": "簡易トイレ（ポータブルトイレ）",
+            "score": 0.2735382914543152
+          }
+        ]
+      }
+    ]
+  },
+  "limits_of_evaluation": [
+    "修正前4例は意図的に選んだ再現例で、一般の正答率ではない。",
+    "修正後は伊予市11例と既存5自治体のPET本体各1例、計16例を同一コードで全件実施。",
+    "旧伊予市24例・旧東温市33例の全件の実Bedrock再評価、画像の新規実API評価は行っていない。",
+    "モデルの変動と未評価の表現があり、全品目の正答保証ではない。"
+  ]
+}

@@ -1,0 +1,536 @@
+{
+  "schema_version": 1,
+  "evaluation_time": "2026-11-05T07:00:00+09:00",
+  "cases": [
+    {
+      "case": 1,
+      "input": {
+        "municipality_id": "38215",
+        "district_id": "38215-01",
+        "query": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+        "clarifications": []
+      },
+      "expected": "pet_bottles",
+      "check_type": "classification",
+      "source_url": "https://www.city.toon.ehime.jp/uploaded/attachment/22090.pdf#page=8",
+      "official_reason": "PET本体と外した付属品は別区分。",
+      "image": false
+    },
+    {
+      "case": 2,
+      "input": {
+        "municipality_id": "38215",
+        "district_id": "38215-30",
+        "query": "ペットボトルから外したプラスチック製のキャップだけ",
+        "clarifications": []
+      },
+      "expected": "plastic_packaging",
+      "check_type": "classification",
+      "source_url": "https://www.city.toon.ehime.jp/uploaded/attachment/22090.pdf#page=8",
+      "official_reason": "外したプラスチック製キャップはプラ類。",
+      "image": false
+    },
+    {
+      "case": 3,
+      "input": {
+        "municipality_id": "38215",
+        "district_id": "38215-03",
+        "query": "水洗いした白色の発泡食品トレイ",
+        "clarifications": []
+      },
+      "expected": "plastic_packaging",
+      "check_type": "classification",
+      "source_url": "https://www.city.toon.ehime.jp/uploaded/attachment/22090.pdf#page=9",
+      "official_reason": "食品トレイはプラ類。",
+      "image": false
+    },
+    {
+      "case": 4,
+      "input": {
+        "municipality_id": "38215",
+        "district_id": "38215-04",
+        "query": "絵の具で汚れた紙箱",
+        "clarifications": []
+      },
+      "expected": "burnable",
+      "check_type": "classification",
+      "source_url": "https://www.city.toon.ehime.jp/uploaded/attachment/22090.pdf#page=20",
+      "official_reason": "絵の具の紙箱の辞典注記は汚れたものは燃やす。",
+      "image": false
+    },
+    {
+      "case": 5,
+      "input": {
+        "municipality_id": "38215",
+        "district_id": "38215-31",
+        "query": "普通の小さいプラスチック製ストロー",
+        "clarifications": []
+      },
+      "expected": "non_burnable",
+      "check_type": "classification",
+      "source_url": "https://www.city.toon.ehime.jp/uploaded/attachment/22090.pdf#page=10",
+      "official_reason": "2026年度は硬質プラスチックの製品はその他。",
+      "image": false
+    },
+    {
+      "case": 6,
+      "input": {
+        "municipality_id": "38215",
+        "district_id": "38215-07",
+        "query": "45Lの無色透明袋に入るプラスチック製バケツ",
+        "clarifications": []
+      },
+      "expected": "non_burnable",
+      "check_type": "classification",
+      "source_url": "https://www.city.toon.ehime.jp/uploaded/attachment/22090.pdf#page=10",
+      "official_reason": "袋に入る硬質プラ製品はその他。",
+      "image": false
+    },
+    {
+      "case": 7,
+      "input": {
+        "municipality_id": "38215",
+        "district_id": "38215-08",
+        "query": "45Lの無色透明袋に入らないプラスチック製バケツ。1m程度で標準的な大人2人で運べます",
+        "clarifications": []
+      },
+      "expected": "bulky",
+      "check_type": "classification",
+      "source_url": "https://www.city.toon.ehime.jp/uploaded/attachment/22090.pdf#page=13",
+      "official_reason": "袋に入らず1m程度・大人2人で運べるものは粗大。",
+      "image": false
+    },
+    {
+      "case": 8,
+      "input": {
+        "municipality_id": "38215",
+        "district_id": "38215-10",
+        "query": "プラスチック製バケツ",
+        "clarifications": []
+      },
+      "expected": null,
+      "check_type": "clarification",
+      "source_url": "https://www.city.toon.ehime.jp/uploaded/attachment/22090.pdf#page=10",
+      "official_reason": "大きさによってその他又は粗大となるため確認が必要。",
+      "image": false
+    },
+    {
+      "case": 9,
+      "input": {
+        "municipality_id": "38215",
+        "district_id": "38215-10",
+        "query": "プラスチック製バケツ",
+        "clarifications": [
+          {
+            "question": "45Lの無色透明袋に入る大きさですか？",
+            "answer": "はい"
+          }
+        ]
+      },
+      "expected": "non_burnable",
+      "check_type": "classification",
+      "source_url": "https://www.city.toon.ehime.jp/uploaded/attachment/22090.pdf#page=10",
+      "official_reason": "袋に入るという回答は大きさの条件を満たす。",
+      "image": false
+    },
+    {
+      "case": 10,
+      "input": {
+        "municipality_id": "38215",
+        "district_id": "38215-10",
+        "query": "プラスチック製バケツ。1m程度で標準的な大人2人で運べます",
+        "clarifications": [
+          {
+            "question": "45Lの無色透明袋に入る大きさですか？",
+            "answer": "いいえ"
+          }
+        ]
+      },
+      "expected": "bulky",
+      "check_type": "classification",
+      "source_url": "https://www.city.toon.ehime.jp/uploaded/attachment/22090.pdf#page=13",
+      "official_reason": "袋に入らないという回答は粗大の条件を満たす。",
+      "image": false
+    },
+    {
+      "case": 11,
+      "input": {
+        "municipality_id": "38215",
+        "district_id": "38215-11",
+        "query": "水洗いした空の飲料用アルミ缶",
+        "clarifications": []
+      },
+      "expected": "metals",
+      "check_type": "classification",
+      "source_url": "https://www.city.toon.ehime.jp/uploaded/attachment/22090.pdf#page=6",
+      "official_reason": "飲料缶は缶・金属類。",
+      "image": false
+    },
+    {
+      "case": 12,
+      "input": {
+        "municipality_id": "38215",
+        "district_id": "38215-32",
+        "query": "使い切りガスを抜いて火気のない屋外で穴をあけた金属製スプレー缶",
+        "clarifications": []
+      },
+      "expected": "metals",
+      "check_type": "classification",
+      "source_url": "https://www.city.toon.ehime.jp/site/141/1120.html",
+      "official_reason": "現行公式案内は使い切り・ガス抜き・穴あけ後に金属。",
+      "image": false
+    },
+    {
+      "case": 13,
+      "input": {
+        "municipality_id": "38215",
+        "district_id": "38215-30",
+        "query": "ジャムが入っていた空のガラスびん",
+        "clarifications": []
+      },
+      "expected": "bottles_glass",
+      "check_type": "classification",
+      "source_url": "https://www.city.toon.ehime.jp/uploaded/attachment/22090.pdf#page=7",
+      "official_reason": "びん・ガラス類。川内は色別。",
+      "image": false
+    },
+    {
+      "case": 14,
+      "input": {
+        "municipality_id": "38215",
+        "district_id": "38215-09",
+        "query": "割れたガラスコップ",
+        "clarifications": []
+      },
+      "expected": "bottles_glass",
+      "check_type": "classification",
+      "source_url": "https://www.city.toon.ehime.jp/uploaded/attachment/22090.pdf#page=7",
+      "official_reason": "割れガラスもびん・ガラス類。",
+      "image": false
+    },
+    {
+      "case": 15,
+      "input": {
+        "municipality_id": "38215",
+        "district_id": "38215-06",
+        "query": "45Lの無色透明袋に入る小さい陶器製コップ",
+        "clarifications": []
+      },
+      "expected": "non_burnable",
+      "check_type": "classification",
+      "source_url": "https://www.city.toon.ehime.jp/uploaded/attachment/22090.pdf#page=10",
+      "official_reason": "陶磁器はその他、ガラスと区別。",
+      "image": false
+    },
+    {
+      "case": 16,
+      "input": {
+        "municipality_id": "38215",
+        "district_id": "38215-12",
+        "query": "内側が白い1リットルの牛乳用紙パック",
+        "clarifications": []
+      },
+      "expected": "paper",
+      "check_type": "classification",
+      "source_url": "https://www.city.toon.ehime.jp/uploaded/attachment/22090.pdf#page=5",
+      "official_reason": "500ml以上で内側が銀色でない紙パックは紙類。",
+      "image": false
+    },
+    {
+      "case": 17,
+      "input": {
+        "municipality_id": "38215",
+        "district_id": "38215-31",
+        "query": "内側が銀色の飲料用紙パック",
+        "clarifications": []
+      },
+      "expected": "burnable",
+      "check_type": "classification",
+      "source_url": "https://www.city.toon.ehime.jp/uploaded/attachment/22090.pdf#page=5",
+      "official_reason": "内側銀色の紙パックは燃やす。",
+      "image": false
+    },
+    {
+      "case": 18,
+      "input": {
+        "municipality_id": "38215",
+        "district_id": "38215-02",
+        "query": "使い終わったアルカリ乾電池",
+        "clarifications": []
+      },
+      "expected": "batteries",
+      "check_type": "classification",
+      "source_url": "https://www.city.toon.ehime.jp/uploaded/attachment/22090.pdf#page=12",
+      "official_reason": "乾電池は乾電池類。充電池とは別。",
+      "image": false
+    },
+    {
+      "case": 19,
+      "input": {
+        "municipality_id": "38215",
+        "district_id": "38215-03",
+        "query": "水銀式の体温計",
+        "clarifications": []
+      },
+      "expected": "thermometers",
+      "check_type": "classification",
+      "source_url": "https://www.city.toon.ehime.jp/uploaded/attachment/22090.pdf#page=12",
+      "official_reason": "重信は乾電池・体温計の日程。",
+      "image": false
+    },
+    {
+      "case": 20,
+      "input": {
+        "municipality_id": "38215",
+        "district_id": "38215-30",
+        "query": "水銀式の体温計",
+        "clarifications": []
+      },
+      "expected": "thermometers",
+      "check_type": "classification",
+      "source_url": "https://www.city.toon.ehime.jp/uploaded/attachment/22090.pdf#page=12",
+      "official_reason": "川内は蛍光灯・鏡・体温計の日程。",
+      "image": false
+    },
+    {
+      "case": 21,
+      "input": {
+        "municipality_id": "38215",
+        "district_id": "38215-31",
+        "query": "使い終わったモバイルバッテリー",
+        "clarifications": []
+      },
+      "expected": "small_device_dropoff",
+      "check_type": "classification",
+      "source_url": "https://www.city.toon.ehime.jp/site/141/26315.html",
+      "official_reason": "2026年3月の公式案内で市役所・川内支所の窓口回収。",
+      "image": false
+    },
+    {
+      "case": 22,
+      "input": {
+        "municipality_id": "38215",
+        "district_id": "38215-04",
+        "query": "機器から取り外したリチウムイオン充電池",
+        "clarifications": []
+      },
+      "expected": "not_collected",
+      "check_type": "classification",
+      "source_url": "https://www.city.toon.ehime.jp/site/141/26315.html",
+      "official_reason": "単体の充電池は販売店・協力店の店頭回収。",
+      "image": false
+    },
+    {
+      "case": 23,
+      "input": {
+        "municipality_id": "38215",
+        "district_id": "38215-05",
+        "query": "電池を取り外せないスマートフォン",
+        "clarifications": []
+      },
+      "expected": "small_device_dropoff",
+      "check_type": "classification",
+      "source_url": "https://www.city.toon.ehime.jp/site/141/26315.html",
+      "official_reason": "リチウムイオン電池内蔵小型家電は窓口回収。",
+      "image": false
+    },
+    {
+      "case": 24,
+      "input": {
+        "municipality_id": "38215",
+        "district_id": "38215-06",
+        "query": "家庭用のテレビ",
+        "clarifications": []
+      },
+      "expected": "not_collected",
+      "check_type": "classification",
+      "source_url": "https://www.city.toon.ehime.jp/uploaded/attachment/22090.pdf#page=14",
+      "official_reason": "家電リサイクル4品目は市の収集対象外。",
+      "image": false
+    },
+    {
+      "case": 25,
+      "input": {
+        "municipality_id": "38215",
+        "district_id": "38215-09",
+        "query": "1m程度の壊れた木製家具。標準的な大人2人で持ち運べます",
+        "clarifications": []
+      },
+      "expected": "bulky",
+      "check_type": "classification",
+      "source_url": "https://www.city.toon.ehime.jp/uploaded/attachment/22090.pdf#page=13",
+      "official_reason": "1m程度で標準的な大人2人が運べるものは粗大。",
+      "image": false
+    },
+    {
+      "case": 26,
+      "input": {
+        "municipality_id": "38215",
+        "district_id": "38215-09",
+        "query": "大きな壊れた木製家具",
+        "clarifications": []
+      },
+      "expected": null,
+      "check_type": "clarification",
+      "source_url": "https://www.city.toon.ehime.jp/uploaded/attachment/22090.pdf#page=13",
+      "official_reason": "大きさ・大人2人による運搬可否が不明なら確認。",
+      "image": false
+    },
+    {
+      "case": 27,
+      "input": {
+        "municipality_id": "38215",
+        "district_id": "38215-05",
+        "query": "水銀血圧計",
+        "clarifications": []
+      },
+      "expected": "mercury_instruments",
+      "check_type": "classification",
+      "source_url": "https://www.city.toon.ehime.jp/uploaded/attachment/22090.pdf#page=32",
+      "official_reason": "辞典の分類は水銀。地区の水銀関連日程との対応は未確認。",
+      "image": false
+    },
+    {
+      "case": 28,
+      "input": {
+        "municipality_id": "38215",
+        "district_id": "38215-06",
+        "query": "家庭で使っていたノートパソコン本体",
+        "clarifications": []
+      },
+      "expected": "not_collected",
+      "check_type": "classification",
+      "source_url": "https://www.city.toon.ehime.jp/site/141/1304.html",
+      "official_reason": "パソコン本体は市収集の対象外。",
+      "image": false
+    },
+    {
+      "case": 29,
+      "input": {
+        "municipality_id": "38201",
+        "district_id": "38201-08",
+        "query": "キャップとラベルを外して水洗いした飲料用ペットボトル本体",
+        "clarifications": []
+      },
+      "expected": "ペット",
+      "check_type": "classification",
+      "source_url": "https://www.city.matsuyama.ehime.jp/kurashi/gomi/dashikata/kateigomi_matsuyama.html",
+      "official_reason": "既存自治体の確認済み回帰例。",
+      "image": false
+    },
+    {
+      "case": 30,
+      "input": {
+        "municipality_id": "38204",
+        "district_id": "38204-01",
+        "query": "空の飲料用アルミ缶",
+        "clarifications": []
+      },
+      "expected": "cans",
+      "check_type": "classification",
+      "source_url": "https://www.city.yawatahama.ehime.jp/doc/2021022400010/file_contents/2023-04.pdf",
+      "official_reason": "既存自治体の確認済み回帰例。",
+      "image": false
+    },
+    {
+      "case": 31,
+      "input": {
+        "municipality_id": "38210",
+        "district_id": "38210-iyo-south",
+        "query": "キャップ・ラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体。プラマークはありません",
+        "clarifications": []
+      },
+      "expected": "pet_bottles",
+      "check_type": "classification",
+      "source_url": "https://www.city.iyo.lg.jp/kankyohozen/bunbetu.html",
+      "official_reason": "既存自治体の確認済み回帰例。",
+      "image": false
+    },
+    {
+      "case": 32,
+      "input": {
+        "municipality_id": "38442",
+        "district_id": "38442-01",
+        "query": "使い終わったアルカリ乾電池",
+        "clarifications": []
+      },
+      "expected": "hazardous",
+      "check_type": "classification",
+      "source_url": "https://www.town.ikata.ehime.jp/soshiki/32/11452.html",
+      "official_reason": "既存自治体の確認済み回帰例。",
+      "image": false
+    },
+    {
+      "case": 33,
+      "input": {
+        "municipality_id": "38205",
+        "district_id": "38205-01",
+        "query": "使い終わったモバイルバッテリー",
+        "clarifications": []
+      },
+      "expected": "hazardous",
+      "check_type": "classification",
+      "source_url": "https://www.city.niihama.lg.jp/soshiki/haiki/pamphlet.html",
+      "official_reason": "既存自治体の確認済み回帰例。",
+      "image": false
+    }
+  ],
+  "follow_up_cases": [
+    {
+      "case": 34,
+      "input": {
+        "municipality_id": "38215",
+        "district_id": "38215-30",
+        "query": "指定ごみ袋に入る羽毛布団",
+        "clarifications": []
+      },
+      "expected": "burnable",
+      "check_type": "classification",
+      "source_url": "https://www.city.toon.ehime.jp/uploaded/attachment/22090.pdf#page=20",
+      "official_reason": "指定ごみ袋に入るものは燃やすという辞典の分岐。",
+      "image": false
+    },
+    {
+      "case": 35,
+      "input": {
+        "municipality_id": "38215",
+        "district_id": "38215-30",
+        "query": "中身を空にして洗ったガラス製のソース容器",
+        "clarifications": []
+      },
+      "expected": "bottles_glass",
+      "check_type": "classification",
+      "source_url": "https://www.city.toon.ehime.jp/uploaded/attachment/22090.pdf#page=35",
+      "official_reason": "ソース容器はガラス製ならびんという明示分岐。",
+      "image": false
+    },
+    {
+      "case": 36,
+      "input": {
+        "municipality_id": "38215",
+        "district_id": "38215-30",
+        "query": "45Lの無色透明袋に入るプラスチック製の杖",
+        "clarifications": []
+      },
+      "expected": "non_burnable",
+      "check_type": "classification",
+      "source_url": "https://www.city.toon.ehime.jp/uploaded/attachment/22090.pdf#page=37",
+      "official_reason": "杖の注記は金属製以外はその他。",
+      "image": false
+    },
+    {
+      "case": 37,
+      "input": {
+        "municipality_id": "38215",
+        "district_id": "38215-30",
+        "query": "ビニール・金銀加工しているおもちゃの紙製の空き箱",
+        "clarifications": []
+      },
+      "expected": "burnable",
+      "check_type": "classification",
+      "source_url": "https://www.city.toon.ehime.jp/uploaded/attachment/22090.pdf#page=21",
+      "official_reason": "おもちゃの紙製空き箱の個別注記は加工したものは燃やす。",
+      "image": false
+    }
+  ]
+}

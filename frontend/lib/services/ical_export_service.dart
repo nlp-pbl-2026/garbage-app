@@ -64,13 +64,13 @@ class IcalExportService {
         : '${_scheduleService.municipalityId}-';
     final uid =
         '$scope${entry.districtId}-$dateStr-${entry.category.toJsonString()}@garbageapp';
-    final deadline = entry.category.deadlineLabel;
+    final timing = entry.category.disposalTimeDescription;
 
     buffer.writeln('BEGIN:VEVENT');
     buffer.writeln('DTSTART;VALUE=DATE:$dateStr');
     buffer.writeln('SUMMARY:${_escape(label)}の日');
     buffer
-        .writeln('DESCRIPTION:今日は${_escape(label)}の収集日です。$deadlineまでに出してください。');
+        .writeln('DESCRIPTION:今日は${_escape(label)}の収集日です。${_escape(timing)}');
     buffer.writeln('UID:$uid');
     buffer.writeln('END:VEVENT');
   }

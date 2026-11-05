@@ -1,0 +1,304 @@
+{
+  "municipality_id": "38215",
+  "retrieved_at": "2026-11-05",
+  "license_status": "unconfirmed",
+  "sources": [
+    {
+      "file": "shigenobu.html",
+      "url": "https://www.city.toon.ehime.jp/site/141/31626.html",
+      "sha256": "36750a089a7af1a21794dc5d95092f6ac1b5546ef8296f38bdb295732c4f04b5"
+    },
+    {
+      "file": "kawauchi.html",
+      "url": "https://www.city.toon.ehime.jp/site/141/31627.html",
+      "sha256": "78831f8337fcf0b67a17c8e8843a3dd7c883cd89011639b9018055dc87a78215"
+    },
+    {
+      "file": "guide.html",
+      "url": "https://www.city.toon.ehime.jp/site/141/1130.html",
+      "sha256": "6b504bd80385e6ed4122cd77850ffc455b42f7a20e6373b0d8dc62f04c463bdd"
+    },
+    {
+      "file": "tables.html",
+      "url": "https://www.city.toon.ehime.jp/site/141/1131.html",
+      "sha256": "14ea4e5917799774af4f466e63910e3abde7b7d49bd5bd291d06ccd36161c206"
+    },
+    {
+      "file": "batteries.html",
+      "url": "https://www.city.toon.ehime.jp/site/141/26315.html",
+      "sha256": "f18f20e63864a0a43d3e14bb6ff519c7606d38c470f30601eb1992f433804b84"
+    },
+    {
+      "file": "plastic-2027.html",
+      "url": "https://www.city.toon.ehime.jp/soshiki/10/33314.html",
+      "sha256": "cc447871fc9a7604ba7108fd086f2ce976af5cb44430a4398f4b79166e04ecc8"
+    },
+    {
+      "file": "23149.pdf",
+      "url": "https://www.city.toon.ehime.jp/uploaded/attachment/23149.pdf",
+      "title": "山之内 [PDFファイル／215KB]",
+      "index_page": "shigenobu.html",
+      "sha256": "aa13565f0ae03c049a6384b9dd01db26e539d02bdd049db452ccab6c7a2870de"
+    },
+    {
+      "file": "23150.pdf",
+      "url": "https://www.city.toon.ehime.jp/uploaded/attachment/23150.pdf",
+      "title": "樋口 [PDFファイル／218KB]",
+      "index_page": "shigenobu.html",
+      "sha256": "65fd81a55fef03bc123f532d75603320a03c6bbbe95c181f48f2f9178cb6c159"
+    },
+    {
+      "file": "21683.pdf",
+      "url": "https://www.city.toon.ehime.jp/uploaded/attachment/21683.pdf",
+      "title": "横河原 [PDFファイル／249KB]",
+      "index_page": "shigenobu.html",
+      "sha256": "bda6bed43189afc82a41374903cca278220768abcf412162e2056fcdb5a3c237"
+    },
+    {
+      "file": "21684.pdf",
+      "url": "https://www.city.toon.ehime.jp/uploaded/attachment/21684.pdf",
+      "title": "志津川 [PDFファイル／226KB]",
+      "index_page": "shigenobu.html",
+      "sha256": "7b8e9fdea14251c5117c6c12a1967f7d44cfee6575a63f2e6fac7f6888beef82"
+    },
+    {
+      "file": "21685.pdf",
+      "url": "https://www.city.toon.ehime.jp/uploaded/attachment/21685.pdf",
+      "title": "八反地 [PDFファイル／248KB]",
+      "index_page": "shigenobu.html",
+      "sha256": "62779d4688b2f589e59f6e61f33f02ca6b7930d1bbea78422cca55a1ba4a4d46"
+    },
+    {
+      "file": "21687.pdf",
+      "url": "https://www.city.toon.ehime.jp/uploaded/attachment/21687.pdf",
+      "title": "志津川南 [PDFファイル／226KB]",
+      "index_page": "shigenobu.html",
+      "sha256": "c90f0ea48235a8f455845e260a16186770f78279492c296729b07cb4698eff24"
+    },
+    {
+      "file": "23151.pdf",
+      "url": "https://www.city.toon.ehime.jp/uploaded/attachment/23151.pdf",
+      "title": "西岡（燃やすごみ月・木） [PDFファイル／215KB]",
+      "index_page": "shigenobu.html",
+      "sha256": "2c688efd05d4c9a2a9d83ce8d0ef69ea09a5e014794c9edf6e056005608fa63c"
+    },
+    {
+      "file": "21689.pdf",
+      "url": "https://www.city.toon.ehime.jp/uploaded/attachment/21689.pdf",
+      "title": "西岡（燃やすごみ火・金） [PDFファイル／215KB]",
+      "index_page": "shigenobu.html",
+      "sha256": "284adfadf287b8ccba8de70748172bae8e8c33767af322fcac633f013a0e4c6c"
+    },
+    {
+      "file": "23152.pdf",
+      "url": "https://www.city.toon.ehime.jp/uploaded/attachment/23152.pdf",
+      "title": "見奈良 [PDFファイル／214KB]",
+      "index_page": "shigenobu.html",
+      "sha256": "eab23f27129523dd8a4729f590b1a1a87c7ab5152d046c8a001b5eb0b0bf8f1f"
+    },
+    {
+      "file": "21691.pdf",
+      "url": "https://www.city.toon.ehime.jp/uploaded/attachment/21691.pdf",
+      "title": "田窪（燃やすごみ月・木） [PDFファイル／248KB]",
+      "index_page": "shigenobu.html",
+      "sha256": "ce208c330d32ac1c83f73500f68ccc2c2e7195cd6ed903f52cd6f888b9d36d79"
+    },
+    {
+      "file": "21692.pdf",
+      "url": "https://www.city.toon.ehime.jp/uploaded/attachment/21692.pdf",
+      "title": "田窪（燃やすごみ火・金） [PDFファイル／248KB]",
+      "index_page": "shigenobu.html",
+      "sha256": "8e505b1107c876689bfb5a929bcb536eb0ee6e0297eeb3afd3f51ecebaaf0444"
+    },
+    {
+      "file": "21693.pdf",
+      "url": "https://www.city.toon.ehime.jp/uploaded/attachment/21693.pdf",
+      "title": "田窪（燃やすごみ水・土） [PDFファイル／248KB]",
+      "index_page": "shigenobu.html",
+      "sha256": "bb19028fcc8609fd92f3f5256891f58ef2f78ca422da676166e1ec8649317284"
+    },
+    {
+      "file": "21694.pdf",
+      "url": "https://www.city.toon.ehime.jp/uploaded/attachment/21694.pdf",
+      "title": "田窪団地 [PDFファイル／215KB]",
+      "index_page": "shigenobu.html",
+      "sha256": "abe6de5ed58cc0c456ea040a596756e47f052ea73c1f73a33bec09450efd50db"
+    },
+    {
+      "file": "22919.pdf",
+      "url": "https://www.city.toon.ehime.jp/uploaded/attachment/22919.pdf",
+      "title": "牛渕・堀池 [PDFファイル／215KB]",
+      "index_page": "shigenobu.html",
+      "sha256": "e9edaff00b8431e48c04e12cee9f19a6596c9b35b170e27dbc718dc82574172e"
+    },
+    {
+      "file": "21696.pdf",
+      "url": "https://www.city.toon.ehime.jp/uploaded/attachment/21696.pdf",
+      "title": "牛渕団地 [PDFファイル／217KB]",
+      "index_page": "shigenobu.html",
+      "sha256": "ad9fb504160afacdf1b59bfd61823dcbd10b192d5b77b39e5a7b325eb513a703"
+    },
+    {
+      "file": "21697.pdf",
+      "url": "https://www.city.toon.ehime.jp/uploaded/attachment/21697.pdf",
+      "title": "播磨台団地 [PDFファイル／216KB]",
+      "index_page": "shigenobu.html",
+      "sha256": "fce2f7a89eb07727ab3c0270025466dcf0c20a3cede459fba689c21975432072"
+    },
+    {
+      "file": "23153.pdf",
+      "url": "https://www.city.toon.ehime.jp/uploaded/attachment/23153.pdf",
+      "title": "上樋 [PDFファイル／216KB]",
+      "index_page": "shigenobu.html",
+      "sha256": "71bb36b80e124f5650d1d5e5d650316bff6dec6799040dba863bc23633c49b79"
+    },
+    {
+      "file": "23154.pdf",
+      "url": "https://www.city.toon.ehime.jp/uploaded/attachment/23154.pdf",
+      "title": "南野田 [PDFファイル／216KB]",
+      "index_page": "shigenobu.html",
+      "sha256": "e3d19057ec019f7ee5357641e1a75216563b611994c22233285bdc5de1a7c680"
+    },
+    {
+      "file": "21700.pdf",
+      "url": "https://www.city.toon.ehime.jp/uploaded/attachment/21700.pdf",
+      "title": "北野田 [PDFファイル／215KB]",
+      "index_page": "shigenobu.html",
+      "sha256": "0a04a49a521385243088f85778f94d8de1eece25228501293950cd3589545af8"
+    },
+    {
+      "file": "21701.pdf",
+      "url": "https://www.city.toon.ehime.jp/uploaded/attachment/21701.pdf",
+      "title": "野田1・2丁目 [PDFファイル／215KB]",
+      "index_page": "shigenobu.html",
+      "sha256": "9ce0e468763a24843f6cee7a64e6a0f1fa43bee7ab6885dc1ea7f121b4791e95"
+    },
+    {
+      "file": "21702.pdf",
+      "url": "https://www.city.toon.ehime.jp/uploaded/attachment/21702.pdf",
+      "title": "新村・野田3丁目 [PDFファイル／219KB]",
+      "index_page": "shigenobu.html",
+      "sha256": "8c30a4ce1d049487adae89416a9f5574ce1fcf703e9089841ce1d0f46e91a5ec"
+    },
+    {
+      "file": "23155.pdf",
+      "url": "https://www.city.toon.ehime.jp/uploaded/attachment/23155.pdf",
+      "title": "北野台団地 [PDFファイル／216KB]",
+      "index_page": "shigenobu.html",
+      "sha256": "ed8970710631a2f2dc12063dcde10e63a570eaa919eeb190757e75e87bd6378c"
+    },
+    {
+      "file": "22920.pdf",
+      "url": "https://www.city.toon.ehime.jp/uploaded/attachment/22920.pdf",
+      "title": "下林 [PDFファイル／223KB]",
+      "index_page": "shigenobu.html",
+      "sha256": "2986833a7b36e2e1b39716f18e5ad12162607e4ac1d2bfb657d7a452307dfe01"
+    },
+    {
+      "file": "23156.pdf",
+      "url": "https://www.city.toon.ehime.jp/uploaded/attachment/23156.pdf",
+      "title": "上林 [PDFファイル／215KB]",
+      "index_page": "shigenobu.html",
+      "sha256": "19c9173278348c384915cfe63f9a5b6eb1880c8d7817578a533eff792f9d9cae"
+    },
+    {
+      "file": "22921.pdf",
+      "url": "https://www.city.toon.ehime.jp/uploaded/attachment/22921.pdf",
+      "title": "上村 [PDFファイル／213KB]",
+      "index_page": "shigenobu.html",
+      "sha256": "9d4e2ed3e1bfbc22ef45915b7d30d849ce973982a03bf71f1cd3534b4efb349a"
+    },
+    {
+      "file": "21707.pdf",
+      "url": "https://www.city.toon.ehime.jp/uploaded/attachment/21707.pdf",
+      "title": "愛大医学部看護師宿舎 [PDFファイル／227KB]",
+      "index_page": "shigenobu.html",
+      "sha256": "f27da01c3229c6a2ae2b75fe45998e362703e0c55f4ffec939074bbdb2ea7fa9"
+    },
+    {
+      "file": "21708.pdf",
+      "url": "https://www.city.toon.ehime.jp/uploaded/attachment/21708.pdf",
+      "title": "自衛隊官舎 [PDFファイル／216KB]",
+      "index_page": "shigenobu.html",
+      "sha256": "61176778d2a8a0d8434e673e610bcc2e08fcb3a526989e7cf19f8c007698a6c5"
+    },
+    {
+      "file": "21709.pdf",
+      "url": "https://www.city.toon.ehime.jp/uploaded/attachment/21709.pdf",
+      "title": "刑務所官舎 [PDFファイル／216KB]",
+      "index_page": "shigenobu.html",
+      "sha256": "2c4043465a04325692e5df59d24c75e78847fcf39ebd769cc7f959825e5d9210"
+    },
+    {
+      "file": "21710.pdf",
+      "url": "https://www.city.toon.ehime.jp/uploaded/attachment/21710.pdf",
+      "title": "県営天神団地 [PDFファイル／218KB]",
+      "index_page": "shigenobu.html",
+      "sha256": "f3b5f6b7a25aaad01f6e2672033cc5ba11ddea37cf6e9a0a98673fc114ccc5ef"
+    },
+    {
+      "file": "21663.pdf",
+      "url": "https://www.city.toon.ehime.jp/uploaded/attachment/21663.pdf",
+      "title": "A地区 [PDFファイル／747KB]",
+      "index_page": "kawauchi.html",
+      "sha256": "7bb1aeac09050cf1d8054e34a2a8d2acd1e33fe682faa75837a4483ebfc90fda"
+    },
+    {
+      "file": "21664.pdf",
+      "url": "https://www.city.toon.ehime.jp/uploaded/attachment/21664.pdf",
+      "title": "B地区 [PDFファイル／746KB]",
+      "index_page": "kawauchi.html",
+      "sha256": "03c2e5c0bd7060d7a8d396d6f6ee08b6311b23ff6eb841c900ed7a67351afe20"
+    },
+    {
+      "file": "21665.pdf",
+      "url": "https://www.city.toon.ehime.jp/uploaded/attachment/21665.pdf",
+      "title": "C地区 [PDFファイル／746KB]",
+      "index_page": "kawauchi.html",
+      "sha256": "d55bd376f42278d05a907956f9e6151e1fdf3f110f32bc5e3e5e072156b26c2e"
+    },
+    {
+      "file": "22090.pdf",
+      "url": "https://www.city.toon.ehime.jp/uploaded/attachment/22090.pdf",
+      "title": "ごみ分別はやわかり帳（全編）家庭用 [PDFファイル／3.32MB]",
+      "index_page": "guide.html",
+      "sha256": "b5c881044bf9707d212eba85a76d42f5157b572222e04d62fb040340e9742bbc"
+    },
+    {
+      "file": "10756.pdf",
+      "url": "https://www.city.toon.ehime.jp/uploaded/attachment/10756.pdf",
+      "title": "ごみ分別表（重信地区） [PDFファイル／783KB]",
+      "index_page": "tables.html",
+      "sha256": "36630161a9709fd3db2459efbdb3dd2cde949e0f6feef75bc40ddb1223f860cb"
+    },
+    {
+      "file": "10758.pdf",
+      "url": "https://www.city.toon.ehime.jp/uploaded/attachment/10758.pdf",
+      "title": "ごみ分別表（川内地区） [PDFファイル／878KB]",
+      "index_page": "tables.html",
+      "sha256": "2502856e1097e2baa613f782f36893a414cc304fa951eecd99317bab76820c28"
+    },
+    {
+      "file": "22763.pdf",
+      "url": "https://www.city.toon.ehime.jp/uploaded/attachment/22763.pdf",
+      "title": "製品プラパンフレット [PDFファイル／2.19MB]",
+      "index_page": "plastic-2027.html",
+      "sha256": "6e7c9a16f005f20958e18d639e3750d90f63693f3f104c97f814b499e6687550"
+    },
+    {
+      "file": "facility.html",
+      "url": "https://www.city.toon.ehime.jp/site/141/14368.html",
+      "sha256": "2af0860aa7c57825e1b01686a2170f6189c58477f5e6fdd20dcf810f7aff4e3a"
+    },
+    {
+      "file": "spray.html",
+      "url": "https://www.city.toon.ehime.jp/site/141/1120.html",
+      "sha256": "2d394166bac4fd75605b0fc0d58e516dba25b44e4506afda779194f8fefe9c13"
+    },
+    {
+      "file": "computer.html",
+      "url": "https://www.city.toon.ehime.jp/site/141/1304.html",
+      "sha256": "4bebe9bd95870c255dd8c4de0b5f32ec820c2ecfb5f7fd1f68488f2fbd1d2499"
+    }
+  ]
+}

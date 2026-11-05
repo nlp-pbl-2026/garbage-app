@@ -140,10 +140,15 @@ class CalendarService:
         if at is not None:
             local_now = at.astimezone(ZoneInfo(config.TIMEZONE))
             target_date = local_now.date()
-            collection_cutoff = time(hour=cutoff_hour) if cutoff_hour is not None else definition.cutoff
+            collection_cutoff = (None if definition.cutoff_status == "unverified" else
+                                 time(hour=cutoff_hour) if cutoff_hour is not None else definition.cutoff)
             if collection_cutoff is None:
-                return None
-            if local_now.time() >= collection_cutoff:
+                if definition.cutoff_status != "unverified":
+                    return None
+                # Dates are verified independently of a neighbourhood's time.
+                # Never promise today's collection before an unknown deadline.
+                target_date += timedelta(days=1)
+            elif local_now.time() >= collection_cutoff:
                 target_date += timedelta(days=1)
         if not self._valid_from <= target_date <= self._valid_to:
             return None

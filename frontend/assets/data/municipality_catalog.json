@@ -2387,6 +2387,301 @@
           }
         }
       }
+    },
+    {
+      "id": "38215",
+      "version": "toon-2026.1",
+      "name": "東温市",
+      "prefecture_id": "38",
+      "prefecture_name": "愛媛県",
+      "registry_asset": "assets/data/municipality_38215_registry.json",
+      "profiles": {
+        "shigenobu": {
+          "calendar_asset": "assets/data/municipality_38215_0_calendar.json",
+          "categories": {
+            "burnable": {
+              "name": "燃やすごみ",
+              "collection_type_id": "burnable",
+              "cutoff": "08:00",
+              "start_time": "06:00",
+              "time_note": "当日の午前6時〜8時の間に出してください。",
+              "color": "#FF0000"
+            },
+            "paper": {
+              "name": "紙類",
+              "collection_type_id": "paper",
+              "cutoff": "08:00",
+              "start_time": "06:00",
+              "time_note": "当日の午前6時〜8時の間に出してください。",
+              "color": "#FF3399"
+            },
+            "metals": {
+              "name": "空き缶・金属類",
+              "collection_type_id": "metals",
+              "cutoff_status": "unverified",
+              "time_note": "搬出時刻は地域で確認してください。期限未確認の区分は、検索の次回収集日を翌日以降で案内します。",
+              "color": "#00B050"
+            },
+            "bottles_glass": {
+              "name": "びん・ガラス類",
+              "collection_type_id": "bottles_glass",
+              "cutoff_status": "unverified",
+              "time_note": "搬出時刻は地域で確認してください。期限未確認の区分は、検索の次回収集日を翌日以降で案内します。",
+              "color": "#0066B3"
+            },
+            "pet_bottles": {
+              "name": "ペットボトル",
+              "collection_type_id": "pet_bottles",
+              "cutoff_status": "unverified",
+              "time_note": "搬出時刻は地域で確認してください。期限未確認の区分は、検索の次回収集日を翌日以降で案内します。",
+              "color": "#FFFF00"
+            },
+            "plastic_packaging": {
+              "name": "プラスチック類",
+              "collection_type_id": "plastic_packaging",
+              "cutoff_status": "unverified",
+              "time_note": "搬出時刻は地域で確認してください。期限未確認の区分は、検索の次回収集日を翌日以降で案内します。",
+              "color": "#FFFF00"
+            },
+            "non_burnable": {
+              "name": "その他燃やさないごみ",
+              "collection_type_id": "non_burnable",
+              "cutoff_status": "unverified",
+              "time_note": "搬出時刻は地域で確認してください。期限未確認の区分は、検索の次回収集日を翌日以降で案内します。",
+              "color": "#C65911"
+            },
+            "bulky": {
+              "name": "粗大ごみ",
+              "collection_type_id": "bulky",
+              "cutoff_status": "unverified",
+              "time_note": "搬出時刻は地域で確認してください。期限未確認の区分は、検索の次回収集日を翌日以降で案内します。",
+              "color": "#C65911"
+            },
+            "mercury": {
+              "name": "蛍光灯・鏡",
+              "collection_type_id": "mercury",
+              "cutoff_status": "unverified",
+              "time_note": "搬出時刻は地域で確認してください。期限未確認の区分は、検索の次回収集日を翌日以降で案内します。",
+              "collection_name": "蛍光灯・鏡",
+              "color": "#0066B3"
+            },
+            "batteries": {
+              "name": "乾電池類",
+              "collection_type_id": "batteries",
+              "cutoff_status": "unverified",
+              "time_note": "搬出時刻は地域で確認してください。期限未確認の区分は、検索の次回収集日を翌日以降で案内します。",
+              "collection_name": "乾電池・体温計",
+              "color": "#00B050"
+            },
+            "thermometers": {
+              "name": "水銀式体温計",
+              "collection_type_id": "batteries",
+              "cutoff_status": "unverified",
+              "time_note": "搬出時刻は地域で確認してください。期限未確認の区分は、検索の次回収集日を翌日以降で案内します。",
+              "color": "#0066B3"
+            },
+            "mercury_instruments": {
+              "name": "水銀使用の計測器",
+              "collection_type_id": "mercury_instruments",
+              "cutoff_status": "unverified",
+              "time_note": "搬出時刻は地域で確認してください。期限未確認の区分は、検索の次回収集日を翌日以降で案内します。",
+              "color": "#777777"
+            },
+            "not_collected": {
+              "name": "市で収集しないもの",
+              "color": "#808080"
+            },
+            "small_device_dropoff": {
+              "name": "電池内蔵小型家電の窓口回収",
+              "color": "#5E4FA2"
+            }
+          },
+          "bulky_waste": {
+            "category_code": "bulky",
+            "config": {
+              "municipality_id": "38215",
+              "municipality_name": "東温市",
+              "collection_frequency": "地区別カレンダーの粗大ごみ収集日",
+              "reception_hours": "定期収集のため申込受付なし。相談は市環境保全課へ。",
+              "collection_rules": "重信地区は各地区で決められた搬出時刻を確認してください。",
+              "fee_structure_type": "fixed",
+              "application_method": "none",
+              "phone_number": "089-964-4415",
+              "information_url": "https://www.city.toon.ehime.jp/site/141/1130.html",
+              "steps": [
+                {
+                  "step_number": 1,
+                  "title": "対象と大きさを確認",
+                  "description": "指定袋・45Lの無色透明袋・コンテナに入らないもの等。1m程度、標準的な大人2人で持ち運べるものに限ります。家電リサイクル対象品、処理困難物、事業ごみは出せません。"
+                },
+                {
+                  "step_number": 2,
+                  "title": "地区の収集日を確認",
+                  "description": "申込制の戸別収集ではなく、選択した地区の粗大ごみ収集日に集積場へ出します。重信は地区で決められた時刻を確認し、川内は当日午前6〜8時に出してください。"
+                },
+                {
+                  "step_number": 3,
+                  "title": "中身が分かる状態で出す",
+                  "description": "箱に詰めず、電池・バッテリーや燃料を取り除き、布団等は濡れないように出してください。"
+                },
+                {
+                  "step_number": 4,
+                  "title": "大量ごみ・搬入について",
+                  "description": "引越し等の多量ごみは専門業者へ相談してください。東温市リサイクルセンターは粗大ごみを受け入れません。持込可能な普通ごみの区分別手数料・受付時間は公式案内で確認してください。"
+                }
+              ]
+            }
+          }
+        },
+        "kawauchi": {
+          "calendar_asset": "assets/data/municipality_38215_0_calendar.json",
+          "categories": {
+            "burnable": {
+              "name": "燃やすごみ",
+              "collection_type_id": "burnable",
+              "cutoff": "08:00",
+              "start_time": "06:00",
+              "time_note": "当日の午前6時〜8時の間に出してください。",
+              "color": "#FF0000"
+            },
+            "paper": {
+              "name": "紙類",
+              "collection_type_id": "paper",
+              "cutoff": "08:00",
+              "start_time": "06:00",
+              "time_note": "当日の午前6時〜8時の間に出してください。",
+              "color": "#FF3399"
+            },
+            "metals": {
+              "name": "空き缶・金属類",
+              "collection_type_id": "metals",
+              "cutoff": "08:00",
+              "start_time": "06:00",
+              "time_note": "当日の午前6時〜8時の間に出してください。",
+              "color": "#00B050"
+            },
+            "bottles_glass": {
+              "name": "びん・ガラス類",
+              "collection_type_id": "bottles_glass",
+              "cutoff": "08:00",
+              "start_time": "06:00",
+              "time_note": "当日の午前6時〜8時の間に出してください。",
+              "color": "#0066B3"
+            },
+            "pet_bottles": {
+              "name": "ペットボトル",
+              "collection_type_id": "pet_bottles",
+              "cutoff": "08:00",
+              "start_time": "06:00",
+              "time_note": "当日の午前6時〜8時の間に出してください。",
+              "color": "#FFFF00"
+            },
+            "plastic_packaging": {
+              "name": "プラスチック類",
+              "collection_type_id": "plastic_packaging",
+              "cutoff": "08:00",
+              "start_time": "06:00",
+              "time_note": "当日の午前6時〜8時の間に出してください。",
+              "color": "#FFFF00"
+            },
+            "non_burnable": {
+              "name": "その他燃やさないごみ",
+              "collection_type_id": "non_burnable",
+              "cutoff": "08:00",
+              "start_time": "06:00",
+              "time_note": "当日の午前6時〜8時の間に出してください。",
+              "color": "#C65911"
+            },
+            "bulky": {
+              "name": "粗大ごみ",
+              "collection_type_id": "bulky",
+              "cutoff": "08:00",
+              "start_time": "06:00",
+              "time_note": "当日の午前6時〜8時の間に出してください。",
+              "color": "#C65911"
+            },
+            "mercury": {
+              "name": "蛍光灯・鏡",
+              "collection_type_id": "mercury",
+              "cutoff": "08:00",
+              "start_time": "06:00",
+              "time_note": "当日の午前6時〜8時の間に出してください。",
+              "collection_name": "蛍光灯・鏡・体温計",
+              "color": "#0066B3"
+            },
+            "batteries": {
+              "name": "乾電池類",
+              "collection_type_id": "batteries",
+              "cutoff": "08:00",
+              "start_time": "06:00",
+              "time_note": "当日の午前6時〜8時の間に出してください。",
+              "collection_name": "乾電池類",
+              "color": "#00B050"
+            },
+            "thermometers": {
+              "name": "水銀式体温計",
+              "collection_type_id": "mercury",
+              "cutoff": "08:00",
+              "start_time": "06:00",
+              "time_note": "当日の午前6時〜8時の間に出してください。",
+              "color": "#0066B3"
+            },
+            "mercury_instruments": {
+              "name": "水銀使用の計測器",
+              "collection_type_id": "mercury_instruments",
+              "cutoff": "08:00",
+              "start_time": "06:00",
+              "time_note": "当日の午前6時〜8時の間に出してください。",
+              "color": "#777777"
+            },
+            "not_collected": {
+              "name": "市で収集しないもの",
+              "color": "#808080"
+            },
+            "small_device_dropoff": {
+              "name": "電池内蔵小型家電の窓口回収",
+              "color": "#5E4FA2"
+            }
+          },
+          "bulky_waste": {
+            "category_code": "bulky",
+            "config": {
+              "municipality_id": "38215",
+              "municipality_name": "東温市",
+              "collection_frequency": "地区別カレンダーの粗大ごみ収集日",
+              "reception_hours": "定期収集のため申込受付なし。相談は市環境保全課へ。",
+              "collection_rules": "川内地区は当日午前6〜8時。",
+              "fee_structure_type": "fixed",
+              "application_method": "none",
+              "phone_number": "089-964-4415",
+              "information_url": "https://www.city.toon.ehime.jp/site/141/1130.html",
+              "steps": [
+                {
+                  "step_number": 1,
+                  "title": "対象と大きさを確認",
+                  "description": "指定袋・45Lの無色透明袋・コンテナに入らないもの等。1m程度、標準的な大人2人で持ち運べるものに限ります。家電リサイクル対象品、処理困難物、事業ごみは出せません。"
+                },
+                {
+                  "step_number": 2,
+                  "title": "地区の収集日を確認",
+                  "description": "申込制の戸別収集ではなく、選択した地区の粗大ごみ収集日に集積場へ出します。重信は地区で決められた時刻を確認し、川内は当日午前6〜8時に出してください。"
+                },
+                {
+                  "step_number": 3,
+                  "title": "中身が分かる状態で出す",
+                  "description": "箱に詰めず、電池・バッテリーや燃料を取り除き、布団等は濡れないように出してください。"
+                },
+                {
+                  "step_number": 4,
+                  "title": "大量ごみ・搬入について",
+                  "description": "引越し等の多量ごみは専門業者へ相談してください。東温市リサイクルセンターは粗大ごみを受け入れません。持込可能な普通ごみの区分別手数料・受付時間は公式案内で確認してください。"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "addresses_asset": "assets/data/municipality_38215_addresses.json"
     }
   ]
 }
