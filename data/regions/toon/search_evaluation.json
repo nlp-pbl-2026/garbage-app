@@ -1,0 +1,1552 @@
+{
+  "evaluation_time": "2026-11-05T07:00:00+09:00",
+  "models": {
+    "nova": "amazon.nova-lite-v1:0",
+    "titan": "amazon.titan-embed-text-v2:0"
+  },
+  "settings": {
+    "knowledge_base": false,
+    "lexical_search": false,
+    "top_k": 8,
+    "min_similarity": 0.15,
+    "confidence": 0.75
+  },
+  "index_calls": 1280,
+  "evaluation_calls": {
+    "nova": 146,
+    "titan": 73
+  },
+  "evaluation_cases": 74,
+  "conservative_total_usd": 0.3564886,
+  "limits": {
+    "index_calls": 1400,
+    "evaluation_calls": 240,
+    "cases": 74,
+    "combined_usd": 1
+  },
+  "notes": [
+    "初回case31は評価fixtureの地区ID誤りで422。追試・最終は正しい伊予市地区ID。",
+    "初回case27の根拠PDFページ番号は42と誤記し、最終fixtureでは正しい32ページへ訂正。入力・期待分類は同じ。",
+    "東温市の初回3失敗はcase10,15,26。4追試の東温市3例はすべて成功。",
+    "伊予市のPET本体は追試・最終でプラへ誤分類。既存索引・ルールは変更していない。",
+    "画像認識の新規実API評価とスマートフォンのOS通知・GPS・共有シートの実機検証は未実施。",
+    "33例を同一版で最終評価した後、辞典の明示条件から許可分類コードを得る処理の抽出漏れを47行で補正した。辞典の本体と取り外す部品の分類を区別した。",
+    "最新データ版では4例（34〜37）を追試して全例成功。最新CSVで全33例は再評価していない。索引ベクトルと生成対象テキストは不変で、追加のEmbedding呼出しは0回。",
+    "評価fixtureの最新4例の入力・公式期待値はfollow_up_casesに記録。初回の誤った伊予市地区IDは38210-01、追試以降は38210-iyo-south。"
+  ],
+  "runs": {
+    "initial": [
+      {
+        "case": 1,
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "category": "pet_bottles",
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-08",
+          "display_date": "2026年11月8日（日）",
+          "collection_type": "ペットボトル"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体は「ペットボトル」です。\nキャップ・ラベルを外した本体が対象。外した部品と分類を混同しない。キャップ・ラベルを外し水洗いし軽くつぶしてネットへ。\n重信：山之内地区の次回収集日は2026年11月8日（日）です。\n搬出時刻は地域で確認してください。期限未確認の区分は、検索の次回収集日を翌日以降で案内します。",
+        "error": null
+      },
+      {
+        "case": 2,
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "category": "plastic_packaging",
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-06",
+          "display_date": "2026年11月6日（金）",
+          "collection_type": "プラスチック類"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "ペットボトルから外したプラスチック製のキャップは「プラスチック類」です。\n汚れを取り除き45L以下の無色透明袋に「プラ」・地区名・名前を書く。二重袋にしない。硬質プラ製品はその他燃やさないごみ。\n川内：河之内・土谷・滑川・則之内東・則之内西・井内・奥松瀬川地区の次回収集日は2026年11月6日（金）です。\n当日の午前6時〜8時の間に出してください。",
+        "error": null
+      },
+      {
+        "case": 3,
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "category": "plastic_packaging",
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-15",
+          "display_date": "2026年11月15日（日）",
+          "collection_type": "プラスチック類"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "水洗いした白色の発泡食品トレイは「プラスチック類」です。\n汚れを取り除き45L以下の無色透明袋に「プラ」・地区名・名前を書く。二重袋にしない。硬質プラ製品はその他燃やさないごみ。\n重信：横河原地区の次回収集日は2026年11月15日（日）です。\n搬出時刻は地域で確認してください。期限未確認の区分は、検索の次回収集日を翌日以降で案内します。",
+        "error": null
+      },
+      {
+        "case": 4,
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "category": "burnable",
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-05",
+          "display_date": "2026年11月5日（木）",
+          "collection_type": "燃やすごみ"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "絵の具で汚れた紙箱は「燃やすごみ」です。\n絵の具の紙箱の個別注記は、汚れたものは燃やす。プラ容器の汚れとは別。\n重信：志津川地区の次回収集日は2026年11月5日（木）です。\n当日の午前6時〜8時の間に出してください。",
+        "error": null
+      },
+      {
+        "case": 5,
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "category": "non_burnable",
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-17",
+          "display_date": "2026年11月17日（火）",
+          "collection_type": "その他燃やさないごみ"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "普通の小さいプラスチック製ストローは「その他燃やさないごみ」です。\n45L以下の無色透明袋で地区名・名前を記入。電池・バッテリーは外す。割れた陶磁器は危険のないように包む。\n川内：北方東・北方西・南方東・南方西地区の次回収集日は2026年11月17日（火）です。\n当日の午前6時〜8時の間に出してください。",
+        "error": null
+      },
+      {
+        "case": 6,
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "category": "non_burnable",
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-08",
+          "display_date": "2026年11月8日（日）",
+          "collection_type": "その他燃やさないごみ"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "プラスチック製バケツは「その他燃やさないごみ」です。\n45L以下の無色透明袋で地区名・名前を記入。電池・バッテリーは外す。割れた陶磁器は危険のないように包む。\n重信：西岡（燃やすごみ月・木）地区の次回収集日は2026年11月8日（日）です。\n搬出時刻は地域で確認してください。期限未確認の区分は、検索の次回収集日を翌日以降で案内します。",
+        "error": null
+      },
+      {
+        "case": 7,
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "category": "bulky",
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-25",
+          "display_date": "2026年11月25日（水）",
+          "collection_type": "粗大ごみ"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "プラスチック製バケツは「粗大ごみ」です。\n45リットルの無色透明袋に入らないものは「粗大」\n区分共通の出し方（上記の品目固有条件を優先）: 地区の粗大収集日に、箱等に入れず集積場へ。1m程度で標準的な大人2人が運べるものに限る。多量ごみ・禁止品は出さない。リサイクルセンターも粗大は受入不可。\n重信：西岡（燃やすごみ火・金）地区の次回収集日は2026年11月25日（水）です。\n搬出時刻は地域で確認してください。期限未確認の区分は、検索の次回収集日を翌日以降で案内します。",
+        "error": null
+      },
+      {
+        "case": 8,
+        "pass": true,
+        "http_status": 200,
+        "status": "needs_clarification",
+        "category": null,
+        "follow_up_question": "指定袋・45Lの無色透明袋又は品目に応じたコンテナに入る大きさですか？",
+        "next_collection": null,
+        "collection_status": null,
+        "answer": null,
+        "error": null
+      },
+      {
+        "case": 9,
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "category": "non_burnable",
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-15",
+          "display_date": "2026年11月15日（日）",
+          "collection_type": "その他燃やさないごみ"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "プラスチック製バケツは「その他燃やさないごみ」です。\n45L以下の無色透明袋で地区名・名前を記入。電池・バッテリーは外す。割れた陶磁器は危険のないように包む。\n重信：田窪（燃やすごみ月・木）地区の次回収集日は2026年11月15日（日）です。\n搬出時刻は地域で確認してください。期限未確認の区分は、検索の次回収集日を翌日以降で案内します。",
+        "error": null
+      },
+      {
+        "case": 10,
+        "pass": false,
+        "http_status": 200,
+        "status": "needs_clarification",
+        "category": null,
+        "follow_up_question": "素材、大きさ、汚れの有無など、品物の状態をもう少し教えてください。",
+        "next_collection": null,
+        "collection_status": null,
+        "answer": null,
+        "error": null
+      },
+      {
+        "case": 11,
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "category": "metals",
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-15",
+          "display_date": "2026年11月15日（日）",
+          "collection_type": "空き缶・金属類"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "水洗いした空の飲料用アルミ缶は「空き缶・金属類」です。\n根拠に基づく出し方と注意点: 飲食用の缶を使い切り、汚れを取り除いてコンテナへ。\n重信：田窪（燃やすごみ火・金）地区の次回収集日は2026年11月15日（日）です。\n搬出時刻は地域で確認してください。期限未確認の区分は、検索の次回収集日を翌日以降で案内します。",
+        "error": null
+      },
+      {
+        "case": 12,
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "category": "metals",
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-25",
+          "display_date": "2026年11月25日（水）",
+          "collection_type": "空き缶・金属類"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "使い切りガスを抜いて火気のない屋外で穴をあけた金属製スプレー缶は「空き缶・金属類」です。\n根拠に基づく出し方と注意点: コンテナへ。中身を使い切り汚れを除く。スプレー缶・カセットボンベは使い切り、火気のない風通しのよい屋外で穴をあける。無理な作業はせず、使い切れない場合はメーカー等へ相談。\n川内：町東・町西・前松瀬川・横灘団地地区の次回収集日は2026年11月25日（水）です。\n当日の午前6時〜8時の間に出してください。",
+        "error": null
+      },
+      {
+        "case": 13,
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "category": "bottles_glass",
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-09",
+          "display_date": "2026年11月9日（月）",
+          "collection_type": "びん・ガラス類"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "ジャムが入っていた空のガラスびんは「びん・ガラス類」です。\n内容物を使い切り洗う。重信はびん用コンテナ、川内は色別のコンテナへ。\n川内：河之内・土谷・滑川・則之内東・則之内西・井内・奥松瀬川地区の次回収集日は2026年11月9日（月）です。\n当日の午前6時〜8時の間に出してください。",
+        "error": null
+      },
+      {
+        "case": 14,
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "category": "bottles_glass",
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-12-06",
+          "display_date": "2026年12月6日（日）",
+          "collection_type": "びん・ガラス類"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "割れたガラスコップは「びん・ガラス類」です。\n割れ物を包み、割れガラスと表示して45L以下の無色透明袋へ。\n重信：見奈良地区の次回収集日は2026年12月6日（日）です。\n搬出時刻は地域で確認してください。期限未確認の区分は、検索の次回収集日を翌日以降で案内します。",
+        "error": null
+      },
+      {
+        "case": 15,
+        "pass": false,
+        "http_status": 200,
+        "status": "answered",
+        "category": "bulky",
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-08",
+          "display_date": "2026年11月8日（日）",
+          "collection_type": "粗大ごみ"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "小さい陶器製コップは「粗大ごみ」です。\n地区の粗大収集日に、箱等に入れず集積場へ。1m程度で標準的な大人2人が運べるものに限る。多量ごみ・禁止品は出さない。リサイクルセンターも粗大は受入不可。\n重信：志津川南地区の次回収集日は2026年11月8日（日）です。\n搬出時刻は地域で確認してください。期限未確認の区分は、検索の次回収集日を翌日以降で案内します。",
+        "error": null
+      },
+      {
+        "case": 16,
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "category": "paper",
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-12",
+          "display_date": "2026年11月12日（木）",
+          "collection_type": "紙類"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "内側が白い1リットルの牛乳用紙パックは「紙類」です。\n水洗いして乾かし種類別に十文字に縛る。\n重信：田窪（燃やすごみ水・土）地区の次回収集日は2026年11月12日（木）です。\n当日の午前6時〜8時の間に出してください。",
+        "error": null
+      },
+      {
+        "case": 17,
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "category": "burnable",
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-06",
+          "display_date": "2026年11月6日（金）",
+          "collection_type": "燃やすごみ"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "内側が銀色の飲料用紙パックは「燃やすごみ」です。\n燃やすごみとして指定袋で出す。\n川内：北方東・北方西・南方東・南方西地区の次回収集日は2026年11月6日（金）です。\n当日の午前6時〜8時の間に出してください。",
+        "error": null
+      },
+      {
+        "case": 18,
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "category": "batteries",
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-08",
+          "display_date": "2026年11月8日（日）",
+          "collection_type": "乾電池類"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "使い終わったアルカリ乾電池は「乾電池類」です。\n乾電池・ボタン電池が対象。充電池や車用バッテリーは混ぜない。地域別の回収方法を確認。\n重信：樋口地区の次回収集日は2026年11月8日（日）です。\n搬出時刻は地域で確認してください。期限未確認の区分は、検索の次回収集日を翌日以降で案内します。",
+        "error": null
+      },
+      {
+        "case": 19,
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "category": "thermometers",
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-15",
+          "display_date": "2026年11月15日（日）",
+          "collection_type": "水銀式体温計"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "水銀式の体温計は「水銀式体温計」です。\n水銀式体温計。電子式は電池を外してその他燃やさないごみ。重信は乾電池・体温計、川内は蛍光灯・鏡・体温計の収集区分へ。\n重信：横河原地区の次回収集日は2026年11月15日（日）です。\n搬出時刻は地域で確認してください。期限未確認の区分は、検索の次回収集日を翌日以降で案内します。",
+        "error": null
+      },
+      {
+        "case": 20,
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "category": "thermometers",
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-09",
+          "display_date": "2026年11月9日（月）",
+          "collection_type": "水銀式体温計"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "水銀式の体温計は「水銀式体温計」です。\n水銀式体温計。電子式は電池を外してその他燃やさないごみ。重信は乾電池・体温計、川内は蛍光灯・鏡・体温計の収集区分へ。\n川内：河之内・土谷・滑川・則之内東・則之内西・井内・奥松瀬川地区の次回収集日は2026年11月9日（月）です。\n当日の午前6時〜8時の間に出してください。",
+        "error": null
+      },
+      {
+        "case": 21,
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "category": "small_device_dropoff",
+        "follow_up_question": null,
+        "next_collection": null,
+        "collection_status": {
+          "status": "not_scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "使い終わったモバイルバッテリーは「電池内蔵小型家電の窓口回収」です。\n根拠に基づく出し方と注意点: 2026年3月の公式案内：市役所環境保全課又は川内支所の窓口回収。定期集積場には出さない。\nリチウムイオン電池等を内蔵した小型家電は、市役所環境保全課又は川内支所で回収。単体電池は販売店・協力店の回収へ。燃やす・その他燃やさないごみへ混ぜない。",
+        "error": null
+      },
+      {
+        "case": 22,
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "category": "not_collected",
+        "follow_up_question": null,
+        "next_collection": null,
+        "collection_status": {
+          "status": "not_scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "機器から取り外したリチウムイオン充電池は「市で収集しないもの」です。\n販売店又は協力店で店頭回収。集積場の乾電池類へ混ぜない。内蔵小型家電の市窓口回収と区別する。\n市の定期ステーション収集の対象外。品目ごとに販売店・メーカー・専門業者等へ相談してください。",
+        "error": null
+      },
+      {
+        "case": 23,
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "category": "small_device_dropoff",
+        "follow_up_question": null,
+        "next_collection": null,
+        "collection_status": {
+          "status": "not_scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "電池を取り外せないスマートフォンは「電池内蔵小型家電の窓口回収」です。\nリチウムイオン電池を内蔵する小型家電は市役所環境保全課又は川内支所で回収。\nリチウムイオン電池等を内蔵した小型家電は、市役所環境保全課又は川内支所で回収。単体電池は販売店・協力店の回収へ。燃やす・その他燃やさないごみへ混ぜない。",
+        "error": null
+      },
+      {
+        "case": 24,
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "category": "not_collected",
+        "follow_up_question": null,
+        "next_collection": null,
+        "collection_status": {
+          "status": "not_scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "家庭用のテレビは「市で収集しないもの」です。\n家電４品目（P.12参照）販売店に相談、ラジカセ一体型テレビは不可\n区分共通の出し方（上記の品目固有条件を優先）: 市の定期ステーション収集の対象外。品目ごとに販売店・メーカー・専門業者等へ相談してください。\n市の定期ステーション収集の対象外。品目ごとに販売店・メーカー・専門業者等へ相談してください。",
+        "error": null
+      },
+      {
+        "case": 25,
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "category": "bulky",
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-22",
+          "display_date": "2026年11月22日（日）",
+          "collection_type": "粗大ごみ"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "1m程度の壊れた木製家具は「粗大ごみ」です。\n地区の粗大収集日に、箱等に入れず集積場へ。1m程度で標準的な大人2人が運べるものに限る。多量ごみ・禁止品は出さない。リサイクルセンターも粗大は受入不可。\n重信：見奈良地区の次回収集日は2026年11月22日（日）です。\n搬出時刻は地域で確認してください。期限未確認の区分は、検索の次回収集日を翌日以降で案内します。",
+        "error": null
+      },
+      {
+        "case": 26,
+        "pass": false,
+        "http_status": 200,
+        "status": "answered",
+        "category": "bulky",
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-22",
+          "display_date": "2026年11月22日（日）",
+          "collection_type": "粗大ごみ"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "大きな壊れた木製家具は「粗大ごみ」です。\n地区の粗大収集日に、箱等に入れず集積場へ。1m程度で標準的な大人2人が運べるものに限る。多量ごみ・禁止品は出さない。リサイクルセンターも粗大は受入不可。\n重信：見奈良地区の次回収集日は2026年11月22日（日）です。\n搬出時刻は地域で確認してください。期限未確認の区分は、検索の次回収集日を翌日以降で案内します。",
+        "error": null
+      },
+      {
+        "case": 27,
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "category": "mercury_instruments",
+        "follow_up_question": null,
+        "next_collection": null,
+        "collection_status": {
+          "status": "unverified",
+          "message": "水銀使用の温度計・湿度計・血圧計の収集区分と日程は未確認です。市環境保全課へ確認してください。",
+          "source_url": "https://www.city.toon.ehime.jp/site/141/1130.html"
+        },
+        "answer": "水銀血圧計は「水銀使用の計測器」です。\n辞典の分類は水銀。温度計・湿度計と水銀血圧計について、カレンダーのどの水銀関連日程に出すかは確認できていません。市環境保全課に確認してください。\n水銀使用の温度計・湿度計・血圧計の収集区分と日程は未確認です。市環境保全課へ確認してください。\n搬出時刻は地域で確認してください。期限未確認の区分は、検索の次回収集日を翌日以降で案内します。",
+        "error": null
+      },
+      {
+        "case": 28,
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "category": "not_collected",
+        "follow_up_question": null,
+        "next_collection": null,
+        "collection_status": {
+          "status": "not_scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "家庭で使っていたノートパソコン本体は「市で収集しないもの」です。\n市では収集しない。販売店又はメーカーに処分依頼。周辺機器や液晶モニターとは別。\n市の定期ステーション収集の対象外。品目ごとに販売店・メーカー・専門業者等へ相談してください。",
+        "error": null
+      },
+      {
+        "case": 29,
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "category": "ペット",
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-18",
+          "display_date": "2026年11月18日（水）",
+          "collection_type": "ペットボトル"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "飲料用ペットボトル本体は「ペットボトル」です。\nキャップとラベルははずして「プラ」、ボトルはすすいで出す\n清水地区の次回収集日は2026年11月18日（水）です。",
+        "error": null
+      },
+      {
+        "case": 30,
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "category": "cans",
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-25",
+          "display_date": "2026年11月25日（水）",
+          "collection_type": "かん類"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "空の飲料用アルミ缶は「かん類」です。\n中を洗って。汚れが落ちないものは燃やさないごみ。飲料・食品のかんは中を洗い、無色透明の袋またはコンテナに入れる。汚れが落ちないものは燃やさないごみ。家庭から出たものに限り、収集日の午前8時までに地域の指定場所へ出す。一度に出せる量は3袋まで\n愛宕、大平（愛宕山道路沿い）、片山町、幸町（愛宕山道路沿い）、清水町花小路、大正町、大門、（花小路）、浜田町、東新川、松蔭町、松本町（愛宕山道路沿い）、矢野町2～4地区の次回収集日は2026年11月25日（水）です。",
+        "error": null
+      },
+      {
+        "case": 31,
+        "pass": false,
+        "http_status": 422,
+        "status": null,
+        "category": null,
+        "follow_up_question": null,
+        "next_collection": null,
+        "collection_status": null,
+        "answer": null,
+        "error": "指定された収集地区は未対応です。"
+      },
+      {
+        "case": 32,
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "category": "hazardous",
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-12-23",
+          "display_date": "2026年12月23日（水）",
+          "collection_type": "有害ごみ"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "使い終わったアルカリ乾電池は「有害ごみ」です。\n蛍光管・乾電池（アルカリ・マンガン）・白熱電球・水銀体温計等。45リットルの市販の無色透明袋へ。乾電池は割れ防止のため別の小さな無色透明袋に入れる。長い蛍光管は両側から袋をかぶせる。収集日当日の午前8時までに地域のごみステーションへ。前夜には出さない。\n伊方地域：河内、湊浦、小中浦、中浦、川永田、豊之浦地区の次回収集日は2026年12月23日（水）です。",
+        "error": null
+      },
+      {
+        "case": 33,
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "category": "hazardous",
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-30",
+          "display_date": "2026年11月30日（月）",
+          "collection_type": "有害ごみ"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "使い終わったモバイルバッテリーは「有害ごみ」です。\n2026年1月から有害ごみ。端子を絶縁し透明袋に分け有害ごみコンテナへ。\n大生院、大永山、萩生（国道11号線より南）地区の次回収集日は2026年11月30日（月）です。",
+        "error": null
+      }
+    ],
+    "condition-fix": [
+      {
+        "case": 10,
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "category": "bulky",
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-15",
+          "display_date": "2026年11月15日（日）",
+          "collection_type": "粗大ごみ"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "プラスチック製バケツは「粗大ごみ」です。\n袋に入らないもの。1m程度で標準的な大人2人で運べる大きさ・重さに限る。運べない重量物は市の収集不可。袋に入るものはその他。\n重信：田窪（燃やすごみ月・木）地区の次回収集日は2026年11月15日（日）です。\n搬出時刻は地域で確認してください。期限未確認の区分は、検索の次回収集日を翌日以降で案内します。",
+        "error": null
+      },
+      {
+        "case": 15,
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "category": "non_burnable",
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-08",
+          "display_date": "2026年11月8日（日）",
+          "collection_type": "その他燃やさないごみ"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "45Lの無色透明袋に入る小さい陶器製コップは「その他燃やさないごみ」です。\n陶磁器はその他。ガラスのコップと区別。袋に入るものを粗大にしない。\n重信：志津川南地区の次回収集日は2026年11月8日（日）です。\n搬出時刻は地域で確認してください。期限未確認の区分は、検索の次回収集日を翌日以降で案内します。",
+        "error": null
+      },
+      {
+        "case": 26,
+        "pass": true,
+        "http_status": 200,
+        "status": "needs_clarification",
+        "category": null,
+        "follow_up_question": "1m程度で、標準的な大人2人で持ち運べる大きさ・重さですか？",
+        "next_collection": null,
+        "collection_status": null,
+        "answer": null,
+        "error": null
+      },
+      {
+        "case": 31,
+        "pass": false,
+        "http_status": 200,
+        "status": "answered",
+        "category": "plastic_packaging",
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-11",
+          "display_date": "2026年11月11日（水）",
+          "collection_type": "プラスチック製容器包装"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "キャップ・ラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体は「プラスチック製容器包装」です。\n中身を残さず洗って水切りし、45リットル以下の無色透明・白色半透明の袋へ。内袋・二重袋にしない。収集日の午前8時30分までに地域の所定の場所へ。一度に45リットル以下の袋3つまで。\n南山崎（上唐川・下唐川・大平上・大平下、平岡・鵜崎を除く）、鳥ノ木地区の次回収集日は2026年11月11日（水）です。",
+        "error": null
+      }
+    ],
+    "final": [
+      {
+        "case": 1,
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "category": "pet_bottles",
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-08",
+          "display_date": "2026年11月8日（日）",
+          "collection_type": "ペットボトル"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体は「ペットボトル」です。\n根拠に基づく出し方と注意点: キャップ・ラベルを外した本体が対象。外した部品と分類を混同しない。\n重信：山之内地区の次回収集日は2026年11月8日（日）です。\n搬出時刻は地域で確認してください。期限未確認の区分は、検索の次回収集日を翌日以降で案内します。",
+        "error": null
+      },
+      {
+        "case": 2,
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "category": "plastic_packaging",
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-06",
+          "display_date": "2026年11月6日（金）",
+          "collection_type": "プラスチック類"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "ペットボトルから外したプラスチック製のキャップは「プラスチック類」です。\n汚れを取り除き45L以下の無色透明袋に「プラ」・地区名・名前を書く。二重袋にしない。硬質プラ製品はその他燃やさないごみ。\n川内：河之内・土谷・滑川・則之内東・則之内西・井内・奥松瀬川地区の次回収集日は2026年11月6日（金）です。\n当日の午前6時〜8時の間に出してください。",
+        "error": null
+      },
+      {
+        "case": 3,
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "category": "plastic_packaging",
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-15",
+          "display_date": "2026年11月15日（日）",
+          "collection_type": "プラスチック類"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "水洗いした白色の発泡食品トレイは「プラスチック類」です。\n汚れを取り除き45L以下の無色透明袋に「プラ」・地区名・名前を書く。二重袋にしない。硬質プラ製品はその他燃やさないごみ。\n重信：横河原地区の次回収集日は2026年11月15日（日）です。\n搬出時刻は地域で確認してください。期限未確認の区分は、検索の次回収集日を翌日以降で案内します。",
+        "error": null
+      },
+      {
+        "case": 4,
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "category": "burnable",
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-05",
+          "display_date": "2026年11月5日（木）",
+          "collection_type": "燃やすごみ"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "絵の具で汚れた紙箱は「燃やすごみ」です。\n汚れたものは燃やすごみとして捨ててください。\n重信：志津川地区の次回収集日は2026年11月5日（木）です。\n当日の午前6時〜8時の間に出してください。",
+        "error": null
+      },
+      {
+        "case": 5,
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "category": "non_burnable",
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-17",
+          "display_date": "2026年11月17日（火）",
+          "collection_type": "その他燃やさないごみ"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "普通の小さいプラスチック製ストローは「その他燃やさないごみ」です。\n45L以下の無色透明袋で地区名・名前を記入。電池・バッテリーは外す。割れた陶磁器は危険のないように包む。\n川内：北方東・北方西・南方東・南方西地区の次回収集日は2026年11月17日（火）です。\n当日の午前6時〜8時の間に出してください。",
+        "error": null
+      },
+      {
+        "case": 6,
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "category": "non_burnable",
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-08",
+          "display_date": "2026年11月8日（日）",
+          "collection_type": "その他燃やさないごみ"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "プラスチック製バケツは「その他燃やさないごみ」です。\n45L以下の無色透明袋で地区名・名前を記入。電池・バッテリーは外す。割れた陶磁器は危険のないように包む。\n重信：西岡（燃やすごみ月・木）地区の次回収集日は2026年11月8日（日）です。\n搬出時刻は地域で確認してください。期限未確認の区分は、検索の次回収集日を翌日以降で案内します。",
+        "error": null
+      },
+      {
+        "case": 7,
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "category": "bulky",
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-25",
+          "display_date": "2026年11月25日（水）",
+          "collection_type": "粗大ごみ"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "45Lの無色透明袋に入らないプラスチック製バケツは「粗大ごみ」です。\n袋に入らないもの。1m程度で標準的な大人2人で運べる大きさ・重さに限る。運べない重量物は市の収集不可。袋に入るものはその他。\n重信：西岡（燃やすごみ火・金）地区の次回収集日は2026年11月25日（水）です。\n搬出時刻は地域で確認してください。期限未確認の区分は、検索の次回収集日を翌日以降で案内します。",
+        "error": null
+      },
+      {
+        "case": 8,
+        "pass": true,
+        "http_status": 200,
+        "status": "needs_clarification",
+        "category": null,
+        "follow_up_question": "指定袋・45Lの無色透明袋又は品目に応じたコンテナに入る大きさですか？",
+        "next_collection": null,
+        "collection_status": null,
+        "answer": null,
+        "error": null
+      },
+      {
+        "case": 9,
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "category": "non_burnable",
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-15",
+          "display_date": "2026年11月15日（日）",
+          "collection_type": "その他燃やさないごみ"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "プラスチック製バケツは「その他燃やさないごみ」です。\n45L以下の無色透明袋で地区名・名前を記入。電池・バッテリーは外す。割れた陶磁器は危険のないように包む。\n重信：田窪（燃やすごみ月・木）地区の次回収集日は2026年11月15日（日）です。\n搬出時刻は地域で確認してください。期限未確認の区分は、検索の次回収集日を翌日以降で案内します。",
+        "error": null
+      },
+      {
+        "case": 10,
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "category": "bulky",
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-15",
+          "display_date": "2026年11月15日（日）",
+          "collection_type": "粗大ごみ"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "プラスチック製バケツは「粗大ごみ」です。\n袋に入らないもの。1m程度で標準的な大人2人で運べる大きさ・重さに限る。運べない重量物は市の収集不可。袋に入るものはその他。\n重信：田窪（燃やすごみ月・木）地区の次回収集日は2026年11月15日（日）です。\n搬出時刻は地域で確認してください。期限未確認の区分は、検索の次回収集日を翌日以降で案内します。",
+        "error": null
+      },
+      {
+        "case": 11,
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "category": "metals",
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-15",
+          "display_date": "2026年11月15日（日）",
+          "collection_type": "空き缶・金属類"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "水洗いした空の飲料用アルミ缶は「空き缶・金属類」です。\n飲食用の缶を使い切り、汚れを取り除いてコンテナへ。\n重信：田窪（燃やすごみ火・金）地区の次回収集日は2026年11月15日（日）です。\n搬出時刻は地域で確認してください。期限未確認の区分は、検索の次回収集日を翌日以降で案内します。",
+        "error": null
+      },
+      {
+        "case": 12,
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "category": "metals",
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-25",
+          "display_date": "2026年11月25日（水）",
+          "collection_type": "空き缶・金属類"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "使い切りガスを抜いて火気のない屋外で穴をあけた金属製スプレー缶は「空き缶・金属類」です。\n根拠に基づく出し方と注意点: コンテナへ。中身を使い切り汚れを除く。スプレー缶・カセットボンベは使い切り、火気のない風通しのよい屋外で穴をあける。無理な作業はせず、使い切れない場合はメーカー等へ相談。\n川内：町東・町西・前松瀬川・横灘団地地区の次回収集日は2026年11月25日（水）です。\n当日の午前6時〜8時の間に出してください。",
+        "error": null
+      },
+      {
+        "case": 13,
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "category": "bottles_glass",
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-09",
+          "display_date": "2026年11月9日（月）",
+          "collection_type": "びん・ガラス類"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "ジャムが入っていた空のガラスびんは「びん・ガラス類」です。\n内容物を使い切り洗う。重信はびん用コンテナ、川内は色別のコンテナへ。\n川内：河之内・土谷・滑川・則之内東・則之内西・井内・奥松瀬川地区の次回収集日は2026年11月9日（月）です。\n当日の午前6時〜8時の間に出してください。",
+        "error": null
+      },
+      {
+        "case": 14,
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "category": "bottles_glass",
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-12-06",
+          "display_date": "2026年12月6日（日）",
+          "collection_type": "びん・ガラス類"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "割れたガラスコップは「びん・ガラス類」です。\n割れ物を包み、割れガラスと表示して45L以下の無色透明袋へ。\n重信：見奈良地区の次回収集日は2026年12月6日（日）です。\n搬出時刻は地域で確認してください。期限未確認の区分は、検索の次回収集日を翌日以降で案内します。",
+        "error": null
+      },
+      {
+        "case": 15,
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "category": "non_burnable",
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-08",
+          "display_date": "2026年11月8日（日）",
+          "collection_type": "その他燃やさないごみ"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "45Lの無色透明袋に入る小さい陶器製コップは「その他燃やさないごみ」です。\n陶磁器はその他。ガラスのコップと区別。袋に入るものを粗大にしない。\n重信：志津川南地区の次回収集日は2026年11月8日（日）です。\n搬出時刻は地域で確認してください。期限未確認の区分は、検索の次回収集日を翌日以降で案内します。",
+        "error": null
+      },
+      {
+        "case": 16,
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "category": "paper",
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-12",
+          "display_date": "2026年11月12日（木）",
+          "collection_type": "紙類"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "内側が白い1リットルの牛乳用紙パックは「紙類」です。\n種類別にひもで十文字に縛る。紙パックは500ml以上かつ内側が銀色でないもの。汚れた紙等は燃やすごみ。\n重信：田窪（燃やすごみ水・土）地区の次回収集日は2026年11月12日（木）です。\n当日の午前6時〜8時の間に出してください。",
+        "error": null
+      },
+      {
+        "case": 17,
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "category": "burnable",
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-06",
+          "display_date": "2026年11月6日（金）",
+          "collection_type": "燃やすごみ"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "内側が銀色の飲料用紙パックは「燃やすごみ」です。\n燃やすごみとして指定袋で出す。\n川内：北方東・北方西・南方東・南方西地区の次回収集日は2026年11月6日（金）です。\n当日の午前6時〜8時の間に出してください。",
+        "error": null
+      },
+      {
+        "case": 18,
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "category": "batteries",
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-08",
+          "display_date": "2026年11月8日（日）",
+          "collection_type": "乾電池類"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "使い終わったアルカリ乾電池は「乾電池類」です。\n乾電池・ボタン電池が対象。充電池や車用バッテリーは混ぜない。地域別の回収方法を確認。\n重信：樋口地区の次回収集日は2026年11月8日（日）です。\n搬出時刻は地域で確認してください。期限未確認の区分は、検索の次回収集日を翌日以降で案内します。",
+        "error": null
+      },
+      {
+        "case": 19,
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "category": "thermometers",
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-15",
+          "display_date": "2026年11月15日（日）",
+          "collection_type": "水銀式体温計"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "水銀式の体温計は「水銀式体温計」です。\n水銀式体温計。電子式は電池を外してその他燃やさないごみ。重信は乾電池・体温計、川内は蛍光灯・鏡・体温計の収集区分へ。\n重信：横河原地区の次回収集日は2026年11月15日（日）です。\n搬出時刻は地域で確認してください。期限未確認の区分は、検索の次回収集日を翌日以降で案内します。",
+        "error": null
+      },
+      {
+        "case": 20,
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "category": "thermometers",
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-09",
+          "display_date": "2026年11月9日（月）",
+          "collection_type": "水銀式体温計"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "水銀式の体温計は「水銀式体温計」です。\n水銀式体温計。電子式は電池を外して「その他」\n川内：河之内・土谷・滑川・則之内東・則之内西・井内・奥松瀬川地区の次回収集日は2026年11月9日（月）です。\n当日の午前6時〜8時の間に出してください。",
+        "error": null
+      },
+      {
+        "case": 21,
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "category": "small_device_dropoff",
+        "follow_up_question": null,
+        "next_collection": null,
+        "collection_status": {
+          "status": "not_scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "使い終わったモバイルバッテリーは「電池内蔵小型家電の窓口回収」です。\n2026年3月の公式案内：市役所環境保全課又は川内支所の窓口回収。定期集積場には出さない。\nリチウムイオン電池等を内蔵した小型家電は、市役所環境保全課又は川内支所で回収。単体電池は販売店・協力店の回収へ。燃やす・その他燃やさないごみへ混ぜない。",
+        "error": null
+      },
+      {
+        "case": 22,
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "category": "not_collected",
+        "follow_up_question": null,
+        "next_collection": null,
+        "collection_status": {
+          "status": "not_scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "機器から取り外したリチウムイオン充電池は「市で収集しないもの」です。\n販売店又は協力店で店頭回収。集積場の乾電池類へ混ぜない。内蔵小型家電の市窓口回収と区別する。\n市の定期ステーション収集の対象外。品目ごとに販売店・メーカー・専門業者等へ相談してください。",
+        "error": null
+      },
+      {
+        "case": 23,
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "category": "small_device_dropoff",
+        "follow_up_question": null,
+        "next_collection": null,
+        "collection_status": {
+          "status": "not_scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "電池を取り外せないスマートフォンは「電池内蔵小型家電の窓口回収」です。\nリチウムイオン電池を内蔵する小型家電は市役所環境保全課又は川内支所で回収。\nリチウムイオン電池等を内蔵した小型家電は、市役所環境保全課又は川内支所で回収。単体電池は販売店・協力店の回収へ。燃やす・その他燃やさないごみへ混ぜない。",
+        "error": null
+      },
+      {
+        "case": 24,
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "category": "not_collected",
+        "follow_up_question": null,
+        "next_collection": null,
+        "collection_status": {
+          "status": "not_scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "家庭用のテレビは「市で収集しないもの」です。\n家電４品目（P.12参照）販売店に相談、ラジカセ一体型テレビは不可\n市の定期ステーション収集の対象外。品目ごとに販売店・メーカー・専門業者等へ相談してください。",
+        "error": null
+      },
+      {
+        "case": 25,
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "category": "bulky",
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-22",
+          "display_date": "2026年11月22日（日）",
+          "collection_type": "粗大ごみ"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "1m程度の壊れた木製家具は「粗大ごみ」です。\n地区の粗大収集日に、箱等に入れず集積場へ。1m程度で標準的な大人2人が運べるものに限る。多量ごみ・禁止品は出さない。リサイクルセンターも粗大は受入不可。\n重信：見奈良地区の次回収集日は2026年11月22日（日）です。\n搬出時刻は地域で確認してください。期限未確認の区分は、検索の次回収集日を翌日以降で案内します。",
+        "error": null
+      },
+      {
+        "case": 26,
+        "pass": true,
+        "http_status": 200,
+        "status": "needs_clarification",
+        "category": null,
+        "follow_up_question": "1m程度で、標準的な大人2人で持ち運べる大きさ・重さですか？",
+        "next_collection": null,
+        "collection_status": null,
+        "answer": null,
+        "error": null
+      },
+      {
+        "case": 27,
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "category": "mercury_instruments",
+        "follow_up_question": null,
+        "next_collection": null,
+        "collection_status": {
+          "status": "unverified",
+          "message": "水銀使用の温度計・湿度計・血圧計の収集区分と日程は未確認です。市環境保全課へ確認してください。",
+          "source_url": "https://www.city.toon.ehime.jp/site/141/1130.html"
+        },
+        "answer": "水銀血圧計は「水銀使用の計測器」です。\n辞典の分類は水銀。温度計・湿度計と水銀血圧計について、カレンダーのどの水銀関連日程に出すかは確認できていません。市環境保全課に確認してください。\n水銀使用の温度計・湿度計・血圧計の収集区分と日程は未確認です。市環境保全課へ確認してください。\n搬出時刻は地域で確認してください。期限未確認の区分は、検索の次回収集日を翌日以降で案内します。",
+        "error": null
+      },
+      {
+        "case": 28,
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "category": "not_collected",
+        "follow_up_question": null,
+        "next_collection": null,
+        "collection_status": {
+          "status": "not_scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "家庭で使っていたノートパソコン本体は「市で収集しないもの」です。\n市では収集しない。販売店又はメーカーに処分依頼。周辺機器や液晶モニターとは別。\n市の定期ステーション収集の対象外。品目ごとに販売店・メーカー・専門業者等へ相談してください。",
+        "error": null
+      },
+      {
+        "case": 29,
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "category": "ペット",
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-18",
+          "display_date": "2026年11月18日（水）",
+          "collection_type": "ペットボトル"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "飲料用ペットボトル本体は「ペットボトル」です。\n根拠2, 根拠4, 根拠6に基づき、キャップとラベルを外し、すすいでから捨ててください。\n清水地区の次回収集日は2026年11月18日（水）です。",
+        "error": null
+      },
+      {
+        "case": 30,
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "category": "cans",
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-25",
+          "display_date": "2026年11月25日（水）",
+          "collection_type": "かん類"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "空の飲料用アルミ缶は「かん類」です。\n中を洗って。汚れが落ちないものは燃やさないごみ。飲料・食品のかんは中を洗い、無色透明の袋またはコンテナに入れる。汚れが落ちないものは燃やさないごみ。家庭から出たものに限り、収集日の午前8時までに地域の指定場所へ出す。一度に出せる量は3袋まで\n愛宕、大平（愛宕山道路沿い）、片山町、幸町（愛宕山道路沿い）、清水町花小路、大正町、大門、（花小路）、浜田町、東新川、松蔭町、松本町（愛宕山道路沿い）、矢野町2～4地区の次回収集日は2026年11月25日（水）です。",
+        "error": null
+      },
+      {
+        "case": 31,
+        "pass": false,
+        "http_status": 200,
+        "status": "answered",
+        "category": "plastic_packaging",
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-11",
+          "display_date": "2026年11月11日（水）",
+          "collection_type": "プラスチック製容器包装"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "キャップ・ラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体は「プラスチック製容器包装」です。\n中身を残さず洗って水切りし、45リットル以下の無色透明・白色半透明の袋へ。内袋・二重袋にしない。収集日の午前8時30分までに地域の所定の場所へ。一度に45リットル以下の袋3つまで。\n南山崎（上唐川・下唐川・大平上・大平下、平岡・鵜崎を除く）、鳥ノ木地区の次回収集日は2026年11月11日（水）です。",
+        "error": null
+      },
+      {
+        "case": 32,
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "category": "hazardous",
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-12-23",
+          "display_date": "2026年12月23日（水）",
+          "collection_type": "有害ごみ"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "使い終わったアルカリ乾電池は「有害ごみ」です。\n蛍光管・乾電池（アルカリ・マンガン）・白熱電球・水銀体温計等。45リットルの市販の無色透明袋へ。乾電池は割れ防止のため別の小さな無色透明袋に入れる。長い蛍光管は両側から袋をかぶせる。収集日当日の午前8時までに地域のごみステーションへ。前夜には出さない。\n伊方地域：河内、湊浦、小中浦、中浦、川永田、豊之浦地区の次回収集日は2026年12月23日（水）です。",
+        "error": null
+      },
+      {
+        "case": 33,
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "category": "hazardous",
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-30",
+          "display_date": "2026年11月30日（月）",
+          "collection_type": "有害ごみ"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "使い終わったモバイルバッテリーは「有害ごみ」です。\n2026年1月から有害ごみ。端子を絶縁し透明袋で有害ごみコンテナへ（現行ガイド13ページ）。\n大生院、大永山、萩生（国道11号線より南）地区の次回収集日は2026年11月30日（月）です。",
+        "error": null
+      }
+    ],
+    "metadata-fix": [
+      {
+        "case": 34,
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "category": "burnable",
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-05",
+          "display_date": "2026年11月5日（木）",
+          "collection_type": "燃やすごみ"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "羽毛布団は「燃やすごみ」です。\n指定ごみ袋に入るものは「燃やす」\n川内：河之内・土谷・滑川・則之内東・則之内西・井内・奥松瀬川地区の次回収集日は2026年11月5日（木）です。\n当日の午前6時〜8時の間に出してください。",
+        "error": null
+      },
+      {
+        "case": 35,
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "category": "bottles_glass",
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-09",
+          "display_date": "2026年11月9日（月）",
+          "collection_type": "びん・ガラス類"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "中身を空にして洗ったガラス製のソース容器は「びん・ガラス類」です。\nびんはコンテナへ、ガラス類は45L以下の無色透明袋へ。川内のびんは無色・茶色・その他の色に分ける。割れ物は包んで表示。陶磁器はその他燃やさないごみ。\n川内：河之内・土谷・滑川・則之内東・則之内西・井内・奥松瀬川地区の次回収集日は2026年11月9日（月）です。\n当日の午前6時〜8時の間に出してください。",
+        "error": null
+      },
+      {
+        "case": 36,
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "category": "non_burnable",
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-16",
+          "display_date": "2026年11月16日（月）",
+          "collection_type": "その他燃やさないごみ"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "プラスチック製の杖は「その他燃やさないごみ」です。\n45L以下の無色透明袋で地区名・名前を記入。電池・バッテリーは外す。割れた陶磁器は危険のないように包む。\n川内：河之内・土谷・滑川・則之内東・則之内西・井内・奥松瀬川地区の次回収集日は2026年11月16日（月）です。\n当日の午前6時〜8時の間に出してください。",
+        "error": null
+      },
+      {
+        "case": 37,
+        "pass": true,
+        "http_status": 200,
+        "status": "answered",
+        "category": "burnable",
+        "follow_up_question": null,
+        "next_collection": {
+          "date": "2026-11-05",
+          "display_date": "2026年11月5日（木）",
+          "collection_type": "燃やすごみ"
+        },
+        "collection_status": {
+          "status": "scheduled",
+          "message": null,
+          "source_url": null
+        },
+        "answer": "おもちゃの空き箱（紙製）は「燃やすごみ」です。\nビニール・金銀加工しているものは「燃やす」\n川内：河之内・土谷・滑川・則之内東・則之内西・井内・奥松瀬川地区の次回収集日は2026年11月5日（木）です。\n当日の午前6時〜8時の間に出してください。",
+        "error": null
+      }
+    ]
+  },
+  "phase_metadata": {
+    "initial": {
+      "case_ids": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33
+      ],
+      "case_sha256": "c320b495a53c68fd7332e777e348f6d00f06aa69aa1233484e9ff6e7e3181410",
+      "dataset_sha256": {
+        "registry.json": "eac414ed8af5bdd45684575bdfc2daa7accb8f669dd072efa9b03c63617e5635",
+        "knowledge/items.csv": "5fdbbabbdaaff39d147879281d459d921e1f5ab2cf405aa48478d4a994169dfa",
+        "knowledge/item_embeddings.npz": "e12b10085687c76fff451588219ecb38508422a5d1397b4063aa9ad05ea7be56"
+      }
+    },
+    "condition-fix": {
+      "case_ids": [
+        10,
+        15,
+        26,
+        31
+      ],
+      "case_sha256": "40c39b04250f7aad0af41c45af2d8967a83e8ec4884ff4b85d332a3209d1ca03",
+      "dataset_sha256": {
+        "registry.json": "f0a933a6060aa137f8074dbc41dba5b9bc8522d748ac134641028c6de6a80a1e",
+        "knowledge/items.csv": "1c3e1cae253a4ca4c9ebc0263f2c6e7163235fecd8840e7191819a5948417156",
+        "knowledge/item_embeddings.npz": "279751635524d0ea7a0ad751d97083b8b1144d67e1b13939d35fd9d27417f57f"
+      }
+    },
+    "final": {
+      "case_ids": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33
+      ],
+      "case_sha256": "e2a9aeb878a49e36c7686ca35d188dab1d86bbda630ff6aa37024ecdc23f6459",
+      "dataset_sha256": {
+        "registry.json": "f0a933a6060aa137f8074dbc41dba5b9bc8522d748ac134641028c6de6a80a1e",
+        "knowledge/items.csv": "1c3e1cae253a4ca4c9ebc0263f2c6e7163235fecd8840e7191819a5948417156",
+        "knowledge/item_embeddings.npz": "279751635524d0ea7a0ad751d97083b8b1144d67e1b13939d35fd9d27417f57f"
+      }
+    },
+    "metadata-fix": {
+      "case_ids": [
+        34,
+        35,
+        36,
+        37
+      ],
+      "case_sha256": "15809f3ad03ed1a16ee624e7b159843efcc6834d731a5026f7a3428556e338e1",
+      "dataset_sha256": {
+        "registry.json": "f0a933a6060aa137f8074dbc41dba5b9bc8522d748ac134641028c6de6a80a1e",
+        "knowledge/items.csv": "a3ea19ad5f6e57b0673da8b7025665940d587e5bf0fc0bbcd23e05dfe39ad7fb",
+        "knowledge/item_embeddings.npz": "279751635524d0ea7a0ad751d97083b8b1144d67e1b13939d35fd9d27417f57f"
+      }
+    }
+  },
+  "latest_dataset_sha256": {
+    "registry.json": "f0a933a6060aa137f8074dbc41dba5b9bc8522d748ac134641028c6de6a80a1e",
+    "knowledge/items.csv": "a3ea19ad5f6e57b0673da8b7025665940d587e5bf0fc0bbcd23e05dfe39ad7fb",
+    "knowledge/item_embeddings.npz": "279751635524d0ea7a0ad751d97083b8b1144d67e1b13939d35fd9d27417f57f"
+  }
+}

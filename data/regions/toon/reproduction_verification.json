@@ -1,0 +1,28 @@
+{
+  "checked_at": "2026-11-05",
+  "method": "empty_isolated_data_directory_fresh_45_official_downloads_fresh_132_local_Vision_OCR_pages_build_verify",
+  "paid_calls": 0,
+  "index": "shared_exact_manifest_matching_NPZ",
+  "same_bytes": {
+    "knowledge/items.csv": true,
+    "knowledge/item_embeddings.npz": true,
+    "registry.json": true,
+    "generated/calendar-2026.json": true,
+    "generated/addresses.json": true
+  },
+  "frontend_same_bytes": [
+    "registry",
+    "calendar",
+    "addresses"
+  ],
+  "source_documents": 45,
+  "ocr_pages": 132,
+  "runtime_data_files_in_staging": 32,
+  "sha256": {
+    "knowledge/items.csv": "a3ea19ad5f6e57b0673da8b7025665940d587e5bf0fc0bbcd23e05dfe39ad7fb",
+    "knowledge/item_embeddings.npz": "279751635524d0ea7a0ad751d97083b8b1144d67e1b13939d35fd9d27417f57f",
+    "registry.json": "f0a933a6060aa137f8074dbc41dba5b9bc8522d748ac134641028c6de6a80a1e",
+    "generated/calendar-2026.json": "4f98e74348535d672105448536e3dc31fe87f331a5a1e5f630e0932e441cb795",
+    "generated/addresses.json": "0a3336d83aa8b5354d4ef56043302aa65d4677b9846d12787c97a97007dc7401"
+  }
+}
