@@ -2682,6 +2682,303 @@
         }
       },
       "addresses_asset": "assets/data/municipality_38215_addresses.json"
+    },
+    {
+      "id": "38356",
+      "version": "kamijima-2026.1",
+      "name": "上島町",
+      "prefecture_id": "38",
+      "prefecture_name": "愛媛県",
+      "registry_asset": "assets/data/municipality_38356_registry.json",
+      "profiles": {
+        "main_islands": {
+          "calendar_asset": "assets/data/municipality_38356_0_calendar.json",
+          "categories": {
+            "burnable": {
+              "name": "燃やせるごみ",
+              "collection_type_id": "burnable",
+              "cutoff": "08:00",
+              "collection_name": "燃やせるごみ",
+              "color": "#5B9BD5"
+            },
+            "bottles": {
+              "name": "ビン類",
+              "collection_type_id": "nonburnable",
+              "cutoff": "08:00",
+              "collection_name": "ビン・ガラス・陶器",
+              "color": "#FFC000"
+            },
+            "glass": {
+              "name": "ガラス類",
+              "collection_type_id": "nonburnable",
+              "cutoff": "08:00",
+              "collection_name": "ビン・ガラス・陶器",
+              "color": "#FFC000"
+            },
+            "ceramics": {
+              "name": "陶器類",
+              "collection_type_id": "nonburnable",
+              "cutoff": "08:00",
+              "collection_name": "ビン・ガラス・陶器",
+              "color": "#FFC000"
+            },
+            "cans": {
+              "name": "缶類",
+              "collection_type_id": "cans",
+              "cutoff": "08:00",
+              "collection_name": "缶類",
+              "color": "#A5A5D6"
+            },
+            "small_metals": {
+              "name": "小物金属類",
+              "collection_type_id": "metals_hazardous",
+              "cutoff": "08:00",
+              "collection_name": "小物金属・有害ごみ",
+              "color": "#9DC3E6"
+            },
+            "hazardous": {
+              "name": "有害ごみ",
+              "collection_type_id": "metals_hazardous",
+              "cutoff": "08:00",
+              "collection_name": "小物金属・有害ごみ",
+              "color": "#9DC3E6"
+            },
+            "newspaper": {
+              "name": "新聞",
+              "collection_type_id": "newspaper",
+              "cutoff": "08:00",
+              "collection_name": "新聞",
+              "color": "#70AD47"
+            },
+            "cardboard": {
+              "name": "ダンボール",
+              "collection_type_id": "cardboard",
+              "cutoff": "08:00",
+              "collection_name": "ダンボール",
+              "color": "#70AD47"
+            },
+            "magazines": {
+              "name": "雑誌",
+              "collection_type_id": "magazines",
+              "cutoff": "08:00",
+              "collection_name": "雑誌・雑紙",
+              "color": "#70AD47"
+            },
+            "bulky": {
+              "name": "粗大ごみ",
+              "collection_type_id": "bulky",
+              "cutoff": "08:00",
+              "collection_name": "粗大ごみ",
+              "color": "#F27CA5"
+            },
+            "appliance_recycling": {
+              "name": "家電リサイクル対象製品",
+              "color": "#FFD966"
+            },
+            "landfill": {
+              "name": "最終処分場搬入物",
+              "color": "#FFD966"
+            },
+            "not_collected": {
+              "name": "町で収集・処理できない物",
+              "color": "#F24234"
+            }
+          },
+          "bulky_waste": {
+            "category_code": "bulky",
+            "collection_type_id": "bulky",
+            "config": {
+              "municipality_id": "38356",
+              "municipality_name": "上島町",
+              "collection_frequency": "奇数月の地区指定第4曜日に収集",
+              "reception_hours": "直接搬入：月～金 13:30～16:50",
+              "collection_rules": "粗大ごみ処理手数料表を確認し、金額分のシールを貼って、可燃系と不燃系を分けます。直接搬入は料金半額です。",
+              "fee_structure_type": "size_based",
+              "application_method": "none",
+              "phone_number": "0897-77-2503",
+              "web_form_url": null,
+              "information_url": "https://www.town.kamijima.lg.jp/soshiki/5/665.html",
+              "steps": [
+                {
+                  "step_number": 1,
+                  "title": "品目を確認",
+                  "description": "可燃系粗大ごみと不燃系粗大ごみを分け、家電リサイクル品や町で処理できない物を除きます。"
+                },
+                {
+                  "step_number": 2,
+                  "title": "手数料を確認",
+                  "description": "公式の粗大ごみ処理手数料表を確認し、役場で必要な金額分の粗大ごみシールを購入します。"
+                },
+                {
+                  "step_number": 3,
+                  "title": "シールを貼って排出",
+                  "description": "選択した地区の公式カレンダー日までにシールを貼り、指定場所へ出します。"
+                },
+                {
+                  "step_number": 4,
+                  "title": "直接搬入する場合",
+                  "description": "公式案内の受付時間を確認し、可燃系と不燃系を分けて搬入します。"
+                }
+              ]
+            }
+          }
+        },
+        "uoshima": {
+          "calendar_asset": "assets/data/municipality_38356_0_calendar.json",
+          "categories": {
+            "burnable": {
+              "name": "燃やせるごみ",
+              "collection_type_id": "burnable",
+              "cutoff": "10:00",
+              "start_time": "07:00",
+              "time_note": "月曜日から金曜日の午前7時から午前10時までに魚島クリーンセンターへ持ち込みます。",
+              "collection_name": "燃やせるごみ",
+              "color": "#5B9BD5"
+            },
+            "bottles": {
+              "name": "ビン類",
+              "collection_type_id": "nonburnable",
+              "cutoff": "10:00",
+              "start_time": "07:00",
+              "time_note": "月曜日から金曜日の午前7時から午前10時までに魚島クリーンセンターへ持ち込みます。",
+              "collection_name": "ビン・ガラス・陶器",
+              "color": "#FFC000"
+            },
+            "glass": {
+              "name": "ガラス類",
+              "collection_type_id": "nonburnable",
+              "cutoff": "10:00",
+              "start_time": "07:00",
+              "time_note": "月曜日から金曜日の午前7時から午前10時までに魚島クリーンセンターへ持ち込みます。",
+              "collection_name": "ビン・ガラス・陶器",
+              "color": "#FFC000"
+            },
+            "ceramics": {
+              "name": "陶器類",
+              "collection_type_id": "nonburnable",
+              "cutoff": "10:00",
+              "start_time": "07:00",
+              "time_note": "月曜日から金曜日の午前7時から午前10時までに魚島クリーンセンターへ持ち込みます。",
+              "collection_name": "ビン・ガラス・陶器",
+              "color": "#FFC000"
+            },
+            "cans": {
+              "name": "缶類",
+              "collection_type_id": "cans",
+              "cutoff": "10:00",
+              "start_time": "07:00",
+              "time_note": "月曜日から金曜日の午前7時から午前10時までに魚島クリーンセンターへ持ち込みます。",
+              "collection_name": "缶類",
+              "color": "#A5A5D6"
+            },
+            "small_metals": {
+              "name": "小物金属類",
+              "collection_type_id": "metals_hazardous",
+              "cutoff": "10:00",
+              "start_time": "07:00",
+              "time_note": "月曜日から金曜日の午前7時から午前10時までに魚島クリーンセンターへ持ち込みます。",
+              "collection_name": "小物金属・有害ごみ",
+              "color": "#9DC3E6"
+            },
+            "hazardous": {
+              "name": "有害ごみ",
+              "collection_type_id": "metals_hazardous",
+              "cutoff": "10:00",
+              "start_time": "07:00",
+              "time_note": "月曜日から金曜日の午前7時から午前10時までに魚島クリーンセンターへ持ち込みます。",
+              "collection_name": "小物金属・有害ごみ",
+              "color": "#9DC3E6"
+            },
+            "newspaper": {
+              "name": "新聞",
+              "collection_type_id": "newspaper",
+              "cutoff": "10:00",
+              "start_time": "07:00",
+              "time_note": "月曜日から金曜日の午前7時から午前10時までに魚島クリーンセンターへ持ち込みます。",
+              "collection_name": "新聞",
+              "color": "#70AD47"
+            },
+            "cardboard": {
+              "name": "ダンボール",
+              "collection_type_id": "cardboard",
+              "cutoff": "10:00",
+              "start_time": "07:00",
+              "time_note": "月曜日から金曜日の午前7時から午前10時までに魚島クリーンセンターへ持ち込みます。",
+              "collection_name": "ダンボール",
+              "color": "#70AD47"
+            },
+            "magazines": {
+              "name": "雑誌",
+              "collection_type_id": "magazines",
+              "cutoff": "10:00",
+              "start_time": "07:00",
+              "time_note": "月曜日から金曜日の午前7時から午前10時までに魚島クリーンセンターへ持ち込みます。",
+              "collection_name": "雑誌・雑紙",
+              "color": "#70AD47"
+            },
+            "bulky": {
+              "name": "粗大ごみ",
+              "collection_type_id": "bulky",
+              "cutoff": "10:00",
+              "start_time": "07:00",
+              "time_note": "月曜日から金曜日の午前7時から午前10時までに魚島クリーンセンターへ持ち込みます。",
+              "collection_name": "粗大ごみ",
+              "color": "#F27CA5"
+            },
+            "appliance_recycling": {
+              "name": "家電リサイクル対象製品",
+              "color": "#FFD966"
+            },
+            "landfill": {
+              "name": "最終処分場搬入物",
+              "color": "#FFD966"
+            },
+            "not_collected": {
+              "name": "町で収集・処理できない物",
+              "color": "#F24234"
+            }
+          },
+          "bulky_waste": {
+            "category_code": "bulky",
+            "collection_type_id": "bulky",
+            "config": {
+              "municipality_id": "38356",
+              "municipality_name": "上島町",
+              "collection_frequency": "月曜日から金曜日に魚島クリーンセンターへ持込",
+              "reception_hours": "魚島クリーンセンター：月～金 7:00～10:00",
+              "collection_rules": "粗大ごみ処理手数料表を確認し、金額分のシールを貼って、可燃系と不燃系を分けます。直接搬入は料金半額です。",
+              "fee_structure_type": "size_based",
+              "application_method": "none",
+              "phone_number": "0897-78-0011",
+              "web_form_url": null,
+              "information_url": "https://www.town.kamijima.lg.jp/soshiki/5/665.html",
+              "steps": [
+                {
+                  "step_number": 1,
+                  "title": "品目を確認",
+                  "description": "可燃系粗大ごみと不燃系粗大ごみを分け、家電リサイクル品や町で処理できない物を除きます。"
+                },
+                {
+                  "step_number": 2,
+                  "title": "手数料を確認",
+                  "description": "公式の粗大ごみ処理手数料表を確認し、役場で必要な金額分の粗大ごみシールを購入します。"
+                },
+                {
+                  "step_number": 3,
+                  "title": "シールを貼って排出",
+                  "description": "魚島クリーンセンターの平日受入時間に持ち込みます。"
+                },
+                {
+                  "step_number": 4,
+                  "title": "直接搬入する場合",
+                  "description": "公式案内の受付時間を確認し、可燃系と不燃系を分けて搬入します。"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "addresses_asset": "assets/data/municipality_38356_addresses.json"
     }
   ]
 }

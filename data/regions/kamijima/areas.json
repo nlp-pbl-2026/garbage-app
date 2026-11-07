@@ -1,0 +1,137 @@
+{
+  "areas": [
+    {
+      "id": "38356-01",
+      "name": "弓削地区1",
+      "display_name": "弓削：久司浦・沢津・上弓削・緑ヶ丘・引野・明神",
+      "calendar_id": "kamijima-yuge-1",
+      "rule_profile_id": "main_islands",
+      "source_file": "yuge.pdf",
+      "address_labels": [
+        "久司浦",
+        "沢津",
+        "上弓削",
+        "緑ヶ丘",
+        "引野",
+        "明神"
+      ]
+    },
+    {
+      "id": "38356-02",
+      "name": "弓削地区2",
+      "display_name": "弓削：中都・浜都・日比・太田・土生・鎌田",
+      "calendar_id": "kamijima-yuge-2",
+      "rule_profile_id": "main_islands",
+      "source_file": "yuge.pdf",
+      "address_labels": [
+        "中都",
+        "浜都",
+        "日比",
+        "太田",
+        "土生",
+        "鎌田"
+      ]
+    },
+    {
+      "id": "38356-03",
+      "name": "弓削地区3",
+      "display_name": "弓削：岳の下・狩尾・大谷・佐島・藤谷",
+      "calendar_id": "kamijima-yuge-3",
+      "rule_profile_id": "main_islands",
+      "source_file": "yuge.pdf",
+      "address_labels": [
+        "岳の下",
+        "狩尾",
+        "大谷",
+        "佐島",
+        "藤谷"
+      ]
+    },
+    {
+      "id": "38356-04",
+      "name": "生名南（1～3分団）",
+      "display_name": "生名南：稲浦・奥里・脇・前新開・久保の谷・中の谷・厳島・浦の浜・中側・岡庄・中後・尾又",
+      "calendar_id": "kamijima-ikina-south",
+      "rule_profile_id": "main_islands",
+      "source_file": "ikina.pdf",
+      "address_labels": [
+        "稲浦",
+        "奥里",
+        "脇",
+        "前新開",
+        "久保の谷",
+        "中の谷",
+        "厳島",
+        "浦の浜",
+        "中側",
+        "岡庄",
+        "中後",
+        "尾又"
+      ]
+    },
+    {
+      "id": "38356-05",
+      "name": "生名北（4～6分団）",
+      "display_name": "生名北：南寮・深浦・丸山・南立石・北立石・公営住宅・恵生・西浦",
+      "calendar_id": "kamijima-ikina-north",
+      "rule_profile_id": "main_islands",
+      "source_file": "ikina.pdf",
+      "address_labels": [
+        "南寮",
+        "深浦",
+        "丸山",
+        "南立石",
+        "北立石",
+        "公営住宅",
+        "恵生",
+        "西浦"
+      ]
+    },
+    {
+      "id": "38356-06",
+      "name": "岩城A地区",
+      "display_name": "岩城A：東1・東2・西・高原・大谷・新地・谷",
+      "calendar_id": "kamijima-iwagi-a",
+      "rule_profile_id": "main_islands",
+      "source_file": "iwagi.pdf",
+      "address_labels": [
+        "東1",
+        "東2",
+        "西",
+        "高原",
+        "大谷",
+        "新地",
+        "谷"
+      ]
+    },
+    {
+      "id": "38356-07",
+      "name": "岩城B地区",
+      "display_name": "岩城B：浜・浜2・西部・赤石・小漕・長江・船越・海原",
+      "calendar_id": "kamijima-iwagi-b",
+      "rule_profile_id": "main_islands",
+      "source_file": "iwagi.pdf",
+      "address_labels": [
+        "浜",
+        "浜2",
+        "西部",
+        "赤石",
+        "小漕",
+        "長江",
+        "船越",
+        "海原"
+      ]
+    },
+    {
+      "id": "38356-08",
+      "name": "魚島地区",
+      "display_name": "魚島地区（魚島クリーンセンター持込）",
+      "calendar_id": "kamijima-uoshima",
+      "rule_profile_id": "uoshima",
+      "source_file": "uoshima.pdf",
+      "address_labels": [
+        "魚島"
+      ]
+    }
+  ]
+}

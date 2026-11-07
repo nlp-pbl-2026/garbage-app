@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38356",
+  "version": "kamijima-2026.1",
+  "official_item_examples": 106,
+  "items_sha256": "ab0077099d69df66f61494db7cc4b151dc8917e5740365252c13a4396036d7df",
+  "categories": {
+    "appliance_recycling": 5,
+    "bottles": 4,
+    "bulky": 6,
+    "burnable": 20,
+    "cans": 6,
+    "cardboard": 1,
+    "ceramics": 6,
+    "glass": 5,
+    "hazardous": 8,
+    "landfill": 6,
+    "magazines": 7,
+    "newspaper": 1,
+    "not_collected": 22,
+    "small_metals": 9
+  },
+  "conditional_records": 8,
+  "source_files": [
+    "guide.pdf",
+    "yuge.pdf",
+    "ikina.pdf",
+    "iwagi.pdf",
+    "uoshima.pdf"
+  ],
+  "verification": {
+    "method": "Named examples and explicit exclusions were transcribed from the rendered official guides and checked against PDF text extraction where available.",
+    "limitations": "This is the complete set of named examples in the reviewed guides, not an exhaustive municipality dictionary. Unknown items must not be classified solely by analogy.",
+    "reviewed_at": "2026-11-07"
+  }
+}

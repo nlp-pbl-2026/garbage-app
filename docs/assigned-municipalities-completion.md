@@ -89,7 +89,7 @@ aws login
   --confirm-paid --max-calls 7600 --budget-usd 0.48 --workers 4
 ```
 
-索引生成後にFlutterアセットを生成します。全12自治体のGit管理外データを用意できる場合は通常生成を使います。
+索引生成後にFlutterアセットを生成します。標準カタログ全14自治体のGit管理外データを用意できる場合は通常生成を使います。
 
 ```powershell
 & backend/.venv/Scripts/python.exe scripts/generate_frontend_data.py

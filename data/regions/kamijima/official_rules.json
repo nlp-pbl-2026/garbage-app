@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38356",
+  "version": "kamijima-2026.1",
+  "source_urls": [
+    "https://www.town.kamijima.lg.jp/soshiki/5/665.html",
+    "https://www.town.kamijima.lg.jp/uploaded/attachment/6629.pdf",
+    "https://www.town.kamijima.lg.jp/uploaded/attachment/6620.pdf",
+    "https://www.town.kamijima.lg.jp/uploaded/attachment/6621.pdf",
+    "https://www.town.kamijima.lg.jp/uploaded/attachment/6622.pdf",
+    "https://www.town.kamijima.lg.jp/uploaded/attachment/6623.pdf"
+  ],
+  "classification_rules": "上島町公式の家庭ごみの正しい出し方に従う。弓削・生名・岩城は地区別の収集日、魚島は魚島クリーンセンターの受入時間を使用し、他自治体の分類や収集日を流用しない。燃やせるごみは町指定袋に入れて記名し、金属類・不燃ごみを除く。ビン・ガラス・陶器、缶、小物金属・有害ごみは指定袋ではなく公式資料記載の容器等で出す。スプレー缶等は使い切って穴を開けない。ボタン電池・充電用電池・携帯電話の電池は販売店へ相談する。粗大ごみは可燃系と不燃系を分け、手数料表に対応するシールを貼る。家電リサイクル対象品、最終処分場搬入物、町で処理できない物を定期収集へ変換しない。条件や種類が不明なら推測せず追加質問する。",
+  "categories": {
+    "burnable": {
+      "name": "燃やせるごみ",
+      "collection_type_id": "burnable",
+      "collection_name": "燃やせるごみ",
+      "color": "#5B9BD5",
+      "instructions": "上島町指定ごみ袋に入れて記名し、生ごみの水分を切り、金属類を除いて袋の口を結びます。剪定枝等は50×50×80cm以内、10kg程度までの束にして燃やせるごみシールを貼ります。"
+    },
+    "bottles": {
+      "name": "ビン類",
+      "collection_type_id": "nonburnable",
+      "collection_name": "ビン・ガラス・陶器",
+      "color": "#FFC000",
+      "instructions": "中身を空にしてふたを外し、記名した一斗缶・バケツ等または地区管理の容器に入れます。指定袋やビニール袋には入れません。"
+    },
+    "glass": {
+      "name": "ガラス類",
+      "collection_type_id": "nonburnable",
+      "collection_name": "ビン・ガラス・陶器",
+      "color": "#FFC000",
+      "instructions": "記名した一斗缶・バケツ等または地区管理の容器に入れます。指定袋やビニール袋には入れません。"
+    },
+    "ceramics": {
+      "name": "陶器類",
+      "collection_type_id": "nonburnable",
+      "collection_name": "ビン・ガラス・陶器",
+      "color": "#FFC000",
+      "instructions": "記名した一斗缶・バケツ等または地区管理の容器に入れます。鉢は少量に限り、多量の場合は最終処分場へ持ち込みます。"
+    },
+    "cans": {
+      "name": "缶類",
+      "collection_type_id": "cans",
+      "collection_name": "缶類",
+      "color": "#A5A5D6",
+      "instructions": "中身を空にし、記名した一斗缶・バケツ等または地区管理の容器に入れます。スプレー缶・カセットボンベは完全に使い切り、穴を開けません。"
+    },
+    "small_metals": {
+      "name": "小物金属類",
+      "collection_type_id": "metals_hazardous",
+      "collection_name": "小物金属・有害ごみ",
+      "color": "#9DC3E6",
+      "instructions": "金属以外を取り除き、釘・ネジ等は袋に入れます。"
+    },
+    "hazardous": {
+      "name": "有害ごみ",
+      "collection_type_id": "metals_hazardous",
+      "collection_name": "小物金属・有害ごみ",
+      "color": "#9DC3E6",
+      "instructions": "刃先の鋭い物は粘着テープで巻いて透明な袋等へ入れます。水銀使用廃製品は有害ごみと排出容器を分け、破損品は袋に入れます。"
+    },
+    "newspaper": {
+      "name": "新聞",
+      "collection_type_id": "newspaper",
+      "collection_name": "新聞",
+      "color": "#70AD47",
+      "instructions": "新聞だけを20～30cm程度にひもで十字に縛ります。粘着テープは使用しません。"
+    },
+    "cardboard": {
+      "name": "ダンボール",
+      "collection_type_id": "cardboard",
+      "collection_name": "ダンボール",
+      "color": "#70AD47",
+      "instructions": "断面が波状のダンボールだけを20～30cm程度にひもで十字に縛ります。雨で濡れるなど資源に出せない物は燃やせるごみです。"
+    },
+    "magazines": {
+      "name": "雑誌",
+      "collection_type_id": "magazines",
+      "collection_name": "雑誌・雑紙",
+      "color": "#70AD47",
+      "instructions": "雑誌、本、カタログ、教科書、チラシ、空き箱、厚紙を20～30cm程度にひもで十字に縛ります。粘着テープは使用しません。"
+    },
+    "bulky": {
+      "name": "粗大ごみ",
+      "collection_type_id": "bulky",
+      "collection_name": "粗大ごみ",
+      "color": "#F27CA5",
+      "instructions": "可燃系と不燃系を分け、粗大ごみ処理手数料表に対応する金額分のシールを貼ります。直接搬入もできます。"
+    },
+    "appliance_recycling": {
+      "name": "家電リサイクル対象製品",
+      "color": "#FFD966",
+      "answer_note": "購入店または買替え店へ引取りを依頼します。依頼できない場合のみ町で取り扱い、別途収集運搬手数料が必要です。",
+      "instructions": "冷蔵庫、冷凍庫、テレビ、エアコン、洗濯機は家電リサイクル対象です。通常のごみ収集には出しません。"
+    },
+    "landfill": {
+      "name": "最終処分場搬入物",
+      "color": "#FFD966",
+      "answer_note": "役場で受付を済ませてから最終処分場へ持ち込みます。クリーンセンターには持ち込めません。魚島地区は事前に役場へ相談してください。",
+      "instructions": "土・石・瓦・煉瓦・鉄筋を除くコンクリート殻・多量の鉢が対象です。事業活動由来の物や石膏ボードは持ち込めません。"
+    },
+    "not_collected": {
+      "name": "町で収集・処理できない物",
+      "color": "#F24234",
+      "answer_note": "販売店、メーカー、修理業者または専門業者へ処分を依頼してください。",
+      "instructions": "産業廃棄物、漁網、農業用廃ビニール、バイク、農薬、劇毒物、消火器、業務用ガスボンベ、バッテリー、ピアノ、タイヤ、廃油、FRP製品、船外機、パソコン等は町で処理できません。"
+    }
+  }
+}

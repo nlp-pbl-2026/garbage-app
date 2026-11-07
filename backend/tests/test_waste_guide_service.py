@@ -596,6 +596,43 @@ def test_conditional_evidence_asks_size_after_material_is_answered():
     assert result.follow_up_question == "松山市の指定ごみ袋に入る大きさですか？"
 
 
+def test_regional_conditional_evidence_asks_quantity_before_primary_category():
+    from types import SimpleNamespace
+
+    region = SimpleNamespace(
+        municipality_id="38356",
+        rules=SimpleNamespace(size_threshold_cm=None),
+    )
+    document = RetrievedDocument(
+        text=(
+            "品目: 植木鉢（少量）\n"
+            "分類コード: ceramics\n"
+            "分類: 陶器類\n"
+            '条件付き分類コード: ["landfill"]\n'
+            "出し方・注意: 植木鉢は少量に限ります。多量の場合は最終処分場へ持ち込みます。"
+        ),
+        score=.99,
+        uri="regional://38356/citywide/items/kamijima-item-001",
+    )
+
+    question = WasteGuideService._conditional_evidence_question(
+        query="陶器の植木鉢",
+        clarifications=[],
+        documents=[document],
+        region=region,
+        selected_evidence_indexes=(1,),
+    )
+
+    assert question == "植木鉢は少量ですか、それとも多量ですか？"
+    assert WasteGuideService._conditional_evidence_question(
+        query="少量の陶器の植木鉢",
+        clarifications=[],
+        documents=[document],
+        region=region,
+        selected_evidence_indexes=(1,),
+    ) is None
+
+
 def test_fully_answered_structured_conditions_resolve_without_third_question():
     gateway = FakeGateway(
         ClassificationDecision(
