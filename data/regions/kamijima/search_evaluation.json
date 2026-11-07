@@ -1,0 +1,296 @@
+{
+  "schema_version": 1,
+  "case_sha256": "befc95966942876db1daa35d1fb9fe815800f29d63176b92ed0668cc64bcd68b",
+  "dataset_sha256": {
+    "registry.json": "7fd1b87de4178d0ea41b0d2e0e31a957c5e91d065f1a8a2e2ff1cf9dbc1d0bf9",
+    "knowledge/items.csv": "cf714ec748efb8b89f824833e28395deefaeb19a3ede405b792c759b0d7a93f0",
+    "knowledge/item_embeddings.npz": "eba5f3048fb0acd82268a7f1055a4ed79f98efbe8463ca19dec2fc3021cf1b25"
+  },
+  "model_ids": {
+    "rewrite_and_decide": "amazon.nova-lite-v1:0",
+    "embedding": "amazon.titan-embed-text-v2:0"
+  },
+  "summary": {
+    "cases": 14,
+    "passed": 13,
+    "failed": 1
+  },
+  "usage": {
+    "embedding_generation_model_calls": 106,
+    "embedding_input_tokens": 16534,
+    "evaluation_model_calls": 42,
+    "evaluation_nova_calls": 28,
+    "evaluation_titan_calls": 14,
+    "estimated_actual_usd": 0.00362488,
+    "conservative_reserved_usd": 0.014771199999999998,
+    "approved_limit_usd": 0.07
+  },
+  "results": [
+    {
+      "case": 1,
+      "kind": "current_rule",
+      "query": "飲み終わったペットボトル",
+      "source_url": "https://www.town.kamijima.lg.jp/uploaded/attachment/6629.pdf",
+      "official_expected": {
+        "status": "answered",
+        "category": "burnable",
+        "reason": "上島町の公式例ではペットボトルは燃やせるごみ。"
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "burnable",
+        "follow_up_question": null,
+        "answer": "飲み終わったペットボトルは「燃やせるごみ」です。\n上島町指定ごみ袋に入れて記名し、生ごみの水分を切り、金属類を除いて袋の口を結びます。剪定枝等は50×50×80cm以内、10kg程度までの束にして燃やせるごみシールを貼ります。\n弓削：久司浦・沢津・上弓削・緑ヶ丘・引野・明神地区の次回収集日は2026年11月9日（月）です。"
+      },
+      "passed": true
+    },
+    {
+      "case": 2,
+      "kind": "material",
+      "query": "切れたLED電球",
+      "source_url": "https://www.town.kamijima.lg.jp/uploaded/attachment/6629.pdf",
+      "official_expected": {
+        "status": "answered",
+        "category": "glass",
+        "reason": "LED電球はガラス類。"
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "glass",
+        "follow_up_question": null,
+        "answer": "切れたLED電球は「ガラス類」です。\n記名した一斗缶・バケツ等または地区管理の容器に入れます。指定袋やビニール袋には入れません。\n弓削：中都・浜都・日比・太田・土生・鎌田地区の次回収集日は2026年11月16日（月）です。"
+      },
+      "passed": true
+    },
+    {
+      "case": 3,
+      "kind": "normal",
+      "query": "割れてしまった飲料用のびん",
+      "source_url": "https://www.town.kamijima.lg.jp/uploaded/attachment/6629.pdf",
+      "official_expected": {
+        "status": "answered",
+        "category": "bottles",
+        "reason": "割れたびんはビン類。"
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "bottles",
+        "follow_up_question": null,
+        "answer": "割れてしまった飲料用のびんは「ビン類」です。\n中身を空にしてふたを外し、記名した一斗缶・バケツ等または地区管理の容器に入れます。指定袋やビニール袋には入れません。\n弓削：岳の下・狩尾・大谷・佐島・藤谷地区の次回収集日は2026年11月18日（水）です。"
+      },
+      "passed": true
+    },
+    {
+      "case": 4,
+      "kind": "safety_rule",
+      "query": "中身を完全に使い切った穴を開けていないスプレー缶",
+      "source_url": "https://www.town.kamijima.lg.jp/uploaded/attachment/6629.pdf",
+      "official_expected": {
+        "status": "answered",
+        "category": "cans",
+        "reason": "使い切ったスプレー缶は缶類で、穴は開けない。"
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "cans",
+        "follow_up_question": null,
+        "answer": "中身を完全に使い切った穴を開けていないスプレー缶は「缶類」です。\nスプレー缶・カセットボンベは完全に使い切り、穴を開けません。\n中身を空にし、記名した一斗缶・バケツ等または地区管理の容器に入れます。スプレー缶・カセットボンベは完全に使い切り、穴を開けません。\n生名南：稲浦・奥里・脇・前新開・久保の谷・中の谷・厳島・浦の浜・中側・岡庄・中後・尾又地区の次回収集日は2026年11月18日（水）です。"
+      },
+      "passed": true
+    },
+    {
+      "case": 5,
+      "kind": "not_collected",
+      "query": "小型家電から外した充電用電池",
+      "source_url": "https://www.town.kamijima.lg.jp/uploaded/attachment/6629.pdf",
+      "official_expected": {
+        "status": "answered",
+        "category": "not_collected",
+        "reason": "充電用電池は町の収集に出さず販売店へ相談。"
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "not_collected",
+        "follow_up_question": null,
+        "answer": "小型家電から外した充電用電池は「町で収集・処理できない物」です。\n販売店、メーカー、修理業者または専門業者へ依頼します。\n産業廃棄物、漁網、農業用廃ビニール、バイク、農薬、劇毒物、消火器、業務用ガスボンベ、バッテリー、ピアノ、タイヤ、廃油、FRP製品、船外機、パソコン等は町で処理できません。\n販売店、メーカー、修理業者または専門業者へ処分を依頼してください。"
+      },
+      "passed": true
+    },
+    {
+      "case": 6,
+      "kind": "hazardous",
+      "query": "使用済みの蛍光管",
+      "source_url": "https://www.town.kamijima.lg.jp/uploaded/attachment/6629.pdf",
+      "official_expected": {
+        "status": "answered",
+        "category": "hazardous",
+        "reason": "蛍光管は有害ごみ。"
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "hazardous",
+        "follow_up_question": null,
+        "answer": "使用済みの蛍光管は「有害ごみ」です。\n刃先の鋭い物は安全に包みます。水銀使用廃製品は排出容器を分け、破損品は袋に入れます。\n岩城A：東1・東2・西・高原・大谷・新地・谷地区の次回収集日は2026年12月23日（水）です。"
+      },
+      "passed": true
+    },
+    {
+      "case": 7,
+      "kind": "condition",
+      "query": "乾いていて資源に出せる段ボール",
+      "source_url": "https://www.town.kamijima.lg.jp/uploaded/attachment/6629.pdf",
+      "official_expected": {
+        "status": "answered",
+        "category": "cardboard",
+        "reason": "乾いた段ボールは古紙類のダンボール。"
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "cardboard",
+        "follow_up_question": null,
+        "answer": "乾いていて資源に出せる段ボールは「ダンボール」です。\n断面が波状のダンボールだけを20～30cm程度にひもで十字に縛ります。\n岩城B：浜・浜2・西部・赤石・小漕・長江・船越・海原地区の次回収集日は2026年11月19日（木）です。"
+      },
+      "passed": true
+    },
+    {
+      "case": 8,
+      "kind": "condition",
+      "query": "雨で濡れて資源に出せない段ボール",
+      "source_url": "https://www.town.kamijima.lg.jp/uploaded/attachment/6629.pdf",
+      "official_expected": {
+        "status": "answered",
+        "category": "burnable",
+        "reason": "雨で濡れて資源に出せない段ボールは燃やせるごみ。"
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "burnable",
+        "follow_up_question": null,
+        "answer": "雨で濡れて資源に出せない段ボールは「燃やせるごみ」です。\n上島町指定ごみ袋に入れて記名し、生ごみの水分を切り、金属類を除いて袋の口を結びます。剪定枝等は50×50×80cm以内、10kg程度までの束にして燃やせるごみシールを貼ります。\n魚島地区（魚島クリーンセンター持込）地区の次回収集日は2026年11月9日（月）です。\n月曜日から金曜日の午前7時から午前10時までに魚島クリーンセンターへ持ち込みます。"
+      },
+      "passed": true
+    },
+    {
+      "case": 9,
+      "kind": "clarification",
+      "query": "陶器の植木鉢",
+      "source_url": "https://www.town.kamijima.lg.jp/uploaded/attachment/6629.pdf",
+      "official_expected": {
+        "status": "needs_clarification",
+        "category": null,
+        "reason": "植木鉢は量により陶器類または最終処分場搬入物となる。"
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "ceramics",
+        "follow_up_question": null,
+        "answer": "陶器の植木鉢は「陶器類」です。\n記名した一斗缶・バケツ等または地区管理の容器に入れます。鉢は少量に限り、多量の場合は最終処分場へ持ち込みます。\n弓削：久司浦・沢津・上弓削・緑ヶ丘・引野・明神地区の次回収集日は2026年11月18日（水）です。"
+      },
+      "passed": false
+    },
+    {
+      "case": 10,
+      "kind": "clarified",
+      "query": "少量だけある陶器の植木鉢",
+      "source_url": "https://www.town.kamijima.lg.jp/uploaded/attachment/6629.pdf",
+      "official_expected": {
+        "status": "answered",
+        "category": "ceramics",
+        "reason": "少量の植木鉢は陶器類。"
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "ceramics",
+        "follow_up_question": null,
+        "answer": "陶器の植木鉢は「陶器類」です。\n記名した一斗缶・バケツ等または地区管理の容器に入れます。鉢は少量に限り、多量の場合は最終処分場へ持ち込みます。\n弓削：中都・浜都・日比・太田・土生・鎌田地区の次回収集日は2026年11月16日（月）です。"
+      },
+      "passed": true
+    },
+    {
+      "case": 11,
+      "kind": "clarified",
+      "query": "多量にある陶器の植木鉢",
+      "source_url": "https://www.town.kamijima.lg.jp/uploaded/attachment/6629.pdf",
+      "official_expected": {
+        "status": "answered",
+        "category": "landfill",
+        "reason": "多量の植木鉢は役場受付後に最終処分場へ持ち込む。"
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "landfill",
+        "follow_up_question": null,
+        "answer": "陶器の植木鉢は「最終処分場搬入物」です。\n役場で受付を済ませてから最終処分場へ持ち込みます。魚島地区は事前に役場へ相談してください。\n役場で受付を済ませてから最終処分場へ持ち込みます。クリーンセンターには持ち込めません。魚島地区は事前に役場へ相談してください。"
+      },
+      "passed": true
+    },
+    {
+      "case": 12,
+      "kind": "bulky",
+      "query": "家庭で使っていたガスコンロ",
+      "source_url": "https://www.town.kamijima.lg.jp/uploaded/attachment/6629.pdf",
+      "official_expected": {
+        "status": "answered",
+        "category": "bulky",
+        "reason": "ガスコンロは不燃系粗大ごみ。"
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "bulky",
+        "follow_up_question": null,
+        "answer": "家庭で使っていたガスコンロは「粗大ごみ」です。\n不燃系粗大ごみです。家電リサイクル対象品は含みません。\n可燃系と不燃系を分け、粗大ごみ処理手数料表に対応する金額分のシールを貼ります。直接搬入もできます。\n生名南：稲浦・奥里・脇・前新開・久保の谷・中の谷・厳島・浦の浜・中側・岡庄・中後・尾又地区の次回収集日は2026年11月25日（水）です。"
+      },
+      "passed": true
+    },
+    {
+      "case": 13,
+      "kind": "alternative_route",
+      "query": "故障した家庭用冷蔵庫",
+      "source_url": "https://www.town.kamijima.lg.jp/uploaded/attachment/6629.pdf",
+      "official_expected": {
+        "status": "answered",
+        "category": "appliance_recycling",
+        "reason": "冷蔵庫は家電リサイクル対象製品。"
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "appliance_recycling",
+        "follow_up_question": null,
+        "answer": "故障した家庭用冷蔵庫は「家電リサイクル対象製品」です。\n購入店または買替え店へ引取りを依頼します。依頼できない場合のみ町で取り扱います。\n冷蔵庫、冷凍庫、テレビ、エアコン、洗濯機は家電リサイクル対象です。通常のごみ収集には出しません。\n購入店または買替え店へ引取りを依頼します。依頼できない場合のみ町で取り扱い、別途収集運搬手数料が必要です。"
+      },
+      "passed": true
+    },
+    {
+      "case": 14,
+      "kind": "not_collected",
+      "query": "処分したいオートバイ",
+      "source_url": "https://www.town.kamijima.lg.jp/uploaded/attachment/6629.pdf",
+      "official_expected": {
+        "status": "answered",
+        "category": "not_collected",
+        "reason": "バイクは町で収集・処理できない物。"
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "not_collected",
+        "follow_up_question": null,
+        "answer": "オートバイは「町で収集・処理できない物」です。\n販売店、メーカー、修理業者または専門業者へ依頼します。\n販売店、メーカー、修理業者または専門業者へ処分を依頼してください。"
+      },
+      "passed": true
+    }
+  ]
+}

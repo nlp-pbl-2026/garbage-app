@@ -1894,6 +1894,34 @@ class WasteGuideService:
         ):
             return "家庭で使用したものですか、それとも事業用ですか？"
 
+        # Some official tables split the same named item by quantity rather
+        # than material or dimensions. The primary code in a conditional row
+        # is not a default when the user did not state that quantity.
+        encoded_options = next(
+            (
+                line.removeprefix("条件付き分類コード:").strip()
+                for line in lines
+                if line.startswith("条件付き分類コード:")
+            ),
+            "[]",
+        )
+        try:
+            quantity_options = json.loads(encoded_options)
+        except (ValueError, TypeError):
+            quantity_options = []
+        quantity_branch = (
+            isinstance(quantity_options, list)
+            and bool(quantity_options)
+            and "少量" in evidence
+            and any(marker in evidence for marker in ("多量", "量が多い", "大量"))
+        )
+        quantity_answered = any(
+            marker in context
+            for marker in ("少量", "少し", "わずか", "多量", "大量", "たくさん")
+        )
+        if quantity_branch and not quantity_answered:
+            return f"{display_item}は少量ですか、それとも多量ですか？"
+
         if "電気・電池を使用するものは" in evidence and not any(
             power in context for power in ("電動", "電池", "充電", "電気を使", "電気式", "手動")
         ):

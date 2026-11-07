@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38356",
+  "version": "kamijima-2026.1",
+  "valid_from": "2026-04-01",
+  "valid_to": "2027-03-31",
+  "license_status": "permission_required_for_redistribution",
+  "copyright_url": "https://www.town.kamijima.lg.jp/site/userguide/1434.html",
+  "sources": [
+    {
+      "file": "copyright.html",
+      "url": "https://www.town.kamijima.lg.jp/site/userguide/1434.html",
+      "sha256": "b608c76c6ebf03bcc78e6473979659d13fcb2b76d579739a3b649c95b6233feb",
+      "retrieved_at": "2026-11-07"
+    },
+    {
+      "file": "guide-page.html",
+      "url": "https://www.town.kamijima.lg.jp/soshiki/5/665.html",
+      "sha256": "8fbe2f064bd4c182cc080accea0d17ab77e54ad31712caab26036aa583c0a0ee",
+      "retrieved_at": "2026-11-07"
+    },
+    {
+      "file": "guide.pdf",
+      "url": "https://www.town.kamijima.lg.jp/uploaded/attachment/6629.pdf",
+      "sha256": "5d7bc2b088a76891531c58a28df62cb80041ca8ebb564b3351ff9044f67545e4",
+      "retrieved_at": "2026-11-07"
+    },
+    {
+      "file": "ikina.pdf",
+      "url": "https://www.town.kamijima.lg.jp/uploaded/attachment/6621.pdf",
+      "sha256": "4fc5e0a222281d80cb0044ca88da77aabcaae17c817584b8cd96ac807d807a02",
+      "retrieved_at": "2026-11-07"
+    },
+    {
+      "file": "iwagi.pdf",
+      "url": "https://www.town.kamijima.lg.jp/uploaded/attachment/6622.pdf",
+      "sha256": "3d24c4222c28f3934c657fb12fe35d1da67e92ec3f2aa06eb989933428180477",
+      "retrieved_at": "2026-11-07"
+    },
+    {
+      "file": "uoshima.pdf",
+      "url": "https://www.town.kamijima.lg.jp/uploaded/attachment/6623.pdf",
+      "sha256": "be322fd3f6ca7503160c5f52c4fc00b640fe0b09d8d0cdef544b5750ec5788f5",
+      "retrieved_at": "2026-11-07"
+    },
+    {
+      "file": "yuge.pdf",
+      "url": "https://www.town.kamijima.lg.jp/uploaded/attachment/6620.pdf",
+      "sha256": "228d36779813ba91d1c6e4959997e208e4871f0f7dee0bba004e008cde347ff5",
+      "retrieved_at": "2026-11-07"
+    }
+  ]
+}

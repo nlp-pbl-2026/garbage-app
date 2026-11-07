@@ -1,0 +1,493 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38356",
+  "municipality_name": "上島町",
+  "prefecture_id": "38",
+  "prefecture_name": "愛媛県",
+  "version": "kamijima-2026.1",
+  "valid_from": "2026-04-01",
+  "valid_to": "2027-03-31",
+  "collection_areas": [
+    {
+      "id": "38356-01",
+      "name": "弓削地区1",
+      "display_name": "弓削：久司浦・沢津・上弓削・緑ヶ丘・引野・明神",
+      "calendar_id": "kamijima-yuge-1",
+      "rule_profile_id": "main_islands",
+      "address_labels": [
+        "久司浦",
+        "沢津",
+        "上弓削",
+        "緑ヶ丘",
+        "引野",
+        "明神"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.kamijima.lg.jp/uploaded/attachment/6620.pdf"
+    },
+    {
+      "id": "38356-02",
+      "name": "弓削地区2",
+      "display_name": "弓削：中都・浜都・日比・太田・土生・鎌田",
+      "calendar_id": "kamijima-yuge-2",
+      "rule_profile_id": "main_islands",
+      "address_labels": [
+        "中都",
+        "浜都",
+        "日比",
+        "太田",
+        "土生",
+        "鎌田"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.kamijima.lg.jp/uploaded/attachment/6620.pdf"
+    },
+    {
+      "id": "38356-03",
+      "name": "弓削地区3",
+      "display_name": "弓削：岳の下・狩尾・大谷・佐島・藤谷",
+      "calendar_id": "kamijima-yuge-3",
+      "rule_profile_id": "main_islands",
+      "address_labels": [
+        "岳の下",
+        "狩尾",
+        "大谷",
+        "佐島",
+        "藤谷"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.kamijima.lg.jp/uploaded/attachment/6620.pdf"
+    },
+    {
+      "id": "38356-04",
+      "name": "生名南（1～3分団）",
+      "display_name": "生名南：稲浦・奥里・脇・前新開・久保の谷・中の谷・厳島・浦の浜・中側・岡庄・中後・尾又",
+      "calendar_id": "kamijima-ikina-south",
+      "rule_profile_id": "main_islands",
+      "address_labels": [
+        "稲浦",
+        "奥里",
+        "脇",
+        "前新開",
+        "久保の谷",
+        "中の谷",
+        "厳島",
+        "浦の浜",
+        "中側",
+        "岡庄",
+        "中後",
+        "尾又"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.kamijima.lg.jp/uploaded/attachment/6621.pdf"
+    },
+    {
+      "id": "38356-05",
+      "name": "生名北（4～6分団）",
+      "display_name": "生名北：南寮・深浦・丸山・南立石・北立石・公営住宅・恵生・西浦",
+      "calendar_id": "kamijima-ikina-north",
+      "rule_profile_id": "main_islands",
+      "address_labels": [
+        "南寮",
+        "深浦",
+        "丸山",
+        "南立石",
+        "北立石",
+        "公営住宅",
+        "恵生",
+        "西浦"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.kamijima.lg.jp/uploaded/attachment/6621.pdf"
+    },
+    {
+      "id": "38356-06",
+      "name": "岩城A地区",
+      "display_name": "岩城A：東1・東2・西・高原・大谷・新地・谷",
+      "calendar_id": "kamijima-iwagi-a",
+      "rule_profile_id": "main_islands",
+      "address_labels": [
+        "東1",
+        "東2",
+        "西",
+        "高原",
+        "大谷",
+        "新地",
+        "谷"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.kamijima.lg.jp/uploaded/attachment/6622.pdf"
+    },
+    {
+      "id": "38356-07",
+      "name": "岩城B地区",
+      "display_name": "岩城B：浜・浜2・西部・赤石・小漕・長江・船越・海原",
+      "calendar_id": "kamijima-iwagi-b",
+      "rule_profile_id": "main_islands",
+      "address_labels": [
+        "浜",
+        "浜2",
+        "西部",
+        "赤石",
+        "小漕",
+        "長江",
+        "船越",
+        "海原"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.kamijima.lg.jp/uploaded/attachment/6622.pdf"
+    },
+    {
+      "id": "38356-08",
+      "name": "魚島地区",
+      "display_name": "魚島地区（魚島クリーンセンター持込）",
+      "calendar_id": "kamijima-uoshima",
+      "rule_profile_id": "uoshima",
+      "address_labels": [
+        "魚島"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.town.kamijima.lg.jp/uploaded/attachment/6623.pdf"
+    }
+  ],
+  "calendars": [
+    {
+      "id": "kamijima-yuge-1",
+      "rule_profile_id": "main_islands"
+    },
+    {
+      "id": "kamijima-yuge-2",
+      "rule_profile_id": "main_islands"
+    },
+    {
+      "id": "kamijima-yuge-3",
+      "rule_profile_id": "main_islands"
+    },
+    {
+      "id": "kamijima-ikina-south",
+      "rule_profile_id": "main_islands"
+    },
+    {
+      "id": "kamijima-ikina-north",
+      "rule_profile_id": "main_islands"
+    },
+    {
+      "id": "kamijima-iwagi-a",
+      "rule_profile_id": "main_islands"
+    },
+    {
+      "id": "kamijima-iwagi-b",
+      "rule_profile_id": "main_islands"
+    },
+    {
+      "id": "kamijima-uoshima",
+      "rule_profile_id": "uoshima"
+    }
+  ],
+  "rule_profiles": {
+    "main_islands": {
+      "items_path": "knowledge/items.csv",
+      "embedding_index_path": "knowledge/item_embeddings.npz",
+      "index_profile_id": "citywide",
+      "calendar_path": "generated/calendar-2026.json",
+      "classification_rules": "上島町公式の家庭ごみの正しい出し方に従う。弓削・生名・岩城は地区別の収集日、魚島は魚島クリーンセンターの受入時間を使用し、他自治体の分類や収集日を流用しない。燃やせるごみは町指定袋に入れて記名し、金属類・不燃ごみを除く。ビン・ガラス・陶器、缶、小物金属・有害ごみは指定袋ではなく公式資料記載の容器等で出す。スプレー缶等は使い切って穴を開けない。ボタン電池・充電用電池・携帯電話の電池は販売店へ相談する。粗大ごみは可燃系と不燃系を分け、手数料表に対応するシールを貼る。家電リサイクル対象品、最終処分場搬入物、町で処理できない物を定期収集へ変換しない。条件や種類が不明なら推測せず追加質問する。",
+      "size_question": "品目の素材、大きさ、家電リサイクル対象かどうかは分かりますか？",
+      "knowledge_title": "上島町家庭ごみの正しい出し方",
+      "categories": {
+        "burnable": {
+          "name": "燃やせるごみ",
+          "collection_type_id": "burnable",
+          "collection_name": "燃やせるごみ",
+          "color": "#5B9BD5",
+          "cutoff": "08:00"
+        },
+        "bottles": {
+          "name": "ビン類",
+          "collection_type_id": "nonburnable",
+          "collection_name": "ビン・ガラス・陶器",
+          "color": "#FFC000",
+          "cutoff": "08:00"
+        },
+        "glass": {
+          "name": "ガラス類",
+          "collection_type_id": "nonburnable",
+          "collection_name": "ビン・ガラス・陶器",
+          "color": "#FFC000",
+          "cutoff": "08:00"
+        },
+        "ceramics": {
+          "name": "陶器類",
+          "collection_type_id": "nonburnable",
+          "collection_name": "ビン・ガラス・陶器",
+          "color": "#FFC000",
+          "cutoff": "08:00"
+        },
+        "cans": {
+          "name": "缶類",
+          "collection_type_id": "cans",
+          "collection_name": "缶類",
+          "color": "#A5A5D6",
+          "cutoff": "08:00"
+        },
+        "small_metals": {
+          "name": "小物金属類",
+          "collection_type_id": "metals_hazardous",
+          "collection_name": "小物金属・有害ごみ",
+          "color": "#9DC3E6",
+          "cutoff": "08:00"
+        },
+        "hazardous": {
+          "name": "有害ごみ",
+          "collection_type_id": "metals_hazardous",
+          "collection_name": "小物金属・有害ごみ",
+          "color": "#9DC3E6",
+          "cutoff": "08:00"
+        },
+        "newspaper": {
+          "name": "新聞",
+          "collection_type_id": "newspaper",
+          "collection_name": "新聞",
+          "color": "#70AD47",
+          "cutoff": "08:00"
+        },
+        "cardboard": {
+          "name": "ダンボール",
+          "collection_type_id": "cardboard",
+          "collection_name": "ダンボール",
+          "color": "#70AD47",
+          "cutoff": "08:00"
+        },
+        "magazines": {
+          "name": "雑誌",
+          "collection_type_id": "magazines",
+          "collection_name": "雑誌・雑紙",
+          "color": "#70AD47",
+          "cutoff": "08:00"
+        },
+        "bulky": {
+          "name": "粗大ごみ",
+          "collection_type_id": "bulky",
+          "collection_name": "粗大ごみ",
+          "color": "#F27CA5",
+          "cutoff": "08:00"
+        },
+        "appliance_recycling": {
+          "name": "家電リサイクル対象製品",
+          "color": "#FFD966",
+          "answer_note": "購入店または買替え店へ引取りを依頼します。依頼できない場合のみ町で取り扱い、別途収集運搬手数料が必要です。"
+        },
+        "landfill": {
+          "name": "最終処分場搬入物",
+          "color": "#FFD966",
+          "answer_note": "役場で受付を済ませてから最終処分場へ持ち込みます。クリーンセンターには持ち込めません。魚島地区は事前に役場へ相談してください。"
+        },
+        "not_collected": {
+          "name": "町で収集・処理できない物",
+          "color": "#F24234",
+          "answer_note": "販売店、メーカー、修理業者または専門業者へ処分を依頼してください。"
+        }
+      },
+      "bulky_waste": {
+        "category_code": "bulky",
+        "collection_type_id": "bulky",
+        "config": {
+          "municipality_id": "38356",
+          "municipality_name": "上島町",
+          "collection_frequency": "奇数月の地区指定第4曜日に収集",
+          "reception_hours": "直接搬入：月～金 13:30～16:50",
+          "collection_rules": "粗大ごみ処理手数料表を確認し、金額分のシールを貼って、可燃系と不燃系を分けます。直接搬入は料金半額です。",
+          "fee_structure_type": "size_based",
+          "application_method": "none",
+          "phone_number": "0897-77-2503",
+          "web_form_url": null,
+          "information_url": "https://www.town.kamijima.lg.jp/soshiki/5/665.html",
+          "steps": [
+            {
+              "step_number": 1,
+              "title": "品目を確認",
+              "description": "可燃系粗大ごみと不燃系粗大ごみを分け、家電リサイクル品や町で処理できない物を除きます。"
+            },
+            {
+              "step_number": 2,
+              "title": "手数料を確認",
+              "description": "公式の粗大ごみ処理手数料表を確認し、役場で必要な金額分の粗大ごみシールを購入します。"
+            },
+            {
+              "step_number": 3,
+              "title": "シールを貼って排出",
+              "description": "選択した地区の公式カレンダー日までにシールを貼り、指定場所へ出します。"
+            },
+            {
+              "step_number": 4,
+              "title": "直接搬入する場合",
+              "description": "公式案内の受付時間を確認し、可燃系と不燃系を分けて搬入します。"
+            }
+          ]
+        }
+      }
+    },
+    "uoshima": {
+      "items_path": "knowledge/items.csv",
+      "embedding_index_path": "knowledge/item_embeddings.npz",
+      "index_profile_id": "citywide",
+      "calendar_path": "generated/calendar-2026.json",
+      "classification_rules": "上島町公式の家庭ごみの正しい出し方に従う。弓削・生名・岩城は地区別の収集日、魚島は魚島クリーンセンターの受入時間を使用し、他自治体の分類や収集日を流用しない。燃やせるごみは町指定袋に入れて記名し、金属類・不燃ごみを除く。ビン・ガラス・陶器、缶、小物金属・有害ごみは指定袋ではなく公式資料記載の容器等で出す。スプレー缶等は使い切って穴を開けない。ボタン電池・充電用電池・携帯電話の電池は販売店へ相談する。粗大ごみは可燃系と不燃系を分け、手数料表に対応するシールを貼る。家電リサイクル対象品、最終処分場搬入物、町で処理できない物を定期収集へ変換しない。条件や種類が不明なら推測せず追加質問する。 魚島地区では定期区分を月曜日から金曜日の午前7時から午前10時までに魚島クリーンセンターへ持ち込む。",
+      "size_question": "品目の素材、大きさ、家電リサイクル対象かどうかは分かりますか？",
+      "knowledge_title": "上島町家庭ごみの正しい出し方",
+      "categories": {
+        "burnable": {
+          "name": "燃やせるごみ",
+          "collection_type_id": "burnable",
+          "collection_name": "燃やせるごみ",
+          "color": "#5B9BD5",
+          "cutoff": "10:00",
+          "start_time": "07:00",
+          "time_note": "月曜日から金曜日の午前7時から午前10時までに魚島クリーンセンターへ持ち込みます。"
+        },
+        "bottles": {
+          "name": "ビン類",
+          "collection_type_id": "nonburnable",
+          "collection_name": "ビン・ガラス・陶器",
+          "color": "#FFC000",
+          "cutoff": "10:00",
+          "start_time": "07:00",
+          "time_note": "月曜日から金曜日の午前7時から午前10時までに魚島クリーンセンターへ持ち込みます。"
+        },
+        "glass": {
+          "name": "ガラス類",
+          "collection_type_id": "nonburnable",
+          "collection_name": "ビン・ガラス・陶器",
+          "color": "#FFC000",
+          "cutoff": "10:00",
+          "start_time": "07:00",
+          "time_note": "月曜日から金曜日の午前7時から午前10時までに魚島クリーンセンターへ持ち込みます。"
+        },
+        "ceramics": {
+          "name": "陶器類",
+          "collection_type_id": "nonburnable",
+          "collection_name": "ビン・ガラス・陶器",
+          "color": "#FFC000",
+          "cutoff": "10:00",
+          "start_time": "07:00",
+          "time_note": "月曜日から金曜日の午前7時から午前10時までに魚島クリーンセンターへ持ち込みます。"
+        },
+        "cans": {
+          "name": "缶類",
+          "collection_type_id": "cans",
+          "collection_name": "缶類",
+          "color": "#A5A5D6",
+          "cutoff": "10:00",
+          "start_time": "07:00",
+          "time_note": "月曜日から金曜日の午前7時から午前10時までに魚島クリーンセンターへ持ち込みます。"
+        },
+        "small_metals": {
+          "name": "小物金属類",
+          "collection_type_id": "metals_hazardous",
+          "collection_name": "小物金属・有害ごみ",
+          "color": "#9DC3E6",
+          "cutoff": "10:00",
+          "start_time": "07:00",
+          "time_note": "月曜日から金曜日の午前7時から午前10時までに魚島クリーンセンターへ持ち込みます。"
+        },
+        "hazardous": {
+          "name": "有害ごみ",
+          "collection_type_id": "metals_hazardous",
+          "collection_name": "小物金属・有害ごみ",
+          "color": "#9DC3E6",
+          "cutoff": "10:00",
+          "start_time": "07:00",
+          "time_note": "月曜日から金曜日の午前7時から午前10時までに魚島クリーンセンターへ持ち込みます。"
+        },
+        "newspaper": {
+          "name": "新聞",
+          "collection_type_id": "newspaper",
+          "collection_name": "新聞",
+          "color": "#70AD47",
+          "cutoff": "10:00",
+          "start_time": "07:00",
+          "time_note": "月曜日から金曜日の午前7時から午前10時までに魚島クリーンセンターへ持ち込みます。"
+        },
+        "cardboard": {
+          "name": "ダンボール",
+          "collection_type_id": "cardboard",
+          "collection_name": "ダンボール",
+          "color": "#70AD47",
+          "cutoff": "10:00",
+          "start_time": "07:00",
+          "time_note": "月曜日から金曜日の午前7時から午前10時までに魚島クリーンセンターへ持ち込みます。"
+        },
+        "magazines": {
+          "name": "雑誌",
+          "collection_type_id": "magazines",
+          "collection_name": "雑誌・雑紙",
+          "color": "#70AD47",
+          "cutoff": "10:00",
+          "start_time": "07:00",
+          "time_note": "月曜日から金曜日の午前7時から午前10時までに魚島クリーンセンターへ持ち込みます。"
+        },
+        "bulky": {
+          "name": "粗大ごみ",
+          "collection_type_id": "bulky",
+          "collection_name": "粗大ごみ",
+          "color": "#F27CA5",
+          "cutoff": "10:00",
+          "start_time": "07:00",
+          "time_note": "月曜日から金曜日の午前7時から午前10時までに魚島クリーンセンターへ持ち込みます。"
+        },
+        "appliance_recycling": {
+          "name": "家電リサイクル対象製品",
+          "color": "#FFD966",
+          "answer_note": "購入店または買替え店へ引取りを依頼します。依頼できない場合のみ町で取り扱い、別途収集運搬手数料が必要です。"
+        },
+        "landfill": {
+          "name": "最終処分場搬入物",
+          "color": "#FFD966",
+          "answer_note": "役場で受付を済ませてから最終処分場へ持ち込みます。クリーンセンターには持ち込めません。魚島地区は事前に役場へ相談してください。"
+        },
+        "not_collected": {
+          "name": "町で収集・処理できない物",
+          "color": "#F24234",
+          "answer_note": "販売店、メーカー、修理業者または専門業者へ処分を依頼してください。"
+        }
+      },
+      "bulky_waste": {
+        "category_code": "bulky",
+        "collection_type_id": "bulky",
+        "config": {
+          "municipality_id": "38356",
+          "municipality_name": "上島町",
+          "collection_frequency": "月曜日から金曜日に魚島クリーンセンターへ持込",
+          "reception_hours": "魚島クリーンセンター：月～金 7:00～10:00",
+          "collection_rules": "粗大ごみ処理手数料表を確認し、金額分のシールを貼って、可燃系と不燃系を分けます。直接搬入は料金半額です。",
+          "fee_structure_type": "size_based",
+          "application_method": "none",
+          "phone_number": "0897-78-0011",
+          "web_form_url": null,
+          "information_url": "https://www.town.kamijima.lg.jp/soshiki/5/665.html",
+          "steps": [
+            {
+              "step_number": 1,
+              "title": "品目を確認",
+              "description": "可燃系粗大ごみと不燃系粗大ごみを分け、家電リサイクル品や町で処理できない物を除きます。"
+            },
+            {
+              "step_number": 2,
+              "title": "手数料を確認",
+              "description": "公式の粗大ごみ処理手数料表を確認し、役場で必要な金額分の粗大ごみシールを購入します。"
+            },
+            {
+              "step_number": 3,
+              "title": "シールを貼って排出",
+              "description": "魚島クリーンセンターの平日受入時間に持ち込みます。"
+            },
+            {
+              "step_number": 4,
+              "title": "直接搬入する場合",
+              "description": "公式案内の受付時間を確認し、可燃系と不燃系を分けて搬入します。"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

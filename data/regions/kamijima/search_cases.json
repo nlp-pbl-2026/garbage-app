@@ -1,0 +1,146 @@
+{
+  "schema_version": 1,
+  "evaluation_time": "2026-11-07T07:00:00+09:00",
+  "cases": [
+    {
+      "case": 1,
+      "municipality": "上島町",
+      "kind": "current_rule",
+      "input": {"municipality_id": "38356", "district_id": "38356-01", "query": "飲み終わったペットボトル", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "burnable",
+      "source_url": "https://www.town.kamijima.lg.jp/uploaded/attachment/6629.pdf",
+      "official_reason": "上島町の公式例ではペットボトルは燃やせるごみ。"
+    },
+    {
+      "case": 2,
+      "municipality": "上島町",
+      "kind": "material",
+      "input": {"municipality_id": "38356", "district_id": "38356-02", "query": "切れたLED電球", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "glass",
+      "source_url": "https://www.town.kamijima.lg.jp/uploaded/attachment/6629.pdf",
+      "official_reason": "LED電球はガラス類。"
+    },
+    {
+      "case": 3,
+      "municipality": "上島町",
+      "kind": "normal",
+      "input": {"municipality_id": "38356", "district_id": "38356-03", "query": "割れてしまった飲料用のびん", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "bottles",
+      "source_url": "https://www.town.kamijima.lg.jp/uploaded/attachment/6629.pdf",
+      "official_reason": "割れたびんはビン類。"
+    },
+    {
+      "case": 4,
+      "municipality": "上島町",
+      "kind": "safety_rule",
+      "input": {"municipality_id": "38356", "district_id": "38356-04", "query": "中身を完全に使い切った穴を開けていないスプレー缶", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "cans",
+      "source_url": "https://www.town.kamijima.lg.jp/uploaded/attachment/6629.pdf",
+      "official_reason": "使い切ったスプレー缶は缶類で、穴は開けない。"
+    },
+    {
+      "case": 5,
+      "municipality": "上島町",
+      "kind": "not_collected",
+      "input": {"municipality_id": "38356", "district_id": "38356-05", "query": "小型家電から外した充電用電池", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "not_collected",
+      "source_url": "https://www.town.kamijima.lg.jp/uploaded/attachment/6629.pdf",
+      "official_reason": "充電用電池は町の収集に出さず販売店へ相談。"
+    },
+    {
+      "case": 6,
+      "municipality": "上島町",
+      "kind": "hazardous",
+      "input": {"municipality_id": "38356", "district_id": "38356-06", "query": "使用済みの蛍光管", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "hazardous",
+      "source_url": "https://www.town.kamijima.lg.jp/uploaded/attachment/6629.pdf",
+      "official_reason": "蛍光管は有害ごみ。"
+    },
+    {
+      "case": 7,
+      "municipality": "上島町",
+      "kind": "condition",
+      "input": {"municipality_id": "38356", "district_id": "38356-07", "query": "乾いていて資源に出せる段ボール", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "cardboard",
+      "source_url": "https://www.town.kamijima.lg.jp/uploaded/attachment/6629.pdf",
+      "official_reason": "乾いた段ボールは古紙類のダンボール。"
+    },
+    {
+      "case": 8,
+      "municipality": "上島町",
+      "kind": "condition",
+      "input": {"municipality_id": "38356", "district_id": "38356-08", "query": "雨で濡れて資源に出せない段ボール", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "burnable",
+      "source_url": "https://www.town.kamijima.lg.jp/uploaded/attachment/6629.pdf",
+      "official_reason": "雨で濡れて資源に出せない段ボールは燃やせるごみ。"
+    },
+    {
+      "case": 9,
+      "municipality": "上島町",
+      "kind": "clarification",
+      "input": {"municipality_id": "38356", "district_id": "38356-01", "query": "陶器の植木鉢", "clarifications": []},
+      "expected_status": "needs_clarification",
+      "question_contains_any": ["量", "少量", "多量"],
+      "source_url": "https://www.town.kamijima.lg.jp/uploaded/attachment/6629.pdf",
+      "official_reason": "植木鉢は量により陶器類または最終処分場搬入物となる。"
+    },
+    {
+      "case": 10,
+      "municipality": "上島町",
+      "kind": "clarified",
+      "input": {"municipality_id": "38356", "district_id": "38356-02", "query": "少量だけある陶器の植木鉢", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "ceramics",
+      "source_url": "https://www.town.kamijima.lg.jp/uploaded/attachment/6629.pdf",
+      "official_reason": "少量の植木鉢は陶器類。"
+    },
+    {
+      "case": 11,
+      "municipality": "上島町",
+      "kind": "clarified",
+      "input": {"municipality_id": "38356", "district_id": "38356-03", "query": "多量にある陶器の植木鉢", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "landfill",
+      "source_url": "https://www.town.kamijima.lg.jp/uploaded/attachment/6629.pdf",
+      "official_reason": "多量の植木鉢は役場受付後に最終処分場へ持ち込む。"
+    },
+    {
+      "case": 12,
+      "municipality": "上島町",
+      "kind": "bulky",
+      "input": {"municipality_id": "38356", "district_id": "38356-04", "query": "家庭で使っていたガスコンロ", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "bulky",
+      "source_url": "https://www.town.kamijima.lg.jp/uploaded/attachment/6629.pdf",
+      "official_reason": "ガスコンロは不燃系粗大ごみ。"
+    },
+    {
+      "case": 13,
+      "municipality": "上島町",
+      "kind": "alternative_route",
+      "input": {"municipality_id": "38356", "district_id": "38356-05", "query": "故障した家庭用冷蔵庫", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "appliance_recycling",
+      "source_url": "https://www.town.kamijima.lg.jp/uploaded/attachment/6629.pdf",
+      "official_reason": "冷蔵庫は家電リサイクル対象製品。"
+    },
+    {
+      "case": 14,
+      "municipality": "上島町",
+      "kind": "not_collected",
+      "input": {"municipality_id": "38356", "district_id": "38356-08", "query": "処分したいオートバイ", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "not_collected",
+      "source_url": "https://www.town.kamijima.lg.jp/uploaded/attachment/6629.pdf",
+      "official_reason": "バイクは町で収集・処理できない物。"
+    }
+  ]
+}
