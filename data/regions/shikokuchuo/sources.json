@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38213",
+  "version": "shikokuchuo-2026.1",
+  "retrieved_date": "2026-11-07",
+  "copyright_policy": "Official source files and generated datasets are excluded from Git because the city copyright page restricts reproduction and reuse except where permitted by law. Only review metadata, rules, hashes and reproducible scripts are tracked.",
+  "sources": [
+    {"file": "appliances.pdf", "url": "https://www.city.shikokuchuo.ehime.jp/uploaded/attachment/26620.pdf", "sha256": "8e116f97ea8019134b92564492a55bf753c37ffb883fb04a8146069ddd93e5d2"},
+    {"file": "bulky-fees.pdf", "url": "https://www.city.shikokuchuo.ehime.jp/uploaded/attachment/3297.pdf", "sha256": "dd1fadaa5df6a5eab819fee1708db3a1538fadf48c2e92235d3a48b9f251bfb9"},
+    {"file": "bulky-guide.pdf", "url": "https://www.city.shikokuchuo.ehime.jp/uploaded/attachment/3298.pdf", "sha256": "98e3854eae3dea8e2563c469e7da86dcd2448454b2b9bf4bb00b24b326f5f3bc"},
+    {"file": "burnable.pdf", "url": "https://www.city.shikokuchuo.ehime.jp/uploaded/attachment/3294.pdf", "sha256": "1e5d3c61b6cd3e24ec133881400955a43488fb5a36179a04d86eac07d7c8ddee"},
+    {"file": "copyright.html", "url": "https://www.city.shikokuchuo.ehime.jp/site/userguide/12028.html", "sha256": "caaeaed8bfbed2e69f0af4410df86de45270c90b33e2ee17329144ba0b6a5655"},
+    {"file": "districts.pdf", "url": "https://www.city.shikokuchuo.ehime.jp/uploaded/attachment/3293.pdf", "sha256": "800b02af1f7b742dc360f206d64dba1ecae326f538db3b8918d0439cb1fea305"},
+    {"file": "guide-page.html", "url": "https://www.city.shikokuchuo.ehime.jp/soshiki/15/1924.html", "sha256": "b26081fb556ff1eb2c6a434982a1a8c05ec7e762bc66b257395ea5f91998264e"},
+    {"file": "holiday-page.html", "url": "https://www.city.shikokuchuo.ehime.jp/soshiki/15/51919.html", "sha256": "794fd44d3fd43af07804f85984a261a6f083562c50d4291426c1d0156ca2f3d1"},
+    {"file": "lithium.pdf", "url": "https://www.city.shikokuchuo.ehime.jp/uploaded/attachment/21712.pdf", "sha256": "cd744643b5b7ad192e8b453474e1c8af0ec45783475f0f2c90d6d3d7e4392776"},
+    {"file": "nonburnable.pdf", "url": "https://www.city.shikokuchuo.ehime.jp/uploaded/attachment/3295.pdf", "sha256": "385189238776b49f2d3bac63ffd8b7112a7eab00c4b71bad05845098c3086f84"},
+    {"file": "resources.pdf", "url": "https://www.city.shikokuchuo.ehime.jp/uploaded/attachment/3296.pdf", "sha256": "aebe1cda8624a0592245a14ab346f67887d078f9d426ad1f694cf814239b4970"},
+    {"file": "waste-standards.pdf", "url": "https://www.city.shikokuchuo.ehime.jp/uploaded/attachment/3303.pdf", "sha256": "7a6cfc295945f8da892a2206ae223506f4e1dd781cf48c9ed65e95c89e10378b"}
+  ]
+}

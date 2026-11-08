@@ -2979,6 +2979,359 @@
         }
       },
       "addresses_asset": "assets/data/municipality_38356_addresses.json"
+    },
+    {
+      "id": "38213",
+      "version": "shikokuchuo-2026.1",
+      "name": "四国中央市",
+      "prefecture_id": "38",
+      "prefecture_name": "愛媛県",
+      "registry_asset": "assets/data/municipality_38213_registry.json",
+      "profiles": {
+        "standard_0730": {
+          "calendar_asset": "assets/data/municipality_38213_0_calendar.json",
+          "categories": {
+            "burnable": {
+              "name": "燃やすごみ",
+              "collection_type_id": "burnable",
+              "cutoff": "07:30",
+              "collection_name": "燃やすごみ",
+              "color": "#F4B183"
+            },
+            "nonburnable": {
+              "name": "燃やさないごみ",
+              "collection_type_id": "nonburnable",
+              "cutoff": "07:30",
+              "collection_name": "燃やさないごみ",
+              "color": "#76B5A5"
+            },
+            "hazardous": {
+              "name": "有害ごみ",
+              "collection_type_id": "hazardous",
+              "cutoff": "07:30",
+              "collection_name": "有害ごみ",
+              "color": "#D6C98B"
+            },
+            "bottles_cans_pet": {
+              "name": "資源ごみ（びん・かん・ペットボトル）",
+              "collection_type_id": "bottles_cans_pet",
+              "cutoff": "07:30",
+              "collection_name": "びん・かん・ペットボトル",
+              "color": "#C9DA8A"
+            },
+            "newspaper": {
+              "name": "資源ごみ（新聞）",
+              "collection_type_id": "newspaper",
+              "cutoff": "07:30",
+              "collection_name": "新聞・雑がみ",
+              "color": "#C9DA8A"
+            },
+            "magazines": {
+              "name": "資源ごみ（雑誌）",
+              "collection_type_id": "magazines",
+              "cutoff": "07:30",
+              "collection_name": "雑誌・雑がみ",
+              "color": "#C9DA8A"
+            },
+            "misc_paper": {
+              "name": "資源ごみ（雑がみ）",
+              "collection_type_id": "misc_paper",
+              "cutoff": "07:30",
+              "collection_name": "雑がみ",
+              "color": "#C9DA8A"
+            },
+            "cardboard_milk": {
+              "name": "資源ごみ（段ボール・牛乳パック）",
+              "collection_type_id": "cardboard_milk",
+              "cutoff": "07:30",
+              "collection_name": "段ボール・牛乳パック",
+              "color": "#C9DA8A"
+            },
+            "recycling_station": {
+              "name": "拠点・店頭回収",
+              "color": "#70AD47"
+            },
+            "bulky": {
+              "name": "粗大ごみ",
+              "color": "#F27CA5"
+            },
+            "appliance_recycling": {
+              "name": "家電リサイクル対象製品",
+              "color": "#FFD966"
+            },
+            "not_collected": {
+              "name": "市で処理できないごみ",
+              "color": "#F24234"
+            }
+          },
+          "bulky_waste": {
+            "category_code": "bulky",
+            "config": {
+              "municipality_id": "38213",
+              "municipality_name": "四国中央市",
+              "collection_frequency": "戸別収集（申込制）またはクリーンセンターへ直接搬入",
+              "reception_hours": "申込・搬入前に公式案内で最新情報を確認",
+              "collection_rules": "一斗缶（24cm×24cm×35cm）より大きい物は原則として粗大ごみです。公式の品目別手数料と申込方法を確認してください。",
+              "fee_structure_type": "size_based",
+              "application_method": "phone",
+              "phone_number": "0896-28-6015",
+              "web_form_url": null,
+              "information_url": "https://www.city.shikokuchuo.ehime.jp/soshiki/15/1924.html",
+              "steps": [
+                {
+                  "step_number": 1,
+                  "title": "品目と大きさを確認",
+                  "description": "一斗缶より大きい物か、公式排出基準表で粗大と指定された物かを確認します。"
+                },
+                {
+                  "step_number": 2,
+                  "title": "手数料を確認",
+                  "description": "公式の粗大ごみ処理手数料表で品目別料金を確認します。"
+                },
+                {
+                  "step_number": 3,
+                  "title": "市へ申し込む",
+                  "description": "最新の申込方法・受付日時を市の公式案内で確認します。"
+                },
+                {
+                  "step_number": 4,
+                  "title": "指定方法で排出",
+                  "description": "案内された日・場所・方法に従います。地区別定期カレンダーへ粗大ごみ日を推測追加しません。"
+                }
+              ]
+            }
+          }
+        },
+        "early_0700": {
+          "calendar_asset": "assets/data/municipality_38213_0_calendar.json",
+          "categories": {
+            "burnable": {
+              "name": "燃やすごみ",
+              "collection_type_id": "burnable",
+              "cutoff": "07:00",
+              "collection_name": "燃やすごみ",
+              "color": "#F4B183"
+            },
+            "nonburnable": {
+              "name": "燃やさないごみ",
+              "collection_type_id": "nonburnable",
+              "cutoff": "07:00",
+              "collection_name": "燃やさないごみ",
+              "color": "#76B5A5"
+            },
+            "hazardous": {
+              "name": "有害ごみ",
+              "collection_type_id": "hazardous",
+              "cutoff": "07:00",
+              "collection_name": "有害ごみ",
+              "color": "#D6C98B"
+            },
+            "bottles_cans_pet": {
+              "name": "資源ごみ（びん・かん・ペットボトル）",
+              "collection_type_id": "bottles_cans_pet",
+              "cutoff": "07:00",
+              "collection_name": "びん・かん・ペットボトル",
+              "color": "#C9DA8A"
+            },
+            "newspaper": {
+              "name": "資源ごみ（新聞）",
+              "collection_type_id": "newspaper",
+              "cutoff": "07:00",
+              "collection_name": "新聞・雑がみ",
+              "color": "#C9DA8A"
+            },
+            "magazines": {
+              "name": "資源ごみ（雑誌）",
+              "collection_type_id": "magazines",
+              "cutoff": "07:00",
+              "collection_name": "雑誌・雑がみ",
+              "color": "#C9DA8A"
+            },
+            "misc_paper": {
+              "name": "資源ごみ（雑がみ）",
+              "collection_type_id": "misc_paper",
+              "cutoff": "07:00",
+              "collection_name": "雑がみ",
+              "color": "#C9DA8A"
+            },
+            "cardboard_milk": {
+              "name": "資源ごみ（段ボール・牛乳パック）",
+              "collection_type_id": "cardboard_milk",
+              "cutoff": "07:00",
+              "collection_name": "段ボール・牛乳パック",
+              "color": "#C9DA8A"
+            },
+            "recycling_station": {
+              "name": "拠点・店頭回収",
+              "color": "#70AD47"
+            },
+            "bulky": {
+              "name": "粗大ごみ",
+              "color": "#F27CA5"
+            },
+            "appliance_recycling": {
+              "name": "家電リサイクル対象製品",
+              "color": "#FFD966"
+            },
+            "not_collected": {
+              "name": "市で処理できないごみ",
+              "color": "#F24234"
+            }
+          },
+          "bulky_waste": {
+            "category_code": "bulky",
+            "config": {
+              "municipality_id": "38213",
+              "municipality_name": "四国中央市",
+              "collection_frequency": "戸別収集（申込制）またはクリーンセンターへ直接搬入",
+              "reception_hours": "申込・搬入前に公式案内で最新情報を確認",
+              "collection_rules": "一斗缶（24cm×24cm×35cm）より大きい物は原則として粗大ごみです。公式の品目別手数料と申込方法を確認してください。",
+              "fee_structure_type": "size_based",
+              "application_method": "phone",
+              "phone_number": "0896-28-6015",
+              "web_form_url": null,
+              "information_url": "https://www.city.shikokuchuo.ehime.jp/soshiki/15/1924.html",
+              "steps": [
+                {
+                  "step_number": 1,
+                  "title": "品目と大きさを確認",
+                  "description": "一斗缶より大きい物か、公式排出基準表で粗大と指定された物かを確認します。"
+                },
+                {
+                  "step_number": 2,
+                  "title": "手数料を確認",
+                  "description": "公式の粗大ごみ処理手数料表で品目別料金を確認します。"
+                },
+                {
+                  "step_number": 3,
+                  "title": "市へ申し込む",
+                  "description": "最新の申込方法・受付日時を市の公式案内で確認します。"
+                },
+                {
+                  "step_number": 4,
+                  "title": "指定方法で排出",
+                  "description": "案内された日・場所・方法に従います。地区別定期カレンダーへ粗大ごみ日を推測追加しません。"
+                }
+              ]
+            }
+          }
+        },
+        "mishima_0730": {
+          "calendar_asset": "assets/data/municipality_38213_0_calendar.json",
+          "categories": {
+            "burnable": {
+              "name": "燃やすごみ",
+              "collection_type_id": "burnable",
+              "cutoff": "07:30",
+              "collection_name": "燃やすごみ",
+              "color": "#F4B183"
+            },
+            "nonburnable": {
+              "name": "燃やさないごみ",
+              "collection_type_id": "nonburnable",
+              "cutoff": "07:30",
+              "collection_name": "燃やさないごみ",
+              "color": "#76B5A5"
+            },
+            "hazardous": {
+              "name": "有害ごみ",
+              "collection_type_id": "hazardous",
+              "cutoff": "07:30",
+              "collection_name": "有害ごみ",
+              "color": "#D6C98B"
+            },
+            "bottles_cans_pet": {
+              "name": "資源ごみ（びん・かん・ペットボトル）",
+              "collection_type_id": "bottles_cans_pet",
+              "cutoff": "07:30",
+              "collection_name": "びん・かん・ペットボトル",
+              "color": "#C9DA8A"
+            },
+            "newspaper": {
+              "name": "資源ごみ（新聞）",
+              "collection_type_id": "newspaper",
+              "cutoff": "07:30",
+              "collection_name": "新聞・雑がみ",
+              "color": "#C9DA8A"
+            },
+            "magazines": {
+              "name": "資源ごみ（雑誌）",
+              "collection_type_id": "magazines",
+              "cutoff": "07:30",
+              "collection_name": "雑誌・雑がみ",
+              "color": "#C9DA8A"
+            },
+            "misc_paper": {
+              "name": "資源ごみ（雑がみ）",
+              "collection_type_id": "misc_paper",
+              "cutoff": "07:30",
+              "collection_name": "雑がみ",
+              "color": "#C9DA8A"
+            },
+            "cardboard_milk": {
+              "name": "資源ごみ（段ボール・牛乳パック）",
+              "collection_type_id": "cardboard_milk",
+              "cutoff": "07:30",
+              "collection_name": "段ボール・牛乳パック",
+              "color": "#C9DA8A"
+            },
+            "recycling_station": {
+              "name": "拠点・店頭回収",
+              "color": "#70AD47"
+            },
+            "bulky": {
+              "name": "粗大ごみ",
+              "color": "#F27CA5"
+            },
+            "appliance_recycling": {
+              "name": "家電リサイクル対象製品",
+              "color": "#FFD966"
+            },
+            "not_collected": {
+              "name": "市で処理できないごみ",
+              "color": "#F24234"
+            }
+          },
+          "bulky_waste": {
+            "category_code": "bulky",
+            "config": {
+              "municipality_id": "38213",
+              "municipality_name": "四国中央市",
+              "collection_frequency": "戸別収集（申込制）またはクリーンセンターへ直接搬入",
+              "reception_hours": "申込・搬入前に公式案内で最新情報を確認",
+              "collection_rules": "一斗缶（24cm×24cm×35cm）より大きい物は原則として粗大ごみです。公式の品目別手数料と申込方法を確認してください。",
+              "fee_structure_type": "size_based",
+              "application_method": "phone",
+              "phone_number": "0896-28-6015",
+              "web_form_url": null,
+              "information_url": "https://www.city.shikokuchuo.ehime.jp/soshiki/15/1924.html",
+              "steps": [
+                {
+                  "step_number": 1,
+                  "title": "品目と大きさを確認",
+                  "description": "一斗缶より大きい物か、公式排出基準表で粗大と指定された物かを確認します。"
+                },
+                {
+                  "step_number": 2,
+                  "title": "手数料を確認",
+                  "description": "公式の粗大ごみ処理手数料表で品目別料金を確認します。"
+                },
+                {
+                  "step_number": 3,
+                  "title": "市へ申し込む",
+                  "description": "最新の申込方法・受付日時を市の公式案内で確認します。"
+                },
+                {
+                  "step_number": 4,
+                  "title": "指定方法で排出",
+                  "description": "案内された日・場所・方法に従います。地区別定期カレンダーへ粗大ごみ日を推測追加しません。"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "addresses_asset": "assets/data/municipality_38213_addresses.json"
     }
   ]
 }

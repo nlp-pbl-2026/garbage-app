@@ -1,0 +1,890 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38213",
+  "municipality_name": "四国中央市",
+  "prefecture_id": "38",
+  "prefecture_name": "愛媛県",
+  "version": "shikokuchuo-2026.1",
+  "valid_from": "2026-04-01",
+  "valid_to": "2027-03-31",
+  "collection_areas": [
+    {
+      "id": "38213-01",
+      "name": "川之江1（7時30分）",
+      "display_name": "川之江1：井地・西新町・東大門・大門・西大門・馬場ほか",
+      "calendar_id": "shikokuchuo-01",
+      "rule_profile_id": "standard_0730",
+      "address_labels": [
+        "井地",
+        "西新町",
+        "東大門",
+        "大門",
+        "西大門",
+        "馬場（3区の一部・4区）",
+        "川関",
+        "通町",
+        "小山",
+        "平木",
+        "新浜",
+        "浜田",
+        "綿市（JR線路より北）",
+        "城下",
+        "南ヶ丘",
+        "本町",
+        "中新町",
+        "中本町",
+        "新町",
+        "祇園町",
+        "電明町",
+        "北新町",
+        "花園町",
+        "高木",
+        "西川原"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.shikokuchuo.ehime.jp/uploaded/attachment/3293.pdf"
+    },
+    {
+      "id": "38213-02",
+      "name": "川之江1（7時）",
+      "display_name": "川之江1・朝7時：天生津・宝洞山・石ノ口・切山",
+      "calendar_id": "shikokuchuo-02",
+      "rule_profile_id": "early_0700",
+      "address_labels": [
+        "天生津",
+        "宝洞山",
+        "石ノ口",
+        "切山"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.shikokuchuo.ehime.jp/uploaded/attachment/3293.pdf"
+    },
+    {
+      "id": "38213-03",
+      "name": "川之江2（7時30分）",
+      "display_name": "川之江2：山下・旭町・栄町・山口・川東・金田町ほか",
+      "calendar_id": "shikokuchuo-03",
+      "rule_profile_id": "standard_0730",
+      "address_labels": [
+        "山下",
+        "旭町",
+        "新町",
+        "栄橋通り",
+        "栄町上通り",
+        "栄町",
+        "駅通り",
+        "馬場（1区・2区・3区の一部）",
+        "丸住アパート",
+        "大道",
+        "住吉",
+        "春日",
+        "川原田",
+        "山口",
+        "川東",
+        "土居",
+        "中上",
+        "中下",
+        "松木",
+        "綿市（JR線路より南）",
+        "中之町",
+        "西金川下",
+        "国秀",
+        "八戸",
+        "東金川",
+        "涼川",
+        "大久保",
+        "上庄",
+        "正地"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.shikokuchuo.ehime.jp/uploaded/attachment/3293.pdf"
+    },
+    {
+      "id": "38213-04",
+      "name": "川之江2（7時）",
+      "display_name": "川之江2・朝7時：三角寺・朝日・城塚・平山・横川",
+      "calendar_id": "shikokuchuo-04",
+      "rule_profile_id": "early_0700",
+      "address_labels": [
+        "三角寺",
+        "朝日",
+        "城塚",
+        "平山",
+        "横川"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.shikokuchuo.ehime.jp/uploaded/attachment/3293.pdf"
+    },
+    {
+      "id": "38213-05",
+      "name": "川滝（7時30分）",
+      "display_name": "川滝：寒之池・田尾・中通・合路・西之尾",
+      "calendar_id": "shikokuchuo-05",
+      "rule_profile_id": "standard_0730",
+      "address_labels": [
+        "寒之池",
+        "田尾",
+        "中通",
+        "合路",
+        "西之尾"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.shikokuchuo.ehime.jp/uploaded/attachment/3293.pdf"
+    },
+    {
+      "id": "38213-06",
+      "name": "川滝（7時）",
+      "display_name": "川滝・朝7時：七田・久保之内・葱尾・中組・三名ほか",
+      "calendar_id": "shikokuchuo-06",
+      "rule_profile_id": "early_0700",
+      "address_labels": [
+        "七田",
+        "久保之内",
+        "葱尾",
+        "中組",
+        "三名",
+        "椿堂",
+        "石川",
+        "原中",
+        "古下田",
+        "泉中尾"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.shikokuchuo.ehime.jp/uploaded/attachment/3293.pdf"
+    },
+    {
+      "id": "38213-07",
+      "name": "川之江3（7時30分）",
+      "display_name": "川之江3：鉄砲町・古町・川原町・城北・金田町ほか",
+      "calendar_id": "shikokuchuo-07",
+      "rule_profile_id": "standard_0730",
+      "address_labels": [
+        "鉄砲町",
+        "古町",
+        "川原町",
+        "城北",
+        "中須",
+        "西ノ浜",
+        "東浜",
+        "浦町",
+        "港通り",
+        "農人町",
+        "塩谷",
+        "宮の谷",
+        "東町",
+        "長須",
+        "余木",
+        "川原田東",
+        "川岸",
+        "丸山",
+        "大下",
+        "坂ノ口",
+        "平木",
+        "通谷",
+        "山田井中組",
+        "山田井上組",
+        "城ヶ谷団地",
+        "涼川住宅",
+        "井ノ上",
+        "長途路",
+        "西之坊",
+        "本村",
+        "飼谷",
+        "飼谷団地",
+        "池ノ奥",
+        "南部団地",
+        "走り出",
+        "金沢"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.shikokuchuo.ehime.jp/uploaded/attachment/3293.pdf"
+    },
+    {
+      "id": "38213-08",
+      "name": "川之江3（7時）",
+      "display_name": "川之江3・朝7時：川原田住宅",
+      "calendar_id": "shikokuchuo-08",
+      "rule_profile_id": "early_0700",
+      "address_labels": [
+        "川原田住宅"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.shikokuchuo.ehime.jp/uploaded/attachment/3293.pdf"
+    },
+    {
+      "id": "38213-09",
+      "name": "柴生・下川（7時）",
+      "display_name": "柴生・下川・朝7時：北柴生・南柴生・長持・中下ほか",
+      "calendar_id": "shikokuchuo-09",
+      "rule_profile_id": "early_0700",
+      "address_labels": [
+        "北柴生",
+        "南柴生",
+        "長持",
+        "中下",
+        "竹花",
+        "牛飼野",
+        "射場",
+        "竹本",
+        "棒賀"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.shikokuchuo.ehime.jp/uploaded/attachment/3293.pdf"
+    },
+    {
+      "id": "38213-10",
+      "name": "三島1",
+      "display_name": "三島1：村松町・三島朝日1～2丁目・紙屋町・寒川町東部ほか",
+      "calendar_id": "shikokuchuo-10",
+      "rule_profile_id": "mishima_0730",
+      "address_labels": [
+        "上柏町の一部",
+        "下柏町の一部",
+        "村松町",
+        "三島朝日1丁目",
+        "三島朝日2丁目",
+        "三島紙屋町",
+        "中曽根町（中田井・幸町を除く）",
+        "三島中央1丁目",
+        "三島中央2丁目",
+        "三島中央4丁目（国道11号線沿い）",
+        "三島金子1丁目（国道11号線沿い）",
+        "具定町",
+        "寒川町東部",
+        "寒川町中部"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.shikokuchuo.ehime.jp/uploaded/attachment/3293.pdf"
+    },
+    {
+      "id": "38213-11",
+      "name": "三島2",
+      "display_name": "三島2：三島朝日3丁目・三島宮川・中田井・幸町ほか",
+      "calendar_id": "shikokuchuo-11",
+      "rule_profile_id": "mishima_0730",
+      "address_labels": [
+        "上柏町の一部",
+        "下柏町の一部",
+        "三島朝日3丁目",
+        "大塚住宅付近",
+        "三島宮川1丁目",
+        "三島宮川2丁目",
+        "三島宮川3丁目",
+        "三島宮川4丁目",
+        "三島中央3丁目",
+        "三島中央4丁目（駅前通り）",
+        "三島中央5丁目（三島口）",
+        "中曽根町（中田井・幸町）",
+        "具定町の一部",
+        "中之庄町公園通り1丁目",
+        "中之庄町公園通り2丁目",
+        "中之庄町公園通り3丁目",
+        "寒川町北部の一部を除く区域",
+        "寒川町西部の一部を除く区域"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.shikokuchuo.ehime.jp/uploaded/attachment/3293.pdf"
+    },
+    {
+      "id": "38213-12",
+      "name": "三島3",
+      "display_name": "三島3：上柏・下柏・三島金子・中之庄・豊岡町ほか",
+      "calendar_id": "shikokuchuo-12",
+      "rule_profile_id": "mishima_0730",
+      "address_labels": [
+        "上柏町（一部を除く）",
+        "下柏町（一部を除く）",
+        "三島中央4丁目（駅前通り・国道11号線沿いを除く）",
+        "三島中央5丁目（三島口を除く）",
+        "中央本通り",
+        "三島金子1丁目（国道11号線沿いを除く）",
+        "三島金子2丁目",
+        "三島金子3丁目",
+        "中之庄町（公園通りを除く）",
+        "寒川町北部の一部",
+        "寒川町西部の一部",
+        "豊岡町"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.shikokuchuo.ehime.jp/uploaded/attachment/3293.pdf"
+    },
+    {
+      "id": "38213-13",
+      "name": "金砂町",
+      "display_name": "金砂町全域",
+      "calendar_id": "shikokuchuo-13",
+      "rule_profile_id": "mishima_0730",
+      "address_labels": [
+        "金砂町"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.shikokuchuo.ehime.jp/uploaded/attachment/3293.pdf"
+    },
+    {
+      "id": "38213-14",
+      "name": "富郷町",
+      "display_name": "富郷町全域",
+      "calendar_id": "shikokuchuo-14",
+      "rule_profile_id": "mishima_0730",
+      "address_labels": [
+        "富郷町"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.shikokuchuo.ehime.jp/uploaded/attachment/3293.pdf"
+    },
+    {
+      "id": "38213-15",
+      "name": "土居1",
+      "display_name": "土居1：上野・北野・畑野・浦山・土居（JR線路より北）",
+      "calendar_id": "shikokuchuo-15",
+      "rule_profile_id": "standard_0730",
+      "address_labels": [
+        "上野",
+        "北野",
+        "畑野",
+        "浦山",
+        "土居（JR線路より北）"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.shikokuchuo.ehime.jp/uploaded/attachment/3293.pdf"
+    },
+    {
+      "id": "38213-16",
+      "name": "土居2",
+      "display_name": "土居2：入野・中村・小林・藤原・土居南・津根北・野田北",
+      "calendar_id": "shikokuchuo-16",
+      "rule_profile_id": "standard_0730",
+      "address_labels": [
+        "入野",
+        "中村",
+        "小林",
+        "藤原",
+        "土居（JR線路より南）",
+        "津根（JR線路より北）",
+        "野田（JR線路より北）"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.shikokuchuo.ehime.jp/uploaded/attachment/3293.pdf"
+    },
+    {
+      "id": "38213-17",
+      "name": "土居3",
+      "display_name": "土居3：天満・蕪崎・津根南・野田南",
+      "calendar_id": "shikokuchuo-17",
+      "rule_profile_id": "standard_0730",
+      "address_labels": [
+        "天満",
+        "蕪崎",
+        "津根（JR線路より南）",
+        "野田（JR線路より南）"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.shikokuchuo.ehime.jp/uploaded/attachment/3293.pdf"
+    },
+    {
+      "id": "38213-18",
+      "name": "新宮1",
+      "display_name": "新宮1：中山全域・秋田・程野・辺地床・下り付の一部",
+      "calendar_id": "shikokuchuo-18",
+      "rule_profile_id": "standard_0730",
+      "address_labels": [
+        "中山全域",
+        "秋田",
+        "程野",
+        "辺地床",
+        "下り付（一部）"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.shikokuchuo.ehime.jp/uploaded/attachment/3293.pdf"
+    },
+    {
+      "id": "38213-19",
+      "name": "新宮2",
+      "display_name": "新宮2：上山全域・黒田・西ヶ市・竹の峰・寺尾・大谷・小六",
+      "calendar_id": "shikokuchuo-19",
+      "rule_profile_id": "standard_0730",
+      "address_labels": [
+        "上山全域",
+        "黒田",
+        "西ヶ市",
+        "竹の峰",
+        "寺尾",
+        "大谷",
+        "小六"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.shikokuchuo.ehime.jp/uploaded/attachment/3293.pdf"
+    },
+    {
+      "id": "38213-20",
+      "name": "新宮3",
+      "display_name": "新宮3：新宮1・2以外（新宮・新瀬川・馬立など）",
+      "calendar_id": "shikokuchuo-20",
+      "rule_profile_id": "standard_0730",
+      "address_labels": [
+        "新宮",
+        "新瀬川",
+        "馬立",
+        "新宮1・2以外"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.shikokuchuo.ehime.jp/uploaded/attachment/3293.pdf"
+    }
+  ],
+  "calendars": [
+    {
+      "id": "shikokuchuo-01",
+      "rule_profile_id": "standard_0730"
+    },
+    {
+      "id": "shikokuchuo-02",
+      "rule_profile_id": "early_0700"
+    },
+    {
+      "id": "shikokuchuo-03",
+      "rule_profile_id": "standard_0730"
+    },
+    {
+      "id": "shikokuchuo-04",
+      "rule_profile_id": "early_0700"
+    },
+    {
+      "id": "shikokuchuo-05",
+      "rule_profile_id": "standard_0730"
+    },
+    {
+      "id": "shikokuchuo-06",
+      "rule_profile_id": "early_0700"
+    },
+    {
+      "id": "shikokuchuo-07",
+      "rule_profile_id": "standard_0730"
+    },
+    {
+      "id": "shikokuchuo-08",
+      "rule_profile_id": "early_0700"
+    },
+    {
+      "id": "shikokuchuo-09",
+      "rule_profile_id": "early_0700"
+    },
+    {
+      "id": "shikokuchuo-10",
+      "rule_profile_id": "mishima_0730"
+    },
+    {
+      "id": "shikokuchuo-11",
+      "rule_profile_id": "mishima_0730"
+    },
+    {
+      "id": "shikokuchuo-12",
+      "rule_profile_id": "mishima_0730"
+    },
+    {
+      "id": "shikokuchuo-13",
+      "rule_profile_id": "mishima_0730"
+    },
+    {
+      "id": "shikokuchuo-14",
+      "rule_profile_id": "mishima_0730"
+    },
+    {
+      "id": "shikokuchuo-15",
+      "rule_profile_id": "standard_0730"
+    },
+    {
+      "id": "shikokuchuo-16",
+      "rule_profile_id": "standard_0730"
+    },
+    {
+      "id": "shikokuchuo-17",
+      "rule_profile_id": "standard_0730"
+    },
+    {
+      "id": "shikokuchuo-18",
+      "rule_profile_id": "standard_0730"
+    },
+    {
+      "id": "shikokuchuo-19",
+      "rule_profile_id": "standard_0730"
+    },
+    {
+      "id": "shikokuchuo-20",
+      "rule_profile_id": "standard_0730"
+    }
+  ],
+  "rule_profiles": {
+    "standard_0730": {
+      "items_path": "knowledge/items.csv",
+      "embedding_index_path": "knowledge/item_embeddings.npz",
+      "index_profile_id": "citywide",
+      "calendar_path": "generated/calendar-2026.json",
+      "classification_rules": "四国中央市公式の家庭ごみ分別・排出基準に従い、他自治体の分類や索引を流用しない。燃やすごみ、燃やさないごみ、有害ごみ、びん・かん・ペットボトル、新聞、雑誌、雑がみ、段ボール・牛乳パックを区別する。資源ごみは中身を除いて水洗いし、古紙は種類別にひもで縛る。スプレー缶・カセットボンベは使い切り、公式資料どおり屋外で穴を開けてつぶす。リチウムイオン電池は製品から外して有害ごみとし、電池を外せないスマートフォン、電子タバコ、モバイルバッテリー等は製品ごと有害ごみとする。一斗缶（24cm×24cm×35cm）より大きい物は原則粗大ごみ。家電リサイクル対象品、市で処理できない物、拠点回収品を定期収集へ変換しない。材質、大きさ、汚れ、電池の取り外し可否が不明なら推測せず追加質問する。",
+      "size_question": "品目の材質、大きさ（一斗缶より大きいか）、電池を取り外せるかを教えてください。",
+      "knowledge_title": "四国中央市家庭ごみ分別・排出基準",
+      "categories": {
+        "burnable": {
+          "name": "燃やすごみ",
+          "collection_type_id": "burnable",
+          "collection_name": "燃やすごみ",
+          "color": "#F4B183",
+          "cutoff": "07:30"
+        },
+        "nonburnable": {
+          "name": "燃やさないごみ",
+          "collection_type_id": "nonburnable",
+          "collection_name": "燃やさないごみ",
+          "color": "#76B5A5",
+          "cutoff": "07:30"
+        },
+        "hazardous": {
+          "name": "有害ごみ",
+          "collection_type_id": "hazardous",
+          "collection_name": "有害ごみ",
+          "color": "#D6C98B",
+          "cutoff": "07:30"
+        },
+        "bottles_cans_pet": {
+          "name": "資源ごみ（びん・かん・ペットボトル）",
+          "collection_type_id": "bottles_cans_pet",
+          "collection_name": "びん・かん・ペットボトル",
+          "color": "#C9DA8A",
+          "cutoff": "07:30"
+        },
+        "newspaper": {
+          "name": "資源ごみ（新聞）",
+          "collection_type_id": "newspaper",
+          "collection_name": "新聞・雑がみ",
+          "color": "#C9DA8A",
+          "cutoff": "07:30"
+        },
+        "magazines": {
+          "name": "資源ごみ（雑誌）",
+          "collection_type_id": "magazines",
+          "collection_name": "雑誌・雑がみ",
+          "color": "#C9DA8A",
+          "cutoff": "07:30"
+        },
+        "misc_paper": {
+          "name": "資源ごみ（雑がみ）",
+          "collection_type_id": "misc_paper",
+          "collection_name": "雑がみ",
+          "color": "#C9DA8A",
+          "cutoff": "07:30"
+        },
+        "cardboard_milk": {
+          "name": "資源ごみ（段ボール・牛乳パック）",
+          "collection_type_id": "cardboard_milk",
+          "collection_name": "段ボール・牛乳パック",
+          "color": "#C9DA8A",
+          "cutoff": "07:30"
+        },
+        "recycling_station": {
+          "name": "拠点・店頭回収",
+          "color": "#70AD47",
+          "answer_note": "定期収集日ではなく、市の拠点回収または店頭回収を利用します。"
+        },
+        "bulky": {
+          "name": "粗大ごみ",
+          "color": "#F27CA5",
+          "answer_note": "公式の粗大ごみ処理手数料表と最新の申込案内を確認してください。地区別定期カレンダーへ収集日を推測追加しません。"
+        },
+        "appliance_recycling": {
+          "name": "家電リサイクル対象製品",
+          "color": "#FFD966",
+          "answer_note": "販売店または家電リサイクル法に基づく指定方法で処分してください。通常収集には出せません。"
+        },
+        "not_collected": {
+          "name": "市で処理できないごみ",
+          "color": "#F24234",
+          "answer_note": "購入店、引取店、医療機関、メーカー、金属スクラップ会社または専門業者へ相談してください。"
+        }
+      },
+      "bulky_waste": {
+        "category_code": "bulky",
+        "config": {
+          "municipality_id": "38213",
+          "municipality_name": "四国中央市",
+          "collection_frequency": "戸別収集（申込制）またはクリーンセンターへ直接搬入",
+          "reception_hours": "申込・搬入前に公式案内で最新情報を確認",
+          "collection_rules": "一斗缶（24cm×24cm×35cm）より大きい物は原則として粗大ごみです。公式の品目別手数料と申込方法を確認してください。",
+          "fee_structure_type": "size_based",
+          "application_method": "phone",
+          "phone_number": "0896-28-6015",
+          "web_form_url": null,
+          "information_url": "https://www.city.shikokuchuo.ehime.jp/soshiki/15/1924.html",
+          "steps": [
+            {
+              "step_number": 1,
+              "title": "品目と大きさを確認",
+              "description": "一斗缶より大きい物か、公式排出基準表で粗大と指定された物かを確認します。"
+            },
+            {
+              "step_number": 2,
+              "title": "手数料を確認",
+              "description": "公式の粗大ごみ処理手数料表で品目別料金を確認します。"
+            },
+            {
+              "step_number": 3,
+              "title": "市へ申し込む",
+              "description": "最新の申込方法・受付日時を市の公式案内で確認します。"
+            },
+            {
+              "step_number": 4,
+              "title": "指定方法で排出",
+              "description": "案内された日・場所・方法に従います。地区別定期カレンダーへ粗大ごみ日を推測追加しません。"
+            }
+          ]
+        }
+      }
+    },
+    "early_0700": {
+      "items_path": "knowledge/items.csv",
+      "embedding_index_path": "knowledge/item_embeddings.npz",
+      "index_profile_id": "citywide",
+      "calendar_path": "generated/calendar-2026.json",
+      "classification_rules": "四国中央市公式の家庭ごみ分別・排出基準に従い、他自治体の分類や索引を流用しない。燃やすごみ、燃やさないごみ、有害ごみ、びん・かん・ペットボトル、新聞、雑誌、雑がみ、段ボール・牛乳パックを区別する。資源ごみは中身を除いて水洗いし、古紙は種類別にひもで縛る。スプレー缶・カセットボンベは使い切り、公式資料どおり屋外で穴を開けてつぶす。リチウムイオン電池は製品から外して有害ごみとし、電池を外せないスマートフォン、電子タバコ、モバイルバッテリー等は製品ごと有害ごみとする。一斗缶（24cm×24cm×35cm）より大きい物は原則粗大ごみ。家電リサイクル対象品、市で処理できない物、拠点回収品を定期収集へ変換しない。材質、大きさ、汚れ、電池の取り外し可否が不明なら推測せず追加質問する。",
+      "size_question": "品目の材質、大きさ（一斗缶より大きいか）、電池を取り外せるかを教えてください。",
+      "knowledge_title": "四国中央市家庭ごみ分別・排出基準",
+      "categories": {
+        "burnable": {
+          "name": "燃やすごみ",
+          "collection_type_id": "burnable",
+          "collection_name": "燃やすごみ",
+          "color": "#F4B183",
+          "cutoff": "07:00"
+        },
+        "nonburnable": {
+          "name": "燃やさないごみ",
+          "collection_type_id": "nonburnable",
+          "collection_name": "燃やさないごみ",
+          "color": "#76B5A5",
+          "cutoff": "07:00"
+        },
+        "hazardous": {
+          "name": "有害ごみ",
+          "collection_type_id": "hazardous",
+          "collection_name": "有害ごみ",
+          "color": "#D6C98B",
+          "cutoff": "07:00"
+        },
+        "bottles_cans_pet": {
+          "name": "資源ごみ（びん・かん・ペットボトル）",
+          "collection_type_id": "bottles_cans_pet",
+          "collection_name": "びん・かん・ペットボトル",
+          "color": "#C9DA8A",
+          "cutoff": "07:00"
+        },
+        "newspaper": {
+          "name": "資源ごみ（新聞）",
+          "collection_type_id": "newspaper",
+          "collection_name": "新聞・雑がみ",
+          "color": "#C9DA8A",
+          "cutoff": "07:00"
+        },
+        "magazines": {
+          "name": "資源ごみ（雑誌）",
+          "collection_type_id": "magazines",
+          "collection_name": "雑誌・雑がみ",
+          "color": "#C9DA8A",
+          "cutoff": "07:00"
+        },
+        "misc_paper": {
+          "name": "資源ごみ（雑がみ）",
+          "collection_type_id": "misc_paper",
+          "collection_name": "雑がみ",
+          "color": "#C9DA8A",
+          "cutoff": "07:00"
+        },
+        "cardboard_milk": {
+          "name": "資源ごみ（段ボール・牛乳パック）",
+          "collection_type_id": "cardboard_milk",
+          "collection_name": "段ボール・牛乳パック",
+          "color": "#C9DA8A",
+          "cutoff": "07:00"
+        },
+        "recycling_station": {
+          "name": "拠点・店頭回収",
+          "color": "#70AD47",
+          "answer_note": "定期収集日ではなく、市の拠点回収または店頭回収を利用します。"
+        },
+        "bulky": {
+          "name": "粗大ごみ",
+          "color": "#F27CA5",
+          "answer_note": "公式の粗大ごみ処理手数料表と最新の申込案内を確認してください。地区別定期カレンダーへ収集日を推測追加しません。"
+        },
+        "appliance_recycling": {
+          "name": "家電リサイクル対象製品",
+          "color": "#FFD966",
+          "answer_note": "販売店または家電リサイクル法に基づく指定方法で処分してください。通常収集には出せません。"
+        },
+        "not_collected": {
+          "name": "市で処理できないごみ",
+          "color": "#F24234",
+          "answer_note": "購入店、引取店、医療機関、メーカー、金属スクラップ会社または専門業者へ相談してください。"
+        }
+      },
+      "bulky_waste": {
+        "category_code": "bulky",
+        "config": {
+          "municipality_id": "38213",
+          "municipality_name": "四国中央市",
+          "collection_frequency": "戸別収集（申込制）またはクリーンセンターへ直接搬入",
+          "reception_hours": "申込・搬入前に公式案内で最新情報を確認",
+          "collection_rules": "一斗缶（24cm×24cm×35cm）より大きい物は原則として粗大ごみです。公式の品目別手数料と申込方法を確認してください。",
+          "fee_structure_type": "size_based",
+          "application_method": "phone",
+          "phone_number": "0896-28-6015",
+          "web_form_url": null,
+          "information_url": "https://www.city.shikokuchuo.ehime.jp/soshiki/15/1924.html",
+          "steps": [
+            {
+              "step_number": 1,
+              "title": "品目と大きさを確認",
+              "description": "一斗缶より大きい物か、公式排出基準表で粗大と指定された物かを確認します。"
+            },
+            {
+              "step_number": 2,
+              "title": "手数料を確認",
+              "description": "公式の粗大ごみ処理手数料表で品目別料金を確認します。"
+            },
+            {
+              "step_number": 3,
+              "title": "市へ申し込む",
+              "description": "最新の申込方法・受付日時を市の公式案内で確認します。"
+            },
+            {
+              "step_number": 4,
+              "title": "指定方法で排出",
+              "description": "案内された日・場所・方法に従います。地区別定期カレンダーへ粗大ごみ日を推測追加しません。"
+            }
+          ]
+        }
+      }
+    },
+    "mishima_0730": {
+      "items_path": "knowledge/items.csv",
+      "embedding_index_path": "knowledge/item_embeddings.npz",
+      "index_profile_id": "citywide",
+      "calendar_path": "generated/calendar-2026.json",
+      "classification_rules": "四国中央市公式の家庭ごみ分別・排出基準に従い、他自治体の分類や索引を流用しない。燃やすごみ、燃やさないごみ、有害ごみ、びん・かん・ペットボトル、新聞、雑誌、雑がみ、段ボール・牛乳パックを区別する。資源ごみは中身を除いて水洗いし、古紙は種類別にひもで縛る。スプレー缶・カセットボンベは使い切り、公式資料どおり屋外で穴を開けてつぶす。リチウムイオン電池は製品から外して有害ごみとし、電池を外せないスマートフォン、電子タバコ、モバイルバッテリー等は製品ごと有害ごみとする。一斗缶（24cm×24cm×35cm）より大きい物は原則粗大ごみ。家電リサイクル対象品、市で処理できない物、拠点回収品を定期収集へ変換しない。材質、大きさ、汚れ、電池の取り外し可否が不明なら推測せず追加質問する。",
+      "size_question": "品目の材質、大きさ（一斗缶より大きいか）、電池を取り外せるかを教えてください。",
+      "knowledge_title": "四国中央市家庭ごみ分別・排出基準",
+      "categories": {
+        "burnable": {
+          "name": "燃やすごみ",
+          "collection_type_id": "burnable",
+          "collection_name": "燃やすごみ",
+          "color": "#F4B183",
+          "cutoff": "07:30"
+        },
+        "nonburnable": {
+          "name": "燃やさないごみ",
+          "collection_type_id": "nonburnable",
+          "collection_name": "燃やさないごみ",
+          "color": "#76B5A5",
+          "cutoff": "07:30"
+        },
+        "hazardous": {
+          "name": "有害ごみ",
+          "collection_type_id": "hazardous",
+          "collection_name": "有害ごみ",
+          "color": "#D6C98B",
+          "cutoff": "07:30"
+        },
+        "bottles_cans_pet": {
+          "name": "資源ごみ（びん・かん・ペットボトル）",
+          "collection_type_id": "bottles_cans_pet",
+          "collection_name": "びん・かん・ペットボトル",
+          "color": "#C9DA8A",
+          "cutoff": "07:30"
+        },
+        "newspaper": {
+          "name": "資源ごみ（新聞）",
+          "collection_type_id": "newspaper",
+          "collection_name": "新聞・雑がみ",
+          "color": "#C9DA8A",
+          "cutoff": "07:30"
+        },
+        "magazines": {
+          "name": "資源ごみ（雑誌）",
+          "collection_type_id": "magazines",
+          "collection_name": "雑誌・雑がみ",
+          "color": "#C9DA8A",
+          "cutoff": "07:30"
+        },
+        "misc_paper": {
+          "name": "資源ごみ（雑がみ）",
+          "collection_type_id": "misc_paper",
+          "collection_name": "雑がみ",
+          "color": "#C9DA8A",
+          "cutoff": "07:30"
+        },
+        "cardboard_milk": {
+          "name": "資源ごみ（段ボール・牛乳パック）",
+          "collection_type_id": "cardboard_milk",
+          "collection_name": "段ボール・牛乳パック",
+          "color": "#C9DA8A",
+          "cutoff": "07:30"
+        },
+        "recycling_station": {
+          "name": "拠点・店頭回収",
+          "color": "#70AD47",
+          "answer_note": "定期収集日ではなく、市の拠点回収または店頭回収を利用します。"
+        },
+        "bulky": {
+          "name": "粗大ごみ",
+          "color": "#F27CA5",
+          "answer_note": "公式の粗大ごみ処理手数料表と最新の申込案内を確認してください。地区別定期カレンダーへ収集日を推測追加しません。"
+        },
+        "appliance_recycling": {
+          "name": "家電リサイクル対象製品",
+          "color": "#FFD966",
+          "answer_note": "販売店または家電リサイクル法に基づく指定方法で処分してください。通常収集には出せません。"
+        },
+        "not_collected": {
+          "name": "市で処理できないごみ",
+          "color": "#F24234",
+          "answer_note": "購入店、引取店、医療機関、メーカー、金属スクラップ会社または専門業者へ相談してください。"
+        }
+      },
+      "bulky_waste": {
+        "category_code": "bulky",
+        "config": {
+          "municipality_id": "38213",
+          "municipality_name": "四国中央市",
+          "collection_frequency": "戸別収集（申込制）またはクリーンセンターへ直接搬入",
+          "reception_hours": "申込・搬入前に公式案内で最新情報を確認",
+          "collection_rules": "一斗缶（24cm×24cm×35cm）より大きい物は原則として粗大ごみです。公式の品目別手数料と申込方法を確認してください。",
+          "fee_structure_type": "size_based",
+          "application_method": "phone",
+          "phone_number": "0896-28-6015",
+          "web_form_url": null,
+          "information_url": "https://www.city.shikokuchuo.ehime.jp/soshiki/15/1924.html",
+          "steps": [
+            {
+              "step_number": 1,
+              "title": "品目と大きさを確認",
+              "description": "一斗缶より大きい物か、公式排出基準表で粗大と指定された物かを確認します。"
+            },
+            {
+              "step_number": 2,
+              "title": "手数料を確認",
+              "description": "公式の粗大ごみ処理手数料表で品目別料金を確認します。"
+            },
+            {
+              "step_number": 3,
+              "title": "市へ申し込む",
+              "description": "最新の申込方法・受付日時を市の公式案内で確認します。"
+            },
+            {
+              "step_number": 4,
+              "title": "指定方法で排出",
+              "description": "案内された日・場所・方法に従います。地区別定期カレンダーへ粗大ごみ日を推測追加しません。"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
