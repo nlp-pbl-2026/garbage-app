@@ -1,0 +1,146 @@
+{
+  "schema_version": 1,
+  "evaluation_time": "2026-11-08T07:00:00+09:00",
+  "cases": [
+    {
+      "case": 1,
+      "municipality": "四国中央市",
+      "kind": "resource",
+      "input": {"municipality_id": "38213", "district_id": "38213-01", "query": "飲み終わって水洗いしたペットボトル", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "bottles_cans_pet",
+      "source_url": "https://www.city.shikokuchuo.ehime.jp/uploaded/attachment/3296.pdf",
+      "official_reason": "PETマーク付き飲料用ペットボトルは資源ごみ。"
+    },
+    {
+      "case": 2,
+      "municipality": "四国中央市",
+      "kind": "lithium",
+      "input": {"municipality_id": "38213", "district_id": "38213-02", "query": "電池を取り外せない古いスマートフォン", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "hazardous",
+      "source_url": "https://www.city.shikokuchuo.ehime.jp/uploaded/attachment/21712.pdf",
+      "official_reason": "電池を外せないスマートフォンは製品ごと有害ごみ。"
+    },
+    {
+      "case": 3,
+      "municipality": "四国中央市",
+      "kind": "lithium",
+      "input": {"municipality_id": "38213", "district_id": "38213-03", "query": "使い終わったモバイルバッテリー", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "hazardous",
+      "source_url": "https://www.city.shikokuchuo.ehime.jp/uploaded/attachment/21712.pdf",
+      "official_reason": "モバイルバッテリーはそのまま有害ごみ。"
+    },
+    {
+      "case": 4,
+      "municipality": "四国中央市",
+      "kind": "appliance_recycling",
+      "input": {"municipality_id": "38213", "district_id": "38213-04", "query": "壊れた家庭用エアコン", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "appliance_recycling",
+      "source_url": "https://www.city.shikokuchuo.ehime.jp/uploaded/attachment/26620.pdf",
+      "official_reason": "エアコンは家電リサイクル法対象。"
+    },
+    {
+      "case": 5,
+      "municipality": "四国中央市",
+      "kind": "not_collected",
+      "input": {"municipality_id": "38213", "district_id": "38213-05", "query": "処分したいオートバイ", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "not_collected",
+      "source_url": "https://www.city.shikokuchuo.ehime.jp/uploaded/attachment/3303.pdf",
+      "official_reason": "オートバイは市で処理できず、購入店・引取店へ相談。"
+    },
+    {
+      "case": 6,
+      "municipality": "四国中央市",
+      "kind": "hazardous",
+      "input": {"municipality_id": "38213", "district_id": "38213-06", "query": "使い終わったアルカリ乾電池", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "hazardous",
+      "source_url": "https://www.city.shikokuchuo.ehime.jp/uploaded/attachment/3303.pdf",
+      "official_reason": "乾電池類は有害ごみ。"
+    },
+    {
+      "case": 7,
+      "municipality": "四国中央市",
+      "kind": "paper_size",
+      "input": {"municipality_id": "38213", "district_id": "38213-07", "query": "洗って乾かした500mlの牛乳パック", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "misc_paper",
+      "source_url": "https://www.city.shikokuchuo.ehime.jp/uploaded/attachment/3296.pdf",
+      "official_reason": "500ml以下の牛乳パックは雑がみ。"
+    },
+    {
+      "case": 8,
+      "municipality": "四国中央市",
+      "kind": "paper_size",
+      "input": {"municipality_id": "38213", "district_id": "38213-08", "query": "洗って切り開いた1000mlの牛乳パック", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "cardboard_milk",
+      "source_url": "https://www.city.shikokuchuo.ehime.jp/uploaded/attachment/3296.pdf",
+      "official_reason": "1000ml牛乳パックは段ボール・牛乳パックの日。"
+    },
+    {
+      "case": 9,
+      "municipality": "四国中央市",
+      "kind": "safety_rule",
+      "input": {"municipality_id": "38213", "district_id": "38213-09", "query": "中身を使い切ったエアゾール缶", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "nonburnable",
+      "source_url": "https://www.city.shikokuchuo.ehime.jp/uploaded/attachment/3303.pdf",
+      "official_reason": "エアゾール缶は燃やさないごみ。使い切り、屋外で穴を開けてつぶす。"
+    },
+    {
+      "case": 10,
+      "municipality": "四国中央市",
+      "kind": "paper",
+      "input": {"municipality_id": "38213", "district_id": "38213-10", "query": "読み終わった新聞紙", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "newspaper",
+      "source_url": "https://www.city.shikokuchuo.ehime.jp/uploaded/attachment/3296.pdf",
+      "official_reason": "新聞紙は新聞の資源ごみ。"
+    },
+    {
+      "case": 11,
+      "municipality": "四国中央市",
+      "kind": "dirty_paper",
+      "input": {"municipality_id": "38213", "district_id": "38213-11", "query": "食品の油汚れと臭いが取れない紙箱", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "burnable",
+      "source_url": "https://www.city.shikokuchuo.ehime.jp/uploaded/attachment/3296.pdf",
+      "official_reason": "食品汚れや臭いのある紙は燃やすごみ。"
+    },
+    {
+      "case": 12,
+      "municipality": "四国中央市",
+      "kind": "size_rule",
+      "input": {"municipality_id": "38213", "district_id": "38213-15", "query": "太さ3cmで長さ40cmに切った庭木の枝", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "burnable",
+      "source_url": "https://www.city.shikokuchuo.ehime.jp/uploaded/attachment/3294.pdf",
+      "official_reason": "太さ5cm以下・長さ50cm以下の枝は燃やすごみ。"
+    },
+    {
+      "case": 13,
+      "municipality": "四国中央市",
+      "kind": "bulky",
+      "input": {"municipality_id": "38213", "district_id": "38213-18", "query": "家庭で使っていた大きなカーペット", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "bulky",
+      "source_url": "https://www.city.shikokuchuo.ehime.jp/uploaded/attachment/3303.pdf",
+      "official_reason": "カーペットは粗大ごみ。"
+    },
+    {
+      "case": 14,
+      "municipality": "四国中央市",
+      "kind": "clarification",
+      "input": {"municipality_id": "38213", "district_id": "38213-20", "query": "古いまな板", "clarifications": []},
+      "expected_status": "needs_clarification",
+      "question_contains_any": ["木製", "プラスチック", "材質", "素材"],
+      "source_url": "https://www.city.shikokuchuo.ehime.jp/uploaded/attachment/3303.pdf",
+      "official_reason": "木製は燃やすごみ、プラスチック製は燃やさないごみのため材質確認が必要。"
+    }
+  ]
+}

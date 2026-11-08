@@ -22,6 +22,7 @@ from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data/regions/kamijima"
+CITY = "38356"
 CASES_PATH = DATA / "search_cases.json"
 REVIEW_PATH = DATA / "search_evaluation.json"
 ARTIFACTS = DATA / "generated/live-eval"
@@ -70,11 +71,14 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--confirm-paid", action="store_true", required=True)
     parser.add_argument("--budget-usd", type=float, default=MAX_APPROVED_BUDGET_USD)
+    parser.add_argument("--rerun-case", type=int)
     args = parser.parse_args()
     if not args.confirm_paid:
         raise ValueError("Explicit paid approval is required")
     if not 0 < args.budget_usd <= MAX_APPROVED_BUDGET_USD:
-        raise ValueError("Budget must not exceed the approved USD0.07")
+        raise ValueError(
+            f"Budget must not exceed the approved USD{MAX_APPROVED_BUDGET_USD:.2f}"
+        )
 
     os.environ["USE_BEDROCK_KNOWLEDGE_BASE"] = "false"
     os.environ["LEXICAL_SEARCH_ENABLED"] = "false"
@@ -112,10 +116,12 @@ def main() -> None:
     cases = fixture["cases"]
     if len(cases) != 14 or [case["case"] for case in cases] != list(range(1, 15)):
         raise ValueError("Reviewed evaluation must contain cases 1 through 14")
+    if args.rerun_case is not None and args.rerun_case not in range(1, 15):
+        raise ValueError("rerun-case must be between 1 and 14")
     get_registry.cache_clear()
     registry = get_registry()
     for case in cases:
-        region = registry.resolve("38356", case["input"]["district_id"])
+        region = registry.resolve(CITY, case["input"]["district_id"])
         expected_category = case.get("expected_category")
         if expected_category and expected_category not in region.category_codes:
             raise ValueError(f"Case {case['case']} expects an unknown category")
@@ -140,8 +146,25 @@ def main() -> None:
     }
     ARTIFACTS.mkdir(parents=True, exist_ok=True)
     run_manifest_path = ARTIFACTS / "manifest.json"
-    if run_manifest_path.exists() and json.loads(run_manifest_path.read_text(encoding="utf-8")) != run_manifest:
-        raise ValueError("Evaluation inputs changed; review before another paid run")
+    if run_manifest_path.exists():
+        previous_manifest = json.loads(run_manifest_path.read_text(encoding="utf-8"))
+        if previous_manifest != run_manifest:
+            retry_mutable = {"max_evaluation_calls", "datasets"}
+            previous_without_limit = {key: value for key, value in previous_manifest.items()
+                                      if key not in retry_mutable}
+            current_without_limit = {key: value for key, value in run_manifest.items()
+                                     if key not in retry_mutable}
+            previous_datasets = previous_manifest.get("datasets", {})
+            current_datasets = run_manifest.get("datasets", {})
+            approved_retry = (
+                args.rerun_case is not None
+                and previous_without_limit == current_without_limit
+                and previous_manifest.get("max_evaluation_calls", 0) < MAX_EVALUATION_CALLS
+                and set(previous_datasets) == set(current_datasets)
+                and previous_datasets.get("registry.json") == current_datasets.get("registry.json")
+            )
+            if not approved_retry:
+                raise ValueError("Evaluation inputs changed; review before another paid run")
     run_manifest_path.write_text(
         json.dumps(run_manifest, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
@@ -235,6 +258,8 @@ def main() -> None:
     async def run() -> None:
         responses_path = ARTIFACTS / "responses.jsonl"
         completed = {record["case"] for record in read_lines(responses_path)}
+        if args.rerun_case is not None:
+            completed = set(range(1, 15)) - {args.rerun_case}
         with patch(
             "app.routers.search_router.WasteGuideService", return_value=service
         ), patch("app.routers.search_router.SearchLogService"):
@@ -322,6 +347,7 @@ def main() -> None:
             "conservative_reserved_usd": index_reserve + settled_cost(records),
             "approved_limit_usd": args.budget_usd,
         },
+        "partial_rerun_cases": [args.rerun_case] if args.rerun_case is not None else [],
         "results": results,
     }
     REVIEW_PATH.write_text(

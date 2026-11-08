@@ -1,0 +1,4126 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38213",
+  "version": "shikokuchuo-2026.1",
+  "valid_from": "2026-04-01",
+  "valid_to": "2027-03-31",
+  "areas": [
+    {
+      "area_id": "38213-01",
+      "calendar_id": "shikokuchuo-01",
+      "address_labels": [
+        "井地",
+        "西新町",
+        "東大門",
+        "大門",
+        "西大門",
+        "馬場（3区の一部・4区）",
+        "川関",
+        "通町",
+        "小山",
+        "平木",
+        "新浜",
+        "浜田",
+        "綿市（JR線路より北）",
+        "城下",
+        "南ヶ丘",
+        "本町",
+        "中新町",
+        "中本町",
+        "新町",
+        "祇園町",
+        "電明町",
+        "北新町",
+        "花園町",
+        "高木",
+        "西川原"
+      ],
+      "cutoff": "07:30",
+      "rules": [
+        {
+          "types": [
+            "burnable"
+          ],
+          "weekdays": [
+            1,
+            4
+          ],
+          "occurrences": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "nonburnable"
+          ],
+          "weekdays": [
+            4
+          ],
+          "occurrences": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "hazardous"
+          ],
+          "weekdays": [
+            4
+          ],
+          "occurrences": [
+            1
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "bottles_cans_pet"
+          ],
+          "weekdays": [
+            1
+          ],
+          "occurrences": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "newspaper",
+            "misc_paper"
+          ],
+          "weekdays": [
+            3
+          ],
+          "occurrences": [
+            1,
+            3
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "magazines",
+            "misc_paper"
+          ],
+          "weekdays": [
+            3
+          ],
+          "occurrences": [
+            2,
+            4
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "cardboard_milk"
+          ],
+          "weekdays": [
+            6
+          ],
+          "occurrences": [
+            1
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        }
+      ],
+      "excluded_dates": [
+        "2026-05-02",
+        "2026-08-15",
+        "2026-10-14",
+        "2026-10-15",
+        "2026-10-22",
+        "2026-10-23",
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02"
+      ],
+      "days_sha256": "bda391b422c2732c2980d525ef3860954f20be15647fee255b10c367c2a4f242",
+      "dated_cells": 158,
+      "collection_dates": {
+        "bottles_cans_pet": 52,
+        "burnable": 101,
+        "cardboard_milk": 10,
+        "hazardous": 12,
+        "magazines": 23,
+        "misc_paper": 47,
+        "newspaper": 24,
+        "nonburnable": 49
+      }
+    },
+    {
+      "area_id": "38213-02",
+      "calendar_id": "shikokuchuo-02",
+      "address_labels": [
+        "天生津",
+        "宝洞山",
+        "石ノ口",
+        "切山"
+      ],
+      "cutoff": "07:00",
+      "rules": [
+        {
+          "types": [
+            "burnable"
+          ],
+          "weekdays": [
+            1,
+            4
+          ],
+          "occurrences": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "nonburnable"
+          ],
+          "weekdays": [
+            4
+          ],
+          "occurrences": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "hazardous"
+          ],
+          "weekdays": [
+            4
+          ],
+          "occurrences": [
+            1
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "bottles_cans_pet"
+          ],
+          "weekdays": [
+            1
+          ],
+          "occurrences": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "newspaper",
+            "misc_paper"
+          ],
+          "weekdays": [
+            3
+          ],
+          "occurrences": [
+            1,
+            3
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "magazines",
+            "misc_paper"
+          ],
+          "weekdays": [
+            3
+          ],
+          "occurrences": [
+            2,
+            4
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "cardboard_milk"
+          ],
+          "weekdays": [
+            6
+          ],
+          "occurrences": [
+            1
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        }
+      ],
+      "excluded_dates": [
+        "2026-05-02",
+        "2026-08-15",
+        "2026-10-14",
+        "2026-10-15",
+        "2026-10-22",
+        "2026-10-23",
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02"
+      ],
+      "days_sha256": "bda391b422c2732c2980d525ef3860954f20be15647fee255b10c367c2a4f242",
+      "dated_cells": 158,
+      "collection_dates": {
+        "bottles_cans_pet": 52,
+        "burnable": 101,
+        "cardboard_milk": 10,
+        "hazardous": 12,
+        "magazines": 23,
+        "misc_paper": 47,
+        "newspaper": 24,
+        "nonburnable": 49
+      }
+    },
+    {
+      "area_id": "38213-03",
+      "calendar_id": "shikokuchuo-03",
+      "address_labels": [
+        "山下",
+        "旭町",
+        "新町",
+        "栄橋通り",
+        "栄町上通り",
+        "栄町",
+        "駅通り",
+        "馬場（1区・2区・3区の一部）",
+        "丸住アパート",
+        "大道",
+        "住吉",
+        "春日",
+        "川原田",
+        "山口",
+        "川東",
+        "土居",
+        "中上",
+        "中下",
+        "松木",
+        "綿市（JR線路より南）",
+        "中之町",
+        "西金川下",
+        "国秀",
+        "八戸",
+        "東金川",
+        "涼川",
+        "大久保",
+        "上庄",
+        "正地"
+      ],
+      "cutoff": "07:30",
+      "rules": [
+        {
+          "types": [
+            "burnable"
+          ],
+          "weekdays": [
+            2,
+            5
+          ],
+          "occurrences": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "nonburnable"
+          ],
+          "weekdays": [
+            5
+          ],
+          "occurrences": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "hazardous"
+          ],
+          "weekdays": [
+            5
+          ],
+          "occurrences": [
+            1
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "bottles_cans_pet"
+          ],
+          "weekdays": [
+            2
+          ],
+          "occurrences": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "newspaper",
+            "misc_paper"
+          ],
+          "weekdays": [
+            1
+          ],
+          "occurrences": [
+            1,
+            3
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "magazines",
+            "misc_paper"
+          ],
+          "weekdays": [
+            1
+          ],
+          "occurrences": [
+            2,
+            4
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "cardboard_milk"
+          ],
+          "weekdays": [
+            4
+          ],
+          "occurrences": [
+            1
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        }
+      ],
+      "excluded_dates": [
+        "2026-05-02",
+        "2026-08-15",
+        "2026-10-14",
+        "2026-10-15",
+        "2026-10-22",
+        "2026-10-23",
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02"
+      ],
+      "days_sha256": "7b0e609c3ac22ef55bf3f61ee3b8e1a031226b4d5cf6af742bec5264e1f7a845",
+      "dated_cells": 162,
+      "collection_dates": {
+        "bottles_cans_pet": 52,
+        "burnable": 102,
+        "cardboard_milk": 12,
+        "hazardous": 11,
+        "magazines": 24,
+        "misc_paper": 48,
+        "newspaper": 24,
+        "nonburnable": 50
+      }
+    },
+    {
+      "area_id": "38213-04",
+      "calendar_id": "shikokuchuo-04",
+      "address_labels": [
+        "三角寺",
+        "朝日",
+        "城塚",
+        "平山",
+        "横川"
+      ],
+      "cutoff": "07:00",
+      "rules": [
+        {
+          "types": [
+            "burnable"
+          ],
+          "weekdays": [
+            2,
+            5
+          ],
+          "occurrences": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "nonburnable"
+          ],
+          "weekdays": [
+            5
+          ],
+          "occurrences": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "hazardous"
+          ],
+          "weekdays": [
+            5
+          ],
+          "occurrences": [
+            1
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "bottles_cans_pet"
+          ],
+          "weekdays": [
+            2
+          ],
+          "occurrences": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "newspaper",
+            "misc_paper"
+          ],
+          "weekdays": [
+            1
+          ],
+          "occurrences": [
+            1,
+            3
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "magazines",
+            "misc_paper"
+          ],
+          "weekdays": [
+            1
+          ],
+          "occurrences": [
+            2,
+            4
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "cardboard_milk"
+          ],
+          "weekdays": [
+            4
+          ],
+          "occurrences": [
+            1
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        }
+      ],
+      "excluded_dates": [
+        "2026-05-02",
+        "2026-08-15",
+        "2026-10-14",
+        "2026-10-15",
+        "2026-10-22",
+        "2026-10-23",
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02"
+      ],
+      "days_sha256": "7b0e609c3ac22ef55bf3f61ee3b8e1a031226b4d5cf6af742bec5264e1f7a845",
+      "dated_cells": 162,
+      "collection_dates": {
+        "bottles_cans_pet": 52,
+        "burnable": 102,
+        "cardboard_milk": 12,
+        "hazardous": 11,
+        "magazines": 24,
+        "misc_paper": 48,
+        "newspaper": 24,
+        "nonburnable": 50
+      }
+    },
+    {
+      "area_id": "38213-05",
+      "calendar_id": "shikokuchuo-05",
+      "address_labels": [
+        "寒之池",
+        "田尾",
+        "中通",
+        "合路",
+        "西之尾"
+      ],
+      "cutoff": "07:30",
+      "rules": [
+        {
+          "types": [
+            "burnable"
+          ],
+          "weekdays": [
+            2,
+            5
+          ],
+          "occurrences": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "nonburnable"
+          ],
+          "weekdays": [
+            5
+          ],
+          "occurrences": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "hazardous"
+          ],
+          "weekdays": [
+            5
+          ],
+          "occurrences": [
+            1
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "bottles_cans_pet"
+          ],
+          "weekdays": [
+            2
+          ],
+          "occurrences": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "newspaper",
+            "magazines",
+            "misc_paper",
+            "cardboard_milk"
+          ],
+          "weekdays": [
+            4
+          ],
+          "occurrences": [
+            1,
+            3
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        }
+      ],
+      "excluded_dates": [
+        "2026-05-02",
+        "2026-08-15",
+        "2026-10-14",
+        "2026-10-15",
+        "2026-10-22",
+        "2026-10-23",
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02"
+      ],
+      "days_sha256": "35e4d2effa231fba587d6a0ce29a3657f9ac7519590425eb3e3dc817515139f9",
+      "dated_cells": 125,
+      "collection_dates": {
+        "bottles_cans_pet": 52,
+        "burnable": 102,
+        "cardboard_milk": 23,
+        "hazardous": 11,
+        "magazines": 23,
+        "misc_paper": 23,
+        "newspaper": 23,
+        "nonburnable": 50
+      }
+    },
+    {
+      "area_id": "38213-06",
+      "calendar_id": "shikokuchuo-06",
+      "address_labels": [
+        "七田",
+        "久保之内",
+        "葱尾",
+        "中組",
+        "三名",
+        "椿堂",
+        "石川",
+        "原中",
+        "古下田",
+        "泉中尾"
+      ],
+      "cutoff": "07:00",
+      "rules": [
+        {
+          "types": [
+            "burnable"
+          ],
+          "weekdays": [
+            2,
+            5
+          ],
+          "occurrences": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "nonburnable"
+          ],
+          "weekdays": [
+            5
+          ],
+          "occurrences": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "hazardous"
+          ],
+          "weekdays": [
+            5
+          ],
+          "occurrences": [
+            1
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "bottles_cans_pet"
+          ],
+          "weekdays": [
+            2
+          ],
+          "occurrences": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "newspaper",
+            "magazines",
+            "misc_paper",
+            "cardboard_milk"
+          ],
+          "weekdays": [
+            4
+          ],
+          "occurrences": [
+            1,
+            3
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        }
+      ],
+      "excluded_dates": [
+        "2026-05-02",
+        "2026-08-15",
+        "2026-10-14",
+        "2026-10-15",
+        "2026-10-22",
+        "2026-10-23",
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02"
+      ],
+      "days_sha256": "35e4d2effa231fba587d6a0ce29a3657f9ac7519590425eb3e3dc817515139f9",
+      "dated_cells": 125,
+      "collection_dates": {
+        "bottles_cans_pet": 52,
+        "burnable": 102,
+        "cardboard_milk": 23,
+        "hazardous": 11,
+        "magazines": 23,
+        "misc_paper": 23,
+        "newspaper": 23,
+        "nonburnable": 50
+      }
+    },
+    {
+      "area_id": "38213-07",
+      "calendar_id": "shikokuchuo-07",
+      "address_labels": [
+        "鉄砲町",
+        "古町",
+        "川原町",
+        "城北",
+        "中須",
+        "西ノ浜",
+        "東浜",
+        "浦町",
+        "港通り",
+        "農人町",
+        "塩谷",
+        "宮の谷",
+        "東町",
+        "長須",
+        "余木",
+        "川原田東",
+        "川岸",
+        "丸山",
+        "大下",
+        "坂ノ口",
+        "平木",
+        "通谷",
+        "山田井中組",
+        "山田井上組",
+        "城ヶ谷団地",
+        "涼川住宅",
+        "井ノ上",
+        "長途路",
+        "西之坊",
+        "本村",
+        "飼谷",
+        "飼谷団地",
+        "池ノ奥",
+        "南部団地",
+        "走り出",
+        "金沢"
+      ],
+      "cutoff": "07:30",
+      "rules": [
+        {
+          "types": [
+            "burnable"
+          ],
+          "weekdays": [
+            3,
+            6
+          ],
+          "occurrences": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "nonburnable"
+          ],
+          "weekdays": [
+            6
+          ],
+          "occurrences": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "hazardous"
+          ],
+          "weekdays": [
+            6
+          ],
+          "occurrences": [
+            1
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "bottles_cans_pet"
+          ],
+          "weekdays": [
+            3
+          ],
+          "occurrences": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "newspaper",
+            "misc_paper"
+          ],
+          "weekdays": [
+            2
+          ],
+          "occurrences": [
+            1,
+            3
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "magazines",
+            "misc_paper"
+          ],
+          "weekdays": [
+            2
+          ],
+          "occurrences": [
+            2,
+            4
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "cardboard_milk"
+          ],
+          "weekdays": [
+            5
+          ],
+          "occurrences": [
+            1
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        }
+      ],
+      "excluded_dates": [
+        "2026-05-02",
+        "2026-08-15",
+        "2026-10-14",
+        "2026-10-15",
+        "2026-10-22",
+        "2026-10-23",
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02"
+      ],
+      "days_sha256": "815431bedfee1cf04da3143f29b0e018936d2dbc1a02f08ef34320f0c3c81089",
+      "dated_cells": 160,
+      "collection_dates": {
+        "bottles_cans_pet": 52,
+        "burnable": 101,
+        "cardboard_milk": 11,
+        "hazardous": 10,
+        "magazines": 24,
+        "misc_paper": 48,
+        "newspaper": 24,
+        "nonburnable": 49
+      }
+    },
+    {
+      "area_id": "38213-08",
+      "calendar_id": "shikokuchuo-08",
+      "address_labels": [
+        "川原田住宅"
+      ],
+      "cutoff": "07:00",
+      "rules": [
+        {
+          "types": [
+            "burnable"
+          ],
+          "weekdays": [
+            3,
+            6
+          ],
+          "occurrences": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "nonburnable"
+          ],
+          "weekdays": [
+            6
+          ],
+          "occurrences": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "hazardous"
+          ],
+          "weekdays": [
+            6
+          ],
+          "occurrences": [
+            1
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "bottles_cans_pet"
+          ],
+          "weekdays": [
+            3
+          ],
+          "occurrences": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "newspaper",
+            "misc_paper"
+          ],
+          "weekdays": [
+            2
+          ],
+          "occurrences": [
+            1,
+            3
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "magazines",
+            "misc_paper"
+          ],
+          "weekdays": [
+            2
+          ],
+          "occurrences": [
+            2,
+            4
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "cardboard_milk"
+          ],
+          "weekdays": [
+            5
+          ],
+          "occurrences": [
+            1
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        }
+      ],
+      "excluded_dates": [
+        "2026-05-02",
+        "2026-08-15",
+        "2026-10-14",
+        "2026-10-15",
+        "2026-10-22",
+        "2026-10-23",
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02"
+      ],
+      "days_sha256": "815431bedfee1cf04da3143f29b0e018936d2dbc1a02f08ef34320f0c3c81089",
+      "dated_cells": 160,
+      "collection_dates": {
+        "bottles_cans_pet": 52,
+        "burnable": 101,
+        "cardboard_milk": 11,
+        "hazardous": 10,
+        "magazines": 24,
+        "misc_paper": 48,
+        "newspaper": 24,
+        "nonburnable": 49
+      }
+    },
+    {
+      "area_id": "38213-09",
+      "calendar_id": "shikokuchuo-09",
+      "address_labels": [
+        "北柴生",
+        "南柴生",
+        "長持",
+        "中下",
+        "竹花",
+        "牛飼野",
+        "射場",
+        "竹本",
+        "棒賀"
+      ],
+      "cutoff": "07:00",
+      "rules": [
+        {
+          "types": [
+            "burnable"
+          ],
+          "weekdays": [
+            3,
+            6
+          ],
+          "occurrences": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "nonburnable"
+          ],
+          "weekdays": [
+            6
+          ],
+          "occurrences": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "hazardous"
+          ],
+          "weekdays": [
+            6
+          ],
+          "occurrences": [
+            1
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "bottles_cans_pet"
+          ],
+          "weekdays": [
+            3
+          ],
+          "occurrences": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "newspaper",
+            "magazines",
+            "misc_paper",
+            "cardboard_milk"
+          ],
+          "weekdays": [
+            4
+          ],
+          "occurrences": [
+            1,
+            3
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        }
+      ],
+      "excluded_dates": [
+        "2026-05-02",
+        "2026-08-15",
+        "2026-10-14",
+        "2026-10-15",
+        "2026-10-22",
+        "2026-10-23",
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02"
+      ],
+      "days_sha256": "52c8d686a5be380f9927a8243938bbca706abe7d2da8607f6365f33fda6c4e69",
+      "dated_cells": 124,
+      "collection_dates": {
+        "bottles_cans_pet": 52,
+        "burnable": 101,
+        "cardboard_milk": 23,
+        "hazardous": 10,
+        "magazines": 23,
+        "misc_paper": 23,
+        "newspaper": 23,
+        "nonburnable": 49
+      }
+    },
+    {
+      "area_id": "38213-10",
+      "calendar_id": "shikokuchuo-10",
+      "address_labels": [
+        "上柏町の一部",
+        "下柏町の一部",
+        "村松町",
+        "三島朝日1丁目",
+        "三島朝日2丁目",
+        "三島紙屋町",
+        "中曽根町（中田井・幸町を除く）",
+        "三島中央1丁目",
+        "三島中央2丁目",
+        "三島中央4丁目（国道11号線沿い）",
+        "三島金子1丁目（国道11号線沿い）",
+        "具定町",
+        "寒川町東部",
+        "寒川町中部"
+      ],
+      "cutoff": "07:30",
+      "rules": [
+        {
+          "types": [
+            "burnable"
+          ],
+          "weekdays": [
+            1,
+            4
+          ],
+          "occurrences": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "nonburnable"
+          ],
+          "weekdays": [
+            2
+          ],
+          "occurrences": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "hazardous"
+          ],
+          "weekdays": [
+            2
+          ],
+          "occurrences": [
+            1
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "bottles_cans_pet"
+          ],
+          "weekdays": [
+            5
+          ],
+          "occurrences": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "newspaper",
+            "misc_paper"
+          ],
+          "weekdays": [
+            3
+          ],
+          "occurrences": [
+            1,
+            3
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "magazines",
+            "misc_paper"
+          ],
+          "weekdays": [
+            3
+          ],
+          "occurrences": [
+            2,
+            4
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "cardboard_milk"
+          ],
+          "weekdays": [
+            6
+          ],
+          "occurrences": [
+            1
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        }
+      ],
+      "excluded_dates": [
+        "2026-05-02",
+        "2026-08-15",
+        "2026-10-22",
+        "2026-10-23",
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02"
+      ],
+      "days_sha256": "91ded7e50abe5f568cf5a9fb5b72daabf592b11cb43fa225d5fb981bb43986d1",
+      "dated_cells": 262,
+      "collection_dates": {
+        "bottles_cans_pet": 50,
+        "burnable": 102,
+        "cardboard_milk": 10,
+        "hazardous": 12,
+        "magazines": 24,
+        "misc_paper": 48,
+        "newspaper": 24,
+        "nonburnable": 52
+      }
+    },
+    {
+      "area_id": "38213-11",
+      "calendar_id": "shikokuchuo-11",
+      "address_labels": [
+        "上柏町の一部",
+        "下柏町の一部",
+        "三島朝日3丁目",
+        "大塚住宅付近",
+        "三島宮川1丁目",
+        "三島宮川2丁目",
+        "三島宮川3丁目",
+        "三島宮川4丁目",
+        "三島中央3丁目",
+        "三島中央4丁目（駅前通り）",
+        "三島中央5丁目（三島口）",
+        "中曽根町（中田井・幸町）",
+        "具定町の一部",
+        "中之庄町公園通り1丁目",
+        "中之庄町公園通り2丁目",
+        "中之庄町公園通り3丁目",
+        "寒川町北部の一部を除く区域",
+        "寒川町西部の一部を除く区域"
+      ],
+      "cutoff": "07:30",
+      "rules": [
+        {
+          "types": [
+            "burnable"
+          ],
+          "weekdays": [
+            2,
+            5
+          ],
+          "occurrences": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "nonburnable"
+          ],
+          "weekdays": [
+            3
+          ],
+          "occurrences": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "hazardous"
+          ],
+          "weekdays": [
+            3
+          ],
+          "occurrences": [
+            1
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "bottles_cans_pet"
+          ],
+          "weekdays": [
+            6
+          ],
+          "occurrences": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "newspaper",
+            "misc_paper"
+          ],
+          "weekdays": [
+            1
+          ],
+          "occurrences": [
+            1,
+            3
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "magazines",
+            "misc_paper"
+          ],
+          "weekdays": [
+            1
+          ],
+          "occurrences": [
+            2,
+            4
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "cardboard_milk"
+          ],
+          "weekdays": [
+            4
+          ],
+          "occurrences": [
+            1
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        }
+      ],
+      "excluded_dates": [
+        "2026-05-02",
+        "2026-08-15",
+        "2026-10-22",
+        "2026-10-23",
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02"
+      ],
+      "days_sha256": "2b5a62363eaf62388b2aec150bba3fb43cfb5271206bc6f5bde6f246bc092571",
+      "dated_cells": 264,
+      "collection_dates": {
+        "bottles_cans_pet": 49,
+        "burnable": 102,
+        "cardboard_milk": 12,
+        "hazardous": 12,
+        "magazines": 24,
+        "misc_paper": 48,
+        "newspaper": 24,
+        "nonburnable": 53
+      }
+    },
+    {
+      "area_id": "38213-12",
+      "calendar_id": "shikokuchuo-12",
+      "address_labels": [
+        "上柏町（一部を除く）",
+        "下柏町（一部を除く）",
+        "三島中央4丁目（駅前通り・国道11号線沿いを除く）",
+        "三島中央5丁目（三島口を除く）",
+        "中央本通り",
+        "三島金子1丁目（国道11号線沿いを除く）",
+        "三島金子2丁目",
+        "三島金子3丁目",
+        "中之庄町（公園通りを除く）",
+        "寒川町北部の一部",
+        "寒川町西部の一部",
+        "豊岡町"
+      ],
+      "cutoff": "07:30",
+      "rules": [
+        {
+          "types": [
+            "burnable"
+          ],
+          "weekdays": [
+            3,
+            6
+          ],
+          "occurrences": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "nonburnable"
+          ],
+          "weekdays": [
+            1
+          ],
+          "occurrences": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "hazardous"
+          ],
+          "weekdays": [
+            1
+          ],
+          "occurrences": [
+            1
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "bottles_cans_pet"
+          ],
+          "weekdays": [
+            4
+          ],
+          "occurrences": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "newspaper",
+            "misc_paper"
+          ],
+          "weekdays": [
+            2
+          ],
+          "occurrences": [
+            1,
+            3
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "magazines",
+            "misc_paper"
+          ],
+          "weekdays": [
+            2
+          ],
+          "occurrences": [
+            2,
+            4
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "cardboard_milk"
+          ],
+          "weekdays": [
+            5
+          ],
+          "occurrences": [
+            1
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        }
+      ],
+      "excluded_dates": [
+        "2026-05-02",
+        "2026-08-15",
+        "2026-10-22",
+        "2026-10-23",
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02"
+      ],
+      "days_sha256": "531878cd8b0371cb5873cb3801a722ea2b6729a5516454f752d31e81b2f9b488",
+      "dated_cells": 263,
+      "collection_dates": {
+        "bottles_cans_pet": 50,
+        "burnable": 102,
+        "cardboard_milk": 11,
+        "hazardous": 12,
+        "magazines": 24,
+        "misc_paper": 48,
+        "newspaper": 24,
+        "nonburnable": 52
+      }
+    },
+    {
+      "area_id": "38213-13",
+      "calendar_id": "shikokuchuo-13",
+      "address_labels": [
+        "金砂町"
+      ],
+      "cutoff": "07:30",
+      "rules": [
+        {
+          "types": [
+            "burnable"
+          ],
+          "weekdays": [
+            2
+          ],
+          "occurrences": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "nonburnable",
+            "hazardous"
+          ],
+          "weekdays": [
+            2
+          ],
+          "occurrences": [
+            2
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "bottles_cans_pet"
+          ],
+          "weekdays": [
+            2
+          ],
+          "occurrences": [
+            4
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "newspaper",
+            "magazines",
+            "misc_paper",
+            "cardboard_milk"
+          ],
+          "weekdays": [
+            4
+          ],
+          "occurrences": [
+            1,
+            3
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        }
+      ],
+      "excluded_dates": [
+        "2026-05-02",
+        "2026-08-15",
+        "2026-10-22",
+        "2026-10-23",
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02"
+      ],
+      "days_sha256": "33eff2b908e626bba5f376f5e0ca98416a8286b021b146b5eeaa7e4f5babb514",
+      "dated_cells": 76,
+      "collection_dates": {
+        "bottles_cans_pet": 12,
+        "burnable": 52,
+        "cardboard_milk": 24,
+        "hazardous": 12,
+        "magazines": 24,
+        "misc_paper": 24,
+        "newspaper": 24,
+        "nonburnable": 12
+      }
+    },
+    {
+      "area_id": "38213-14",
+      "calendar_id": "shikokuchuo-14",
+      "address_labels": [
+        "富郷町"
+      ],
+      "cutoff": "07:30",
+      "rules": [
+        {
+          "types": [
+            "burnable"
+          ],
+          "weekdays": [
+            5
+          ],
+          "occurrences": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "nonburnable",
+            "hazardous"
+          ],
+          "weekdays": [
+            5
+          ],
+          "occurrences": [
+            1
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "bottles_cans_pet"
+          ],
+          "weekdays": [
+            5
+          ],
+          "occurrences": [
+            3
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "newspaper",
+            "magazines",
+            "misc_paper",
+            "cardboard_milk"
+          ],
+          "weekdays": [
+            4
+          ],
+          "occurrences": [
+            2,
+            4
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        }
+      ],
+      "excluded_dates": [
+        "2026-05-02",
+        "2026-08-15",
+        "2026-10-22",
+        "2026-10-23",
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02"
+      ],
+      "days_sha256": "f0408e8793631899e0eda4d7f72b9c2196e0bb03e1856a02885fc5623046cb0a",
+      "dated_cells": 73,
+      "collection_dates": {
+        "bottles_cans_pet": 12,
+        "burnable": 50,
+        "cardboard_milk": 23,
+        "hazardous": 11,
+        "magazines": 23,
+        "misc_paper": 23,
+        "newspaper": 23,
+        "nonburnable": 11
+      }
+    },
+    {
+      "area_id": "38213-15",
+      "calendar_id": "shikokuchuo-15",
+      "address_labels": [
+        "上野",
+        "北野",
+        "畑野",
+        "浦山",
+        "土居（JR線路より北）"
+      ],
+      "cutoff": "07:30",
+      "rules": [
+        {
+          "types": [
+            "burnable"
+          ],
+          "weekdays": [
+            1,
+            4
+          ],
+          "occurrences": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "nonburnable"
+          ],
+          "weekdays": [
+            4
+          ],
+          "occurrences": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "hazardous"
+          ],
+          "weekdays": [
+            4
+          ],
+          "occurrences": [
+            1
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "bottles_cans_pet"
+          ],
+          "weekdays": [
+            1
+          ],
+          "occurrences": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "newspaper",
+            "misc_paper"
+          ],
+          "weekdays": [
+            3
+          ],
+          "occurrences": [
+            1,
+            3
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "magazines",
+            "misc_paper"
+          ],
+          "weekdays": [
+            3
+          ],
+          "occurrences": [
+            2,
+            4
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "cardboard_milk"
+          ],
+          "weekdays": [
+            6
+          ],
+          "occurrences": [
+            1
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        }
+      ],
+      "excluded_dates": [
+        "2026-05-02",
+        "2026-08-15",
+        "2026-10-14",
+        "2026-10-15",
+        "2026-10-22",
+        "2026-10-23",
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02"
+      ],
+      "days_sha256": "bda391b422c2732c2980d525ef3860954f20be15647fee255b10c367c2a4f242",
+      "dated_cells": 158,
+      "collection_dates": {
+        "bottles_cans_pet": 52,
+        "burnable": 101,
+        "cardboard_milk": 10,
+        "hazardous": 12,
+        "magazines": 23,
+        "misc_paper": 47,
+        "newspaper": 24,
+        "nonburnable": 49
+      }
+    },
+    {
+      "area_id": "38213-16",
+      "calendar_id": "shikokuchuo-16",
+      "address_labels": [
+        "入野",
+        "中村",
+        "小林",
+        "藤原",
+        "土居（JR線路より南）",
+        "津根（JR線路より北）",
+        "野田（JR線路より北）"
+      ],
+      "cutoff": "07:30",
+      "rules": [
+        {
+          "types": [
+            "burnable"
+          ],
+          "weekdays": [
+            2,
+            5
+          ],
+          "occurrences": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "nonburnable"
+          ],
+          "weekdays": [
+            5
+          ],
+          "occurrences": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "hazardous"
+          ],
+          "weekdays": [
+            5
+          ],
+          "occurrences": [
+            1
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "bottles_cans_pet"
+          ],
+          "weekdays": [
+            2
+          ],
+          "occurrences": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "newspaper",
+            "misc_paper"
+          ],
+          "weekdays": [
+            1
+          ],
+          "occurrences": [
+            1,
+            3
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "magazines",
+            "misc_paper"
+          ],
+          "weekdays": [
+            1
+          ],
+          "occurrences": [
+            2,
+            4
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "cardboard_milk"
+          ],
+          "weekdays": [
+            4
+          ],
+          "occurrences": [
+            1
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        }
+      ],
+      "excluded_dates": [
+        "2026-05-02",
+        "2026-08-15",
+        "2026-10-14",
+        "2026-10-15",
+        "2026-10-22",
+        "2026-10-23",
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02"
+      ],
+      "days_sha256": "7b0e609c3ac22ef55bf3f61ee3b8e1a031226b4d5cf6af742bec5264e1f7a845",
+      "dated_cells": 162,
+      "collection_dates": {
+        "bottles_cans_pet": 52,
+        "burnable": 102,
+        "cardboard_milk": 12,
+        "hazardous": 11,
+        "magazines": 24,
+        "misc_paper": 48,
+        "newspaper": 24,
+        "nonburnable": 50
+      }
+    },
+    {
+      "area_id": "38213-17",
+      "calendar_id": "shikokuchuo-17",
+      "address_labels": [
+        "天満",
+        "蕪崎",
+        "津根（JR線路より南）",
+        "野田（JR線路より南）"
+      ],
+      "cutoff": "07:30",
+      "rules": [
+        {
+          "types": [
+            "burnable"
+          ],
+          "weekdays": [
+            3,
+            6
+          ],
+          "occurrences": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "nonburnable"
+          ],
+          "weekdays": [
+            6
+          ],
+          "occurrences": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "hazardous"
+          ],
+          "weekdays": [
+            6
+          ],
+          "occurrences": [
+            1
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "bottles_cans_pet"
+          ],
+          "weekdays": [
+            3
+          ],
+          "occurrences": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "newspaper",
+            "misc_paper"
+          ],
+          "weekdays": [
+            2
+          ],
+          "occurrences": [
+            1,
+            3
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "magazines",
+            "misc_paper"
+          ],
+          "weekdays": [
+            2
+          ],
+          "occurrences": [
+            2,
+            4
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "cardboard_milk"
+          ],
+          "weekdays": [
+            5
+          ],
+          "occurrences": [
+            1
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        }
+      ],
+      "excluded_dates": [
+        "2026-05-02",
+        "2026-08-15",
+        "2026-10-14",
+        "2026-10-15",
+        "2026-10-22",
+        "2026-10-23",
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02"
+      ],
+      "days_sha256": "815431bedfee1cf04da3143f29b0e018936d2dbc1a02f08ef34320f0c3c81089",
+      "dated_cells": 160,
+      "collection_dates": {
+        "bottles_cans_pet": 52,
+        "burnable": 101,
+        "cardboard_milk": 11,
+        "hazardous": 10,
+        "magazines": 24,
+        "misc_paper": 48,
+        "newspaper": 24,
+        "nonburnable": 49
+      }
+    },
+    {
+      "area_id": "38213-18",
+      "calendar_id": "shikokuchuo-18",
+      "address_labels": [
+        "中山全域",
+        "秋田",
+        "程野",
+        "辺地床",
+        "下り付（一部）"
+      ],
+      "cutoff": "07:30",
+      "rules": [
+        {
+          "types": [
+            "burnable"
+          ],
+          "weekdays": [
+            4
+          ],
+          "occurrences": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "nonburnable",
+            "hazardous"
+          ],
+          "weekdays": [
+            6
+          ],
+          "occurrences": [
+            2
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "bottles_cans_pet"
+          ],
+          "weekdays": [
+            2
+          ],
+          "occurrences": [
+            2,
+            4
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "newspaper",
+            "magazines",
+            "misc_paper",
+            "cardboard_milk"
+          ],
+          "weekdays": [
+            4
+          ],
+          "occurrences": [
+            2,
+            4
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        }
+      ],
+      "excluded_dates": [
+        "2026-05-02",
+        "2026-08-15",
+        "2026-10-14",
+        "2026-10-15",
+        "2026-10-22",
+        "2026-10-23",
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02"
+      ],
+      "days_sha256": "70fcfb58e3deb659db32bd08fa91168b142ebc37998314a9f50fc26fdb0e1197",
+      "dated_cells": 85,
+      "collection_dates": {
+        "bottles_cans_pet": 24,
+        "burnable": 49,
+        "cardboard_milk": 23,
+        "hazardous": 12,
+        "magazines": 23,
+        "misc_paper": 23,
+        "newspaper": 23,
+        "nonburnable": 12
+      }
+    },
+    {
+      "area_id": "38213-19",
+      "calendar_id": "shikokuchuo-19",
+      "address_labels": [
+        "上山全域",
+        "黒田",
+        "西ヶ市",
+        "竹の峰",
+        "寺尾",
+        "大谷",
+        "小六"
+      ],
+      "cutoff": "07:30",
+      "rules": [
+        {
+          "types": [
+            "burnable"
+          ],
+          "weekdays": [
+            3
+          ],
+          "occurrences": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "nonburnable",
+            "hazardous"
+          ],
+          "weekdays": [
+            6
+          ],
+          "occurrences": [
+            2
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "bottles_cans_pet"
+          ],
+          "weekdays": [
+            2
+          ],
+          "occurrences": [
+            2,
+            4
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "newspaper",
+            "magazines",
+            "misc_paper",
+            "cardboard_milk"
+          ],
+          "weekdays": [
+            4
+          ],
+          "occurrences": [
+            2,
+            4
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        }
+      ],
+      "excluded_dates": [
+        "2026-05-02",
+        "2026-08-15",
+        "2026-10-14",
+        "2026-10-15",
+        "2026-10-22",
+        "2026-10-23",
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02"
+      ],
+      "days_sha256": "af50eb5d6e19d56ee28972733e7ff264b214fa5c7b34f27632e3d2ab9fe34799",
+      "dated_cells": 111,
+      "collection_dates": {
+        "bottles_cans_pet": 24,
+        "burnable": 52,
+        "cardboard_milk": 23,
+        "hazardous": 12,
+        "magazines": 23,
+        "misc_paper": 23,
+        "newspaper": 23,
+        "nonburnable": 12
+      }
+    },
+    {
+      "area_id": "38213-20",
+      "calendar_id": "shikokuchuo-20",
+      "address_labels": [
+        "新宮",
+        "新瀬川",
+        "馬立",
+        "新宮1・2以外"
+      ],
+      "cutoff": "07:30",
+      "rules": [
+        {
+          "types": [
+            "burnable"
+          ],
+          "weekdays": [
+            1,
+            5
+          ],
+          "occurrences": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "nonburnable",
+            "hazardous"
+          ],
+          "weekdays": [
+            6
+          ],
+          "occurrences": [
+            1
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "bottles_cans_pet"
+          ],
+          "weekdays": [
+            2
+          ],
+          "occurrences": [
+            1,
+            3
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "types": [
+            "newspaper",
+            "magazines",
+            "misc_paper",
+            "cardboard_milk"
+          ],
+          "weekdays": [
+            4
+          ],
+          "occurrences": [
+            1,
+            3
+          ],
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        }
+      ],
+      "excluded_dates": [
+        "2026-05-02",
+        "2026-08-15",
+        "2026-10-14",
+        "2026-10-15",
+        "2026-10-22",
+        "2026-10-23",
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02"
+      ],
+      "days_sha256": "8f9bf34360cf4dafe3354318fd54c981708357fbe32f6fff525d44ab56b52c74",
+      "dated_cells": 159,
+      "collection_dates": {
+        "bottles_cans_pet": 24,
+        "burnable": 102,
+        "cardboard_milk": 23,
+        "hazardous": 10,
+        "magazines": 23,
+        "misc_paper": 23,
+        "newspaper": 23,
+        "nonburnable": 10
+      }
+    }
+  ],
+  "verification": {
+    "method": "The official two-page district table was rendered at 200 dpi and visually reviewed. Weekly and Nth-weekday rules were expanded, then official 2026 fiscal-year closure dates were removed.",
+    "coverage": "Twenty user-facing area choices preserve the five Kawanoe schedules and 07:00 highlighted subareas, five Mishima schedules, three Doi schedules and three Shingu schedules.",
+    "limitations": "Weather, snow and road-freezing cancellations are not known in advance and are never generated. Mishima collection on 2026-10-14 and 2026-10-15 is preserved exactly as the official closure notice states.",
+    "reviewed_at": "2026-11-07"
+  }
+}

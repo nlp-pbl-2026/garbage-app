@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38213",
+  "version": "shikokuchuo-2026.1",
+  "official_items": 402,
+  "items_sha256": "c36b56174b7db9c70f144d8a32f9390ad0d87b8e0dfdaf2c0e6007a09b9d51b1",
+  "categories": {
+    "appliance_recycling": 6,
+    "bottles_cans_pet": 16,
+    "bulky": 144,
+    "burnable": 63,
+    "cardboard_milk": 2,
+    "hazardous": 9,
+    "magazines": 4,
+    "misc_paper": 13,
+    "newspaper": 3,
+    "nonburnable": 106,
+    "not_collected": 34,
+    "recycling_station": 2
+  },
+  "conditional_records": 8,
+  "source_files": [
+    "waste-standards.pdf",
+    "burnable.pdf",
+    "nonburnable.pdf",
+    "resources.pdf",
+    "appliances.pdf",
+    "lithium.pdf"
+  ],
+  "verification": {
+    "method": "All six pages of the official waste discharge standards were rendered at 200 dpi; named rows were transcribed and cross-checked with the category-specific official guides. Explicit resource and lithium examples were added from those guides.",
+    "limitations": "Size/material alternatives not stated by the user require clarification. Unknown items are not classified solely by analogy.",
+    "reviewed_at": "2026-11-07"
+  }
+}

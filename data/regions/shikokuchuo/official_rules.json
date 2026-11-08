@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38213",
+  "version": "shikokuchuo-2026.1",
+  "source_urls": [
+    "https://www.city.shikokuchuo.ehime.jp/soshiki/15/1924.html",
+    "https://www.city.shikokuchuo.ehime.jp/uploaded/attachment/3293.pdf",
+    "https://www.city.shikokuchuo.ehime.jp/uploaded/attachment/3294.pdf",
+    "https://www.city.shikokuchuo.ehime.jp/uploaded/attachment/3295.pdf",
+    "https://www.city.shikokuchuo.ehime.jp/uploaded/attachment/3296.pdf",
+    "https://www.city.shikokuchuo.ehime.jp/uploaded/attachment/3303.pdf",
+    "https://www.city.shikokuchuo.ehime.jp/uploaded/attachment/21712.pdf",
+    "https://www.city.shikokuchuo.ehime.jp/soshiki/15/51919.html"
+  ],
+  "classification_rules": "四国中央市公式の家庭ごみ分別・排出基準に従い、他自治体の分類や索引を流用しない。燃やすごみ、燃やさないごみ、有害ごみ、びん・かん・ペットボトル、新聞、雑誌、雑がみ、段ボール・牛乳パックを区別する。資源ごみは中身を除いて水洗いし、古紙は種類別にひもで縛る。スプレー缶・カセットボンベは使い切り、公式資料どおり屋外で穴を開けてつぶす。リチウムイオン電池は製品から外して有害ごみとし、電池を外せないスマートフォン、電子タバコ、モバイルバッテリー等は製品ごと有害ごみとする。一斗缶（24cm×24cm×35cm）より大きい物は原則粗大ごみ。家電リサイクル対象品、市で処理できない物、拠点回収品を定期収集へ変換しない。材質、大きさ、汚れ、電池の取り外し可否が不明なら推測せず追加質問する。",
+  "categories": {
+    "burnable": {
+      "name": "燃やすごみ",
+      "collection_type_id": "burnable",
+      "collection_name": "燃やすごみ",
+      "color": "#F4B183",
+      "instructions": "透明または白色半透明の袋へ入れます。生ごみは水切りし、枝は太さ5cm以下・長さ50cm以下、ホースやロープ等は50cm以内にします。"
+    },
+    "nonburnable": {
+      "name": "燃やさないごみ",
+      "collection_type_id": "nonburnable",
+      "collection_name": "燃やさないごみ",
+      "color": "#76B5A5",
+      "instructions": "一斗缶（24cm×24cm×35cm）より小さい金属・陶磁器・ガラス・硬質プラスチック等を透明または白色半透明の袋へ入れます。刃物・割れ物は保護し、透明袋へ入れて「危険」と表示します。"
+    },
+    "hazardous": {
+      "name": "有害ごみ",
+      "collection_type_id": "hazardous",
+      "collection_name": "有害ごみ",
+      "color": "#D6C98B",
+      "instructions": "乾電池、蛍光管、鏡、水銀含有物、リチウムイオン電池等を燃やさないごみと分けて出します。電池を外せないスマートフォン、電子タバコ、モバイルバッテリー等は製品ごと有害ごみです。"
+    },
+    "bottles_cans_pet": {
+      "name": "資源ごみ（びん・かん・ペットボトル）",
+      "collection_type_id": "bottles_cans_pet",
+      "collection_name": "びん・かん・ペットボトル",
+      "color": "#C9DA8A",
+      "instructions": "中身を除いて水洗いします。びん・かんとペットボトルは袋を分け、ふたは燃やさないごみへ出します。ペットボトルはPETマーク付き飲料・酒類・しょうゆ用に限ります。"
+    },
+    "newspaper": {
+      "name": "資源ごみ（新聞）",
+      "collection_type_id": "newspaper",
+      "collection_name": "新聞・雑がみ",
+      "color": "#C9DA8A",
+      "instructions": "新聞と折り込みチラシをひもで縛ります。"
+    },
+    "magazines": {
+      "name": "資源ごみ（雑誌）",
+      "collection_type_id": "magazines",
+      "collection_name": "雑誌・雑がみ",
+      "color": "#C9DA8A",
+      "instructions": "紙以外の付録、シール、ビニール、CD等を除き、雑誌だけをひもで縛ります。"
+    },
+    "misc_paper": {
+      "name": "資源ごみ（雑がみ）",
+      "collection_type_id": "misc_paper",
+      "collection_name": "雑がみ",
+      "color": "#C9DA8A",
+      "instructions": "種類別にひもで縛り、小さい雑がみは封筒や紙袋へ入れます。食品・洗剤が直接入っていた紙、金銀・ビニール加工紙、汚れや臭いのある紙は燃やすごみです。"
+    },
+    "cardboard_milk": {
+      "name": "資源ごみ（段ボール・牛乳パック）",
+      "collection_type_id": "cardboard_milk",
+      "collection_name": "段ボール・牛乳パック",
+      "color": "#C9DA8A",
+      "instructions": "段ボールは解体して縛ります。1000ml牛乳パックは水洗いして切り開き、乾かして縛ります。500ml以下は雑がみです。"
+    },
+    "recycling_station": {
+      "name": "拠点・店頭回収",
+      "color": "#70AD47",
+      "answer_note": "定期収集日ではなく、市の拠点回収または店頭回収を利用します。",
+      "instructions": "着られる衣類は市の回収拠点へ、食品トレーは店頭回収へ出します。"
+    },
+    "bulky": {
+      "name": "粗大ごみ",
+      "color": "#F27CA5",
+      "answer_note": "公式の粗大ごみ処理手数料表と最新の申込案内を確認してください。地区別定期カレンダーへ収集日を推測追加しません。",
+      "instructions": "一斗缶より大きい物、または排出基準表で粗大と指定された物です。品目別手数料と申込・持込方法を公式案内で確認します。"
+    },
+    "appliance_recycling": {
+      "name": "家電リサイクル対象製品",
+      "color": "#FFD966",
+      "answer_note": "販売店または家電リサイクル法に基づく指定方法で処分してください。通常収集には出せません。",
+      "instructions": "エアコン、テレビ、冷蔵庫・冷凍庫、洗濯機・衣類乾燥機は家電リサイクル対象です。"
+    },
+    "not_collected": {
+      "name": "市で処理できないごみ",
+      "color": "#F24234",
+      "answer_note": "購入店、引取店、医療機関、メーカー、金属スクラップ会社または専門業者へ相談してください。",
+      "instructions": "自動車・バイク、タイヤ、バッテリー、LPガスボンベ、農機具、農業用資材、医療系廃棄物、廃油・塗料、消火器、ピアノ等は市で処理できません。"
+    }
+  }
+}

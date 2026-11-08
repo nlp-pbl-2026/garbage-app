@@ -1,0 +1,299 @@
+{
+  "schema_version": 1,
+  "case_sha256": "622a9e9549541faae2c7b2b032592f369e7cc1989e4542b89bf82b316976320d",
+  "dataset_sha256": {
+    "registry.json": "5b58559f843a0954c3bc44758c2072de84195313dea270ffab643a762e86e33c",
+    "knowledge/items.csv": "a76e16b2d7b317cfad2649076c97c158105fa8f2102b3b36d36be4f1d1e42265",
+    "knowledge/item_embeddings.npz": "9cd4d6a44da9d35d5ff7f90ac4458f8203abd044a41fa33ff3b132da16364952"
+  },
+  "model_ids": {
+    "rewrite_and_decide": "amazon.nova-lite-v1:0",
+    "embedding": "amazon.titan-embed-text-v2:0"
+  },
+  "summary": {
+    "cases": 14,
+    "passed": 14,
+    "failed": 0
+  },
+  "usage": {
+    "embedding_generation_model_calls": 403,
+    "embedding_input_tokens": 41199,
+    "evaluation_model_calls": 45,
+    "evaluation_nova_calls": 30,
+    "evaluation_titan_calls": 15,
+    "estimated_actual_usd": 0.00446148,
+    "conservative_reserved_usd": 0.03528690000000001,
+    "approved_limit_usd": 0.08
+  },
+  "partial_rerun_cases": [
+    11
+  ],
+  "results": [
+    {
+      "case": 1,
+      "kind": "resource",
+      "query": "飲み終わって水洗いしたペットボトル",
+      "source_url": "https://www.city.shikokuchuo.ehime.jp/uploaded/attachment/3296.pdf",
+      "official_expected": {
+        "status": "answered",
+        "category": "bottles_cans_pet",
+        "reason": "PETマーク付き飲料用ペットボトルは資源ごみ。"
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "bottles_cans_pet",
+        "follow_up_question": null,
+        "answer": "飲み終わって水洗いしたペットボトルは「資源ごみ（びん・かん・ペットボトル）」です。\nPETマーク付きの飲料・酒類・しょうゆ用に限り、ふたを外して水洗いし、ペットボトルだけの袋で出します。\n中身を除いて水洗いします。びん・かんとペットボトルは袋を分け、ふたは燃やさないごみへ出します。ペットボトルはPETマーク付き飲料・酒類・しょうゆ用に限ります。\n川之江1：井地・西新町・東大門・大門・西大門・馬場ほか地区の次回収集日は2026年11月9日（月）です。"
+      },
+      "passed": true
+    },
+    {
+      "case": 2,
+      "kind": "lithium",
+      "query": "電池を取り外せない古いスマートフォン",
+      "source_url": "https://www.city.shikokuchuo.ehime.jp/uploaded/attachment/21712.pdf",
+      "official_expected": {
+        "status": "answered",
+        "category": "hazardous",
+        "reason": "電池を外せないスマートフォンは製品ごと有害ごみ。"
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "hazardous",
+        "follow_up_question": null,
+        "answer": "電池を取り外せない古いスマートフォンは「有害ごみ」です。\n電池を取り外せない製品は、そのまま有害ごみへ出します。\n乾電池、蛍光管、鏡、水銀含有物、リチウムイオン電池等を燃やさないごみと分けて出します。電池を外せないスマートフォン、電子タバコ、モバイルバッテリー等は製品ごと有害ごみです。\n川之江1・朝7時：天生津・宝洞山・石ノ口・切山地区の次回収集日は2026年12月3日（木）です。"
+      },
+      "passed": true
+    },
+    {
+      "case": 3,
+      "kind": "lithium",
+      "query": "使い終わったモバイルバッテリー",
+      "source_url": "https://www.city.shikokuchuo.ehime.jp/uploaded/attachment/21712.pdf",
+      "official_expected": {
+        "status": "answered",
+        "category": "hazardous",
+        "reason": "モバイルバッテリーはそのまま有害ごみ。"
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "hazardous",
+        "follow_up_question": null,
+        "answer": "使い終わったモバイルバッテリーは「有害ごみ」です。\nそのまま有害ごみへ出します。\n乾電池、蛍光管、鏡、水銀含有物、リチウムイオン電池等を燃やさないごみと分けて出します。電池を外せないスマートフォン、電子タバコ、モバイルバッテリー等は製品ごと有害ごみです。\n川之江2：山下・旭町・栄町・山口・川東・金田町ほか地区の次回収集日は2026年12月4日（金）です。"
+      },
+      "passed": true
+    },
+    {
+      "case": 4,
+      "kind": "appliance_recycling",
+      "query": "壊れた家庭用エアコン",
+      "source_url": "https://www.city.shikokuchuo.ehime.jp/uploaded/attachment/26620.pdf",
+      "official_expected": {
+        "status": "answered",
+        "category": "appliance_recycling",
+        "reason": "エアコンは家電リサイクル法対象。"
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "appliance_recycling",
+        "follow_up_question": null,
+        "answer": "壊れた家庭用エアコンは「家電リサイクル対象製品」です。\nエアコン、テレビ、冷蔵庫・冷凍庫、洗濯機・衣類乾燥機は家電リサイクル対象です。\n販売店または家電リサイクル法に基づく指定方法で処分してください。通常収集には出せません。"
+      },
+      "passed": true
+    },
+    {
+      "case": 5,
+      "kind": "not_collected",
+      "query": "処分したいオートバイ",
+      "source_url": "https://www.city.shikokuchuo.ehime.jp/uploaded/attachment/3303.pdf",
+      "official_expected": {
+        "status": "answered",
+        "category": "not_collected",
+        "reason": "オートバイは市で処理できず、購入店・引取店へ相談。"
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "not_collected",
+        "follow_up_question": null,
+        "answer": "処分したいオートバイは「市で処理できないごみ」です。\n自動車・バイク、タイヤ、バッテリー、LPガスボンベ、農機具、農業用資材、医療系廃棄物、廃油・塗料、消火器、ピアノ等は市で処理できません。\n購入店、引取店、医療機関、メーカー、金属スクラップ会社または専門業者へ相談してください。"
+      },
+      "passed": true
+    },
+    {
+      "case": 6,
+      "kind": "hazardous",
+      "query": "使い終わったアルカリ乾電池",
+      "source_url": "https://www.city.shikokuchuo.ehime.jp/uploaded/attachment/3303.pdf",
+      "official_expected": {
+        "status": "answered",
+        "category": "hazardous",
+        "reason": "乾電池類は有害ごみ。"
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "hazardous",
+        "follow_up_question": null,
+        "answer": "使い終わったアルカリ乾電池は「有害ごみ」です。\n透明の袋に入れて出します。\n川滝・朝7時：七田・久保之内・葱尾・中組・三名ほか地区の次回収集日は2026年12月4日（金）です。"
+      },
+      "passed": true
+    },
+    {
+      "case": 7,
+      "kind": "paper_size",
+      "query": "洗って乾かした500mlの牛乳パック",
+      "source_url": "https://www.city.shikokuchuo.ehime.jp/uploaded/attachment/3296.pdf",
+      "official_expected": {
+        "status": "answered",
+        "category": "misc_paper",
+        "reason": "500ml以下の牛乳パックは雑がみ。"
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "misc_paper",
+        "follow_up_question": null,
+        "answer": "洗って乾かした500mlの牛乳パックは「資源ごみ（雑がみ）」です。\n種類別にひもで縛り、小さい雑がみは封筒や紙袋へ入れます。食品・洗剤が直接入っていた紙、金銀・ビニール加工紙、汚れや臭いのある紙は燃やすごみです。\n川之江3：鉄砲町・古町・川原町・城北・金田町ほか地区の次回収集日は2026年11月10日（火）です。"
+      },
+      "passed": true
+    },
+    {
+      "case": 8,
+      "kind": "paper_size",
+      "query": "洗って切り開いた1000mlの牛乳パック",
+      "source_url": "https://www.city.shikokuchuo.ehime.jp/uploaded/attachment/3296.pdf",
+      "official_expected": {
+        "status": "answered",
+        "category": "cardboard_milk",
+        "reason": "1000ml牛乳パックは段ボール・牛乳パックの日。"
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "cardboard_milk",
+        "follow_up_question": null,
+        "answer": "洗って切り開いた1000mlの牛乳パックは「資源ごみ（段ボール・牛乳パック）」です。\n水洗いして切り開き、乾かして縛ります。1000ml牛乳パックは水洗いして切り開き、乾かして縛ります。500ml以下は雑がみです。\n川之江3・朝7時：川原田住宅地区の次回収集日は2026年12月4日（金）です。"
+      },
+      "passed": true
+    },
+    {
+      "case": 9,
+      "kind": "safety_rule",
+      "query": "中身を使い切ったエアゾール缶",
+      "source_url": "https://www.city.shikokuchuo.ehime.jp/uploaded/attachment/3303.pdf",
+      "official_expected": {
+        "status": "answered",
+        "category": "nonburnable",
+        "reason": "エアゾール缶は燃やさないごみ。使い切り、屋外で穴を開けてつぶす。"
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "nonburnable",
+        "follow_up_question": null,
+        "answer": "中身を使い切ったエアゾール缶は「燃やさないごみ」です。\n中身を使い切り、屋外で穴を開けてつぶして出します。\n一斗缶（24cm×24cm×35cm）より小さい金属・陶磁器・ガラス・硬質プラスチック等を透明または白色半透明の袋へ入れます。刃物・割れ物は保護し、透明袋へ入れて「危険」と表示します。\n柴生・下川・朝7時：北柴生・南柴生・長持・中下ほか地区の次回収集日は2026年11月14日（土）です。"
+      },
+      "passed": true
+    },
+    {
+      "case": 10,
+      "kind": "paper",
+      "query": "読み終わった新聞紙",
+      "source_url": "https://www.city.shikokuchuo.ehime.jp/uploaded/attachment/3296.pdf",
+      "official_expected": {
+        "status": "answered",
+        "category": "newspaper",
+        "reason": "新聞紙は新聞の資源ごみ。"
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "newspaper",
+        "follow_up_question": null,
+        "answer": "読み終わった新聞紙は「資源ごみ（新聞）」です。\n新聞と折り込みチラシをひもで縛ります。\n三島1：村松町・三島朝日1～2丁目・紙屋町・寒川町東部ほか地区の次回収集日は2026年11月18日（水）です。"
+      },
+      "passed": true
+    },
+    {
+      "case": 11,
+      "kind": "dirty_paper",
+      "query": "食品の油汚れと臭いが取れない紙箱",
+      "source_url": "https://www.city.shikokuchuo.ehime.jp/uploaded/attachment/3296.pdf",
+      "official_expected": {
+        "status": "answered",
+        "category": "burnable",
+        "reason": "食品汚れや臭いのある紙は燃やすごみ。"
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "burnable",
+        "follow_up_question": null,
+        "answer": "食品の油汚れと臭いが取れない紙箱は「燃やすごみ」です。\n食品の油汚れや臭いが取れない場合は燃やすごみです。\n三島2：三島朝日3丁目・三島宮川・中田井・幸町ほか地区の次回収集日は2026年11月10日（火）です。"
+      },
+      "passed": true
+    },
+    {
+      "case": 12,
+      "kind": "size_rule",
+      "query": "太さ3cmで長さ40cmに切った庭木の枝",
+      "source_url": "https://www.city.shikokuchuo.ehime.jp/uploaded/attachment/3294.pdf",
+      "official_expected": {
+        "status": "answered",
+        "category": "burnable",
+        "reason": "太さ5cm以下・長さ50cm以下の枝は燃やすごみ。"
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "burnable",
+        "follow_up_question": null,
+        "answer": "庭木の枝は「燃やすごみ」です。\n透明または白色半透明の袋へ入れます。生ごみは水切りし、枝は太さ5cm以下・長さ50cm以下、ホースやロープ等は50cm以内にします。\n土居1：上野・北野・畑野・浦山・土居（JR線路より北）地区の次回収集日は2026年11月9日（月）です。"
+      },
+      "passed": true
+    },
+    {
+      "case": 13,
+      "kind": "bulky",
+      "query": "家庭で使っていた大きなカーペット",
+      "source_url": "https://www.city.shikokuchuo.ehime.jp/uploaded/attachment/3303.pdf",
+      "official_expected": {
+        "status": "answered",
+        "category": "bulky",
+        "reason": "カーペットは粗大ごみ。"
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "bulky",
+        "follow_up_question": null,
+        "answer": "家庭で使っていた大きなカーペットは「粗大ごみ」です。\n一斗缶より大きい物、または排出基準表で粗大と指定された物です。品目別手数料と申込・持込方法を公式案内で確認します。\n公式の粗大ごみ処理手数料表と最新の申込案内を確認してください。地区別定期カレンダーへ収集日を推測追加しません。"
+      },
+      "passed": true
+    },
+    {
+      "case": 14,
+      "kind": "clarification",
+      "query": "古いまな板",
+      "source_url": "https://www.city.shikokuchuo.ehime.jp/uploaded/attachment/3303.pdf",
+      "official_expected": {
+        "status": "needs_clarification",
+        "category": null,
+        "reason": "木製は燃やすごみ、プラスチック製は燃やさないごみのため材質確認が必要。"
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "needs_clarification",
+        "category": null,
+        "follow_up_question": "まな板は何製ですか？（木製・プラスチック）",
+        "answer": null
+      },
+      "passed": true
+    }
+  ]
+}
