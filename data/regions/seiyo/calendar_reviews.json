@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38214",
+  "version": "seiyo-2026.1",
+  "valid_from": "2026-04-01",
+  "valid_to": "2027-03-31",
+  "collection_areas": 17,
+  "calendars": 17,
+  "calendar_counts": {
+    "seiyo-01": {
+      "dates": 258,
+      "events": 318,
+      "sha256": "1502b6ad45a1b01b002f19e3e48477effc0fa5293f6bd143ecae8b9013be34a0"
+    },
+    "seiyo-02": {
+      "dates": 115,
+      "events": 343,
+      "sha256": "c476c4d7b9ec45f2ef2822374f4628467df24c57980ccd465cd0c93b0264be84"
+    },
+    "seiyo-03": {
+      "dates": 103,
+      "events": 343,
+      "sha256": "a36517d9825f4c9d8405e2efc4468b4c39bb73a6c04b59b86253289068dcb8ec"
+    },
+    "seiyo-04": {
+      "dates": 116,
+      "events": 344,
+      "sha256": "3a44094b7b803105a4576cf24a66becf16a546fd4528407e034ee4476a04b568"
+    },
+    "seiyo-05": {
+      "dates": 169,
+      "events": 301,
+      "sha256": "e6a56ca7fdc2d51fbeac4c19eb3aaa0d84bedd3bc209bf1fb09c70e0ee665056"
+    },
+    "seiyo-06": {
+      "dates": 193,
+      "events": 301,
+      "sha256": "337801fb0d24d9b388f9f9c3758c0101517102d882769bc786fce911ab6b3e30"
+    },
+    "seiyo-07": {
+      "dates": 181,
+      "events": 301,
+      "sha256": "99ce32478f3dd4ea43bb377a7063ba05d642f0a89d8eef175682a615f992744f"
+    },
+    "seiyo-08": {
+      "dates": 181,
+      "events": 297,
+      "sha256": "082d6684a26af5f3c26f6effb82df9a0292437c2e57876617cbaf71a537b5171"
+    },
+    "seiyo-09": {
+      "dates": 168,
+      "events": 297,
+      "sha256": "eaf83c55188391a13c216fb6c5268c5b8203cba1aabe9753ee8f11a837764a2f"
+    },
+    "seiyo-10": {
+      "dates": 157,
+      "events": 301,
+      "sha256": "1931ff68373cc9f8a7b58b2b15dcdc143415d6965b02332ef0df59e221ede106"
+    },
+    "seiyo-11": {
+      "dates": 227,
+      "events": 395,
+      "sha256": "a26e8a3d4dec5ec00c0e861ede9eb24fe1e967e4f5f6507904eaa72a0580ed13"
+    },
+    "seiyo-12": {
+      "dates": 64,
+      "events": 220,
+      "sha256": "b3f68b7fc4514b0b484558de82048ba46365dace79e8f9057a33f2677e02b6b6"
+    },
+    "seiyo-13": {
+      "dates": 191,
+      "events": 299,
+      "sha256": "c999aeea8d0aa4685f6ee7176503cc5d2e775d7ab922181249ce863aa44d049f"
+    },
+    "seiyo-14": {
+      "dates": 191,
+      "events": 299,
+      "sha256": "fa498d2fcf53ebc02c5e1106ebe4a644c89b52ae5c1c91704f2802445b7b01ec"
+    },
+    "seiyo-15": {
+      "dates": 238,
+      "events": 430,
+      "sha256": "43e93503d5e385f27972c72eec5c4b3e541f57bec9bd5724a83a0e514c49915c"
+    },
+    "seiyo-16": {
+      "dates": 250,
+      "events": 430,
+      "sha256": "e5929626729ed0b74c8379c275245f911fa68c14bc60afa6e18925789158b325"
+    },
+    "seiyo-17": {
+      "dates": 250,
+      "events": 430,
+      "sha256": "cec8ac0fd802cc86cdb61bf90fa55d077b8e3ce28a14607c5f59eb56dc3e559c"
+    }
+  },
+  "closures": {
+    "akehama_uwa": [
+      "2026-12-31",
+      "2027-01-01",
+      "2027-01-02",
+      "2027-01-03"
+    ],
+    "mikame": [
+      "2026-12-30",
+      "2026-12-31",
+      "2027-01-01",
+      "2027-01-02",
+      "2027-01-03"
+    ],
+    "nomura_shirokawa": [
+      "2026-08-15",
+      "2026-12-31",
+      "2027-01-01",
+      "2027-01-02",
+      "2027-01-03"
+    ]
+  },
+  "verification": {
+    "method": "令和8年度の公式17表（地区カレンダー14表と、野村もやすごみ3コース、城川2資源グループ）を画像で照合し、曜日・第N週・月別区分・休業日を実日付へ展開した。",
+    "limitations": "明浜・宇和PDF内の粗大ごみ小地区は、公式索引に住所との完全対応がないため定期通知へ追加しない。野村・城川の清掃センター受入日は公式掲載日のみ収録する。臨時変更は生成しない。",
+    "reviewed_at": "2026-11-09"
+  }
+}

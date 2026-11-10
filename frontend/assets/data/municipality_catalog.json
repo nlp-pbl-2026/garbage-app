@@ -3332,6 +3332,341 @@
         }
       },
       "addresses_asset": "assets/data/municipality_38213_addresses.json"
+    },
+    {
+      "id": "38214",
+      "version": "seiyo-2026.1",
+      "name": "西予市",
+      "prefecture_id": "38",
+      "prefecture_name": "愛媛県",
+      "registry_asset": "assets/data/municipality_38214_registry.json",
+      "profiles": {
+        "cutoff_0700": {
+          "calendar_asset": "assets/data/municipality_38214_0_calendar.json",
+          "categories": {
+            "burnable": {
+              "name": "もやすごみ",
+              "collection_type_id": "burnable",
+              "cutoff": "07:00",
+              "collection_name": "もやすごみ",
+              "color": "#31AB41"
+            },
+            "newspaper": {
+              "name": "新聞・チラシ",
+              "collection_type_id": "newspaper",
+              "cutoff": "07:00",
+              "collection_name": "新聞・チラシ",
+              "color": "#FAB81D"
+            },
+            "cardboard": {
+              "name": "段ボール",
+              "collection_type_id": "cardboard",
+              "cutoff": "07:00",
+              "collection_name": "段ボール",
+              "color": "#FAB81D"
+            },
+            "milk_carton": {
+              "name": "紙パック",
+              "collection_type_id": "milk_carton",
+              "cutoff": "07:00",
+              "collection_name": "紙パック",
+              "color": "#FAB81D"
+            },
+            "misc_paper": {
+              "name": "雑誌・紙製容器包装・雑紙",
+              "collection_type_id": "misc_paper",
+              "cutoff": "07:00",
+              "collection_name": "雑誌・雑紙",
+              "color": "#FAB81D"
+            },
+            "container_plastic": {
+              "name": "プラスチック製容器包装",
+              "collection_type_id": "container_plastic",
+              "cutoff": "07:00",
+              "collection_name": "プラスチック製容器包装",
+              "color": "#255D9B"
+            },
+            "other_plastic": {
+              "name": "その他プラスチック類",
+              "collection_type_id": "other_plastic",
+              "cutoff": "07:00",
+              "collection_name": "その他プラスチック類",
+              "color": "#E487C9"
+            },
+            "metal": {
+              "name": "金属類・スプレー缶",
+              "collection_type_id": "metal",
+              "cutoff": "07:00",
+              "collection_name": "金属類・スプレー缶",
+              "color": "#19693E"
+            },
+            "bottles": {
+              "name": "びん類",
+              "collection_type_id": "bottles",
+              "cutoff": "07:00",
+              "collection_name": "びん類",
+              "color": "#B2B1B1"
+            },
+            "cans": {
+              "name": "かん類",
+              "collection_type_id": "cans",
+              "cutoff": "07:00",
+              "collection_name": "かん類",
+              "color": "#1E9DCB"
+            },
+            "pet": {
+              "name": "ペットボトル",
+              "collection_type_id": "pet",
+              "cutoff": "07:00",
+              "collection_name": "ペットボトル",
+              "color": "#F58028"
+            },
+            "used_oil": {
+              "name": "廃食用油",
+              "collection_type_id": "used_oil",
+              "cutoff": "07:00",
+              "collection_name": "廃食用油",
+              "color": "#99D64B"
+            },
+            "small_appliance": {
+              "name": "小型家電類",
+              "collection_type_id": "small_appliance",
+              "cutoff": "07:00",
+              "collection_name": "小型家電類",
+              "color": "#CE4523"
+            },
+            "clothes": {
+              "name": "古着・古布類",
+              "collection_type_id": "clothes",
+              "cutoff": "07:00",
+              "collection_name": "古着・古布類",
+              "color": "#A72498"
+            },
+            "hazardous": {
+              "name": "有害ごみ",
+              "color": "#33B999"
+            },
+            "landfill": {
+              "name": "埋立ごみ",
+              "collection_type_id": "landfill",
+              "cutoff": "07:00",
+              "collection_name": "埋立ごみ",
+              "color": "#7F3125"
+            },
+            "bulky": {
+              "name": "粗大ごみ",
+              "collection_type_id": "bulky",
+              "cutoff": "07:00",
+              "collection_name": "粗大ごみ・清掃センター受入",
+              "color": "#878485"
+            },
+            "not_collected": {
+              "name": "排出禁止物",
+              "color": "#EE293A"
+            }
+          },
+          "bulky_waste": {
+            "category_code": "bulky",
+            "config": {
+              "municipality_id": "38214",
+              "municipality_name": "西予市",
+              "collection_frequency": "地域別カレンダーまたは清掃センター受入（公式日程を確認）",
+              "reception_hours": "宇和清掃センターは平日9:00～16:30。休日受入は公式カレンダーの確認済み日のみ。",
+              "collection_rules": "45リットル袋に入らない物は粗大ごみです。地域別の小地区日程が確認できない場合は通知を生成しません。",
+              "fee_structure_type": "fixed",
+              "application_method": "guide_only",
+              "phone_number": "0894-62-2219",
+              "web_form_url": null,
+              "information_url": "https://www.city.seiyo.ehime.jp/kakuka/seikatsu_fukushi/kankyo_eisei/gomi/calenda/index.html",
+              "steps": [
+                {
+                  "step_number": 1,
+                  "title": "大きさと地域を確認",
+                  "description": "45リットル袋に入るかと、お住まいの地域・収集小地区を確認します。"
+                },
+                {
+                  "step_number": 2,
+                  "title": "公式カレンダーを確認",
+                  "description": "地域別の収集日、シール、持込先を公式PDFで確認します。"
+                },
+                {
+                  "step_number": 3,
+                  "title": "必要なシールを購入",
+                  "description": "シール対象地域では事前に指定販売先で購入します。"
+                },
+                {
+                  "step_number": 4,
+                  "title": "指定方法で排出・持込",
+                  "description": "公式に確認できた日時・場所だけを利用し、未確認日には出しません。"
+                }
+              ]
+            }
+          }
+        },
+        "cutoff_0800": {
+          "calendar_asset": "assets/data/municipality_38214_0_calendar.json",
+          "categories": {
+            "burnable": {
+              "name": "もやすごみ",
+              "collection_type_id": "burnable",
+              "cutoff": "08:00",
+              "collection_name": "もやすごみ",
+              "color": "#31AB41"
+            },
+            "newspaper": {
+              "name": "新聞・チラシ",
+              "collection_type_id": "newspaper",
+              "cutoff": "08:00",
+              "collection_name": "新聞・チラシ",
+              "color": "#FAB81D"
+            },
+            "cardboard": {
+              "name": "段ボール",
+              "collection_type_id": "cardboard",
+              "cutoff": "08:00",
+              "collection_name": "段ボール",
+              "color": "#FAB81D"
+            },
+            "milk_carton": {
+              "name": "紙パック",
+              "collection_type_id": "milk_carton",
+              "cutoff": "08:00",
+              "collection_name": "紙パック",
+              "color": "#FAB81D"
+            },
+            "misc_paper": {
+              "name": "雑誌・紙製容器包装・雑紙",
+              "collection_type_id": "misc_paper",
+              "cutoff": "08:00",
+              "collection_name": "雑誌・雑紙",
+              "color": "#FAB81D"
+            },
+            "container_plastic": {
+              "name": "プラスチック製容器包装",
+              "collection_type_id": "container_plastic",
+              "cutoff": "08:00",
+              "collection_name": "プラスチック製容器包装",
+              "color": "#255D9B"
+            },
+            "other_plastic": {
+              "name": "その他プラスチック類",
+              "collection_type_id": "other_plastic",
+              "cutoff": "08:00",
+              "collection_name": "その他プラスチック類",
+              "color": "#E487C9"
+            },
+            "metal": {
+              "name": "金属類・スプレー缶",
+              "collection_type_id": "metal",
+              "cutoff": "08:00",
+              "collection_name": "金属類・スプレー缶",
+              "color": "#19693E"
+            },
+            "bottles": {
+              "name": "びん類",
+              "collection_type_id": "bottles",
+              "cutoff": "08:00",
+              "collection_name": "びん類",
+              "color": "#B2B1B1"
+            },
+            "cans": {
+              "name": "かん類",
+              "collection_type_id": "cans",
+              "cutoff": "08:00",
+              "collection_name": "かん類",
+              "color": "#1E9DCB"
+            },
+            "pet": {
+              "name": "ペットボトル",
+              "collection_type_id": "pet",
+              "cutoff": "08:00",
+              "collection_name": "ペットボトル",
+              "color": "#F58028"
+            },
+            "used_oil": {
+              "name": "廃食用油",
+              "collection_type_id": "used_oil",
+              "cutoff": "08:00",
+              "collection_name": "廃食用油",
+              "color": "#99D64B"
+            },
+            "small_appliance": {
+              "name": "小型家電類",
+              "collection_type_id": "small_appliance",
+              "cutoff": "08:00",
+              "collection_name": "小型家電類",
+              "color": "#CE4523"
+            },
+            "clothes": {
+              "name": "古着・古布類",
+              "collection_type_id": "clothes",
+              "cutoff": "08:00",
+              "collection_name": "古着・古布類",
+              "color": "#A72498"
+            },
+            "hazardous": {
+              "name": "有害ごみ",
+              "color": "#33B999"
+            },
+            "landfill": {
+              "name": "埋立ごみ",
+              "collection_type_id": "landfill",
+              "cutoff": "08:00",
+              "collection_name": "埋立ごみ",
+              "color": "#7F3125"
+            },
+            "bulky": {
+              "name": "粗大ごみ",
+              "collection_type_id": "bulky",
+              "cutoff": "08:00",
+              "collection_name": "粗大ごみ・清掃センター受入",
+              "color": "#878485"
+            },
+            "not_collected": {
+              "name": "排出禁止物",
+              "color": "#EE293A"
+            }
+          },
+          "bulky_waste": {
+            "category_code": "bulky",
+            "config": {
+              "municipality_id": "38214",
+              "municipality_name": "西予市",
+              "collection_frequency": "地域別カレンダーまたは清掃センター受入（公式日程を確認）",
+              "reception_hours": "宇和清掃センターは平日9:00～16:30。休日受入は公式カレンダーの確認済み日のみ。",
+              "collection_rules": "45リットル袋に入らない物は粗大ごみです。地域別の小地区日程が確認できない場合は通知を生成しません。",
+              "fee_structure_type": "fixed",
+              "application_method": "guide_only",
+              "phone_number": "0894-62-2219",
+              "web_form_url": null,
+              "information_url": "https://www.city.seiyo.ehime.jp/kakuka/seikatsu_fukushi/kankyo_eisei/gomi/calenda/index.html",
+              "steps": [
+                {
+                  "step_number": 1,
+                  "title": "大きさと地域を確認",
+                  "description": "45リットル袋に入るかと、お住まいの地域・収集小地区を確認します。"
+                },
+                {
+                  "step_number": 2,
+                  "title": "公式カレンダーを確認",
+                  "description": "地域別の収集日、シール、持込先を公式PDFで確認します。"
+                },
+                {
+                  "step_number": 3,
+                  "title": "必要なシールを購入",
+                  "description": "シール対象地域では事前に指定販売先で購入します。"
+                },
+                {
+                  "step_number": 4,
+                  "title": "指定方法で排出・持込",
+                  "description": "公式に確認できた日時・場所だけを利用し、未確認日には出しません。"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "addresses_asset": "assets/data/municipality_38214_addresses.json"
     }
   ]
 }

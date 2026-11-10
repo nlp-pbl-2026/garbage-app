@@ -60,6 +60,10 @@
     {
       "id": "38213",
       "registry_path": "shikokuchuo/registry.json"
+    },
+    {
+      "id": "38214",
+      "registry_path": "seiyo/registry.json"
     }
   ]
 }

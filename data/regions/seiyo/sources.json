@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38214",
+  "municipality_name": "西予市",
+  "retrieved_at": "2026-11-09",
+  "copyright_notice": "西予市サイトの著作権案内に従い、原本、OCR転記、生成CSV・カレンダー・Embedding索引はGit管理外とする。公開・配布前に利用条件を確認する。",
+  "sources": [
+    {"file": "guide-page.html", "url": "https://www.city.seiyo.ehime.jp/kakuka/seikatsu_fukushi/kankyo_eisei/gomi/311.html", "sha256": "9561b6a74ac126848824c371b133aaba1607295e35ef7a18aec0fdf55d5750cc"},
+    {"file": "calendar-index.html", "url": "https://www.city.seiyo.ehime.jp/kakuka/seikatsu_fukushi/kankyo_eisei/gomi/calenda/index.html", "sha256": "6229d7f61977377d058d10449f229291eb3155d61088f4fa8b02d735686b7c5f"},
+    {"file": "copyright.html", "url": "https://www.city.seiyo.ehime.jp/kakuka/seisaku_kikaku/seisakusuishin/saitonitsuite/430.html", "sha256": "e247bee9690859b00b6308c07a50bde7b8930eaee42c6453d5ea09976e9a5873"},
+    {"file": "guide-1.pdf", "url": "https://www.city.seiyo.ehime.jp/material/files/group/15/hyoushi.pdf", "sha256": "0b5c5cab82fcd0397bd1d54b040c7a922b18f1832434e60c181ee27b078e90c8"},
+    {"file": "guide-2.pdf", "url": "https://www.city.seiyo.ehime.jp/material/files/group/15/wakekata2.pdf", "sha256": "92a0a71b7fc06bf55673475204522052cd5550fd9cb11deea5196bfb8b86c89f"},
+    {"file": "guide-3.pdf", "url": "https://www.city.seiyo.ehime.jp/material/files/group/15/wakekata3.pdf", "sha256": "46ba5e57260803ec390881001845c71e58d083e4f19b5d166517347210877bd8"},
+    {"file": "dictionary.pdf", "url": "https://www.city.seiyo.ehime.jp/material/files/group/15/gomijiten.pdf", "sha256": "818087cb90805bd546b8fc84818c09e7de840a486f5972c464c56da3e84dce61"},
+    {"file": "akehama.pdf", "url": "https://www.city.seiyo.ehime.jp/material/files/group/15/R08akehama.pdf", "sha256": "6d09c7e8f5bc4cf198a4055595c9bf60ce892069cf4a97f0650fde5783820049"},
+    {"file": "uwa-1.pdf", "url": "https://www.city.seiyo.ehime.jp/material/files/group/15/R8uwa1.pdf", "sha256": "bd012a71c9ab565063f41e4635efa012f27e2686f66db593b341ef24d7049598"},
+    {"file": "uwa-2.pdf", "url": "https://www.city.seiyo.ehime.jp/material/files/group/15/R8uwa2.pdf", "sha256": "ff4efb104a5c92bf82e89b46e68f07066f873dba263534624dd960ff559d2c23"},
+    {"file": "uwa-3.pdf", "url": "https://www.city.seiyo.ehime.jp/material/files/group/15/R8uwa3.pdf", "sha256": "913ce5319b17a5f2b5e046dd0c47101d98b7eab6aeddbac594f929c65b9f2cbf"},
+    {"file": "nomura.pdf", "url": "https://www.city.seiyo.ehime.jp/material/files/group/15/R8nomura_nomura_omote.pdf", "sha256": "0d87bd9d43e3d9134563da331e5df5397b6d03bf85f4996a997dff3726553140"},
+    {"file": "nomura-course.pdf", "url": "https://www.city.seiyo.ehime.jp/material/files/group/15/R8nomura_nomura_course.pdf", "sha256": "28bf4a6f2820850ee69b4699ccee108f17467dfa1780b60b1e7fe42c6f1f0b81"},
+    {"file": "nomura-nakasuji.pdf", "url": "https://www.city.seiyo.ehime.jp/material/files/group/15/R8nomura_nakasuji_kurara_kaifuki_yokobayashi.pdf", "sha256": "7946f65c66b98afe410dbd3621215c8836018ce4da12ae4c432934e45be98463"},
+    {"file": "nomura-tanisuji.pdf", "url": "https://www.city.seiyo.ehime.jp/material/files/group/15/R8nomura_tanisuji_age_kamagawa.pdf", "sha256": "21039fabc15e43e53ee2cfc5b3a2334d3717eded24f03db0dc3ae7b2458ca577"},
+    {"file": "nomura-onaru.pdf", "url": "https://www.city.seiyo.ehime.jp/material/files/group/15/R8nomura_onaru2.pdf", "sha256": "a6ed328ab072116288240c65b6cf19d8a58b781c6ba5303f2489f50c7c0705e6"},
+    {"file": "nomura-sogawa.pdf", "url": "https://www.city.seiyo.ehime.jp/material/files/group/15/R8nomura_sogawa2.pdf", "sha256": "8c44d10ad76ab8de8458ba9aaa7febc01f913b44036aefa193281e462af108bd"},
+    {"file": "nomura-oonogahara.pdf", "url": "https://www.city.seiyo.ehime.jp/material/files/group/15/R8nomura_oonogahara.pdf", "sha256": "e5f678c3c3679d0e5fd3c6dbbe04832d5dc71eccb5102c4b58fa6158cfa79b08"},
+    {"file": "shirokawa.pdf", "url": "https://www.city.seiyo.ehime.jp/material/files/group/15/R8shirokawa.pdf", "sha256": "ec1568c031595aac8259de94103d218391175b1b97836dc3fe6259b81d10357f"},
+    {"file": "mikame-east.pdf", "url": "https://www.city.seiyo.ehime.jp/material/files/group/15/R8mikame_east.pdf", "sha256": "12ba74008ca29b7c6f0b4e70dcf22b02e5419c498bd5e75129105d14c1383b34"},
+    {"file": "mikame-south.pdf", "url": "https://www.city.seiyo.ehime.jp/material/files/group/15/R8mikame_south.pdf", "sha256": "aab378d930a4f00d622bd71b6596650a9d00870a0994dc4742b5e5799c2026b2"},
+    {"file": "mikame-north.pdf", "url": "https://www.city.seiyo.ehime.jp/material/files/group/15/R8mikame_north.pdf", "sha256": "7091adee789bb3b9ed466c06c5bd5752c9c905f4980c51971948381b2de5fade"}
+  ]
+}

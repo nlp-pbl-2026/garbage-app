@@ -1770,6 +1770,34 @@ class WasteGuideService:
         if regional:
             evidence = evidence.split("区分共通の出し方", 1)[0]
 
+        # Some official regional dictionaries split drink cartons by both the
+        # inner lining colour and a 500 ml boundary. Neither branch is a safe
+        # default when the user only says "紙パック". Ask one concrete
+        # question at a time and rely only on conditions present in the
+        # retrieved municipality's own structured evidence.
+        paper_pack_evidence = [
+            unicodedata.normalize("NFKC", document.text).split(
+                "区分共通の出し方", 1
+            )[0]
+            for document in documents
+            if document.text.startswith("品目:")
+            and "パック" in document.text.splitlines()[0]
+            and "500ml" in unicodedata.normalize("NFKC", document.text)
+        ]
+        has_lining_boundary = (
+            any("銀色" in item for item in paper_pack_evidence)
+            and any("白色" in item for item in paper_pack_evidence)
+            and any("500ml未満" in item for item in paper_pack_evidence)
+            and any("500ml以上" in item for item in paper_pack_evidence)
+        )
+        if has_lining_boundary:
+            if not any(colour in context for colour in ("銀色", "白色")):
+                return "紙パックの内側は銀色ですか、それとも白色ですか？"
+            if "白色" in context and not re.search(
+                r"\d+(?:\.\d+)?\s*(?:ml|ミリリットル)", context
+            ):
+                return "紙パックの容量は500ml未満ですか、それとも500ml以上ですか？"
+
         # Explicit opt-in for municipalities with a dimensional boundary.
         # Search rewrites and image estimates never count as a measured size.
         threshold = getattr(region.rules, "size_threshold_cm", None) if region else None

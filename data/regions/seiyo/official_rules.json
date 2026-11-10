@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38214",
+  "classification_rules": "西予市公式のごみ分類辞典と保存版ガイドに従い、他自治体の分類やEmbedding索引を流用しない。家庭で使用した物を対象とし、リサイクルできない可燃性の物はもやすごみ、識別表示や素材に応じて資源ごみへ分ける。汚れが取れない不燃性の混合素材は埋立ごみ、45リットル袋に入らない物は粗大ごみとする。家電4品目、医療廃棄物、事業系不燃ごみ等の排出禁止物は定期収集へ変換しない。材質、大きさ、汚れ、容器包装の識別表示が不明なら推測せず追加質問する。",
+  "categories": {
+    "burnable": {"name": "もやすごみ", "collection_type_id": "burnable", "collection_name": "もやすごみ", "color": "#31AB41", "instructions": "指定袋を使用し、地区名・氏名を記入します。生ごみは水切りし、汚れた可燃性資源を含みます。"},
+    "newspaper": {"name": "新聞・チラシ", "collection_type_id": "newspaper", "collection_name": "新聞・チラシ", "color": "#FAB81D", "instructions": "新聞とチラシを分け、十字に縛ります。"},
+    "cardboard": {"name": "段ボール", "collection_type_id": "cardboard", "collection_name": "段ボール", "color": "#FAB81D", "instructions": "段ボールだけを十字に縛ります。"},
+    "milk_carton": {"name": "紙パック", "collection_type_id": "milk_carton", "collection_name": "紙パック", "color": "#FAB81D", "instructions": "中が白色で500ml以上の紙パックは、すすいで切り開き、ひもで縛ります。"},
+    "misc_paper": {"name": "雑誌・紙製容器包装・雑紙", "collection_type_id": "misc_paper", "collection_name": "雑誌・雑紙", "color": "#FAB81D", "instructions": "紙類の種類を分けて十字に縛ります。ビニール・金銀加工品や汚れた物は公式辞典の区分を確認します。"},
+    "container_plastic": {"name": "プラスチック製容器包装", "collection_type_id": "container_plastic", "collection_name": "プラスチック製容器包装", "color": "#255D9B", "instructions": "識別表示を確認し、汚れを落として無色透明袋へ入れます。"},
+    "other_plastic": {"name": "その他プラスチック類", "collection_type_id": "other_plastic", "collection_name": "その他プラスチック類", "color": "#E487C9", "instructions": "製品プラスチックを無色透明袋へ入れます。発泡スチロールは別の透明袋にします。"},
+    "metal": {"name": "金属類・スプレー缶", "collection_type_id": "metal", "collection_name": "金属類・スプレー缶", "color": "#19693E", "instructions": "刃物は布等で包み、スプレー缶は中身を使い切って公式案内に従います。"},
+    "bottles": {"name": "びん類", "collection_type_id": "bottles", "collection_name": "びん類", "color": "#B2B1B1", "instructions": "ふたを外して中をすすぎ、色別にコンテナへ入れます。"},
+    "cans": {"name": "かん類", "collection_type_id": "cans", "collection_name": "かん類", "color": "#1E9DCB", "instructions": "中をすすいで指定コンテナまたはネットへ入れます。"},
+    "pet": {"name": "ペットボトル", "collection_type_id": "pet", "collection_name": "ペットボトル", "color": "#F58028", "instructions": "ふたとラベルを外し、中をすすいで無色透明袋またはネットへ入れます。"},
+    "used_oil": {"name": "廃食用油", "collection_type_id": "used_oil", "collection_name": "廃食用油", "color": "#99D64B", "instructions": "植物性油のみ。指定容器・指定場所と地域カレンダーの日時を確認します。"},
+    "small_appliance": {"name": "小型家電類", "collection_type_id": "small_appliance", "collection_name": "小型家電類", "color": "#CE4523", "instructions": "電池を外し、45リットル袋に入る物を無色透明袋へ入れます。入らない物は粗大ごみです。"},
+    "clothes": {"name": "古着・古布類", "collection_type_id": "clothes", "collection_name": "古着・古布類", "color": "#A72498", "instructions": "無色透明袋へ入れます。汚れのひどい物や下着等はもやすごみです。"},
+    "hazardous": {"name": "有害ごみ", "color": "#33B999", "answer_note": "乾電池・蛍光管等は地域の回収箱・指定場所を利用します。定期日を推測しません。", "instructions": "電池・蛍光管等を指定回収箱または指定場所へ出します。"},
+    "landfill": {"name": "埋立ごみ", "collection_type_id": "landfill", "collection_name": "埋立ごみ", "color": "#7F3125", "instructions": "割れたガラス等は布等で包み、無色透明袋へ入れます。汚れの取れない不燃性混合素材を含みます。"},
+    "bulky": {"name": "粗大ごみ", "collection_type_id": "bulky", "collection_name": "粗大ごみ・清掃センター受入", "color": "#878485", "answer_note": "45リットル袋に入らない物です。地域別PDFの小地区・シール・清掃センター受入日を確認してください。", "instructions": "45リットル袋に入らない物は粗大ごみです。確認できない小地区日程を通知へ追加しません。"},
+    "not_collected": {"name": "排出禁止物", "color": "#EE293A", "answer_note": "販売店、医療機関、施工業者、メーカーまたは専門業者へ相談してください。", "instructions": "市の定期収集には出せません。公式辞典に記載された相談先を利用します。"}
+  }
+}
