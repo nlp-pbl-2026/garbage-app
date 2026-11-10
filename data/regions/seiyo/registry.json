@@ -1,0 +1,684 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38214",
+  "municipality_name": "西予市",
+  "prefecture_id": "38",
+  "prefecture_name": "愛媛県",
+  "version": "seiyo-2026.1",
+  "valid_from": "2026-04-01",
+  "valid_to": "2027-03-31",
+  "collection_areas": [
+    {
+      "id": "38214-01",
+      "name": "明浜地区",
+      "display_name": "明浜：俵津・渡江・狩浜・高山・宮野浦・田之浜",
+      "calendar_id": "seiyo-01",
+      "rule_profile_id": "cutoff_0800",
+      "address_labels": [
+        "明浜町",
+        "俵津",
+        "渡江",
+        "狩浜",
+        "高山",
+        "宮野浦",
+        "田之浜"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.seiyo.ehime.jp/material/files/group/15/R08akehama.pdf"
+    },
+    {
+      "id": "38214-02",
+      "name": "宇和地区1",
+      "display_name": "宇和1：卯之町8～16区・鬼窪1～7区・伊賀上1～7区・多田・中川・坂戸ほか",
+      "calendar_id": "seiyo-02",
+      "rule_profile_id": "cutoff_0700",
+      "address_labels": [
+        "卯之町8～16区",
+        "鬼窪1～7区",
+        "伊賀上1～7区",
+        "みどり団地",
+        "多田",
+        "中川",
+        "坂戸"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.seiyo.ehime.jp/material/files/group/15/R8uwa1.pdf"
+    },
+    {
+      "id": "38214-03",
+      "name": "宇和地区2",
+      "display_name": "宇和2：卯之町1～7区・鬼窪8～9区・郷団地・神領団地・石城・山田ほか",
+      "calendar_id": "seiyo-03",
+      "rule_profile_id": "cutoff_0700",
+      "address_labels": [
+        "卯之町1～7区",
+        "鬼窪8～9区",
+        "郷団地",
+        "神領団地",
+        "久枝1区",
+        "ひまわり",
+        "石城",
+        "清沢",
+        "山田"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.seiyo.ehime.jp/material/files/group/15/R8uwa2.pdf"
+    },
+    {
+      "id": "38214-04",
+      "name": "宇和地区3",
+      "display_name": "宇和3：神領・久枝2～3区・野田・小野田・永長・田之筋・下宇和・明間ほか",
+      "calendar_id": "seiyo-04",
+      "rule_profile_id": "cutoff_0700",
+      "address_labels": [
+        "神領",
+        "久枝2～3区",
+        "野田",
+        "小野田",
+        "永長",
+        "れんげ",
+        "上松葉",
+        "下松葉",
+        "松葉団地",
+        "さくら",
+        "田之筋",
+        "下宇和",
+        "明間"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.seiyo.ehime.jp/material/files/group/15/R8uwa3.pdf"
+    },
+    {
+      "id": "38214-05",
+      "name": "野村（月・木コース）",
+      "display_name": "野村：もやすごみ月・木コース（資源日は共通）",
+      "calendar_id": "seiyo-05",
+      "rule_profile_id": "cutoff_0700",
+      "address_labels": [
+        "野村月木コース",
+        "パドック野村前",
+        "公園団地",
+        "愛宕",
+        "岩村",
+        "石久保"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.seiyo.ehime.jp/material/files/group/15/R8nomura_nomura_omote.pdf"
+    },
+    {
+      "id": "38214-06",
+      "name": "野村（火・金コース）",
+      "display_name": "野村：もやすごみ火・金コース（資源日は共通）",
+      "calendar_id": "seiyo-06",
+      "rule_profile_id": "cutoff_0700",
+      "address_labels": [
+        "野村火金コース",
+        "西予市野村支所",
+        "三島町",
+        "伊勢井谷",
+        "古市",
+        "太田"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.seiyo.ehime.jp/material/files/group/15/R8nomura_nomura_omote.pdf"
+    },
+    {
+      "id": "38214-07",
+      "name": "野村（水・土コース）",
+      "display_name": "野村：もやすごみ水・土コース（資源日は共通）",
+      "calendar_id": "seiyo-07",
+      "rule_profile_id": "cutoff_0700",
+      "address_labels": [
+        "野村水土コース",
+        "緑ヶ丘",
+        "権現",
+        "中村",
+        "峰",
+        "次の川"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.seiyo.ehime.jp/material/files/group/15/R8nomura_nomura_omote.pdf"
+    },
+    {
+      "id": "38214-08",
+      "name": "中筋・蔵良・貝吹・横林",
+      "display_name": "野村：中筋・蔵良・貝吹・横林",
+      "calendar_id": "seiyo-08",
+      "rule_profile_id": "cutoff_0700",
+      "address_labels": [
+        "中筋",
+        "蔵良",
+        "貝吹",
+        "横林"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.seiyo.ehime.jp/material/files/group/15/R8nomura_nakasuji_kurara_kaifuki_yokobayashi.pdf"
+    },
+    {
+      "id": "38214-09",
+      "name": "渓筋・阿下・釜川",
+      "display_name": "野村：渓筋・阿下・釜川",
+      "calendar_id": "seiyo-09",
+      "rule_profile_id": "cutoff_0700",
+      "address_labels": [
+        "渓筋",
+        "阿下",
+        "釜川"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.seiyo.ehime.jp/material/files/group/15/R8nomura_tanisuji_age_kamagawa.pdf"
+    },
+    {
+      "id": "38214-10",
+      "name": "大成",
+      "display_name": "野村：大成",
+      "calendar_id": "seiyo-10",
+      "rule_profile_id": "cutoff_0700",
+      "address_labels": [
+        "大成"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.seiyo.ehime.jp/material/files/group/15/R8nomura_onaru2.pdf"
+    },
+    {
+      "id": "38214-11",
+      "name": "惣川",
+      "display_name": "野村：惣川",
+      "calendar_id": "seiyo-11",
+      "rule_profile_id": "cutoff_0700",
+      "address_labels": [
+        "惣川"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.seiyo.ehime.jp/material/files/group/15/R8nomura_sogawa2.pdf"
+    },
+    {
+      "id": "38214-12",
+      "name": "大野ヶ原",
+      "display_name": "野村：大野ヶ原",
+      "calendar_id": "seiyo-12",
+      "rule_profile_id": "cutoff_0700",
+      "address_labels": [
+        "大野ヶ原"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.seiyo.ehime.jp/material/files/group/15/R8nomura_oonogahara.pdf"
+    },
+    {
+      "id": "38214-13",
+      "name": "城川（魚成・遊子川）",
+      "display_name": "城川：魚成・遊子川",
+      "calendar_id": "seiyo-13",
+      "rule_profile_id": "cutoff_0700",
+      "address_labels": [
+        "魚成",
+        "遊子川"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.seiyo.ehime.jp/material/files/group/15/R8shirokawa.pdf"
+    },
+    {
+      "id": "38214-14",
+      "name": "城川（土居・高川）",
+      "display_name": "城川：土居・高川",
+      "calendar_id": "seiyo-14",
+      "rule_profile_id": "cutoff_0700",
+      "address_labels": [
+        "土居",
+        "高川"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.seiyo.ehime.jp/material/files/group/15/R8shirokawa.pdf"
+    },
+    {
+      "id": "38214-15",
+      "name": "三瓶町東地区",
+      "display_name": "三瓶町東地区",
+      "calendar_id": "seiyo-15",
+      "rule_profile_id": "cutoff_0800",
+      "address_labels": [
+        "三瓶町東地区"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.seiyo.ehime.jp/material/files/group/15/R8mikame_east.pdf"
+    },
+    {
+      "id": "38214-16",
+      "name": "三瓶町南地区",
+      "display_name": "三瓶町南地区",
+      "calendar_id": "seiyo-16",
+      "rule_profile_id": "cutoff_0800",
+      "address_labels": [
+        "三瓶町南地区"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.seiyo.ehime.jp/material/files/group/15/R8mikame_south.pdf"
+    },
+    {
+      "id": "38214-17",
+      "name": "三瓶町北地区",
+      "display_name": "三瓶町北地区",
+      "calendar_id": "seiyo-17",
+      "rule_profile_id": "cutoff_0800",
+      "address_labels": [
+        "三瓶町北地区"
+      ],
+      "needs_local_confirmation": true,
+      "source_url": "https://www.city.seiyo.ehime.jp/material/files/group/15/R8mikame_north.pdf"
+    }
+  ],
+  "calendars": [
+    {
+      "id": "seiyo-01",
+      "rule_profile_id": "cutoff_0800"
+    },
+    {
+      "id": "seiyo-02",
+      "rule_profile_id": "cutoff_0700"
+    },
+    {
+      "id": "seiyo-03",
+      "rule_profile_id": "cutoff_0700"
+    },
+    {
+      "id": "seiyo-04",
+      "rule_profile_id": "cutoff_0700"
+    },
+    {
+      "id": "seiyo-05",
+      "rule_profile_id": "cutoff_0700"
+    },
+    {
+      "id": "seiyo-06",
+      "rule_profile_id": "cutoff_0700"
+    },
+    {
+      "id": "seiyo-07",
+      "rule_profile_id": "cutoff_0700"
+    },
+    {
+      "id": "seiyo-08",
+      "rule_profile_id": "cutoff_0700"
+    },
+    {
+      "id": "seiyo-09",
+      "rule_profile_id": "cutoff_0700"
+    },
+    {
+      "id": "seiyo-10",
+      "rule_profile_id": "cutoff_0700"
+    },
+    {
+      "id": "seiyo-11",
+      "rule_profile_id": "cutoff_0700"
+    },
+    {
+      "id": "seiyo-12",
+      "rule_profile_id": "cutoff_0700"
+    },
+    {
+      "id": "seiyo-13",
+      "rule_profile_id": "cutoff_0700"
+    },
+    {
+      "id": "seiyo-14",
+      "rule_profile_id": "cutoff_0700"
+    },
+    {
+      "id": "seiyo-15",
+      "rule_profile_id": "cutoff_0800"
+    },
+    {
+      "id": "seiyo-16",
+      "rule_profile_id": "cutoff_0800"
+    },
+    {
+      "id": "seiyo-17",
+      "rule_profile_id": "cutoff_0800"
+    }
+  ],
+  "rule_profiles": {
+    "cutoff_0700": {
+      "items_path": "knowledge/items.csv",
+      "embedding_index_path": "knowledge/item_embeddings.npz",
+      "index_profile_id": "citywide",
+      "calendar_path": "generated/calendar-2026.json",
+      "classification_rules": "西予市公式のごみ分類辞典と保存版ガイドに従い、他自治体の分類やEmbedding索引を流用しない。家庭で使用した物を対象とし、リサイクルできない可燃性の物はもやすごみ、識別表示や素材に応じて資源ごみへ分ける。汚れが取れない不燃性の混合素材は埋立ごみ、45リットル袋に入らない物は粗大ごみとする。家電4品目、医療廃棄物、事業系不燃ごみ等の排出禁止物は定期収集へ変換しない。材質、大きさ、汚れ、容器包装の識別表示が不明なら推測せず追加質問する。",
+      "size_question": "材質、45リットル袋に入る大きさか、容器包装の識別表示、汚れを落とせるかを教えてください。",
+      "knowledge_title": "西予市ごみ分類辞典",
+      "categories": {
+        "burnable": {
+          "name": "もやすごみ",
+          "collection_type_id": "burnable",
+          "collection_name": "もやすごみ",
+          "color": "#31AB41",
+          "cutoff": "07:00"
+        },
+        "newspaper": {
+          "name": "新聞・チラシ",
+          "collection_type_id": "newspaper",
+          "collection_name": "新聞・チラシ",
+          "color": "#FAB81D",
+          "cutoff": "07:00"
+        },
+        "cardboard": {
+          "name": "段ボール",
+          "collection_type_id": "cardboard",
+          "collection_name": "段ボール",
+          "color": "#FAB81D",
+          "cutoff": "07:00"
+        },
+        "milk_carton": {
+          "name": "紙パック",
+          "collection_type_id": "milk_carton",
+          "collection_name": "紙パック",
+          "color": "#FAB81D",
+          "cutoff": "07:00"
+        },
+        "misc_paper": {
+          "name": "雑誌・紙製容器包装・雑紙",
+          "collection_type_id": "misc_paper",
+          "collection_name": "雑誌・雑紙",
+          "color": "#FAB81D",
+          "cutoff": "07:00"
+        },
+        "container_plastic": {
+          "name": "プラスチック製容器包装",
+          "collection_type_id": "container_plastic",
+          "collection_name": "プラスチック製容器包装",
+          "color": "#255D9B",
+          "cutoff": "07:00"
+        },
+        "other_plastic": {
+          "name": "その他プラスチック類",
+          "collection_type_id": "other_plastic",
+          "collection_name": "その他プラスチック類",
+          "color": "#E487C9",
+          "cutoff": "07:00"
+        },
+        "metal": {
+          "name": "金属類・スプレー缶",
+          "collection_type_id": "metal",
+          "collection_name": "金属類・スプレー缶",
+          "color": "#19693E",
+          "cutoff": "07:00"
+        },
+        "bottles": {
+          "name": "びん類",
+          "collection_type_id": "bottles",
+          "collection_name": "びん類",
+          "color": "#B2B1B1",
+          "cutoff": "07:00"
+        },
+        "cans": {
+          "name": "かん類",
+          "collection_type_id": "cans",
+          "collection_name": "かん類",
+          "color": "#1E9DCB",
+          "cutoff": "07:00"
+        },
+        "pet": {
+          "name": "ペットボトル",
+          "collection_type_id": "pet",
+          "collection_name": "ペットボトル",
+          "color": "#F58028",
+          "cutoff": "07:00"
+        },
+        "used_oil": {
+          "name": "廃食用油",
+          "collection_type_id": "used_oil",
+          "collection_name": "廃食用油",
+          "color": "#99D64B",
+          "cutoff": "07:00"
+        },
+        "small_appliance": {
+          "name": "小型家電類",
+          "collection_type_id": "small_appliance",
+          "collection_name": "小型家電類",
+          "color": "#CE4523",
+          "cutoff": "07:00"
+        },
+        "clothes": {
+          "name": "古着・古布類",
+          "collection_type_id": "clothes",
+          "collection_name": "古着・古布類",
+          "color": "#A72498",
+          "cutoff": "07:00"
+        },
+        "hazardous": {
+          "name": "有害ごみ",
+          "color": "#33B999",
+          "answer_note": "乾電池・蛍光管等は地域の回収箱・指定場所を利用します。定期日を推測しません。"
+        },
+        "landfill": {
+          "name": "埋立ごみ",
+          "collection_type_id": "landfill",
+          "collection_name": "埋立ごみ",
+          "color": "#7F3125",
+          "cutoff": "07:00"
+        },
+        "bulky": {
+          "name": "粗大ごみ",
+          "collection_type_id": "bulky",
+          "collection_name": "粗大ごみ・清掃センター受入",
+          "color": "#878485",
+          "answer_note": "45リットル袋に入らない物です。地域別PDFの小地区・シール・清掃センター受入日を確認してください。",
+          "cutoff": "07:00"
+        },
+        "not_collected": {
+          "name": "排出禁止物",
+          "color": "#EE293A",
+          "answer_note": "販売店、医療機関、施工業者、メーカーまたは専門業者へ相談してください。"
+        }
+      },
+      "bulky_waste": {
+        "category_code": "bulky",
+        "config": {
+          "municipality_id": "38214",
+          "municipality_name": "西予市",
+          "collection_frequency": "地域別カレンダーまたは清掃センター受入（公式日程を確認）",
+          "reception_hours": "宇和清掃センターは平日9:00～16:30。休日受入は公式カレンダーの確認済み日のみ。",
+          "collection_rules": "45リットル袋に入らない物は粗大ごみです。地域別の小地区日程が確認できない場合は通知を生成しません。",
+          "fee_structure_type": "fixed",
+          "application_method": "guide_only",
+          "phone_number": "0894-62-2219",
+          "web_form_url": null,
+          "information_url": "https://www.city.seiyo.ehime.jp/kakuka/seikatsu_fukushi/kankyo_eisei/gomi/calenda/index.html",
+          "steps": [
+            {
+              "step_number": 1,
+              "title": "大きさと地域を確認",
+              "description": "45リットル袋に入るかと、お住まいの地域・収集小地区を確認します。"
+            },
+            {
+              "step_number": 2,
+              "title": "公式カレンダーを確認",
+              "description": "地域別の収集日、シール、持込先を公式PDFで確認します。"
+            },
+            {
+              "step_number": 3,
+              "title": "必要なシールを購入",
+              "description": "シール対象地域では事前に指定販売先で購入します。"
+            },
+            {
+              "step_number": 4,
+              "title": "指定方法で排出・持込",
+              "description": "公式に確認できた日時・場所だけを利用し、未確認日には出しません。"
+            }
+          ]
+        }
+      }
+    },
+    "cutoff_0800": {
+      "items_path": "knowledge/items.csv",
+      "embedding_index_path": "knowledge/item_embeddings.npz",
+      "index_profile_id": "citywide",
+      "calendar_path": "generated/calendar-2026.json",
+      "classification_rules": "西予市公式のごみ分類辞典と保存版ガイドに従い、他自治体の分類やEmbedding索引を流用しない。家庭で使用した物を対象とし、リサイクルできない可燃性の物はもやすごみ、識別表示や素材に応じて資源ごみへ分ける。汚れが取れない不燃性の混合素材は埋立ごみ、45リットル袋に入らない物は粗大ごみとする。家電4品目、医療廃棄物、事業系不燃ごみ等の排出禁止物は定期収集へ変換しない。材質、大きさ、汚れ、容器包装の識別表示が不明なら推測せず追加質問する。",
+      "size_question": "材質、45リットル袋に入る大きさか、容器包装の識別表示、汚れを落とせるかを教えてください。",
+      "knowledge_title": "西予市ごみ分類辞典",
+      "categories": {
+        "burnable": {
+          "name": "もやすごみ",
+          "collection_type_id": "burnable",
+          "collection_name": "もやすごみ",
+          "color": "#31AB41",
+          "cutoff": "08:00"
+        },
+        "newspaper": {
+          "name": "新聞・チラシ",
+          "collection_type_id": "newspaper",
+          "collection_name": "新聞・チラシ",
+          "color": "#FAB81D",
+          "cutoff": "08:00"
+        },
+        "cardboard": {
+          "name": "段ボール",
+          "collection_type_id": "cardboard",
+          "collection_name": "段ボール",
+          "color": "#FAB81D",
+          "cutoff": "08:00"
+        },
+        "milk_carton": {
+          "name": "紙パック",
+          "collection_type_id": "milk_carton",
+          "collection_name": "紙パック",
+          "color": "#FAB81D",
+          "cutoff": "08:00"
+        },
+        "misc_paper": {
+          "name": "雑誌・紙製容器包装・雑紙",
+          "collection_type_id": "misc_paper",
+          "collection_name": "雑誌・雑紙",
+          "color": "#FAB81D",
+          "cutoff": "08:00"
+        },
+        "container_plastic": {
+          "name": "プラスチック製容器包装",
+          "collection_type_id": "container_plastic",
+          "collection_name": "プラスチック製容器包装",
+          "color": "#255D9B",
+          "cutoff": "08:00"
+        },
+        "other_plastic": {
+          "name": "その他プラスチック類",
+          "collection_type_id": "other_plastic",
+          "collection_name": "その他プラスチック類",
+          "color": "#E487C9",
+          "cutoff": "08:00"
+        },
+        "metal": {
+          "name": "金属類・スプレー缶",
+          "collection_type_id": "metal",
+          "collection_name": "金属類・スプレー缶",
+          "color": "#19693E",
+          "cutoff": "08:00"
+        },
+        "bottles": {
+          "name": "びん類",
+          "collection_type_id": "bottles",
+          "collection_name": "びん類",
+          "color": "#B2B1B1",
+          "cutoff": "08:00"
+        },
+        "cans": {
+          "name": "かん類",
+          "collection_type_id": "cans",
+          "collection_name": "かん類",
+          "color": "#1E9DCB",
+          "cutoff": "08:00"
+        },
+        "pet": {
+          "name": "ペットボトル",
+          "collection_type_id": "pet",
+          "collection_name": "ペットボトル",
+          "color": "#F58028",
+          "cutoff": "08:00"
+        },
+        "used_oil": {
+          "name": "廃食用油",
+          "collection_type_id": "used_oil",
+          "collection_name": "廃食用油",
+          "color": "#99D64B",
+          "cutoff": "08:00"
+        },
+        "small_appliance": {
+          "name": "小型家電類",
+          "collection_type_id": "small_appliance",
+          "collection_name": "小型家電類",
+          "color": "#CE4523",
+          "cutoff": "08:00"
+        },
+        "clothes": {
+          "name": "古着・古布類",
+          "collection_type_id": "clothes",
+          "collection_name": "古着・古布類",
+          "color": "#A72498",
+          "cutoff": "08:00"
+        },
+        "hazardous": {
+          "name": "有害ごみ",
+          "color": "#33B999",
+          "answer_note": "乾電池・蛍光管等は地域の回収箱・指定場所を利用します。定期日を推測しません。"
+        },
+        "landfill": {
+          "name": "埋立ごみ",
+          "collection_type_id": "landfill",
+          "collection_name": "埋立ごみ",
+          "color": "#7F3125",
+          "cutoff": "08:00"
+        },
+        "bulky": {
+          "name": "粗大ごみ",
+          "collection_type_id": "bulky",
+          "collection_name": "粗大ごみ・清掃センター受入",
+          "color": "#878485",
+          "answer_note": "45リットル袋に入らない物です。地域別PDFの小地区・シール・清掃センター受入日を確認してください。",
+          "cutoff": "08:00"
+        },
+        "not_collected": {
+          "name": "排出禁止物",
+          "color": "#EE293A",
+          "answer_note": "販売店、医療機関、施工業者、メーカーまたは専門業者へ相談してください。"
+        }
+      },
+      "bulky_waste": {
+        "category_code": "bulky",
+        "config": {
+          "municipality_id": "38214",
+          "municipality_name": "西予市",
+          "collection_frequency": "地域別カレンダーまたは清掃センター受入（公式日程を確認）",
+          "reception_hours": "宇和清掃センターは平日9:00～16:30。休日受入は公式カレンダーの確認済み日のみ。",
+          "collection_rules": "45リットル袋に入らない物は粗大ごみです。地域別の小地区日程が確認できない場合は通知を生成しません。",
+          "fee_structure_type": "fixed",
+          "application_method": "guide_only",
+          "phone_number": "0894-62-2219",
+          "web_form_url": null,
+          "information_url": "https://www.city.seiyo.ehime.jp/kakuka/seikatsu_fukushi/kankyo_eisei/gomi/calenda/index.html",
+          "steps": [
+            {
+              "step_number": 1,
+              "title": "大きさと地域を確認",
+              "description": "45リットル袋に入るかと、お住まいの地域・収集小地区を確認します。"
+            },
+            {
+              "step_number": 2,
+              "title": "公式カレンダーを確認",
+              "description": "地域別の収集日、シール、持込先を公式PDFで確認します。"
+            },
+            {
+              "step_number": 3,
+              "title": "必要なシールを購入",
+              "description": "シール対象地域では事前に指定販売先で購入します。"
+            },
+            {
+              "step_number": 4,
+              "title": "指定方法で排出・持込",
+              "description": "公式に確認できた日時・場所だけを利用し、未確認日には出しません。"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

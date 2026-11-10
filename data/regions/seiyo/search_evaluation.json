@@ -1,0 +1,299 @@
+{
+  "schema_version": 1,
+  "case_sha256": "8ca03328ecca11a5680f0e778616fcd183658fa01492b9140ea4b6a333cff4dd",
+  "dataset_sha256": {
+    "registry.json": "5842c3f9ae8881543771bdbb2dee1249645dbf43c6914fc5bcccaaaef7bc6ed4",
+    "knowledge/items.csv": "dcf6885e8db34b3ff66b68c128f7c496d15f724b57fb9c2f34dfdc2af4cf8b3e",
+    "knowledge/item_embeddings.npz": "3656bbfa6fd0e8343e38a66a3d0854ac5ff67ce561b2909702b2f863bde85f88"
+  },
+  "model_ids": {
+    "rewrite_and_decide": "amazon.nova-lite-v1:0",
+    "embedding": "amazon.titan-embed-text-v2:0"
+  },
+  "summary": {
+    "cases": 14,
+    "passed": 14,
+    "failed": 0
+  },
+  "usage": {
+    "embedding_generation_model_calls": 1293,
+    "embedding_input_tokens": 112811,
+    "evaluation_model_calls": 48,
+    "evaluation_nova_calls": 32,
+    "evaluation_titan_calls": 16,
+    "estimated_actual_usd": 0.00583766,
+    "conservative_reserved_usd": 0.09426084000000001,
+    "approved_limit_usd": 0.15
+  },
+  "partial_rerun_cases": [
+    14
+  ],
+  "results": [
+    {
+      "case": 1,
+      "kind": "pet",
+      "query": "飲み終わって洗った飲料用ペットボトル",
+      "source_url": "https://www.city.seiyo.ehime.jp/material/files/group/15/gomijiten.pdf",
+      "official_expected": {
+        "status": "answered",
+        "category": "pet",
+        "reason": "飲料・酒類・醤油用ペットボトルはペットボトル。ラベルとキャップは容器包装プラスチック。"
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "pet",
+        "follow_up_question": null,
+        "answer": "飲料用ペットボトルは「ペットボトル」です。\nさっとすすいで、ラベル・キャップは「容プ」\n明浜：俵津・渡江・狩浜・高山・宮野浦・田之浜地区の次回収集日は2026年12月5日（土）です。"
+      },
+      "passed": true
+    },
+    {
+      "case": 2,
+      "kind": "hazardous",
+      "query": "使い終わった充電式バッテリー",
+      "source_url": "https://www.city.seiyo.ehime.jp/material/files/group/15/gomijiten.pdf",
+      "official_expected": {
+        "status": "answered",
+        "category": "hazardous",
+        "reason": "充電式電池のバッテリーは有害ごみで、回収ボックスへ出す。"
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "hazardous",
+        "follow_up_question": null,
+        "answer": "使い終わった充電式バッテリーは「有害ごみ」です。\n回収ボックスへ\n電池・蛍光管等を指定回収箱または指定場所へ出します。\n乾電池・蛍光管等は地域の回収箱・指定場所を利用します。定期日を推測しません。"
+      },
+      "passed": true
+    },
+    {
+      "case": 3,
+      "kind": "not_collected",
+      "query": "壊れた家庭用エアコンと室外機",
+      "source_url": "https://www.city.seiyo.ehime.jp/material/files/group/15/gomijiten.pdf",
+      "official_expected": {
+        "status": "answered",
+        "category": "not_collected",
+        "reason": "エアコンと室外機は家電4品目で、市の定期収集対象外。"
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "not_collected",
+        "follow_up_question": null,
+        "answer": "壊れた家庭用エアコンと室外機は「排出禁止物」です。\n家電4品目(P.24参照)\n市の定期収集には出せません。公式辞典に記載された相談先を利用します。\n販売店、医療機関、施工業者、メーカーまたは専門業者へ相談してください。"
+      },
+      "passed": true
+    },
+    {
+      "case": 4,
+      "kind": "paper_pack",
+      "query": "内側が白い1000mlの飲料用紙パック",
+      "source_url": "https://www.city.seiyo.ehime.jp/material/files/group/15/gomijiten.pdf",
+      "official_expected": {
+        "status": "answered",
+        "category": "milk_carton",
+        "reason": "中が白色で500ml以上の飲料容器パックは紙パック。"
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "milk_carton",
+        "follow_up_question": null,
+        "answer": "内側が白い1000mlの飲料用紙パックは「紙パック」です。\nさっとすすいで、切り開いてひもで縛る\n中が白色で500ml以上の紙パックは、すすいで切り開き、ひもで縛ります。\n宇和3：神領・久枝2～3区・野田・小野田・永長・田之筋・下宇和・明間ほか地区の次回収集日は2026年11月21日（土）です。"
+      },
+      "passed": true
+    },
+    {
+      "case": 5,
+      "kind": "paper_pack",
+      "query": "内側が銀色の飲料用紙パック",
+      "source_url": "https://www.city.seiyo.ehime.jp/material/files/group/15/gomijiten.pdf",
+      "official_expected": {
+        "status": "answered",
+        "category": "burnable",
+        "reason": "中が銀色の飲料容器パックはもやすごみ。"
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "burnable",
+        "follow_up_question": null,
+        "answer": "内側が銀色の飲料用紙パックは「もやすごみ」です。\n指定袋を使用し、地区名・氏名を記入します。生ごみは水切りし、汚れた可燃性資源を含みます。\n野村：もやすごみ月・木コース（資源日は共通）地区の次回収集日は2026年11月9日（月）です。"
+      },
+      "passed": true
+    },
+    {
+      "case": 6,
+      "kind": "safety_rule",
+      "query": "中身を使い切ってガスを抜いたエアゾール缶",
+      "source_url": "https://www.city.seiyo.ehime.jp/material/files/group/15/gomijiten.pdf",
+      "official_expected": {
+        "status": "answered",
+        "category": "metal",
+        "reason": "エアゾール缶は金属類。中身を使い切ってガスを抜く。"
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "metal",
+        "follow_up_question": null,
+        "answer": "中身を使い切ってガスを抜いたエアゾール缶は「金属類・スプレー缶」です。\n中身を使い切ってガスを抜く\n刃物は布等で包み、スプレー缶は中身を使い切って公式案内に従います。\n野村：もやすごみ火・金コース（資源日は共通）地区の次回収集日は2026年12月7日（月）です。"
+      },
+      "passed": true
+    },
+    {
+      "case": 7,
+      "kind": "paper",
+      "query": "読み終わった新聞紙",
+      "source_url": "https://www.city.seiyo.ehime.jp/material/files/group/15/gomijiten.pdf",
+      "official_expected": {
+        "status": "answered",
+        "category": "newspaper",
+        "reason": "新聞紙は新聞の資源区分。"
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "newspaper",
+        "follow_up_question": null,
+        "answer": "読み終わった新聞紙は「新聞・チラシ」です。\n新聞とチラシを分け、十字に縛ります。\n野村：もやすごみ水・土コース（資源日は共通）地区の次回収集日は2026年11月14日（土）です。"
+      },
+      "passed": true
+    },
+    {
+      "case": 8,
+      "kind": "paper",
+      "query": "空になった段ボール箱",
+      "source_url": "https://www.city.seiyo.ehime.jp/material/files/group/15/gomijiten.pdf",
+      "official_expected": {
+        "status": "answered",
+        "category": "cardboard",
+        "reason": "段ボールは段ボールの資源区分。"
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "cardboard",
+        "follow_up_question": null,
+        "answer": "空になった段ボール箱は「段ボール」です。\n段ボールだけを十字に縛ります。\n野村：中筋・蔵良・貝吹・横林地区の次回収集日は2026年11月21日（土）です。"
+      },
+      "passed": true
+    },
+    {
+      "case": 9,
+      "kind": "small_appliance",
+      "query": "個人情報を消去した古いスマートフォン",
+      "source_url": "https://www.city.seiyo.ehime.jp/material/files/group/15/gomijiten.pdf",
+      "official_expected": {
+        "status": "answered",
+        "category": "small_appliance",
+        "reason": "スマートフォンは小型家電。販売店への引取相談と個人情報への注意を案内する。"
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "small_appliance",
+        "follow_up_question": null,
+        "answer": "個人情報を消去した古いスマートフォンは「小型家電類」です。\nできるだけ販売店に引き取ってもらう個人情報の取り扱いに注意\n電池を外し、45リットル袋に入る物を無色透明袋へ入れます。入らない物は粗大ごみです。\n野村：渓筋・阿下・釜川地区の次回収集日は2026年12月3日（木）です。"
+      },
+      "passed": true
+    },
+    {
+      "case": 10,
+      "kind": "size_rule",
+      "query": "45リットル袋に入る小さなカーペット",
+      "source_url": "https://www.city.seiyo.ehime.jp/material/files/group/15/gomijiten.pdf",
+      "official_expected": {
+        "status": "answered",
+        "category": "burnable",
+        "reason": "カーペットはもやすごみ。45リットル袋に入らない場合は粗大ごみ。"
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "burnable",
+        "follow_up_question": null,
+        "answer": "45リットル袋に入る小さなカーペットは「もやすごみ」です。\n45リットルサイズの袋に入らないものは「粗大」\n指定袋を使用し、地区名・氏名を記入します。生ごみは水切りし、汚れた可燃性資源を含みます。\n野村：大成地区の次回収集日は2026年11月11日（水）です。"
+      },
+      "passed": true
+    },
+    {
+      "case": 11,
+      "kind": "size_rule",
+      "query": "45リットル袋に入らない大きなカーペット",
+      "source_url": "https://www.city.seiyo.ehime.jp/material/files/group/15/gomijiten.pdf",
+      "official_expected": {
+        "status": "answered",
+        "category": "bulky",
+        "reason": "45リットル袋に入らないカーペットは粗大ごみ。"
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "bulky",
+        "follow_up_question": null,
+        "answer": "45リットル袋に入らない大きなカーペットは「粗大ごみ」です。\n45リットルサイズの袋に入らないものは「粗大」\n野村：惣川地区の次回収集日は2026年12月13日（日）です。"
+      },
+      "passed": true
+    },
+    {
+      "case": 12,
+      "kind": "clarification",
+      "query": "古いめがね",
+      "source_url": "https://www.city.seiyo.ehime.jp/material/files/group/15/gomijiten.pdf",
+      "official_expected": {
+        "status": "needs_clarification",
+        "category": null,
+        "reason": "フレームが金属かプラスチックか、レンズがガラスかで区分が変わる。"
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "needs_clarification",
+        "category": null,
+        "follow_up_question": "めがねは何製ですか？（金属製・プラスチック製）",
+        "answer": null
+      },
+      "passed": true
+    },
+    {
+      "case": 13,
+      "kind": "bulky",
+      "query": "使わなくなった一輪車",
+      "source_url": "https://www.city.seiyo.ehime.jp/material/files/group/15/gomijiten.pdf",
+      "official_expected": {
+        "status": "answered",
+        "category": "bulky",
+        "reason": "エンジンなしの一輪車本体は粗大ごみ、タイヤのみは埋立ごみ。"
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "answered",
+        "category": "bulky",
+        "follow_up_question": null,
+        "answer": "使わなくなった一輪車は「粗大ごみ」です。\n45リットル袋に入らない物は粗大ごみです。確認できない小地区日程を通知へ追加しません。\n三瓶町東地区地区の次回収集日は2027年1月23日（土）です。"
+      },
+      "passed": true
+    },
+    {
+      "case": 14,
+      "kind": "clarification",
+      "query": "飲料用の紙パック",
+      "source_url": "https://www.city.seiyo.ehime.jp/material/files/group/15/gomijiten.pdf",
+      "official_expected": {
+        "status": "needs_clarification",
+        "category": null,
+        "reason": "内側の色と容量で、もやすごみまたは紙パックに分かれる。"
+      },
+      "actual": {
+        "http_status": 200,
+        "status": "needs_clarification",
+        "category": null,
+        "follow_up_question": "紙パックの内側は銀色ですか、それとも白色ですか？",
+        "answer": null
+      },
+      "passed": true
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38214",
+  "version": "seiyo-2026.1",
+  "official_items": 1293,
+  "items_sha256": "2ad75ba620f6463d902da3fe7389c59748f0b1845f34a67ba3fa942fbb976d63",
+  "categories": {
+    "bottles": 16,
+    "bulky": 119,
+    "burnable": 292,
+    "cans": 11,
+    "cardboard": 2,
+    "clothes": 24,
+    "container_plastic": 88,
+    "hazardous": 16,
+    "landfill": 111,
+    "metal": 151,
+    "milk_carton": 6,
+    "misc_paper": 67,
+    "newspaper": 3,
+    "not_collected": 78,
+    "other_plastic": 139,
+    "pet": 3,
+    "small_appliance": 162,
+    "used_oil": 5
+  },
+  "conditional_records": 281,
+  "source_files": [
+    "dictionary.pdf",
+    "guide-1.pdf",
+    "guide-2.pdf",
+    "guide-3.pdf"
+  ],
+  "verification": {
+    "method": "公式分別辞典27ページを300dpiで描画し、表の色区分と1,293行をOCR転記した。空欄15行は拡大画像で目視補完し、代表行を分別ガイドと照合した。",
+    "limitations": "OCRは転記補助であり、材質・45リットル袋・汚れ等の条件が質問にない場合は追加確認する。未知品目を類推だけで確定しない。",
+    "reviewed_at": "2026-11-09"
+  }
+}

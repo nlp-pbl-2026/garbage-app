@@ -1,0 +1,146 @@
+{
+  "schema_version": 1,
+  "evaluation_time": "2026-11-09T00:00:00+09:00",
+  "cases": [
+    {
+      "case": 1,
+      "municipality": "西予市",
+      "kind": "pet",
+      "input": {"municipality_id": "38214", "district_id": "38214-01", "query": "飲み終わって洗った飲料用ペットボトル", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "pet",
+      "source_url": "https://www.city.seiyo.ehime.jp/material/files/group/15/gomijiten.pdf",
+      "official_reason": "飲料・酒類・醤油用ペットボトルはペットボトル。ラベルとキャップは容器包装プラスチック。"
+    },
+    {
+      "case": 2,
+      "municipality": "西予市",
+      "kind": "hazardous",
+      "input": {"municipality_id": "38214", "district_id": "38214-02", "query": "使い終わった充電式バッテリー", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "hazardous",
+      "source_url": "https://www.city.seiyo.ehime.jp/material/files/group/15/gomijiten.pdf",
+      "official_reason": "充電式電池のバッテリーは有害ごみで、回収ボックスへ出す。"
+    },
+    {
+      "case": 3,
+      "municipality": "西予市",
+      "kind": "not_collected",
+      "input": {"municipality_id": "38214", "district_id": "38214-03", "query": "壊れた家庭用エアコンと室外機", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "not_collected",
+      "source_url": "https://www.city.seiyo.ehime.jp/material/files/group/15/gomijiten.pdf",
+      "official_reason": "エアコンと室外機は家電4品目で、市の定期収集対象外。"
+    },
+    {
+      "case": 4,
+      "municipality": "西予市",
+      "kind": "paper_pack",
+      "input": {"municipality_id": "38214", "district_id": "38214-04", "query": "内側が白い1000mlの飲料用紙パック", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "milk_carton",
+      "source_url": "https://www.city.seiyo.ehime.jp/material/files/group/15/gomijiten.pdf",
+      "official_reason": "中が白色で500ml以上の飲料容器パックは紙パック。"
+    },
+    {
+      "case": 5,
+      "municipality": "西予市",
+      "kind": "paper_pack",
+      "input": {"municipality_id": "38214", "district_id": "38214-05", "query": "内側が銀色の飲料用紙パック", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "burnable",
+      "source_url": "https://www.city.seiyo.ehime.jp/material/files/group/15/gomijiten.pdf",
+      "official_reason": "中が銀色の飲料容器パックはもやすごみ。"
+    },
+    {
+      "case": 6,
+      "municipality": "西予市",
+      "kind": "safety_rule",
+      "input": {"municipality_id": "38214", "district_id": "38214-06", "query": "中身を使い切ってガスを抜いたエアゾール缶", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "metal",
+      "source_url": "https://www.city.seiyo.ehime.jp/material/files/group/15/gomijiten.pdf",
+      "official_reason": "エアゾール缶は金属類。中身を使い切ってガスを抜く。"
+    },
+    {
+      "case": 7,
+      "municipality": "西予市",
+      "kind": "paper",
+      "input": {"municipality_id": "38214", "district_id": "38214-07", "query": "読み終わった新聞紙", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "newspaper",
+      "source_url": "https://www.city.seiyo.ehime.jp/material/files/group/15/gomijiten.pdf",
+      "official_reason": "新聞紙は新聞の資源区分。"
+    },
+    {
+      "case": 8,
+      "municipality": "西予市",
+      "kind": "paper",
+      "input": {"municipality_id": "38214", "district_id": "38214-08", "query": "空になった段ボール箱", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "cardboard",
+      "source_url": "https://www.city.seiyo.ehime.jp/material/files/group/15/gomijiten.pdf",
+      "official_reason": "段ボールは段ボールの資源区分。"
+    },
+    {
+      "case": 9,
+      "municipality": "西予市",
+      "kind": "small_appliance",
+      "input": {"municipality_id": "38214", "district_id": "38214-09", "query": "個人情報を消去した古いスマートフォン", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "small_appliance",
+      "source_url": "https://www.city.seiyo.ehime.jp/material/files/group/15/gomijiten.pdf",
+      "official_reason": "スマートフォンは小型家電。販売店への引取相談と個人情報への注意を案内する。"
+    },
+    {
+      "case": 10,
+      "municipality": "西予市",
+      "kind": "size_rule",
+      "input": {"municipality_id": "38214", "district_id": "38214-10", "query": "45リットル袋に入る小さなカーペット", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "burnable",
+      "source_url": "https://www.city.seiyo.ehime.jp/material/files/group/15/gomijiten.pdf",
+      "official_reason": "カーペットはもやすごみ。45リットル袋に入らない場合は粗大ごみ。"
+    },
+    {
+      "case": 11,
+      "municipality": "西予市",
+      "kind": "size_rule",
+      "input": {"municipality_id": "38214", "district_id": "38214-11", "query": "45リットル袋に入らない大きなカーペット", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "bulky",
+      "source_url": "https://www.city.seiyo.ehime.jp/material/files/group/15/gomijiten.pdf",
+      "official_reason": "45リットル袋に入らないカーペットは粗大ごみ。"
+    },
+    {
+      "case": 12,
+      "municipality": "西予市",
+      "kind": "clarification",
+      "input": {"municipality_id": "38214", "district_id": "38214-13", "query": "古いめがね", "clarifications": []},
+      "expected_status": "needs_clarification",
+      "question_contains_any": ["金属", "プラスチック", "材質", "レンズ", "ガラス"],
+      "source_url": "https://www.city.seiyo.ehime.jp/material/files/group/15/gomijiten.pdf",
+      "official_reason": "フレームが金属かプラスチックか、レンズがガラスかで区分が変わる。"
+    },
+    {
+      "case": 13,
+      "municipality": "西予市",
+      "kind": "bulky",
+      "input": {"municipality_id": "38214", "district_id": "38214-15", "query": "使わなくなった一輪車", "clarifications": []},
+      "expected_status": "answered",
+      "expected_category": "bulky",
+      "source_url": "https://www.city.seiyo.ehime.jp/material/files/group/15/gomijiten.pdf",
+      "official_reason": "エンジンなしの一輪車本体は粗大ごみ、タイヤのみは埋立ごみ。"
+    },
+    {
+      "case": 14,
+      "municipality": "西予市",
+      "kind": "clarification",
+      "input": {"municipality_id": "38214", "district_id": "38214-17", "query": "飲料用の紙パック", "clarifications": []},
+      "expected_status": "needs_clarification",
+      "question_contains_any": ["内側", "銀色", "白色", "容量", "500ml"],
+      "source_url": "https://www.city.seiyo.ehime.jp/material/files/group/15/gomijiten.pdf",
+      "official_reason": "内側の色と容量で、もやすごみまたは紙パックに分かれる。"
+    }
+  ]
+}
