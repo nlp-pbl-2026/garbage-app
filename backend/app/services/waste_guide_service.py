@@ -972,6 +972,13 @@ class WasteGuideService:
         if not region.is_nakajima and any((doc.uri or "").startswith("nakajima://") for doc in documents):
             raise UnsupportedRegionError("中島地域の検索根拠を使用できません。")
         clarification_items = clarifications or []
+        if municipality_id != "38201":
+            # Explicit user measurements can disqualify a same-item official
+            # range. Do this before Nova and the exact-row supplement; an
+            # inapplicable high-ranked branch is not evidence for this object.
+            documents = [doc for doc in documents if not self._diameter_excludes_document(
+                doc, query=query, clarifications=clarification_items
+            )]
         if self._is_out_of_scope(query):
             return WasteGuideResult(
                 status="unable_to_determine",
@@ -1000,6 +1007,16 @@ class WasteGuideService:
                     "地域資料で候補を見つけられませんでした。品物の用途や素材を教えてください。"
                 ),
                 decision=ClassificationDecision(is_resolved=False),
+            )
+        if municipality_id != "38201" and self._conflicting_length_boundary(
+            documents, query=query, clarifications=clarification_items
+        ):
+            return WasteGuideResult(
+                status="unable_to_determine",
+                rewritten_query=rewritten_query,
+                answer=f"{region.municipality_label}の公開資料では、この長さちょうどの区分が重なっています。分類・収集方法を市町のごみ担当窓口へ確認してください。",
+                decision=ClassificationDecision(is_resolved=False),
+                sources=documents[:3],
             )
         if region.is_nakajima:
             container_question = self._nakajima_container_question(query, clarification_items)
@@ -1208,6 +1225,59 @@ class WasteGuideService:
         # Parentheses qualify an item; text after them still identifies it.
         # プラスチック（包装）フィルム is not every plastic product.
         return re.sub(r"[（(][^）)]*[）)]", "", value).strip()
+
+    @classmethod
+    def _diameter_excludes_document(cls, document: RetrievedDocument, *, query: str, clarifications: list[dict]) -> bool:
+        first = document.text.splitlines()[0] if document.text else ""
+        if not first.startswith("品目:"):
+            return False
+        item = unicodedata.normalize("NFKC", first.removeprefix("品目:").strip())
+        if not cls._item_name_matches_query(cls._base_item_name(item), query):
+            return False
+        qualifier = re.search(r"[（(]([^）)]+)[）)]", item)
+        if not qualifier or not re.search(r"幹の太さ|太さ直径|断面径", qualifier[1]):
+            return False
+        # An OR with an unrelated dimension cannot be disproved from diameter
+        # alone. Missing/uncertain measurements never eliminate candidates.
+        if "又は" in qualifier[1] or "または" in qualifier[1]:
+            return False
+        context = unicodedata.normalize("NFKC", " ".join([query]+[str(a.get("answer", "")) for a in clarifications])).lower()
+        if re.search(r"(?:cm|センチ).{0,12}(?:不明|わから|分から|かもしれ)", context):
+            return False
+        measurement = re.search(r"(?:幹の太さ(?:は|が)?(?:直径)?|太さ(?:は|が)?(?:直径)?|断面径|直径)\s*(\d+(?:\.\d+)?)\s*(cm|mm|センチ|ミリ)", context)
+        if not measurement or "束" in context[max(0, measurement.start()-4):measurement.start()]:
+            return False
+        number = float(measurement[1]) / (10 if measurement[2] in {"mm", "ミリ"} else 1)
+        bounds = re.findall(r"(\d+(?:\.\d+)?)\s*cm(以上|以下|未満|超)", qualifier[1])
+        if not bounds:
+            return False
+        return any(not {"以上":number>=float(limit), "以下":number<=float(limit), "未満":number<float(limit), "超":number>float(limit)}[operator] for limit,operator in bounds)
+
+    @classmethod
+    def _conflicting_length_boundary(cls, documents: list[RetrievedDocument], *, query: str, clarifications: list[dict]) -> bool:
+        """Hold an explicit inclusive boundary assigned two official codes."""
+        context = unicodedata.normalize("NFKC", " ".join([query]+[str(a.get("answer", "")) for a in clarifications])).lower()
+        value = re.search(r"(?:長さ|長辺|全長)(?:が|は)?\s*(\d+(?:\.\d+)?)\s*(cm|mm|m|センチ|ミリ|メートル)(?![a-z])", context)
+        if not value or re.match(r"(?:以上|以下|未満|超|より|くらい|程度|かもしれ)", context[value.end():]):
+            return False
+        def centimeters(number,unit):
+            return float(number) * (100 if unit in {"m","メートル"} else .1 if unit in {"mm","ミリ"} else 1)
+        length = centimeters(value[1],value[2]);bounds=[]
+        for document in documents:
+            first = document.text.splitlines()[0] if document.text else ""
+            if not first.startswith("品目:"):
+                continue
+            item = first.removeprefix("品目:").strip()
+            base = cls._base_item_name(item)
+            if not cls._item_name_matches_query(base,query):
+                continue
+            code = cls._structured_values(document).get("分類コード")
+            evidence = unicodedata.normalize("NFKC",document.text).split("区分共通の出し方",1)[0]
+            for n,u,op in re.findall(r"(?:長さ|長辺)(\d+(?:\.\d+)?)(cm|mm|m)(以上|以下)",evidence):
+                if centimeters(n,u)==length:
+                    bounds.append((cls._normalize_item_key(base),code,op))
+        return any(base==other_base and code!=other_code and {op,other_op}=={"以上","以下"}
+                   for base,code,op in bounds for other_base,other_code,other_op in bounds)
 
     @classmethod
     def _item_name_matches_query(cls, item_name: str, query: str) -> bool:

@@ -132,3 +132,48 @@ def test_comparative_size_is_required_only_when_unanswered(
 )
 def test_cleaning_completion_is_not_lost_in_connected_sentence(text, expected):
     assert Service._cleaning_is_confirmed(text) == expected
+
+
+@pytest.mark.parametrize(
+    "qualifier,query,excluded",
+    [
+        ("幹の太さが3cm未満", "幹の太さ直径6cmの剪定木", True),
+        ("幹の太さが3cm以上5cm未満", "幹の太さ直径6cmの剪定木", True),
+        ("幹の太さが3cm以上5cm未満", "幹の太さ直径4cmの剪定木", False),
+        ("幹の太さが3cm以上5cm未満", "幹の太さ直径5cmの剪定木", True),
+        ("幹の太さが3cm以上5cm未満", "幹の太さ直径60mmの剪定木", True),
+        ("幹の太さが5cm以上又は長辺2m以上", "直径4cmの剪定木", False),
+        ("幹の太さが3cm未満", "剪定木の束の直径30cm", False),
+        ("幹の太さが3cm未満", "幹の太さ直径6cmかもしれない剪定木", False),
+    ],
+)
+def test_explicit_diameter_rejects_only_demonstrably_inapplicable_same_item(
+    qualifier, query, excluded
+):
+    assert (
+        Service._diameter_excludes_document(
+            doc(f"剪定木（{qualifier}）", "bulky"), query=query, clarifications=[]
+        )
+        == excluded
+    )
+
+
+@pytest.mark.parametrize(
+    "query,expected",
+    [
+        ("長さ2mちょうどの剪定木", True),
+        ("長辺200cmの剪定木", True),
+        ("長さ1mの剪定木", False),
+        ("長さ2m未満に切った剪定木", False),
+        ("長さ2mの家具", False),
+    ],
+)
+def test_conflicting_inclusive_length_boundary_is_held_not_guessed(query, expected):
+    documents = [
+        doc("剪定木（幹の太さ3cm以上5cm未満）", "bulky", "長さ2m以下にする"),
+        doc("剪定木（幹の太さ5cm以上又は長辺2m以上）", "not_collected"),
+    ]
+    assert (
+        Service._conflicting_length_boundary(documents, query=query, clarifications=[])
+        == expected
+    )
