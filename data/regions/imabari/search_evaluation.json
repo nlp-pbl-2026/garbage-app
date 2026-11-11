@@ -1,0 +1,986 @@
+{
+  "verified_at": "2026-11-12",
+  "dataset_version": "imabari-2026.1",
+  "fixture_sha256": "da4ca0ef467aa4ba0ce4ea7dd1dc7f327c3d116ebaf675b1be7b05037c731bf5",
+  "index_generation": [
+    {
+      "profile": "mainland",
+      "calls": 867,
+      "conservative_usd": 0.0333498
+    },
+    {
+      "profile": "sekizen",
+      "calls": 214,
+      "conservative_usd": 0.0090282
+    }
+  ],
+  "evaluation_model_calls": {
+    "nova": 330,
+    "titan": 168
+  },
+  "total_titan_calls": 1249,
+  "total_nova_calls": 330,
+  "total_evaluation_cases": 168,
+  "conservative_estimated_total_usd": 0.7084224,
+  "not_actual_aws_bill": true,
+  "approved_total_budget_usd": 1,
+  "phases": [
+    {
+      "phase": "initial",
+      "cases": 48,
+      "passed": 44,
+      "failed_cases": [
+        7,
+        8,
+        19,
+        28
+      ],
+      "model_calls": {
+        "nova": 95,
+        "titan": 48
+      },
+      "conservative_usd": 0.1909842,
+      "failed_answers": [
+        {
+          "case": 7,
+          "status": "needs_clarification",
+          "category": null,
+          "question": "トレイの汚れは水ですすいで落とせますか？",
+          "answer": null
+        },
+        {
+          "case": 8,
+          "status": "needs_clarification",
+          "category": null,
+          "question": "トレイの汚れは水ですすいで落とせますか？",
+          "answer": null
+        },
+        {
+          "case": 19,
+          "status": "answered",
+          "category": "hazardous",
+          "question": null,
+          "answer": "小型の充電式家電でリチウムイオン電池が取り外せませんは「有害ごみ」です。\n小型充電式電池は有害ごみ。電動自転車等の大型充電式電池は販売店等へ。\n乾電池・ボタン電池・小型充電式電池・蛍光管・水銀計。電池は端子を絶縁し有害ごみのコンテナへ。自転車等の大型充電池は販売店へ。\n北浜町地区の次回収集日は2026年5月4日（月）です。\n地域で決めた時間内に資源集積所へ。時間は自治会等で確認してください。"
+        },
+        {
+          "case": 28,
+          "status": "needs_clarification",
+          "category": null,
+          "question": "プラスチック製バケツの汚れは水ですすいで落とせますか？",
+          "answer": null
+        }
+      ]
+    },
+    {
+      "phase": "retry-1",
+      "cases": 8,
+      "passed": 7,
+      "failed_cases": [
+        8
+      ],
+      "model_calls": {
+        "nova": 15,
+        "titan": 8
+      },
+      "conservative_usd": 0.0313478,
+      "failed_answers": [
+        {
+          "case": 8,
+          "status": "answered",
+          "category": "resources",
+          "question": null,
+          "answer": "水洗いして汚れを落としたプラマーク付きの色付き食品トレイは「資源（びん・缶・紙・布・PET・白色トレイ）」です。\n汚れが落ちないもの➡　 可燃ごみへ\n飲食用びん・缶・PET本体・白色トレイは中身を出して水洗い。PET本体のキャップ・ラベルは外してプラへ。紙・布は種類別に十文字に縛る。乳白色・割れたびんは燃やせないごみ。汚れが落ちない紙・布・PET・トレイは燃やせるごみ。\n北浜町地区の次回収集日は2026年5月4日（月）です。\n地域で決めた時間内に資源集積所へ。時間は自治会等で確認してください。"
+        }
+      ]
+    },
+    {
+      "phase": "retry-2",
+      "cases": 8,
+      "passed": 8,
+      "failed_cases": [],
+      "model_calls": {
+        "nova": 15,
+        "titan": 8
+      },
+      "conservative_usd": 0.0315402,
+      "failed_answers": []
+    },
+    {
+      "phase": "final-1",
+      "cases": 48,
+      "passed": 47,
+      "failed_cases": [
+        11
+      ],
+      "model_calls": {
+        "nova": 95,
+        "titan": 48
+      },
+      "conservative_usd": 0.191314,
+      "failed_answers": [
+        {
+          "case": 11,
+          "status": "answered",
+          "category": "burnable",
+          "question": null,
+          "answer": "バケツは「燃やせるごみ」です。\n指定ごみ袋（黄色）に入れて口を縛る。資源にできない紙・布、台所ごみ等。\n北浜町地区の次回収集日は2026年4月28日（火）です。\n収集日の朝6時30分までに決められたごみ集積所へ。"
+        }
+      ]
+    },
+    {
+      "phase": "retry-3",
+      "cases": 8,
+      "passed": 8,
+      "failed_cases": [],
+      "model_calls": {
+        "nova": 15,
+        "titan": 8
+      },
+      "conservative_usd": 0.0293802,
+      "failed_answers": []
+    },
+    {
+      "phase": "final-2",
+      "cases": 48,
+      "passed": 48,
+      "failed_cases": [],
+      "model_calls": {
+        "nova": 95,
+        "titan": 48
+      },
+      "conservative_usd": 0.191478,
+      "failed_answers": []
+    }
+  ],
+  "final_suite": "final-2",
+  "latest_backend_files_sha256": {
+    "backend/app/services/waste_guide_service.py": "fcf5249f9b1ff42881bc219fbd248779ef01d80591595ed0c26f6cd79b911adb",
+    "backend/app/services/embedding_search_service.py": "b68a0b6753ed747c36a7d68ff0fe699fd509e59b70c05ed44cfdeb2104dd1be5",
+    "backend/app/services/calendar_service.py": "c6757756f29164ac2305fc6a4cec09b2f27e686b7479e5aa45f0880db81a23fe"
+  },
+  "latest_backend_matches_final_evaluation": true,
+  "post_evaluation_ui_only_change": "Shared resources calendar label now explicitly includes hazardous/dangerous streams; classification names, prompts, CSV, indices and dates unchanged.",
+  "final_cases": [
+    {
+      "case": 1,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a052",
+        "query": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+        "clarifications": []
+      },
+      "expected": "resources",
+      "check_type": "classification",
+      "passed": true,
+      "actual_status": "answered",
+      "actual_category": "resources",
+      "actual_date": "2026-05-04",
+      "actual_question": null,
+      "actual_answer": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体は「資源（びん・缶・紙・布・PET・白色トレイ）」です。\n飲料・食品用PETの本体。キャップとラベルを外して水洗い済みなら資源。汚れが落ちない本体は燃やせるごみ。外した部品の分類を本体に適用しない。\n飲食用びん・缶・PET本体・白色トレイは中身を出して水洗い。PET本体のキャップ・ラベルは外してプラへ。紙・布は種類別に十文字に縛る。乳白色・割れたびんは燃やせないごみ。汚れが落ちない紙・布・PET・トレイは燃やせるごみ。\n北浜町地区の次回収集日は2026年5月4日（月）です。\n地域で決めた時間内に資源集積所へ。時間は自治会等で確認してください。"
+    },
+    {
+      "case": 2,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a052",
+        "query": "ペットボトル本体から取り外して水洗いしたプラスチック製キャップだけ",
+        "clarifications": []
+      },
+      "expected": "plastics",
+      "check_type": "classification",
+      "passed": true,
+      "actual_status": "answered",
+      "actual_category": "plastics",
+      "actual_date": "2026-04-30",
+      "actual_question": null,
+      "actual_answer": "ペットボトル本体から取り外して水洗いしたプラスチック製キャップだけは「プラスチック製容器包装」です。\n汚れが落ちないもの➡　 可燃ごみへ\nプラマーク付きの容器包装を軽く水洗いし汚れを落とす。汚れが落ちないものは燃やせるごみ。製品プラスチックを混ぜない。\n北浜町地区の次回収集日は2026年4月30日（木）です。\n地域で決めた時間内に資源集積所へ。時間は自治会等で確認してください。"
+    },
+    {
+      "case": 3,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a052",
+        "query": "ペットボトル本体から取り外して水洗いしたプラスチック製ラベルだけ",
+        "clarifications": []
+      },
+      "expected": "plastics",
+      "check_type": "classification",
+      "passed": true,
+      "actual_status": "answered",
+      "actual_category": "plastics",
+      "actual_date": "2026-04-30",
+      "actual_question": null,
+      "actual_answer": "ペットボトル本体から取り外して水洗いしたプラスチック製ラベルは「プラスチック製容器包装」です。\nプラマーク付きの容器包装を軽く水洗いし汚れを落とす。汚れが落ちないものは燃やせるごみ。製品プラスチックを混ぜない。\n北浜町地区の次回収集日は2026年4月30日（木）です。\n地域で決めた時間内に資源集積所へ。時間は自治会等で確認してください。"
+    },
+    {
+      "case": 4,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a052",
+        "query": "洗っても汚れが落ちない飲料用ペットボトル本体",
+        "clarifications": []
+      },
+      "expected": "burnable",
+      "check_type": "classification",
+      "passed": true,
+      "actual_status": "answered",
+      "actual_category": "burnable",
+      "actual_date": "2026-04-28",
+      "actual_question": null,
+      "actual_answer": "洗っても汚れが落ちない飲料用ペットボトル本体は「燃やせるごみ」です。\n飲料・食品用PETの本体。キャップとラベルを外して水洗い済みなら資源。汚れが落ちない本体は燃やせるごみ。外した部品の分類を本体に適用しない。\n北浜町地区の次回収集日は2026年4月28日（火）です。\n収集日の朝6時30分までに決められたごみ集積所へ。"
+    },
+    {
+      "case": 5,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a052",
+        "query": "水洗いした透明なジャムのガラスびん",
+        "clarifications": []
+      },
+      "expected": "resources",
+      "check_type": "classification",
+      "passed": true,
+      "actual_status": "answered",
+      "actual_category": "resources",
+      "actual_date": "2026-05-04",
+      "actual_question": null,
+      "actual_answer": "水洗いした透明なジャムのガラスびんは「資源（びん・缶・紙・布・PET・白色トレイ）」です。\n飲食用びん・缶・PET本体・白色トレイは中身を出して水洗い。PET本体のキャップ・ラベルは外してプラへ。紙・布は種類別に十文字に縛る。乳白色・割れたびんは燃やせないごみ。汚れが落ちない紙・布・PET・トレイは燃やせるごみ。\n北浜町地区の次回収集日は2026年5月4日（月）です。\n地域で決めた時間内に資源集積所へ。時間は自治会等で確認してください。"
+    },
+    {
+      "case": 6,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a052",
+        "query": "乳白色のガラスびん",
+        "clarifications": []
+      },
+      "expected": "non_burnable",
+      "check_type": "classification",
+      "passed": true,
+      "actual_status": "answered",
+      "actual_category": "non_burnable",
+      "actual_date": "2026-05-01",
+      "actual_question": null,
+      "actual_answer": "乳白色のガラスびんは「燃やせないごみ」です。\n乳白色・割れたもの・資源に出せないものは燃やせないごみ。\n北浜町地区の次回収集日は2026年5月1日（金）です。\n収集日の朝6時30分までに決められたごみ集積所へ。"
+    },
+    {
+      "case": 7,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a052",
+        "query": "水洗いして汚れを落とした白色の食品トレイ",
+        "clarifications": []
+      },
+      "expected": "resources",
+      "check_type": "classification",
+      "passed": true,
+      "actual_status": "answered",
+      "actual_category": "resources",
+      "actual_date": "2026-05-04",
+      "actual_question": null,
+      "actual_answer": "水洗いして汚れを落とした白色の食品トレイは「資源（びん・缶・紙・布・PET・白色トレイ）」です。\n汚れが落ちないもの➡　 可燃ごみへ\n飲食用びん・缶・PET本体・白色トレイは中身を出して水洗い。PET本体のキャップ・ラベルは外してプラへ。紙・布は種類別に十文字に縛る。乳白色・割れたびんは燃やせないごみ。汚れが落ちない紙・布・PET・トレイは燃やせるごみ。\n北浜町地区の次回収集日は2026年5月4日（月）です。\n地域で決めた時間内に資源集積所へ。時間は自治会等で確認してください。"
+    },
+    {
+      "case": 8,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a052",
+        "query": "水洗いして汚れを落としたプラマーク付きの色付き食品トレイ",
+        "clarifications": []
+      },
+      "expected": "plastics",
+      "check_type": "classification",
+      "passed": true,
+      "actual_status": "answered",
+      "actual_category": "plastics",
+      "actual_date": "2026-04-30",
+      "actual_question": null,
+      "actual_answer": "水洗いして汚れを落としたプラマーク付きの色付き食品トレイは「プラスチック製容器包装」です。\nプラマーク付きの容器包装を軽く水洗いし汚れを落とす。汚れが落ちないものは燃やせるごみ。製品プラスチックを混ぜない。\n北浜町地区の次回収集日は2026年4月30日（木）です。\n地域で決めた時間内に資源集積所へ。時間は自治会等で確認してください。"
+    },
+    {
+      "case": 9,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a052",
+        "query": "洗っても油汚れが落ちないプラマーク付き食品容器",
+        "clarifications": []
+      },
+      "expected": "burnable",
+      "check_type": "classification",
+      "passed": true,
+      "actual_status": "answered",
+      "actual_category": "burnable",
+      "actual_date": "2026-04-28",
+      "actual_question": null,
+      "actual_answer": "洗っても油汚れが落ちないプラマーク付き食品容器は「燃やせるごみ」です。\n汚れが落ちない容器包装はプラ資源に出さず燃やせるごみ。\n指定ごみ袋（黄色）に入れて口を縛る。資源にできない紙・布、台所ごみ等。\n北浜町地区の次回収集日は2026年4月28日（火）です。\n収集日の朝6時30分までに決められたごみ集積所へ。"
+    },
+    {
+      "case": 10,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a052",
+        "query": "プラスチック製のバケツ、指定袋に入れて口を縛れ、片手で持ち上げても破れません",
+        "clarifications": []
+      },
+      "expected": "burnable",
+      "check_type": "classification",
+      "passed": true,
+      "actual_status": "answered",
+      "actual_category": "burnable",
+      "actual_date": "2026-04-28",
+      "actual_question": null,
+      "actual_answer": "プラスチック製のバケツは「燃やせるごみ」です。\n指定ごみ袋（黄色）に入れて口を縛る。資源にできない紙・布、台所ごみ等。\n北浜町地区の次回収集日は2026年4月28日（火）です。\n収集日の朝6時30分までに決められたごみ集積所へ。"
+    },
+    {
+      "case": 11,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a052",
+        "query": "バケツ",
+        "clarifications": []
+      },
+      "expected": null,
+      "check_type": "clarification",
+      "passed": true,
+      "actual_status": "needs_clarification",
+      "actual_category": null,
+      "actual_date": null,
+      "actual_question": "バケツは何製ですか？（木・プラスチック・金属など）",
+      "actual_answer": null
+    },
+    {
+      "case": 12,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a052",
+        "query": "アクセサリー",
+        "clarifications": []
+      },
+      "expected": null,
+      "check_type": "clarification",
+      "passed": true,
+      "actual_status": "needs_clarification",
+      "actual_category": null,
+      "actual_date": null,
+      "actual_question": "アクセサリーは何製ですか？（金属製・複合素材・木製・紙製・プラスチック製）",
+      "actual_answer": null
+    },
+    {
+      "case": 13,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a052",
+        "query": "アクセサリー",
+        "clarifications": [
+          {
+            "question": "何の素材ですか？",
+            "answer": "金属製です"
+          }
+        ]
+      },
+      "expected": "non_burnable",
+      "check_type": "classification",
+      "passed": true,
+      "actual_status": "answered",
+      "actual_category": "non_burnable",
+      "actual_date": "2026-05-01",
+      "actual_question": null,
+      "actual_answer": "アクセサリーは「燃やせないごみ」です。\n指定ごみ袋（緑色）。金属・陶磁器等。電池を外し、割れ物・刃物は紙等で包み内容を表示。\n北浜町地区の次回収集日は2026年5月1日（金）です。\n収集日の朝6時30分までに決められたごみ集積所へ。"
+    },
+    {
+      "case": 14,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a052",
+        "query": "乾いた新聞紙を十文字に縛りました",
+        "clarifications": []
+      },
+      "expected": "resources",
+      "check_type": "classification",
+      "passed": true,
+      "actual_status": "answered",
+      "actual_category": "resources",
+      "actual_date": "2026-05-04",
+      "actual_question": null,
+      "actual_answer": "乾いた新聞紙を十文字に縛りましたは「資源（びん・缶・紙・布・PET・白色トレイ）」です。\n十文字\n飲食用びん・缶・PET本体・白色トレイは中身を出して水洗い。PET本体のキャップ・ラベルは外してプラへ。紙・布は種類別に十文字に縛る。乳白色・割れたびんは燃やせないごみ。汚れが落ちない紙・布・PET・トレイは燃やせるごみ。\n北浜町地区の次回収集日は2026年5月4日（月）です。\n地域で決めた時間内に資源集積所へ。時間は自治会等で確認してください。"
+    },
+    {
+      "case": 15,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a052",
+        "query": "洗って乾かした綿の古着",
+        "clarifications": []
+      },
+      "expected": "resources",
+      "check_type": "classification",
+      "passed": true,
+      "actual_status": "answered",
+      "actual_category": "resources",
+      "actual_date": "2026-05-04",
+      "actual_question": null,
+      "actual_answer": "洗って乾かした綿の古着は「資源（びん・缶・紙・布・PET・白色トレイ）」です。\n飲食用びん・缶・PET本体・白色トレイは中身を出して水洗い。PET本体のキャップ・ラベルは外してプラへ。紙・布は種類別に十文字に縛る。乳白色・割れたびんは燃やせないごみ。汚れが落ちない紙・布・PET・トレイは燃やせるごみ。\n北浜町地区の次回収集日は2026年5月4日（月）です。\n地域で決めた時間内に資源集積所へ。時間は自治会等で確認してください。"
+    },
+    {
+      "case": 16,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a052",
+        "query": "取り外した家庭用の小型リチウムイオン電池",
+        "clarifications": []
+      },
+      "expected": "hazardous",
+      "check_type": "classification",
+      "passed": true,
+      "actual_status": "answered",
+      "actual_category": "hazardous",
+      "actual_date": "2026-05-04",
+      "actual_question": null,
+      "actual_answer": "取り外した家庭用の小型リチウムイオン電池は「有害ごみ」です。\n家庭用の小型充電池は取り外して端子を絶縁し有害ごみのコンテナへ。大型の電動自転車用等は対象外。\n乾電池・ボタン電池・小型充電式電池・蛍光管・水銀計。電池は端子を絶縁し有害ごみのコンテナへ。自転車等の大型充電池は販売店へ。\n北浜町地区の次回収集日は2026年5月4日（月）です。\n地域で決めた時間内に資源集積所へ。時間は自治会等で確認してください。"
+    },
+    {
+      "case": 17,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a052",
+        "query": "電動アシスト自転車から外した大型充電式バッテリー",
+        "clarifications": []
+      },
+      "expected": "not_collected",
+      "check_type": "classification",
+      "passed": true,
+      "actual_status": "answered",
+      "actual_category": "not_collected",
+      "actual_date": null,
+      "actual_question": null,
+      "actual_answer": "電動アシスト自転車から外した大型充電式バッテリーは「市では収集しない」です。\n販売店又は今治市許可業者へ処理を依頼\n家電リサイクル4品目・パソコン・大型充電池等は品目別の販売店・専門業者の案内を確認。通常の収集日を付けない。\n家電リサイクル4品目・パソコン・大型充電池等は品目別の販売店・専門業者の案内を確認。通常の収集日を付けない。"
+    },
+    {
+      "case": 18,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a052",
+        "query": "完全に使い切ったスプレー缶、穴はあけていません",
+        "clarifications": []
+      },
+      "expected": "dangerous",
+      "check_type": "classification",
+      "passed": true,
+      "actual_status": "answered",
+      "actual_category": "dangerous",
+      "actual_date": "2026-05-04",
+      "actual_question": null,
+      "actual_answer": "完全に使い切ったスプレー缶、穴はあけていませんは「危険ごみ」です。\n中身を使い切る(穴はあけなくてもかまいません）\nスプレー缶・カセットボンベ・使い捨てライターのみ。使い切り、穴をあけずに指定コンテナへ。安全に使い切れない場合は市へ確認。\n北浜町地区の次回収集日は2026年5月4日（月）です。\n地域で決めた時間内に資源集積所へ。時間は自治会等で確認してください。"
+    },
+    {
+      "case": 19,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a052",
+        "query": "小型の充電式家電でリチウムイオン電池が取り外せません",
+        "clarifications": []
+      },
+      "expected": "small_appliances",
+      "check_type": "classification",
+      "passed": true,
+      "actual_status": "answered",
+      "actual_category": "small_appliances",
+      "actual_date": null,
+      "actual_question": null,
+      "actual_answer": "小型の充電式家電は「小型家電回収」です。\n電池が外せない製品は不燃にしない。現行公式案内に従い電池ごと小型家電回収ボックス又は資源リサイクル課へ持参。回収ボックスの投入口は縦15cm横25cm。\n回収ボックスの投入口（縦15cm×横25cm）に入る対象品。電池は原則外す。現行の充電式電池案内では取り外せない製品は電池ごと小型家電回収ボックス又は資源リサイクル課へ持参できる。対象・寸法・受付を確認。"
+    },
+    {
+      "case": 20,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a052",
+        "query": "壊れた液晶テレビ",
+        "clarifications": []
+      },
+      "expected": "not_collected",
+      "check_type": "classification",
+      "passed": true,
+      "actual_status": "answered",
+      "actual_category": "not_collected",
+      "actual_date": null,
+      "actual_question": null,
+      "actual_answer": "壊れた液晶テレビは「市では収集しない」です。\n販売店又は今治市許可業者へ処理を依頼\n家電リサイクル4品目・パソコン・大型充電池等は品目別の販売店・専門業者の案内を確認。通常の収集日を付けない。\n家電リサイクル4品目・パソコン・大型充電池等は品目別の販売店・専門業者の案内を確認。通常の収集日を付けない。"
+    },
+    {
+      "case": 21,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a119",
+        "query": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+        "clarifications": []
+      },
+      "expected": "resources",
+      "check_type": "classification",
+      "passed": true,
+      "actual_status": "answered",
+      "actual_category": "resources",
+      "actual_date": "2026-04-30",
+      "actual_question": null,
+      "actual_answer": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体は「資源物（缶・びん・PET）」です。\n根拠に基づく出し方と注意点：2026年度資料：飲食用PET本体はキャップ・ラベルを外し水洗いして資源物。外したキャップ・ラベルはプラスチック資源。本体に付属品の区分を適用しない。\n関前：岡村地区の次回収集日は2026年4月30日（木）です。\n収集日当日の朝8時30分までに、地区の決められた場所へ。"
+    },
+    {
+      "case": 22,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a119",
+        "query": "ペットボトルから取り外して水洗いしたプラスチック製キャップだけ",
+        "clarifications": []
+      },
+      "expected": "plastics",
+      "check_type": "classification",
+      "passed": true,
+      "actual_status": "answered",
+      "actual_category": "plastics",
+      "actual_date": "2026-04-30",
+      "actual_question": null,
+      "actual_answer": "ペットボトルから取り外して水洗いしたプラスチック製キャップは「プラスチック資源」です。\n根拠2: 外したペットボトルのキャップ・ラベル（プラスチック製）はプラスチック資源です。汚れが落ちないものは燃えるごみ。PET本体は別に資源物。\n関前：岡村地区の次回収集日は2026年4月30日（木）です。\n収集日当日の朝8時30分までに、地区の決められた場所へ。"
+    },
+    {
+      "case": 23,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a119",
+        "query": "洗って乾かした綿の古着",
+        "clarifications": []
+      },
+      "expected": "burnable",
+      "check_type": "classification",
+      "passed": true,
+      "actual_status": "answered",
+      "actual_category": "burnable",
+      "actual_date": "2026-04-28",
+      "actual_question": null,
+      "actual_answer": "洗って乾かした綿の古着は「燃えるごみ」です。\n指定ごみ袋（黄色）に入れて口を縛る。資源にできない紙・布、台所ごみ等。\n関前：岡村地区の次回収集日は2026年4月28日（火）です。\n収集日当日の朝8時30分までに、地区の決められた場所へ。"
+    },
+    {
+      "case": 24,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a119",
+        "query": "使い切ったスプレー缶で穴はあけていません",
+        "clarifications": []
+      },
+      "expected": "hazardous_dangerous",
+      "check_type": "classification",
+      "passed": true,
+      "actual_status": "answered",
+      "actual_category": "hazardous_dangerous",
+      "actual_date": "2026-05-14",
+      "actual_question": null,
+      "actual_answer": "使い切ったスプレー缶で穴はあけていませんは「有害ごみ・危険ごみ」です。\n穴あけ不要。出来る限り中身を使い切ってください。\n2026年度案内：乾電池・ボタン電池・リチウム電池・ニカド電池・リチウムイオン電池、蛍光管、水銀体温計。資源物ステーションの有害・危険ごみコンテナへ。割れた蛍光管は燃えないごみ。スプレー缶・カセットボンベ・ライターは使い切り穴をあけない。大型のバッテリー等は販売店へ。\n関前：岡村地区の次回収集日は2026年5月14日（木）です。\n収集日当日の朝8時30分までに、地区の決められた場所へ。"
+    },
+    {
+      "case": 25,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a119",
+        "query": "取り外した家庭用の小型リチウムイオン電池",
+        "clarifications": []
+      },
+      "expected": "hazardous_dangerous",
+      "check_type": "classification",
+      "passed": true,
+      "actual_status": "answered",
+      "actual_category": "hazardous_dangerous",
+      "actual_date": "2026-05-14",
+      "actual_question": null,
+      "actual_answer": "取り外した家庭用の小型リチウムイオン電池は「有害ごみ・危険ごみ」です。\n2026年度資料にリチウムイオン電池が明記され、有害・危険ごみコンテナで回収。大型バッテリーは販売店等へ。\n2026年度案内：乾電池・ボタン電池・リチウム電池・ニカド電池・リチウムイオン電池、蛍光管、水銀体温計。資源物ステーションの有害・危険ごみコンテナへ。割れた蛍光管は燃えないごみ。スプレー缶・カセットボンベ・ライターは使い切り穴をあけない。大型のバッテリー等は販売店へ。\n関前：岡村地区の次回収集日は2026年5月14日（木）です。\n収集日当日の朝8時30分までに、地区の決められた場所へ。"
+    },
+    {
+      "case": 26,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a119",
+        "query": "割れてしまった飲料用のガラスびん",
+        "clarifications": []
+      },
+      "expected": "non_burnable",
+      "check_type": "classification",
+      "passed": true,
+      "actual_status": "answered",
+      "actual_category": "non_burnable",
+      "actual_date": "2026-04-28",
+      "actual_question": null,
+      "actual_answer": "割れてしまった飲料用のガラスびんは「燃えないごみ」です。\n2026年度のガラス類の扱いを優先。割れたガラスは丈夫な布や紙で包んで燃えないごみ。\n関前：岡村地区の次回収集日は2026年4月28日（火）です。\n収集日当日の朝8時30分までに、地区の決められた場所へ。"
+    },
+    {
+      "case": 27,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a119",
+        "query": "乾いた新聞紙を十文字に縛りました",
+        "clarifications": []
+      },
+      "expected": "paper",
+      "check_type": "classification",
+      "passed": true,
+      "actual_status": "answered",
+      "actual_category": "paper",
+      "actual_date": "2026-05-07",
+      "actual_question": null,
+      "actual_answer": "乾いた新聞紙を十文字に縛りましたは「資源物（紙類）」です。\nひもで十文字に縛って出してください。※チラシ、広告と一緒で可\n新聞・雑誌・段ボール・紙パックは種類別に十文字に縛り資源ステーションへ。紙パックは洗い、乾かして開く。汚れた紙・リサイクルできない紙は燃えるごみ。\n関前：岡村地区の次回収集日は2026年5月7日（木）です。\n収集日当日の朝8時30分までに、地区の決められた場所へ。"
+    },
+    {
+      "case": 28,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a119",
+        "query": "金属部品がないプラスチックだけのバケツ、長辺20cmで洗って汚れを落としました",
+        "clarifications": []
+      },
+      "expected": "plastics",
+      "check_type": "classification",
+      "passed": true,
+      "actual_status": "answered",
+      "actual_category": "plastics",
+      "actual_date": "2026-04-30",
+      "actual_question": null,
+      "actual_answer": "プラスチック製バケツは「プラスチック資源」です。\n2026年度：プラスチックのみ、50cm未満で水洗いして汚れを落とした製品はプラスチック資源。金属が外せないものは燃えないごみ。50cm以上・汚れが落ちないものは燃えるごみ（指定袋に入らなければ粗大）。材質・大きさが未確認なら質問。\n関前：岡村地区の次回収集日は2026年4月30日（木）です。\n収集日当日の朝8時30分までに、地区の決められた場所へ。"
+    },
+    {
+      "case": 29,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a119",
+        "query": "プラスチックのバケツ",
+        "clarifications": []
+      },
+      "expected": null,
+      "check_type": "clarification",
+      "passed": true,
+      "actual_status": "needs_clarification",
+      "actual_category": null,
+      "actual_date": null,
+      "actual_question": "指定ごみ袋に入れて口を縛り、持ち上げても袋が破れない大きさ・重さですか？",
+      "actual_answer": null
+    },
+    {
+      "case": 30,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a119",
+        "query": "金属製のバケツで、指定袋大に入れて口を縛れます",
+        "clarifications": []
+      },
+      "expected": "non_burnable",
+      "check_type": "classification",
+      "passed": true,
+      "actual_status": "answered",
+      "actual_category": "non_burnable",
+      "actual_date": "2026-04-28",
+      "actual_question": null,
+      "actual_answer": "金属製のバケツは「燃えないごみ」です。\n指定ごみ袋（緑色）に入れて口を縛って出してください。金属・陶磁器等。電池を外し、割れ物・刃物は紙等で包み内容を表示。\n関前：岡村地区の次回収集日は2026年4月28日（火）です。\n収集日当日の朝8時30分までに、地区の決められた場所へ。"
+    },
+    {
+      "case": 31,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a119",
+        "query": "長辺1.5mの木製タンス、指定袋大に入りません",
+        "clarifications": []
+      },
+      "expected": "bulky",
+      "check_type": "classification",
+      "passed": true,
+      "actual_status": "answered",
+      "actual_category": "bulky",
+      "actual_date": "2026-04-28",
+      "actual_question": null,
+      "actual_answer": "長辺1.5mの木製タンス、指定袋大に入りませんは「粗大ごみ」です。\n2m未満／300円\n指定袋「大」に入り口を閉じられない家具等。関前開発総合センター横の指定場所へ、公式カレンダーの粗大ごみ収集日の朝8時30分までに処理券を貼って搬出。券1枚300円、必要枚数・品目条件は関前支所（0897-88-2111）で確認。大量ごみは施設搬入の案内を確認。\n関前：岡村地区の次回収集日は2026年4月28日（火）です。\n収集日当日の朝8時30分までに、地区の決められた場所へ。"
+    },
+    {
+      "case": 32,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a119",
+        "query": "壊れたノートパソコン",
+        "clarifications": []
+      },
+      "expected": "not_collected",
+      "check_type": "classification",
+      "passed": true,
+      "actual_status": "answered",
+      "actual_category": "not_collected",
+      "actual_date": null,
+      "actual_question": null,
+      "actual_answer": "壊れたノートパソコンは「市では収集しない」です。\n販売店やメーカーに処理を依頼してください。\n家電リサイクル4品目・パソコン・大型充電池等は品目別の販売店・専門業者の案内を確認。通常の収集日を付けない。\n家電リサイクル4品目・パソコン・大型充電池等は品目別の販売店・専門業者の案内を確認。通常の収集日を付けない。"
+    },
+    {
+      "case": 33,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a012",
+        "query": "バナナの皮",
+        "clarifications": []
+      },
+      "expected": "burnable",
+      "check_type": "classification",
+      "passed": true,
+      "actual_status": "answered",
+      "actual_category": "burnable",
+      "actual_date": "2026-04-30",
+      "actual_question": null,
+      "actual_answer": "バナナの皮は「燃やせるごみ」です。\n指定ごみ袋（黄色）に入れて口を縛る。資源にできない紙・布、台所ごみ等。\n離島：馬島地区の次回収集日は2026年4月30日（木）です。\n波止浜港8時40分着（第3便）の各島の出航時刻までに、各島の指定の港へ。出航時刻は船便で確認してください。"
+    },
+    {
+      "case": 34,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a012",
+        "query": "水洗いしたプラマーク付きのお菓子の袋",
+        "clarifications": []
+      },
+      "expected": "plastics",
+      "check_type": "classification",
+      "passed": true,
+      "actual_status": "answered",
+      "actual_category": "plastics",
+      "actual_date": "2026-05-08",
+      "actual_question": null,
+      "actual_answer": "水洗いしたプラマーク付きのお菓子の袋は「プラスチック製容器包装」です。\nプラマーク付きの容器包装を軽く水洗いし汚れを落とす。汚れが落ちないものは燃やせるごみ。製品プラスチックを混ぜない。\n離島：馬島地区の次回収集日は2026年5月8日（金）です。\n波止浜港8時40分着（第3便）の各島の出航時刻までに、各島の指定の港へ。出航時刻は船便で確認してください。"
+    },
+    {
+      "case": 35,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a210",
+        "query": "バナナの皮",
+        "clarifications": []
+      },
+      "expected": "burnable",
+      "check_type": "classification",
+      "passed": true,
+      "actual_status": "answered",
+      "actual_category": "burnable",
+      "actual_date": "2026-05-01",
+      "actual_question": null,
+      "actual_answer": "バナナの皮は「燃やせるごみ」です。\n指定ごみ袋（黄色）に入れて口を縛る。資源にできない紙・布、台所ごみ等。\n離島：宮窪町・鵜島地区の次回収集日は2026年5月1日（金）です。\n収集日当日の朝8時30分までに、地区の決められた場所へ。"
+    },
+    {
+      "case": 36,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a210",
+        "query": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+        "clarifications": []
+      },
+      "expected": "resources",
+      "check_type": "classification",
+      "passed": true,
+      "actual_status": "answered",
+      "actual_category": "resources",
+      "actual_date": "2026-05-05",
+      "actual_question": null,
+      "actual_answer": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体は「資源（びん・缶・紙・布・PET・白色トレイ）」です。\n飲料・食品用PETの本体。キャップとラベルを外して水洗い済みなら資源。汚れが落ちない本体は燃やせるごみ。外した部品の分類を本体に適用しない。\n飲食用びん・缶・PET本体・白色トレイは中身を出して水洗い。PET本体のキャップ・ラベルは外してプラへ。紙・布は種類別に十文字に縛る。乳白色・割れたびんは燃やせないごみ。汚れが落ちない紙・布・PET・トレイは燃やせるごみ。\n離島：宮窪町・鵜島地区の次回収集日は2026年5月5日（火）です。\n収集日当日の朝8時30分までに、地区の決められた場所へ。"
+    },
+    {
+      "case": 37,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a118",
+        "query": "乾いた新聞紙を十文字に縛りました",
+        "clarifications": []
+      },
+      "expected": "paper",
+      "check_type": "classification",
+      "passed": true,
+      "actual_status": "answered",
+      "actual_category": "paper",
+      "actual_date": "2026-05-01",
+      "actual_question": null,
+      "actual_answer": "乾いた新聞紙を十文字に縛りましたは「資源物（紙類）」です。\nひもで十文字に縛って出してください。※チラシ、広告と一緒で可\n新聞・雑誌・段ボール・紙パックは種類別に十文字に縛り資源ステーションへ。紙パックは洗い、乾かして開く。汚れた紙・リサイクルできない紙は燃えるごみ。\n関前：大下地区の次回収集日は2026年5月1日（金）です。\n収集日当日の朝8時30分までに、地区の決められた場所へ。"
+    },
+    {
+      "case": 38,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a119",
+        "query": "乾いた新聞紙を十文字に縛りました",
+        "clarifications": []
+      },
+      "expected": "paper",
+      "check_type": "classification",
+      "passed": true,
+      "actual_status": "answered",
+      "actual_category": "paper",
+      "actual_date": "2026-05-07",
+      "actual_question": null,
+      "actual_answer": "乾いた新聞紙を十文字に縛りましたは「資源物（紙類）」です。\nひもで十文字に縛って出してください。※チラシ、広告と一緒で可\n新聞・雑誌・段ボール・紙パックは種類別に十文字に縛り資源ステーションへ。紙パックは洗い、乾かして開く。汚れた紙・リサイクルできない紙は燃えるごみ。\n関前：岡村地区の次回収集日は2026年5月7日（木）です。\n収集日当日の朝8時30分までに、地区の決められた場所へ。"
+    },
+    {
+      "case": 39,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a052",
+        "query": "水洗いして中身を空にした飲料用アルミ缶です",
+        "clarifications": []
+      },
+      "expected": "resources",
+      "check_type": "classification",
+      "passed": true,
+      "actual_status": "answered",
+      "actual_category": "resources",
+      "actual_date": "2026-05-04",
+      "actual_question": null,
+      "actual_answer": "飲料用アルミ缶は「資源（びん・缶・紙・布・PET・白色トレイ）」です。\n缶内を軽く水洗いする\n北浜町地区の次回収集日は2026年5月4日（月）です。\n地域で決めた時間内に資源集積所へ。時間は自治会等で確認してください。"
+    },
+    {
+      "case": 40,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a052",
+        "query": "",
+        "clarifications": []
+      },
+      "expected": null,
+      "check_type": "clarification",
+      "passed": true,
+      "actual_status": "needs_clarification",
+      "actual_category": null,
+      "actual_date": null,
+      "actual_question": "ペットボトルの汚れは水ですすいで落とせますか？",
+      "actual_answer": null
+    },
+    {
+      "case": 41,
+      "input": {
+        "municipality_id": "38201",
+        "district_id": "38201-08",
+        "query": "キャップとラベルを外して水洗いした飲料用ペットボトル本体",
+        "clarifications": []
+      },
+      "expected": "ペット",
+      "check_type": "classification",
+      "passed": true,
+      "actual_status": "answered",
+      "actual_category": "ペット",
+      "actual_date": "2026-05-06",
+      "actual_question": null,
+      "actual_answer": "飲料用ペットボトル本体は「ペットボトル」です。\n根拠に基づく出し方と注意点: キャップははずして「プラ」 ボトルはすすいで出す\n清水地区の次回収集日は2026年5月6日（水）です。"
+    },
+    {
+      "case": 42,
+      "input": {
+        "municipality_id": "38204",
+        "district_id": "38204-01",
+        "query": "中身を空にして水洗いした飲料用アルミ缶",
+        "clarifications": []
+      },
+      "expected": "cans",
+      "check_type": "classification",
+      "passed": true,
+      "actual_status": "answered",
+      "actual_category": "cans",
+      "actual_date": "2026-05-20",
+      "actual_question": null,
+      "actual_answer": "中身を空にして水洗いした飲料用アルミ缶は「かん類」です。\n中を洗って。汚れが落ちないものは不燃ごみ\n飲料・食品のかんは中を洗い、無色透明の袋またはコンテナに入れる。汚れが落ちないものは燃やさないごみ。家庭から出たものに限り、収集日の午前8時までに地域の指定場所へ出す。一度に出せる量は3袋まで\n愛宕、大平（愛宕山道路沿い）、片山町、幸町（愛宕山道路沿い）、清水町花小路、大正町、大門、（花小路）、浜田町、東新川、松蔭町、松本町（愛宕山道路沿い）、矢野町2～4地区の次回収集日は2026年5月20日（水）です。"
+    },
+    {
+      "case": 43,
+      "input": {
+        "municipality_id": "38210",
+        "district_id": "38210-iyo-south",
+        "query": "キャップ・ラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体。プラマークはありません",
+        "clarifications": []
+      },
+      "expected": "pet_bottles",
+      "check_type": "classification",
+      "passed": true,
+      "actual_status": "answered",
+      "actual_category": "pet_bottles",
+      "actual_date": "2026-05-19",
+      "actual_question": null,
+      "actual_answer": "キャップ・ラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体。プラマークはありませんは「ペットボトル」です。\nすすいでから出す\nPETマーク付きの食品・飲料容器。さっと水洗いし、キャップとラベルは外してプラスチック製容器包装へ。本体と分ける。収集日の午前8時30分までに地域の所定の場所へ。一度に45リットル以下の袋3つまで。\n南山崎（上唐川・下唐川・大平上・大平下、平岡・鵜崎を除く）、鳥ノ木地区の次回収集日は2026年5月19日（火）です。"
+    },
+    {
+      "case": 44,
+      "input": {
+        "municipality_id": "38442",
+        "district_id": "38442-01",
+        "query": "使い終わったアルカリ乾電池",
+        "clarifications": []
+      },
+      "expected": "hazardous",
+      "check_type": "classification",
+      "passed": true,
+      "actual_status": "answered",
+      "actual_category": "hazardous",
+      "actual_date": "2026-08-26",
+      "actual_question": null,
+      "actual_answer": "使い終わったアルカリ乾電池は「有害ごみ」です。\n蛍光管・乾電池（アルカリ・マンガン）・白熱電球・水銀体温計等。45リットルの市販の無色透明袋へ。乾電池は割れ防止のため別の小さな無色透明袋に入れる。長い蛍光管は両側から袋をかぶせる。収集日当日の午前8時までに地域のごみステーションへ。前夜には出さない。\n伊方地域：河内、湊浦、小中浦、中浦、川永田、豊之浦地区の次回収集日は2026年8月26日（水）です。"
+    },
+    {
+      "case": 45,
+      "input": {
+        "municipality_id": "38205",
+        "district_id": "38205-01",
+        "query": "使い終わったモバイルバッテリー",
+        "clarifications": []
+      },
+      "expected": "hazardous",
+      "check_type": "classification",
+      "passed": true,
+      "actual_status": "answered",
+      "actual_category": "hazardous",
+      "actual_date": "2026-06-29",
+      "actual_question": null,
+      "actual_answer": "使い終わったモバイルバッテリーは「有害ごみ」です。\n2026年1月から有害ごみ。端子を絶縁し透明袋で有害ごみコンテナへ（現行ガイド13ページ）。\n蛍光灯・乾電池・水銀式体温計・モバイルバッテリー。種類別の透明袋でコンテナへ。電池の端子を絶縁する。\n大生院、大永山、萩生（国道11号線より南）地区の次回収集日は2026年6月29日（月）です。"
+    },
+    {
+      "case": 46,
+      "input": {
+        "municipality_id": "38215",
+        "district_id": "38215-01",
+        "query": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+        "clarifications": []
+      },
+      "expected": "pet_bottles",
+      "check_type": "classification",
+      "passed": true,
+      "actual_status": "answered",
+      "actual_category": "pet_bottles",
+      "actual_date": "2026-05-10",
+      "actual_question": null,
+      "actual_answer": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体は「ペットボトル」です。\nPET本体はキャップ・ラベルを外し水洗いし軽くつぶしてネットへ。外したプラ製の部品はプラスチック類。\n重信：山之内地区の次回収集日は2026年5月10日（日）です。\n搬出時刻は地域で確認してください。期限未確認の区分は、検索の次回収集日を翌日以降で案内します。"
+    },
+    {
+      "case": 47,
+      "input": {
+        "municipality_id": "38386",
+        "district_id": "38386-01",
+        "query": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+        "clarifications": []
+      },
+      "expected": "pet_bottles",
+      "check_type": "classification",
+      "passed": true,
+      "actual_status": "answered",
+      "actual_category": "pet_bottles",
+      "actual_date": "2026-05-12",
+      "actual_question": null,
+      "actual_answer": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体は「ペットボトル」です。\nきれいなPETマーク付き本体はペット。外したプラ製キャップ・ラベルの分類とは区別。洗えない・汚れが落ちないものは燃える。\n久万：久万地区の次回収集日は2026年5月12日（火）です。\n収集日の朝8時までに出してください。例外日程のステーションについては自治会へ確認してください。"
+    },
+    {
+      "case": 48,
+      "input": {
+        "municipality_id": "38206",
+        "district_id": "38206-01",
+        "query": "幹の太さ直径4cm、長さ2mちょうどの剪定木",
+        "clarifications": []
+      },
+      "expected": null,
+      "check_type": "hold",
+      "passed": true,
+      "actual_status": "unable_to_determine",
+      "actual_category": null,
+      "actual_date": null,
+      "actual_question": null,
+      "actual_answer": "西条市の公開資料では、この長さちょうどの区分が重なっています。分類・収集方法を市町のごみ担当窓口へ確認してください。"
+    }
+  ]
+}

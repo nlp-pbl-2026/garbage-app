@@ -32,7 +32,8 @@
           "color": "#F19EC2",
           "instructions": "飲食用びん・缶・PET本体・白色トレイは中身を出して水洗い。PET本体のキャップ・ラベルは外してプラへ。紙・布は種類別に十文字に縛る。乳白色・割れたびんは燃やせないごみ。汚れが落ちない紙・布・PET・トレイは燃やせるごみ。",
           "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata.pdf",
-          "collection_type_id": "resources"
+          "collection_type_id": "resources",
+          "collection_name": "資源・有害ごみ・危険ごみ"
         },
         "hazardous": {
           "name": "有害ごみ",

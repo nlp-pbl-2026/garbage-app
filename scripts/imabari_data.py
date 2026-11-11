@@ -17,7 +17,6 @@ import hashlib
 import json
 from pathlib import Path
 import re
-import subprocess
 import sys
 from urllib.parse import urlparse
 from urllib.parse import urljoin

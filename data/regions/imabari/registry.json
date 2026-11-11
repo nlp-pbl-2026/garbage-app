@@ -2371,6 +2371,7 @@
           "name": "資源（びん・缶・紙・布・PET・白色トレイ）",
           "color": "#F19EC2",
           "collection_type_id": "resources",
+          "collection_name": "資源・有害ごみ・危険ごみ",
           "cutoff_status": "unverified",
           "time_note": "地域で決めた時間内に資源集積所へ。時間は自治会等で確認してください。"
         },
@@ -2480,6 +2481,7 @@
           "name": "資源（びん・缶・紙・布・PET・白色トレイ）",
           "color": "#F19EC2",
           "collection_type_id": "resources",
+          "collection_name": "資源・有害ごみ・危険ごみ",
           "cutoff_status": "unverified",
           "time_note": "波止浜港8時40分着（第3便）の各島の出航時刻までに、各島の指定の港へ。出航時刻は船便で確認してください。"
         },
@@ -2589,6 +2591,7 @@
           "name": "資源（びん・缶・紙・布・PET・白色トレイ）",
           "color": "#F19EC2",
           "collection_type_id": "resources",
+          "collection_name": "資源・有害ごみ・危険ごみ",
           "cutoff": "08:30",
           "time_note": "収集日当日の朝8時30分までに、地区の決められた場所へ。"
         },

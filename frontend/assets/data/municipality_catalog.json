@@ -3944,6 +3944,405 @@
           }
         }
       }
+    },
+    {
+      "id": "38202",
+      "version": "imabari-2026.1",
+      "name": "今治市",
+      "prefecture_id": "38",
+      "prefecture_name": "愛媛県",
+      "registry_asset": "assets/data/municipality_38202_registry.json",
+      "profiles": {
+        "mainland": {
+          "calendar_asset": "assets/data/municipality_38202_0_calendar.json",
+          "categories": {
+            "burnable": {
+              "name": "燃やせるごみ",
+              "collection_type_id": "burnable",
+              "cutoff": "06:30",
+              "time_note": "収集日の朝6時30分までに決められたごみ集積所へ。",
+              "color": "#FFF100"
+            },
+            "non_burnable": {
+              "name": "燃やせないごみ",
+              "collection_type_id": "non_burnable",
+              "cutoff": "06:30",
+              "time_note": "収集日の朝6時30分までに決められたごみ集積所へ。",
+              "color": "#89C997"
+            },
+            "plastics": {
+              "name": "プラスチック製容器包装",
+              "collection_type_id": "plastics",
+              "cutoff_status": "unverified",
+              "time_note": "地域で決めた時間内に資源集積所へ。時間は自治会等で確認してください。",
+              "color": "#7ECEF4"
+            },
+            "resources": {
+              "name": "資源（びん・缶・紙・布・PET・白色トレイ）",
+              "collection_type_id": "resources",
+              "cutoff_status": "unverified",
+              "time_note": "地域で決めた時間内に資源集積所へ。時間は自治会等で確認してください。",
+              "collection_name": "資源・有害ごみ・危険ごみ",
+              "color": "#F19EC2"
+            },
+            "hazardous": {
+              "name": "有害ごみ",
+              "collection_type_id": "resources",
+              "cutoff_status": "unverified",
+              "time_note": "地域で決めた時間内に資源集積所へ。時間は自治会等で確認してください。",
+              "color": "#555555"
+            },
+            "dangerous": {
+              "name": "危険ごみ",
+              "collection_type_id": "resources",
+              "cutoff_status": "unverified",
+              "time_note": "地域で決めた時間内に資源集積所へ。時間は自治会等で確認してください。",
+              "color": "#E60012"
+            },
+            "bulky": {
+              "name": "粗大ごみ",
+              "color": "#BB9CC5"
+            },
+            "not_collected": {
+              "name": "市では収集しない",
+              "color": "#666666"
+            },
+            "consult": {
+              "name": "市へ確認",
+              "color": "#777777"
+            },
+            "direct_delivery": {
+              "name": "直接搬入・事前確認",
+              "color": "#666666"
+            },
+            "small_appliances": {
+              "name": "小型家電回収",
+              "color": "#447777"
+            }
+          },
+          "bulky_waste": {
+            "category_code": "bulky",
+            "config": {
+              "municipality_id": "38202",
+              "municipality_name": "今治市",
+              "collection_frequency": "地区別申込期間による有料・予約制",
+              "reception_hours": "月〜金（祝日除く）8:30〜17:15",
+              "collection_rules": "地区の申込期間に電話予約。受付番号を処理券に記入して貼り、予約日の朝8:30までに指定場所へ。1回10点まで。アプリは申込みを行いません。",
+              "fee_structure_type": "fixed",
+              "application_method": "phone",
+              "information_url": "https://www.city.imabari.ehime.jp/recycle/kateigomi/kateigomi_imabari.html",
+              "phone_number": "0898-47-5300",
+              "steps": [
+                {
+                  "step_number": 1,
+                  "title": "申込期間を確認",
+                  "description": "お住まいの地区の公式カレンダーで申込期間を確認。収集日とは異なります。"
+                },
+                {
+                  "step_number": 2,
+                  "title": "電話で予約",
+                  "description": "品目・サイズ・数量を伝え、収集日・場所・料金を確認します。"
+                },
+                {
+                  "step_number": 3,
+                  "title": "処理券を貼って搬出",
+                  "description": "受付番号を記入し1点ずつ貼り、予約日の朝8時30分までに指定場所へ。"
+                }
+              ]
+            }
+          }
+        },
+        "hatohama_islands": {
+          "calendar_asset": "assets/data/municipality_38202_0_calendar.json",
+          "categories": {
+            "burnable": {
+              "name": "燃やせるごみ",
+              "collection_type_id": "burnable",
+              "cutoff_status": "unverified",
+              "time_note": "波止浜港8時40分着（第3便）の各島の出航時刻までに、各島の指定の港へ。出航時刻は船便で確認してください。",
+              "color": "#FFF100"
+            },
+            "non_burnable": {
+              "name": "燃やせないごみ",
+              "collection_type_id": "non_burnable",
+              "cutoff_status": "unverified",
+              "time_note": "波止浜港8時40分着（第3便）の各島の出航時刻までに、各島の指定の港へ。出航時刻は船便で確認してください。",
+              "color": "#89C997"
+            },
+            "plastics": {
+              "name": "プラスチック製容器包装",
+              "collection_type_id": "plastics",
+              "cutoff_status": "unverified",
+              "time_note": "波止浜港8時40分着（第3便）の各島の出航時刻までに、各島の指定の港へ。出航時刻は船便で確認してください。",
+              "color": "#7ECEF4"
+            },
+            "resources": {
+              "name": "資源（びん・缶・紙・布・PET・白色トレイ）",
+              "collection_type_id": "resources",
+              "cutoff_status": "unverified",
+              "time_note": "波止浜港8時40分着（第3便）の各島の出航時刻までに、各島の指定の港へ。出航時刻は船便で確認してください。",
+              "collection_name": "資源・有害ごみ・危険ごみ",
+              "color": "#F19EC2"
+            },
+            "hazardous": {
+              "name": "有害ごみ",
+              "collection_type_id": "resources",
+              "cutoff_status": "unverified",
+              "time_note": "波止浜港8時40分着（第3便）の各島の出航時刻までに、各島の指定の港へ。出航時刻は船便で確認してください。",
+              "color": "#555555"
+            },
+            "dangerous": {
+              "name": "危険ごみ",
+              "collection_type_id": "resources",
+              "cutoff_status": "unverified",
+              "time_note": "波止浜港8時40分着（第3便）の各島の出航時刻までに、各島の指定の港へ。出航時刻は船便で確認してください。",
+              "color": "#E60012"
+            },
+            "bulky": {
+              "name": "粗大ごみ",
+              "color": "#BB9CC5"
+            },
+            "not_collected": {
+              "name": "市では収集しない",
+              "color": "#666666"
+            },
+            "consult": {
+              "name": "市へ確認",
+              "color": "#777777"
+            },
+            "direct_delivery": {
+              "name": "直接搬入・事前確認",
+              "color": "#666666"
+            },
+            "small_appliances": {
+              "name": "小型家電回収",
+              "color": "#447777"
+            }
+          },
+          "bulky_waste": {
+            "category_code": "bulky",
+            "config": {
+              "municipality_id": "38202",
+              "municipality_name": "今治市",
+              "collection_frequency": "地区別申込期間による有料・予約制",
+              "reception_hours": "月〜金（祝日除く）8:30〜17:15",
+              "collection_rules": "1回5点まで。指定の申込期間に受付センターへ予約し、収集日の朝に各島の指定の港へ処理券を貼って搬出。収集日は申込時に案内されます。",
+              "fee_structure_type": "fixed",
+              "application_method": "phone",
+              "information_url": "https://www.city.imabari.ehime.jp/recycle/kateigomi/kateigomi_imabari.html",
+              "phone_number": "0898-47-5300",
+              "steps": [
+                {
+                  "step_number": 1,
+                  "title": "申込期間を確認",
+                  "description": "お住まいの地区の公式カレンダーで申込期間を確認。収集日とは異なります。"
+                },
+                {
+                  "step_number": 2,
+                  "title": "電話で予約",
+                  "description": "品目・サイズ・数量を伝え、収集日・場所・料金を確認します。"
+                },
+                {
+                  "step_number": 3,
+                  "title": "処理券を貼って搬出",
+                  "description": "受付番号を記入し1点ずつ貼り、予約日の朝8時30分までに指定場所へ。"
+                }
+              ]
+            }
+          }
+        },
+        "ushima": {
+          "calendar_asset": "assets/data/municipality_38202_0_calendar.json",
+          "categories": {
+            "burnable": {
+              "name": "燃やせるごみ",
+              "collection_type_id": "burnable",
+              "cutoff": "08:30",
+              "time_note": "収集日当日の朝8時30分までに、地区の決められた場所へ。",
+              "color": "#FFF100"
+            },
+            "non_burnable": {
+              "name": "燃やせないごみ",
+              "collection_type_id": "non_burnable",
+              "cutoff": "08:30",
+              "time_note": "収集日当日の朝8時30分までに、地区の決められた場所へ。",
+              "color": "#89C997"
+            },
+            "plastics": {
+              "name": "プラスチック製容器包装",
+              "collection_type_id": "plastics",
+              "cutoff": "08:30",
+              "time_note": "収集日当日の朝8時30分までに、地区の決められた場所へ。",
+              "color": "#7ECEF4"
+            },
+            "resources": {
+              "name": "資源（びん・缶・紙・布・PET・白色トレイ）",
+              "collection_type_id": "resources",
+              "cutoff": "08:30",
+              "time_note": "収集日当日の朝8時30分までに、地区の決められた場所へ。",
+              "collection_name": "資源・有害ごみ・危険ごみ",
+              "color": "#F19EC2"
+            },
+            "hazardous": {
+              "name": "有害ごみ",
+              "collection_type_id": "resources",
+              "cutoff": "08:30",
+              "time_note": "収集日当日の朝8時30分までに、地区の決められた場所へ。",
+              "color": "#555555"
+            },
+            "dangerous": {
+              "name": "危険ごみ",
+              "collection_type_id": "resources",
+              "cutoff": "08:30",
+              "time_note": "収集日当日の朝8時30分までに、地区の決められた場所へ。",
+              "color": "#E60012"
+            },
+            "bulky": {
+              "name": "粗大ごみ",
+              "color": "#BB9CC5"
+            },
+            "not_collected": {
+              "name": "市では収集しない",
+              "color": "#666666"
+            },
+            "consult": {
+              "name": "市へ確認",
+              "color": "#777777"
+            },
+            "direct_delivery": {
+              "name": "直接搬入・事前確認",
+              "color": "#666666"
+            },
+            "small_appliances": {
+              "name": "小型家電回収",
+              "color": "#447777"
+            }
+          },
+          "bulky_waste": {
+            "category_code": "bulky",
+            "config": {
+              "municipality_id": "38202",
+              "municipality_name": "今治市",
+              "collection_frequency": "鵜島の年4回・要申込み",
+              "reception_hours": "月〜金（祝日除く）8:30〜17:15",
+              "collection_rules": "宮窪支所の指定申込期間に電話で申し込み、収集日の朝、指定場所へ処理券を貼って搬出。予約前の収集予定は作成しません。",
+              "fee_structure_type": "fixed",
+              "application_method": "phone",
+              "information_url": "https://www.city.imabari.ehime.jp/recycle/kateigomi/kateigomi_imabari.html",
+              "phone_number": "0897-86-2500",
+              "steps": [
+                {
+                  "step_number": 1,
+                  "title": "申込期間を確認",
+                  "description": "お住まいの地区の公式カレンダーで申込期間を確認。収集日とは異なります。"
+                },
+                {
+                  "step_number": 2,
+                  "title": "電話で予約",
+                  "description": "品目・サイズ・数量を伝え、収集日・場所・料金を確認します。"
+                },
+                {
+                  "step_number": 3,
+                  "title": "処理券を貼って搬出",
+                  "description": "受付番号を記入し1点ずつ貼り、予約日の朝8時30分までに指定場所へ。"
+                }
+              ]
+            }
+          }
+        },
+        "sekizen": {
+          "calendar_asset": "assets/data/municipality_38202_0_calendar.json",
+          "categories": {
+            "burnable": {
+              "name": "燃えるごみ",
+              "collection_type_id": "burnable",
+              "cutoff": "08:30",
+              "time_note": "収集日当日の朝8時30分までに、地区の決められた場所へ。",
+              "color": "#F19EC2"
+            },
+            "non_burnable": {
+              "name": "燃えないごみ",
+              "collection_type_id": "non_burnable",
+              "cutoff": "08:30",
+              "time_note": "収集日当日の朝8時30分までに、地区の決められた場所へ。",
+              "color": "#7ECEF4"
+            },
+            "plastics": {
+              "name": "プラスチック資源",
+              "collection_type_id": "plastics",
+              "cutoff": "08:30",
+              "time_note": "収集日当日の朝8時30分までに、地区の決められた場所へ。",
+              "color": "#89C997"
+            },
+            "resources": {
+              "name": "資源物（缶・びん・PET）",
+              "collection_type_id": "resources",
+              "cutoff": "08:30",
+              "time_note": "収集日当日の朝8時30分までに、地区の決められた場所へ。",
+              "color": "#9288B9"
+            },
+            "bulky": {
+              "name": "粗大ごみ",
+              "collection_type_id": "bulky",
+              "cutoff": "08:30",
+              "time_note": "収集日当日の朝8時30分までに、地区の決められた場所へ。",
+              "color": "#BB9CC5"
+            },
+            "not_collected": {
+              "name": "市では収集しない",
+              "color": "#666666"
+            },
+            "consult": {
+              "name": "市へ確認",
+              "color": "#777777"
+            },
+            "direct_delivery": {
+              "name": "直接搬入・事前確認",
+              "color": "#666666"
+            },
+            "paper": {
+              "name": "資源物（紙類）",
+              "collection_type_id": "paper",
+              "cutoff": "08:30",
+              "time_note": "収集日当日の朝8時30分までに、地区の決められた場所へ。",
+              "color": "#AFAFAF"
+            },
+            "hazardous_dangerous": {
+              "name": "有害ごみ・危険ごみ",
+              "collection_type_id": "hazardous_dangerous",
+              "cutoff": "08:30",
+              "time_note": "収集日当日の朝8時30分までに、地区の決められた場所へ。",
+              "color": "#FFF100"
+            }
+          },
+          "bulky_waste": {
+            "category_code": "bulky",
+            "config": {
+              "municipality_id": "38202",
+              "municipality_name": "今治市",
+              "collection_frequency": "関前地区の公式カレンダー指定日",
+              "reception_hours": "月〜金（祝日除く）8:30〜17:15",
+              "collection_rules": "関前開発総合センター横の決められた場所へ。指定袋「大」に入らない家具等に粗大ごみ処理券（1枚300円、品目別必要枚数を確認）を貼り、指定日の朝8:30までに搬出。通常地域の電話予約制とは異なります。",
+              "fee_structure_type": "fixed",
+              "application_method": "guide_only",
+              "information_url": "https://www.city.imabari.ehime.jp/recycle/kateigomi/kateigomi_sekizen.html",
+              "phone_number": "0897-88-2111",
+              "steps": [
+                {
+                  "step_number": 1,
+                  "title": "関前地区の条件を確認",
+                  "description": "関前支所で品目・処理券の枚数・指定場所を確認します。"
+                },
+                {
+                  "step_number": 2,
+                  "title": "処理券を貼って搬出",
+                  "description": "関前地区の収集日・指定場所へ搬出します。大量ごみは別途施設搬入を確認。"
+                }
+              ]
+            }
+          }
+        }
+      }
     }
   ]
 }

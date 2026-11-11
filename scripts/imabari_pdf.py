@@ -5,7 +5,6 @@ classification glyphs. Read only the printed table, and use the *rendered*
 category background, rather than concatenating hidden/overprinted labels.
 """
 
-from collections import Counter
 from datetime import date
 import calendar as cal
 import re
@@ -44,12 +43,6 @@ def text_in(chars, rect):
     return "".join(
         "".join(c for c, _ in sorted(line, key=lambda v: v[1][0])) for _, line in lines
     ).strip()
-
-
-def rgb_at(pix, x, y):
-    return pix.pixel(
-        round(x * pix.width / pix.irect.width), round(y * pix.height / pix.irect.height)
-    )[:3]
 
 
 # Colours are the visible legend, not the stale category text layer.
