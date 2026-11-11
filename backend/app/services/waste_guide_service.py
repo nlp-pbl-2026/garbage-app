@@ -877,7 +877,7 @@ class WasteGuideService:
         normalized_query = cls._normalize_item_key(query)
         documents: list[RetrievedDocument] = []
         for match in search.search(query, limit=24):
-            base_name = re.sub(r"[（(].*$", "", match.item).strip()
+            base_name = cls._base_item_name(match.item)
             if not cls._item_name_matches_query(base_name, query):
                 continue
             documents.append(
@@ -1203,10 +1203,25 @@ class WasteGuideService:
     def _normalize_item_key(cls, value: str) -> str:
         return cls._normalize_question(value).replace("衣裳", "衣装")
 
+    @staticmethod
+    def _base_item_name(value: str) -> str:
+        # Parentheses qualify an item; text after them still identifies it.
+        # プラスチック（包装）フィルム is not every plastic product.
+        return re.sub(r"[（(][^）)]*[）)]", "", value).strip()
+
     @classmethod
     def _item_name_matches_query(cls, item_name: str, query: str) -> bool:
         normalized_item = cls._normalize_item_key(item_name)
         normalized_query = cls._normalize_item_key(query)
+        # An appliance with its battery removed is the requested object; the
+        # removed battery is not a competing exact item. The reverse wording
+        # ("携帯電話から外した電池") still targets the battery.
+        base_item = unicodedata.normalize("NFKC",item_name).strip()
+        removed = re.search(r"(?:電池|バッテリー)(?:と(?:電池|バッテリー))?(?:を|は|も)?(?:取り)?外(?:した|して|し済み)(.*)",unicodedata.normalize("NFKC",query))
+        if base_item in {"電池","バッテリー"} and removed and re.search(
+            r"携帯電話|スマートフォン|ラジオ|カメラ|ゲーム機|家電|リモコン|時計|電話機",removed[1]
+        ):
+            return False
         # Exact CSV supplements must preserve the requested part as well as the
         # item name. A cap mentioned while describing its removal is not the
         # disposal target of an explicitly requested PET body, and vice versa.
@@ -1218,7 +1233,10 @@ class WasteGuideService:
             )
             if body_target and any(part in item_name for part in ("キャップ", "ラベル", "ふた", "蓋")):
                 return False
-            if part_target and "本体" in item_name:
+            if part_target and ("本体" in item_name or (
+                "ペットボトル" in item_name
+                and not any(part in item_name for part in ("キャップ", "ラベル", "ふた", "蓋"))
+            )):
                 return False
         if len(normalized_item) >= 2 and normalized_item in normalized_query:
             return True
@@ -1245,9 +1263,15 @@ class WasteGuideService:
             if not first_line.startswith("品目:"):
                 continue
             item_name = first_line.removeprefix("品目:").strip()
-            base_name = re.sub(r"[（(].*$", "", item_name).strip()
+            base_name = cls._base_item_name(item_name)
             if cls._item_name_matches_query(base_name, query):
                 matches.append((index, document, item_name))
+        # A generic accessory mentioned in preparation (e.g. 電池) must not
+        # precede the explicitly named appliance (携帯電話). Evidence indexes
+        # still refer to the original document order.
+        matches.sort(key=lambda match: -len(cls._normalize_item_key(
+            cls._base_item_name(match[2])
+        )))
         return matches
 
     @staticmethod
@@ -1302,7 +1326,7 @@ class WasteGuideService:
             return None
         bases: dict[str, list[str]] = {}
         for _, _, item_name in matches:
-            base_name = re.sub(r"[（(].*$", "", item_name).strip()
+            base_name = cls._base_item_name(item_name)
             qualifier_match = re.search(r"[（(]([^）)]+)[）)]", item_name)
             qualifier = qualifier_match.group(1) if qualifier_match else ""
             if qualifier and any(
@@ -1770,6 +1794,28 @@ class WasteGuideService:
         if regional:
             evidence = evidence.split("区分共通の出し方", 1)[0]
 
+        # Opt-in through item-specific official conditions, not the presence of
+        # a battery word in generic preparation or image-derived guesses.
+        if "取り外し可否" in evidence and "不明なら" in evidence and "モバイルバッテリー" in item_name:
+            pairs = [(unicodedata.normalize("NFKC",str(v.get("question",""))),
+                      unicodedata.normalize("NFKC",str(v.get("answer",""))))
+                     for v in clarifications]
+            removal_known = any(word in context for word in (
+                "取り外した", "取り外せる", "取り外せない", "取り外せません", "取り外し済み",
+            )) or any("取り外" in question and answer.strip() for question,answer in pairs)
+            state_known = any(word in context for word in (
+                "破損", "変形", "膨張", "正常", "異常なし",
+            )) or any(any(word in question for word in ("破損","変形","膨張")) and answer.strip()
+                      for question,answer in pairs)
+            unsafe = bool(re.search(r"(?:破損|変形|膨張)(?:している|しています|した|あり)",context))
+            nonremovable = any(word in context for word in ("取り外せない","取り外せません")) or any(
+                "取り外" in question and re.match(r"いいえ(?:[、。！!]|$)",answer.strip())
+                for question,answer in pairs)
+            if not removal_known and not unsafe:
+                return "リチウムイオン電池を機器から取り外せますか？（無理に分解しないでください）"
+            if not state_known and not unsafe and not nonremovable:
+                return "電池に破損・変形・膨張はありますか？"
+
         # Some official regional dictionaries split drink cartons by both the
         # inner lining colour and a 500 ml boundary. Neither branch is a safe
         # default when the user only says "紙パック". Ask one concrete
@@ -1891,7 +1937,11 @@ class WasteGuideService:
         if size_branch and not size_answered:
             return region.rules.size_question if region else "松山市の指定ごみ袋に入る大きさですか？"
 
-        if "汚れが落ちない" in evidence and not any(
+        regional_dirty_answer = regional and (
+            any(word in context for word in ("汚れが落ちず","汚れが取れず"))
+            or ("破れ" in evidence and "破れ" in context)
+        )
+        if "汚れが落ちない" in evidence and not regional_dirty_answer and not any(
             marker in context
             for marker in (
                 "汚れが落ちない",
