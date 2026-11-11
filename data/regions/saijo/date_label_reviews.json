@@ -1,0 +1,89 @@
+{
+  "approval_status": "user_approved_geometry_and_legend_correction",
+  "source_sha256": {
+    "calendar-04.pdf": "2df1a15b1faa7ff60168abf514783db34dae51e57d45bc5a65eae1605ff0a02c",
+    "calendar-05.pdf": "9df0fb53717f10a5b30f5725282bf0aed26e064bbaf73affe623c664d404264e",
+    "calendar-14.pdf": "4abf7bab6c22f74bbfcc1defa3d4e3e204926acf45e50694329a3ba9a92d2d32",
+    "calendar-17.pdf": "8609a28c61863cd46437f41d2fcabd672c440c3364171da769bfdd9701c6815d",
+    "calendar-20.pdf": "82078f1a862909587b89b7d82917b6450b86b72f499a1eb395ebf6db8d732df4"
+  },
+  "cells": {
+    "calendar-04.pdf": {
+      "5-3-3": {
+        "printed": [],
+        "dates": [
+          20
+        ],
+        "basis": "5月第4段の水曜欄。前後の日付19・21と第1・3水曜の凡例に一致。番号欠落。"
+      }
+    },
+    "calendar-05.pdf": {
+      "8-4-3": {
+        "printed": [
+          25
+        ],
+        "dates": [
+          26
+        ],
+        "basis": "8月最終段の水曜欄。前後は25・27、凡例は第4水曜。印字25が曜日位置と矛盾。"
+      }
+    },
+    "calendar-14.pdf": {
+      "7-2-3": {
+        "printed": [],
+        "dates": [
+          15
+        ],
+        "basis": "7月第3段の水曜欄、前後14・16、凡例は第3水曜。番号欠落。"
+      },
+      "9-2-3": {
+        "printed": [
+          15
+        ],
+        "dates": [
+          16
+        ],
+        "basis": "9月第3段の水曜欄。前後15・17、凡例は第3水曜。"
+      }
+    },
+    "calendar-17.pdf": {
+      "8-4-1": {
+        "printed": [
+          30,
+          31
+        ],
+        "dates": [
+          24,
+          31
+        ],
+        "basis": "8月最終段月曜の斜線分割欄。日曜23・30、火曜25から24・31。印字31・30が矛盾。収集のない欄。"
+      }
+    },
+    "calendar-20.pdf": {
+      "11-4-5": {
+        "printed": [],
+        "dates": [],
+        "basis": "11月最終週の金曜欄は11月30日より後の月外。番号がないまま収集ラベルが残っているため日付を生成しない。"
+      },
+      "6-2-6": {
+        "printed": [
+          27
+        ],
+        "dates": [
+          20
+        ],
+        "basis": "6月第4段土曜欄。前日19、翌週27より20。収集のない欄。"
+      },
+      "2-4-5": {
+        "printed": [],
+        "dates": [],
+        "basis": "2月最終週金曜は月外。PDFに残る末尾「等」はレンダリング上非表示で日付もないため収集予定にしない。"
+      },
+      "3-4-5": {
+        "printed": [],
+        "dates": [],
+        "basis": "3月最終週金曜は4月2日に相当する月外。日付のない残存ラベルから予定を生成しない。"
+      }
+    }
+  }
+}

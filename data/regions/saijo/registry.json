@@ -1,0 +1,589 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38206",
+  "municipality_name": "西条市",
+  "prefecture_id": "38",
+  "prefecture_name": "愛媛県",
+  "version": "saijo-2026.1",
+  "valid_from": "2026-04-01",
+  "valid_to": "2027-03-31",
+  "collection_areas": [
+    {
+      "id": "38206-01",
+      "name": "大久保地区",
+      "display_name": "西条地域：大久保地区",
+      "calendar_id": "sj-01",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83689.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-02",
+      "name": "大保木地区",
+      "display_name": "西条地域：大保木地区",
+      "calendar_id": "sj-02",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83690.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-03",
+      "name": "市之川地区",
+      "display_name": "西条地域：市之川地区",
+      "calendar_id": "sj-02",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83690.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-04",
+      "name": "大町地区",
+      "display_name": "西条地域：大町地区",
+      "calendar_id": "sj-03",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83652.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-05",
+      "name": "加茂地区",
+      "display_name": "西条地域：加茂地区",
+      "calendar_id": "sj-04",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83691.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-06",
+      "name": "神拝地区",
+      "display_name": "西条地域：神拝地区",
+      "calendar_id": "sj-05",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83654.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-07",
+      "name": "神戸地区",
+      "display_name": "西条地域：神戸地区",
+      "calendar_id": "sj-06",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83655.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-08",
+      "name": "西条地区",
+      "display_name": "西条地域：西条地区",
+      "calendar_id": "sj-07",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83656.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-09",
+      "name": "橘地区",
+      "display_name": "西条地域：橘地区",
+      "calendar_id": "sj-08",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83657.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-10",
+      "name": "玉津地区",
+      "display_name": "西条地域：玉津地区",
+      "calendar_id": "sj-09",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83658.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-11",
+      "name": "飯岡地区",
+      "display_name": "西条地域：飯岡地区",
+      "calendar_id": "sj-09",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83658.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-12",
+      "name": "禎瑞地区",
+      "display_name": "西条地域：禎瑞地区",
+      "calendar_id": "sj-10",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83660.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-13",
+      "name": "兎之山地区",
+      "display_name": "西条地域：兎之山地区",
+      "calendar_id": "sj-11",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83661.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-14",
+      "name": "中寺地区",
+      "display_name": "西条地域：中寺地区",
+      "calendar_id": "sj-11",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83661.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-15",
+      "name": "氷見地区",
+      "display_name": "西条地域：氷見地区",
+      "calendar_id": "sj-12",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83662.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-16",
+      "name": "舟形地区",
+      "display_name": "西条地域：舟形地区",
+      "calendar_id": "sj-13",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83663.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-17",
+      "name": "津越地区",
+      "display_name": "西条地域：津越地区",
+      "calendar_id": "sj-13",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83663.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-18",
+      "name": "長瀬地区",
+      "display_name": "西条地域：長瀬地区",
+      "calendar_id": "sj-13",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83663.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-19",
+      "name": "国安地区",
+      "display_name": "東予地域：国安地区",
+      "calendar_id": "sj-14",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83664.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-20",
+      "name": "黒谷地区",
+      "display_name": "東予地域：黒谷地区",
+      "calendar_id": "sj-15",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83665.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-21",
+      "name": "周布地区",
+      "display_name": "東予地域：周布地区",
+      "calendar_id": "sj-16",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83666.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-22",
+      "name": "壬生川（大曲地区を含む）地区",
+      "display_name": "東予地域：壬生川（大曲地区を含む）地区",
+      "calendar_id": "sj-16",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83666.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-23",
+      "name": "吉井地区",
+      "display_name": "東予地域：吉井地区",
+      "calendar_id": "sj-17",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83667.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-24",
+      "name": "多賀（三津屋本通りまで）地区",
+      "display_name": "東予地域：多賀（三津屋本通りまで）地区",
+      "calendar_id": "sj-17",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83667.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-25",
+      "name": "吉岡地区",
+      "display_name": "東予地域：吉岡地区",
+      "calendar_id": "sj-18",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83668.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-26",
+      "name": "三芳地区",
+      "display_name": "東予地域：三芳地区",
+      "calendar_id": "sj-19",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83695.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-27",
+      "name": "楠河地区",
+      "display_name": "東予地域：楠河地区",
+      "calendar_id": "sj-19",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83695.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-28",
+      "name": "庄内地区",
+      "display_name": "東予地域：庄内地区",
+      "calendar_id": "sj-19",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83695.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-29",
+      "name": "相之谷地区",
+      "display_name": "丹原地域：相之谷地区",
+      "calendar_id": "sj-20",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83670.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-30",
+      "name": "久妙寺地区",
+      "display_name": "丹原地域：久妙寺地区",
+      "calendar_id": "sj-21",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83671.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-31",
+      "name": "徳田（古田新出・田滝を除く）地区",
+      "display_name": "丹原地域：徳田（古田新出・田滝を除く）地区",
+      "calendar_id": "sj-21",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83671.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-32",
+      "name": "田野地区",
+      "display_name": "丹原地域：田野地区",
+      "calendar_id": "sj-22",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83673.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-33",
+      "name": "田滝地区",
+      "display_name": "丹原地域：田滝地区",
+      "calendar_id": "sj-22",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83673.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-34",
+      "name": "丹原（久妙寺を除く）地区",
+      "display_name": "丹原地域：丹原（久妙寺を除く）地区",
+      "calendar_id": "sj-23",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83678.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-35",
+      "name": "古田新出地区",
+      "display_name": "丹原地域：古田新出地区",
+      "calendar_id": "sj-23",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83678.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-36",
+      "name": "中川地区",
+      "display_name": "丹原地域：中川地区",
+      "calendar_id": "sj-24",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83699.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-37",
+      "name": "桜樹（相之谷を除く）地区",
+      "display_name": "丹原地域：桜樹（相之谷を除く）地区",
+      "calendar_id": "sj-24",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83699.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-38",
+      "name": "小松地区",
+      "display_name": "小松地域：小松地区",
+      "calendar_id": "sj-25",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83686.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-39",
+      "name": "石根地区",
+      "display_name": "小松地域：石根地区",
+      "calendar_id": "sj-25",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83686.pdf",
+      "needs_local_confirmation": true
+    }
+  ],
+  "calendars": [
+    {
+      "id": "sj-01",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "sj-02",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "sj-03",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "sj-04",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "sj-05",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "sj-06",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "sj-07",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "sj-08",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "sj-09",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "sj-10",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "sj-11",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "sj-12",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "sj-13",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "sj-14",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "sj-15",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "sj-16",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "sj-17",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "sj-18",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "sj-19",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "sj-20",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "sj-21",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "sj-22",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "sj-23",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "sj-24",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "sj-25",
+      "rule_profile_id": "citywide"
+    }
+  ],
+  "rule_profiles": {
+    "citywide": {
+      "items_path": "knowledge/items.csv",
+      "embedding_index_path": "knowledge/item_embeddings.npz",
+      "index_profile_id": "citywide",
+      "calendar_path": "generated/calendar-2026.json",
+      "knowledge_title": "西条市公式家庭ごみ分別ガイドブック・現行案内",
+      "classification_rules": "西条市の公式分別資料と現行案内のみを根拠にする。他市町のプラ分別・穴あけ・料金等を使わない。分類と収集方法を分ける。2026年1月5日以降は新指定袋のみ。みどり色はもえる、オレンジ色はもえない。\nPET本体と外した部品を区別する。キャップ・ラベルを外して水洗いしたPETマーク付き飲料用本体はpet_bottles、取り外したプラ製キャップ・ラベルはburnable。汚れたPET本体、洗剤・シャンプー・食用油ボトルはburnable。キャップ等を外した旨を入力済みならその条件を再質問しない。\n飲食用空き缶はnon_burnableで、拠点でも回収可。一斗缶・18L以上のペール缶はbulky。スプレー缶とカセットボンベはspray_cansで、完全に使い切り火気のない場所でガス抜きし穴をあける。普通の缶や拠点回収へ混ぜない。\n飲食用・化粧品の透明/色付きびんはbottles。乳白色、薬品、割れたもの、汚れが落ちないものはnon_burnable。古紙はpaper、汚れ・感熱・写真・コーティング紙はburnable。\nプラの製品についてはティッシュ箱（縦26cm×横11cm×高さ6cm）より小さいものはburnable、大きいものはnon_burnableが原則。ただし辞典の個別指定を優先し、ストロー等の明示品目に無関係な寸法確認をしない。指定袋大に入れ口を縛れない大型ごみはbulky。ただし鉄アレイ等の個別指定は袋に入ることだけで普通ごみにしない。辞典の材質・寸法・数量・厚さなど条件を保持する。\n乾電池とボタン電池はdry_batteries。家庭用リチウムイオン電池・モバイルバッテリーは2026年2月広報の拠点窓口又はJBRC回収、drop_off。車・自転車用など大型バッテリーはnot_collected。電池を取り外せない機器は窓口へ相談しconsult、破損・膨張等の回収条件を推測しない。通常のもえる/もえないに混ぜない。小型家電の電池を外した本体と外した電池を別に判定する。\n粗大ごみは予約制戸別収集、処理券1枚300円、1回10点まで。品目別の枚数・条件を確認し未確認料金を0円にしない。予約日以外のカレンダー予定を生成しない。拠点回収のみ・直接搬入・収集対象外も定期収集ではない。随時収集の区分は自治会等で確認し推測日付を返さない。\n画像の素材推測をユーザー確認済み条件と混同しない。不足条件だけ追加質問し、はい/いいえは直前質問と結びつける。根拠不足は判定保留。品目の付属品の案内を本体の分類根拠にしない。\n剪定木の幹の太さ・厚さは3cm未満ならburnable、3cm以上5cm未満で長さ2m未満ならbulky、5cm以上又は長辺2mを超える場合はnot_collected（民間の木材処理業者）。直径6cmを粗大にしない。粗大の束の直径30cmと幹の太さ5cmの境界を混同しない。\n金属製なら分類が変わるアクセサリーは材質未確認で確定しない。ティッシュ箱より小さいかで分類が変わるプラ玩具は比較が未回答なら確認する。\n剪定木の長さ2mちょうどは、辞典の「2m以下」と「2m以上」が重なるため分類を確定せず市の窓口へ確認する。",
+      "size_question": "西条市の指定袋（大）に入れて口を縛れる大きさですか？",
+      "categories": {
+        "burnable": {
+          "name": "もえるごみ",
+          "color": "#33CC33",
+          "collection_type_id": "burnable",
+          "cutoff": "08:00",
+          "time_note": "収集日の朝8時までに、決められたごみステーションへ出してください。"
+        },
+        "non_burnable": {
+          "name": "もえないごみ",
+          "color": "#FF6600",
+          "collection_type_id": "non_burnable",
+          "cutoff": "08:00",
+          "time_note": "収集日の朝8時までに、決められたごみステーションへ出してください。"
+        },
+        "paper": {
+          "name": "古紙",
+          "color": "#B5B5B5",
+          "collection_type_id": "paper",
+          "cutoff": "08:00",
+          "time_note": "収集日の朝8時までに、決められたごみステーションへ出してください。"
+        },
+        "bottles": {
+          "name": "ガラスびん",
+          "color": "#9BC1E5",
+          "collection_type_id": "bottles",
+          "cutoff": "08:00",
+          "time_note": "収集日の朝8時までに、決められたごみステーションへ出してください。"
+        },
+        "pet_bottles": {
+          "name": "ペットボトル",
+          "color": "#9BC1E5",
+          "collection_type_id": "pet_bottles",
+          "cutoff": "08:00",
+          "time_note": "収集日の朝8時までに、決められたごみステーションへ出してください。"
+        },
+        "spray_cans": {
+          "name": "スプレー缶・カセット式ガスボンベ",
+          "color": "#9BC1E5",
+          "collection_type_id": "spray_cans",
+          "cutoff": "08:00",
+          "time_note": "収集日の朝8時までに、決められたごみステーションへ出してください。"
+        },
+        "dry_batteries": {
+          "name": "乾電池・ボタン電池",
+          "color": "#FFB366",
+          "collection_type_id": "dry_batteries",
+          "cutoff": "08:00",
+          "time_note": "収集日の朝8時までに、決められたごみステーションへ出してください。"
+        },
+        "bulky": {
+          "name": "粗大ごみ",
+          "color": "#8B5BA6",
+          "answer_note": "粗大ごみの収集日は申込み時に決まります。公式窓口で予約日・料金・場所を確認してください。"
+        },
+        "drop_off": {
+          "name": "拠点回収",
+          "color": "#99772D",
+          "answer_note": "この区分は指定拠点への持込みです。通常のごみステーション収集日ではなく、施設の受付日・条件を確認してください。"
+        },
+        "small_appliances": {
+          "name": "小型家電回収",
+          "color": "#447777",
+          "answer_note": "対象製品と電池の取り外しを確認して回収ボックスへ持ち込みます。通常の定期収集日を付けません。"
+        },
+        "direct_delivery": {
+          "name": "直接搬入",
+          "color": "#666666",
+          "answer_note": "直接搬入の受付時間・条件を公式案内で確認してください。定期収集の予定ではありません。"
+        },
+        "not_collected": {
+          "name": "市では収集しない",
+          "color": "#666666",
+          "answer_note": "市のごみステーションでは収集しません。品目別の販売店・専門業者等の案内を確認してください。"
+        },
+        "consult": {
+          "name": "市へ確認",
+          "color": "#777777",
+          "answer_note": "確認できない条件は西条市衛生課へ相談してください。未確認の分類や収集日を推測して案内しません。"
+        }
+      },
+      "bulky_waste": {
+        "category_code": "bulky",
+        "config": {
+          "municipality_id": "38206",
+          "municipality_name": "西条市",
+          "collection_frequency": "事前申込みによる戸別収集（1回10点まで）",
+          "reception_hours": "電話：月〜金 9:00〜12:00・13:00〜15:00（祝日・12/29〜1/3を除く）。インターネット：24時間。",
+          "collection_rules": "受付で品目・必要な処理券・収集日・場所を確認。処理券に受付番号又は氏名を記入して貼り、予約日の朝8時までに指定場所へ。アプリから申込みは行われません。",
+          "fee_structure_type": "fixed",
+          "application_method": "both",
+          "information_url": "https://www.city.saijo.ehime.jp/soshiki/eisei/gominowakekata.html",
+          "phone_number": "0897-66-7453",
+          "web_form_url": "https://www.sodai-saijo.jp/",
+          "steps": [
+            {
+              "step_number": 1,
+              "title": "電話または公式サイトで申し込む",
+              "description": "品目・数量、料金、収集日と場所を受付で確認します。"
+            },
+            {
+              "step_number": 2,
+              "title": "必要な処理券を購入する",
+              "description": "1枚300円。品目ごとの料金を受付で確認し、必要枚数を購入します。"
+            },
+            {
+              "step_number": 3,
+              "title": "予約日に指定場所へ出す",
+              "description": "処理券に受付番号又は氏名を記入して貼り、予約日の朝8時までに出してください。"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

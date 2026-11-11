@@ -972,6 +972,13 @@ class WasteGuideService:
         if not region.is_nakajima and any((doc.uri or "").startswith("nakajima://") for doc in documents):
             raise UnsupportedRegionError("中島地域の検索根拠を使用できません。")
         clarification_items = clarifications or []
+        if municipality_id != "38201":
+            # Explicit user measurements can disqualify a same-item official
+            # range. Do this before Nova and the exact-row supplement; an
+            # inapplicable high-ranked branch is not evidence for this object.
+            documents = [doc for doc in documents if not self._diameter_excludes_document(
+                doc, query=query, clarifications=clarification_items
+            )]
         if self._is_out_of_scope(query):
             return WasteGuideResult(
                 status="unable_to_determine",
@@ -1000,6 +1007,16 @@ class WasteGuideService:
                     "地域資料で候補を見つけられませんでした。品物の用途や素材を教えてください。"
                 ),
                 decision=ClassificationDecision(is_resolved=False),
+            )
+        if municipality_id != "38201" and self._conflicting_length_boundary(
+            documents, query=query, clarifications=clarification_items
+        ):
+            return WasteGuideResult(
+                status="unable_to_determine",
+                rewritten_query=rewritten_query,
+                answer=f"{region.municipality_label}の公開資料では、この長さちょうどの区分が重なっています。分類・収集方法を市町のごみ担当窓口へ確認してください。",
+                decision=ClassificationDecision(is_resolved=False),
+                sources=documents[:3],
             )
         if region.is_nakajima:
             container_question = self._nakajima_container_question(query, clarification_items)
@@ -1201,13 +1218,68 @@ class WasteGuideService:
 
     @classmethod
     def _normalize_item_key(cls, value: str) -> str:
-        return cls._normalize_question(value).replace("衣裳", "衣装")
+        return (cls._normalize_question(value).replace("衣裳", "衣装")
+                .replace("段ボール", "ダンボール")
+                .replace("ペットボトル類の本体", "ペットボトル本体"))
 
     @staticmethod
     def _base_item_name(value: str) -> str:
         # Parentheses qualify an item; text after them still identifies it.
         # プラスチック（包装）フィルム is not every plastic product.
         return re.sub(r"[（(][^）)]*[）)]", "", value).strip()
+
+    @classmethod
+    def _diameter_excludes_document(cls, document: RetrievedDocument, *, query: str, clarifications: list[dict]) -> bool:
+        first = document.text.splitlines()[0] if document.text else ""
+        if not first.startswith("品目:"):
+            return False
+        item = unicodedata.normalize("NFKC", first.removeprefix("品目:").strip())
+        if not cls._item_name_matches_query(cls._base_item_name(item), query):
+            return False
+        qualifier = re.search(r"[（(]([^）)]+)[）)]", item)
+        if not qualifier or not re.search(r"幹の太さ|太さ直径|断面径", qualifier[1]):
+            return False
+        # An OR with an unrelated dimension cannot be disproved from diameter
+        # alone. Missing/uncertain measurements never eliminate candidates.
+        if "又は" in qualifier[1] or "または" in qualifier[1]:
+            return False
+        context = unicodedata.normalize("NFKC", " ".join([query]+[str(a.get("answer", "")) for a in clarifications])).lower()
+        if re.search(r"(?:cm|センチ).{0,12}(?:不明|わから|分から|かもしれ)", context):
+            return False
+        measurement = re.search(r"(?:幹の太さ(?:は|が)?(?:直径)?|太さ(?:は|が)?(?:直径)?|断面径|直径)\s*(\d+(?:\.\d+)?)\s*(cm|mm|センチ|ミリ)", context)
+        if not measurement or "束" in context[max(0, measurement.start()-4):measurement.start()]:
+            return False
+        number = float(measurement[1]) / (10 if measurement[2] in {"mm", "ミリ"} else 1)
+        bounds = re.findall(r"(\d+(?:\.\d+)?)\s*cm(以上|以下|未満|超)", qualifier[1])
+        if not bounds:
+            return False
+        return any(not {"以上":number>=float(limit), "以下":number<=float(limit), "未満":number<float(limit), "超":number>float(limit)}[operator] for limit,operator in bounds)
+
+    @classmethod
+    def _conflicting_length_boundary(cls, documents: list[RetrievedDocument], *, query: str, clarifications: list[dict]) -> bool:
+        """Hold an explicit inclusive boundary assigned two official codes."""
+        context = unicodedata.normalize("NFKC", " ".join([query]+[str(a.get("answer", "")) for a in clarifications])).lower()
+        value = re.search(r"(?:長さ|長辺|全長)(?:が|は)?\s*(\d+(?:\.\d+)?)\s*(cm|mm|m|センチ|ミリ|メートル)(?![a-z])", context)
+        if not value or re.match(r"(?:以上|以下|未満|超|より|くらい|程度|かもしれ)", context[value.end():]):
+            return False
+        def centimeters(number,unit):
+            return float(number) * (100 if unit in {"m","メートル"} else .1 if unit in {"mm","ミリ"} else 1)
+        length = centimeters(value[1],value[2]);bounds=[]
+        for document in documents:
+            first = document.text.splitlines()[0] if document.text else ""
+            if not first.startswith("品目:"):
+                continue
+            item = first.removeprefix("品目:").strip()
+            base = cls._base_item_name(item)
+            if not cls._item_name_matches_query(base,query):
+                continue
+            code = cls._structured_values(document).get("分類コード")
+            evidence = unicodedata.normalize("NFKC",document.text).split("区分共通の出し方",1)[0]
+            for n,u,op in re.findall(r"(?:長さ|長辺)(\d+(?:\.\d+)?)(cm|mm|m)(以上|以下)",evidence):
+                if centimeters(n,u)==length:
+                    bounds.append((cls._normalize_item_key(base),code,op))
+        return any(base==other_base and code!=other_code and {op,other_op}=={"以上","以下"}
+                   for base,code,op in bounds for other_base,other_code,other_op in bounds)
 
     @classmethod
     def _item_name_matches_query(cls, item_name: str, query: str) -> bool:
@@ -1362,6 +1434,16 @@ class WasteGuideService:
         matches = cls._matching_structured_documents(query=query, documents=documents)
         if not matches:
             return None
+        # Numeric qualifiers are conditions, not interchangeable aliases. This
+        # supplement does not evaluate ranges, so it must not replace the model
+        # with the first of e.g. 3cm未満 / 3-5cm / 5cm以上 official rows.
+        numeric_rows = [match for match in matches if re.search(
+            r"[（(][^）)]*\d|[（(][^）)]*[０-９]", match[2]
+        )]
+        if len(numeric_rows) > 1 and len({
+            cls._structured_values(match[1]).get("分類コード") for match in numeric_rows
+        }) > 1:
+            return None
         context = unicodedata.normalize(
             "NFKC",
             " ".join([query] + [str(item.get("answer", "")) for item in clarifications]),
@@ -1414,7 +1496,9 @@ class WasteGuideService:
             options = []
 
         def category_in(text: str, allowed: list[str] | None = None) -> str | None:
-            allowed_codes = set(allowed or region.category_codes)
+            # A category name mentioned in a note (e.g. PET body in a cap
+            # instruction) cannot authorize a category absent from this row.
+            allowed_codes = set(allowed if allowed is not None else [primary, *options])
             for code, label in sorted(
                 region.category_names.items(), key=lambda item: len(item[1]), reverse=True
             ):
@@ -1511,7 +1595,7 @@ class WasteGuideService:
         if dirty_condition:
             if any(marker in context for marker in ("汚れが落ちない", "汚れを落とせない", "汚れが取れない")):
                 category = category_in(after_first(("汚れが落ちない",))) or category
-            elif not any(marker in context for marker in ("洗った", "すすいだ", "水洗いした", "水洗いしました", "水洗い済み", "汚れを取り除", "きれい")):
+            elif not cls._cleaning_is_confirmed(context):
                 return None
 
         if mark_condition and not any(
@@ -1534,6 +1618,14 @@ class WasteGuideService:
             confidence=max(0.9, document.score or 0.0),
             evidence_indexes=(evidence_index,),
         )
+
+    @staticmethod
+    def _cleaning_is_confirmed(context: str) -> bool:
+        return any(marker in context for marker in (
+            "洗った", "すすいだ", "水洗いした", "水洗いしました", "水洗い済み", "汚れを取り除", "きれい"
+        )) or bool(re.search(
+            r"(?:洗って|すすいで)(?:から|ある|あり|[^。]{0,24}(?:外した|外しました|取り除いた))", context
+        ))
 
     @staticmethod
     def _is_out_of_scope(query: str) -> bool:
@@ -1897,13 +1989,29 @@ class WasteGuideService:
             "革製",
             "ゴム製",
         )
-        if any(branch in evidence for branch in material_branches) and not any(
+        if (any(branch in evidence for branch in material_branches) or (regional and "金属製は" in evidence)) and not any(
             material in context for material in material_answers
         ):
             return (
                 f"{display_item}は何製ですか？"
                 "（木・プラスチック・金属など）"
             )
+
+        if regional and "ティッシュ" in evidence and any(
+            marker in evidence for marker in ("小さいものは", "大きいものは")
+        ):
+            comparison_known = "ティッシュ" in context and any(
+                marker in context for marker in ("より小さい", "より大きい", "よりも小さい", "よりも大きい")
+            )
+            comparison_known = comparison_known or any(
+                "ティッシュ" in str(item.get("question", ""))
+                and re.fullmatch(r"\s*(?:はい|いいえ)[。！!]?\s*", str(item.get("answer", "")))
+                for item in clarifications
+            ) or bool(re.search(r"\d+\s*(?:cm|センチ).{0,8}[×x].{0,8}\d+", context))
+            if not comparison_known:
+                dimensions = re.search(r"ティッシュ[^。\n]{0,50}[（(]([^）)]*(?:cm|センチ)[^）)]*)[）)]", evidence)
+                detail = f"（{dimensions[1]}）" if dimensions else ""
+                return f"ティッシュペーパーの箱{detail}より小さいですか？"
 
         size_branch = any(
             marker in evidence
@@ -1941,20 +2049,8 @@ class WasteGuideService:
             any(word in context for word in ("汚れが落ちず","汚れが取れず"))
             or ("破れ" in evidence and "破れ" in context)
         )
-        if "汚れが落ちない" in evidence and not regional_dirty_answer and not any(
-            marker in context
-            for marker in (
-                "汚れが落ちない",
-                "汚れを落とせない",
-                "汚れが取れない",
-                "洗った",
-                "すすいだ",
-                "水洗いした",
-                "水洗いしました",
-                "水洗い済み",
-                "汚れを取り除",
-                "きれい",
-            )
+        if "汚れが落ちない" in evidence and not regional_dirty_answer and not cls._cleaning_is_confirmed(context) and not any(
+            marker in context for marker in ("汚れが落ちない", "汚れを落とせない", "汚れが取れない")
         ):
             return f"{display_item}の汚れは水ですすいで落とせますか？"
 
@@ -2107,8 +2203,10 @@ class WasteGuideService:
         if collection_status and collection_status.status == "unverified":
             lines.append(collection_status.message or "この区分の収集日は未確認です。")
         elif next_collection:
+            area_name = region.area_name if region else "清水"
+            area_label = area_name if area_name.endswith("地区") else f"{area_name}地区"
             lines.append(
-                f"{region.area_name if region else '清水'}地区の次回収集日は{next_collection.display_date}です。"
+                f"{area_label}の次回収集日は{next_collection.display_date}です。"
             )
         elif region and region.rules.categories[decision.category_code].answer_note:
             lines.append(region.rules.categories[decision.category_code].answer_note)

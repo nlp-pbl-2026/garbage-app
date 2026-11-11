@@ -1,0 +1,469 @@
+{
+  "schema_version": 1,
+  "areas": [
+    {
+      "id": "38206-01",
+      "name": "大久保地区",
+      "display_name": "西条地域：大久保地区",
+      "calendar_id": "sj-01",
+      "rule_profile_id": "citywide",
+      "region": "西条"
+    },
+    {
+      "id": "38206-02",
+      "name": "大保木地区",
+      "display_name": "西条地域：大保木地区",
+      "calendar_id": "sj-02",
+      "rule_profile_id": "citywide",
+      "region": "西条"
+    },
+    {
+      "id": "38206-03",
+      "name": "市之川地区",
+      "display_name": "西条地域：市之川地区",
+      "calendar_id": "sj-02",
+      "rule_profile_id": "citywide",
+      "region": "西条"
+    },
+    {
+      "id": "38206-04",
+      "name": "大町地区",
+      "display_name": "西条地域：大町地区",
+      "calendar_id": "sj-03",
+      "rule_profile_id": "citywide",
+      "region": "西条"
+    },
+    {
+      "id": "38206-05",
+      "name": "加茂地区",
+      "display_name": "西条地域：加茂地区",
+      "calendar_id": "sj-04",
+      "rule_profile_id": "citywide",
+      "region": "西条"
+    },
+    {
+      "id": "38206-06",
+      "name": "神拝地区",
+      "display_name": "西条地域：神拝地区",
+      "calendar_id": "sj-05",
+      "rule_profile_id": "citywide",
+      "region": "西条"
+    },
+    {
+      "id": "38206-07",
+      "name": "神戸地区",
+      "display_name": "西条地域：神戸地区",
+      "calendar_id": "sj-06",
+      "rule_profile_id": "citywide",
+      "region": "西条"
+    },
+    {
+      "id": "38206-08",
+      "name": "西条地区",
+      "display_name": "西条地域：西条地区",
+      "calendar_id": "sj-07",
+      "rule_profile_id": "citywide",
+      "region": "西条"
+    },
+    {
+      "id": "38206-09",
+      "name": "橘地区",
+      "display_name": "西条地域：橘地区",
+      "calendar_id": "sj-08",
+      "rule_profile_id": "citywide",
+      "region": "西条"
+    },
+    {
+      "id": "38206-10",
+      "name": "玉津地区",
+      "display_name": "西条地域：玉津地区",
+      "calendar_id": "sj-09",
+      "rule_profile_id": "citywide",
+      "region": "西条"
+    },
+    {
+      "id": "38206-11",
+      "name": "飯岡地区",
+      "display_name": "西条地域：飯岡地区",
+      "calendar_id": "sj-09",
+      "rule_profile_id": "citywide",
+      "region": "西条"
+    },
+    {
+      "id": "38206-12",
+      "name": "禎瑞地区",
+      "display_name": "西条地域：禎瑞地区",
+      "calendar_id": "sj-10",
+      "rule_profile_id": "citywide",
+      "region": "西条"
+    },
+    {
+      "id": "38206-13",
+      "name": "兎之山地区",
+      "display_name": "西条地域：兎之山地区",
+      "calendar_id": "sj-11",
+      "rule_profile_id": "citywide",
+      "region": "西条"
+    },
+    {
+      "id": "38206-14",
+      "name": "中寺地区",
+      "display_name": "西条地域：中寺地区",
+      "calendar_id": "sj-11",
+      "rule_profile_id": "citywide",
+      "region": "西条"
+    },
+    {
+      "id": "38206-15",
+      "name": "氷見地区",
+      "display_name": "西条地域：氷見地区",
+      "calendar_id": "sj-12",
+      "rule_profile_id": "citywide",
+      "region": "西条"
+    },
+    {
+      "id": "38206-16",
+      "name": "舟形地区",
+      "display_name": "西条地域：舟形地区",
+      "calendar_id": "sj-13",
+      "rule_profile_id": "citywide",
+      "region": "西条"
+    },
+    {
+      "id": "38206-17",
+      "name": "津越地区",
+      "display_name": "西条地域：津越地区",
+      "calendar_id": "sj-13",
+      "rule_profile_id": "citywide",
+      "region": "西条"
+    },
+    {
+      "id": "38206-18",
+      "name": "長瀬地区",
+      "display_name": "西条地域：長瀬地区",
+      "calendar_id": "sj-13",
+      "rule_profile_id": "citywide",
+      "region": "西条"
+    },
+    {
+      "id": "38206-19",
+      "name": "国安地区",
+      "display_name": "東予地域：国安地区",
+      "calendar_id": "sj-14",
+      "rule_profile_id": "citywide",
+      "region": "東予"
+    },
+    {
+      "id": "38206-20",
+      "name": "黒谷地区",
+      "display_name": "東予地域：黒谷地区",
+      "calendar_id": "sj-15",
+      "rule_profile_id": "citywide",
+      "region": "東予"
+    },
+    {
+      "id": "38206-21",
+      "name": "周布地区",
+      "display_name": "東予地域：周布地区",
+      "calendar_id": "sj-16",
+      "rule_profile_id": "citywide",
+      "region": "東予"
+    },
+    {
+      "id": "38206-22",
+      "name": "壬生川（大曲地区を含む）地区",
+      "display_name": "東予地域：壬生川（大曲地区を含む）地区",
+      "calendar_id": "sj-16",
+      "rule_profile_id": "citywide",
+      "region": "東予"
+    },
+    {
+      "id": "38206-23",
+      "name": "吉井地区",
+      "display_name": "東予地域：吉井地区",
+      "calendar_id": "sj-17",
+      "rule_profile_id": "citywide",
+      "region": "東予"
+    },
+    {
+      "id": "38206-24",
+      "name": "多賀（三津屋本通りまで）地区",
+      "display_name": "東予地域：多賀（三津屋本通りまで）地区",
+      "calendar_id": "sj-17",
+      "rule_profile_id": "citywide",
+      "region": "東予"
+    },
+    {
+      "id": "38206-25",
+      "name": "吉岡地区",
+      "display_name": "東予地域：吉岡地区",
+      "calendar_id": "sj-18",
+      "rule_profile_id": "citywide",
+      "region": "東予"
+    },
+    {
+      "id": "38206-26",
+      "name": "三芳地区",
+      "display_name": "東予地域：三芳地区",
+      "calendar_id": "sj-19",
+      "rule_profile_id": "citywide",
+      "region": "東予"
+    },
+    {
+      "id": "38206-27",
+      "name": "楠河地区",
+      "display_name": "東予地域：楠河地区",
+      "calendar_id": "sj-19",
+      "rule_profile_id": "citywide",
+      "region": "東予"
+    },
+    {
+      "id": "38206-28",
+      "name": "庄内地区",
+      "display_name": "東予地域：庄内地区",
+      "calendar_id": "sj-19",
+      "rule_profile_id": "citywide",
+      "region": "東予"
+    },
+    {
+      "id": "38206-29",
+      "name": "相之谷地区",
+      "display_name": "丹原地域：相之谷地区",
+      "calendar_id": "sj-20",
+      "rule_profile_id": "citywide",
+      "region": "丹原"
+    },
+    {
+      "id": "38206-30",
+      "name": "久妙寺地区",
+      "display_name": "丹原地域：久妙寺地区",
+      "calendar_id": "sj-21",
+      "rule_profile_id": "citywide",
+      "region": "丹原"
+    },
+    {
+      "id": "38206-31",
+      "name": "徳田（古田新出・田滝を除く）地区",
+      "display_name": "丹原地域：徳田（古田新出・田滝を除く）地区",
+      "calendar_id": "sj-21",
+      "rule_profile_id": "citywide",
+      "region": "丹原"
+    },
+    {
+      "id": "38206-32",
+      "name": "田野地区",
+      "display_name": "丹原地域：田野地区",
+      "calendar_id": "sj-22",
+      "rule_profile_id": "citywide",
+      "region": "丹原"
+    },
+    {
+      "id": "38206-33",
+      "name": "田滝地区",
+      "display_name": "丹原地域：田滝地区",
+      "calendar_id": "sj-22",
+      "rule_profile_id": "citywide",
+      "region": "丹原"
+    },
+    {
+      "id": "38206-34",
+      "name": "丹原（久妙寺を除く）地区",
+      "display_name": "丹原地域：丹原（久妙寺を除く）地区",
+      "calendar_id": "sj-23",
+      "rule_profile_id": "citywide",
+      "region": "丹原"
+    },
+    {
+      "id": "38206-35",
+      "name": "古田新出地区",
+      "display_name": "丹原地域：古田新出地区",
+      "calendar_id": "sj-23",
+      "rule_profile_id": "citywide",
+      "region": "丹原"
+    },
+    {
+      "id": "38206-36",
+      "name": "中川地区",
+      "display_name": "丹原地域：中川地区",
+      "calendar_id": "sj-24",
+      "rule_profile_id": "citywide",
+      "region": "丹原"
+    },
+    {
+      "id": "38206-37",
+      "name": "桜樹（相之谷を除く）地区",
+      "display_name": "丹原地域：桜樹（相之谷を除く）地区",
+      "calendar_id": "sj-24",
+      "rule_profile_id": "citywide",
+      "region": "丹原"
+    },
+    {
+      "id": "38206-38",
+      "name": "小松地区",
+      "display_name": "小松地域：小松地区",
+      "calendar_id": "sj-25",
+      "rule_profile_id": "citywide",
+      "region": "小松"
+    },
+    {
+      "id": "38206-39",
+      "name": "石根地区",
+      "display_name": "小松地域：石根地区",
+      "calendar_id": "sj-25",
+      "rule_profile_id": "citywide",
+      "region": "小松"
+    }
+  ],
+  "calendars": [
+    {
+      "id": "sj-01",
+      "source_file": "calendar-01.pdf",
+      "region": "西条",
+      "as_needed_resources": false
+    },
+    {
+      "id": "sj-02",
+      "source_file": "calendar-02.pdf",
+      "region": "西条",
+      "as_needed_resources": true
+    },
+    {
+      "id": "sj-03",
+      "source_file": "calendar-03.pdf",
+      "region": "西条",
+      "as_needed_resources": false
+    },
+    {
+      "id": "sj-04",
+      "source_file": "calendar-04.pdf",
+      "region": "西条",
+      "as_needed_resources": true
+    },
+    {
+      "id": "sj-05",
+      "source_file": "calendar-05.pdf",
+      "region": "西条",
+      "as_needed_resources": false
+    },
+    {
+      "id": "sj-06",
+      "source_file": "calendar-06.pdf",
+      "region": "西条",
+      "as_needed_resources": false
+    },
+    {
+      "id": "sj-07",
+      "source_file": "calendar-07.pdf",
+      "region": "西条",
+      "as_needed_resources": false
+    },
+    {
+      "id": "sj-08",
+      "source_file": "calendar-08.pdf",
+      "region": "西条",
+      "as_needed_resources": false
+    },
+    {
+      "id": "sj-09",
+      "source_file": "calendar-09.pdf",
+      "region": "西条",
+      "as_needed_resources": false
+    },
+    {
+      "id": "sj-10",
+      "source_file": "calendar-10.pdf",
+      "region": "西条",
+      "as_needed_resources": false
+    },
+    {
+      "id": "sj-11",
+      "source_file": "calendar-11.pdf",
+      "region": "西条",
+      "as_needed_resources": false
+    },
+    {
+      "id": "sj-12",
+      "source_file": "calendar-12.pdf",
+      "region": "西条",
+      "as_needed_resources": false
+    },
+    {
+      "id": "sj-13",
+      "source_file": "calendar-13.pdf",
+      "region": "西条",
+      "as_needed_resources": false
+    },
+    {
+      "id": "sj-14",
+      "source_file": "calendar-14.pdf",
+      "region": "東予",
+      "as_needed_resources": false
+    },
+    {
+      "id": "sj-15",
+      "source_file": "calendar-15.pdf",
+      "region": "東予",
+      "as_needed_resources": false
+    },
+    {
+      "id": "sj-16",
+      "source_file": "calendar-16.pdf",
+      "region": "東予",
+      "as_needed_resources": false
+    },
+    {
+      "id": "sj-17",
+      "source_file": "calendar-17.pdf",
+      "region": "東予",
+      "as_needed_resources": false
+    },
+    {
+      "id": "sj-18",
+      "source_file": "calendar-18.pdf",
+      "region": "東予",
+      "as_needed_resources": false
+    },
+    {
+      "id": "sj-19",
+      "source_file": "calendar-19.pdf",
+      "region": "東予",
+      "as_needed_resources": false
+    },
+    {
+      "id": "sj-20",
+      "source_file": "calendar-20.pdf",
+      "region": "丹原",
+      "as_needed_resources": false
+    },
+    {
+      "id": "sj-21",
+      "source_file": "calendar-21.pdf",
+      "region": "丹原",
+      "as_needed_resources": false
+    },
+    {
+      "id": "sj-22",
+      "source_file": "calendar-22.pdf",
+      "region": "丹原",
+      "as_needed_resources": false
+    },
+    {
+      "id": "sj-23",
+      "source_file": "calendar-23.pdf",
+      "region": "丹原",
+      "as_needed_resources": false
+    },
+    {
+      "id": "sj-24",
+      "source_file": "calendar-24.pdf",
+      "region": "丹原",
+      "as_needed_resources": false
+    },
+    {
+      "id": "sj-25",
+      "source_file": "calendar-25.pdf",
+      "region": "小松",
+      "as_needed_resources": false
+    }
+  ]
+}

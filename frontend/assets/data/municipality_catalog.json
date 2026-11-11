@@ -3824,6 +3824,126 @@
           }
         }
       }
+    },
+    {
+      "id": "38206",
+      "version": "saijo-2026.1",
+      "name": "西条市",
+      "prefecture_id": "38",
+      "prefecture_name": "愛媛県",
+      "registry_asset": "assets/data/municipality_38206_registry.json",
+      "profiles": {
+        "citywide": {
+          "calendar_asset": "assets/data/municipality_38206_0_calendar.json",
+          "categories": {
+            "burnable": {
+              "name": "もえるごみ",
+              "collection_type_id": "burnable",
+              "cutoff": "08:00",
+              "time_note": "収集日の朝8時までに、決められたごみステーションへ出してください。",
+              "color": "#33CC33"
+            },
+            "non_burnable": {
+              "name": "もえないごみ",
+              "collection_type_id": "non_burnable",
+              "cutoff": "08:00",
+              "time_note": "収集日の朝8時までに、決められたごみステーションへ出してください。",
+              "color": "#FF6600"
+            },
+            "paper": {
+              "name": "古紙",
+              "collection_type_id": "paper",
+              "cutoff": "08:00",
+              "time_note": "収集日の朝8時までに、決められたごみステーションへ出してください。",
+              "color": "#B5B5B5"
+            },
+            "bottles": {
+              "name": "ガラスびん",
+              "collection_type_id": "bottles",
+              "cutoff": "08:00",
+              "time_note": "収集日の朝8時までに、決められたごみステーションへ出してください。",
+              "color": "#9BC1E5"
+            },
+            "pet_bottles": {
+              "name": "ペットボトル",
+              "collection_type_id": "pet_bottles",
+              "cutoff": "08:00",
+              "time_note": "収集日の朝8時までに、決められたごみステーションへ出してください。",
+              "color": "#9BC1E5"
+            },
+            "spray_cans": {
+              "name": "スプレー缶・カセット式ガスボンベ",
+              "collection_type_id": "spray_cans",
+              "cutoff": "08:00",
+              "time_note": "収集日の朝8時までに、決められたごみステーションへ出してください。",
+              "color": "#9BC1E5"
+            },
+            "dry_batteries": {
+              "name": "乾電池・ボタン電池",
+              "collection_type_id": "dry_batteries",
+              "cutoff": "08:00",
+              "time_note": "収集日の朝8時までに、決められたごみステーションへ出してください。",
+              "color": "#FFB366"
+            },
+            "bulky": {
+              "name": "粗大ごみ",
+              "color": "#8B5BA6"
+            },
+            "drop_off": {
+              "name": "拠点回収",
+              "color": "#99772D"
+            },
+            "small_appliances": {
+              "name": "小型家電回収",
+              "color": "#447777"
+            },
+            "direct_delivery": {
+              "name": "直接搬入",
+              "color": "#666666"
+            },
+            "not_collected": {
+              "name": "市では収集しない",
+              "color": "#666666"
+            },
+            "consult": {
+              "name": "市へ確認",
+              "color": "#777777"
+            }
+          },
+          "bulky_waste": {
+            "category_code": "bulky",
+            "config": {
+              "municipality_id": "38206",
+              "municipality_name": "西条市",
+              "collection_frequency": "事前申込みによる戸別収集（1回10点まで）",
+              "reception_hours": "電話：月〜金 9:00〜12:00・13:00〜15:00（祝日・12/29〜1/3を除く）。インターネット：24時間。",
+              "collection_rules": "受付で品目・必要な処理券・収集日・場所を確認。処理券に受付番号又は氏名を記入して貼り、予約日の朝8時までに指定場所へ。アプリから申込みは行われません。",
+              "fee_structure_type": "fixed",
+              "application_method": "both",
+              "information_url": "https://www.city.saijo.ehime.jp/soshiki/eisei/gominowakekata.html",
+              "phone_number": "0897-66-7453",
+              "web_form_url": "https://www.sodai-saijo.jp/",
+              "steps": [
+                {
+                  "step_number": 1,
+                  "title": "電話または公式サイトで申し込む",
+                  "description": "品目・数量、料金、収集日と場所を受付で確認します。"
+                },
+                {
+                  "step_number": 2,
+                  "title": "必要な処理券を購入する",
+                  "description": "1枚300円。品目ごとの料金を受付で確認し、必要枚数を購入します。"
+                },
+                {
+                  "step_number": 3,
+                  "title": "予約日に指定場所へ出す",
+                  "description": "処理券に受付番号又は氏名を記入して貼り、予約日の朝8時までに出してください。"
+                }
+              ]
+            }
+          }
+        }
+      }
     }
   ]
 }

@@ -1,0 +1,565 @@
+{
+  "calendars": [
+    {
+      "calendar_id": "sj-01",
+      "source_file": "calendar-01.pdf",
+      "dates": 365,
+      "collection_days": 166,
+      "multiple_stream_days": 53,
+      "closed_dates": [
+        "2026-05-05",
+        "2026-08-15",
+        "2026-08-16",
+        "2026-10-15",
+        "2026-10-16",
+        "2026-10-17",
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03"
+      ],
+      "festival_closures": [
+        "2026-10-15",
+        "2026-10-16"
+      ],
+      "days_sha256": "5df0797978f395fb0f43432f796b322f575a8ac35211f63af337dfda34f3c964"
+    },
+    {
+      "calendar_id": "sj-02",
+      "source_file": "calendar-02.pdf",
+      "dates": 365,
+      "collection_days": 137,
+      "multiple_stream_days": 24,
+      "closed_dates": [
+        "2026-05-05",
+        "2026-08-15",
+        "2026-08-16",
+        "2026-10-15",
+        "2026-10-16",
+        "2026-10-17",
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03"
+      ],
+      "festival_closures": [
+        "2026-10-15",
+        "2026-10-16"
+      ],
+      "days_sha256": "5b04358997818476c8c4a9f2bc2a7d81560cd74327fd6307e788bc08d3803b54"
+    },
+    {
+      "calendar_id": "sj-03",
+      "source_file": "calendar-03.pdf",
+      "dates": 365,
+      "collection_days": 176,
+      "multiple_stream_days": 62,
+      "closed_dates": [
+        "2026-05-05",
+        "2026-08-15",
+        "2026-08-16",
+        "2026-10-15",
+        "2026-10-16",
+        "2026-10-17",
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03"
+      ],
+      "festival_closures": [
+        "2026-10-15",
+        "2026-10-16"
+      ],
+      "days_sha256": "f1a1111787096104fae0cb96406cebaa5fdc9ce0bcea5b8f85d7af852f0e26e6"
+    },
+    {
+      "calendar_id": "sj-04",
+      "source_file": "calendar-04.pdf",
+      "dates": 365,
+      "collection_days": 135,
+      "multiple_stream_days": 24,
+      "closed_dates": [
+        "2026-05-05",
+        "2026-08-15",
+        "2026-08-16",
+        "2026-10-15",
+        "2026-10-16",
+        "2026-10-17",
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03"
+      ],
+      "festival_closures": [
+        "2026-10-15",
+        "2026-10-16",
+        "2026-10-17"
+      ],
+      "days_sha256": "4d450c53b7872f60eb84cc90c0bf65127d1525e561e0a1e0c1367f3cdca1252a"
+    },
+    {
+      "calendar_id": "sj-05",
+      "source_file": "calendar-05.pdf",
+      "dates": 365,
+      "collection_days": 175,
+      "multiple_stream_days": 62,
+      "closed_dates": [
+        "2026-05-05",
+        "2026-08-15",
+        "2026-08-16",
+        "2026-10-15",
+        "2026-10-16",
+        "2026-10-17",
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03"
+      ],
+      "festival_closures": [
+        "2026-10-15",
+        "2026-10-16"
+      ],
+      "days_sha256": "0a1e523508990ffae1018cb7beccf30bad8bb86abedcf85d20edb4ff63779a94"
+    },
+    {
+      "calendar_id": "sj-06",
+      "source_file": "calendar-06.pdf",
+      "dates": 365,
+      "collection_days": 176,
+      "multiple_stream_days": 62,
+      "closed_dates": [
+        "2026-05-05",
+        "2026-08-15",
+        "2026-08-16",
+        "2026-10-15",
+        "2026-10-16",
+        "2026-10-17",
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03"
+      ],
+      "festival_closures": [
+        "2026-10-15",
+        "2026-10-16"
+      ],
+      "days_sha256": "f67d46a49627c33d87fac7eda3ebd408684a3b3691cdc58c9ff715b4ee1a2b3b"
+    },
+    {
+      "calendar_id": "sj-07",
+      "source_file": "calendar-07.pdf",
+      "dates": 365,
+      "collection_days": 177,
+      "multiple_stream_days": 64,
+      "closed_dates": [
+        "2026-05-05",
+        "2026-08-15",
+        "2026-08-16",
+        "2026-10-15",
+        "2026-10-16",
+        "2026-10-17",
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03"
+      ],
+      "festival_closures": [
+        "2026-10-15",
+        "2026-10-16"
+      ],
+      "days_sha256": "406ad1ddf1e964be62affa54f2e6add377aef7aaec46326543a20cb8938039b2"
+    },
+    {
+      "calendar_id": "sj-08",
+      "source_file": "calendar-08.pdf",
+      "dates": 365,
+      "collection_days": 177,
+      "multiple_stream_days": 63,
+      "closed_dates": [
+        "2026-05-05",
+        "2026-08-15",
+        "2026-08-16",
+        "2026-10-15",
+        "2026-10-16",
+        "2026-10-17",
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03"
+      ],
+      "festival_closures": [
+        "2026-10-15",
+        "2026-10-16"
+      ],
+      "days_sha256": "90d60e63623d49f9a785fd79612ee272eb581fe8b54c6462ee75db0130e26bcd"
+    },
+    {
+      "calendar_id": "sj-09",
+      "source_file": "calendar-09.pdf",
+      "dates": 365,
+      "collection_days": 177,
+      "multiple_stream_days": 63,
+      "closed_dates": [
+        "2026-05-05",
+        "2026-08-15",
+        "2026-08-16",
+        "2026-10-15",
+        "2026-10-16",
+        "2026-10-17",
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03"
+      ],
+      "festival_closures": [
+        "2026-10-15",
+        "2026-10-16"
+      ],
+      "days_sha256": "90d60e63623d49f9a785fd79612ee272eb581fe8b54c6462ee75db0130e26bcd"
+    },
+    {
+      "calendar_id": "sj-10",
+      "source_file": "calendar-10.pdf",
+      "dates": 365,
+      "collection_days": 175,
+      "multiple_stream_days": 62,
+      "closed_dates": [
+        "2026-05-05",
+        "2026-08-15",
+        "2026-08-16",
+        "2026-10-15",
+        "2026-10-16",
+        "2026-10-17",
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03"
+      ],
+      "festival_closures": [
+        "2026-10-15",
+        "2026-10-16"
+      ],
+      "days_sha256": "0a1e523508990ffae1018cb7beccf30bad8bb86abedcf85d20edb4ff63779a94"
+    },
+    {
+      "calendar_id": "sj-11",
+      "source_file": "calendar-11.pdf",
+      "dates": 365,
+      "collection_days": 149,
+      "multiple_stream_days": 36,
+      "closed_dates": [
+        "2026-05-05",
+        "2026-08-15",
+        "2026-08-16",
+        "2026-10-15",
+        "2026-10-16",
+        "2026-10-17",
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03"
+      ],
+      "festival_closures": [
+        "2026-10-15",
+        "2026-10-16"
+      ],
+      "days_sha256": "991d49984edd33530cd1c63d6ed450f7342b1d4debf711ab6b6cf045f4ab378b"
+    },
+    {
+      "calendar_id": "sj-12",
+      "source_file": "calendar-12.pdf",
+      "dates": 365,
+      "collection_days": 177,
+      "multiple_stream_days": 64,
+      "closed_dates": [
+        "2026-05-05",
+        "2026-08-15",
+        "2026-08-16",
+        "2026-10-15",
+        "2026-10-16",
+        "2026-10-17",
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03"
+      ],
+      "festival_closures": [
+        "2026-10-15",
+        "2026-10-16"
+      ],
+      "days_sha256": "a3db9dbbf5d57c47051622e710ed0d330fb7978bd64684da51df8be8fb6bbbe5"
+    },
+    {
+      "calendar_id": "sj-13",
+      "source_file": "calendar-13.pdf",
+      "dates": 365,
+      "collection_days": 164,
+      "multiple_stream_days": 53,
+      "closed_dates": [
+        "2026-05-05",
+        "2026-08-15",
+        "2026-08-16",
+        "2026-10-15",
+        "2026-10-16",
+        "2026-10-17",
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03"
+      ],
+      "festival_closures": [
+        "2026-10-15",
+        "2026-10-16",
+        "2026-10-17"
+      ],
+      "days_sha256": "f829014ae37b29e17b5ed0c3bf705ee46d49bfac42fa660ba3b74a40463a50c6"
+    },
+    {
+      "calendar_id": "sj-14",
+      "source_file": "calendar-14.pdf",
+      "dates": 365,
+      "collection_days": 156,
+      "multiple_stream_days": 53,
+      "closed_dates": [
+        "2026-05-05",
+        "2026-08-15",
+        "2026-08-16",
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03"
+      ],
+      "festival_closures": [],
+      "days_sha256": "0367454e79c54efbfebc7ac1e5a723937286a08d72e88c165e1761e8cf992fb2"
+    },
+    {
+      "calendar_id": "sj-15",
+      "source_file": "calendar-15.pdf",
+      "dates": 365,
+      "collection_days": 75,
+      "multiple_stream_days": 63,
+      "closed_dates": [
+        "2026-05-05",
+        "2026-08-15",
+        "2026-08-16",
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03"
+      ],
+      "festival_closures": [],
+      "days_sha256": "cdba6e8cd60d195e576041c32e3a122f616c8aedf21174b3cafab28e29c45bdd"
+    },
+    {
+      "calendar_id": "sj-16",
+      "source_file": "calendar-16.pdf",
+      "dates": 365,
+      "collection_days": 178,
+      "multiple_stream_days": 64,
+      "closed_dates": [
+        "2026-05-05",
+        "2026-08-15",
+        "2026-08-16",
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03"
+      ],
+      "festival_closures": [],
+      "days_sha256": "630574fda4ad7e9f788e0e8deba6fd551b646e6d86e88684183a132dfe1ef47f"
+    },
+    {
+      "calendar_id": "sj-17",
+      "source_file": "calendar-17.pdf",
+      "dates": 365,
+      "collection_days": 155,
+      "multiple_stream_days": 53,
+      "closed_dates": [
+        "2026-05-05",
+        "2026-08-15",
+        "2026-08-16",
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03"
+      ],
+      "festival_closures": [],
+      "days_sha256": "880097d32c0f069ab95a5c830f9f5f9d482bbb99654f0e0e039ac6975a951b65"
+    },
+    {
+      "calendar_id": "sj-18",
+      "source_file": "calendar-18.pdf",
+      "dates": 365,
+      "collection_days": 178,
+      "multiple_stream_days": 63,
+      "closed_dates": [
+        "2026-05-05",
+        "2026-08-15",
+        "2026-08-16",
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03"
+      ],
+      "festival_closures": [],
+      "days_sha256": "c76c0225e37109bea990fe76271f8a26533531284a92cc6303bf1fddeb9fd6e8"
+    },
+    {
+      "calendar_id": "sj-19",
+      "source_file": "calendar-19.pdf",
+      "dates": 365,
+      "collection_days": 178,
+      "multiple_stream_days": 63,
+      "closed_dates": [
+        "2026-05-05",
+        "2026-08-15",
+        "2026-08-16",
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03"
+      ],
+      "festival_closures": [],
+      "days_sha256": "cd532debd63eec00ba2341ff1be501c511b90e3ad50733914688b93d58ff19e8"
+    },
+    {
+      "calendar_id": "sj-20",
+      "source_file": "calendar-20.pdf",
+      "dates": 365,
+      "collection_days": 50,
+      "multiple_stream_days": 50,
+      "closed_dates": [
+        "2026-05-05",
+        "2026-08-15",
+        "2026-08-16",
+        "2026-10-15",
+        "2026-10-16",
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03"
+      ],
+      "festival_closures": [
+        "2026-10-15",
+        "2026-10-16"
+      ],
+      "days_sha256": "9d0d8e453649f449858e97e9e5acad268b4c2d725752c4153c7fd35b67a98e71"
+    },
+    {
+      "calendar_id": "sj-21",
+      "source_file": "calendar-21.pdf",
+      "dates": 365,
+      "collection_days": 165,
+      "multiple_stream_days": 76,
+      "closed_dates": [
+        "2026-05-05",
+        "2026-08-15",
+        "2026-08-16",
+        "2026-10-15",
+        "2026-10-16",
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03"
+      ],
+      "festival_closures": [
+        "2026-10-15",
+        "2026-10-16"
+      ],
+      "days_sha256": "ce8cde9ef091cb9a7ef6bf46492cb6bec5d916ed3eaf914506e6fb466eac1897"
+    },
+    {
+      "calendar_id": "sj-22",
+      "source_file": "calendar-22.pdf",
+      "dates": 365,
+      "collection_days": 113,
+      "multiple_stream_days": 74,
+      "closed_dates": [
+        "2026-05-05",
+        "2026-08-15",
+        "2026-08-16",
+        "2026-10-15",
+        "2026-10-16",
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03"
+      ],
+      "festival_closures": [
+        "2026-10-15",
+        "2026-10-16"
+      ],
+      "days_sha256": "7dafc50d18a26f076d039ba68fa47386052865d72e02c192c16c3891297001da"
+    },
+    {
+      "calendar_id": "sj-23",
+      "source_file": "calendar-23.pdf",
+      "dates": 365,
+      "collection_days": 114,
+      "multiple_stream_days": 62,
+      "closed_dates": [
+        "2026-05-05",
+        "2026-08-15",
+        "2026-08-16",
+        "2026-10-15",
+        "2026-10-16",
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03"
+      ],
+      "festival_closures": [
+        "2026-10-15",
+        "2026-10-16"
+      ],
+      "days_sha256": "12e7d36e23cd921e95d94749dbf8e9178209261b7f89b6634288c3cf36f486f0"
+    },
+    {
+      "calendar_id": "sj-24",
+      "source_file": "calendar-24.pdf",
+      "dates": 365,
+      "collection_days": 165,
+      "multiple_stream_days": 76,
+      "closed_dates": [
+        "2026-05-05",
+        "2026-08-15",
+        "2026-08-16",
+        "2026-10-15",
+        "2026-10-16",
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03"
+      ],
+      "festival_closures": [
+        "2026-10-15",
+        "2026-10-16"
+      ],
+      "days_sha256": "4f7cca87da9139c9702e583907e1ec04b029c8e8f3cfe06891196f404ec3332e"
+    },
+    {
+      "calendar_id": "sj-25",
+      "source_file": "calendar-25.pdf",
+      "dates": 365,
+      "collection_days": 176,
+      "multiple_stream_days": 63,
+      "closed_dates": [
+        "2026-05-05",
+        "2026-08-15",
+        "2026-08-16",
+        "2026-10-16",
+        "2026-10-17",
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03"
+      ],
+      "festival_closures": [
+        "2026-10-16"
+      ],
+      "days_sha256": "cc31f626fab134957c61ed1b36fa9c465fa51bb1a355cd7a7c75ab805444da77"
+    }
+  ],
+  "calendar_dates": 9125,
+  "selectable_areas": 39
+}
