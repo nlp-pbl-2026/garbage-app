@@ -1,0 +1,13 @@
+{
+  "case": 36,
+  "input": {
+    "municipality_id": "38206",
+    "district_id": "38206-01",
+    "query": "幹の太さ直径4cm、長さ2mちょうどの剪定木",
+    "clarifications": []
+  },
+  "expected": null,
+  "check_type": "hold",
+  "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/61346.pdf#page=13",
+  "official_reason": "同じ分別表で粗大の2m以下と収集しない長辺2m以上が重なる。境界は市へ確認し、分類・予定を推測しない。"
+}

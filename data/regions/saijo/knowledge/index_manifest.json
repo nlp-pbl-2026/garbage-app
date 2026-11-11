@@ -5,10 +5,10 @@
   "item_count": 1283,
   "model_id": "amazon.titan-embed-text-v2:0",
   "dimensions": 1024,
-  "source_sha256": "1de90992925d0bc31ab1ac4e290bc8ff16ed71072f02aca882351ea8ac71cce2",
-  "index_sha256": "85dbe33eb0195026892ec12a0ea78d2fff92781c841610c658f310303ba6bc68",
+  "source_sha256": "bdf65c65fdc828e31674fca12073bcbc9eb398d59d61b9580c44418909927ea0",
+  "index_sha256": "23ec5fd149dd2c02dff767883157ea5f482396d1be063177e3a7612f43f0d883",
   "verification": "csv_ids_model_dimensions_finite_normalized_checked",
   "embedding_text": "backend/build_item_embeddings.py:build_document",
-  "generation_calls": 1277,
-  "generation_budget_reserve_usd": 0.0560032
+  "generation_calls": 1300,
+  "generation_budget_reserve_usd": 0.057277800000000004
 }

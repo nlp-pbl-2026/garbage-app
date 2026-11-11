@@ -13,12 +13,13 @@ from collections import Counter
 from concurrent.futures import ThreadPoolExecutor
 import csv
 import hashlib
+from html import unescape
 import json
 from pathlib import Path
 import re
 import subprocess
 import sys
-from urllib.parse import urlparse
+from urllib.parse import urlparse, urljoin
 from urllib.request import urlopen
 
 from saijo_pdf import calendar, dictionary, compact
@@ -48,6 +49,57 @@ def value_digest(value):
     return hashlib.sha256(
         json.dumps(value, ensure_ascii=False, sort_keys=True).encode()
     ).hexdigest()
+
+
+def area_label(value):
+    """Normalize typography, retaining included/excluded-area conditions."""
+    value = re.split(r"\[PDF", compact(value), flags=re.I)[0]
+    value = value.replace("\u200b", "").replace("地区", "").replace("を除く", "除く")
+    return re.sub(r"[,、]", "・", value).strip("・,.")
+
+
+def check_area_mapping():
+    import pymupdf
+    from saijo_pdf import visible, text_in
+
+    config = read(DATA / "areas.json")
+    sources = {s["file"]: s for s in read(DATA / "sources.json")["sources"]}
+    index = (DATA / "source/r8-calender.html").read_text(encoding="utf8")
+    links = {
+        urljoin(
+            "https://www.city.saijo.ehime.jp/soshiki/eisei/r8-calender.html",
+            unescape(url),
+        ): unescape(re.sub("<[^>]+>", "", label))
+        for url, label in re.findall(
+            r'<a[^>]*href="([^"]+)"[^>]*>(.*?)</a>', index, re.S
+        )
+        if ".pdf" in url
+    }
+    if len(links) != 25:
+        raise ValueError("Official index no longer has exactly 25 calendars")
+    for spec in config["calendars"]:
+        expected = "・".join(
+            a["name"] for a in config["areas"] if a["calendar_id"] == spec["id"]
+        )
+        source = sources[spec["source_file"]]
+        page = pymupdf.open(DATA / "source" / spec["source_file"])[0]
+        caption = text_in(visible(page), (0, 97, 842, 145))
+        # The 吉井・多賀 PDF omits its street limit in the short caption.
+        # Its pinned official index, not an invented boundary, supplies it.
+        caption_expected = (
+            expected.replace("（三津屋本通りまで）", "")
+            if spec["id"] == "sj-17"
+            else expected
+        )
+        if (
+            area_label(expected) != area_label(links.get(source["url"], ""))
+            or area_label(expected) != area_label(source["label"])
+            or area_label(caption_expected) != area_label(caption)
+        ):
+            raise ValueError(
+                f"Area/index/PDF caption mismatch: {spec['id']} {expected!r}/{caption!r}"
+            )
+    return len(config["areas"]), len(config["calendars"])
 
 
 def normalize_source(body, source):
@@ -133,11 +185,16 @@ def item_rows():
             options = sorted(set(options + ["burnable"]))
         if category == "bottles":
             options = sorted(set(options + ["non_burnable"]))
+        if category == "paper":
+            note += "。汚れが落ちないものはもえるごみ。"
+            options = sorted(set(options + ["burnable"]))
         if "※３参照" in note or "※3参照" in note:
             note += "。電源コードは根本から50cm以内に切り、もえないごみへ。"
         fee_note = ""
+        if "※２参照" in note or "※2参照" in note:
+            fee_note += "。家庭から出たごみでも、請負により撤去された産業廃棄物は道前クリーンセンター・最終処分場へ搬入できません。"
         if r["tickets"] and compact(r["tickets"]) != "-":
-            fee_note = (
+            fee_note += (
                 "。この品目の処理券："
                 + r["tickets"]
                 + "（1枚300円。※1は指定袋に入れ口を縛れない場合のみ。受付で条件・枚数を確認）。"
@@ -195,6 +252,7 @@ def item_rows():
 
 
 def calendar_records():
+    check_area_mapping()
     config = read(DATA / "areas.json")
     date_review = read(DATA / "date_label_reviews.json")
     if date_review["approval_status"] != "user_approved_geometry_and_legend_correction":

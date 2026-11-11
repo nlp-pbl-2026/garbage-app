@@ -1218,7 +1218,9 @@ class WasteGuideService:
 
     @classmethod
     def _normalize_item_key(cls, value: str) -> str:
-        return cls._normalize_question(value).replace("衣裳", "衣装").replace("段ボール", "ダンボール")
+        return (cls._normalize_question(value).replace("衣裳", "衣装")
+                .replace("段ボール", "ダンボール")
+                .replace("ペットボトル類の本体", "ペットボトル本体"))
 
     @staticmethod
     def _base_item_name(value: str) -> str:
@@ -2201,8 +2203,10 @@ class WasteGuideService:
         if collection_status and collection_status.status == "unverified":
             lines.append(collection_status.message or "この区分の収集日は未確認です。")
         elif next_collection:
+            area_name = region.area_name if region else "清水"
+            area_label = area_name if area_name.endswith("地区") else f"{area_name}地区"
             lines.append(
-                f"{region.area_name if region else '清水'}地区の次回収集日は{next_collection.display_date}です。"
+                f"{area_label}の次回収集日は{next_collection.display_date}です。"
             )
         elif region and region.rules.categories[decision.category_code].answer_note:
             lines.append(region.rules.categories[decision.category_code].answer_note)

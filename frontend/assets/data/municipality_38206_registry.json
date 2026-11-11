@@ -1,0 +1,465 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38206",
+  "municipality_name": "西条市",
+  "prefecture_id": "38",
+  "prefecture_name": "愛媛県",
+  "version": "saijo-2026.1",
+  "valid_from": "2026-04-01",
+  "valid_to": "2027-03-31",
+  "collection_areas": [
+    {
+      "id": "38206-01",
+      "name": "大久保地区",
+      "display_name": "西条地域：大久保地区",
+      "calendar_id": "sj-01",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83689.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-02",
+      "name": "大保木地区",
+      "display_name": "西条地域：大保木地区",
+      "calendar_id": "sj-02",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83690.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-03",
+      "name": "市之川地区",
+      "display_name": "西条地域：市之川地区",
+      "calendar_id": "sj-02",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83690.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-04",
+      "name": "大町地区",
+      "display_name": "西条地域：大町地区",
+      "calendar_id": "sj-03",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83652.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-05",
+      "name": "加茂地区",
+      "display_name": "西条地域：加茂地区",
+      "calendar_id": "sj-04",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83691.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-06",
+      "name": "神拝地区",
+      "display_name": "西条地域：神拝地区",
+      "calendar_id": "sj-05",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83654.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-07",
+      "name": "神戸地区",
+      "display_name": "西条地域：神戸地区",
+      "calendar_id": "sj-06",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83655.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-08",
+      "name": "西条地区",
+      "display_name": "西条地域：西条地区",
+      "calendar_id": "sj-07",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83656.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-09",
+      "name": "橘地区",
+      "display_name": "西条地域：橘地区",
+      "calendar_id": "sj-08",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83657.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-10",
+      "name": "玉津地区",
+      "display_name": "西条地域：玉津地区",
+      "calendar_id": "sj-09",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83658.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-11",
+      "name": "飯岡地区",
+      "display_name": "西条地域：飯岡地区",
+      "calendar_id": "sj-09",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83658.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-12",
+      "name": "禎瑞地区",
+      "display_name": "西条地域：禎瑞地区",
+      "calendar_id": "sj-10",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83660.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-13",
+      "name": "兎之山地区",
+      "display_name": "西条地域：兎之山地区",
+      "calendar_id": "sj-11",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83661.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-14",
+      "name": "中寺地区",
+      "display_name": "西条地域：中寺地区",
+      "calendar_id": "sj-11",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83661.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-15",
+      "name": "氷見地区",
+      "display_name": "西条地域：氷見地区",
+      "calendar_id": "sj-12",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83662.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-16",
+      "name": "舟形地区",
+      "display_name": "西条地域：舟形地区",
+      "calendar_id": "sj-13",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83663.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-17",
+      "name": "津越地区",
+      "display_name": "西条地域：津越地区",
+      "calendar_id": "sj-13",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83663.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-18",
+      "name": "長瀬地区",
+      "display_name": "西条地域：長瀬地区",
+      "calendar_id": "sj-13",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83663.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-19",
+      "name": "国安地区",
+      "display_name": "東予地域：国安地区",
+      "calendar_id": "sj-14",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83664.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-20",
+      "name": "黒谷地区",
+      "display_name": "東予地域：黒谷地区",
+      "calendar_id": "sj-15",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83665.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-21",
+      "name": "周布地区",
+      "display_name": "東予地域：周布地区",
+      "calendar_id": "sj-16",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83666.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-22",
+      "name": "壬生川（大曲地区を含む）地区",
+      "display_name": "東予地域：壬生川（大曲地区を含む）地区",
+      "calendar_id": "sj-16",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83666.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-23",
+      "name": "吉井地区",
+      "display_name": "東予地域：吉井地区",
+      "calendar_id": "sj-17",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83667.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-24",
+      "name": "多賀（三津屋本通りまで）地区",
+      "display_name": "東予地域：多賀（三津屋本通りまで）地区",
+      "calendar_id": "sj-17",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83667.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-25",
+      "name": "吉岡地区",
+      "display_name": "東予地域：吉岡地区",
+      "calendar_id": "sj-18",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83668.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-26",
+      "name": "三芳地区",
+      "display_name": "東予地域：三芳地区",
+      "calendar_id": "sj-19",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83695.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-27",
+      "name": "楠河地区",
+      "display_name": "東予地域：楠河地区",
+      "calendar_id": "sj-19",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83695.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-28",
+      "name": "庄内地区",
+      "display_name": "東予地域：庄内地区",
+      "calendar_id": "sj-19",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83695.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-29",
+      "name": "相之谷地区",
+      "display_name": "丹原地域：相之谷地区",
+      "calendar_id": "sj-20",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83670.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-30",
+      "name": "久妙寺地区",
+      "display_name": "丹原地域：久妙寺地区",
+      "calendar_id": "sj-21",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83671.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-31",
+      "name": "徳田（古田新出・田滝を除く）地区",
+      "display_name": "丹原地域：徳田（古田新出・田滝を除く）地区",
+      "calendar_id": "sj-21",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83671.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-32",
+      "name": "田野地区",
+      "display_name": "丹原地域：田野地区",
+      "calendar_id": "sj-22",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83673.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-33",
+      "name": "田滝地区",
+      "display_name": "丹原地域：田滝地区",
+      "calendar_id": "sj-22",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83673.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-34",
+      "name": "丹原（久妙寺を除く）地区",
+      "display_name": "丹原地域：丹原（久妙寺を除く）地区",
+      "calendar_id": "sj-23",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83678.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-35",
+      "name": "古田新出地区",
+      "display_name": "丹原地域：古田新出地区",
+      "calendar_id": "sj-23",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83678.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-36",
+      "name": "中川地区",
+      "display_name": "丹原地域：中川地区",
+      "calendar_id": "sj-24",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83699.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-37",
+      "name": "桜樹（相之谷を除く）地区",
+      "display_name": "丹原地域：桜樹（相之谷を除く）地区",
+      "calendar_id": "sj-24",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83699.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-38",
+      "name": "小松地区",
+      "display_name": "小松地域：小松地区",
+      "calendar_id": "sj-25",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83686.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38206-39",
+      "name": "石根地区",
+      "display_name": "小松地域：石根地区",
+      "calendar_id": "sj-25",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83686.pdf",
+      "needs_local_confirmation": true
+    }
+  ],
+  "calendars": [
+    {
+      "id": "sj-01",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "sj-02",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "sj-03",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "sj-04",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "sj-05",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "sj-06",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "sj-07",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "sj-08",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "sj-09",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "sj-10",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "sj-11",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "sj-12",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "sj-13",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "sj-14",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "sj-15",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "sj-16",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "sj-17",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "sj-18",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "sj-19",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "sj-20",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "sj-21",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "sj-22",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "sj-23",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "sj-24",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "sj-25",
+      "rule_profile_id": "citywide"
+    }
+  ]
+}

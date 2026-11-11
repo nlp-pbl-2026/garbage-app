@@ -4,7 +4,6 @@ White layout text is deliberately excluded. Calendar dates come from printed
 numbers, never from expanding the weekday legend into assumed collection days.
 """
 
-from collections import Counter
 from datetime import date
 import re
 import unicodedata

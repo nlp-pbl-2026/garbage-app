@@ -121,3 +121,10 @@ def test_failed_verification_prevents_catalog_activation(tmp_path, monkeypatch):
     with pytest.raises(ValueError, match="dedicated index"):
         data.activate()
     assert target.read_bytes() == before
+
+
+def test_area_labels_normalize_typography_without_losing_exclusions():
+    assert data.area_label("丹原地区（久妙寺除く）、古田新出地区") == data.area_label(
+        "丹原（久妙寺を除く）地区・古田新出地区"
+    )
+    assert data.area_label("桜樹地区（相之谷地区除く）") != data.area_label("桜樹地区")

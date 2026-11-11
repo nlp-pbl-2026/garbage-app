@@ -1,0 +1,11 @@
+{
+  "sources_refetched": 51,
+  "ocr_images_regenerated": 326,
+  "runtime_bytes_equal": {
+    "registry.json": "07d095a6a4ab8b98a18d19ffddccae64bad2f5a490f072d7de669d2d5619530d",
+    "knowledge/items.csv": "bdf65c65fdc828e31674fca12073bcbc9eb398d59d61b9580c44418909927ea0",
+    "generated/calendar-2026.json": "d22167f2e7983cdcff3c0d60b42462f41cce90d83b60e3ec8bb875d5cae47002"
+  },
+  "index_mode": "shared approved Saijo NPZ; no additional generation",
+  "scope": "Empty source/generated directory; tracked metadata copied, official sources refetched, images/OCR and CSV/calendar regenerated. Other municipalities not regenerated."
+}

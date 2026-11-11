@@ -177,3 +177,35 @@ def test_conflicting_inclusive_length_boundary_is_held_not_guessed(query, expect
         Service._conflicting_length_boundary(documents, query=query, clarifications=[])
         == expected
     )
+
+
+@pytest.mark.parametrize(
+    "name,label",
+    [("西条地域：大久保地区", "西条地域：大久保地区"), ("清水", "清水地区")],
+)
+def test_answer_does_not_duplicate_district_suffix(name, label):
+    from app.services.waste_guide_service import ClassificationDecision
+
+    selected = region()
+    selected.area_name = name
+    selected.rules.categories = {
+        "burnable": SimpleNamespace(time_note="", answer_note="")
+    }
+    answer = Service._build_answer(
+        ClassificationDecision(
+            is_resolved=True, item_name="紙くず", category_code="burnable"
+        ),
+        SimpleNamespace(display_date="2026年11月12日"),
+        region=selected,
+    )
+    assert label + "の次回収集日" in answer
+    assert "地区地区" not in answer
+
+
+def test_official_pet_body_alias_matches_the_explicit_body_not_detached_cap():
+    name = "ペットボトル類の本体"
+    query = "キャップ・ラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体。プラマークはありません"
+    assert Service._item_name_matches_query(name, query)
+    assert not Service._item_name_matches_query(
+        name, "ペットボトルから取り外したプラスチック製キャップだけ"
+    )

@@ -1,0 +1,482 @@
+{
+  "schema_version": 1,
+  "evaluation_time": "2026-11-11T07:00:00+09:00",
+  "cases": [
+    {
+      "case": 1,
+      "input": {
+        "municipality_id": "38206",
+        "district_id": "38206-01",
+        "query": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+        "clarifications": []
+      },
+      "expected": "pet_bottles",
+      "check_type": "classification",
+      "source_url": "https://www.city.saijo.ehime.jp/soshiki/eisei/singomifukuro.html",
+      "official_reason": "飲料PET本体は資源、外した部品は別。"
+    },
+    {
+      "case": 2,
+      "input": {
+        "municipality_id": "38206",
+        "district_id": "38206-01",
+        "query": "ペットボトルから取り外したプラスチック製キャップだけ",
+        "clarifications": []
+      },
+      "expected": "burnable",
+      "check_type": "classification",
+      "source_url": "https://www.city.saijo.ehime.jp/soshiki/eisei/singomifukuro.html",
+      "official_reason": "外したキャップはもえる。"
+    },
+    {
+      "case": 3,
+      "input": {
+        "municipality_id": "38206",
+        "district_id": "38206-01",
+        "query": "ペットボトルから外したプラスチック製ラベルだけ",
+        "clarifications": []
+      },
+      "expected": "burnable",
+      "check_type": "classification",
+      "source_url": "https://www.city.saijo.ehime.jp/soshiki/eisei/singomifukuro.html",
+      "official_reason": "外したラベルはもえる。"
+    },
+    {
+      "case": 4,
+      "input": {
+        "municipality_id": "38206",
+        "district_id": "38206-01",
+        "query": "洗っても汚れが落ちない飲料用ペットボトル本体",
+        "clarifications": []
+      },
+      "expected": "burnable",
+      "check_type": "classification",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/61346.pdf#page=22",
+      "official_reason": "汚れが取れないPETはもえる。"
+    },
+    {
+      "case": 5,
+      "input": {
+        "municipality_id": "38206",
+        "district_id": "38206-01",
+        "query": "水洗いした透明なジャムのガラスびん",
+        "clarifications": []
+      },
+      "expected": "bottles",
+      "check_type": "classification",
+      "source_url": "https://www.city.saijo.ehime.jp/soshiki/eisei/singomifukuro.html",
+      "official_reason": "飲食用の洗ったびん。"
+    },
+    {
+      "case": 6,
+      "input": {
+        "municipality_id": "38206",
+        "district_id": "38206-01",
+        "query": "乳白色の化粧品のガラスびん",
+        "clarifications": []
+      },
+      "expected": "non_burnable",
+      "check_type": "classification",
+      "source_url": "https://www.city.saijo.ehime.jp/soshiki/eisei/singomifukuro.html",
+      "official_reason": "乳白色は資源対象外。"
+    },
+    {
+      "case": 7,
+      "input": {
+        "municipality_id": "38206",
+        "district_id": "38206-19",
+        "query": "洗った空の飲料用アルミ缶",
+        "clarifications": []
+      },
+      "expected": "non_burnable",
+      "check_type": "classification",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/61346.pdf#page=1",
+      "official_reason": "飲食用缶はもえない。"
+    },
+    {
+      "case": 8,
+      "input": {
+        "municipality_id": "38206",
+        "district_id": "38206-01",
+        "query": "中身を完全に使い切ったスプレー缶",
+        "clarifications": []
+      },
+      "expected": "spray_cans",
+      "check_type": "classification",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/61346.pdf#page=12",
+      "official_reason": "資源の専用区分。穴あけを案内。"
+    },
+    {
+      "case": 9,
+      "input": {
+        "municipality_id": "38206",
+        "district_id": "38206-01",
+        "query": "使い切りの単三乾電池",
+        "clarifications": []
+      },
+      "expected": "dry_batteries",
+      "check_type": "classification",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/61346.pdf#page=6",
+      "official_reason": "指定袋の外袋で電池収集日。"
+    },
+    {
+      "case": 10,
+      "input": {
+        "municipality_id": "38206",
+        "district_id": "38206-01",
+        "query": "機器から取り外した正常な家庭用リチウムイオン電池",
+        "clarifications": []
+      },
+      "expected": "drop_off",
+      "check_type": "classification",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/82667.jpg",
+      "official_reason": "拠点窓口又はJBRC。"
+    },
+    {
+      "case": 11,
+      "input": {
+        "municipality_id": "38206",
+        "district_id": "38206-01",
+        "query": "自動車用バッテリー",
+        "clarifications": []
+      },
+      "expected": "not_collected",
+      "check_type": "classification",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/61346.pdf#page=20",
+      "official_reason": "車用大型は市で収集しない。"
+    },
+    {
+      "case": 12,
+      "input": {
+        "municipality_id": "38206",
+        "district_id": "38206-01",
+        "query": "家庭用の液晶テレビ",
+        "clarifications": []
+      },
+      "expected": "not_collected",
+      "check_type": "classification",
+      "source_url": "https://www.city.saijo.ehime.jp/soshiki/eisei/gominowakekata.html",
+      "official_reason": "家電リサイクル専用。"
+    },
+    {
+      "case": 13,
+      "input": {
+        "municipality_id": "38206",
+        "district_id": "38206-01",
+        "query": "プラスチック製ストロー",
+        "clarifications": []
+      },
+      "expected": "burnable",
+      "check_type": "classification",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/61346.pdf#page=12",
+      "official_reason": "ストローは明示品目で寸法確認不要。"
+    },
+    {
+      "case": 14,
+      "input": {
+        "municipality_id": "38206",
+        "district_id": "38206-38",
+        "query": "汚れが取れない段ボール",
+        "clarifications": []
+      },
+      "expected": "burnable",
+      "check_type": "classification",
+      "source_url": "https://www.city.saijo.ehime.jp/soshiki/eisei/kyotenkaisyuubasyo.html",
+      "official_reason": "汚れた紙はもえる。"
+    },
+    {
+      "case": 15,
+      "input": {
+        "municipality_id": "38206",
+        "district_id": "38206-29",
+        "query": "きれいな新聞紙",
+        "clarifications": []
+      },
+      "expected": "paper",
+      "check_type": "classification",
+      "source_url": "https://www.city.saijo.ehime.jp/soshiki/eisei/kyotenkaisyuubasyo.html",
+      "official_reason": "古紙。"
+    },
+    {
+      "case": 16,
+      "input": {
+        "municipality_id": "38206",
+        "district_id": "38206-01",
+        "query": "アクセサリー",
+        "clarifications": []
+      },
+      "expected": null,
+      "check_type": "clarification",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/61346.pdf#page=1",
+      "official_reason": "金属か材質確認。"
+    },
+    {
+      "case": 17,
+      "input": {
+        "municipality_id": "38206",
+        "district_id": "38206-01",
+        "query": "アクセサリー",
+        "clarifications": [
+          {
+            "question": "何の素材でできていますか？",
+            "answer": "金属製です"
+          }
+        ]
+      },
+      "expected": "non_burnable",
+      "check_type": "classification",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/61346.pdf#page=1",
+      "official_reason": "金属はもえない。"
+    },
+    {
+      "case": 18,
+      "input": {
+        "municipality_id": "38206",
+        "district_id": "38206-01",
+        "query": "プラスチック製のおもちゃ",
+        "clarifications": []
+      },
+      "expected": null,
+      "check_type": "clarification",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/61346.pdf#page=4",
+      "official_reason": "ティッシュ箱との寸法比較が未回答。"
+    },
+    {
+      "case": 19,
+      "input": {
+        "municipality_id": "38206",
+        "district_id": "38206-01",
+        "query": "ティッシュ箱より小さいプラスチック製おもちゃ。電池も金属も付いていません",
+        "clarifications": []
+      },
+      "expected": "burnable",
+      "check_type": "classification",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/61346.pdf#page=4",
+      "official_reason": "小さいプラ玩具はもえる。"
+    },
+    {
+      "case": 20,
+      "input": {
+        "municipality_id": "38206",
+        "district_id": "38206-01",
+        "query": "ティッシュ箱より大きいプラスチック製おもちゃ。指定袋大に入れて口を縛れます。電池は付いていません",
+        "clarifications": []
+      },
+      "expected": "non_burnable",
+      "check_type": "classification",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/61346.pdf#page=4",
+      "official_reason": "袋に収まる大きいプラ玩具はもえない。"
+    },
+    {
+      "case": 21,
+      "input": {
+        "municipality_id": "38206",
+        "district_id": "38206-01",
+        "query": "指定袋大に入らず口を縛れない壊れた木製の家具",
+        "clarifications": []
+      },
+      "expected": "bulky",
+      "check_type": "classification",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/61346.pdf#page=4",
+      "official_reason": "家具は粗大、予約制。"
+    },
+    {
+      "case": 22,
+      "input": {
+        "municipality_id": "38206",
+        "district_id": "38206-28",
+        "query": "きれいな雑誌",
+        "clarifications": []
+      },
+      "expected": "paper",
+      "check_type": "classification",
+      "source_url": "https://www.city.saijo.ehime.jp/soshiki/eisei/kyotenkaisyuubasyo.html",
+      "official_reason": "古紙。"
+    },
+    {
+      "case": 23,
+      "input": {
+        "municipality_id": "38206",
+        "district_id": "38206-01",
+        "query": "幹の太さ直径2cmで指定袋に入る長さに切った剪定木",
+        "clarifications": []
+      },
+      "expected": "burnable",
+      "check_type": "classification",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/61346.pdf#page=13",
+      "official_reason": "3cm未満は指定袋。"
+    },
+    {
+      "case": 24,
+      "input": {
+        "municipality_id": "38206",
+        "district_id": "38206-01",
+        "query": "幹の太さ直径4cmで長さ1mの剪定木",
+        "clarifications": []
+      },
+      "expected": "bulky",
+      "check_type": "classification",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/61346.pdf#page=13",
+      "official_reason": "3cm以上5cm未満、2m以下。"
+    },
+    {
+      "case": 25,
+      "input": {
+        "municipality_id": "38206",
+        "district_id": "38206-01",
+        "query": "幹の太さ直径6cmの剪定木",
+        "clarifications": []
+      },
+      "expected": "not_collected",
+      "check_type": "classification",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/61346.pdf#page=13",
+      "official_reason": "5cm以上は木材処理業者。"
+    },
+    {
+      "case": 26,
+      "input": {
+        "municipality_id": "38206",
+        "district_id": "38206-01",
+        "query": "電池を取り外せない充電式の小型家電",
+        "clarifications": []
+      },
+      "expected": "consult",
+      "check_type": "classification",
+      "source_url": "https://www.city.saijo.ehime.jp/soshiki/eisei/douzentyokuhan.html",
+      "official_reason": "取り外せない場合は衛生課へ相談。"
+    },
+    {
+      "case": 27,
+      "input": {
+        "municipality_id": "38206",
+        "district_id": "38206-01",
+        "query": "壊れていない蛍光管",
+        "clarifications": []
+      },
+      "expected": "drop_off",
+      "check_type": "classification",
+      "source_url": "https://www.city.saijo.ehime.jp/soshiki/eisei/kyotenkaisyuubasyo.html",
+      "official_reason": "蛍光管は拠点のみ。"
+    },
+    {
+      "case": 28,
+      "input": {
+        "municipality_id": "38206",
+        "district_id": "38206-02",
+        "query": "洗ってラベルとキャップを外した飲料用ペットボトル本体",
+        "clarifications": []
+      },
+      "expected": "pet_bottles",
+      "check_type": "classification",
+      "source_url": "https://www.city.saijo.ehime.jp/soshiki/eisei/singomifukuro.html",
+      "official_reason": "大保木は随時収集。日付は未確認。",
+      "image_source": {
+        "file": "guide-07.pdf",
+        "page": 1,
+        "rect": [
+          164,
+          544,
+          219,
+          635
+        ]
+      }
+    },
+    {
+      "case": 29,
+      "input": {
+        "municipality_id": "38201",
+        "district_id": "38201-08",
+        "query": "キャップとラベルを外して水洗いした飲料用ペットボトル本体",
+        "clarifications": []
+      },
+      "expected": "ペット",
+      "check_type": "classification",
+      "source_url": "https://www.city.matsuyama.ehime.jp/kurashi/gomi/dashikata/kateigomi_matsuyama.html",
+      "official_reason": "既存自治体の確認済み回帰例。",
+      "image": false
+    },
+    {
+      "case": 30,
+      "input": {
+        "municipality_id": "38204",
+        "district_id": "38204-01",
+        "query": "中身を空にして水洗いした飲料用アルミ缶",
+        "clarifications": []
+      },
+      "expected": "cans",
+      "check_type": "classification",
+      "source_url": "https://www.city.yawatahama.ehime.jp/doc/2021022400010/file_contents/2023-04.pdf",
+      "official_reason": "飲料缶はカン。初回の「空の」だけの入力では汚れの条件が不足していたため、回帰用入力に洗浄済みと明記。初回入力と結果は評価記録に保持。",
+      "image": false
+    },
+    {
+      "case": 31,
+      "input": {
+        "municipality_id": "38210",
+        "district_id": "38210-iyo-south",
+        "query": "キャップ・ラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体。プラマークはありません",
+        "clarifications": []
+      },
+      "expected": "pet_bottles",
+      "check_type": "classification",
+      "source_url": "https://www.city.iyo.lg.jp/kankyohozen/bunbetu.html",
+      "official_reason": "既存自治体の確認済み回帰例。",
+      "image": false
+    },
+    {
+      "case": 32,
+      "input": {
+        "municipality_id": "38442",
+        "district_id": "38442-01",
+        "query": "使い終わったアルカリ乾電池",
+        "clarifications": []
+      },
+      "expected": "hazardous",
+      "check_type": "classification",
+      "source_url": "https://www.town.ikata.ehime.jp/soshiki/32/11452.html",
+      "official_reason": "既存自治体の確認済み回帰例。",
+      "image": false
+    },
+    {
+      "case": 33,
+      "input": {
+        "municipality_id": "38205",
+        "district_id": "38205-01",
+        "query": "使い終わったモバイルバッテリー",
+        "clarifications": []
+      },
+      "expected": "hazardous",
+      "check_type": "classification",
+      "source_url": "https://www.city.niihama.lg.jp/soshiki/haiki/pamphlet.html",
+      "official_reason": "既存自治体の確認済み回帰例。",
+      "image": false
+    },
+    {
+      "case": 34,
+      "input": {
+        "municipality_id": "38215",
+        "district_id": "38215-01",
+        "query": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+        "clarifications": []
+      },
+      "expected": "pet_bottles",
+      "check_type": "classification",
+      "source_url": "https://www.city.toon.ehime.jp/uploaded/attachment/22090.pdf#page=8",
+      "official_reason": "PET本体と外した付属品は別区分。",
+      "image": false
+    },
+    {
+      "case": 35,
+      "input": {
+        "municipality_id": "38386",
+        "district_id": "38386-01",
+        "query": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+        "clarifications": []
+      },
+      "expected": "pet_bottles",
+      "check_type": "classification",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=7",
+      "official_reason": "PET本体はペット。外した部品とは別。"
+    }
+  ]
+}

@@ -6,7 +6,6 @@ closed and require a source-hash-pinned manual review. No model/API inference.
 
 import json
 from collections import Counter
-from pathlib import Path
 
 from saijo_pdf import compact
 
