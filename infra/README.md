@@ -260,3 +260,9 @@ terraform -chdir=infra/terraform state list
 ### 東温市追加時のローカル準備
 
 [東温市データガイド](../docs/toon-data.md)に従いCSV・専用NPZ・manifest・32地区分のカレンダーを配置してください。重信・川内は同じ東温市索引を共有し、体温計の収集区分を切り替えます。搬出期限不明の区分で当日の期限内とは回答せず、日付未確認の計測器に定期予定を付けません。LambdaへOCR・PDF・生成スクリプトを含める必要はありません。`scripts/package_backend_data.py` のローカル検証で登録14自治体の実行時ファイルを配置できます。公開APIへの反映、実機検証、利用条件の確認は別途必要です。AWSやTerraformの設定・リソースは今回変更していません。
+
+### 久万高原町データの同梱
+
+久万高原町（`38386`）も既存の自治体カタログから読み込みます。追加リソースや専用APIは不要です。`data/regions/kumakogen/registry.json`、`knowledge/items.csv`、`knowledge/item_embeddings.npz`、`knowledge/index_manifest.json`、`generated/calendar-2026.json`を既存のデータステージング処理で同梱します。PDF・OCR・APIの生ログは同梱しません。共通原本から生成したFlutterのカタログ・台帳・カレンダーも対応版が必要です。
+
+[取得・検証・索引共有手順](../docs/kumakogen-data.md)に従ってGit管理外データを配置してください。標準カタログ全体のパッケージングには他自治体の全データも必要です。一部自治体だけを一時カタログで検証した結果を、全自治体のLambda ZIPの完成として扱いません。今回AWSへのデプロイやTerraform操作は行っていません。

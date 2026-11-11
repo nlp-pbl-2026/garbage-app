@@ -1,0 +1,1834 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38386",
+  "reviewed_at": "2026-11-11",
+  "version": "kumakogen-2026.1",
+  "evaluation_notes": [
+    "Initial and retry/final use different item-specific evidence and indexes; manifests pin each version.",
+    "Yawatahama case30 initially only said empty can; final clarifies rinsed can. This is an evaluation-input correction, not a change to Yawatahama data.",
+    "Eight retry cases passed after final processing fixes in offline saved-response replay; that replay is not an additional live Bedrock run.",
+    "Real-image perception is not evaluated by these text/clarification cases.",
+    "Final live batch:33/34; case4 straw was incorrectly overwritten by a parenthetical-name truncation. That processing bug was then fixed and all34 saved model responses replayed successfully offline. Latest retrieval ranking has not yet been re-evaluated for all34 cases."
+  ],
+  "corrections": [
+    "Bottom-row extraction: 55 rows recovered; reverse check covers 1989 painted classification icons and13 flowchart references.",
+    "Retain item-specific PET/bottle/clothing alternatives separately from shared stream instructions.",
+    "Exact-name supplement excludes PET body for detached caps and removed batteries for named appliances; more specific items retain original evidence indexes.",
+    "Battery removal/damage questions rely on item-specific official conditions; torn/unclean clothes do not ask washing again.",
+    "Bucket size and wood dimensions receive explicit official examples without importing another municipality rule.",
+    "Preserve the name suffix after a parenthetical qualifier; plastic packaging film must not match every plastic item."
+  ],
+  "phases": {
+    "initial": {
+      "manifest": {
+        "case_sha256": "e9a159ed623da66c60ae7b05895547a087d0613ceb221c8dac9bcdafe0f8ed67",
+        "model_settings": [
+          "amazon.nova-lite-v1:0",
+          "amazon.titan-embed-text-v2:0",
+          8,
+          0.15,
+          0.75,
+          false,
+          false
+        ],
+        "evaluation_time": "2026-11-11T07:00:00+09:00",
+        "budget_usd": 1.0,
+        "max_calls": 250,
+        "max_cases": 76,
+        "case_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34
+        ],
+        "dataset_sha256": {
+          "registry.json": "e1a189952cb78479b592e9d34b87ee94367d2e7acc7369550ed0e94191646f36",
+          "knowledge/items.csv": "40691144c7f0f548e9dd1cba98e9c25727ff20cf4bdc173366cf2bc8fd90aaa5",
+          "knowledge/item_embeddings.npz": "341578af12ab4e7b5eeadb828443b084e5b78a3db4a9be75f383b91f357f1384"
+        }
+      },
+      "case_count": 34,
+      "passes": 25,
+      "model_calls": {
+        "nova": 68,
+        "titan": 34
+      },
+      "cases": [
+        {
+          "case": 1,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-01",
+            "query": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+            "clarifications": []
+          },
+          "expected": "pet_bottles",
+          "check_type": "classification",
+          "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=7",
+          "actual_status": "answered",
+          "actual_category": "pet_bottles",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-12-08",
+            "display_date": "2026年12月8日（火）",
+            "collection_type": "ペットボトル"
+          },
+          "http": 200,
+          "pass": true
+        },
+        {
+          "case": 2,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-08",
+            "query": "ペットボトルから外したプラスチック製キャップだけ",
+            "clarifications": []
+          },
+          "expected": "plastic_packaging",
+          "check_type": "classification",
+          "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=7",
+          "actual_status": "answered",
+          "actual_category": "pet_bottles",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-11-12",
+            "display_date": "2026年11月12日（木）",
+            "collection_type": "ペットボトル"
+          },
+          "http": 200,
+          "pass": false
+        },
+        {
+          "case": 3,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-14",
+            "query": "汚れが落ちない飲料用ペットボトル本体",
+            "clarifications": []
+          },
+          "expected": "burnable",
+          "check_type": "classification",
+          "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=7",
+          "actual_status": "answered",
+          "actual_category": "pet_bottles",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-11-11",
+            "display_date": "2026年11月11日（水）",
+            "collection_type": "ペットボトル"
+          },
+          "http": 200,
+          "pass": false
+        },
+        {
+          "case": 4,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-16",
+            "query": "プラスチック製ストロー",
+            "clarifications": []
+          },
+          "expected": "burnable",
+          "check_type": "classification",
+          "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=9",
+          "actual_status": "answered",
+          "actual_category": "burnable",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-11-13",
+            "display_date": "2026年11月13日（金）",
+            "collection_type": "燃えるごみ"
+          },
+          "http": 200,
+          "pass": true
+        },
+        {
+          "case": 5,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-01",
+            "query": "プラマーク付きの洗って汚れを落とした食品トレイ",
+            "clarifications": []
+          },
+          "expected": "plastic_packaging",
+          "check_type": "classification",
+          "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=9",
+          "actual_status": "answered",
+          "actual_category": "plastic_packaging",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-11-24",
+            "display_date": "2026年11月24日（火）",
+            "collection_type": "プラスチック類"
+          },
+          "http": 200,
+          "pass": true
+        },
+        {
+          "case": 6,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-08",
+            "query": "プラマーク付きの弁当容器。洗っても汚れが取れません",
+            "clarifications": []
+          },
+          "expected": "burnable",
+          "check_type": "classification",
+          "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=9",
+          "actual_status": "answered",
+          "actual_category": "burnable",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-11-13",
+            "display_date": "2026年11月13日（金）",
+            "collection_type": "燃えるごみ"
+          },
+          "http": 200,
+          "pass": true
+        },
+        {
+          "case": 7,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-15",
+            "query": "水洗いした透明なジャムのガラスびん",
+            "clarifications": []
+          },
+          "expected": "bottles",
+          "check_type": "classification",
+          "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=6",
+          "actual_status": "answered",
+          "actual_category": "bottles",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-12-02",
+            "display_date": "2026年12月2日（水）",
+            "collection_type": "ビン類"
+          },
+          "http": 200,
+          "pass": true
+        },
+        {
+          "case": 8,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-17",
+            "query": "乳白色の化粧品のガラスびん",
+            "clarifications": []
+          },
+          "expected": "non_burnable",
+          "check_type": "classification",
+          "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=6",
+          "actual_status": "answered",
+          "actual_category": "bottles",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-12-04",
+            "display_date": "2026年12月4日（金）",
+            "collection_type": "ビン類"
+          },
+          "http": 200,
+          "pass": false
+        },
+        {
+          "case": 9,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-01",
+            "query": "中身を空にして水洗いした飲料用アルミ缶",
+            "clarifications": []
+          },
+          "expected": "cans",
+          "check_type": "classification",
+          "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=6",
+          "actual_status": "answered",
+          "actual_category": "cans",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-11-24",
+            "display_date": "2026年11月24日（火）",
+            "collection_type": "カン類"
+          },
+          "http": 200,
+          "pass": true
+        },
+        {
+          "case": 10,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-09",
+            "query": "中身を使い切ってガス抜きしたスプレー缶",
+            "clarifications": []
+          },
+          "expected": "metals",
+          "check_type": "classification",
+          "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=8",
+          "actual_status": "answered",
+          "actual_category": "metals",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-12-03",
+            "display_date": "2026年12月3日（木）",
+            "collection_type": "金属類"
+          },
+          "http": 200,
+          "pass": true
+        },
+        {
+          "case": 11,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-14",
+            "query": "機器から取り外した正常なリチウムイオン電池。破損も変形も膨張もありません",
+            "clarifications": []
+          },
+          "expected": "batteries",
+          "check_type": "classification",
+          "source_url": "https://www.kumakogen.jp/soshiki/4/27263.html",
+          "actual_status": "answered",
+          "actual_category": "batteries",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-11-11",
+            "display_date": "2026年11月11日（水）",
+            "collection_type": "乾電池・電池類"
+          },
+          "http": 200,
+          "pass": true
+        },
+        {
+          "case": 12,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-19",
+            "query": "膨張しているモバイルバッテリー",
+            "clarifications": []
+          },
+          "expected": "direct_delivery",
+          "check_type": "classification",
+          "source_url": "https://www.kumakogen.jp/soshiki/4/27263.html",
+          "actual_status": "answered",
+          "actual_category": "direct_delivery",
+          "follow_up_question": null,
+          "next_collection": null,
+          "http": 200,
+          "pass": true
+        },
+        {
+          "case": 13,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-02",
+            "query": "リチウムイオン電池を取り外せないスマートフォン",
+            "clarifications": []
+          },
+          "expected": "direct_delivery",
+          "check_type": "classification",
+          "source_url": "https://www.kumakogen.jp/soshiki/4/27263.html",
+          "actual_status": "answered",
+          "actual_category": "direct_delivery",
+          "follow_up_question": null,
+          "next_collection": null,
+          "http": 200,
+          "pass": true
+        },
+        {
+          "case": 14,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-10",
+            "query": "使わなくなったモバイルバッテリー",
+            "clarifications": []
+          },
+          "expected": null,
+          "check_type": "clarification",
+          "source_url": "https://www.kumakogen.jp/soshiki/4/27263.html",
+          "actual_status": "answered",
+          "actual_category": "direct_delivery",
+          "follow_up_question": null,
+          "next_collection": null,
+          "http": 200,
+          "pass": false
+        },
+        {
+          "case": 15,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-14",
+            "query": "電池とバッテリーを取り外した携帯電話",
+            "clarifications": []
+          },
+          "expected": "small_appliances",
+          "check_type": "classification",
+          "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=11",
+          "actual_status": "answered",
+          "actual_category": "batteries",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-11-11",
+            "display_date": "2026年11月11日（水）",
+            "collection_type": "乾電池・電池類"
+          },
+          "http": 200,
+          "pass": false
+        },
+        {
+          "case": 16,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-20",
+            "query": "使い終わったLED電球",
+            "clarifications": []
+          },
+          "expected": "non_burnable",
+          "check_type": "classification",
+          "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=10",
+          "actual_status": "answered",
+          "actual_category": "non_burnable",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-11-25",
+            "display_date": "2026年11月25日（水）",
+            "collection_type": "燃えないごみ"
+          },
+          "http": 200,
+          "pass": true
+        },
+        {
+          "case": 17,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-03",
+            "query": "割れていない蛍光灯",
+            "clarifications": []
+          },
+          "expected": "fluorescent",
+          "check_type": "classification",
+          "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=10",
+          "actual_status": "answered",
+          "actual_category": "fluorescent",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-12-01",
+            "display_date": "2026年12月1日（火）",
+            "collection_type": "蛍光灯"
+          },
+          "http": 200,
+          "pass": true
+        },
+        {
+          "case": 18,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-11",
+            "query": "汚れが落ちず破れたTシャツ",
+            "clarifications": []
+          },
+          "expected": "burnable",
+          "check_type": "classification",
+          "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=8",
+          "actual_status": "answered",
+          "actual_category": "clothes",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-11-19",
+            "display_date": "2026年11月19日（木）",
+            "collection_type": "古着類"
+          },
+          "http": 200,
+          "pass": false
+        },
+        {
+          "case": 19,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-15",
+            "query": "洗って開いた1リットルの紙パック。内側は白くアルミコーティングはありません",
+            "clarifications": []
+          },
+          "expected": "paper",
+          "check_type": "classification",
+          "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=5",
+          "actual_status": "answered",
+          "actual_category": "paper",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-12-02",
+            "display_date": "2026年12月2日（水）",
+            "collection_type": "紙類"
+          },
+          "http": 200,
+          "pass": true
+        },
+        {
+          "case": 20,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-21",
+            "query": "内側がアルミコーティングされた酒の紙パック",
+            "clarifications": []
+          },
+          "expected": "burnable",
+          "check_type": "classification",
+          "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=5",
+          "actual_status": "answered",
+          "actual_category": "burnable",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-11-12",
+            "display_date": "2026年11月12日（木）",
+            "collection_type": "燃えるごみ"
+          },
+          "http": 200,
+          "pass": true
+        },
+        {
+          "case": 21,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-04",
+            "query": "大きな木製の椅子で45L指定袋に入りません",
+            "clarifications": []
+          },
+          "expected": "bulky",
+          "check_type": "classification",
+          "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=12",
+          "actual_status": "answered",
+          "actual_category": "bulky",
+          "follow_up_question": null,
+          "next_collection": null,
+          "http": 200,
+          "pass": true
+        },
+        {
+          "case": 22,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-12",
+            "query": "プラスチック製バケツ",
+            "clarifications": []
+          },
+          "expected": null,
+          "check_type": "clarification",
+          "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=9",
+          "actual_status": "needs_clarification",
+          "actual_category": null,
+          "follow_up_question": "45リットルの指定ごみ袋に入る大きさですか？",
+          "next_collection": null,
+          "http": 200,
+          "pass": true
+        },
+        {
+          "case": 23,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-14",
+            "query": "プラスチック製バケツ",
+            "clarifications": [
+              {
+                "question": "45リットルの指定ごみ袋に入る大きさですか？",
+                "answer": "はい"
+              }
+            ]
+          },
+          "expected": "burnable",
+          "check_type": "classification",
+          "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=9",
+          "actual_status": "answered",
+          "actual_category": "bulky",
+          "follow_up_question": null,
+          "next_collection": null,
+          "http": 200,
+          "pass": false
+        },
+        {
+          "case": 24,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-22",
+            "query": "剪定した木の枝。直径10cmで長さ50cmに切りました",
+            "clarifications": []
+          },
+          "expected": "burnable",
+          "check_type": "classification",
+          "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=2",
+          "actual_status": "answered",
+          "actual_category": "consult",
+          "follow_up_question": null,
+          "next_collection": null,
+          "http": 200,
+          "pass": false
+        },
+        {
+          "case": 25,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-05",
+            "query": "壊れた冷蔵庫",
+            "clarifications": []
+          },
+          "expected": "direct_delivery",
+          "check_type": "classification",
+          "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=44",
+          "actual_status": "answered",
+          "actual_category": "direct_delivery",
+          "follow_up_question": null,
+          "next_collection": null,
+          "http": 200,
+          "pass": true
+        },
+        {
+          "case": 26,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-13",
+            "query": "自動車のタイヤ",
+            "clarifications": []
+          },
+          "expected": "not_collected",
+          "check_type": "classification",
+          "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=30",
+          "actual_status": "answered",
+          "actual_category": "not_collected",
+          "follow_up_question": null,
+          "next_collection": null,
+          "http": 200,
+          "pass": true
+        },
+        {
+          "case": 27,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-15",
+            "query": "読み終えたきれいな新聞紙",
+            "clarifications": []
+          },
+          "expected": "paper",
+          "check_type": "classification",
+          "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=5",
+          "actual_status": "answered",
+          "actual_category": "paper",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-12-02",
+            "display_date": "2026年12月2日（水）",
+            "collection_type": "紙類"
+          },
+          "http": 200,
+          "pass": true
+        },
+        {
+          "case": 28,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-19",
+            "query": "読み終えたきれいな新聞紙",
+            "clarifications": []
+          },
+          "expected": "paper",
+          "check_type": "classification",
+          "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=5",
+          "actual_status": "answered",
+          "actual_category": "paper",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-11-20",
+            "display_date": "2026年11月20日（金）",
+            "collection_type": "紙類"
+          },
+          "http": 200,
+          "pass": true
+        },
+        {
+          "case": 29,
+          "input": {
+            "municipality_id": "38201",
+            "district_id": "38201-08",
+            "query": "キャップとラベルを外して水洗いした飲料用ペットボトル本体",
+            "clarifications": []
+          },
+          "expected": "ペット",
+          "check_type": "classification",
+          "source_url": "https://www.city.matsuyama.ehime.jp/kurashi/gomi/dashikata/kateigomi_matsuyama.html",
+          "actual_status": "answered",
+          "actual_category": "ペット",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-11-18",
+            "display_date": "2026年11月18日（水）",
+            "collection_type": "ペットボトル"
+          },
+          "http": 200,
+          "pass": true
+        },
+        {
+          "case": 30,
+          "input": {
+            "municipality_id": "38204",
+            "district_id": "38204-01",
+            "query": "空の飲料用アルミ缶",
+            "clarifications": []
+          },
+          "expected": "cans",
+          "check_type": "classification",
+          "source_url": "https://www.city.yawatahama.ehime.jp/doc/2021022400010/file_contents/2023-04.pdf",
+          "actual_status": "needs_clarification",
+          "actual_category": null,
+          "follow_up_question": "アルミ缶の汚れは水ですすいで落とせますか？",
+          "next_collection": null,
+          "http": 200,
+          "pass": false
+        },
+        {
+          "case": 31,
+          "input": {
+            "municipality_id": "38210",
+            "district_id": "38210-iyo-south",
+            "query": "キャップ・ラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体。プラマークはありません",
+            "clarifications": []
+          },
+          "expected": "pet_bottles",
+          "check_type": "classification",
+          "source_url": "https://www.city.iyo.lg.jp/kankyohozen/bunbetu.html",
+          "actual_status": "answered",
+          "actual_category": "pet_bottles",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-11-17",
+            "display_date": "2026年11月17日（火）",
+            "collection_type": "ペットボトル"
+          },
+          "http": 200,
+          "pass": true
+        },
+        {
+          "case": 32,
+          "input": {
+            "municipality_id": "38442",
+            "district_id": "38442-01",
+            "query": "使い終わったアルカリ乾電池",
+            "clarifications": []
+          },
+          "expected": "hazardous",
+          "check_type": "classification",
+          "source_url": "https://www.town.ikata.ehime.jp/soshiki/32/11452.html",
+          "actual_status": "answered",
+          "actual_category": "hazardous",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-12-23",
+            "display_date": "2026年12月23日（水）",
+            "collection_type": "有害ごみ"
+          },
+          "http": 200,
+          "pass": true
+        },
+        {
+          "case": 33,
+          "input": {
+            "municipality_id": "38205",
+            "district_id": "38205-01",
+            "query": "使い終わったモバイルバッテリー",
+            "clarifications": []
+          },
+          "expected": "hazardous",
+          "check_type": "classification",
+          "source_url": "https://www.city.niihama.lg.jp/soshiki/haiki/pamphlet.html",
+          "actual_status": "answered",
+          "actual_category": "hazardous",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-11-30",
+            "display_date": "2026年11月30日（月）",
+            "collection_type": "有害ごみ"
+          },
+          "http": 200,
+          "pass": true
+        },
+        {
+          "case": 34,
+          "input": {
+            "municipality_id": "38215",
+            "district_id": "38215-01",
+            "query": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+            "clarifications": []
+          },
+          "expected": "pet_bottles",
+          "check_type": "classification",
+          "source_url": "https://www.city.toon.ehime.jp/uploaded/attachment/22090.pdf#page=8",
+          "actual_status": "answered",
+          "actual_category": "pet_bottles",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-11-22",
+            "display_date": "2026年11月22日（日）",
+            "collection_type": "ペットボトル"
+          },
+          "http": 200,
+          "pass": true
+        }
+      ],
+      "estimated_upper_usd": 0.1482068
+    },
+    "retry": {
+      "manifest": {
+        "case_sha256": "b7b931557ac44a8aa4a0469ecc098f70c8164fd173c74ddd35d04206d28d01c2",
+        "model_settings": [
+          "amazon.nova-lite-v1:0",
+          "amazon.titan-embed-text-v2:0",
+          8,
+          0.15,
+          0.75,
+          false,
+          false
+        ],
+        "evaluation_time": "2026-11-11T07:00:00+09:00",
+        "budget_usd": 1.0,
+        "max_calls": 250,
+        "max_cases": 76,
+        "case_ids": [
+          2,
+          3,
+          8,
+          14,
+          15,
+          18,
+          23,
+          24
+        ],
+        "dataset_sha256": {
+          "registry.json": "45997b59016de7818bf066dc1375566de4b2352ec872333e7b82c2ebaa580c14",
+          "knowledge/items.csv": "a1fb2a9e2101b4ede99d42bb92ed7296681dd9ccb997416767051e56e914e6ac",
+          "knowledge/item_embeddings.npz": "5ec6ff4700099c26daf5b07f908fff9fb398805162e290ffd8744054c799a399"
+        }
+      },
+      "case_count": 8,
+      "passes": 6,
+      "model_calls": {
+        "nova": 16,
+        "titan": 8
+      },
+      "cases": [
+        {
+          "case": 2,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-08",
+            "query": "ペットボトルから外したプラスチック製キャップだけ",
+            "clarifications": []
+          },
+          "expected": "plastic_packaging",
+          "check_type": "classification",
+          "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=7",
+          "actual_status": "answered",
+          "actual_category": "plastic_packaging",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-11-12",
+            "display_date": "2026年11月12日（木）",
+            "collection_type": "プラスチック類"
+          },
+          "http": 200,
+          "pass": true
+        },
+        {
+          "case": 3,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-14",
+            "query": "汚れが落ちない飲料用ペットボトル本体",
+            "clarifications": []
+          },
+          "expected": "burnable",
+          "check_type": "classification",
+          "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=7",
+          "actual_status": "answered",
+          "actual_category": "burnable",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-11-12",
+            "display_date": "2026年11月12日（木）",
+            "collection_type": "燃えるごみ"
+          },
+          "http": 200,
+          "pass": true
+        },
+        {
+          "case": 8,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-17",
+            "query": "乳白色の化粧品のガラスびん",
+            "clarifications": []
+          },
+          "expected": "non_burnable",
+          "check_type": "classification",
+          "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=6",
+          "actual_status": "answered",
+          "actual_category": "non_burnable",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-11-18",
+            "display_date": "2026年11月18日（水）",
+            "collection_type": "燃えないごみ"
+          },
+          "http": 200,
+          "pass": true
+        },
+        {
+          "case": 14,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-10",
+            "query": "使わなくなったモバイルバッテリー",
+            "clarifications": []
+          },
+          "expected": null,
+          "check_type": "clarification",
+          "source_url": "https://www.kumakogen.jp/soshiki/4/27263.html",
+          "actual_status": "needs_clarification",
+          "actual_category": null,
+          "follow_up_question": "リチウムイオン電池を機器から取り外せますか？（無理に分解しないでください）",
+          "next_collection": null,
+          "http": 200,
+          "pass": true
+        },
+        {
+          "case": 15,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-14",
+            "query": "電池とバッテリーを取り外した携帯電話",
+            "clarifications": []
+          },
+          "expected": "small_appliances",
+          "check_type": "classification",
+          "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=11",
+          "actual_status": "answered",
+          "actual_category": "not_collected",
+          "follow_up_question": null,
+          "next_collection": null,
+          "http": 200,
+          "pass": false
+        },
+        {
+          "case": 18,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-11",
+            "query": "汚れが落ちず破れたTシャツ",
+            "clarifications": []
+          },
+          "expected": "burnable",
+          "check_type": "classification",
+          "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=8",
+          "actual_status": "needs_clarification",
+          "actual_category": null,
+          "follow_up_question": "Ｔシャツの汚れは水ですすいで落とせますか？",
+          "next_collection": null,
+          "http": 200,
+          "pass": false
+        },
+        {
+          "case": 23,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-14",
+            "query": "プラスチック製バケツ",
+            "clarifications": [
+              {
+                "question": "45リットルの指定ごみ袋に入る大きさですか？",
+                "answer": "はい"
+              }
+            ]
+          },
+          "expected": "burnable",
+          "check_type": "classification",
+          "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=9",
+          "actual_status": "answered",
+          "actual_category": "burnable",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-11-12",
+            "display_date": "2026年11月12日（木）",
+            "collection_type": "燃えるごみ"
+          },
+          "http": 200,
+          "pass": true
+        },
+        {
+          "case": 24,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-22",
+            "query": "剪定した木の枝。直径10cmで長さ50cmに切りました",
+            "clarifications": []
+          },
+          "expected": "burnable",
+          "check_type": "classification",
+          "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=2",
+          "actual_status": "answered",
+          "actual_category": "burnable",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-11-13",
+            "display_date": "2026年11月13日（金）",
+            "collection_type": "燃えるごみ"
+          },
+          "http": 200,
+          "pass": true
+        }
+      ],
+      "estimated_upper_usd": 0.0361582
+    },
+    "final": {
+      "manifest": {
+        "case_sha256": "b7b931557ac44a8aa4a0469ecc098f70c8164fd173c74ddd35d04206d28d01c2",
+        "model_settings": [
+          "amazon.nova-lite-v1:0",
+          "amazon.titan-embed-text-v2:0",
+          8,
+          0.15,
+          0.75,
+          false,
+          false
+        ],
+        "evaluation_time": "2026-11-11T07:00:00+09:00",
+        "budget_usd": 1.0,
+        "max_calls": 250,
+        "max_cases": 76,
+        "case_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34
+        ],
+        "dataset_sha256": {
+          "registry.json": "45997b59016de7818bf066dc1375566de4b2352ec872333e7b82c2ebaa580c14",
+          "knowledge/items.csv": "a1fb2a9e2101b4ede99d42bb92ed7296681dd9ccb997416767051e56e914e6ac",
+          "knowledge/item_embeddings.npz": "5ec6ff4700099c26daf5b07f908fff9fb398805162e290ffd8744054c799a399"
+        },
+        "implementation_sha256": {
+          "backend/app/services/waste_guide_service.py": "ebe2a5f687d46885eb711300a630c70344c843fbe175abfcd29a157eac173f09",
+          "backend/app/services/embedding_search_service.py": "b68a0b6753ed747c36a7d68ff0fe699fd509e59b70c05ed44cfdeb2104dd1be5",
+          "backend/app/services/calendar_service.py": "c6757756f29164ac2305fc6a4cec09b2f27e686b7479e5aa45f0880db81a23fe"
+        }
+      },
+      "case_count": 34,
+      "passes": 33,
+      "model_calls": {
+        "nova": 68,
+        "titan": 34
+      },
+      "cases": [
+        {
+          "case": 1,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-01",
+            "query": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+            "clarifications": []
+          },
+          "expected": "pet_bottles",
+          "check_type": "classification",
+          "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=7",
+          "actual_status": "answered",
+          "actual_category": "pet_bottles",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-12-08",
+            "display_date": "2026年12月8日（火）",
+            "collection_type": "ペットボトル"
+          },
+          "http": 200,
+          "pass": true
+        },
+        {
+          "case": 2,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-08",
+            "query": "ペットボトルから外したプラスチック製キャップだけ",
+            "clarifications": []
+          },
+          "expected": "plastic_packaging",
+          "check_type": "classification",
+          "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=7",
+          "actual_status": "answered",
+          "actual_category": "plastic_packaging",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-11-12",
+            "display_date": "2026年11月12日（木）",
+            "collection_type": "プラスチック類"
+          },
+          "http": 200,
+          "pass": true
+        },
+        {
+          "case": 3,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-14",
+            "query": "汚れが落ちない飲料用ペットボトル本体",
+            "clarifications": []
+          },
+          "expected": "burnable",
+          "check_type": "classification",
+          "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=7",
+          "actual_status": "answered",
+          "actual_category": "burnable",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-11-12",
+            "display_date": "2026年11月12日（木）",
+            "collection_type": "燃えるごみ"
+          },
+          "http": 200,
+          "pass": true
+        },
+        {
+          "case": 4,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-16",
+            "query": "プラスチック製ストロー",
+            "clarifications": []
+          },
+          "expected": "burnable",
+          "check_type": "classification",
+          "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=9",
+          "actual_status": "answered",
+          "actual_category": "plastic_packaging",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-11-20",
+            "display_date": "2026年11月20日（金）",
+            "collection_type": "プラスチック類"
+          },
+          "http": 200,
+          "pass": false
+        },
+        {
+          "case": 5,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-01",
+            "query": "プラマーク付きの洗って汚れを落とした食品トレイ",
+            "clarifications": []
+          },
+          "expected": "plastic_packaging",
+          "check_type": "classification",
+          "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=9",
+          "actual_status": "answered",
+          "actual_category": "plastic_packaging",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-11-24",
+            "display_date": "2026年11月24日（火）",
+            "collection_type": "プラスチック類"
+          },
+          "http": 200,
+          "pass": true
+        },
+        {
+          "case": 6,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-08",
+            "query": "プラマーク付きの弁当容器。洗っても汚れが取れません",
+            "clarifications": []
+          },
+          "expected": "burnable",
+          "check_type": "classification",
+          "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=9",
+          "actual_status": "answered",
+          "actual_category": "burnable",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-11-13",
+            "display_date": "2026年11月13日（金）",
+            "collection_type": "燃えるごみ"
+          },
+          "http": 200,
+          "pass": true
+        },
+        {
+          "case": 7,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-15",
+            "query": "水洗いした透明なジャムのガラスびん",
+            "clarifications": []
+          },
+          "expected": "bottles",
+          "check_type": "classification",
+          "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=6",
+          "actual_status": "answered",
+          "actual_category": "bottles",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-12-02",
+            "display_date": "2026年12月2日（水）",
+            "collection_type": "ビン類"
+          },
+          "http": 200,
+          "pass": true
+        },
+        {
+          "case": 8,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-17",
+            "query": "乳白色の化粧品のガラスびん",
+            "clarifications": []
+          },
+          "expected": "non_burnable",
+          "check_type": "classification",
+          "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=6",
+          "actual_status": "answered",
+          "actual_category": "non_burnable",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-11-18",
+            "display_date": "2026年11月18日（水）",
+            "collection_type": "燃えないごみ"
+          },
+          "http": 200,
+          "pass": true
+        },
+        {
+          "case": 9,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-01",
+            "query": "中身を空にして水洗いした飲料用アルミ缶",
+            "clarifications": []
+          },
+          "expected": "cans",
+          "check_type": "classification",
+          "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=6",
+          "actual_status": "answered",
+          "actual_category": "cans",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-11-24",
+            "display_date": "2026年11月24日（火）",
+            "collection_type": "カン類"
+          },
+          "http": 200,
+          "pass": true
+        },
+        {
+          "case": 10,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-09",
+            "query": "中身を使い切ってガス抜きしたスプレー缶",
+            "clarifications": []
+          },
+          "expected": "metals",
+          "check_type": "classification",
+          "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=8",
+          "actual_status": "answered",
+          "actual_category": "metals",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-12-03",
+            "display_date": "2026年12月3日（木）",
+            "collection_type": "金属類"
+          },
+          "http": 200,
+          "pass": true
+        },
+        {
+          "case": 11,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-14",
+            "query": "機器から取り外した正常なリチウムイオン電池。破損も変形も膨張もありません",
+            "clarifications": []
+          },
+          "expected": "batteries",
+          "check_type": "classification",
+          "source_url": "https://www.kumakogen.jp/soshiki/4/27263.html",
+          "actual_status": "answered",
+          "actual_category": "batteries",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-11-11",
+            "display_date": "2026年11月11日（水）",
+            "collection_type": "乾電池・電池類"
+          },
+          "http": 200,
+          "pass": true
+        },
+        {
+          "case": 12,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-19",
+            "query": "膨張しているモバイルバッテリー",
+            "clarifications": []
+          },
+          "expected": "direct_delivery",
+          "check_type": "classification",
+          "source_url": "https://www.kumakogen.jp/soshiki/4/27263.html",
+          "actual_status": "answered",
+          "actual_category": "direct_delivery",
+          "follow_up_question": null,
+          "next_collection": null,
+          "http": 200,
+          "pass": true
+        },
+        {
+          "case": 13,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-02",
+            "query": "リチウムイオン電池を取り外せないスマートフォン",
+            "clarifications": []
+          },
+          "expected": "direct_delivery",
+          "check_type": "classification",
+          "source_url": "https://www.kumakogen.jp/soshiki/4/27263.html",
+          "actual_status": "answered",
+          "actual_category": "direct_delivery",
+          "follow_up_question": null,
+          "next_collection": null,
+          "http": 200,
+          "pass": true
+        },
+        {
+          "case": 14,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-10",
+            "query": "使わなくなったモバイルバッテリー",
+            "clarifications": []
+          },
+          "expected": null,
+          "check_type": "clarification",
+          "source_url": "https://www.kumakogen.jp/soshiki/4/27263.html",
+          "actual_status": "needs_clarification",
+          "actual_category": null,
+          "follow_up_question": "リチウムイオン電池を機器から取り外せますか？（無理に分解しないでください）",
+          "next_collection": null,
+          "http": 200,
+          "pass": true
+        },
+        {
+          "case": 15,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-14",
+            "query": "電池とバッテリーを取り外した携帯電話",
+            "clarifications": []
+          },
+          "expected": "small_appliances",
+          "check_type": "classification",
+          "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=11",
+          "actual_status": "answered",
+          "actual_category": "small_appliances",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-11-11",
+            "display_date": "2026年11月11日（水）",
+            "collection_type": "小型家電"
+          },
+          "http": 200,
+          "pass": true
+        },
+        {
+          "case": 16,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-20",
+            "query": "使い終わったLED電球",
+            "clarifications": []
+          },
+          "expected": "non_burnable",
+          "check_type": "classification",
+          "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=10",
+          "actual_status": "answered",
+          "actual_category": "non_burnable",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-11-25",
+            "display_date": "2026年11月25日（水）",
+            "collection_type": "燃えないごみ"
+          },
+          "http": 200,
+          "pass": true
+        },
+        {
+          "case": 17,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-03",
+            "query": "割れていない蛍光灯",
+            "clarifications": []
+          },
+          "expected": "fluorescent",
+          "check_type": "classification",
+          "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=10",
+          "actual_status": "answered",
+          "actual_category": "fluorescent",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-12-01",
+            "display_date": "2026年12月1日（火）",
+            "collection_type": "蛍光灯"
+          },
+          "http": 200,
+          "pass": true
+        },
+        {
+          "case": 18,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-11",
+            "query": "汚れが落ちず破れたTシャツ",
+            "clarifications": []
+          },
+          "expected": "burnable",
+          "check_type": "classification",
+          "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=8",
+          "actual_status": "answered",
+          "actual_category": "burnable",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-11-13",
+            "display_date": "2026年11月13日（金）",
+            "collection_type": "燃えるごみ"
+          },
+          "http": 200,
+          "pass": true
+        },
+        {
+          "case": 19,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-15",
+            "query": "洗って開いた1リットルの紙パック。内側は白くアルミコーティングはありません",
+            "clarifications": []
+          },
+          "expected": "paper",
+          "check_type": "classification",
+          "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=5",
+          "actual_status": "answered",
+          "actual_category": "paper",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-12-02",
+            "display_date": "2026年12月2日（水）",
+            "collection_type": "紙類"
+          },
+          "http": 200,
+          "pass": true
+        },
+        {
+          "case": 20,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-21",
+            "query": "内側がアルミコーティングされた酒の紙パック",
+            "clarifications": []
+          },
+          "expected": "burnable",
+          "check_type": "classification",
+          "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=5",
+          "actual_status": "answered",
+          "actual_category": "burnable",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-11-12",
+            "display_date": "2026年11月12日（木）",
+            "collection_type": "燃えるごみ"
+          },
+          "http": 200,
+          "pass": true
+        },
+        {
+          "case": 21,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-04",
+            "query": "大きな木製の椅子で45L指定袋に入りません",
+            "clarifications": []
+          },
+          "expected": "bulky",
+          "check_type": "classification",
+          "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=12",
+          "actual_status": "answered",
+          "actual_category": "bulky",
+          "follow_up_question": null,
+          "next_collection": null,
+          "http": 200,
+          "pass": true
+        },
+        {
+          "case": 22,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-12",
+            "query": "プラスチック製バケツ",
+            "clarifications": []
+          },
+          "expected": null,
+          "check_type": "clarification",
+          "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=9",
+          "actual_status": "needs_clarification",
+          "actual_category": null,
+          "follow_up_question": "45リットルの指定ごみ袋に入る大きさですか？",
+          "next_collection": null,
+          "http": 200,
+          "pass": true
+        },
+        {
+          "case": 23,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-14",
+            "query": "プラスチック製バケツ",
+            "clarifications": [
+              {
+                "question": "45リットルの指定ごみ袋に入る大きさですか？",
+                "answer": "はい"
+              }
+            ]
+          },
+          "expected": "burnable",
+          "check_type": "classification",
+          "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=9",
+          "actual_status": "answered",
+          "actual_category": "burnable",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-11-12",
+            "display_date": "2026年11月12日（木）",
+            "collection_type": "燃えるごみ"
+          },
+          "http": 200,
+          "pass": true
+        },
+        {
+          "case": 24,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-22",
+            "query": "剪定した木の枝。直径10cmで長さ50cmに切りました",
+            "clarifications": []
+          },
+          "expected": "burnable",
+          "check_type": "classification",
+          "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=2",
+          "actual_status": "answered",
+          "actual_category": "burnable",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-11-13",
+            "display_date": "2026年11月13日（金）",
+            "collection_type": "燃えるごみ"
+          },
+          "http": 200,
+          "pass": true
+        },
+        {
+          "case": 25,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-05",
+            "query": "壊れた冷蔵庫",
+            "clarifications": []
+          },
+          "expected": "direct_delivery",
+          "check_type": "classification",
+          "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=44",
+          "actual_status": "answered",
+          "actual_category": "direct_delivery",
+          "follow_up_question": null,
+          "next_collection": null,
+          "http": 200,
+          "pass": true
+        },
+        {
+          "case": 26,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-13",
+            "query": "自動車のタイヤ",
+            "clarifications": []
+          },
+          "expected": "not_collected",
+          "check_type": "classification",
+          "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=30",
+          "actual_status": "answered",
+          "actual_category": "not_collected",
+          "follow_up_question": null,
+          "next_collection": null,
+          "http": 200,
+          "pass": true
+        },
+        {
+          "case": 27,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-15",
+            "query": "読み終えたきれいな新聞紙",
+            "clarifications": []
+          },
+          "expected": "paper",
+          "check_type": "classification",
+          "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=5",
+          "actual_status": "answered",
+          "actual_category": "paper",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-12-02",
+            "display_date": "2026年12月2日（水）",
+            "collection_type": "紙類"
+          },
+          "http": 200,
+          "pass": true
+        },
+        {
+          "case": 28,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-19",
+            "query": "読み終えたきれいな新聞紙",
+            "clarifications": []
+          },
+          "expected": "paper",
+          "check_type": "classification",
+          "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=5",
+          "actual_status": "answered",
+          "actual_category": "paper",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-11-20",
+            "display_date": "2026年11月20日（金）",
+            "collection_type": "紙類"
+          },
+          "http": 200,
+          "pass": true
+        },
+        {
+          "case": 29,
+          "input": {
+            "municipality_id": "38201",
+            "district_id": "38201-08",
+            "query": "キャップとラベルを外して水洗いした飲料用ペットボトル本体",
+            "clarifications": []
+          },
+          "expected": "ペット",
+          "check_type": "classification",
+          "source_url": "https://www.city.matsuyama.ehime.jp/kurashi/gomi/dashikata/kateigomi_matsuyama.html",
+          "actual_status": "answered",
+          "actual_category": "ペット",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-11-18",
+            "display_date": "2026年11月18日（水）",
+            "collection_type": "ペットボトル"
+          },
+          "http": 200,
+          "pass": true
+        },
+        {
+          "case": 30,
+          "input": {
+            "municipality_id": "38204",
+            "district_id": "38204-01",
+            "query": "中身を空にして水洗いした飲料用アルミ缶",
+            "clarifications": []
+          },
+          "expected": "cans",
+          "check_type": "classification",
+          "source_url": "https://www.city.yawatahama.ehime.jp/doc/2021022400010/file_contents/2023-04.pdf",
+          "actual_status": "answered",
+          "actual_category": "cans",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-11-25",
+            "display_date": "2026年11月25日（水）",
+            "collection_type": "かん類"
+          },
+          "http": 200,
+          "pass": true
+        },
+        {
+          "case": 31,
+          "input": {
+            "municipality_id": "38210",
+            "district_id": "38210-iyo-south",
+            "query": "キャップ・ラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体。プラマークはありません",
+            "clarifications": []
+          },
+          "expected": "pet_bottles",
+          "check_type": "classification",
+          "source_url": "https://www.city.iyo.lg.jp/kankyohozen/bunbetu.html",
+          "actual_status": "answered",
+          "actual_category": "pet_bottles",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-11-17",
+            "display_date": "2026年11月17日（火）",
+            "collection_type": "ペットボトル"
+          },
+          "http": 200,
+          "pass": true
+        },
+        {
+          "case": 32,
+          "input": {
+            "municipality_id": "38442",
+            "district_id": "38442-01",
+            "query": "使い終わったアルカリ乾電池",
+            "clarifications": []
+          },
+          "expected": "hazardous",
+          "check_type": "classification",
+          "source_url": "https://www.town.ikata.ehime.jp/soshiki/32/11452.html",
+          "actual_status": "answered",
+          "actual_category": "hazardous",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-12-23",
+            "display_date": "2026年12月23日（水）",
+            "collection_type": "有害ごみ"
+          },
+          "http": 200,
+          "pass": true
+        },
+        {
+          "case": 33,
+          "input": {
+            "municipality_id": "38205",
+            "district_id": "38205-01",
+            "query": "使い終わったモバイルバッテリー",
+            "clarifications": []
+          },
+          "expected": "hazardous",
+          "check_type": "classification",
+          "source_url": "https://www.city.niihama.lg.jp/soshiki/haiki/pamphlet.html",
+          "actual_status": "answered",
+          "actual_category": "hazardous",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-11-30",
+            "display_date": "2026年11月30日（月）",
+            "collection_type": "有害ごみ"
+          },
+          "http": 200,
+          "pass": true
+        },
+        {
+          "case": 34,
+          "input": {
+            "municipality_id": "38215",
+            "district_id": "38215-01",
+            "query": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+            "clarifications": []
+          },
+          "expected": "pet_bottles",
+          "check_type": "classification",
+          "source_url": "https://www.city.toon.ehime.jp/uploaded/attachment/22090.pdf#page=8",
+          "actual_status": "answered",
+          "actual_category": "pet_bottles",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-11-22",
+            "display_date": "2026年11月22日（日）",
+            "collection_type": "ペットボトル"
+          },
+          "http": 200,
+          "pass": true
+        }
+      ],
+      "estimated_upper_usd": 0.151704
+    }
+  },
+  "budget": {
+    "approved_max_index_calls": 2100,
+    "approved_max_cases": 76,
+    "approved_max_evaluation_calls": 250,
+    "approved_estimated_upper_usd": 1,
+    "index_calls": 2079,
+    "index_initial_calls": 2017,
+    "index_delta_calls": 62,
+    "evaluated_cases": 76,
+    "evaluation_calls": 228,
+    "index_conservative_usd": 0.07051840000000001,
+    "evaluation_conservative_usd": 0.336069,
+    "total_conservative_usd": 0.40658740000000004,
+    "not_an_aws_billing_guarantee": true
+  },
+  "offline_replay_after_suffix_fix": {
+    "cases": 34,
+    "passes": 34,
+    "paid_calls": 0,
+    "scope": "saved final model responses and retrieved evidence through latest decision path; not a fresh retrieval/model evaluation"
+  }
+}

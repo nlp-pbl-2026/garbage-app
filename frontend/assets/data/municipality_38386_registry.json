@@ -1,0 +1,309 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38386",
+  "municipality_name": "久万高原町",
+  "prefecture_id": "38",
+  "prefecture_name": "愛媛県",
+  "version": "kumakogen-2026.1",
+  "valid_from": "2026-04-01",
+  "valid_to": "2027-03-31",
+  "collection_areas": [
+    {
+      "id": "38386-01",
+      "name": "久万",
+      "display_name": "久万：久万",
+      "calendar_id": "kk-01",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/14587.pdf#page=1",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38386-02",
+      "name": "入野（駄馬一、駄馬二、アラマ、春日台、新春日台1～3）",
+      "display_name": "久万：入野（駄馬一、駄馬二、アラマ、春日台、新春日台1～3）",
+      "calendar_id": "kk-02",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/14587.pdf#page=1",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38386-03",
+      "name": "入野（新開、梶山、影、日ノ地）、明神、菅生（高野を除く槻ノ沢）",
+      "display_name": "久万：入野（新開、梶山、影、日ノ地）、明神、菅生（高野を除く槻ノ沢）",
+      "calendar_id": "kk-03",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/14587.pdf#page=1",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38386-04",
+      "name": "菅生（中ノ村、槇谷、槻ノ沢を除く）、野尻",
+      "display_name": "久万：菅生（中ノ村、槇谷、槻ノ沢を除く）、野尻",
+      "calendar_id": "kk-04",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/14587.pdf#page=1",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38386-05",
+      "name": "菅生（中ノ村、槇谷）",
+      "display_name": "久万：菅生（中ノ村、槇谷）",
+      "calendar_id": "kk-05",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/14587.pdf#page=1",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38386-06",
+      "name": "菅生（高野）、畑野川、直瀬",
+      "display_name": "久万：菅生（高野）、畑野川、直瀬",
+      "calendar_id": "kk-06",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/14587.pdf#page=1",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38386-07",
+      "name": "露峰、二名、父野川",
+      "display_name": "久万：露峰、二名、父野川",
+      "calendar_id": "kk-07",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/14587.pdf#page=1",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38386-08",
+      "name": "上黒岩、中黒岩、日野浦（大谷、本組）、大川、有枝（程野を除く）",
+      "display_name": "美川：上黒岩、中黒岩、日野浦（大谷、本組）、大川、有枝（程野を除く）",
+      "calendar_id": "kk-08",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/14587.pdf#page=2",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38386-09",
+      "name": "日野浦（大谷、本組を除く）、沢渡（先場）",
+      "display_name": "美川：日野浦（大谷、本組を除く）、沢渡（先場）",
+      "calendar_id": "kk-09",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/14587.pdf#page=2",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38386-10",
+      "name": "有枝（程野）、沢渡（本村）",
+      "display_name": "美川：有枝（程野）、沢渡（本村）",
+      "calendar_id": "kk-10",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/14587.pdf#page=2",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38386-11",
+      "name": "七鳥（長瀬、竹谷を除く）、東川、仕出",
+      "display_name": "美川：七鳥（長瀬、竹谷を除く）、東川、仕出",
+      "calendar_id": "kk-11",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/14587.pdf#page=2",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38386-12",
+      "name": "七鳥（長瀬、竹谷）",
+      "display_name": "美川：七鳥（長瀬、竹谷）",
+      "calendar_id": "kk-12",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/14587.pdf#page=2",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38386-13",
+      "name": "黒藤川",
+      "display_name": "美川：黒藤川",
+      "calendar_id": "kk-13",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/14587.pdf#page=2",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38386-14",
+      "name": "渋草、大成、笠方、前組、相の峰",
+      "display_name": "面河：渋草、大成、笠方、前組、相の峰",
+      "calendar_id": "kk-14",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/14587.pdf#page=3",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38386-15",
+      "name": "本組、中組、河の子、相の木、若山",
+      "display_name": "面河：本組、中組、河の子、相の木、若山",
+      "calendar_id": "kk-15",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/14587.pdf#page=3",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38386-16",
+      "name": "柳井川（落出、川前（国道沿線）、永野）",
+      "display_name": "柳谷：柳井川（落出、川前（国道沿線）、永野）",
+      "calendar_id": "kk-16",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/14587.pdf#page=4",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38386-17",
+      "name": "柳井川（立野、松木、大窪谷、川前（国道沿線以外）、高地、百ヶ市、奈良籔）",
+      "display_name": "柳谷：柳井川（立野、松木、大窪谷、川前（国道沿線以外）、高地、百ヶ市、奈良籔）",
+      "calendar_id": "kk-17",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/14587.pdf#page=4",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38386-18",
+      "name": "柳井川（稲村、鉢）",
+      "display_name": "柳谷：柳井川（稲村、鉢）",
+      "calendar_id": "kk-18",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/14587.pdf#page=4",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38386-19",
+      "name": "柳井川（磯ヶ成）",
+      "display_name": "柳谷：柳井川（磯ヶ成）",
+      "calendar_id": "kk-19",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/14587.pdf#page=4",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38386-20",
+      "name": "西谷（小村、大成、古味、名荷上、名荷下）",
+      "display_name": "柳谷：西谷（小村、大成、古味、名荷上、名荷下）",
+      "calendar_id": "kk-20",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/14587.pdf#page=4",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38386-21",
+      "name": "西谷（菅行、中久保、横野、高野、猪伏）",
+      "display_name": "柳谷：西谷（菅行、中久保、横野、高野、猪伏）",
+      "calendar_id": "kk-21",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/14587.pdf#page=4",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38386-22",
+      "name": "西谷（郷角、本谷）",
+      "display_name": "柳谷：西谷（郷角、本谷）",
+      "calendar_id": "kk-22",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/14587.pdf#page=4",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38386-23",
+      "name": "中津",
+      "display_name": "柳谷：中津",
+      "calendar_id": "kk-19",
+      "rule_profile_id": "citywide",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/14587.pdf#page=4",
+      "needs_local_confirmation": true
+    }
+  ],
+  "calendars": [
+    {
+      "id": "kk-01",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "kk-02",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "kk-03",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "kk-04",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "kk-05",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "kk-06",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "kk-07",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "kk-08",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "kk-09",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "kk-10",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "kk-11",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "kk-12",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "kk-13",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "kk-14",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "kk-15",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "kk-16",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "kk-17",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "kk-18",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "kk-19",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "kk-20",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "kk-21",
+      "rule_profile_id": "citywide"
+    },
+    {
+      "id": "kk-22",
+      "rule_profile_id": "citywide"
+    }
+  ]
+}

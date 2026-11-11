@@ -1,0 +1,459 @@
+{
+  "schema_version": 1,
+  "evaluation_time": "2026-11-11T07:00:00+09:00",
+  "cases": [
+    {
+      "case": 1,
+      "input": {
+        "municipality_id": "38386",
+        "district_id": "38386-01",
+        "query": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+        "clarifications": []
+      },
+      "expected": "pet_bottles",
+      "check_type": "classification",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=7",
+      "official_reason": "PET本体はペット。外した部品とは別。"
+    },
+    {
+      "case": 2,
+      "input": {
+        "municipality_id": "38386",
+        "district_id": "38386-08",
+        "query": "ペットボトルから外したプラスチック製キャップだけ",
+        "clarifications": []
+      },
+      "expected": "plastic_packaging",
+      "check_type": "classification",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=7",
+      "official_reason": "外したプラ製キャップはプラ。"
+    },
+    {
+      "case": 3,
+      "input": {
+        "municipality_id": "38386",
+        "district_id": "38386-14",
+        "query": "汚れが落ちない飲料用ペットボトル本体",
+        "clarifications": []
+      },
+      "expected": "burnable",
+      "check_type": "classification",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=7",
+      "official_reason": "汚れの取れないPETは燃える。"
+    },
+    {
+      "case": 4,
+      "input": {
+        "municipality_id": "38386",
+        "district_id": "38386-16",
+        "query": "プラスチック製ストロー",
+        "clarifications": []
+      },
+      "expected": "burnable",
+      "check_type": "classification",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=9",
+      "official_reason": "プラ製品そのものは燃える。"
+    },
+    {
+      "case": 5,
+      "input": {
+        "municipality_id": "38386",
+        "district_id": "38386-01",
+        "query": "プラマーク付きの洗って汚れを落とした食品トレイ",
+        "clarifications": []
+      },
+      "expected": "plastic_packaging",
+      "check_type": "classification",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=9",
+      "official_reason": "マーク付きのきれいな容器包装はプラ。"
+    },
+    {
+      "case": 6,
+      "input": {
+        "municipality_id": "38386",
+        "district_id": "38386-08",
+        "query": "プラマーク付きの弁当容器。洗っても汚れが取れません",
+        "clarifications": []
+      },
+      "expected": "burnable",
+      "check_type": "classification",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=9",
+      "official_reason": "汚れの取れない容器包装は燃える。"
+    },
+    {
+      "case": 7,
+      "input": {
+        "municipality_id": "38386",
+        "district_id": "38386-15",
+        "query": "水洗いした透明なジャムのガラスびん",
+        "clarifications": []
+      },
+      "expected": "bottles",
+      "check_type": "classification",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=6",
+      "official_reason": "食料用のきれいなびんはビン類。"
+    },
+    {
+      "case": 8,
+      "input": {
+        "municipality_id": "38386",
+        "district_id": "38386-17",
+        "query": "乳白色の化粧品のガラスびん",
+        "clarifications": []
+      },
+      "expected": "non_burnable",
+      "check_type": "classification",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=6",
+      "official_reason": "乳白色は燃えない。"
+    },
+    {
+      "case": 9,
+      "input": {
+        "municipality_id": "38386",
+        "district_id": "38386-01",
+        "query": "中身を空にして水洗いした飲料用アルミ缶",
+        "clarifications": []
+      },
+      "expected": "cans",
+      "check_type": "classification",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=6",
+      "official_reason": "飲料・食料缶で汚れのないものはカン類。"
+    },
+    {
+      "case": 10,
+      "input": {
+        "municipality_id": "38386",
+        "district_id": "38386-09",
+        "query": "中身を使い切ってガス抜きしたスプレー缶",
+        "clarifications": []
+      },
+      "expected": "metals",
+      "check_type": "classification",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=8",
+      "official_reason": "スプレー缶は金属類。穴あけを独自に指示しない。"
+    },
+    {
+      "case": 11,
+      "input": {
+        "municipality_id": "38386",
+        "district_id": "38386-14",
+        "query": "機器から取り外した正常なリチウムイオン電池。破損も変形も膨張もありません",
+        "clarifications": []
+      },
+      "expected": "batteries",
+      "check_type": "classification",
+      "source_url": "https://www.kumakogen.jp/soshiki/4/27263.html",
+      "official_reason": "取り外した正常な電池は資源日。"
+    },
+    {
+      "case": 12,
+      "input": {
+        "municipality_id": "38386",
+        "district_id": "38386-19",
+        "query": "膨張しているモバイルバッテリー",
+        "clarifications": []
+      },
+      "expected": "direct_delivery",
+      "check_type": "classification",
+      "source_url": "https://www.kumakogen.jp/soshiki/4/27263.html",
+      "official_reason": "膨張品は環境衛生センターへ直接持込。"
+    },
+    {
+      "case": 13,
+      "input": {
+        "municipality_id": "38386",
+        "district_id": "38386-02",
+        "query": "リチウムイオン電池を取り外せないスマートフォン",
+        "clarifications": []
+      },
+      "expected": "direct_delivery",
+      "check_type": "classification",
+      "source_url": "https://www.kumakogen.jp/soshiki/4/27263.html",
+      "official_reason": "電池取り外し不可の機器は直接持込。"
+    },
+    {
+      "case": 14,
+      "input": {
+        "municipality_id": "38386",
+        "district_id": "38386-10",
+        "query": "使わなくなったモバイルバッテリー",
+        "clarifications": []
+      },
+      "expected": null,
+      "check_type": "clarification",
+      "source_url": "https://www.kumakogen.jp/soshiki/4/27263.html",
+      "official_reason": "取り外し可否・破損等で方法が異なるため確認する。"
+    },
+    {
+      "case": 15,
+      "input": {
+        "municipality_id": "38386",
+        "district_id": "38386-14",
+        "query": "電池とバッテリーを取り外した携帯電話",
+        "clarifications": []
+      },
+      "expected": "small_appliances",
+      "check_type": "classification",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=11",
+      "official_reason": "回収16品目に携帯電話。電池を外して資源日又はボックス。"
+    },
+    {
+      "case": 16,
+      "input": {
+        "municipality_id": "38386",
+        "district_id": "38386-20",
+        "query": "使い終わったLED電球",
+        "clarifications": []
+      },
+      "expected": "non_burnable",
+      "check_type": "classification",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=10",
+      "official_reason": "LEDは燃えない。"
+    },
+    {
+      "case": 17,
+      "input": {
+        "municipality_id": "38386",
+        "district_id": "38386-03",
+        "query": "割れていない蛍光灯",
+        "clarifications": []
+      },
+      "expected": "fluorescent",
+      "check_type": "classification",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=10",
+      "official_reason": "蛍光灯は資源日。"
+    },
+    {
+      "case": 18,
+      "input": {
+        "municipality_id": "38386",
+        "district_id": "38386-11",
+        "query": "汚れが落ちず破れたTシャツ",
+        "clarifications": []
+      },
+      "expected": "burnable",
+      "check_type": "classification",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=8",
+      "official_reason": "再利用できない衣類は燃える。"
+    },
+    {
+      "case": 19,
+      "input": {
+        "municipality_id": "38386",
+        "district_id": "38386-15",
+        "query": "洗って開いた1リットルの紙パック。内側は白くアルミコーティングはありません",
+        "clarifications": []
+      },
+      "expected": "paper",
+      "check_type": "classification",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=5",
+      "official_reason": "500ml以上、内側アルミなしのきれいな紙パックは紙類。"
+    },
+    {
+      "case": 20,
+      "input": {
+        "municipality_id": "38386",
+        "district_id": "38386-21",
+        "query": "内側がアルミコーティングされた酒の紙パック",
+        "clarifications": []
+      },
+      "expected": "burnable",
+      "check_type": "classification",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=5",
+      "official_reason": "金属箔付きは燃える。"
+    },
+    {
+      "case": 21,
+      "input": {
+        "municipality_id": "38386",
+        "district_id": "38386-04",
+        "query": "大きな木製の椅子で45L指定袋に入りません",
+        "clarifications": []
+      },
+      "expected": "bulky",
+      "check_type": "classification",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=12",
+      "official_reason": "45L袋に入らない家具は粗大。定期収集ではない。"
+    },
+    {
+      "case": 22,
+      "input": {
+        "municipality_id": "38386",
+        "district_id": "38386-12",
+        "query": "プラスチック製バケツ",
+        "clarifications": []
+      },
+      "expected": null,
+      "check_type": "clarification",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=9",
+      "official_reason": "45L袋に入るかで粗大か燃えるかが変わる。"
+    },
+    {
+      "case": 23,
+      "input": {
+        "municipality_id": "38386",
+        "district_id": "38386-14",
+        "query": "プラスチック製バケツ",
+        "clarifications": [
+          {
+            "question": "45リットルの指定ごみ袋に入る大きさですか？",
+            "answer": "はい"
+          }
+        ]
+      },
+      "expected": "burnable",
+      "check_type": "classification",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=9",
+      "official_reason": "袋に入るプラ製品は燃える。"
+    },
+    {
+      "case": 24,
+      "input": {
+        "municipality_id": "38386",
+        "district_id": "38386-22",
+        "query": "剪定した木の枝。直径10cmで長さ50cmに切りました",
+        "clarifications": []
+      },
+      "expected": "burnable",
+      "check_type": "classification",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=2",
+      "official_reason": "直径厚さ15cm以内、長さ50cm程度なら燃える。"
+    },
+    {
+      "case": 25,
+      "input": {
+        "municipality_id": "38386",
+        "district_id": "38386-05",
+        "query": "壊れた冷蔵庫",
+        "clarifications": []
+      },
+      "expected": "direct_delivery",
+      "check_type": "classification",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=44",
+      "official_reason": "家電リサイクル券を用意し専用手続で直接持込等。通常収集なし。"
+    },
+    {
+      "case": 26,
+      "input": {
+        "municipality_id": "38386",
+        "district_id": "38386-13",
+        "query": "自動車のタイヤ",
+        "clarifications": []
+      },
+      "expected": "not_collected",
+      "check_type": "classification",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=30",
+      "official_reason": "町では処理できない。販売店等へ相談。"
+    },
+    {
+      "case": 27,
+      "input": {
+        "municipality_id": "38386",
+        "district_id": "38386-15",
+        "query": "読み終えたきれいな新聞紙",
+        "clarifications": []
+      },
+      "expected": "paper",
+      "check_type": "classification",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=5",
+      "official_reason": "新聞は紙類として全資源日。"
+    },
+    {
+      "case": 28,
+      "input": {
+        "municipality_id": "38386",
+        "district_id": "38386-19",
+        "query": "読み終えたきれいな新聞紙",
+        "clarifications": []
+      },
+      "expected": "paper",
+      "check_type": "classification",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=5",
+      "official_reason": "柳谷・磯ヶ成は資源の日程を落出地区と混ぜない。"
+    },
+    {
+      "case": 29,
+      "input": {
+        "municipality_id": "38201",
+        "district_id": "38201-08",
+        "query": "キャップとラベルを外して水洗いした飲料用ペットボトル本体",
+        "clarifications": []
+      },
+      "expected": "ペット",
+      "check_type": "classification",
+      "source_url": "https://www.city.matsuyama.ehime.jp/kurashi/gomi/dashikata/kateigomi_matsuyama.html",
+      "official_reason": "既存自治体の確認済み回帰例。",
+      "image": false
+    },
+    {
+      "case": 30,
+      "input": {
+        "municipality_id": "38204",
+        "district_id": "38204-01",
+        "query": "中身を空にして水洗いした飲料用アルミ缶",
+        "clarifications": []
+      },
+      "expected": "cans",
+      "check_type": "classification",
+      "source_url": "https://www.city.yawatahama.ehime.jp/doc/2021022400010/file_contents/2023-04.pdf",
+      "official_reason": "飲料缶はカン。初回の「空の」だけの入力では汚れの条件が不足していたため、回帰用入力に洗浄済みと明記。初回入力と結果は評価記録に保持。",
+      "image": false
+    },
+    {
+      "case": 31,
+      "input": {
+        "municipality_id": "38210",
+        "district_id": "38210-iyo-south",
+        "query": "キャップ・ラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体。プラマークはありません",
+        "clarifications": []
+      },
+      "expected": "pet_bottles",
+      "check_type": "classification",
+      "source_url": "https://www.city.iyo.lg.jp/kankyohozen/bunbetu.html",
+      "official_reason": "既存自治体の確認済み回帰例。",
+      "image": false
+    },
+    {
+      "case": 32,
+      "input": {
+        "municipality_id": "38442",
+        "district_id": "38442-01",
+        "query": "使い終わったアルカリ乾電池",
+        "clarifications": []
+      },
+      "expected": "hazardous",
+      "check_type": "classification",
+      "source_url": "https://www.town.ikata.ehime.jp/soshiki/32/11452.html",
+      "official_reason": "既存自治体の確認済み回帰例。",
+      "image": false
+    },
+    {
+      "case": 33,
+      "input": {
+        "municipality_id": "38205",
+        "district_id": "38205-01",
+        "query": "使い終わったモバイルバッテリー",
+        "clarifications": []
+      },
+      "expected": "hazardous",
+      "check_type": "classification",
+      "source_url": "https://www.city.niihama.lg.jp/soshiki/haiki/pamphlet.html",
+      "official_reason": "既存自治体の確認済み回帰例。",
+      "image": false
+    },
+    {
+      "case": 34,
+      "input": {
+        "municipality_id": "38215",
+        "district_id": "38215-01",
+        "query": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+        "clarifications": []
+      },
+      "expected": "pet_bottles",
+      "check_type": "classification",
+      "source_url": "https://www.city.toon.ehime.jp/uploaded/attachment/22090.pdf#page=8",
+      "official_reason": "PET本体と外した付属品は別区分。",
+      "image": false
+    }
+  ]
+}

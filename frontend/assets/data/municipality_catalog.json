@@ -3667,6 +3667,163 @@
         }
       },
       "addresses_asset": "assets/data/municipality_38214_addresses.json"
+    },
+    {
+      "id": "38386",
+      "version": "kumakogen-2026.1",
+      "name": "久万高原町",
+      "prefecture_id": "38",
+      "prefecture_name": "愛媛県",
+      "registry_asset": "assets/data/municipality_38386_registry.json",
+      "profiles": {
+        "citywide": {
+          "calendar_asset": "assets/data/municipality_38386_0_calendar.json",
+          "categories": {
+            "burnable": {
+              "name": "燃えるごみ",
+              "collection_type_id": "burnable",
+              "cutoff": "08:00",
+              "time_note": "収集日の朝8時までに出してください。例外日程のステーションについては自治会へ確認してください。",
+              "color": "#EF3333"
+            },
+            "non_burnable": {
+              "name": "燃えないごみ",
+              "collection_type_id": "non_burnable",
+              "cutoff": "08:00",
+              "time_note": "収集日の朝8時までに出してください。例外日程のステーションについては自治会へ確認してください。",
+              "color": "#555555"
+            },
+            "paper": {
+              "name": "紙類",
+              "collection_type_id": "paper",
+              "cutoff": "08:00",
+              "time_note": "収集日の朝8時までに出してください。例外日程のステーションについては自治会へ確認してください。",
+              "color": "#39A65A"
+            },
+            "bottles": {
+              "name": "ビン類",
+              "collection_type_id": "bottles",
+              "cutoff": "08:00",
+              "time_note": "収集日の朝8時までに出してください。例外日程のステーションについては自治会へ確認してください。",
+              "color": "#39A65A"
+            },
+            "cans": {
+              "name": "カン類",
+              "collection_type_id": "cans",
+              "cutoff": "08:00",
+              "time_note": "収集日の朝8時までに出してください。例外日程のステーションについては自治会へ確認してください。",
+              "color": "#39A65A"
+            },
+            "pet_bottles": {
+              "name": "ペットボトル",
+              "collection_type_id": "pet_bottles",
+              "cutoff": "08:00",
+              "time_note": "収集日の朝8時までに出してください。例外日程のステーションについては自治会へ確認してください。",
+              "color": "#39A65A"
+            },
+            "metals": {
+              "name": "金属類",
+              "collection_type_id": "metals",
+              "cutoff": "08:00",
+              "time_note": "収集日の朝8時までに出してください。例外日程のステーションについては自治会へ確認してください。",
+              "color": "#39A65A"
+            },
+            "clothes": {
+              "name": "古着類",
+              "collection_type_id": "clothes",
+              "cutoff": "08:00",
+              "time_note": "収集日の朝8時までに出してください。例外日程のステーションについては自治会へ確認してください。",
+              "color": "#39A65A"
+            },
+            "plastic_packaging": {
+              "name": "プラスチック類",
+              "collection_type_id": "plastic_packaging",
+              "cutoff": "08:00",
+              "time_note": "収集日の朝8時までに出してください。例外日程のステーションについては自治会へ確認してください。",
+              "color": "#39A65A"
+            },
+            "fluorescent": {
+              "name": "蛍光灯",
+              "collection_type_id": "fluorescent",
+              "cutoff": "08:00",
+              "time_note": "収集日の朝8時までに出してください。例外日程のステーションについては自治会へ確認してください。",
+              "color": "#39A65A"
+            },
+            "batteries": {
+              "name": "乾電池・電池類",
+              "collection_type_id": "batteries",
+              "cutoff": "08:00",
+              "time_note": "収集日の朝8時までに出してください。例外日程のステーションについては自治会へ確認してください。",
+              "color": "#39A65A"
+            },
+            "cooking_oil": {
+              "name": "廃食用油",
+              "collection_type_id": "cooking_oil",
+              "cutoff": "08:00",
+              "time_note": "収集日の朝8時までに出してください。例外日程のステーションについては自治会へ確認してください。",
+              "color": "#39A65A"
+            },
+            "small_appliances": {
+              "name": "小型家電",
+              "collection_type_id": "small_appliances",
+              "cutoff": "08:00",
+              "time_note": "収集日の朝8時までに出してください。例外日程のステーションについては自治会へ確認してください。",
+              "color": "#39A65A"
+            },
+            "bulky": {
+              "name": "粗大ごみ",
+              "color": "#734191"
+            },
+            "direct_delivery": {
+              "name": "直接持ち込み",
+              "color": "#2144A6"
+            },
+            "not_collected": {
+              "name": "処理できないごみ",
+              "color": "#955600"
+            },
+            "consult": {
+              "name": "環境衛生センターに相談",
+              "color": "#777777"
+            }
+          },
+          "bulky_waste": {
+            "category_code": "bulky",
+            "config": {
+              "municipality_id": "38386",
+              "municipality_name": "久万高原町",
+              "application_method": "guide_only",
+              "phone_number": "0892-21-0195",
+              "source_urls": [
+                "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=12",
+                "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=13"
+              ],
+              "collection_frequency": "広報で案内される戸別収集（要確認）又は直接持込",
+              "reception_hours": "環境衛生センター：月〜土8:30〜16:30（日曜・年末年始休み、臨時変更は窓口で確認）",
+              "collection_rules": "45L指定袋に入らない家具・布団等は環境衛生センターへ直接持ち込んでください。持ち込みが困難な方の戸別収集は、現行の広報・町の窓口で対象条件と受付期間を確認してください。",
+              "information_url": "https://www.kumakogen.jp/soshiki/4/6870.html",
+              "fee_structure_type": "fixed",
+              "steps": [
+                {
+                  "step_number": 1,
+                  "title": "大きさと対象を確認",
+                  "description": "45L指定袋に入らない家具・寝具等が粗大ごみです。町で処理できない物や家電リサイクル品は別の手続が必要です。"
+                },
+                {
+                  "step_number": 2,
+                  "title": "直接持ち込む場合",
+                  "description": "環境衛生センターへ分別して持ち込みます。ガイドの受付は月〜土8:30〜16:30（日曜・年末年始休み）です。臨時休業・料金・品目条件は事前に確認してください。"
+                },
+                {
+                  "step_number": 3,
+                  "title": "持ち込みが難しい場合",
+                  "description": "戸別収集は広報で案内されます。住民課衛生係（0892-21-1111）又は環境衛生センターへ、対象条件・現在の受付期間・申込方法を確認してください。過去の募集期限は適用しません。"
+                }
+              ]
+            }
+          }
+        }
+      }
     }
   ]
 }

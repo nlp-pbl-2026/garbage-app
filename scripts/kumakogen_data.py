@@ -390,6 +390,19 @@ def item_rows():
             "source_category": raw["source_category"],
         }
         options = classification_options(row["note"], row["category"])
+        # These conditions apply to the requested item itself. Keep them in
+        # item evidence, not only in the broad stream preparation instructions.
+        if raw["category"] == "pet_bottles":
+            row[
+                "note"
+            ] += "。汚れが落ちないものは「燃えるごみ」。PET本体と外したキャップ・ラベルを区別する。"
+            options = sorted(set(options + ["burnable"]))
+        elif raw["category"] == "bottles":
+            row["note"] += "。乳白色又は汚れの取れないびんは「燃えないごみ」。"
+            options = sorted(set(options + ["non_burnable"]))
+        elif raw["category"] == "clothes":
+            row["note"] += "。汚れが落ちない・破れたものは「燃えるごみ」。"
+            options = sorted(set(options + ["burnable"]))
         if raw["category"] == "consult":
             row[
                 "note"
