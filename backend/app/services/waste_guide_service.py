@@ -2024,7 +2024,11 @@ class WasteGuideService:
             "革製",
             "ゴム製",
         )
-        if (any(branch in evidence for branch in material_branches) or (regional and "金属製は" in evidence)) and not any(
+        arrow_material_branch = regional and "条件付き分類コード:" in evidence and bool(re.search(
+            r"(?:出し方・注意:\s*|[。\n])(?:金属|プラスチック|木|紙|ガラス|陶器)製(?:のもの)?\s*[➡→]",
+            evidence,
+        ))
+        if (any(branch in evidence for branch in material_branches) or (regional and "金属製は" in evidence) or arrow_material_branch) and not any(
             material in context for material in material_answers
         ):
             return (

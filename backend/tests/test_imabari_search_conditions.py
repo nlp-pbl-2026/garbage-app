@@ -110,3 +110,52 @@ def test_exact_tray_candidates_keep_their_official_colour_condition(color, expec
         region=region,
     )
     assert (result.category_code if result else None) == expected
+
+
+@pytest.mark.parametrize("arrow", ["➡", "→"])
+def test_arrow_in_official_material_branch_is_not_an_unconditional_default(arrow):
+    profile = RuleProfile(
+        categories={
+            "burnable": CategoryDefinition("燃やせるごみ"),
+            "non_burnable": CategoryDefinition("燃やせないごみ"),
+        },
+        items_path=Path("unused.csv"),
+        embedding_index_path=Path("unused.npz"),
+        calendar_path=Path("unused.json"),
+    )
+    region = RegionContext(
+        "test",
+        "a",
+        "fixture",
+        "c",
+        "p",
+        "v",
+        "2026-04-01",
+        "2027-03-31",
+        municipality_name="fixture",
+        profile=profile,
+    )
+    doc = RetrievedDocument(
+        text='品目: バケツ\n分類コード: burnable\n分類: 燃やせるごみ\n条件付き分類コード: ["non_burnable"]\n出し方・注意: 金属製のもの'
+        + arrow
+        + "　 不燃ごみへ",
+        score=0.9,
+        uri=region.evidence_prefix + "bucket",
+    )
+    assert "何製" in Service._conditional_evidence_question(
+        query="バケツ",
+        clarifications=[],
+        documents=[doc],
+        region=region,
+        selected_evidence_indexes=(1,),
+    )
+    assert (
+        Service._conditional_evidence_question(
+            query="金属製のバケツ",
+            clarifications=[],
+            documents=[doc],
+            region=region,
+            selected_evidence_indexes=(1,),
+        )
+        is None
+    )
