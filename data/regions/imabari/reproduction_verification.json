@@ -1,0 +1,26 @@
+{
+  "verified_at": "2026-11-12",
+  "method": "git archive of committed source into isolated checkout; empty source/generated directories; re-download 75 official sources; run offline OCR/build; share both manifest-pinned NPZ files; verify; generate selected Flutter metadata",
+  "source_commit": "ab8c58dde63628ecd7dd9bdd0526ceceed887623",
+  "files_sha256": {
+    "data/regions/imabari/registry.json": "77376005da37ec720c9c8d0168ad1f9694ed65fac8c437eaa6e9dee0b66bb031",
+    "data/regions/imabari/generated/calendar-2026.json": "7ba306d745b71835482c22a8dec9aa0633fd7df265747148bcd7479dc795b4b8",
+    "data/regions/imabari/knowledge/mainland/items.csv": "b4895c4bd329694bcce51ccff5223847800cff536516a126e60aa5f5ab5cf1d6",
+    "data/regions/imabari/knowledge/sekizen/items.csv": "cf016c9b6f95a7f8d1c5934946fc2b2c51b733845e8bf65313994a81aca60818",
+    "frontend/assets/data/municipality_catalog.json": "063bebddb1b9e435324ad1f2c76e5156fcf3b63f8e1fb7df6b860e17288ad487",
+    "frontend/assets/data/municipality_38202_registry.json": "4a186d9bd6b6785ddc9ce9c61496869c66373e20a88958dad21cb35dddea23a3",
+    "frontend/assets/data/municipality_38202_0_calendar.json": "7ba306d745b71835482c22a8dec9aa0633fd7df265747148bcd7479dc795b4b8"
+  },
+  "paid_api_calls": 0,
+  "shared_indices": [
+    "knowledge/mainland/item_embeddings.npz",
+    "knowledge/sekizen/item_embeddings.npz"
+  ],
+  "all_compared_outputs_byte_equal": true,
+  "generator_files_sha256": {
+    "scripts/imabari_data.py": "1751065a7fcdce44d7c145e4519ebfd2a35bc2c9ae8089a56d9b78758777820b",
+    "scripts/imabari_pdf.py": "008ef7b8cbc6e82f995d57fea9f708d99f568956b43e995684329779a8003324",
+    "scripts/imabari_image_audit.py": "f6b2e5f49ec9a99c0de147147ee6362668172c6f30c6720f41f12ce4e1636c46",
+    "scripts/generate_frontend_data.py": "d680274637d6dcb526791ea2e84a3f5f802869d1923bde22c0bc9a3830bcc9c8"
+  }
+}
