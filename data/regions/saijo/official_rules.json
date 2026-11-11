@@ -1,0 +1,236 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38206",
+  "version": "saijo-2026.1",
+  "license_status": "unconfirmed",
+  "classification_rules": "西条市の公式分別資料と現行案内のみを根拠にする。他市町のプラ分別・穴あけ・料金等を使わない。分類と収集方法を分ける。2026年1月5日以降は新指定袋のみ。みどり色はもえる、オレンジ色はもえない。\nPET本体と外した部品を区別する。キャップ・ラベルを外して水洗いしたPETマーク付き飲料用本体はpet_bottles、取り外したプラ製キャップ・ラベルはburnable。汚れたPET本体、洗剤・シャンプー・食用油ボトルはburnable。キャップ等を外した旨を入力済みならその条件を再質問しない。\n飲食用空き缶はnon_burnableで、拠点でも回収可。一斗缶・18L以上のペール缶はbulky。スプレー缶とカセットボンベはspray_cansで、完全に使い切り火気のない場所でガス抜きし穴をあける。普通の缶や拠点回収へ混ぜない。\n飲食用・化粧品の透明/色付きびんはbottles。乳白色、薬品、割れたもの、汚れが落ちないものはnon_burnable。古紙はpaper、汚れ・感熱・写真・コーティング紙はburnable。\nプラの製品についてはティッシュ箱（縦26cm×横11cm×高さ6cm）より小さいものはburnable、大きいものはnon_burnableが原則。ただし辞典の個別指定を優先し、ストロー等の明示品目に無関係な寸法確認をしない。指定袋大に入れ口を縛れない大型ごみはbulky。ただし鉄アレイ等の個別指定は袋に入ることだけで普通ごみにしない。辞典の材質・寸法・数量・厚さなど条件を保持する。\n乾電池とボタン電池はdry_batteries。家庭用リチウムイオン電池・モバイルバッテリーは2026年2月広報の拠点窓口又はJBRC回収、drop_off。車・自転車用など大型バッテリーはnot_collected。電池を取り外せない機器は窓口へ相談しconsult、破損・膨張等の回収条件を推測しない。通常のもえる/もえないに混ぜない。小型家電の電池を外した本体と外した電池を別に判定する。\n粗大ごみは予約制戸別収集、処理券1枚300円、1回10点まで。品目別の枚数・条件を確認し未確認料金を0円にしない。予約日以外のカレンダー予定を生成しない。拠点回収のみ・直接搬入・収集対象外も定期収集ではない。随時収集の区分は自治会等で確認し推測日付を返さない。\n画像の素材推測をユーザー確認済み条件と混同しない。不足条件だけ追加質問し、はい/いいえは直前質問と結びつける。根拠不足は判定保留。品目の付属品の案内を本体の分類根拠にしない。",
+  "categories": {
+    "burnable": {
+      "name": "もえるごみ",
+      "color": "#33CC33",
+      "instructions": "新指定袋（みどり色）に入れ、口をしっかり縛り、自治会名・氏名を記入。2026年1月5日以降は旧袋不可。PETキャップ・ラベルや汚れの取れないPETはこの区分。",
+      "source_url": "https://www.city.saijo.ehime.jp/soshiki/eisei/singomifukuro.html",
+      "collection_type_id": "burnable",
+      "cutoff": "08:00",
+      "time_note": "収集日の朝8時までに、決められたごみステーションへ出してください。"
+    },
+    "non_burnable": {
+      "name": "もえないごみ",
+      "color": "#FF6600",
+      "instructions": "新指定袋（オレンジ色）に入れ口を縛る。金属・飲食用缶・ガラス食器等。指定袋大に入れ口を縛れないものは品目別の粗大ごみ案内を確認。電池を外し、コードは根本から50cm以内に切る。",
+      "source_url": "https://www.city.saijo.ehime.jp/soshiki/eisei/gominowakekata.html",
+      "collection_type_id": "non_burnable",
+      "cutoff": "08:00",
+      "time_note": "収集日の朝8時までに、決められたごみステーションへ出してください。"
+    },
+    "paper": {
+      "name": "古紙",
+      "color": "#B5B5B5",
+      "instructions": "新聞・段ボール・雑誌雑がみに分けて十字に縛る。汚れた紙、感熱紙、写真、ビニールコーティング紙はもえるごみ。指定された拠点回収も利用可。",
+      "source_url": "https://www.city.saijo.ehime.jp/soshiki/eisei/kyotenkaisyuubasyo.html",
+      "collection_type_id": "paper",
+      "cutoff": "08:00",
+      "time_note": "収集日の朝8時までに、決められたごみステーションへ出してください。"
+    },
+    "bottles": {
+      "name": "ガラスびん",
+      "color": "#9BC1E5",
+      "instructions": "飲食用・化粧品用（乳白色除く）。キャップを外してすすぎ、回収箱へ。割れたもの、汚れが落ちないもの、薬品びん・乳白色はもえない。びんは市の拠点回収の対象外。",
+      "source_url": "https://www.city.saijo.ehime.jp/soshiki/eisei/singomifukuro.html",
+      "collection_type_id": "bottles",
+      "cutoff": "08:00",
+      "time_note": "収集日の朝8時までに、決められたごみステーションへ出してください。"
+    },
+    "pet_bottles": {
+      "name": "ペットボトル",
+      "color": "#9BC1E5",
+      "instructions": "飲料用PET本体。キャップとラベルを外し、よくすすぎつぶして青いネットへ。取り外したキャップ・ラベルと汚れた本体はもえるごみ。指定拠点でも回収可。",
+      "source_url": "https://www.city.saijo.ehime.jp/soshiki/eisei/singomifukuro.html",
+      "collection_type_id": "pet_bottles",
+      "cutoff": "08:00",
+      "time_note": "収集日の朝8時までに、決められたごみステーションへ出してください。"
+    },
+    "spray_cans": {
+      "name": "スプレー缶・カセット式ガスボンベ",
+      "color": "#9BC1E5",
+      "instructions": "中身を完全に使い切り、火の気のない屋外でガスを抜き穴をあけて、指定の回収箱へ。中身を安全に抜けない場合は衛生課へ相談。もえないごみ・拠点回収には出さない。",
+      "source_url": "https://www.city.saijo.ehime.jp/soshiki/eisei/douzentyokuhan.html",
+      "collection_type_id": "spray_cans",
+      "cutoff": "08:00",
+      "time_note": "収集日の朝8時までに、決められたごみステーションへ出してください。"
+    },
+    "dry_batteries": {
+      "name": "乾電池・ボタン電池",
+      "color": "#FFB366",
+      "instructions": "使い切り乾電池・ボタン電池は新指定袋の外袋で、もえないごみの日に別に出す。充電式電池を混ぜない。",
+      "source_url": "https://www.city.saijo.ehime.jp/soshiki/eisei/kyotenkaisyuubasyo.html",
+      "collection_type_id": "dry_batteries",
+      "cutoff": "08:00",
+      "time_note": "収集日の朝8時までに、決められたごみステーションへ出してください。"
+    },
+    "bulky": {
+      "name": "粗大ごみ",
+      "color": "#8B5BA6",
+      "instructions": "電話又はインターネットで戸別収集を申し込み、指定料金分の処理券（1枚300円）に受付番号又は氏名を記入して貼る。予約日の朝8時までに受付で決めた場所へ。1回10点まで。申込前の収集日は決まらない。",
+      "source_url": "https://www.city.saijo.ehime.jp/soshiki/eisei/gominowakekata.html"
+    },
+    "drop_off": {
+      "name": "拠点回収",
+      "color": "#99772D",
+      "instructions": "充電式電池・蛍光管等は対象拠点へ。充電池は端子を絶縁し開館・開庁日に窓口へ。車・自転車・大型電池等は対象外。びんとスプレー缶は拠点対象外。回収場所・対象条件は公式案内を確認。",
+      "source_url": "https://www.city.saijo.ehime.jp/soshiki/eisei/kyotenkaisyuubasyo.html"
+    },
+    "small_appliances": {
+      "name": "小型家電回収",
+      "color": "#447777",
+      "instructions": "回収ボックスの投入口（縦11cm・横24cm）に入る対象製品。電池を取り外す。取り外せない場合は窓口へ相談。辞典の品目固有区分を優先する。",
+      "source_url": "https://www.city.saijo.ehime.jp/soshiki/eisei/kogatakaden.html"
+    },
+    "direct_delivery": {
+      "name": "直接搬入",
+      "color": "#666666",
+      "instructions": "道前クリーンセンター等の品目別案内を確認。道前は月〜土（祝日可）8:30〜12:00・13:00〜16:30、日曜と12/31〜1/3休み。家庭ごみ10kgにつき100円、指定袋等で手数料が異なる。定期収集日ではない。",
+      "source_url": "https://www.city.saijo.ehime.jp/soshiki/eisei/douzentyokuhan.html"
+    },
+    "not_collected": {
+      "name": "市では収集しない",
+      "color": "#666666",
+      "instructions": "販売店・専門の処理業者等の品目別案内を確認。家電リサイクル対象4品目は専用手続へ。定期収集日を案内しない。",
+      "source_url": "https://www.city.saijo.ehime.jp/soshiki/eisei/gominowakekata.html"
+    },
+    "consult": {
+      "name": "市へ確認",
+      "color": "#777777",
+      "instructions": "条件が確認できない場合は西条市衛生課へ確認してください。未確認情報で分類・日付を確定しません。",
+      "source_url": "https://www.city.saijo.ehime.jp/soshiki/eisei/gominowakekata.html"
+    }
+  },
+  "bulky_config": {
+    "municipality_id": "38206",
+    "municipality_name": "西条市",
+    "collection_frequency": "事前申込みによる戸別収集（1回10点まで）",
+    "reception_hours": "電話：月〜金 9:00〜12:00・13:00〜15:00（祝日・12/29〜1/3を除く）。インターネット：24時間。",
+    "collection_rules": "受付で品目・必要な処理券・収集日・場所を確認。処理券に受付番号又は氏名を記入して貼り、予約日の朝8時までに指定場所へ。アプリから申込みは行われません。",
+    "fee_structure_type": "fixed",
+    "application_method": "both",
+    "information_url": "https://www.city.saijo.ehime.jp/soshiki/eisei/gominowakekata.html",
+    "phone_number": "0897-66-7453",
+    "web_form_url": "https://www.sodai-saijo.jp/",
+    "steps": [
+      {
+        "step_number": 1,
+        "title": "電話または公式サイトで申し込む",
+        "description": "品目・数量、料金、収集日と場所を受付で確認します。"
+      },
+      {
+        "step_number": 2,
+        "title": "必要な処理券を購入する",
+        "description": "1枚300円。品目ごとの料金を受付で確認し、必要枚数を購入します。"
+      },
+      {
+        "step_number": 3,
+        "title": "予約日に指定場所へ出す",
+        "description": "処理券に受付番号又は氏名を記入して貼り、予約日の朝8時までに出してください。"
+      }
+    ]
+  },
+  "examples": [
+    {
+      "id": "sj-rule-01",
+      "item": "PETマーク付き飲料用ペットボトル本体",
+      "category": "pet_bottles",
+      "note": "キャップとラベルを外し水洗いしてつぶし、青いネットへ。汚れが取れない本体はもえるごみ。本体と取り外した部品は別に判定。",
+      "source_url": "https://www.city.saijo.ehime.jp/soshiki/eisei/singomifukuro.html",
+      "category_options": [
+        "burnable"
+      ]
+    },
+    {
+      "id": "sj-rule-02",
+      "item": "ペットボトルから取り外したプラスチック製キャップ",
+      "category": "burnable",
+      "note": "ペットボトルから外したプラ製キャップだけはもえるごみ。本体は別。",
+      "source_url": "https://www.city.saijo.ehime.jp/soshiki/eisei/singomifukuro.html",
+      "category_options": []
+    },
+    {
+      "id": "sj-rule-03",
+      "item": "ペットボトルから取り外したラベル",
+      "category": "burnable",
+      "note": "外したラベルだけはもえるごみ。本体は別。",
+      "source_url": "https://www.city.saijo.ehime.jp/soshiki/eisei/singomifukuro.html",
+      "category_options": []
+    },
+    {
+      "id": "sj-rule-04",
+      "item": "飲食用ガラスびん",
+      "category": "bottles",
+      "note": "透明・色付きのびんはすすいで回収箱へ。乳白色・割れたもの・薬品・汚れの取れないものはもえない。",
+      "source_url": "https://www.city.saijo.ehime.jp/soshiki/eisei/singomifukuro.html",
+      "category_options": [
+        "non_burnable"
+      ]
+    },
+    {
+      "id": "sj-rule-05",
+      "item": "モバイルバッテリー",
+      "category": "drop_off",
+      "note": "2026年2月公式広報：モバイルバッテリーはJBRC回収BOX又は拠点回収場所の窓口へ。端子を絶縁。車・自転車用等大型は別。膨張・破損等は窓口へ相談。",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/82667.jpg",
+      "category_options": [
+        "consult"
+      ]
+    },
+    {
+      "id": "sj-rule-06",
+      "item": "取り外せない充電式電池が内蔵された機器",
+      "category": "consult",
+      "note": "電池を取り外せない場合は市衛生課の窓口に相談。もえる・もえないに混ぜない。",
+      "source_url": "https://www.city.saijo.ehime.jp/soshiki/eisei/douzentyokuhan.html",
+      "category_options": []
+    },
+    {
+      "id": "sj-rule-07",
+      "item": "洗った飲料用アルミ缶",
+      "category": "non_burnable",
+      "note": "飲食用の空き缶はもえないごみ。指定の拠点でも回収可。一斗缶・18L以上のペール缶は粗大ごみ。",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/61346.pdf#page=1",
+      "category_options": []
+    },
+    {
+      "id": "sj-rule-08",
+      "item": "プラスチック製ストロー",
+      "category": "burnable",
+      "note": "分別辞典のストローはもえるごみ。ティッシュ箱との大きさ比較は不要。",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/61346.pdf#page=12",
+      "category_options": []
+    },
+    {
+      "id": "sj-rule-09",
+      "item": "プラスチック製おもちゃ",
+      "category": "non_burnable",
+      "note": "電池・金属を外す。ティッシュ箱（縦26cm×横11cm×高さ6cm）より小さいものはもえるごみ。指定袋に入れて口を縛れない大型は粗大。",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/61346.pdf#page=4",
+      "category_options": [
+        "burnable",
+        "bulky"
+      ]
+    },
+    {
+      "id": "sj-rule-10",
+      "item": "家庭用リチウムイオン電池",
+      "category": "drop_off",
+      "note": "2026年2月の公式広報：機器から取り外した家庭用リチウム蓄電池はJBRC回収BOX又は拠点回収場所の窓口へ。端子を絶縁する。取り外せない場合や膨張・破損は窓口へ確認。",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/82667.jpg",
+      "category_options": [
+        "consult"
+      ]
+    }
+  ],
+  "review_notes": [
+    "旧指定袋の案内は2026年1月5日からの新指定袋ルールを優先する。",
+    "分別表の印刷頁13〜38は全文PDFでは14〜39ページ、分割辞典では1〜26ページ。",
+    "小型充電池は2026年2月広報と現行窓口案内を併記。取り外せない場合や状態不明の受付可否は推測しない。",
+    "拠点・施設搬入の開所日は定期収集日へ変換しない。"
+  ]
+}

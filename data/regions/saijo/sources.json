@@ -1,0 +1,347 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38206",
+  "retrieved_at": "2026-11-11",
+  "license_status": "unconfirmed",
+  "sources": [
+    {
+      "file": "calendar-01.pdf",
+      "page": "https://www.city.saijo.ehime.jp/soshiki/eisei/r8-calender.html",
+      "url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83689.pdf",
+      "label": "・　大久保地区 [PDFファイル／174KB]",
+      "sha256": "c0eebcc0c36fe7cc849598effd0402012b06586a7cb57895b8bb06de61f4784e"
+    },
+    {
+      "file": "calendar-02.pdf",
+      "page": "https://www.city.saijo.ehime.jp/soshiki/eisei/r8-calender.html",
+      "url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83690.pdf",
+      "label": "・　大保木地区、市之川地区, [PDFファイル／168KB]",
+      "sha256": "04158443fd1dca7dd0630e007039cc4140a183cb08b472a9919f3a4259ad358b"
+    },
+    {
+      "file": "calendar-03.pdf",
+      "page": "https://www.city.saijo.ehime.jp/soshiki/eisei/r8-calender.html",
+      "url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83652.pdf",
+      "label": "・　大町 [PDFファイル／172KB]",
+      "sha256": "0430b4b211c094ceb8b751d5925e6fea093b0198fe84f4be91e0d95f3d56b7b4"
+    },
+    {
+      "file": "calendar-04.pdf",
+      "page": "https://www.city.saijo.ehime.jp/soshiki/eisei/r8-calender.html",
+      "url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83691.pdf",
+      "label": "・　​加茂地区 [PDFファイル／165KB]",
+      "sha256": "2df1a15b1faa7ff60168abf514783db34dae51e57d45bc5a65eae1605ff0a02c"
+    },
+    {
+      "file": "calendar-05.pdf",
+      "page": "https://www.city.saijo.ehime.jp/soshiki/eisei/r8-calender.html",
+      "url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83654.pdf",
+      "label": "・　神拝地区 [PDFファイル／171KB]",
+      "sha256": "9df0fb53717f10a5b30f5725282bf0aed26e064bbaf73affe623c664d404264e"
+    },
+    {
+      "file": "calendar-06.pdf",
+      "page": "https://www.city.saijo.ehime.jp/soshiki/eisei/r8-calender.html",
+      "url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83655.pdf",
+      "label": "・　神戸地区 [PDFファイル／172KB]",
+      "sha256": "1d8dbaed9f4eebf39d786e956e431a9c5fe63c9a891cf3371c648f1875157403"
+    },
+    {
+      "file": "calendar-07.pdf",
+      "page": "https://www.city.saijo.ehime.jp/soshiki/eisei/r8-calender.html",
+      "url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83656.pdf",
+      "label": "・　西条地区 [PDFファイル／172KB]",
+      "sha256": "8d34e1bf75355dc8b7439d73007cce0358a0d4c613eb2b07232372c3cf22c3f5"
+    },
+    {
+      "file": "calendar-08.pdf",
+      "page": "https://www.city.saijo.ehime.jp/soshiki/eisei/r8-calender.html",
+      "url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83657.pdf",
+      "label": "・　橘地区 [PDFファイル／172KB]",
+      "sha256": "8c5dd509c2469adffaf6168c2654a9cb26f669497bbca6ca91affe73a99be661"
+    },
+    {
+      "file": "calendar-09.pdf",
+      "page": "https://www.city.saijo.ehime.jp/soshiki/eisei/r8-calender.html",
+      "url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83658.pdf",
+      "label": "・　玉津地区、飯岡地区 [PDFファイル／173KB]",
+      "sha256": "02a5f5555830ac9b6644ce301ce2afbc5e542c4c7a0190803fdb7183b598c8ef"
+    },
+    {
+      "file": "calendar-10.pdf",
+      "page": "https://www.city.saijo.ehime.jp/soshiki/eisei/r8-calender.html",
+      "url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83660.pdf",
+      "label": "・　禎瑞地区 [PDFファイル／171KB]",
+      "sha256": "c99311be99888979c1e06b542beace360a43159d426117379dd0c961701fa1f9"
+    },
+    {
+      "file": "calendar-11.pdf",
+      "page": "https://www.city.saijo.ehime.jp/soshiki/eisei/r8-calender.html",
+      "url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83661.pdf",
+      "label": "・　兎之山地区、中寺地区 [PDFファイル／171KB]",
+      "sha256": "cfc194a4b5423e0a5a955d371e5fbaa5ea00b99bb2640c578b3f54cd19a5ee5a"
+    },
+    {
+      "file": "calendar-12.pdf",
+      "page": "https://www.city.saijo.ehime.jp/soshiki/eisei/r8-calender.html",
+      "url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83662.pdf",
+      "label": "・　氷見地区 [PDFファイル／173KB]",
+      "sha256": "aa4a102188a2517fb62ab59bc8defa5f8b86ff7eb93f3208bd737268a412b477"
+    },
+    {
+      "file": "calendar-13.pdf",
+      "page": "https://www.city.saijo.ehime.jp/soshiki/eisei/r8-calender.html",
+      "url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83663.pdf",
+      "label": "・　舟形地区、津越地区、長瀬地区 [PDFファイル／172KB]",
+      "sha256": "d784dfcb3970859e6b17ca7d920324bb89a866b303b372bcf211e49e8ee1862b"
+    },
+    {
+      "file": "calendar-14.pdf",
+      "page": "https://www.city.saijo.ehime.jp/soshiki/eisei/r8-calender.html",
+      "url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83664.pdf",
+      "label": "・　国安地区 [PDFファイル／173KB]",
+      "sha256": "4abf7bab6c22f74bbfcc1defa3d4e3e204926acf45e50694329a3ba9a92d2d32"
+    },
+    {
+      "file": "calendar-15.pdf",
+      "page": "https://www.city.saijo.ehime.jp/soshiki/eisei/r8-calender.html",
+      "url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83665.pdf",
+      "label": "・　黒谷地区 [PDFファイル／151KB]",
+      "sha256": "89977b035b6f891101f63194297826bb6432eae67607ccc72f7b61ca12c4422d"
+    },
+    {
+      "file": "calendar-16.pdf",
+      "page": "https://www.city.saijo.ehime.jp/soshiki/eisei/r8-calender.html",
+      "url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83666.pdf",
+      "label": "・　周布地区、壬生川（大曲地区を含む）地区 [PDFファイル／174KB]",
+      "sha256": "651e6e9e7828f23680641dad36682d96a064307f1dd67ac5d724f03e0bdc46b3"
+    },
+    {
+      "file": "calendar-17.pdf",
+      "page": "https://www.city.saijo.ehime.jp/soshiki/eisei/r8-calender.html",
+      "url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83667.pdf",
+      "label": "・　吉井地区、多賀（三津屋本通りまで）地区 [PDFファイル／172KB]",
+      "sha256": "8609a28c61863cd46437f41d2fcabd672c440c3364171da769bfdd9701c6815d"
+    },
+    {
+      "file": "calendar-18.pdf",
+      "page": "https://www.city.saijo.ehime.jp/soshiki/eisei/r8-calender.html",
+      "url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83668.pdf",
+      "label": "・　吉岡地区 [PDFファイル／172KB]",
+      "sha256": "ca1a2614cdb604ad42bcd68c372cea62dc8cc7b755aefe2b5614028b944fe364"
+    },
+    {
+      "file": "calendar-19.pdf",
+      "page": "https://www.city.saijo.ehime.jp/soshiki/eisei/r8-calender.html",
+      "url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83695.pdf",
+      "label": "・　三芳地区、楠河地区、庄内地区 [PDFファイル／173KB]",
+      "sha256": "ee7c355195b22d9a03ff534c5633f19532f093de71875858ed915cd216f9ce4a"
+    },
+    {
+      "file": "calendar-20.pdf",
+      "page": "https://www.city.saijo.ehime.jp/soshiki/eisei/r8-calender.html",
+      "url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83670.pdf",
+      "label": "・　相之谷地区 [PDFファイル／192KB]",
+      "sha256": "82078f1a862909587b89b7d82917b6450b86b72f499a1eb395ebf6db8d732df4"
+    },
+    {
+      "file": "calendar-21.pdf",
+      "page": "https://www.city.saijo.ehime.jp/soshiki/eisei/r8-calender.html",
+      "url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83671.pdf",
+      "label": "・　久妙寺地区、徳田地区(古田新出・田滝除く) [PDFファイル／174KB]",
+      "sha256": "fcc70b4fd4588f6227ed8ca0fcfcdecc88d5d120472c1e37dc02554c7e8f81fa"
+    },
+    {
+      "file": "calendar-22.pdf",
+      "page": "https://www.city.saijo.ehime.jp/soshiki/eisei/r8-calender.html",
+      "url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83673.pdf",
+      "label": "・　田野地区、田滝地区 [PDFファイル／171KB]",
+      "sha256": "592a0197876b67c651349365e0c5db86d4958de4f49d47635777b816d54b192b"
+    },
+    {
+      "file": "calendar-23.pdf",
+      "page": "https://www.city.saijo.ehime.jp/soshiki/eisei/r8-calender.html",
+      "url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83678.pdf",
+      "label": "・　丹原地区（久妙寺除く）、古田新出地区 [PDFファイル／175KB]",
+      "sha256": "2a7510d53b48d239478058d65e8c3810a24687104cdde27e57dbb6d47a1cd4a2"
+    },
+    {
+      "file": "calendar-24.pdf",
+      "page": "https://www.city.saijo.ehime.jp/soshiki/eisei/r8-calender.html",
+      "url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83699.pdf",
+      "label": "・中川地区、桜樹地区（相之谷地区除く） [PDFファイル／172KB]",
+      "sha256": "5e61b8348a4e3c9a80a9823e8a88b2d2bc4eba0be9889895d15ccfc48d53ff91"
+    },
+    {
+      "file": "calendar-25.pdf",
+      "page": "https://www.city.saijo.ehime.jp/soshiki/eisei/r8-calender.html",
+      "url": "https://www.city.saijo.ehime.jp/uploaded/attachment/83686.pdf",
+      "label": "・　小松地区、石根地区 [PDFファイル／171KB]",
+      "sha256": "2a883ac6f6010f62fa7c234b9ed3a7c14ca453f7232eac6c4ae4d75e3897f5b5"
+    },
+    {
+      "file": "guide-01.pdf",
+      "page": "https://www.city.saijo.ehime.jp/soshiki/eisei/kateigomibunnbetuguidebook.html",
+      "url": "https://www.city.saijo.ehime.jp/uploaded/attachment/61336.pdf",
+      "label": "01　表紙 [PDFファイル／300KB]",
+      "sha256": "6c7f9730bab06ebc8cdf11161b283f6802c3e528fa6061e43f26df1186c0c646"
+    },
+    {
+      "file": "guide-02.pdf",
+      "page": "https://www.city.saijo.ehime.jp/soshiki/eisei/kateigomibunnbetuguidebook.html",
+      "url": "https://www.city.saijo.ehime.jp/uploaded/attachment/61337.pdf",
+      "label": "02　ごみの減量化に向けて、みんなで取り組もう！ [PDFファイル／677KB]",
+      "sha256": "a81bad04af74f5f210532d71130b8d3e3c87ef20a6842e286632fcfc913d61a3"
+    },
+    {
+      "file": "guide-03.pdf",
+      "page": "https://www.city.saijo.ehime.jp/soshiki/eisei/kateigomibunnbetuguidebook.html",
+      "url": "https://www.city.saijo.ehime.jp/uploaded/attachment/61338.pdf",
+      "label": "03　ごみの分別基準が変わります [PDFファイル／417KB]",
+      "sha256": "cf2c6213927827587d4e4f93146178a8fca917d640dafbc9c508163e6f47dc0d"
+    },
+    {
+      "file": "guide-04.pdf",
+      "page": "https://www.city.saijo.ehime.jp/soshiki/eisei/kateigomibunnbetuguidebook.html",
+      "url": "https://www.city.saijo.ehime.jp/uploaded/attachment/61339.pdf",
+      "label": "04　「もえるごみ」の正しいわけ方・出し方　大別表 [PDFファイル／1.5MB]",
+      "sha256": "7a9b7262d69525a36400109f4d50a8358bdeab2b3cde9675cda0bbe310198623"
+    },
+    {
+      "file": "guide-05.pdf",
+      "page": "https://www.city.saijo.ehime.jp/soshiki/eisei/kateigomibunnbetuguidebook.html",
+      "url": "https://www.city.saijo.ehime.jp/uploaded/attachment/61340.pdf",
+      "label": "05　「もえないごみ」の正しいわけ方・出し方　大別表 [PDFファイル／1.3MB]",
+      "sha256": "7d4abbb50031fe77414536ffab72c7d2814a85624ffb4318296d67858e98968d"
+    },
+    {
+      "file": "guide-06.pdf",
+      "page": "https://www.city.saijo.ehime.jp/soshiki/eisei/kateigomibunnbetuguidebook.html",
+      "url": "https://www.city.saijo.ehime.jp/uploaded/attachment/61341.pdf",
+      "label": "06　「粗大ごみ」の出し方 [PDFファイル／934KB]",
+      "sha256": "61678ba608afec46adc5c6f5eb154f68fc749b8ba9397b5f0116195918ff6c99"
+    },
+    {
+      "file": "guide-07.pdf",
+      "page": "https://www.city.saijo.ehime.jp/soshiki/eisei/kateigomibunnbetuguidebook.html",
+      "url": "https://www.city.saijo.ehime.jp/uploaded/attachment/61342.pdf",
+      "label": "07　「資源ごみ・スプレー缶等」の正しい分け方・出し方 [PDFファイル／829KB]",
+      "sha256": "1a0a1b6024541db77cf76aa48375aed2d36be577eadf2174d04d66656e57cd24"
+    },
+    {
+      "file": "guide-08.pdf",
+      "page": "https://www.city.saijo.ehime.jp/soshiki/eisei/kateigomibunnbetuguidebook.html",
+      "url": "https://www.city.saijo.ehime.jp/uploaded/attachment/61343.pdf",
+      "label": "08　拠点回収場所への正しい出し方 [PDFファイル／1022KB]",
+      "sha256": "b5efbc471acc29b3d3973d883384bc76a31bc85d56363e4758f7250ad5462563"
+    },
+    {
+      "file": "guide-09.pdf",
+      "page": "https://www.city.saijo.ehime.jp/soshiki/eisei/kateigomibunnbetuguidebook.html",
+      "url": "https://www.city.saijo.ehime.jp/uploaded/attachment/61344.pdf",
+      "label": "09　収集できないもの [PDFファイル／634KB]",
+      "sha256": "a19bab97148343828e5b26ee9fa32443aa077ff120481d2ab4673cd25aa38e2c"
+    },
+    {
+      "file": "guide-10.pdf",
+      "page": "https://www.city.saijo.ehime.jp/soshiki/eisei/kateigomibunnbetuguidebook.html",
+      "url": "https://www.city.saijo.ehime.jp/uploaded/attachment/61346.pdf",
+      "label": "10　50音順ごみ分別表 [PDFファイル／969KB]",
+      "sha256": "2c2bbf759eb1633d7b9addc2a6ab429cc2d1538e52c629e1451945551096975d"
+    },
+    {
+      "file": "guide-11.pdf",
+      "page": "https://www.city.saijo.ehime.jp/soshiki/eisei/kateigomibunnbetuguidebook.html",
+      "url": "https://www.city.saijo.ehime.jp/uploaded/attachment/61347.pdf",
+      "label": "11　家庭ごみ収集日一覧表 [PDFファイル／671KB]",
+      "sha256": "486d02ecb470152cbefe0850ca4be8d2442c050dac4c1d957d99b65b46c83cb4"
+    },
+    {
+      "file": "guidebook.pdf",
+      "page": "https://www.city.saijo.ehime.jp/soshiki/eisei/kateigomibunnbetuguidebook.html",
+      "url": "https://www.city.saijo.ehime.jp/uploaded/attachment/61317.pdf",
+      "label": "家庭ごみ分別ガイドブック全文 [PDFファイル／4.1MB]",
+      "sha256": "fd5c0b5e11ac4f4d39620a1b18049879d950b86f55a2ef6836cf5f680e9ffeea"
+    },
+    {
+      "file": "r8-calender.html",
+      "url": "https://www.city.saijo.ehime.jp/soshiki/eisei/r8-calender.html",
+      "sha256": "ee341d123d6c12e0b29024c37135d3add501a809f200f1f7c17ed9ec2dfbaa66",
+      "canonicalization": "main_body_utf8"
+    },
+    {
+      "file": "kateigomibunnbetuguidebook.html",
+      "url": "https://www.city.saijo.ehime.jp/soshiki/eisei/kateigomibunnbetuguidebook.html",
+      "sha256": "58405657f9cf413bd55a92ab133712e38c6a5427ae0ff6c4dc0e2884ab01594a",
+      "canonicalization": "main_body_utf8"
+    },
+    {
+      "file": "gominowakekata.html",
+      "url": "https://www.city.saijo.ehime.jp/soshiki/eisei/gominowakekata.html",
+      "sha256": "28e193c431280af4b3426e19084506ccfccde17c3a2dacaf13b90478b5e432d0",
+      "canonicalization": "main_body_utf8"
+    },
+    {
+      "file": "maturigomiyasumi.html",
+      "url": "https://www.city.saijo.ehime.jp/soshiki/eisei/maturigomiyasumi.html",
+      "sha256": "26378b4db99d84936f4cc151b34950f113a088e4b7e41e556707d217142b98af",
+      "canonicalization": "main_body_utf8"
+    },
+    {
+      "file": "singomifukuro.html",
+      "url": "https://www.city.saijo.ehime.jp/soshiki/eisei/singomifukuro.html",
+      "sha256": "8e63017918f545195ce8bd140342a6746958a0669c8f2c66a7b2a35b94514d7c",
+      "canonicalization": "main_body_utf8"
+    },
+    {
+      "file": "shigenn.html",
+      "url": "https://www.city.saijo.ehime.jp/soshiki/eisei/shigenn.html",
+      "sha256": "2af70ad9bc64a38891dc8d46fbf50e99a2b3695b8f3007c1976c584ad9740430",
+      "canonicalization": "main_body_utf8"
+    },
+    {
+      "file": "kogatakaden.html",
+      "url": "https://www.city.saijo.ehime.jp/soshiki/eisei/kogatakaden.html",
+      "sha256": "780182a7ca9b3b785bdc66312191a3c91216d2e3eb4a68aca1b563af42185ccb",
+      "canonicalization": "main_body_utf8"
+    },
+    {
+      "file": "bulky.html",
+      "url": "https://www.sodai-saijo.jp/",
+      "sha256": "361536c92466a4d754cb1329cd4b35027310e4e45299b556fbf135f1469a7b48"
+    },
+    {
+      "file": "kyotenkaisyuubasyo.html",
+      "url": "https://www.city.saijo.ehime.jp/soshiki/eisei/kyotenkaisyuubasyo.html",
+      "sha256": "2fe74b420fb6231b7b2a6c0d4f0c7ddf5aa5cebaf7c327ffa6c88b9fff9de686",
+      "canonicalization": "main_body_utf8"
+    },
+    {
+      "file": "douzentyokuhan.html",
+      "url": "https://www.city.saijo.ehime.jp/soshiki/eisei/douzentyokuhan.html",
+      "sha256": "8203d8e512095358e051f1a5fba1a568b6f1ff823771b0ce08ef86988576e1d7",
+      "canonicalization": "main_body_utf8"
+    },
+    {
+      "file": "gomituushin.html",
+      "url": "https://www.city.saijo.ehime.jp/soshiki/eisei/gomituushin.html",
+      "sha256": "a25c27d8b149aa2e442d746436a7de07239269b865d9e58fa84fc261a4aef8cc",
+      "canonicalization": "main_body_utf8"
+    },
+    {
+      "file": "battery-2025-12.jpg",
+      "url": "https://www.city.saijo.ehime.jp/uploaded/attachment/81736.jpg",
+      "sha256": "2e2f3f51e0d2bf629a650b70c696839ca66c2ad9aa2bebc3e21b545c55138111"
+    },
+    {
+      "file": "battery-2026-02.jpg",
+      "url": "https://www.city.saijo.ehime.jp/uploaded/attachment/82667.jpg",
+      "sha256": "2ebc81fa288f9abc7c2319b9e40b1018685a10901b1d46ab38c42f35c1c32196"
+    },
+    {
+      "file": "dropoff-2026-10.jpg",
+      "url": "https://www.city.saijo.ehime.jp/uploaded/attachment/87290.jpg",
+      "sha256": "05d8b6c8aca4c353fe6aae1761c554ac95510dec82580cfa4d1a78531026a47f"
+    }
+  ]
+}
