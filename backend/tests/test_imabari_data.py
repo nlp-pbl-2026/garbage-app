@@ -81,6 +81,17 @@ def test_updated_sources_stop_without_overwriting_original(tmp_path, monkeypatch
     assert (tmp_path / "source/a.pdf").read_bytes() == b"original"
 
 
+def test_html_body_is_pinned_independently_of_cache_footer():
+    spec = dict(canonicalization="main_element_utf8")
+    a = b'<main id="main_container"><p>rule</p></main><footer>1m</footer>'
+    b = b'<main id="main_container"><p>rule</p></main><footer>0m</footer>'
+    c = b'<main id="main_container"><p>changed rule</p></main>'
+    assert data.normalize_source(a, spec) == data.normalize_source(b, spec)
+    assert data.normalize_source(a, spec) != data.normalize_source(c, spec)
+    with pytest.raises(ValueError, match="one official main"):
+        data.normalize_source(b"<footer>no main</footer>", spec)
+
+
 def test_missing_verified_index_prevents_activation(tmp_path, monkeypatch):
     monkeypatch.setattr(data, "ROOT", tmp_path)
     target = tmp_path / "data/regions/catalog.json"

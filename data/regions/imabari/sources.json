@@ -7,27 +7,37 @@
     {
       "file": "calendar-2026.html",
       "url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/",
-      "sha256": "0346b7e53f752b1f0b777cb20d24d550c37bb26244a85f3444fd62f7040fe19c"
+      "sha256": "27ab90d1bcdd860f95b68fc05f038277be3cb9a35e851a51d500a81baa4bc26d",
+      "original_download_sha256": "0346b7e53f752b1f0b777cb20d24d550c37bb26244a85f3444fd62f7040fe19c",
+      "canonicalization": "main_element_utf8"
     },
     {
       "file": "calendar-index.html",
       "url": "https://www.city.imabari.ehime.jp/recycle/calendar/",
-      "sha256": "aef0696c9e4aa2a81dffe7a75711d09788d9ff3d810a053a29bf97af0d441ebd"
+      "sha256": "d34bb9629d61d30abaeb11d634bd9a73d1042b63b1f2158090c34a9fb6b26761",
+      "original_download_sha256": "aef0696c9e4aa2a81dffe7a75711d09788d9ff3d810a053a29bf97af0d441ebd",
+      "canonicalization": "main_element_utf8"
     },
     {
       "file": "materials.html",
       "url": "https://www.city.imabari.ehime.jp/recycle/siryo/",
-      "sha256": "1655adbbf85a0745d959a7548a99e8c775549e831dd835be833970bb20ba46d5"
+      "sha256": "b6ec5b4e0ba1ebef65be17dcf3f250b88fe7c43e43a458d73594fa8aa7d6e9f6",
+      "original_download_sha256": "1655adbbf85a0745d959a7548a99e8c775549e831dd835be833970bb20ba46d5",
+      "canonicalization": "main_element_utf8"
     },
     {
       "file": "mainland.html",
       "url": "https://www.city.imabari.ehime.jp/recycle/kateigomi/kateigomi_imabari.html",
-      "sha256": "4c400bc09a742dc9b8f7bfd868fa159634be9ef964b982755cd12da2d2dd0a17"
+      "sha256": "b4ed8f269fa9be2e3f6a6780b11137e548429d2652aa9322c9436131ddc29339",
+      "original_download_sha256": "4c400bc09a742dc9b8f7bfd868fa159634be9ef964b982755cd12da2d2dd0a17",
+      "canonicalization": "main_element_utf8"
     },
     {
       "file": "sekizen.html",
       "url": "https://www.city.imabari.ehime.jp/recycle/kateigomi/kateigomi_sekizen.html",
-      "sha256": "d186e2451bccc8b873d82d097d4e98fa52c88dae60de17a30b27f7c95c2965c3"
+      "sha256": "3ac6922bd150a43694e0416601d3891b067117d289b6fa95a84698d8d7fe1836",
+      "original_download_sha256": "d186e2451bccc8b873d82d097d4e98fa52c88dae60de17a30b27f7c95c2965c3",
+      "canonicalization": "main_element_utf8"
     },
     {
       "file": "calendar-01.pdf",
@@ -487,27 +497,37 @@
     {
       "file": "battery-current.html",
       "url": "https://www.city.imabari.ehime.jp/recycle/info/lithium/",
-      "sha256": "cb039f32f6c5e5d2407598599b215f4075123aa3886318686807a47cc04bf99e"
+      "sha256": "901eb0e52826ca867c09b3a2a81a68c1645fb0dce759d9d988f2bc826744061c",
+      "original_download_sha256": "cb039f32f6c5e5d2407598599b215f4075123aa3886318686807a47cc04bf99e",
+      "canonicalization": "main_element_utf8"
     },
     {
       "file": "not-accepted.html",
       "url": "https://www.city.imabari.ehime.jp/recycle/shoridekinai/",
-      "sha256": "33e43b82ec4f16a3c90df6dfc5667ffbcc023447edb788696c3b4c6338fc3978"
+      "sha256": "04532d6497da49562dd373c338e9fb450df56f7822176f2621f7c725900bb6a6",
+      "original_download_sha256": "33e43b82ec4f16a3c90df6dfc5667ffbcc023447edb788696c3b4c6338fc3978",
+      "canonicalization": "main_element_utf8"
     },
     {
       "file": "resources.html",
       "url": "https://www.city.imabari.ehime.jp/recycle/sigen/",
-      "sha256": "e0c503e7814382634a63714681ea90c36a5e6963039e082450be86186253d445"
+      "sha256": "ae3ff6dc9e265960ed43c6c37104600f500b9769181a3256f48855b617b34c4a",
+      "original_download_sha256": "e0c503e7814382634a63714681ea90c36a5e6963039e082450be86186253d445",
+      "canonicalization": "main_element_utf8"
     },
     {
       "file": "resource-stations.html",
       "url": "https://www.city.imabari.ehime.jp/recycle/sigen/sigenstation.html",
-      "sha256": "7385d21b7d044947fd0cdc218ba32a22d2019acb83b94862d667defdb611059a"
+      "sha256": "b3a199a587faecfd6dadac10466051738ef4a85ea500f4620af58c3c9bdf02c4",
+      "original_download_sha256": "7385d21b7d044947fd0cdc218ba32a22d2019acb83b94862d667defdb611059a",
+      "canonicalization": "main_element_utf8"
     },
     {
       "file": "small-appliances.html",
       "url": "https://www.city.imabari.ehime.jp/recycle/kateigomi/kogatakaden.html",
-      "sha256": "168c5383790cdff710d11033a3cd68ed443c3e0b99165a6cd11c130182677cd2"
+      "sha256": "fa9362ba99f99bdf2e0e404102f8d76a189fe77ad034cf8f24573d432f5194aa",
+      "original_download_sha256": "168c5383790cdff710d11033a3cd68ed443c3e0b99165a6cd11c130182677cd2",
+      "canonicalization": "main_element_utf8"
     }
   ]
 }

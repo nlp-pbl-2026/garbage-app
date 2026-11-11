@@ -20,7 +20,9 @@ import re
 import subprocess
 import sys
 from urllib.parse import urlparse
+from urllib.parse import urljoin
 from urllib.request import urlopen
+from html import unescape
 
 from imabari_pdf import (
     address_rows,
@@ -58,6 +60,15 @@ def value_digest(value):
     ).hexdigest()
 
 
+def normalize_source(body, source):
+    if source.get("canonicalization") == "main_element_utf8":
+        matches = re.findall(rb"<main\b[^>]*>(.*?)</main>", body, re.S)
+        if len(matches) != 1:
+            raise ValueError("Expected one official main content element")
+        return matches[0].strip()
+    return body
+
+
 def checked_sources():
     sources = read(DATA / "sources.json")["sources"]
     if len({s["file"] for s in sources}) != len(sources):
@@ -74,7 +85,7 @@ def fetch():
             or Path(s["file"]).name != s["file"]
         ):
             raise ValueError("Unexpected source location")
-        body = urlopen(s["url"], timeout=90).read()
+        body = normalize_source(urlopen(s["url"], timeout=90).read(), s)
         if hashlib.sha256(body).hexdigest() != s["sha256"]:
             raise ValueError("Official source changed; review required: " + s["file"])
         path = DATA / "source" / s["file"]
@@ -299,6 +310,22 @@ def calendar_records():
         )
     if len(specs) != 44:
         raise ValueError("Exactly 42 numbered + 2 special calendar PDFs required")
+    index = (DATA / "source/calendar-2026.html").read_text(encoding="utf8")
+    links = {
+        urljoin(BASE + "calendar/R08/", unescape(url)): unescape(
+            re.sub("<[^>]+>", "", text)
+        ).strip()
+        for url, text in re.findall(
+            r'<a[^>]*href="([^"]+)"[^>]*>(.*?)</a>', index, re.S
+        )
+        if ".pdf" in url
+    }
+    if len(links) != 44 or any(s["source_url"] not in links for s in specs):
+        raise ValueError("FY2026 index/calendar link mismatch")
+    for spec in specs:
+        original = next(s for s in sources if s["file"] == spec["source_file"])
+        if compact(links[spec["source_url"]]) != compact(original["label"]):
+            raise ValueError("Official calendar index label changed")
     calendars, audits = {}, {}
     for spec in specs:
         key = spec["key"]

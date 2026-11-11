@@ -18,6 +18,8 @@ from imabari_pdf import (
     sekizen_dictionary,
     month_cells,
     numbered_calendar,
+    glyphs,
+    text_in,
 )
 
 
@@ -240,9 +242,32 @@ def audit(data, *, inspect_only=False, ignore_refine=False):
     unresolved = []
     date_entries = []
     templates = {}
+    source_specs = {s["file"]: s for s in read(data / "sources.json")["sources"]}
     for n in range(1, 43):
         source = data / "source" / f"calendar-{n:02}.pdf"
         page = pymupdf.open(source)[0]
+        native = glyphs(page)
+        caption = (
+            text_in(native, [0, 0, 842, 90])
+            if native
+            else "".join(o["text"] for o in obs(f"calendar-{n:02}-legend", source))
+        )
+        expected_caption = re.sub(
+            r"地区[（(]PDF.*$", "", source_specs[source.name]["label"]
+        ).strip()
+        if compact(expected_caption) not in compact(
+            caption
+        ) or "令和8年度" not in compact(caption):
+            unresolved.append(
+                dict(
+                    kind="calendar_caption",
+                    id=str(n),
+                    expected=expected_caption,
+                    actual=caption[:120],
+                )
+            )
+        else:
+            stats["calendar_captions"] += 1
         number_spans = [
             s
             for b in page.get_text("dict")["blocks"]
@@ -471,6 +496,11 @@ def audit(data, *, inspect_only=False, ignore_refine=False):
                 )
             )
         )
+        caption = "来島・馬島・小島地区" if key == "12_tokku" else "鵜島地区"
+        if compact(caption) not in text or "令和8年度" not in text:
+            unresolved.append(dict(kind="special_caption", id=key, expected=caption))
+        else:
+            stats["calendar_captions"] += 1
         for token in tokens:
             if compact(token) not in text:
                 unresolved.append(dict(kind="special_rule", id=key, token=token))
