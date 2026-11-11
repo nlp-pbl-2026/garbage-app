@@ -81,6 +81,23 @@ flutter test tool/verify_imabari_data_test.dart tool/verify_imabari_ui_test.dart
 
 自力で索引生成する場合は**別途費用承認**を得てから `build_regional_embeddings.py` を通常地域・関前それぞれに使います。`--source`・`--output`・`--profile` は上の対応を守り、checkpointも `generated/titan-mainland.jsonl` / `titan-sekizen.jsonl` と分けます。両索引の合計呼出し数・費用を管理してください。CSV・モデル・次元・ID順・ハッシュを確認した新manifestのレビューが必要です。他自治体の索引は生成しません。実評価用 `imabari_evaluate.py` も有料で、過去の承認を新しい環境での再実行許可として扱わないでください。
 
+```bash
+# 有料。新たに承認を得た場合だけ実行（2プロフィール合計最大1,200呼出し）。
+backend/.venv/bin/python scripts/build_regional_embeddings.py \
+  --source data/regions/imabari/knowledge/mainland/items.csv \
+  --output data/regions/imabari/knowledge/mainland/item_embeddings.npz \
+  --municipality 38202 --profile mainland \
+  --checkpoint data/regions/imabari/generated/titan-mainland.jsonl \
+  --max-calls 960 --budget-usd 0.25 --workers 4
+backend/.venv/bin/python scripts/build_regional_embeddings.py \
+  --source data/regions/imabari/knowledge/sekizen/items.csv \
+  --output data/regions/imabari/knowledge/sekizen/item_embeddings.npz \
+  --municipality 38202 --profile sekizen \
+  --checkpoint data/regions/imabari/generated/titan-sekizen.jsonl \
+  --max-calls 240 --budget-usd 0.10 --workers 4
+backend/.venv/bin/python scripts/imabari_data.py verify
+```
+
 新規clone相当の隔離チェックアウトから75資料を再取得し、OCR・CSV・カレンダー・Flutterデータを再生成しました。2個のNPZは共有配置して再課金せず検証しています。`reproduction_verification.json` に原本からの再生成とバイト一致の記録を残しています。
 
 ## Git・配置・残る確認
