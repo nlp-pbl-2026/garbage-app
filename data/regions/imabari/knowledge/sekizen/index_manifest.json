@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38202",
+  "profile_id": "sekizen",
+  "item_count": 214,
+  "model_id": "amazon.titan-embed-text-v2:0",
+  "dimensions": 1024,
+  "source_sha256": "cf016c9b6f95a7f8d1c5934946fc2b2c51b733845e8bf65313994a81aca60818",
+  "index_sha256": "a5b29dd0fded85f92e185fb237118d6b5cc93dcb14b15028db2d0135243b0704",
+  "verification": "csv_ids_model_dimensions_finite_normalized_checked",
+  "embedding_text": "backend/build_item_embeddings.py:build_document",
+  "generation_calls": 214,
+  "generation_budget_reserve_usd": 0.009028200000000004
+}

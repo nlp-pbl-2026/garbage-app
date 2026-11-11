@@ -1,0 +1,64 @@
+{
+  "mainland": {
+    "official_rows": 855,
+    "examples": 12,
+    "page_counts": {
+      "2": 28,
+      "3": 64,
+      "4": 64,
+      "5": 63,
+      "6": 63,
+      "7": 63,
+      "8": 64,
+      "9": 64,
+      "10": 63,
+      "11": 63,
+      "12": 66,
+      "13": 63,
+      "14": 62,
+      "15": 65
+    },
+    "raw_sha256": "77c950f67238c799f5ed6b3b1b3cdf3ebbda309e3c7910e06a4678eb26afd308",
+    "rows_sha256": "b354cc3ccb06c20acb75e6b928c22870b43829c66e2a1b28d288212a4be22c88",
+    "category_counts": {
+      "bulky": 166,
+      "burnable": 277,
+      "non_burnable": 219,
+      "not_collected": 56,
+      "direct_delivery": 11,
+      "plastics": 40,
+      "consult": 12,
+      "resources": 63,
+      "dangerous": 9,
+      "hazardous": 13,
+      "small_appliances": 1
+    }
+  },
+  "sekizen": {
+    "official_rows": 203,
+    "examples": 11,
+    "page_counts": {
+      "1": 25,
+      "2": 29,
+      "3": 26,
+      "4": 27,
+      "5": 28,
+      "6": 23,
+      "7": 28,
+      "8": 17
+    },
+    "raw_sha256": "3c260b87114940f1a803863f2dcdec9d9b5ad947b40914795893f10184269d35",
+    "rows_sha256": "841a813ef5d49605f668c521b7781856b3b963c4f96d26ed7e40cd51d3e1c479",
+    "category_counts": {
+      "non_burnable": 49,
+      "resources": 10,
+      "bulky": 53,
+      "burnable": 39,
+      "plastics": 15,
+      "not_collected": 31,
+      "paper": 6,
+      "hazardous_dangerous": 10,
+      "consult": 1
+    }
+  }
+}

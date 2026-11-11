@@ -1,0 +1,17 @@
+{
+  "method": "Apple Vision rendered-PDF OCR + OCR-seeded glyph templates; category colours from visible legend",
+  "numbered_calendar_dates": 15330,
+  "dictionary_rows": 1058,
+  "ocr_images": 634,
+  "counts": {
+    "date_ocr": 14693,
+    "date_raster_template": 569,
+    "date_enlarged_ocr": 64,
+    "date_manual": 4,
+    "dictionary_category_raster": 391,
+    "dictionary_category_ocr": 629,
+    "dictionary_category_manual": 38,
+    "special_rule_tokens_ocr": 14
+  },
+  "unresolved": []
+}

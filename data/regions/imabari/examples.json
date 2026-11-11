@@ -1,0 +1,188 @@
+{
+  "mainland": [
+    {
+      "item": "ペットボトル本体（飲料用PETマーク付き）",
+      "category": "resources",
+      "note": "飲料・食品用PETの本体。キャップとラベルを外して水洗い済みなら資源。汚れが落ちない本体は燃やせるごみ。外した部品の分類を本体に適用しない。",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata.pdf",
+      "category_options": [
+        "burnable"
+      ]
+    },
+    {
+      "item": "外したペットボトルのキャップ・ラベル（プラスチック製）",
+      "category": "plastics",
+      "note": "本体から外したプラ製キャップ・ラベルは軽く水洗いしてプラ。PET本体は別に資源。",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata.pdf",
+      "category_options": [
+        "burnable"
+      ]
+    },
+    {
+      "item": "スプレー缶（使い切り済み）",
+      "category": "dangerous",
+      "note": "使い切り、穴をあけず危険ごみのコンテナへ。普通の缶や不燃へ混ぜない。",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata.pdf",
+      "category_options": []
+    },
+    {
+      "item": "小型リチウムイオン電池（取り外した家庭用）",
+      "category": "hazardous",
+      "note": "家庭用の小型充電池は取り外して端子を絶縁し有害ごみのコンテナへ。大型の電動自転車用等は対象外。",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/info/lithium/",
+      "category_options": []
+    },
+    {
+      "item": "充電池を取り外せない小型家電",
+      "category": "small_appliances",
+      "note": "電池が外せない製品は不燃にしない。現行公式案内に従い電池ごと小型家電回収ボックス又は資源リサイクル課へ持参。回収ボックスの投入口は縦15cm横25cm。",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/info/lithium/",
+      "category_options": []
+    },
+    {
+      "item": "電動アシスト自転車の大型充電池",
+      "category": "not_collected",
+      "note": "大型充電式電池は販売店へ依頼又は店頭回収を利用。小型充電池の通常資源回収と区別。",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/shoridekinai/",
+      "category_options": []
+    },
+    {
+      "item": "プラスチック製バケツ（指定袋に入るもの）",
+      "category": "burnable",
+      "note": "製品プラスチックは容器包装ではない。指定袋に入り口を縛れ、持ち上げても破れなければ燃やせるごみ。入らなければ粗大ごみ。",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata.pdf",
+      "category_options": [
+        "bulky"
+      ]
+    },
+    {
+      "item": "ガラスびん（飲食用）",
+      "category": "resources",
+      "note": "飲食用ガラスびんは中身を出し水洗い。乳白色・割れたもの・資源に出せないものは燃やせないごみ。",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata.pdf",
+      "category_options": [
+        "non_burnable"
+      ]
+    },
+    {
+      "item": "汚れが落ちないプラマーク付き食品容器",
+      "category": "burnable",
+      "note": "汚れが落ちない容器包装はプラ資源に出さず燃やせるごみ。",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata.pdf",
+      "category_options": []
+    },
+    {
+      "item": "白色食品トレイ（水洗い済み）",
+      "category": "resources",
+      "note": "白色トレイは水洗いして資源。白色以外のプラマーク付き容器はプラ。",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata.pdf",
+      "category_options": []
+    },
+    {
+      "item": "カラートレイ（プラマーク付き・水洗い済み）",
+      "category": "plastics",
+      "note": "白色以外の食品トレイでプラマークがあり汚れが落ちたものはプラ。",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata.pdf",
+      "category_options": []
+    },
+    {
+      "item": "バナナの皮",
+      "category": "burnable",
+      "note": "台所の生ごみは水切りし指定袋に入れる。",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata.pdf",
+      "category_options": []
+    }
+  ],
+  "sekizen": [
+    {
+      "item": "ペットボトル本体（飲料用PETマーク付き）",
+      "category": "resources",
+      "note": "2026年度：キャップとラベルを外して水洗い済みの飲食用PET本体は資源物。外したプラ製部品はプラスチック資源。",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata_sekizen01.pdf",
+      "category_options": []
+    },
+    {
+      "item": "外したペットボトルのキャップ・ラベル（プラスチック製）",
+      "category": "plastics",
+      "note": "2026年度資料でキャップ・ラベルはプラスチック資源。汚れが落ちないものは燃えるごみ。PET本体は別に資源物。",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata_sekizen01.pdf",
+      "category_options": [
+        "burnable"
+      ]
+    },
+    {
+      "item": "プラスチック製バケツ",
+      "category": "plastics",
+      "note": "2026年度：プラスチックのみ、50cm未満で水洗いして汚れを落とした製品はプラスチック資源。金属が外せないものは燃えないごみ。50cm以上・汚れが落ちないものは燃えるごみ（指定袋に入らなければ粗大）。材質・大きさが未確認なら質問。",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata_sekizen01.pdf",
+      "category_options": [
+        "burnable",
+        "non_burnable",
+        "bulky"
+      ]
+    },
+    {
+      "item": "プラスチック製ハンガー（50cm未満）",
+      "category": "plastics",
+      "note": "2026年度：プラスチックのみ、50cm未満で汚れを落としたハンガーはプラスチック資源。金属が外せないものは燃えないごみ。",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata_sekizen01.pdf",
+      "category_options": [
+        "non_burnable",
+        "burnable"
+      ]
+    },
+    {
+      "item": "小型リチウムイオン電池（取り外した家庭用）",
+      "category": "hazardous_dangerous",
+      "note": "2026年度資料にリチウムイオン電池が明記され、有害・危険ごみコンテナで回収。大型バッテリーは販売店等へ。",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata_sekizen01.pdf",
+      "category_options": []
+    },
+    {
+      "item": "スプレー缶（使い切り済み）",
+      "category": "hazardous_dangerous",
+      "note": "2026年度：使い切り、穴をあけずに資源物ステーションの有害・危険ごみコンテナへ。",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata_sekizen01.pdf",
+      "category_options": []
+    },
+    {
+      "item": "洗った食品トレイ（プラスチック製）",
+      "category": "plastics",
+      "note": "2026年度：食品トレイ・卵パック等のプラスチック製で50cm未満、汚れを落としたものはプラスチック資源。白色以外でも同じ。汚れが落ちないものは燃えるごみ。",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata_sekizen01.pdf",
+      "category_options": [
+        "burnable"
+      ]
+    },
+    {
+      "item": "バナナの皮",
+      "category": "burnable",
+      "note": "生ごみは水気を切り指定袋へ。",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata_sekizen01.pdf",
+      "category_options": []
+    },
+    {
+      "item": "割れた飲食用ガラスびん",
+      "category": "non_burnable",
+      "note": "2026年度のガラス類の扱いを優先。割れたガラスは丈夫な布や紙で包んで燃えないごみ。",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata_sekizen01.pdf",
+      "category_options": []
+    },
+    {
+      "item": "充電池を取り外せない小型家電",
+      "category": "consult",
+      "note": "燃えないごみの現行案内では電池を必ず取り外す。取り外せない場合の関前での受付先・条件は関前支所に確認し、通常の燃えないごみに確定しない。",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata_sekizen01.pdf",
+      "category_options": []
+    },
+    {
+      "item": "プラスチック製まな板（厚さ5mm以上）",
+      "category": "burnable",
+      "note": "2026年度：厚さ5mm以上のプラスチック製まな板はプラスチック資源の対象外。指定袋に入れば燃えるごみ。入らなければ粗大ごみ。",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata_sekizen01.pdf",
+      "category_options": [
+        "bulky"
+      ]
+    }
+  ]
+}
