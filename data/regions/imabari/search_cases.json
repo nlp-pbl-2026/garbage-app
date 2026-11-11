@@ -1,0 +1,667 @@
+{
+  "schema_version": 1,
+  "evaluation_time": "2026-04-28T05:00:00+09:00",
+  "cases": [
+    {
+      "case": 1,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a052",
+        "query": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+        "clarifications": []
+      },
+      "expected": "resources",
+      "check_type": "classification",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata.pdf",
+      "official_reason": "飲食用PET本体は資源。部品の区分を本体に適用しない。"
+    },
+    {
+      "case": 2,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a052",
+        "query": "ペットボトル本体から取り外して水洗いしたプラスチック製キャップだけ",
+        "clarifications": []
+      },
+      "expected": "plastics",
+      "check_type": "classification",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata.pdf",
+      "official_reason": "プラ製キャップはプラ。"
+    },
+    {
+      "case": 3,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a052",
+        "query": "ペットボトル本体から取り外して水洗いしたプラスチック製ラベルだけ",
+        "clarifications": []
+      },
+      "expected": "plastics",
+      "check_type": "classification",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata.pdf",
+      "official_reason": "プラ製ラベルはプラ。"
+    },
+    {
+      "case": 4,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a052",
+        "query": "洗っても汚れが落ちない飲料用ペットボトル本体",
+        "clarifications": []
+      },
+      "expected": "burnable",
+      "check_type": "classification",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata.pdf",
+      "official_reason": "汚れが落ちないPET本体は可燃。"
+    },
+    {
+      "case": 5,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a052",
+        "query": "水洗いした透明なジャムのガラスびん",
+        "clarifications": []
+      },
+      "expected": "resources",
+      "check_type": "classification",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata.pdf",
+      "official_reason": "飲食用で油分の付いていないびんは資源。"
+    },
+    {
+      "case": 6,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a052",
+        "query": "乳白色のガラスびん",
+        "clarifications": []
+      },
+      "expected": "non_burnable",
+      "check_type": "classification",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata.pdf",
+      "official_reason": "乳白色びんは燃やせない。"
+    },
+    {
+      "case": 7,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a052",
+        "query": "水洗いして汚れを落とした白色の食品トレイ",
+        "clarifications": []
+      },
+      "expected": "resources",
+      "check_type": "classification",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata.pdf",
+      "official_reason": "白色トレイは資源。"
+    },
+    {
+      "case": 8,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a052",
+        "query": "水洗いして汚れを落としたプラマーク付きの色付き食品トレイ",
+        "clarifications": []
+      },
+      "expected": "plastics",
+      "check_type": "classification",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata.pdf",
+      "official_reason": "白色以外のプラマーク付きトレイはプラ。"
+    },
+    {
+      "case": 9,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a052",
+        "query": "洗っても油汚れが落ちないプラマーク付き食品容器",
+        "clarifications": []
+      },
+      "expected": "burnable",
+      "check_type": "classification",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata.pdf",
+      "official_reason": "汚れが落ちないプラ容器包装は可燃。"
+    },
+    {
+      "case": 10,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a052",
+        "query": "プラスチック製のバケツ、指定袋に入れて口を縛れ、片手で持ち上げても破れません",
+        "clarifications": []
+      },
+      "expected": "burnable",
+      "check_type": "classification",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata.pdf",
+      "official_reason": "指定袋に入る製品プラスチックは可燃。"
+    },
+    {
+      "case": 11,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a052",
+        "query": "バケツ",
+        "clarifications": []
+      },
+      "expected": null,
+      "check_type": "clarification",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata.pdf",
+      "official_reason": "材質・指定袋に入る条件が不明。"
+    },
+    {
+      "case": 12,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a052",
+        "query": "アクセサリー",
+        "clarifications": []
+      },
+      "expected": null,
+      "check_type": "clarification",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/siryo/gomi_bunbetu.pdf?R809#page=2",
+      "official_reason": "材質によって可燃／不燃が異なる。"
+    },
+    {
+      "case": 13,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a052",
+        "query": "アクセサリー",
+        "clarifications": [
+          {
+            "question": "何の素材ですか？",
+            "answer": "金属製です"
+          }
+        ]
+      },
+      "expected": "non_burnable",
+      "check_type": "classification",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/siryo/gomi_bunbetu.pdf?R809#page=2",
+      "official_reason": "金属製・複合素材は不燃。"
+    },
+    {
+      "case": 14,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a052",
+        "query": "乾いた新聞紙を十文字に縛りました",
+        "clarifications": []
+      },
+      "expected": "resources",
+      "check_type": "classification",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata.pdf",
+      "official_reason": "きれいな紙類は資源。"
+    },
+    {
+      "case": 15,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a052",
+        "query": "洗って乾かした綿の古着",
+        "clarifications": []
+      },
+      "expected": "resources",
+      "check_type": "classification",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata.pdf",
+      "official_reason": "資源に出せる衣類は資源。"
+    },
+    {
+      "case": 16,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a052",
+        "query": "取り外した家庭用の小型リチウムイオン電池",
+        "clarifications": []
+      },
+      "expected": "hazardous",
+      "check_type": "classification",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/info/lithium/",
+      "official_reason": "取り外した小型充電式電池は有害。"
+    },
+    {
+      "case": 17,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a052",
+        "query": "電動アシスト自転車から外した大型充電式バッテリー",
+        "clarifications": []
+      },
+      "expected": "not_collected",
+      "check_type": "classification",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/shoridekinai/",
+      "official_reason": "大型充電池は販売店等へ。"
+    },
+    {
+      "case": 18,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a052",
+        "query": "完全に使い切ったスプレー缶、穴はあけていません",
+        "clarifications": []
+      },
+      "expected": "dangerous",
+      "check_type": "classification",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata.pdf",
+      "official_reason": "使い切り、穴をあけず危険ごみ。"
+    },
+    {
+      "case": 19,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a052",
+        "query": "小型の充電式家電でリチウムイオン電池が取り外せません",
+        "clarifications": []
+      },
+      "expected": "small_appliances",
+      "check_type": "classification",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/info/lithium/",
+      "official_reason": "現行リチウム案内：回収ボックス又は市へ持参。不燃にしない。"
+    },
+    {
+      "case": 20,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a052",
+        "query": "壊れた液晶テレビ",
+        "clarifications": []
+      },
+      "expected": "not_collected",
+      "check_type": "classification",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata.pdf",
+      "official_reason": "家電リサイクル対象。"
+    },
+    {
+      "case": 21,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a119",
+        "query": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+        "clarifications": []
+      },
+      "expected": "resources",
+      "check_type": "classification",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata_sekizen01.pdf",
+      "official_reason": "関前でもPET本体は資源物。"
+    },
+    {
+      "case": 22,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a119",
+        "query": "ペットボトルから取り外して水洗いしたプラスチック製キャップだけ",
+        "clarifications": []
+      },
+      "expected": "plastics",
+      "check_type": "classification",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata_sekizen01.pdf",
+      "official_reason": "2026年度ではキャップはプラスチック資源。旧版の可燃表記を優先しない。"
+    },
+    {
+      "case": 23,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a119",
+        "query": "洗って乾かした綿の古着",
+        "clarifications": []
+      },
+      "expected": "burnable",
+      "check_type": "classification",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata_sekizen01.pdf",
+      "official_reason": "関前では布類は燃えるごみ。"
+    },
+    {
+      "case": 24,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a119",
+        "query": "使い切ったスプレー缶で穴はあけていません",
+        "clarifications": []
+      },
+      "expected": "hazardous_dangerous",
+      "check_type": "classification",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata_sekizen01.pdf",
+      "official_reason": "関前では有害・危険コンテナ。"
+    },
+    {
+      "case": 25,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a119",
+        "query": "取り外した家庭用の小型リチウムイオン電池",
+        "clarifications": []
+      },
+      "expected": "hazardous_dangerous",
+      "check_type": "classification",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata_sekizen01.pdf",
+      "official_reason": "2026年度の有害例示を優先。"
+    },
+    {
+      "case": 26,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a119",
+        "query": "割れてしまった飲料用のガラスびん",
+        "clarifications": []
+      },
+      "expected": "non_burnable",
+      "check_type": "classification",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata_sekizen01.pdf",
+      "official_reason": "2026年度の割れたガラスは包んで不燃。旧表の資源を優先しない。"
+    },
+    {
+      "case": 27,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a119",
+        "query": "乾いた新聞紙を十文字に縛りました",
+        "clarifications": []
+      },
+      "expected": "paper",
+      "check_type": "classification",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata_sekizen01.pdf",
+      "official_reason": "紙は缶・びん・PETと日程が別。"
+    },
+    {
+      "case": 28,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a119",
+        "query": "金属部品がないプラスチックだけのバケツ、長辺20cmで洗って汚れを落としました",
+        "clarifications": []
+      },
+      "expected": "plastics",
+      "check_type": "classification",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata_sekizen01.pdf",
+      "official_reason": "2026年度の製品プラは単一プラ・50cm未満・汚れ除去が条件。"
+    },
+    {
+      "case": 29,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a119",
+        "query": "プラスチックのバケツ",
+        "clarifications": []
+      },
+      "expected": null,
+      "check_type": "clarification",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata_sekizen01.pdf",
+      "official_reason": "関前の資源の50cm未満等の条件が不足。"
+    },
+    {
+      "case": 30,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a119",
+        "query": "金属製のバケツで、指定袋大に入れて口を縛れます",
+        "clarifications": []
+      },
+      "expected": "non_burnable",
+      "check_type": "classification",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata_sekizen01.pdf",
+      "official_reason": "金属製品は不燃。"
+    },
+    {
+      "case": 31,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a119",
+        "query": "長辺1.5mの木製タンス、指定袋大に入りません",
+        "clarifications": []
+      },
+      "expected": "bulky",
+      "check_type": "classification",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata_sekizen01.pdf",
+      "official_reason": "関前の指定日・場所・処理券。通常地域の予約制と区別。"
+    },
+    {
+      "case": 32,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a119",
+        "query": "壊れたノートパソコン",
+        "clarifications": []
+      },
+      "expected": "not_collected",
+      "check_type": "classification",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata_sekizen01.pdf",
+      "official_reason": "パソコンリサイクル対象。"
+    },
+    {
+      "case": 33,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a012",
+        "query": "バナナの皮",
+        "clarifications": []
+      },
+      "expected": "burnable",
+      "check_type": "classification",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/12_tokku.pdf",
+      "official_reason": "特別地区は水曜祝日を翌木曜へ振替。",
+      "expected_collection_date": "2026-04-30"
+    },
+    {
+      "case": 34,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a012",
+        "query": "水洗いしたプラマーク付きのお菓子の袋",
+        "clarifications": []
+      },
+      "expected": "plastics",
+      "check_type": "classification",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/12_tokku.pdf",
+      "official_reason": "波止浜（特）のプラは第2金曜。",
+      "expected_collection_date": "2026-05-08"
+    },
+    {
+      "case": 35,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a210",
+        "query": "バナナの皮",
+        "clarifications": []
+      },
+      "expected": "burnable",
+      "check_type": "classification",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/36_tokku.pdf",
+      "official_reason": "鵜島は毎週金曜。",
+      "expected_collection_date": "2026-05-01"
+    },
+    {
+      "case": 36,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a210",
+        "query": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+        "clarifications": []
+      },
+      "expected": "resources",
+      "check_type": "classification",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/36_tokku.pdf",
+      "official_reason": "鵜島の資源は年4回、5/5を含む。",
+      "expected_collection_date": "2026-05-05"
+    },
+    {
+      "case": 37,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a118",
+        "query": "乾いた新聞紙を十文字に縛りました",
+        "clarifications": []
+      },
+      "expected": "paper",
+      "check_type": "classification",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/42.pdf",
+      "official_reason": "大下・小大下は紙第1・3金曜。",
+      "expected_collection_date": "2026-05-01"
+    },
+    {
+      "case": 38,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a119",
+        "query": "乾いた新聞紙を十文字に縛りました",
+        "clarifications": []
+      },
+      "expected": "paper",
+      "check_type": "classification",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/41.pdf",
+      "official_reason": "岡村は紙第1・3木曜。",
+      "expected_collection_date": "2026-05-07"
+    },
+    {
+      "case": 39,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a052",
+        "query": "水洗いして中身を空にした飲料用アルミ缶です",
+        "clarifications": []
+      },
+      "expected": "resources",
+      "check_type": "classification",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata.pdf",
+      "official_reason": "画像に加えユーザーが飲食用・洗浄済みを明示。",
+      "image_source": {
+        "file": "gomi_guide_03_sigen01.pdf",
+        "page": 1,
+        "rect": [
+          532,
+          328,
+          562,
+          372
+        ]
+      }
+    },
+    {
+      "case": 40,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a052",
+        "query": "",
+        "clarifications": []
+      },
+      "expected": null,
+      "check_type": "clarification",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata.pdf",
+      "official_reason": "画像だけでは用途・汚れを確認できない。",
+      "image_source": {
+        "file": "gomi_guide_03_sigen01.pdf",
+        "page": 1,
+        "rect": [
+          236,
+          351,
+          264,
+          408
+        ]
+      }
+    },
+    {
+      "case": 41,
+      "input": {
+        "municipality_id": "38201",
+        "district_id": "38201-08",
+        "query": "キャップとラベルを外して水洗いした飲料用ペットボトル本体",
+        "clarifications": []
+      },
+      "expected": "ペット",
+      "check_type": "classification",
+      "source_url": "https://www.city.matsuyama.ehime.jp/kurashi/gomi/dashikata/kateigomi_matsuyama.html",
+      "official_reason": "既存自治体の確認済み回帰例。",
+      "image": false
+    },
+    {
+      "case": 42,
+      "input": {
+        "municipality_id": "38204",
+        "district_id": "38204-01",
+        "query": "中身を空にして水洗いした飲料用アルミ缶",
+        "clarifications": []
+      },
+      "expected": "cans",
+      "check_type": "classification",
+      "source_url": "https://www.city.yawatahama.ehime.jp/doc/2021022400010/file_contents/2023-04.pdf",
+      "official_reason": "飲料缶はカン。初回の「空の」だけの入力では汚れの条件が不足していたため、回帰用入力に洗浄済みと明記。初回入力と結果は評価記録に保持。",
+      "image": false
+    },
+    {
+      "case": 43,
+      "input": {
+        "municipality_id": "38210",
+        "district_id": "38210-iyo-south",
+        "query": "キャップ・ラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体。プラマークはありません",
+        "clarifications": []
+      },
+      "expected": "pet_bottles",
+      "check_type": "classification",
+      "source_url": "https://www.city.iyo.lg.jp/kankyohozen/bunbetu.html",
+      "official_reason": "既存自治体の確認済み回帰例。",
+      "image": false
+    },
+    {
+      "case": 44,
+      "input": {
+        "municipality_id": "38442",
+        "district_id": "38442-01",
+        "query": "使い終わったアルカリ乾電池",
+        "clarifications": []
+      },
+      "expected": "hazardous",
+      "check_type": "classification",
+      "source_url": "https://www.town.ikata.ehime.jp/soshiki/32/11452.html",
+      "official_reason": "既存自治体の確認済み回帰例。",
+      "image": false
+    },
+    {
+      "case": 45,
+      "input": {
+        "municipality_id": "38205",
+        "district_id": "38205-01",
+        "query": "使い終わったモバイルバッテリー",
+        "clarifications": []
+      },
+      "expected": "hazardous",
+      "check_type": "classification",
+      "source_url": "https://www.city.niihama.lg.jp/soshiki/haiki/pamphlet.html",
+      "official_reason": "既存自治体の確認済み回帰例。",
+      "image": false
+    },
+    {
+      "case": 46,
+      "input": {
+        "municipality_id": "38215",
+        "district_id": "38215-01",
+        "query": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+        "clarifications": []
+      },
+      "expected": "pet_bottles",
+      "check_type": "classification",
+      "source_url": "https://www.city.toon.ehime.jp/uploaded/attachment/22090.pdf#page=8",
+      "official_reason": "PET本体と外した付属品は別区分。",
+      "image": false
+    },
+    {
+      "case": 47,
+      "input": {
+        "municipality_id": "38386",
+        "district_id": "38386-01",
+        "query": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+        "clarifications": []
+      },
+      "expected": "pet_bottles",
+      "check_type": "classification",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=7",
+      "official_reason": "PET本体はペット。外した部品とは別。"
+    },
+    {
+      "case": 48,
+      "input": {
+        "municipality_id": "38206",
+        "district_id": "38206-01",
+        "query": "幹の太さ直径4cm、長さ2mちょうどの剪定木",
+        "clarifications": []
+      },
+      "expected": null,
+      "check_type": "hold",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/61346.pdf#page=13",
+      "official_reason": "同じ分別表で粗大の2m以下と収集しない長辺2m以上が重なる。境界は市へ確認し、分類・予定を推測しない。"
+    }
+  ]
+}

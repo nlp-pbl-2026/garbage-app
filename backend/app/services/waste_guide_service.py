@@ -1289,6 +1289,23 @@ class WasteGuideService:
         # removed battery is not a competing exact item. The reverse wording
         # ("携帯電話から外した電池") still targets the battery.
         base_item = unicodedata.normalize("NFKC",item_name).strip()
+        context = unicodedata.normalize("NFKC", query).lower()
+        # A battery which cannot be removed describes the appliance, not a
+        # loose battery. Do not force its battery-only CSV row over the model's
+        # device decision. Regional evidence still determines disposal.
+        battery_row = bool(re.fullmatch(
+            r"(?:小型|大型|充電式|リチウムイオン|リチウム|ニカド|ニッケル水素|乾|ボタン|コイン型)*(?:電池|バッテリー)",
+            base_item,
+        ))
+        nonremovable = bool(re.search(
+            r"(?:電池|バッテリー).{0,12}(?:(?:取り)?外せ(?:ない|ません)|取り外し(?:が)?(?:不可|不能))",
+            context,
+        ))
+        if battery_row and nonremovable and re.search(
+            r"家電|製品|機器|携帯電話|スマートフォン|ハンディファン|カメラ|ゲーム機|ラジオ|掃除機",
+            context,
+        ):
+            return False
         removed = re.search(r"(?:電池|バッテリー)(?:と(?:電池|バッテリー))?(?:を|は|も)?(?:取り)?外(?:した|して|し済み)(.*)",unicodedata.normalize("NFKC",query))
         if base_item in {"電池","バッテリー"} and removed and re.search(
             r"携帯電話|スマートフォン|ラジオ|カメラ|ゲーム機|家電|リモコン|時計|電話機",removed[1]
@@ -1448,6 +1465,21 @@ class WasteGuideService:
             "NFKC",
             " ".join([query] + [str(item.get("answer", "")) for item in clarifications]),
         ).lower()
+
+        # White food trays and other coloured trays can have different official
+        # codes. An exact base-name match (both are "トレイ") must not erase the
+        # printed colour condition or override Nova with the first row.
+        if any("白色" in match[2] for match in matches):
+            not_white = any(marker in context for marker in (
+                "白色以外", "白以外", "白くない", "色付き", "色つき", "カラートレイ",
+            ))
+            white = not not_white and any(marker in context for marker in ("白色", "白い", "真っ白"))
+            if not (white or not_white):
+                return None
+            matches = [match for match in matches if "白色" not in match[2] or
+                       ("白色以外" in match[2]) == not_white]
+            if not matches:
+                return None
 
         material_markers = {
             "紙": ("紙製", "紙の"),
@@ -1623,6 +1655,9 @@ class WasteGuideService:
     def _cleaning_is_confirmed(context: str) -> bool:
         return any(marker in context for marker in (
             "洗った", "すすいだ", "水洗いした", "水洗いしました", "水洗い済み", "汚れを取り除", "きれい"
+        )) or bool(re.search(
+            r"汚れを(?:落とし(?:た|ました)(?!い|く)|落として(?:ある|あります)|除去(?:した|しました)(?!い|く))",
+            context,
         )) or bool(re.search(
             r"(?:洗って|すすいで)(?:から|ある|あり|[^。]{0,24}(?:外した|外しました|取り除いた))", context
         ))
@@ -1989,7 +2024,11 @@ class WasteGuideService:
             "革製",
             "ゴム製",
         )
-        if (any(branch in evidence for branch in material_branches) or (regional and "金属製は" in evidence)) and not any(
+        arrow_material_branch = regional and "条件付き分類コード:" in evidence and bool(re.search(
+            r"(?:出し方・注意:\s*|[。\n])(?:金属|プラスチック|木|紙|ガラス|陶器)製(?:のもの)?\s*[➡→]",
+            evidence,
+        ))
+        if (any(branch in evidence for branch in material_branches) or (regional and "金属製は" in evidence) or arrow_material_branch) and not any(
             material in context for material in material_answers
         ):
             return (

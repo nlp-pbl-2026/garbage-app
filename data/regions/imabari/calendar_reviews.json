@@ -1,0 +1,588 @@
+{
+  "calendar_count": 44,
+  "numbered_calendars": 42,
+  "special_calendars": 2,
+  "calendar_dates": 16060,
+  "selectable_areas": 233,
+  "address_rows_sha256": "25f565a32aeb0a7d65b80bd0aa6f104c8f3ea4368b1bf7c4786dd9a6f1927e95",
+  "calendars": [
+    {
+      "calendar_id": "im-01",
+      "source_file": "calendar-01.pdf",
+      "dates": 365,
+      "collection_days": 179,
+      "stream_counts": {
+        "plastics": 52,
+        "burnable": 103,
+        "non_burnable": 23,
+        "resources": 24
+      },
+      "days_sha256": "856b1b1794744becbe0764d47ce9fca060ed47a5e3ecd55ca009e45638d61530"
+    },
+    {
+      "calendar_id": "im-02",
+      "source_file": "calendar-02.pdf",
+      "dates": 365,
+      "collection_days": 180,
+      "stream_counts": {
+        "plastics": 53,
+        "burnable": 103,
+        "non_burnable": 24,
+        "resources": 24
+      },
+      "days_sha256": "32373f4232e52741460731ae1bad91b80b13b6af73ea899465ec906d60ed7aac"
+    },
+    {
+      "calendar_id": "im-03",
+      "source_file": "calendar-03.pdf",
+      "dates": 365,
+      "collection_days": 180,
+      "stream_counts": {
+        "plastics": 53,
+        "burnable": 103,
+        "resources": 24,
+        "non_burnable": 24
+      },
+      "days_sha256": "24539047ea45311c605e38a3f8e97806804b865c5c03cb8063bdf50c454fcd4f"
+    },
+    {
+      "calendar_id": "im-04",
+      "source_file": "calendar-04.pdf",
+      "dates": 365,
+      "collection_days": 178,
+      "stream_counts": {
+        "resources": 24,
+        "burnable": 103,
+        "non_burnable": 23,
+        "plastics": 51
+      },
+      "days_sha256": "cc46a8f156eb70b018005347b6f4cb2b59364bc525a094bf8d48c91e9ec00f35"
+    },
+    {
+      "calendar_id": "im-05",
+      "source_file": "calendar-05.pdf",
+      "dates": 365,
+      "collection_days": 178,
+      "stream_counts": {
+        "resources": 24,
+        "burnable": 103,
+        "plastics": 51,
+        "non_burnable": 24
+      },
+      "days_sha256": "4b05ddf8bb9dd5a9fa229d31f9f27eb0f8db847e65c983ea4ebbcee72a2e04c5"
+    },
+    {
+      "calendar_id": "im-06",
+      "source_file": "calendar-06.pdf",
+      "dates": 365,
+      "collection_days": 180,
+      "stream_counts": {
+        "burnable": 104,
+        "plastics": 52,
+        "non_burnable": 23,
+        "resources": 24
+      },
+      "days_sha256": "c05af120a0c93ce0694950c6e3fb0c6975f0592752deae7150f8b742116c2ce0"
+    },
+    {
+      "calendar_id": "im-07",
+      "source_file": "calendar-07.pdf",
+      "dates": 365,
+      "collection_days": 180,
+      "stream_counts": {
+        "burnable": 104,
+        "plastics": 52,
+        "resources": 24,
+        "non_burnable": 24
+      },
+      "days_sha256": "8b9e78b93e3cee6b3e2f82374bb0a17a1918217dc2521acc89d593ecb6357905"
+    },
+    {
+      "calendar_id": "im-08",
+      "source_file": "calendar-08.pdf",
+      "dates": 365,
+      "collection_days": 179,
+      "stream_counts": {
+        "burnable": 103,
+        "plastics": 52,
+        "resources": 24,
+        "non_burnable": 24
+      },
+      "days_sha256": "eea2d5589326d14b1724199c67144fd70c7dd69c94dd191103364688d1a1a0f0"
+    },
+    {
+      "calendar_id": "im-09",
+      "source_file": "calendar-09.pdf",
+      "dates": 365,
+      "collection_days": 180,
+      "stream_counts": {
+        "burnable": 104,
+        "plastics": 52,
+        "non_burnable": 24,
+        "resources": 24
+      },
+      "days_sha256": "6e9398577f3fde26a02aeba18a20f28be9c75b7ea7fb44b6bfaf5257812954e5"
+    },
+    {
+      "calendar_id": "im-10",
+      "source_file": "calendar-10.pdf",
+      "dates": 365,
+      "collection_days": 179,
+      "stream_counts": {
+        "burnable": 104,
+        "plastics": 51,
+        "resources": 24,
+        "non_burnable": 24
+      },
+      "days_sha256": "a6bac878cffafe77730e9e8492bf4ab584cf2a20f7dc7235f57b9feee77e5728"
+    },
+    {
+      "calendar_id": "im-11",
+      "source_file": "calendar-11.pdf",
+      "dates": 365,
+      "collection_days": 178,
+      "stream_counts": {
+        "burnable": 103,
+        "plastics": 51,
+        "resources": 24,
+        "non_burnable": 24
+      },
+      "days_sha256": "d8787493d1e59589e25c82e0c7428aaf3f289c8efeeefd91b797ad28cae8445a"
+    },
+    {
+      "calendar_id": "im-12",
+      "source_file": "calendar-12.pdf",
+      "dates": 365,
+      "collection_days": 180,
+      "stream_counts": {
+        "burnable": 104,
+        "plastics": 52,
+        "resources": 24,
+        "non_burnable": 24
+      },
+      "days_sha256": "15087ea0d8728f792b597c5e10f9a998b8f78d47ddd34ada872c08f5325805a5"
+    },
+    {
+      "calendar_id": "im-12_tokku",
+      "source_file": "calendar-12_tokku.pdf",
+      "dates": 365,
+      "collection_days": 65,
+      "stream_counts": {
+        "burnable": 53,
+        "non_burnable": 53,
+        "plastics": 12,
+        "resources": 12
+      },
+      "days_sha256": "9dcb6701914d93c1d88cd8dca03176419680f105ef8aa1fb55f44b7927df8531"
+    },
+    {
+      "calendar_id": "im-13",
+      "source_file": "calendar-13.pdf",
+      "dates": 365,
+      "collection_days": 180,
+      "stream_counts": {
+        "burnable": 104,
+        "plastics": 52,
+        "non_burnable": 24,
+        "resources": 24
+      },
+      "days_sha256": "7a9ae015ec7e5fae88628c073e4e8f6622b585894bab24f5b115252d648f7066"
+    },
+    {
+      "calendar_id": "im-14",
+      "source_file": "calendar-14.pdf",
+      "dates": 365,
+      "collection_days": 180,
+      "stream_counts": {
+        "burnable": 104,
+        "plastics": 52,
+        "non_burnable": 24,
+        "resources": 24
+      },
+      "days_sha256": "b60c7c59a12d74bcf6ee575d3d097383cac921c518e4e4039a5a0706c0d6e908"
+    },
+    {
+      "calendar_id": "im-15",
+      "source_file": "calendar-15.pdf",
+      "dates": 365,
+      "collection_days": 180,
+      "stream_counts": {
+        "burnable": 104,
+        "non_burnable": 24,
+        "resources": 24,
+        "plastics": 52
+      },
+      "days_sha256": "dde37054d86f52bf8f774d8dbf7a738aeadc167b208a8ae3d0289e5dbcf71d70"
+    },
+    {
+      "calendar_id": "im-16",
+      "source_file": "calendar-16.pdf",
+      "dates": 365,
+      "collection_days": 179,
+      "stream_counts": {
+        "burnable": 104,
+        "plastics": 51,
+        "resources": 24,
+        "non_burnable": 24
+      },
+      "days_sha256": "e2e8b79655959e66172eac9c54a9a733a2a7a01fa68c92a2c0a06aa297c46fe1"
+    },
+    {
+      "calendar_id": "im-17",
+      "source_file": "calendar-17.pdf",
+      "dates": 365,
+      "collection_days": 180,
+      "stream_counts": {
+        "plastics": 53,
+        "burnable": 104,
+        "resources": 23,
+        "non_burnable": 24
+      },
+      "days_sha256": "931706c953ef367445f4774a141cb9ee1c83b48a44f0c0f23fd8234825af477b"
+    },
+    {
+      "calendar_id": "im-18",
+      "source_file": "calendar-18.pdf",
+      "dates": 365,
+      "collection_days": 181,
+      "stream_counts": {
+        "plastics": 53,
+        "burnable": 104,
+        "non_burnable": 24,
+        "resources": 24
+      },
+      "days_sha256": "12648d48b78cd35cf7f291cc38d463c8f1d088f456acbf381b90f24503184957"
+    },
+    {
+      "calendar_id": "im-19",
+      "source_file": "calendar-19.pdf",
+      "dates": 365,
+      "collection_days": 179,
+      "stream_counts": {
+        "burnable": 104,
+        "non_burnable": 24,
+        "plastics": 51,
+        "resources": 24
+      },
+      "days_sha256": "548ad6e0bb05fb77e6ad7c8d21cc1efabd3b9ec2bfaebf83872b9b7a886ef2b6"
+    },
+    {
+      "calendar_id": "im-20",
+      "source_file": "calendar-20.pdf",
+      "dates": 365,
+      "collection_days": 179,
+      "stream_counts": {
+        "burnable": 104,
+        "plastics": 51,
+        "non_burnable": 24,
+        "resources": 24
+      },
+      "days_sha256": "c613c9837b8361111f88f2ee077d483cd6fefc3ee91bd42539482c751ad52cdb"
+    },
+    {
+      "calendar_id": "im-21",
+      "source_file": "calendar-21.pdf",
+      "dates": 365,
+      "collection_days": 179,
+      "stream_counts": {
+        "resources": 24,
+        "burnable": 104,
+        "non_burnable": 24,
+        "plastics": 51
+      },
+      "days_sha256": "c7c974f6d3a2927f6522a822cfe48dc147b981aec0c7f7bf3fea93bb78ef4967"
+    },
+    {
+      "calendar_id": "im-22",
+      "source_file": "calendar-22.pdf",
+      "dates": 365,
+      "collection_days": 203,
+      "stream_counts": {
+        "non_burnable": 24,
+        "plastics": 52,
+        "burnable": 103,
+        "resources": 24
+      },
+      "days_sha256": "ad90cd73d3c5575797d4146b16beb1dec0103fb10c913533f0693b8ec591d4db"
+    },
+    {
+      "calendar_id": "im-23",
+      "source_file": "calendar-23.pdf",
+      "dates": 365,
+      "collection_days": 203,
+      "stream_counts": {
+        "burnable": 104,
+        "plastics": 51,
+        "non_burnable": 24,
+        "resources": 24
+      },
+      "days_sha256": "fca660aa08e2e6cf8afcc93aa69a955c790f5c24ebd969125cbe1539a5a9b43d"
+    },
+    {
+      "calendar_id": "im-24",
+      "source_file": "calendar-24.pdf",
+      "dates": 365,
+      "collection_days": 202,
+      "stream_counts": {
+        "non_burnable": 24,
+        "burnable": 103,
+        "plastics": 51,
+        "resources": 24
+      },
+      "days_sha256": "6ec3f89915e9170fad9aca0e6432bb22872bfe1b785cf1c486b916de5a13f5c9"
+    },
+    {
+      "calendar_id": "im-25",
+      "source_file": "calendar-25.pdf",
+      "dates": 365,
+      "collection_days": 203,
+      "stream_counts": {
+        "burnable": 104,
+        "plastics": 51,
+        "non_burnable": 24,
+        "resources": 24
+      },
+      "days_sha256": "799a25e9e13054f69aab41cfefcf452be44759659becfc204c4ed320454cac9e"
+    },
+    {
+      "calendar_id": "im-26",
+      "source_file": "calendar-26.pdf",
+      "dates": 365,
+      "collection_days": 180,
+      "stream_counts": {
+        "non_burnable": 24,
+        "plastics": 53,
+        "burnable": 103,
+        "resources": 24
+      },
+      "days_sha256": "78585f6058b7a3f510cd27362e14b09f8897e6f9e4564856aa6020a72c148b3f"
+    },
+    {
+      "calendar_id": "im-27",
+      "source_file": "calendar-27.pdf",
+      "dates": 365,
+      "collection_days": 181,
+      "stream_counts": {
+        "plastics": 53,
+        "burnable": 104,
+        "non_burnable": 24,
+        "resources": 24
+      },
+      "days_sha256": "3a7e7bf2b2da994b9d905ab69e8faa6c7cdf0c2094d658cd9c6fe562dd97e7c2"
+    },
+    {
+      "calendar_id": "im-28",
+      "source_file": "calendar-28.pdf",
+      "dates": 365,
+      "collection_days": 157,
+      "stream_counts": {
+        "non_burnable": 24,
+        "plastics": 53,
+        "burnable": 104,
+        "resources": 24
+      },
+      "days_sha256": "b7eef057cda8d4deb78afb169f4caed1ad889b7c02d98645f7077d304afd6d27"
+    },
+    {
+      "calendar_id": "im-29",
+      "source_file": "calendar-29.pdf",
+      "dates": 365,
+      "collection_days": 203,
+      "stream_counts": {
+        "burnable": 104,
+        "resources": 24,
+        "plastics": 51,
+        "non_burnable": 24
+      },
+      "days_sha256": "0aebcc29e18a0003da026de67ea78ded833b1660b17c644068ab8b95ac301aea"
+    },
+    {
+      "calendar_id": "im-30",
+      "source_file": "calendar-30.pdf",
+      "dates": 365,
+      "collection_days": 179,
+      "stream_counts": {
+        "burnable": 104,
+        "plastics": 51,
+        "non_burnable": 24,
+        "resources": 24
+      },
+      "days_sha256": "1448392c5892653dccd164fce77b7d420dedfb56c6dfdaa6e51a65be7333a034"
+    },
+    {
+      "calendar_id": "im-31",
+      "source_file": "calendar-31.pdf",
+      "dates": 365,
+      "collection_days": 179,
+      "stream_counts": {
+        "burnable": 104,
+        "resources": 24,
+        "plastics": 51,
+        "non_burnable": 24
+      },
+      "days_sha256": "1ae8bcd154744d339533f5c04a0c7304c1ade2b9351aacd71205e90b425e93f4"
+    },
+    {
+      "calendar_id": "im-32",
+      "source_file": "calendar-32.pdf",
+      "dates": 365,
+      "collection_days": 203,
+      "stream_counts": {
+        "burnable": 104,
+        "plastics": 51,
+        "non_burnable": 24,
+        "resources": 24
+      },
+      "days_sha256": "f644bd4e60f8be6c20a6d5caad13c89d9157c53c90d0661f2cd789def0d01ac0"
+    },
+    {
+      "calendar_id": "im-33",
+      "source_file": "calendar-33.pdf",
+      "dates": 365,
+      "collection_days": 180,
+      "stream_counts": {
+        "resources": 24,
+        "burnable": 104,
+        "non_burnable": 24,
+        "plastics": 52
+      },
+      "days_sha256": "6ae84b1f93a70de86c8c956966e4f33d135f48e21bb33127b2a09bfdf344dcd2"
+    },
+    {
+      "calendar_id": "im-34",
+      "source_file": "calendar-34.pdf",
+      "dates": 365,
+      "collection_days": 179,
+      "stream_counts": {
+        "plastics": 52,
+        "burnable": 103,
+        "resources": 24,
+        "non_burnable": 24
+      },
+      "days_sha256": "b793e86b900d9564215934fb485f0adecd7d67617f54410e5a50c64e2704f657"
+    },
+    {
+      "calendar_id": "im-35",
+      "source_file": "calendar-35.pdf",
+      "dates": 365,
+      "collection_days": 181,
+      "stream_counts": {
+        "plastics": 53,
+        "burnable": 104,
+        "non_burnable": 24,
+        "resources": 24
+      },
+      "days_sha256": "b282e1da266c06c5ea665874dbbf8f8ee80c5f21a0a2a3f0a59b154ae098be7e"
+    },
+    {
+      "calendar_id": "im-36",
+      "source_file": "calendar-36.pdf",
+      "dates": 365,
+      "collection_days": 180,
+      "stream_counts": {
+        "plastics": 53,
+        "non_burnable": 24,
+        "burnable": 103,
+        "resources": 24
+      },
+      "days_sha256": "24472687882d2547730c65936a4c0a6ec82344a6444c6e44ad2797c10c459516"
+    },
+    {
+      "calendar_id": "im-36_tokku",
+      "source_file": "calendar-36_tokku.pdf",
+      "dates": 365,
+      "collection_days": 55,
+      "stream_counts": {
+        "burnable": 51,
+        "non_burnable": 51,
+        "plastics": 4,
+        "resources": 4
+      },
+      "days_sha256": "54089f84df7c14c8034f55acdf73c8b8d325942a0825b7ffd0a11d0e44b6ee31"
+    },
+    {
+      "calendar_id": "im-37",
+      "source_file": "calendar-37.pdf",
+      "dates": 365,
+      "collection_days": 203,
+      "stream_counts": {
+        "resources": 24,
+        "burnable": 104,
+        "plastics": 51,
+        "non_burnable": 24
+      },
+      "days_sha256": "197c1a55d0a0d1c59637fe09234a1a748d06c836de28871abad2d7d7d23fd208"
+    },
+    {
+      "calendar_id": "im-38",
+      "source_file": "calendar-38.pdf",
+      "dates": 365,
+      "collection_days": 179,
+      "stream_counts": {
+        "plastics": 52,
+        "burnable": 103,
+        "non_burnable": 24,
+        "resources": 24
+      },
+      "days_sha256": "d6221ad8569d138ff2cf30d54d9da2609bebf5abdd9d14f8b9bfaee0d58adeb2"
+    },
+    {
+      "calendar_id": "im-39",
+      "source_file": "calendar-39.pdf",
+      "dates": 365,
+      "collection_days": 151,
+      "stream_counts": {
+        "burnable": 104,
+        "plastics": 53,
+        "non_burnable": 23,
+        "resources": 24
+      },
+      "days_sha256": "b6ca0c975bc9de2d4a52f9f77fb7fce55f0636f900c672920709a5bdc2658a35"
+    },
+    {
+      "calendar_id": "im-40",
+      "source_file": "calendar-40.pdf",
+      "dates": 365,
+      "collection_days": 205,
+      "stream_counts": {
+        "plastics": 53,
+        "burnable": 104,
+        "resources": 24,
+        "non_burnable": 24
+      },
+      "days_sha256": "f25bb61d575d3b4898a38d90f4d50e62e3edd54df6195e8b2d91564c109597d6"
+    },
+    {
+      "calendar_id": "im-41",
+      "source_file": "calendar-41.pdf",
+      "dates": 365,
+      "collection_days": 154,
+      "stream_counts": {
+        "paper": 24,
+        "plastics": 51,
+        "resources": 50,
+        "burnable": 103,
+        "hazardous_dangerous": 11,
+        "non_burnable": 24,
+        "bulky": 12
+      },
+      "days_sha256": "fb9e7401271e03164f5fb093aa50f35bb5aafa11eda95d62a27fcae76e94e6dd"
+    },
+    {
+      "calendar_id": "im-42",
+      "source_file": "calendar-42.pdf",
+      "dates": 365,
+      "collection_days": 103,
+      "stream_counts": {
+        "burnable": 103,
+        "paper": 23,
+        "plastics": 51,
+        "resources": 51,
+        "hazardous_dangerous": 12,
+        "bulky": 12,
+        "non_burnable": 24
+      },
+      "days_sha256": "bcb78df7771c9d155a10b1f58494e1e88e78e897ba904151568015978f5efa48"
+    }
+  ]
+}

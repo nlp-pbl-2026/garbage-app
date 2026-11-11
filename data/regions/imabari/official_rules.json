@@ -1,0 +1,229 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38202",
+  "version": "imabari-2026.1",
+  "license_status": "unconfirmed",
+  "profiles": {
+    "mainland": {
+      "categories": {
+        "burnable": {
+          "name": "燃やせるごみ",
+          "color": "#FFF100",
+          "instructions": "指定ごみ袋（黄色）に入れて口を縛る。資源にできない紙・布、台所ごみ等。",
+          "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata.pdf",
+          "collection_type_id": "burnable"
+        },
+        "non_burnable": {
+          "name": "燃やせないごみ",
+          "color": "#89C997",
+          "instructions": "指定ごみ袋（緑色）。金属・陶磁器等。電池を外し、割れ物・刃物は紙等で包み内容を表示。",
+          "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata.pdf",
+          "collection_type_id": "non_burnable"
+        },
+        "plastics": {
+          "name": "プラスチック製容器包装",
+          "color": "#7ECEF4",
+          "instructions": "プラマーク付きの容器包装を軽く水洗いし汚れを落とす。汚れが落ちないものは燃やせるごみ。製品プラスチックを混ぜない。",
+          "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata.pdf",
+          "collection_type_id": "plastics"
+        },
+        "resources": {
+          "name": "資源（びん・缶・紙・布・PET・白色トレイ）",
+          "color": "#F19EC2",
+          "instructions": "飲食用びん・缶・PET本体・白色トレイは中身を出して水洗い。PET本体のキャップ・ラベルは外してプラへ。紙・布は種類別に十文字に縛る。乳白色・割れたびんは燃やせないごみ。汚れが落ちない紙・布・PET・トレイは燃やせるごみ。",
+          "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata.pdf",
+          "collection_type_id": "resources",
+          "collection_name": "資源・有害ごみ・危険ごみ"
+        },
+        "hazardous": {
+          "name": "有害ごみ",
+          "color": "#555555",
+          "instructions": "乾電池・ボタン電池・小型充電式電池・蛍光管・水銀計。電池は端子を絶縁し有害ごみのコンテナへ。自転車等の大型充電池は販売店へ。",
+          "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata.pdf",
+          "collection_type_id": "resources"
+        },
+        "dangerous": {
+          "name": "危険ごみ",
+          "color": "#E60012",
+          "instructions": "スプレー缶・カセットボンベ・使い捨てライターのみ。使い切り、穴をあけずに指定コンテナへ。安全に使い切れない場合は市へ確認。",
+          "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata.pdf",
+          "collection_type_id": "resources"
+        },
+        "bulky": {
+          "name": "粗大ごみ",
+          "color": "#BB9CC5",
+          "instructions": "有料・予約制。地区の申込期間中に粗大ごみ受付センターへ電話し、収集日・料金・場所を確認。処理券に受付番号を記入し1点ずつ貼る。1回10点まで。予約日の朝8時30分まで。",
+          "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata.pdf",
+          "answer_note": "有料・予約制。地区の申込期間中に粗大ごみ受付センターへ電話し、収集日・料金・場所を確認。処理券に受付番号を記入し1点ずつ貼る。1回10点まで。予約日の朝8時30分まで。"
+        },
+        "not_collected": {
+          "name": "市では収集しない",
+          "color": "#666666",
+          "instructions": "家電リサイクル4品目・パソコン・大型充電池等は品目別の販売店・専門業者の案内を確認。通常の収集日を付けない。",
+          "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata.pdf",
+          "answer_note": "家電リサイクル4品目・パソコン・大型充電池等は品目別の販売店・専門業者の案内を確認。通常の収集日を付けない。"
+        },
+        "consult": {
+          "name": "市へ確認",
+          "color": "#777777",
+          "instructions": "条件や現行の分類が確認できない場合は資源リサイクル課へ確認。推測で分類や日付を確定しない。",
+          "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata.pdf",
+          "answer_note": "条件や現行の分類が確認できない場合は資源リサイクル課へ確認。推測で分類や日付を確定しない。"
+        },
+        "direct_delivery": {
+          "name": "直接搬入・事前確認",
+          "color": "#666666",
+          "instructions": "解体ごみ等は事前の確認手続きや搬入条件を市へ確認。施設の受付日を通常収集日として扱わない。",
+          "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata.pdf",
+          "answer_note": "解体ごみ等は事前の確認手続きや搬入条件を市へ確認。施設の受付日を通常収集日として扱わない。"
+        },
+        "small_appliances": {
+          "name": "小型家電回収",
+          "color": "#447777",
+          "instructions": "回収ボックスの投入口（縦15cm×横25cm）に入る対象品。電池は原則外す。現行の充電式電池案内では取り外せない製品は電池ごと小型家電回収ボックス又は資源リサイクル課へ持参できる。対象・寸法・受付を確認。",
+          "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata.pdf",
+          "answer_note": "回収ボックスの投入口（縦15cm×横25cm）に入る対象品。電池は原則外す。現行の充電式電池案内では取り外せない製品は電池ごと小型家電回収ボックス又は資源リサイクル課へ持参できる。対象・寸法・受付を確認。"
+        }
+      },
+      "classification_rules": "今治市の選択地域の公式根拠だけを使用する。他市町や関前とその他地域の根拠を混ぜない。画像からの素材推測は確認済みとしない。本体と外した部品を区別する。入力済みの材質・サイズ・洗浄・電池除去などを再質問しない。不足条件のみ質問し、はい／いいえは直前質問の条件と結びつける。根拠不足は保留。通常地域は燃やせる、燃やせない、プラスチック製容器包装、資源、有害、危険を区別。飲食用PET本体でキャップ・ラベルを外し水洗い済みならresources。外したプラ製キャップ・ラベルはplastics。製品プラ・汚れが落ちない容器包装はburnable。白色トレイはresources、白色以外のプラマーク付きはplastics。スプレー缶・ボンベ・ライターはdangerous、穴をあけない。小型の取り外した充電池はhazardous、大型自転車用電池はnot_collected。電池を外せない機器は現行リチウム案内に従いsmall_appliances又は市へ持参、通常不燃にしない。品目別の指定袋・材質・長さ等の条件を優先する。指定袋に入らず口を縛れない、持ち上げると破れる大きさ・重さはbulkyだが、排出禁止や解体確認の指定を覆さない。粗大は申込制で収集日を推測しない。",
+      "bulky_config": {
+        "municipality_id": "38202",
+        "municipality_name": "今治市",
+        "collection_frequency": "地区別申込期間による有料・予約制",
+        "reception_hours": "月〜金（祝日除く）8:30〜17:15",
+        "collection_rules": "地区の申込期間に電話予約。受付番号を処理券に記入して貼り、予約日の朝8:30までに指定場所へ。1回10点まで。アプリは申込みを行いません。",
+        "fee_structure_type": "fixed",
+        "application_method": "phone",
+        "information_url": "https://www.city.imabari.ehime.jp/recycle/kateigomi/kateigomi_imabari.html",
+        "phone_number": "0898-47-5300",
+        "steps": [
+          {
+            "step_number": 1,
+            "title": "申込期間を確認",
+            "description": "お住まいの地区の公式カレンダーで申込期間を確認。収集日とは異なります。"
+          },
+          {
+            "step_number": 2,
+            "title": "電話で予約",
+            "description": "品目・サイズ・数量を伝え、収集日・場所・料金を確認します。"
+          },
+          {
+            "step_number": 3,
+            "title": "処理券を貼って搬出",
+            "description": "受付番号を記入し1点ずつ貼り、予約日の朝8時30分までに指定場所へ。"
+          }
+        ]
+      }
+    },
+    "sekizen": {
+      "categories": {
+        "burnable": {
+          "name": "燃えるごみ",
+          "color": "#F19EC2",
+          "instructions": "指定ごみ袋（黄色）に入れて口を縛る。資源にできない紙・布、台所ごみ等。",
+          "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata_sekizen01.pdf",
+          "collection_type_id": "burnable"
+        },
+        "non_burnable": {
+          "name": "燃えないごみ",
+          "color": "#7ECEF4",
+          "instructions": "指定ごみ袋（緑色）。金属・陶磁器等。電池を外し、割れ物・刃物は紙等で包み内容を表示。",
+          "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata_sekizen01.pdf",
+          "collection_type_id": "non_burnable"
+        },
+        "plastics": {
+          "name": "プラスチック資源",
+          "color": "#89C997",
+          "instructions": "2026年度資料の現行ルールを優先。容器包装とプラスチックのみの製品で50cm未満、汚れを落としたもの。金属等が外せない混合品は燃えないごみ。汚れが落ちないもの、50cm以上、ゴム・シリコン、テープ類、灯油容器、厚さ5mm以上のまな板は対象外。指定袋に入らない場合は粗大ごみ。PET本体は資源物。",
+          "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata_sekizen01.pdf",
+          "collection_type_id": "plastics"
+        },
+        "resources": {
+          "name": "資源物（缶・びん・PET）",
+          "color": "#9288B9",
+          "instructions": "飲料用・食品用の缶・びん・PET本体は水洗いし資源ステーションへ。PETのキャップ・ラベルは外してプラスチック資源へ。紙類は別区分。乳白色・割れたびんは燃えないごみ。",
+          "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata_sekizen01.pdf",
+          "collection_type_id": "resources"
+        },
+        "bulky": {
+          "name": "粗大ごみ",
+          "color": "#BB9CC5",
+          "instructions": "指定袋「大」に入り口を閉じられない家具等。関前開発総合センター横の指定場所へ、公式カレンダーの粗大ごみ収集日の朝8時30分までに処理券を貼って搬出。券1枚300円、必要枚数・品目条件は関前支所（0897-88-2111）で確認。大量ごみは施設搬入の案内を確認。",
+          "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata_sekizen01.pdf",
+          "collection_type_id": "bulky"
+        },
+        "not_collected": {
+          "name": "市では収集しない",
+          "color": "#666666",
+          "instructions": "家電リサイクル4品目・パソコン・大型充電池等は品目別の販売店・専門業者の案内を確認。通常の収集日を付けない。",
+          "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata_sekizen01.pdf",
+          "answer_note": "家電リサイクル4品目・パソコン・大型充電池等は品目別の販売店・専門業者の案内を確認。通常の収集日を付けない。"
+        },
+        "consult": {
+          "name": "市へ確認",
+          "color": "#777777",
+          "instructions": "条件や現行の分類が確認できない場合は資源リサイクル課へ確認。推測で分類や日付を確定しない。",
+          "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata_sekizen01.pdf",
+          "answer_note": "条件や現行の分類が確認できない場合は資源リサイクル課へ確認。推測で分類や日付を確定しない。"
+        },
+        "direct_delivery": {
+          "name": "直接搬入・事前確認",
+          "color": "#666666",
+          "instructions": "解体ごみ等は事前の確認手続きや搬入条件を市へ確認。施設の受付日を通常収集日として扱わない。",
+          "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata_sekizen01.pdf",
+          "answer_note": "解体ごみ等は事前の確認手続きや搬入条件を市へ確認。施設の受付日を通常収集日として扱わない。"
+        },
+        "paper": {
+          "name": "資源物（紙類）",
+          "color": "#AFAFAF",
+          "collection_type_id": "paper",
+          "instructions": "新聞・雑誌・段ボール・紙パックは種類別に十文字に縛り資源ステーションへ。紙パックは洗い、乾かして開く。汚れた紙・リサイクルできない紙は燃えるごみ。",
+          "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata_sekizen01.pdf"
+        },
+        "hazardous_dangerous": {
+          "name": "有害ごみ・危険ごみ",
+          "color": "#FFF100",
+          "collection_type_id": "hazardous_dangerous",
+          "instructions": "2026年度案内：乾電池・ボタン電池・リチウム電池・ニカド電池・リチウムイオン電池、蛍光管、水銀体温計。資源物ステーションの有害・危険ごみコンテナへ。割れた蛍光管は燃えないごみ。スプレー缶・カセットボンベ・ライターは使い切り穴をあけない。大型のバッテリー等は販売店へ。",
+          "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata_sekizen01.pdf"
+        }
+      },
+      "classification_rules": "今治市の選択地域の公式根拠だけを使用する。他市町や関前とその他地域の根拠を混ぜない。画像からの素材推測は確認済みとしない。本体と外した部品を区別する。入力済みの材質・サイズ・洗浄・電池除去などを再質問しない。不足条件のみ質問し、はい／いいえは直前質問の条件と結びつける。根拠不足は保留。関前は2026年度カレンダー裏面が現行ルール。2019年早見表の変更箇所をそのまま用いない。衣類は燃えるごみ。PET本体はresources、外したキャップ・ラベルはplastics。紙類はpaper。プラスチック資源は容器包装に加え製品も対象だが、プラスチックのみ・50cm未満・汚れ除去が条件。金属混合はnon_burnable、汚れが落ちないもの・50cm以上・ゴムシリコン・テープ類・灯油容器・厚さ5mm以上のまな板はburnable（指定袋に入らなければbulky）。材質・大きさが不明の製品を確定しない。乾電池・小型リチウムイオン電池・スプレー缶等はhazardous_dangerous。穴をあけない。割れたびんはnon_burnable。粗大ごみは関前専用の指定日と指定場所、処理券。通常地域の予約方法・処理券を適用しない。",
+      "bulky_config": {
+        "municipality_id": "38202",
+        "municipality_name": "今治市",
+        "collection_frequency": "関前地区の公式カレンダー指定日",
+        "reception_hours": "月〜金（祝日除く）8:30〜17:15",
+        "collection_rules": "関前開発総合センター横の決められた場所へ。指定袋「大」に入らない家具等に粗大ごみ処理券（1枚300円、品目別必要枚数を確認）を貼り、指定日の朝8:30までに搬出。通常地域の電話予約制とは異なります。",
+        "fee_structure_type": "fixed",
+        "application_method": "guide_only",
+        "information_url": "https://www.city.imabari.ehime.jp/recycle/kateigomi/kateigomi_sekizen.html",
+        "phone_number": "0897-88-2111",
+        "steps": [
+          {
+            "step_number": 1,
+            "title": "関前地区の条件を確認",
+            "description": "関前支所で品目・処理券の枚数・指定場所を確認します。"
+          },
+          {
+            "step_number": 2,
+            "title": "処理券を貼って搬出",
+            "description": "関前地区の収集日・指定場所へ搬出します。大量ごみは別途施設搬入を確認。"
+          }
+        ]
+      }
+    }
+  },
+  "current_changes": [
+    {
+      "subject": "関前プラスチック・小型充電池・PET付属品",
+      "effective_period": "2026年度カレンダー記載内容（変更開始日は未確認）",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata_sekizen01.pdf"
+    },
+    {
+      "subject": "電池を取り外せない小型家電",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/info/lithium/",
+      "priority": "現在の公式ページを旧辞典・旧分割PDFより優先"
+    }
+  ]
+}

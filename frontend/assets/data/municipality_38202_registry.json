@@ -1,0 +1,2520 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38202",
+  "municipality_name": "今治市",
+  "prefecture_id": "38",
+  "prefecture_name": "愛媛県",
+  "version": "imabari-2026.1",
+  "valid_from": "2026-04-01",
+  "valid_to": "2027-03-31",
+  "collection_areas": [
+    {
+      "id": "38202-a001",
+      "name": "阿方",
+      "display_name": "阿方",
+      "calendar_id": "im-15",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/15.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=1"
+    },
+    {
+      "id": "38202-a002",
+      "name": "朝倉（朝倉上、朝倉北、朝倉南、尼ヶ井出、立丁）",
+      "display_name": "朝倉（朝倉上、朝倉北、朝倉南、尼ヶ井出、立丁）",
+      "calendar_id": "im-22",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/22.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=1"
+    },
+    {
+      "id": "38202-a003",
+      "name": "朝倉（朝倉下、上新田、白崎、緑ヶ丘、古谷、山口）",
+      "display_name": "朝倉（朝倉下、上新田、白崎、緑ヶ丘、古谷、山口）",
+      "calendar_id": "im-23",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/23.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=1"
+    },
+    {
+      "id": "38202-a004",
+      "name": "旭町",
+      "display_name": "旭町",
+      "calendar_id": "im-05",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/05.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=1"
+    },
+    {
+      "id": "38202-a005",
+      "name": "五十嵐",
+      "display_name": "五十嵐",
+      "calendar_id": "im-18",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/18.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=1"
+    },
+    {
+      "id": "38202-a006",
+      "name": "石井町",
+      "display_name": "石井町",
+      "calendar_id": "im-13",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/13.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=1"
+    },
+    {
+      "id": "38202-a007",
+      "name": "石橋町",
+      "display_name": "石橋町",
+      "calendar_id": "im-17",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/17.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=1"
+    },
+    {
+      "id": "38202-a008",
+      "name": "泉川町",
+      "display_name": "泉川町",
+      "calendar_id": "im-08",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/08.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=1"
+    },
+    {
+      "id": "38202-a009",
+      "name": "内堀",
+      "display_name": "内堀",
+      "calendar_id": "im-12",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/12.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=1"
+    },
+    {
+      "id": "38202-a010",
+      "name": "馬越",
+      "display_name": "馬越",
+      "calendar_id": "im-14",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/14.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=1"
+    },
+    {
+      "id": "38202-a011",
+      "name": "馬越町",
+      "display_name": "馬越町",
+      "calendar_id": "im-14",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/14.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=1"
+    },
+    {
+      "id": "38202-a012",
+      "name": "馬島",
+      "display_name": "離島：馬島",
+      "calendar_id": "im-12_tokku",
+      "rule_profile_id": "hatohama_islands",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/12_tokku.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=1"
+    },
+    {
+      "id": "38202-a013",
+      "name": "枝堀町（1丁目／番地1）",
+      "display_name": "枝堀町（1丁目／番地1）",
+      "calendar_id": "im-11",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/11.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=1"
+    },
+    {
+      "id": "38202-a014",
+      "name": "枝堀町（1丁目／番地2／枝番1～7・29・31）",
+      "display_name": "枝堀町（1丁目／番地2／枝番1～7・29・31）",
+      "calendar_id": "im-11",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/11.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=1"
+    },
+    {
+      "id": "38202-a015",
+      "name": "枝堀町（1丁目／番地2／枝番8～26・28・30・32・33）",
+      "display_name": "枝堀町（1丁目／番地2／枝番8～26・28・30・32・33）",
+      "calendar_id": "im-05",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/05.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=1"
+    },
+    {
+      "id": "38202-a016",
+      "name": "枝堀町（1丁目／番地3）",
+      "display_name": "枝堀町（1丁目／番地3）",
+      "calendar_id": "im-05",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/05.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=1"
+    },
+    {
+      "id": "38202-a017",
+      "name": "枝堀町（1丁目／番地4・5）",
+      "display_name": "枝堀町（1丁目／番地4・5）",
+      "calendar_id": "im-11",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/11.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=1"
+    },
+    {
+      "id": "38202-a018",
+      "name": "枝堀町（1丁目／番地6／枝番1・2・21）",
+      "display_name": "枝堀町（1丁目／番地6／枝番1・2・21）",
+      "calendar_id": "im-11",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/11.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=1"
+    },
+    {
+      "id": "38202-a019",
+      "name": "枝堀町（1丁目／番地6／枝番3～20・22）",
+      "display_name": "枝堀町（1丁目／番地6／枝番3～20・22）",
+      "calendar_id": "im-05",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/05.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=1"
+    },
+    {
+      "id": "38202-a020",
+      "name": "枝堀町（2丁目／番地1～4）",
+      "display_name": "枝堀町（2丁目／番地1～4）",
+      "calendar_id": "im-11",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/11.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=1"
+    },
+    {
+      "id": "38202-a021",
+      "name": "枝堀町（2丁目／番地2・3）",
+      "display_name": "枝堀町（2丁目／番地2・3）",
+      "calendar_id": "im-05",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/05.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=1"
+    },
+    {
+      "id": "38202-a022",
+      "name": "枝堀町（3丁目）",
+      "display_name": "枝堀町（3丁目）",
+      "calendar_id": "im-05",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/05.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=1"
+    },
+    {
+      "id": "38202-a023",
+      "name": "恵美須町（1丁目）",
+      "display_name": "恵美須町（1丁目）",
+      "calendar_id": "im-02",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/02.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=1"
+    },
+    {
+      "id": "38202-a024",
+      "name": "恵美須町（2・3丁目）",
+      "display_name": "恵美須町（2・3丁目）",
+      "calendar_id": "im-03",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/03.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=1"
+    },
+    {
+      "id": "38202-a025",
+      "name": "延喜",
+      "display_name": "延喜",
+      "calendar_id": "im-15",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/15.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=1"
+    },
+    {
+      "id": "38202-a026",
+      "name": "大新田町（1丁目／番地1～4）",
+      "display_name": "大新田町（1丁目／番地1～4）",
+      "calendar_id": "im-13",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/13.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=1"
+    },
+    {
+      "id": "38202-a027",
+      "name": "大新田町（1丁目／番地5）",
+      "display_name": "大新田町（1丁目／番地5）",
+      "calendar_id": "im-06",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/06.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=1"
+    },
+    {
+      "id": "38202-a028",
+      "name": "大新田町（2丁目）",
+      "display_name": "大新田町（2丁目）",
+      "calendar_id": "im-06",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/06.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=1"
+    },
+    {
+      "id": "38202-a029",
+      "name": "大新田町（3～5丁目）",
+      "display_name": "大新田町（3～5丁目）",
+      "calendar_id": "im-13",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/13.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=1"
+    },
+    {
+      "id": "38202-a030",
+      "name": "大西町（新町、紺原、九王、鳥越住宅、どっく社宅）",
+      "display_name": "大西町（新町、紺原、九王、鳥越住宅、どっく社宅）",
+      "calendar_id": "im-29",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/29.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=1"
+    },
+    {
+      "id": "38202-a031",
+      "name": "大西町（別府、星浦、山之内、脇、大井浜、宮脇）",
+      "display_name": "大西町（別府、星浦、山之内、脇、大井浜、宮脇）",
+      "calendar_id": "im-30",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/30.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=1"
+    },
+    {
+      "id": "38202-a032",
+      "name": "大西町（中原西、東町１）",
+      "display_name": "大西町（中原西、東町１）",
+      "calendar_id": "im-31",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/31.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=1"
+    },
+    {
+      "id": "38202-a033",
+      "name": "大西町（町東１、町西３、町北、町中１、町中３、宮前）",
+      "display_name": "大西町（町東１、町西３、町北、町中１、町中３、宮前）",
+      "calendar_id": "im-32",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/32.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=1"
+    },
+    {
+      "id": "38202-a034",
+      "name": "大浜町",
+      "display_name": "大浜町",
+      "calendar_id": "im-13",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/13.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=1"
+    },
+    {
+      "id": "38202-a035",
+      "name": "大三島町",
+      "display_name": "大三島町",
+      "calendar_id": "im-40",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/40.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=1"
+    },
+    {
+      "id": "38202-a036",
+      "name": "風早町",
+      "display_name": "風早町",
+      "calendar_id": "im-02",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/02.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=1"
+    },
+    {
+      "id": "38202-a037",
+      "name": "片原町",
+      "display_name": "片原町",
+      "calendar_id": "im-02",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/02.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=1"
+    },
+    {
+      "id": "38202-a038",
+      "name": "片山",
+      "display_name": "片山",
+      "calendar_id": "im-14",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/14.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=1"
+    },
+    {
+      "id": "38202-a039",
+      "name": "河南町",
+      "display_name": "河南町",
+      "calendar_id": "im-17",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/17.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=1"
+    },
+    {
+      "id": "38202-a040",
+      "name": "鐘場町",
+      "display_name": "鐘場町",
+      "calendar_id": "im-13",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/13.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=1"
+    },
+    {
+      "id": "38202-a041",
+      "name": "上浦町",
+      "display_name": "上浦町",
+      "calendar_id": "im-39",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/39.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=1"
+    },
+    {
+      "id": "38202-a042",
+      "name": "上徳",
+      "display_name": "上徳",
+      "calendar_id": "im-19",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/19.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=1"
+    },
+    {
+      "id": "38202-a043",
+      "name": "唐子台西",
+      "display_name": "唐子台西",
+      "calendar_id": "im-20",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/20.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=1"
+    },
+    {
+      "id": "38202-a044",
+      "name": "唐子台東",
+      "display_name": "唐子台東",
+      "calendar_id": "im-20",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/20.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=1"
+    },
+    {
+      "id": "38202-a045",
+      "name": "神宮",
+      "display_name": "神宮",
+      "calendar_id": "im-15",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/15.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=1"
+    },
+    {
+      "id": "38202-a046",
+      "name": "祇園町",
+      "display_name": "祇園町",
+      "calendar_id": "im-16",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/16.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=1"
+    },
+    {
+      "id": "38202-a047",
+      "name": "菊間町（菊間地区の国道196より山側）",
+      "display_name": "菊間町（菊間地区の国道196より山側）",
+      "calendar_id": "im-33",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/33.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=1"
+    },
+    {
+      "id": "38202-a048",
+      "name": "菊間町（菊間地区の国道196より海側）",
+      "display_name": "菊間町（菊間地区の国道196より海側）",
+      "calendar_id": "im-34",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/34.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=1"
+    },
+    {
+      "id": "38202-a049",
+      "name": "菊間町（亀岡地区）",
+      "display_name": "菊間町（亀岡地区）",
+      "calendar_id": "im-34",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/34.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=1"
+    },
+    {
+      "id": "38202-a050",
+      "name": "北高下町",
+      "display_name": "北高下町",
+      "calendar_id": "im-16",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/16.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=1"
+    },
+    {
+      "id": "38202-a051",
+      "name": "北鳥生町",
+      "display_name": "北鳥生町",
+      "calendar_id": "im-16",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/16.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=1"
+    },
+    {
+      "id": "38202-a052",
+      "name": "北浜町",
+      "display_name": "北浜町",
+      "calendar_id": "im-01",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/01.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=1"
+    },
+    {
+      "id": "38202-a053",
+      "name": "北日吉町（1・2丁目）",
+      "display_name": "北日吉町（1・2丁目）",
+      "calendar_id": "im-07",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/07.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=1"
+    },
+    {
+      "id": "38202-a054",
+      "name": "北日吉町（3丁目）",
+      "display_name": "北日吉町（3丁目）",
+      "calendar_id": "im-09",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/09.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=1"
+    },
+    {
+      "id": "38202-a055",
+      "name": "北宝来町",
+      "display_name": "北宝来町",
+      "calendar_id": "im-01",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/01.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=1"
+    },
+    {
+      "id": "38202-a056",
+      "name": "喜田村",
+      "display_name": "喜田村",
+      "calendar_id": "im-19",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/19.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=1"
+    },
+    {
+      "id": "38202-a057",
+      "name": "衣干町",
+      "display_name": "衣干町",
+      "calendar_id": "im-16",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/16.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=1"
+    },
+    {
+      "id": "38202-a058",
+      "name": "共栄町",
+      "display_name": "共栄町",
+      "calendar_id": "im-01",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/01.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=1"
+    },
+    {
+      "id": "38202-a059",
+      "name": "蔵敷町",
+      "display_name": "蔵敷町",
+      "calendar_id": "im-05",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/05.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=2"
+    },
+    {
+      "id": "38202-a060",
+      "name": "来島（来島・小島）",
+      "display_name": "離島：来島・小島",
+      "calendar_id": "im-12_tokku",
+      "rule_profile_id": "hatohama_islands",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/12_tokku.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=2"
+    },
+    {
+      "id": "38202-a061",
+      "name": "鯉池町",
+      "display_name": "鯉池町",
+      "calendar_id": "im-09",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/09.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=2"
+    },
+    {
+      "id": "38202-a062",
+      "name": "小泉",
+      "display_name": "小泉",
+      "calendar_id": "im-14",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/14.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=2"
+    },
+    {
+      "id": "38202-a063",
+      "name": "広紹寺町",
+      "display_name": "広紹寺町",
+      "calendar_id": "im-16",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/16.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=2"
+    },
+    {
+      "id": "38202-a064",
+      "name": "高地町",
+      "display_name": "高地町",
+      "calendar_id": "im-06",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/06.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=2"
+    },
+    {
+      "id": "38202-a065",
+      "name": "小浦町",
+      "display_name": "小浦町",
+      "calendar_id": "im-13",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/13.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=2"
+    },
+    {
+      "id": "38202-a066",
+      "name": "黄金町（1丁目）",
+      "display_name": "黄金町（1丁目）",
+      "calendar_id": "im-02",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/02.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=2"
+    },
+    {
+      "id": "38202-a067",
+      "name": "黄金町（2丁目／番地1）",
+      "display_name": "黄金町（2丁目／番地1）",
+      "calendar_id": "im-03",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/03.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=2"
+    },
+    {
+      "id": "38202-a068",
+      "name": "黄金町（2丁目／番地2／枝番1・3・5～8・10・16）",
+      "display_name": "黄金町（2丁目／番地2／枝番1・3・5～8・10・16）",
+      "calendar_id": "im-03",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/03.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=2"
+    },
+    {
+      "id": "38202-a069",
+      "name": "黄金町（2丁目／番地2／枝番上記以外）",
+      "display_name": "黄金町（2丁目／番地2／枝番上記以外）",
+      "calendar_id": "im-05",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/05.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=2"
+    },
+    {
+      "id": "38202-a070",
+      "name": "黄金町（2丁目／番地3・4）",
+      "display_name": "黄金町（2丁目／番地3・4）",
+      "calendar_id": "im-05",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/05.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=2"
+    },
+    {
+      "id": "38202-a071",
+      "name": "黄金町（2丁目／番地5／枝番1～14・39・40・45・46・48）",
+      "display_name": "黄金町（2丁目／番地5／枝番1～14・39・40・45・46・48）",
+      "calendar_id": "im-03",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/03.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=2"
+    },
+    {
+      "id": "38202-a072",
+      "name": "黄金町（2丁目／番地5／枝番15～38・41・43・44・47）",
+      "display_name": "黄金町（2丁目／番地5／枝番15～38・41・43・44・47）",
+      "calendar_id": "im-05",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/05.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=2"
+    },
+    {
+      "id": "38202-a073",
+      "name": "黄金町（2丁目／番地6）",
+      "display_name": "黄金町（2丁目／番地6）",
+      "calendar_id": "im-03",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/03.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=2"
+    },
+    {
+      "id": "38202-a074",
+      "name": "黄金町（3丁目／番地1／枝番1～5・9・10・12）",
+      "display_name": "黄金町（3丁目／番地1／枝番1～5・9・10・12）",
+      "calendar_id": "im-03",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/03.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=2"
+    },
+    {
+      "id": "38202-a075",
+      "name": "黄金町（3丁目／番地1／枝番6～8・11）",
+      "display_name": "黄金町（3丁目／番地1／枝番6～8・11）",
+      "calendar_id": "im-05",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/05.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=2"
+    },
+    {
+      "id": "38202-a076",
+      "name": "黄金町（3丁目／番地2～4）",
+      "display_name": "黄金町（3丁目／番地2～4）",
+      "calendar_id": "im-05",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/05.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=2"
+    },
+    {
+      "id": "38202-a077",
+      "name": "黄金町（4～6丁目）",
+      "display_name": "黄金町（4～6丁目）",
+      "calendar_id": "im-05",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/05.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=2"
+    },
+    {
+      "id": "38202-a078",
+      "name": "国分（1～6丁目）",
+      "display_name": "国分（1～6丁目）",
+      "calendar_id": "im-20",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/20.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=2"
+    },
+    {
+      "id": "38202-a079",
+      "name": "国分（7丁目）",
+      "display_name": "国分（7丁目）",
+      "calendar_id": "im-21",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/21.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=2"
+    },
+    {
+      "id": "38202-a080",
+      "name": "米屋町（1丁目）",
+      "display_name": "米屋町（1丁目）",
+      "calendar_id": "im-02",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/02.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=2"
+    },
+    {
+      "id": "38202-a081",
+      "name": "米屋町（2丁目／番地1）",
+      "display_name": "米屋町（2丁目／番地1）",
+      "calendar_id": "im-01",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/01.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=2"
+    },
+    {
+      "id": "38202-a082",
+      "name": "米屋町（2丁目／番地2／枝番1～15・20～24）",
+      "display_name": "米屋町（2丁目／番地2／枝番1～15・20～24）",
+      "calendar_id": "im-01",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/01.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=2"
+    },
+    {
+      "id": "38202-a083",
+      "name": "米屋町（2丁目／番地2／枝番16～19・25）",
+      "display_name": "米屋町（2丁目／番地2／枝番16～19・25）",
+      "calendar_id": "im-02",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/02.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=2"
+    },
+    {
+      "id": "38202-a084",
+      "name": "米屋町（3丁目／番地1）",
+      "display_name": "米屋町（3丁目／番地1）",
+      "calendar_id": "im-01",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/01.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=2"
+    },
+    {
+      "id": "38202-a085",
+      "name": "米屋町（3丁目／番地2／枝番1・2・28・29・31）",
+      "display_name": "米屋町（3丁目／番地2／枝番1・2・28・29・31）",
+      "calendar_id": "im-02",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/02.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=2"
+    },
+    {
+      "id": "38202-a086",
+      "name": "米屋町（3丁目／番地2／枝番3～27・30）",
+      "display_name": "米屋町（3丁目／番地2／枝番3～27・30）",
+      "calendar_id": "im-01",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/01.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=2"
+    },
+    {
+      "id": "38202-a087",
+      "name": "米屋町（4丁目／番地1）",
+      "display_name": "米屋町（4丁目／番地1）",
+      "calendar_id": "im-01",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/01.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=2"
+    },
+    {
+      "id": "38202-a088",
+      "name": "米屋町（4丁目／番地2／枝番1～25・32）",
+      "display_name": "米屋町（4丁目／番地2／枝番1～25・32）",
+      "calendar_id": "im-01",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/01.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=2"
+    },
+    {
+      "id": "38202-a089",
+      "name": "米屋町（4丁目／番地2／枝番26～28・31）",
+      "display_name": "米屋町（4丁目／番地2／枝番26～28・31）",
+      "calendar_id": "im-02",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/02.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=2"
+    },
+    {
+      "id": "38202-a090",
+      "name": "米屋町（4丁目／番地3／枝番1～3・9）",
+      "display_name": "米屋町（4丁目／番地3／枝番1～3・9）",
+      "calendar_id": "im-01",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/01.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=2"
+    },
+    {
+      "id": "38202-a091",
+      "name": "米屋町（4丁目／番地3／枝番4～8・10）",
+      "display_name": "米屋町（4丁目／番地3／枝番4～8・10）",
+      "calendar_id": "im-02",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/02.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=2"
+    },
+    {
+      "id": "38202-a092",
+      "name": "郷桜井",
+      "display_name": "郷桜井",
+      "calendar_id": "im-21",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/21.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=2"
+    },
+    {
+      "id": "38202-a093",
+      "name": "郷新屋敷町",
+      "display_name": "郷新屋敷町",
+      "calendar_id": "im-17",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/17.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=2"
+    },
+    {
+      "id": "38202-a094",
+      "name": "郷本町",
+      "display_name": "郷本町",
+      "calendar_id": "im-17",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/17.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=2"
+    },
+    {
+      "id": "38202-a095",
+      "name": "郷六ケ内町",
+      "display_name": "郷六ケ内町",
+      "calendar_id": "im-17",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/17.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=2"
+    },
+    {
+      "id": "38202-a096",
+      "name": "栄町（1丁目）",
+      "display_name": "栄町（1丁目）",
+      "calendar_id": "im-02",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/02.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=2"
+    },
+    {
+      "id": "38202-a097",
+      "name": "栄町（2～4丁目）",
+      "display_name": "栄町（2～4丁目）",
+      "calendar_id": "im-01",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/01.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=2"
+    },
+    {
+      "id": "38202-a098",
+      "name": "桜井番地住所",
+      "display_name": "桜井番地住所",
+      "calendar_id": "im-21",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/21.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=2"
+    },
+    {
+      "id": "38202-a099",
+      "name": "桜井（1丁目／番地1／枝番1～14・48～55）",
+      "display_name": "桜井（1丁目／番地1／枝番1～14・48～55）",
+      "calendar_id": "im-20",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/20.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=2"
+    },
+    {
+      "id": "38202-a100",
+      "name": "桜井（1丁目／番地1／枝番15～47）",
+      "display_name": "桜井（1丁目／番地1／枝番15～47）",
+      "calendar_id": "im-21",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/21.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=2"
+    },
+    {
+      "id": "38202-a101",
+      "name": "桜井（1丁目／番地2／枝番1～24・51～61）",
+      "display_name": "桜井（1丁目／番地2／枝番1～24・51～61）",
+      "calendar_id": "im-20",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/20.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=2"
+    },
+    {
+      "id": "38202-a102",
+      "name": "桜井（1丁目／番地2／枝番25～50）",
+      "display_name": "桜井（1丁目／番地2／枝番25～50）",
+      "calendar_id": "im-21",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/21.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=2"
+    },
+    {
+      "id": "38202-a103",
+      "name": "桜井（1丁目／番地3／枝番1～18・46～57）",
+      "display_name": "桜井（1丁目／番地3／枝番1～18・46～57）",
+      "calendar_id": "im-20",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/20.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=2"
+    },
+    {
+      "id": "38202-a104",
+      "name": "桜井（1丁目／番地3／枝番19～45）",
+      "display_name": "桜井（1丁目／番地3／枝番19～45）",
+      "calendar_id": "im-21",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/21.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=2"
+    },
+    {
+      "id": "38202-a105",
+      "name": "桜井（1丁目／番地4～11）",
+      "display_name": "桜井（1丁目／番地4～11）",
+      "calendar_id": "im-21",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/21.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=2"
+    },
+    {
+      "id": "38202-a106",
+      "name": "桜井（2～6丁目）",
+      "display_name": "桜井（2～6丁目）",
+      "calendar_id": "im-21",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/21.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=2"
+    },
+    {
+      "id": "38202-a107",
+      "name": "桜井団地",
+      "display_name": "桜井団地",
+      "calendar_id": "im-21",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/21.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=2"
+    },
+    {
+      "id": "38202-a108",
+      "name": "地堀",
+      "display_name": "地堀",
+      "calendar_id": "im-12",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/12.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=2"
+    },
+    {
+      "id": "38202-a109",
+      "name": "しまなみヒルズ",
+      "display_name": "しまなみヒルズ",
+      "calendar_id": "im-15",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/15.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=2"
+    },
+    {
+      "id": "38202-a110",
+      "name": "末広町（1丁目）",
+      "display_name": "末広町（1丁目）",
+      "calendar_id": "im-02",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/02.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=2"
+    },
+    {
+      "id": "38202-a111",
+      "name": "末広町（2丁目／番地1／枝番1・19・20・22～24・27・39・40）",
+      "display_name": "末広町（2丁目／番地1／枝番1・19・20・22～24・27・39・40）",
+      "calendar_id": "im-03",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/03.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=2"
+    },
+    {
+      "id": "38202-a112",
+      "name": "末広町（2丁目／番地1／枝番上記以外）",
+      "display_name": "末広町（2丁目／番地1／枝番上記以外）",
+      "calendar_id": "im-05",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/05.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=2"
+    },
+    {
+      "id": "38202-a113",
+      "name": "末広町（2丁目／番地2／枝番1・14・15）",
+      "display_name": "末広町（2丁目／番地2／枝番1・14・15）",
+      "calendar_id": "im-03",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/03.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=2"
+    },
+    {
+      "id": "38202-a114",
+      "name": "末広町（2丁目／番地2／枝番上記以外）",
+      "display_name": "末広町（2丁目／番地2／枝番上記以外）",
+      "calendar_id": "im-05",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/05.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=2"
+    },
+    {
+      "id": "38202-a115",
+      "name": "末広町（2丁目／番地3・4）",
+      "display_name": "末広町（2丁目／番地3・4）",
+      "calendar_id": "im-05",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/05.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=2"
+    },
+    {
+      "id": "38202-a116",
+      "name": "末広町（3・4丁目）",
+      "display_name": "末広町（3・4丁目）",
+      "calendar_id": "im-05",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/05.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=2"
+    },
+    {
+      "id": "38202-a117",
+      "name": "砂場町",
+      "display_name": "砂場町",
+      "calendar_id": "im-13",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/13.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=2"
+    },
+    {
+      "id": "38202-a118",
+      "name": "関前大下",
+      "display_name": "関前：大下",
+      "calendar_id": "im-42",
+      "rule_profile_id": "sekizen",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/42.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=3"
+    },
+    {
+      "id": "38202-a119",
+      "name": "関前岡村",
+      "display_name": "関前：岡村",
+      "calendar_id": "im-41",
+      "rule_profile_id": "sekizen",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/41.pdf?1",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=3"
+    },
+    {
+      "id": "38202-a120",
+      "name": "関前小大下",
+      "display_name": "関前：小大下",
+      "calendar_id": "im-42",
+      "rule_profile_id": "sekizen",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/42.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=3"
+    },
+    {
+      "id": "38202-a121",
+      "name": "蒼社町",
+      "display_name": "蒼社町",
+      "calendar_id": "im-08",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/08.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=3"
+    },
+    {
+      "id": "38202-a122",
+      "name": "杣田",
+      "display_name": "杣田",
+      "calendar_id": "im-12",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/12.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=3"
+    },
+    {
+      "id": "38202-a123",
+      "name": "大正町",
+      "display_name": "大正町",
+      "calendar_id": "im-01",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/01.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=3"
+    },
+    {
+      "id": "38202-a124",
+      "name": "高市",
+      "display_name": "高市",
+      "calendar_id": "im-19",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/19.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=3"
+    },
+    {
+      "id": "38202-a125",
+      "name": "高橋",
+      "display_name": "高橋",
+      "calendar_id": "im-14",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/14.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=3"
+    },
+    {
+      "id": "38202-a126",
+      "name": "高部",
+      "display_name": "高部",
+      "calendar_id": "im-12",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/12.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=3"
+    },
+    {
+      "id": "38202-a127",
+      "name": "宅間",
+      "display_name": "宅間",
+      "calendar_id": "im-15",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/15.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=3"
+    },
+    {
+      "id": "38202-a128",
+      "name": "立花町",
+      "display_name": "立花町",
+      "calendar_id": "im-17",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/17.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=3"
+    },
+    {
+      "id": "38202-a129",
+      "name": "玉川町（鴨部・龍岡　〔鴨部(八幡、別所、小鴨部、中村、高野、畑寺)・龍岡(龍岡下、葛谷、龍岡上)〕）",
+      "display_name": "玉川町（鴨部・龍岡　〔鴨部(八幡、別所、小鴨部、中村、高野、畑寺)・龍岡(龍岡下、葛谷、龍岡上)〕）",
+      "calendar_id": "im-24",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/24.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=3"
+    },
+    {
+      "id": "38202-a130",
+      "name": "玉川町（鈍川・九和　〔鈍川(鬼原、鈍川、木地)・九和(法界寺、大野、三反地、摺木、與和木、鍋地、桂、御厩、長谷)〕）",
+      "display_name": "玉川町（鈍川・九和　〔鈍川(鬼原、鈍川、木地)・九和(法界寺、大野、三反地、摺木、與和木、鍋地、桂、御厩、長谷)〕）",
+      "calendar_id": "im-25",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/25.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=3"
+    },
+    {
+      "id": "38202-a131",
+      "name": "旦",
+      "display_name": "旦",
+      "calendar_id": "im-21",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/21.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=3"
+    },
+    {
+      "id": "38202-a132",
+      "name": "近見町",
+      "display_name": "近見町",
+      "calendar_id": "im-13",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/13.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=3"
+    },
+    {
+      "id": "38202-a133",
+      "name": "辻堂（1丁目／番地3／枝番40.41.46～48.50.51.53 以外）",
+      "display_name": "辻堂（1丁目／番地3／枝番40.41.46～48.50.51.53 以外）",
+      "calendar_id": "im-16",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/16.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=3"
+    },
+    {
+      "id": "38202-a134",
+      "name": "辻堂（1丁目／番地3／枝番40.41.46～48.50.51.53）",
+      "display_name": "辻堂（1丁目／番地3／枝番40.41.46～48.50.51.53）",
+      "calendar_id": "im-17",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/17.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=3"
+    },
+    {
+      "id": "38202-a135",
+      "name": "辻堂（2～4丁目）",
+      "display_name": "辻堂（2～4丁目）",
+      "calendar_id": "im-17",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/17.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=3"
+    },
+    {
+      "id": "38202-a136",
+      "name": "土橋町",
+      "display_name": "土橋町",
+      "calendar_id": "im-16",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/16.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=3"
+    },
+    {
+      "id": "38202-a137",
+      "name": "天保山町（1丁目）",
+      "display_name": "天保山町（1丁目）",
+      "calendar_id": "im-03",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/03.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=3"
+    },
+    {
+      "id": "38202-a138",
+      "name": "天保山町（2丁目／番地1～3）",
+      "display_name": "天保山町（2丁目／番地1～3）",
+      "calendar_id": "im-03",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/03.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=3"
+    },
+    {
+      "id": "38202-a139",
+      "name": "天保山町（2丁目／番地4・5）",
+      "display_name": "天保山町（2丁目／番地4・5）",
+      "calendar_id": "im-11",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/11.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=3"
+    },
+    {
+      "id": "38202-a140",
+      "name": "天保山町（3～6丁目）",
+      "display_name": "天保山町（3～6丁目）",
+      "calendar_id": "im-11",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/11.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=3"
+    },
+    {
+      "id": "38202-a141",
+      "name": "通町（1丁目）",
+      "display_name": "通町（1丁目）",
+      "calendar_id": "im-02",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/02.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=3"
+    },
+    {
+      "id": "38202-a142",
+      "name": "通町（2・3丁目）",
+      "display_name": "通町（2・3丁目）",
+      "calendar_id": "im-03",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/03.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=3"
+    },
+    {
+      "id": "38202-a143",
+      "name": "常盤町（1・2丁目）",
+      "display_name": "常盤町（1・2丁目）",
+      "calendar_id": "im-02",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/02.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=3"
+    },
+    {
+      "id": "38202-a144",
+      "name": "常盤町（3丁目）",
+      "display_name": "常盤町（3丁目）",
+      "calendar_id": "im-01",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/01.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=3"
+    },
+    {
+      "id": "38202-a145",
+      "name": "常盤町（4丁目／番地1・5・6・9）",
+      "display_name": "常盤町（4丁目／番地1・5・6・9）",
+      "calendar_id": "im-05",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/05.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=3"
+    },
+    {
+      "id": "38202-a146",
+      "name": "常盤町（4丁目／番地2～4・7・8・10）",
+      "display_name": "常盤町（4丁目／番地2～4・7・8・10）",
+      "calendar_id": "im-01",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/01.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=3"
+    },
+    {
+      "id": "38202-a147",
+      "name": "常盤町（5～7丁目）",
+      "display_name": "常盤町（5～7丁目）",
+      "calendar_id": "im-09",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/09.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=3"
+    },
+    {
+      "id": "38202-a148",
+      "name": "常盤町（8丁目／番地1～3）",
+      "display_name": "常盤町（8丁目／番地1～3）",
+      "calendar_id": "im-14",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/14.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=3"
+    },
+    {
+      "id": "38202-a149",
+      "name": "常盤町（8丁目／番地4／枝番1～18）",
+      "display_name": "常盤町（8丁目／番地4／枝番1～18）",
+      "calendar_id": "im-09",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/09.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=3"
+    },
+    {
+      "id": "38202-a150",
+      "name": "常盤町（8丁目／番地4／枝番19～42）",
+      "display_name": "常盤町（8丁目／番地4／枝番19～42）",
+      "calendar_id": "im-14",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/14.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=3"
+    },
+    {
+      "id": "38202-a151",
+      "name": "徳重",
+      "display_name": "徳重",
+      "calendar_id": "im-18",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/18.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=3"
+    },
+    {
+      "id": "38202-a152",
+      "name": "富田新港",
+      "display_name": "富田新港",
+      "calendar_id": "im-19",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/19.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=3"
+    },
+    {
+      "id": "38202-a153",
+      "name": "長沢",
+      "display_name": "長沢",
+      "calendar_id": "im-21",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/21.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=3"
+    },
+    {
+      "id": "38202-a154",
+      "name": "中寺",
+      "display_name": "中寺",
+      "calendar_id": "im-18",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/18.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=3"
+    },
+    {
+      "id": "38202-a155",
+      "name": "中浜町",
+      "display_name": "中浜町",
+      "calendar_id": "im-02",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/02.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=3"
+    },
+    {
+      "id": "38202-a156",
+      "name": "中日吉町（1丁目／番地5／枝番34）",
+      "display_name": "中日吉町（1丁目／番地5／枝番34）",
+      "calendar_id": "im-07",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/07.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=3"
+    },
+    {
+      "id": "38202-a157",
+      "name": "中日吉町（1丁目／番地上記以外）",
+      "display_name": "中日吉町（1丁目／番地上記以外）",
+      "calendar_id": "im-09",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/09.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=3"
+    },
+    {
+      "id": "38202-a158",
+      "name": "中日吉町（2丁目／番地7／枝番29）",
+      "display_name": "中日吉町（2丁目／番地7／枝番29）",
+      "calendar_id": "im-07",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/07.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=3"
+    },
+    {
+      "id": "38202-a159",
+      "name": "中日吉町（2丁目／番地上記以外）",
+      "display_name": "中日吉町（2丁目／番地上記以外）",
+      "calendar_id": "im-09",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/09.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=3"
+    },
+    {
+      "id": "38202-a160",
+      "name": "中日吉町（3丁目）",
+      "display_name": "中日吉町（3丁目）",
+      "calendar_id": "im-09",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/09.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=3"
+    },
+    {
+      "id": "38202-a161",
+      "name": "中堀",
+      "display_name": "中堀",
+      "calendar_id": "im-12",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/12.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=3"
+    },
+    {
+      "id": "38202-a162",
+      "name": "波方町（小部・養老・宮崎・馬刀潟・岡・西浦・森上）",
+      "display_name": "波方町（小部・養老・宮崎・馬刀潟・岡・西浦・森上）",
+      "calendar_id": "im-26",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/26.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=3"
+    },
+    {
+      "id": "38202-a163",
+      "name": "波方町（樋口・郷）",
+      "display_name": "波方町（樋口・郷）",
+      "calendar_id": "im-27",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/27.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=3"
+    },
+    {
+      "id": "38202-a164",
+      "name": "波方町（波方・大浦）",
+      "display_name": "波方町（波方・大浦）",
+      "calendar_id": "im-28",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/28.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=3"
+    },
+    {
+      "id": "38202-a165",
+      "name": "新谷",
+      "display_name": "新谷",
+      "calendar_id": "im-18",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/18.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=3"
+    },
+    {
+      "id": "38202-a166",
+      "name": "登畑",
+      "display_name": "登畑",
+      "calendar_id": "im-21",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/21.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=3"
+    },
+    {
+      "id": "38202-a167",
+      "name": "野間",
+      "display_name": "野間",
+      "calendar_id": "im-15",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/15.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=3"
+    },
+    {
+      "id": "38202-a168",
+      "name": "拝志",
+      "display_name": "拝志",
+      "calendar_id": "im-19",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/19.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=3"
+    },
+    {
+      "id": "38202-a169",
+      "name": "伯方町（尾浦・有津・叶浦・伊方・小田小阪）",
+      "display_name": "伯方町（尾浦・有津・叶浦・伊方・小田小阪）",
+      "calendar_id": "im-37",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/37.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=3"
+    },
+    {
+      "id": "38202-a170",
+      "name": "伯方町（木浦・北浦（尾浦・小田小阪を除く））",
+      "display_name": "伯方町（木浦・北浦（尾浦・小田小阪を除く））",
+      "calendar_id": "im-38",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/38.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=3"
+    },
+    {
+      "id": "38202-a171",
+      "name": "波止浜",
+      "display_name": "波止浜",
+      "calendar_id": "im-12",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/12.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=3"
+    },
+    {
+      "id": "38202-a172",
+      "name": "八町西",
+      "display_name": "八町西",
+      "calendar_id": "im-17",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/17.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=3"
+    },
+    {
+      "id": "38202-a173",
+      "name": "八町東",
+      "display_name": "八町東",
+      "calendar_id": "im-17",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/17.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=3"
+    },
+    {
+      "id": "38202-a174",
+      "name": "東鳥生町",
+      "display_name": "東鳥生町",
+      "calendar_id": "im-10",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/10.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=4"
+    },
+    {
+      "id": "38202-a175",
+      "name": "東村",
+      "display_name": "東村",
+      "calendar_id": "im-19",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/19.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=4"
+    },
+    {
+      "id": "38202-a176",
+      "name": "東村南",
+      "display_name": "東村南",
+      "calendar_id": "im-20",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/20.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=4"
+    },
+    {
+      "id": "38202-a177",
+      "name": "東門町（1丁目／番地1～3）",
+      "display_name": "東門町（1丁目／番地1～3）",
+      "calendar_id": "im-03",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/03.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=4"
+    },
+    {
+      "id": "38202-a178",
+      "name": "東門町（1丁目／番地4～8）",
+      "display_name": "東門町（1丁目／番地4～8）",
+      "calendar_id": "im-11",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/11.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=4"
+    },
+    {
+      "id": "38202-a179",
+      "name": "東門町（2～6丁目）",
+      "display_name": "東門町（2～6丁目）",
+      "calendar_id": "im-11",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/11.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=4"
+    },
+    {
+      "id": "38202-a180",
+      "name": "古国分",
+      "display_name": "古国分",
+      "calendar_id": "im-20",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/20.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=4"
+    },
+    {
+      "id": "38202-a181",
+      "name": "別宮町（1～6丁目）",
+      "display_name": "別宮町（1～6丁目）",
+      "calendar_id": "im-01",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/01.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=4"
+    },
+    {
+      "id": "38202-a182",
+      "name": "別宮町（7丁目／番地2／枝番64付近（石井1自治会））",
+      "display_name": "別宮町（7丁目／番地2／枝番64付近（石井1自治会））",
+      "calendar_id": "im-13",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/13.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=4"
+    },
+    {
+      "id": "38202-a183",
+      "name": "別宮町（7丁目／番地上記以外）",
+      "display_name": "別宮町（7丁目／番地上記以外）",
+      "calendar_id": "im-06",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/06.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=4"
+    },
+    {
+      "id": "38202-a184",
+      "name": "別宮町（8・9丁目）",
+      "display_name": "別宮町（8・9丁目）",
+      "calendar_id": "im-06",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/06.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=4"
+    },
+    {
+      "id": "38202-a185",
+      "name": "別名",
+      "display_name": "別名",
+      "calendar_id": "im-14",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/14.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=4"
+    },
+    {
+      "id": "38202-a186",
+      "name": "本町（1～4丁目）",
+      "display_name": "本町（1～4丁目）",
+      "calendar_id": "im-02",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/02.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=4"
+    },
+    {
+      "id": "38202-a187",
+      "name": "本町（5～7丁目）",
+      "display_name": "本町（5～7丁目）",
+      "calendar_id": "im-01",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/01.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=4"
+    },
+    {
+      "id": "38202-a188",
+      "name": "孫兵衛作",
+      "display_name": "孫兵衛作",
+      "calendar_id": "im-21",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/21.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=4"
+    },
+    {
+      "id": "38202-a189",
+      "name": "町谷",
+      "display_name": "町谷",
+      "calendar_id": "im-19",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/19.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=4"
+    },
+    {
+      "id": "38202-a190",
+      "name": "松木",
+      "display_name": "松木",
+      "calendar_id": "im-19",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/19.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=4"
+    },
+    {
+      "id": "38202-a191",
+      "name": "松本町（1丁目／番地1）",
+      "display_name": "松本町（1丁目／番地1）",
+      "calendar_id": "im-02",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/02.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=4"
+    },
+    {
+      "id": "38202-a192",
+      "name": "松本町（1丁目／番地2～8）",
+      "display_name": "松本町（1丁目／番地2～8）",
+      "calendar_id": "im-04",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/04.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=4"
+    },
+    {
+      "id": "38202-a193",
+      "name": "松本町（2丁目／番地1／枝番1・15～19・24）",
+      "display_name": "松本町（2丁目／番地1／枝番1・15～19・24）",
+      "calendar_id": "im-03",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/03.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=4"
+    },
+    {
+      "id": "38202-a194",
+      "name": "松本町（2丁目／番地1／枝番上記以外）",
+      "display_name": "松本町（2丁目／番地1／枝番上記以外）",
+      "calendar_id": "im-05",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/05.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=4"
+    },
+    {
+      "id": "38202-a195",
+      "name": "松本町（2丁目／番地2～6）",
+      "display_name": "松本町（2丁目／番地2～6）",
+      "calendar_id": "im-05",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/05.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=4"
+    },
+    {
+      "id": "38202-a196",
+      "name": "松本町（3～5丁目）",
+      "display_name": "松本町（3～5丁目）",
+      "calendar_id": "im-05",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/05.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=4"
+    },
+    {
+      "id": "38202-a197",
+      "name": "美須賀町（1丁目／番地1）",
+      "display_name": "美須賀町（1丁目／番地1）",
+      "calendar_id": "im-03",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/03.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=4"
+    },
+    {
+      "id": "38202-a198",
+      "name": "美須賀町（1丁目／番地2・3）",
+      "display_name": "美須賀町（1丁目／番地2・3）",
+      "calendar_id": "im-11",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/11.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=4"
+    },
+    {
+      "id": "38202-a199",
+      "name": "美須賀町（2～4丁目）",
+      "display_name": "美須賀町（2～4丁目）",
+      "calendar_id": "im-11",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/11.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=4"
+    },
+    {
+      "id": "38202-a200",
+      "name": "湊町",
+      "display_name": "湊町",
+      "calendar_id": "im-13",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/13.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=4"
+    },
+    {
+      "id": "38202-a201",
+      "name": "南高下町",
+      "display_name": "南高下町",
+      "calendar_id": "im-16",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/16.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=4"
+    },
+    {
+      "id": "38202-a202",
+      "name": "南大門町",
+      "display_name": "南大門町",
+      "calendar_id": "im-01",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/01.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=4"
+    },
+    {
+      "id": "38202-a203",
+      "name": "南鳥生町",
+      "display_name": "南鳥生町",
+      "calendar_id": "im-16",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/16.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=4"
+    },
+    {
+      "id": "38202-a204",
+      "name": "南日吉町",
+      "display_name": "南日吉町",
+      "calendar_id": "im-09",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/09.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=4"
+    },
+    {
+      "id": "38202-a205",
+      "name": "南宝来町",
+      "display_name": "南宝来町",
+      "calendar_id": "im-05",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/05.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=4"
+    },
+    {
+      "id": "38202-a206",
+      "name": "美保町",
+      "display_name": "美保町",
+      "calendar_id": "im-01",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/01.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=4"
+    },
+    {
+      "id": "38202-a207",
+      "name": "宮ヶ崎（甲510～721-18・770）",
+      "display_name": "宮ヶ崎（甲510～721-18・770）",
+      "calendar_id": "im-19",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/19.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=4"
+    },
+    {
+      "id": "38202-a208",
+      "name": "宮ヶ崎（上記以外）",
+      "display_name": "宮ヶ崎（上記以外）",
+      "calendar_id": "im-21",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/21.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=4"
+    },
+    {
+      "id": "38202-a209",
+      "name": "宮窪町（全域（鵜島除く））",
+      "display_name": "宮窪町（全域（鵜島除く））",
+      "calendar_id": "im-36",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/36.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=4"
+    },
+    {
+      "id": "38202-a210",
+      "name": "宮窪町（鵜島地区）",
+      "display_name": "離島：宮窪町・鵜島",
+      "calendar_id": "im-36_tokku",
+      "rule_profile_id": "ushima",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/36_tokku.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=4"
+    },
+    {
+      "id": "38202-a211",
+      "name": "宮下町（1丁目／番地1～3）",
+      "display_name": "宮下町（1丁目／番地1～3）",
+      "calendar_id": "im-07",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/07.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=4"
+    },
+    {
+      "id": "38202-a212",
+      "name": "宮下町（1丁目／番地4／枝番1～17の一部 ・ 40～45）",
+      "display_name": "宮下町（1丁目／番地4／枝番1～17の一部 ・ 40～45）",
+      "calendar_id": "im-07",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/07.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=4"
+    },
+    {
+      "id": "38202-a213",
+      "name": "宮下町（1丁目／番地4／枝番17の一部～39）",
+      "display_name": "宮下町（1丁目／番地4／枝番17の一部～39）",
+      "calendar_id": "im-06",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/06.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=4"
+    },
+    {
+      "id": "38202-a214",
+      "name": "宮下町（1丁目／番地5～7）",
+      "display_name": "宮下町（1丁目／番地5～7）",
+      "calendar_id": "im-06",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/06.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=4"
+    },
+    {
+      "id": "38202-a215",
+      "name": "宮下町（1丁目／番地8／枝番1～16 ・ 43～58）",
+      "display_name": "宮下町（1丁目／番地8／枝番1～16 ・ 43～58）",
+      "calendar_id": "im-07",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/07.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=4"
+    },
+    {
+      "id": "38202-a216",
+      "name": "宮下町（1丁目／番地8／枝番17～42）",
+      "display_name": "宮下町（1丁目／番地8／枝番17～42）",
+      "calendar_id": "im-06",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/06.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=4"
+    },
+    {
+      "id": "38202-a217",
+      "name": "宮下町（2丁目／番地1～3）",
+      "display_name": "宮下町（2丁目／番地1～3）",
+      "calendar_id": "im-07",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/07.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=4"
+    },
+    {
+      "id": "38202-a218",
+      "name": "宮下町（2丁目／番地4／枝番1～10 ・ 37～41）",
+      "display_name": "宮下町（2丁目／番地4／枝番1～10 ・ 37～41）",
+      "calendar_id": "im-07",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/07.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=4"
+    },
+    {
+      "id": "38202-a219",
+      "name": "宮下町（2丁目／番地4／枝番11～35）",
+      "display_name": "宮下町（2丁目／番地4／枝番11～35）",
+      "calendar_id": "im-06",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/06.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=4"
+    },
+    {
+      "id": "38202-a220",
+      "name": "宮下町（3丁目／枝番甲1469～1513）",
+      "display_name": "宮下町（3丁目／枝番甲1469～1513）",
+      "calendar_id": "im-07",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/07.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=4"
+    },
+    {
+      "id": "38202-a221",
+      "name": "宮下町（3丁目／枝番乙209～224 ・ 乙640）",
+      "display_name": "宮下町（3丁目／枝番乙209～224 ・ 乙640）",
+      "calendar_id": "im-07",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/07.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=4"
+    },
+    {
+      "id": "38202-a222",
+      "name": "宮下町（3丁目／枝番上記以外）",
+      "display_name": "宮下町（3丁目／枝番上記以外）",
+      "calendar_id": "im-06",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/06.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=4"
+    },
+    {
+      "id": "38202-a223",
+      "name": "室屋町（1丁目）",
+      "display_name": "室屋町（1丁目）",
+      "calendar_id": "im-02",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/02.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=4"
+    },
+    {
+      "id": "38202-a224",
+      "name": "室屋町（2～7丁目）",
+      "display_name": "室屋町（2～7丁目）",
+      "calendar_id": "im-01",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/01.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=4"
+    },
+    {
+      "id": "38202-a225",
+      "name": "矢田",
+      "display_name": "矢田",
+      "calendar_id": "im-15",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/15.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=4"
+    },
+    {
+      "id": "38202-a226",
+      "name": "山方町",
+      "display_name": "山方町",
+      "calendar_id": "im-07",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/07.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=4"
+    },
+    {
+      "id": "38202-a227",
+      "name": "山路",
+      "display_name": "山路",
+      "calendar_id": "im-15",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/15.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=4"
+    },
+    {
+      "id": "38202-a228",
+      "name": "山路町",
+      "display_name": "山路町",
+      "calendar_id": "im-15",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/15.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=4"
+    },
+    {
+      "id": "38202-a229",
+      "name": "湯ノ浦",
+      "display_name": "湯ノ浦",
+      "calendar_id": "im-21",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/21.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=4"
+    },
+    {
+      "id": "38202-a230",
+      "name": "横田町",
+      "display_name": "横田町",
+      "calendar_id": "im-16",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/16.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=4"
+    },
+    {
+      "id": "38202-a231",
+      "name": "吉海町（全域（津島除く））",
+      "display_name": "吉海町（全域（津島除く））",
+      "calendar_id": "im-35",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/35.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=4"
+    },
+    {
+      "id": "38202-a232",
+      "name": "吉海町（津島）",
+      "display_name": "吉海町（津島）",
+      "calendar_id": "im-35",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/35.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=4"
+    },
+    {
+      "id": "38202-a233",
+      "name": "四村",
+      "display_name": "四村",
+      "calendar_id": "im-18",
+      "rule_profile_id": "mainland",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/18.pdf",
+      "needs_local_confirmation": true,
+      "address_index_source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7#page=4"
+    }
+  ],
+  "calendars": [
+    {
+      "id": "im-01",
+      "rule_profile_id": "mainland"
+    },
+    {
+      "id": "im-02",
+      "rule_profile_id": "mainland"
+    },
+    {
+      "id": "im-03",
+      "rule_profile_id": "mainland"
+    },
+    {
+      "id": "im-04",
+      "rule_profile_id": "mainland"
+    },
+    {
+      "id": "im-05",
+      "rule_profile_id": "mainland"
+    },
+    {
+      "id": "im-06",
+      "rule_profile_id": "mainland"
+    },
+    {
+      "id": "im-07",
+      "rule_profile_id": "mainland"
+    },
+    {
+      "id": "im-08",
+      "rule_profile_id": "mainland"
+    },
+    {
+      "id": "im-09",
+      "rule_profile_id": "mainland"
+    },
+    {
+      "id": "im-10",
+      "rule_profile_id": "mainland"
+    },
+    {
+      "id": "im-11",
+      "rule_profile_id": "mainland"
+    },
+    {
+      "id": "im-12",
+      "rule_profile_id": "mainland"
+    },
+    {
+      "id": "im-12_tokku",
+      "rule_profile_id": "hatohama_islands"
+    },
+    {
+      "id": "im-13",
+      "rule_profile_id": "mainland"
+    },
+    {
+      "id": "im-14",
+      "rule_profile_id": "mainland"
+    },
+    {
+      "id": "im-15",
+      "rule_profile_id": "mainland"
+    },
+    {
+      "id": "im-16",
+      "rule_profile_id": "mainland"
+    },
+    {
+      "id": "im-17",
+      "rule_profile_id": "mainland"
+    },
+    {
+      "id": "im-18",
+      "rule_profile_id": "mainland"
+    },
+    {
+      "id": "im-19",
+      "rule_profile_id": "mainland"
+    },
+    {
+      "id": "im-20",
+      "rule_profile_id": "mainland"
+    },
+    {
+      "id": "im-21",
+      "rule_profile_id": "mainland"
+    },
+    {
+      "id": "im-22",
+      "rule_profile_id": "mainland"
+    },
+    {
+      "id": "im-23",
+      "rule_profile_id": "mainland"
+    },
+    {
+      "id": "im-24",
+      "rule_profile_id": "mainland"
+    },
+    {
+      "id": "im-25",
+      "rule_profile_id": "mainland"
+    },
+    {
+      "id": "im-26",
+      "rule_profile_id": "mainland"
+    },
+    {
+      "id": "im-27",
+      "rule_profile_id": "mainland"
+    },
+    {
+      "id": "im-28",
+      "rule_profile_id": "mainland"
+    },
+    {
+      "id": "im-29",
+      "rule_profile_id": "mainland"
+    },
+    {
+      "id": "im-30",
+      "rule_profile_id": "mainland"
+    },
+    {
+      "id": "im-31",
+      "rule_profile_id": "mainland"
+    },
+    {
+      "id": "im-32",
+      "rule_profile_id": "mainland"
+    },
+    {
+      "id": "im-33",
+      "rule_profile_id": "mainland"
+    },
+    {
+      "id": "im-34",
+      "rule_profile_id": "mainland"
+    },
+    {
+      "id": "im-35",
+      "rule_profile_id": "mainland"
+    },
+    {
+      "id": "im-36",
+      "rule_profile_id": "mainland"
+    },
+    {
+      "id": "im-36_tokku",
+      "rule_profile_id": "ushima"
+    },
+    {
+      "id": "im-37",
+      "rule_profile_id": "mainland"
+    },
+    {
+      "id": "im-38",
+      "rule_profile_id": "mainland"
+    },
+    {
+      "id": "im-39",
+      "rule_profile_id": "mainland"
+    },
+    {
+      "id": "im-40",
+      "rule_profile_id": "mainland"
+    },
+    {
+      "id": "im-41",
+      "rule_profile_id": "sekizen"
+    },
+    {
+      "id": "im-42",
+      "rule_profile_id": "sekizen"
+    }
+  ]
+}

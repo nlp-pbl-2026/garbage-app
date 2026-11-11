@@ -259,7 +259,7 @@ terraform -chdir=infra/terraform state list
 
 ### 東温市追加時のローカル準備
 
-[東温市データガイド](../docs/toon-data.md)に従いCSV・専用NPZ・manifest・32地区分のカレンダーを配置してください。重信・川内は同じ東温市索引を共有し、体温計の収集区分を切り替えます。搬出期限不明の区分で当日の期限内とは回答せず、日付未確認の計測器に定期予定を付けません。LambdaへOCR・PDF・生成スクリプトを含める必要はありません。`scripts/package_backend_data.py` のローカル検証で登録18自治体の実行時ファイルを配置できます。公開APIへの反映、実機検証、利用条件の確認は別途必要です。AWSやTerraformの設定・リソースは今回変更していません。
+[東温市データガイド](../docs/toon-data.md)に従いCSV・専用NPZ・manifest・32地区分のカレンダーを配置してください。重信・川内は同じ東温市索引を共有し、体温計の収集区分を切り替えます。搬出期限不明の区分で当日の期限内とは回答せず、日付未確認の計測器に定期予定を付けません。LambdaへOCR・PDF・生成スクリプトを含める必要はありません。`scripts/package_backend_data.py` のローカル検証で登録19自治体の実行時ファイルを配置できます。公開APIへの反映、実機検証、利用条件の確認は別途必要です。AWSやTerraformの設定・リソースは今回変更していません。
 
 ### 久万高原町データの同梱
 
@@ -270,3 +270,9 @@ terraform -chdir=infra/terraform state list
 ### 西条市データの同梱
 
 [西条市データガイド](../docs/saijo-data.md)に従って、`saijo/registry.json`、`knowledge/items.csv`、`knowledge/item_embeddings.npz`、`knowledge/index_manifest.json`、`generated/calendar-2026.json`を配置します。追加AWSリソース・専用APIは不要です。随時収集の未確認区分は予定を作らず、他の確認済み区分は利用できます。ローカルの西条市単体ステージングと移設後のhealth・品目一覧・索引読込みを検証し、全カタログのステージングは他担当自治体の不足データにより停止することを確認しています。実AWSへのデプロイ・Linux/ARMでの実行・スマートフォンへの配布は行っていません。Flutterも同じ原本から対応版のデータを生成してください。
+
+### 今治市データの同梱
+
+[今治市データガイド](../docs/imabari-data.md)に従い、`imabari/registry.json`、`generated/calendar-2026.json`、`knowledge/mainland/`と`knowledge/sekizen/`それぞれの`items.csv`・`item_embeddings.npz`・`index_manifest.json`を配置します。`package_backend_data.py` は入れ子の2索引も同梱し、通常地域と関前のハッシュ・モデル・地区対応を検証します。PDF・OCR・API生ログは含めません。追加AWSリソース・API変更は不要です。
+
+`backend/.venv/bin/python scripts/verify_imabari_package.py` は今治市単体の9実行時ファイルを一時フォルダへステージし、移設後のLambdaエントリーポイントのhealth・4プロフィールの品目一覧・2索引の読込みを無料で確認します。全自治体を含むパッケージは他メンバー担当の不足ファイルを配置してから検証してください。Linux/ARM・実AWSの動作や、スマートフォン配布は別確認です。Flutterも同じ版の台帳・カテゴリ・カレンダーが必要で、今回AWSへの変更は行っていません。

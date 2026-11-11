@@ -1,0 +1,533 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38202",
+  "retrieved_at": "2026-11-12",
+  "license_status": "unconfirmed",
+  "sources": [
+    {
+      "file": "calendar-2026.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/",
+      "sha256": "27ab90d1bcdd860f95b68fc05f038277be3cb9a35e851a51d500a81baa4bc26d",
+      "original_download_sha256": "0346b7e53f752b1f0b777cb20d24d550c37bb26244a85f3444fd62f7040fe19c",
+      "canonicalization": "main_element_utf8"
+    },
+    {
+      "file": "calendar-index.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/calendar/",
+      "sha256": "d34bb9629d61d30abaeb11d634bd9a73d1042b63b1f2158090c34a9fb6b26761",
+      "original_download_sha256": "aef0696c9e4aa2a81dffe7a75711d09788d9ff3d810a053a29bf97af0d441ebd",
+      "canonicalization": "main_element_utf8"
+    },
+    {
+      "file": "materials.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/siryo/",
+      "sha256": "b6ec5b4e0ba1ebef65be17dcf3f250b88fe7c43e43a458d73594fa8aa7d6e9f6",
+      "original_download_sha256": "1655adbbf85a0745d959a7548a99e8c775549e831dd835be833970bb20ba46d5",
+      "canonicalization": "main_element_utf8"
+    },
+    {
+      "file": "mainland.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/kateigomi/kateigomi_imabari.html",
+      "sha256": "b4ed8f269fa9be2e3f6a6780b11137e548429d2652aa9322c9436131ddc29339",
+      "original_download_sha256": "4c400bc09a742dc9b8f7bfd868fa159634be9ef964b982755cd12da2d2dd0a17",
+      "canonicalization": "main_element_utf8"
+    },
+    {
+      "file": "sekizen.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/kateigomi/kateigomi_sekizen.html",
+      "sha256": "3ac6922bd150a43694e0416601d3891b067117d289b6fa95a84698d8d7fe1836",
+      "original_download_sha256": "d186e2451bccc8b873d82d097d4e98fa52c88dae60de17a30b27f7c95c2965c3",
+      "canonicalization": "main_element_utf8"
+    },
+    {
+      "file": "calendar-01.pdf",
+      "page": "calendar-2026.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/01.pdf",
+      "label": "別宮①・今治①地区（PDF 214KB）",
+      "sha256": "614f5be5fcd99a1ccfc69435eca7a8d61f97ad038ebe3dc896e069927ce5a31e"
+    },
+    {
+      "file": "calendar-02.pdf",
+      "page": "calendar-2026.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/02.pdf",
+      "label": "美須賀①地区（PDF 218KB）",
+      "sha256": "d44c314f5ad5893225dc378b6930f8db16154ca97dc52b3afdd5168ec0be120d"
+    },
+    {
+      "file": "calendar-03.pdf",
+      "page": "calendar-2026.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/03.pdf",
+      "label": "美須賀②地区（PDF 218KB）",
+      "sha256": "bd38703ad9608ea4ec9bdab6b79306babd2162d9bb7e527028cfaacff85b7db0"
+    },
+    {
+      "file": "calendar-04.pdf",
+      "page": "calendar-2026.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/04.pdf",
+      "label": "日吉①地区（PDF 213KB）",
+      "sha256": "f3271ff4666cab360af20df4c9e59fa8c425e19a704067ce278a4f9fd38634b6"
+    },
+    {
+      "file": "calendar-05.pdf",
+      "page": "calendar-2026.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/05.pdf",
+      "label": "日吉②地区（PDF 213KB）",
+      "sha256": "0842cfef97d7d765d2ab1d0c091909948b0c09fd9e553bdb4d1989dd4faffa21"
+    },
+    {
+      "file": "calendar-06.pdf",
+      "page": "calendar-2026.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/06.pdf",
+      "label": "別宮②地区（PDF 215KB）",
+      "sha256": "3e5c1f0175e063b6145dcd7be64404fda0bc11a443ec9860aeae52f6afe8eb1b"
+    },
+    {
+      "file": "calendar-07.pdf",
+      "page": "calendar-2026.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/07.pdf",
+      "label": "常盤①地区（PDF 218KB）",
+      "sha256": "4baf2d69a70b6f8b2e722eeea41b89c58014fcfae68f0831fde33a54ff2135f2"
+    },
+    {
+      "file": "calendar-08.pdf",
+      "page": "calendar-2026.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/08.pdf",
+      "label": "常盤②地区（PDF 218KB）",
+      "sha256": "c0d4f5c601ce4ef6b28f49e18fbef31497f3618055cddafe99f8a7e819d396ae"
+    },
+    {
+      "file": "calendar-09.pdf",
+      "page": "calendar-2026.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/09.pdf",
+      "label": "常盤③地区（PDF 218KB）",
+      "sha256": "35b64ed5bce198c08a14f8ebba1a13ceeb539a1fa99ae7393727cccc3a9692a7"
+    },
+    {
+      "file": "calendar-10.pdf",
+      "page": "calendar-2026.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/10.pdf",
+      "label": "城東①地区（PDF 213KB）",
+      "sha256": "c08327044b42c5f01b72ae5af0ed6c1676ecf204865ea6d4183c5d50c5a8565b"
+    },
+    {
+      "file": "calendar-11.pdf",
+      "page": "calendar-2026.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/11.pdf",
+      "label": "城東②地区（PDF 213KB）",
+      "sha256": "99fc9515cf18c2be5fecdb77fdf9ce861ec0a8f3bb932b5096a19ec0ec581a65"
+    },
+    {
+      "file": "calendar-12.pdf",
+      "page": "calendar-2026.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/12.pdf",
+      "label": "波止浜地区（PDF 213KB）",
+      "sha256": "3b418e7682ff1d5299d753dcc19d4fc7f60bb962e59cad24fcc6da8c9d645320"
+    },
+    {
+      "file": "calendar-12_tokku.pdf",
+      "page": "calendar-2026.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/12_tokku.pdf",
+      "label": "来島・馬島・小島居住者専用 波止浜（特）地区（PDF 249KB）",
+      "sha256": "5a88138b9fb9d8f48cfc0c89a647c0a8320c409b0e7e137a25254bbd26560a74"
+    },
+    {
+      "file": "calendar-13.pdf",
+      "page": "calendar-2026.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/13.pdf",
+      "label": "近見地区（PDF 213KB）",
+      "sha256": "ecb28ccb7c9e32aa91b0fe65e95c92c46dabb18b9a353ca6b45916bd7089b0d1"
+    },
+    {
+      "file": "calendar-14.pdf",
+      "page": "calendar-2026.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/14.pdf",
+      "label": "日高地区（PDF 213KB）",
+      "sha256": "2b934b30c96205728fc5abb731bbfa0706f3d7f92adc585f84d99a5292e289f0"
+    },
+    {
+      "file": "calendar-15.pdf",
+      "page": "calendar-2026.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/15.pdf",
+      "label": "乃万地区（PDF 214KB）",
+      "sha256": "100e945369ad271efbae26833538be729eddb0f870f8724322b1d9d1004e99c3"
+    },
+    {
+      "file": "calendar-16.pdf",
+      "page": "calendar-2026.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/16.pdf",
+      "label": "鳥生地区（PDF 213KB）",
+      "sha256": "41f8cf0b83fbbaae99eb15367d2739891add2f70d7d1f4f0494cac926fcc1bdb"
+    },
+    {
+      "file": "calendar-17.pdf",
+      "page": "calendar-2026.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/17.pdf",
+      "label": "立花地区（PDF 216KB）",
+      "sha256": "365db8b347d30d7ee15092dc2698d94c08cff2954694c4ec01a4f158a32a4f23"
+    },
+    {
+      "file": "calendar-18.pdf",
+      "page": "calendar-2026.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/18.pdf",
+      "label": "清水地区（PDF 216KB）",
+      "sha256": "804ab47fe4667819b5ccdfdd1defe9081c3e9973d31e29f5487b1843c4018086"
+    },
+    {
+      "file": "calendar-19.pdf",
+      "page": "calendar-2026.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/19.pdf",
+      "label": "富田地区（PDF 213KB）",
+      "sha256": "e4422d55cc3a459f49fa4653fcd55ade7962df53fabb5033a5b6fbb1788c748b"
+    },
+    {
+      "file": "calendar-20.pdf",
+      "page": "calendar-2026.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/20.pdf",
+      "label": "国分地区（PDF 218KB）",
+      "sha256": "75bc494d67cf1b4bc0a984ba683306e50693602d0f7c659298fed05b82e01e60"
+    },
+    {
+      "file": "calendar-21.pdf",
+      "page": "calendar-2026.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/21.pdf",
+      "label": "桜井地区（PDF 218KB）",
+      "sha256": "5210142172477dccf6e716447bf9cab4835eae186948f9e53a6707e2f07eba7c"
+    },
+    {
+      "file": "calendar-22.pdf",
+      "page": "calendar-2026.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/22.pdf",
+      "label": "朝倉①地区（PDF 214KB）",
+      "sha256": "dec24142efb14d6ff11a8e17b67730020c2968691604306e8b400ca95dedb979"
+    },
+    {
+      "file": "calendar-23.pdf",
+      "page": "calendar-2026.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/23.pdf",
+      "label": "朝倉②地区（PDF 214KB）",
+      "sha256": "7a64939303109b7a1c8a639e4056d04098df41db9b3d2a7cd6f40b3cc2a980ca"
+    },
+    {
+      "file": "calendar-24.pdf",
+      "page": "calendar-2026.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/24.pdf",
+      "label": "玉川①地区（PDF 214KB）",
+      "sha256": "541808ffa3f6f0226eed04869e00710a6f6d5fdc3b38ac731bf85c71ad2eff5b"
+    },
+    {
+      "file": "calendar-25.pdf",
+      "page": "calendar-2026.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/25.pdf",
+      "label": "玉川②地区（PDF 214KB）",
+      "sha256": "33482ca29308622b7b221b7160e64098086505097d7e9923347a17935b69592f"
+    },
+    {
+      "file": "calendar-26.pdf",
+      "page": "calendar-2026.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/26.pdf",
+      "label": "波方①地区（PDF 218KB）",
+      "sha256": "05702a7ddc0d773222fdabfef95b725427660c5adf4aee64294b865f92141ea1"
+    },
+    {
+      "file": "calendar-27.pdf",
+      "page": "calendar-2026.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/27.pdf",
+      "label": "波方②地区（PDF 218KB）",
+      "sha256": "37d7a61116f2b99df932852d40b4bbb5efe1157d1297992b0908bf6b2ddbaf4f"
+    },
+    {
+      "file": "calendar-28.pdf",
+      "page": "calendar-2026.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/28.pdf",
+      "label": "波方③地区（PDF 218KB）",
+      "sha256": "5715e76f92849a70d8c602aa00c5961d93ca4e4f9a31a4ae8c8b66fc32326264"
+    },
+    {
+      "file": "calendar-29.pdf",
+      "page": "calendar-2026.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/29.pdf",
+      "label": "大西①地区（PDF 214KB）",
+      "sha256": "e2183e94ca48645885c8c47be6b4381c762109330ab940fc3cc9c7b40a23b2bd"
+    },
+    {
+      "file": "calendar-30.pdf",
+      "page": "calendar-2026.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/30.pdf",
+      "label": "大西②地区（PDF 214KB）",
+      "sha256": "3339e48833e4e776a4366fc23405ed8080b66f0fea1c88a51af0afcb045d42c1"
+    },
+    {
+      "file": "calendar-31.pdf",
+      "page": "calendar-2026.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/31.pdf",
+      "label": "大西③地区（PDF 214KB）",
+      "sha256": "8515226750e145841fb4986f9f8987e6451f7551cab61127d5745af8d75b90f4"
+    },
+    {
+      "file": "calendar-32.pdf",
+      "page": "calendar-2026.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/32.pdf",
+      "label": "大西④地区（PDF 213KB）",
+      "sha256": "99ab193fdfaed2021725633f22bb543325c8ac4105eb82f65096d4b61fd3fd8a"
+    },
+    {
+      "file": "calendar-33.pdf",
+      "page": "calendar-2026.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/33.pdf",
+      "label": "菊間①地区（PDF 216KB）",
+      "sha256": "af71d9e822f4a14ebad9b8492b3df3b2d4fc234715a43d0d33801d6211a57129"
+    },
+    {
+      "file": "calendar-34.pdf",
+      "page": "calendar-2026.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/34.pdf",
+      "label": "菊間②地区（PDF 216KB）",
+      "sha256": "ea32a53af5ce88357696fbb1519c631befeda5908887c0a547d3557b0f416b59"
+    },
+    {
+      "file": "calendar-35.pdf",
+      "page": "calendar-2026.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/35.pdf",
+      "label": "吉海地区（PDF 219KB）",
+      "sha256": "1eb9cfbc2d9dc2311c0cab9b4b52ac377d7bccd93a575fa5706f420c4e20da1e"
+    },
+    {
+      "file": "calendar-36.pdf",
+      "page": "calendar-2026.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/36.pdf",
+      "label": "宮窪地区（PDF 219KB）",
+      "sha256": "a541d35c326e459c65e9a502e2d92c6ca72f0c877b97d6d138ff735c6991b472"
+    },
+    {
+      "file": "calendar-36_tokku.pdf",
+      "page": "calendar-2026.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/36_tokku.pdf",
+      "label": "鵜島居住者専用 宮窪（特）地区（PDF 182KB）",
+      "sha256": "2ea59c588d2dff55788b78604e216c548714bc7fa0afa17c3a2db0a85d3feeb0"
+    },
+    {
+      "file": "calendar-37.pdf",
+      "page": "calendar-2026.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/37.pdf",
+      "label": "伯方①地区（PDF 216KB）",
+      "sha256": "b8d772042e21a46aab305ab0c21fa7911b7bea94dece20905e3b50334774f898"
+    },
+    {
+      "file": "calendar-38.pdf",
+      "page": "calendar-2026.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/38.pdf",
+      "label": "伯方②地区（PDF 214KB）",
+      "sha256": "2572bf12a2f5cbc4a759858cbaa9c14383740ce857df3e44ba67047710390e16"
+    },
+    {
+      "file": "calendar-39.pdf",
+      "page": "calendar-2026.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/39.pdf",
+      "label": "上浦地区（PDF 213KB）",
+      "sha256": "56baac2823b96a2d4b0d3d1688ec65c5a19fe98960b3d8594538adfd913a8813"
+    },
+    {
+      "file": "calendar-40.pdf",
+      "page": "calendar-2026.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/40.pdf",
+      "label": "大三島地区（PDF 214KB）",
+      "sha256": "c7cfb1fc2177f079d2ffb582d1645d1d553f98c3f30af103890b981ef052b507"
+    },
+    {
+      "file": "calendar-41.pdf",
+      "page": "calendar-2026.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/41.pdf?1",
+      "label": "関前岡村地区（PDF 783KB）",
+      "sha256": "9d5ab6a6daaa9a0a35b831ec10fc74183ab7858daea42618a1f9c2b648da02b1"
+    },
+    {
+      "file": "calendar-42.pdf",
+      "page": "calendar-2026.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/42.pdf",
+      "label": "関前大下・小大下地区（PDF 370KB）",
+      "sha256": "40d55baf84d8387d2b981efb7b0fd5ede75e14901b4cfebfe3ea261807c82f08"
+    },
+    {
+      "file": "sakuin.pdf",
+      "page": "calendar-index.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/calendar/sakuin.pdf?R7",
+      "label": "50音別索引（PDF 355KB）",
+      "sha256": "d2f7f79866e89b4a0153e0be10442441467ac0e5914126d39f7eafdeffaff1a2"
+    },
+    {
+      "file": "dasikata.pdf",
+      "page": "calendar-index.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata.pdf",
+      "label": "ごみの分別と出し方（PDF 564KB）",
+      "sha256": "6c4a2c5ef9426b28aa74afae99eab09f151f743fcad130eeaf2d8e222934c7f2"
+    },
+    {
+      "file": "dasikata_sekizen01.pdf",
+      "page": "calendar-index.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata_sekizen01.pdf",
+      "label": "ごみの分別と出し方【関前岡村地区】（PDF 710KB）",
+      "sha256": "f68486a230819373c7b9b243d4693c7b795893151de3200b3b0f82538a57b981"
+    },
+    {
+      "file": "dasikata_sekizen02.pdf",
+      "page": "calendar-index.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata_sekizen02.pdf",
+      "label": "ごみの分別と出し方【関前大下・小大下地区】（PDF 709KB）",
+      "sha256": "fb8ed96ff0ac79a2230e9d17c5ba7ff5f393b0d99172e5e50b536a8831924b27"
+    },
+    {
+      "file": "gomi_guide.pdf",
+      "page": "materials.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/siryo/gomi_guide.pdf?R806",
+      "label": "家庭ごみの分別ガイドブック【令和8年3月更新版】（PDF 1.5MB）",
+      "sha256": "97c0e453b0315505706b1eeae36bce922ebf2e959facb9a18c9318ad49a99295"
+    },
+    {
+      "file": "gomi_bunbetu.pdf",
+      "page": "materials.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/siryo/gomi_bunbetu.pdf?R809",
+      "label": "家庭ごみの分別早見表【令和8年3月更新版】（PDF 1.6MB）",
+      "sha256": "f837e760231112babbdafbf7ad37c8adcc63fa3c9a14cc9b5d4e51bb1bb6380e"
+    },
+    {
+      "file": "gomi_hayamihyo_sekizen_2019.pdf",
+      "page": "materials.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/siryo/gomi_hayamihyo_sekizen_2019.pdf",
+      "label": "家庭ごみの分別早見表〔関前地区ver〕（PDF 515KB）",
+      "sha256": "ba7d4ae36be2e33bc4094b138a3c1d4461f84c300e9c997ac4b3f693758b4734"
+    },
+    {
+      "file": "gomi_guide_01_moyaseru.pdf",
+      "page": "mainland.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/siryo/gomi_guide_01_moyaseru.pdf?R710",
+      "label": "燃やせるごみの出し方（PDF 509KB）",
+      "sha256": "7acc6e626e7a386f49b49631f2ebbafb70278e96f2caa70433ff6e4b95cda321"
+    },
+    {
+      "file": "gomi_guide_02_moyasenai.pdf",
+      "page": "mainland.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/siryo/gomi_guide_02_moyasenai.pdf?R710",
+      "label": "燃やせないごみの出し方（PDF 508KB）",
+      "sha256": "3d1037ea97b76a76dd183fd4d639fa09c2fb7471d9b308269429323efdb9504d"
+    },
+    {
+      "file": "gomi_guide_03_sigen01.pdf",
+      "page": "mainland.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/siryo/gomi_guide_03_sigen01.pdf?R0502",
+      "label": "資源（びん類・缶類・ペットボトル・白色トレイ）（PDF 587KB）",
+      "sha256": "f3f5fb318e05975d086a43a909efe4f21b67bcbb35867e650b424663f64b45e9"
+    },
+    {
+      "file": "gomi_guide_04_sigen02.pdf",
+      "page": "mainland.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/siryo/gomi_guide_04_sigen02.pdf?R0502",
+      "label": "資源（紙類・布類）（PDF 598KB）",
+      "sha256": "22168d430830313b4c9bce6a7a6a52cac7a953ebbe3908f2e28030cddd53347b"
+    },
+    {
+      "file": "gomi_guide_05_sigen03.pdf",
+      "page": "mainland.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/siryo/gomi_guide_05_sigen03.pdf?R0510",
+      "label": "資源（プラスチック製容器包装）（PDF 372KB）",
+      "sha256": "5a745a12fa9617f0933ac7935771e6241d859336b523066ebd8d97cf69b54678"
+    },
+    {
+      "file": "gomi_guide_06_kiken.pdf",
+      "page": "mainland.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/siryo/gomi_guide_06_kiken.pdf?R0502",
+      "label": "有害ごみの出し方（電池・蛍光管・水銀計のみ）（PDF 529KB）",
+      "sha256": "221f1f31749d4499b2b566c646f126d70a0bb26e5587b94badc392e1d8ffc350"
+    },
+    {
+      "file": "gomi_guide_07_sodai.pdf",
+      "page": "mainland.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/siryo/gomi_guide_07_sodai.pdf?R0502",
+      "label": "粗大ごみの出し方（PDF 576KB）",
+      "sha256": "0b932f3ea127d824c0b14d70b4c7c5a6e2b83862e8bb0e5c9889b4177e849687"
+    },
+    {
+      "file": "sekizen_moerugomi.pdf",
+      "page": "sekizen.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/kateigomi/sekizen_moerugomi.pdf?1",
+      "label": "関前地区の燃えるごみの出し方（PDF 728KB）",
+      "sha256": "45b09ca60d6f0f6a378fc13dda67dbbc8b369dbe17277152c30139e6528e5360"
+    },
+    {
+      "file": "sekizen_moenaigomi.pdf",
+      "page": "sekizen.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/kateigomi/sekizen_moenaigomi.pdf?1",
+      "label": "関前地区の燃えないごみの出し方（PDF 510KB）",
+      "sha256": "484e21b9739f77506819b1cf9b2b002b0115e8aa1e15f9672d38765425dc32d9"
+    },
+    {
+      "file": "sekizen_sigen01.pdf",
+      "page": "sekizen.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/kateigomi/sekizen_sigen01.pdf?1",
+      "label": "関前地区の資源物（びん・紙類）の出し方（PDF 313KB）",
+      "sha256": "f5f586e7de3af60b829cfaff231c42798599c675caf34b71c3c011c363b6e4fc"
+    },
+    {
+      "file": "sekizen_sigen02.pdf",
+      "page": "sekizen.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/kateigomi/sekizen_sigen02.pdf?1",
+      "label": "関前地区の資源物（缶類・ペットボトル）の出し方（PDF 203KB）",
+      "sha256": "69ab8367634c0a4849b6ccfea162934a2b3d9560214480e6a1b48f9356b3031b"
+    },
+    {
+      "file": "sekizen_yugai.pdf",
+      "page": "sekizen.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/kateigomi/sekizen_yugai.pdf?1",
+      "label": "関前地区の有害ごみ・危険ごみの出し方／市で収集しないごみ（PDF 394KB）",
+      "sha256": "14b9ad3db8db6c5a5b3a9ad7ef02cf01af2b28bad39d0b2cb529d46bed5af6a0"
+    },
+    {
+      "file": "sekizen_sodaigomi.pdf",
+      "page": "sekizen.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/kateigomi/sekizen_sodaigomi.pdf?1",
+      "label": "関前地区の粗大ごみの出し方（PDF 363KB）",
+      "sha256": "14408e91b80a08ab08b47146aa76fc7ac01bbb4ad3fbd5539b9a5c44aa577fd7"
+    },
+    {
+      "file": "sekizen_sodaigomi2.pdf",
+      "page": "sekizen.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/kateigomi/sekizen_sodaigomi2.pdf?1",
+      "label": "関前地区の粗大ごみの処理手数料（PDF 288KB）",
+      "sha256": "999bcc3e27a3d9bc3a05dbadf324c58203d4e259508600d689e014fff2721eb3"
+    },
+    {
+      "file": "battery-current.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/info/lithium/",
+      "sha256": "901eb0e52826ca867c09b3a2a81a68c1645fb0dce759d9d988f2bc826744061c",
+      "original_download_sha256": "cb039f32f6c5e5d2407598599b215f4075123aa3886318686807a47cc04bf99e",
+      "canonicalization": "main_element_utf8"
+    },
+    {
+      "file": "not-accepted.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/shoridekinai/",
+      "sha256": "04532d6497da49562dd373c338e9fb450df56f7822176f2621f7c725900bb6a6",
+      "original_download_sha256": "33e43b82ec4f16a3c90df6dfc5667ffbcc023447edb788696c3b4c6338fc3978",
+      "canonicalization": "main_element_utf8"
+    },
+    {
+      "file": "resources.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/sigen/",
+      "sha256": "ae3ff6dc9e265960ed43c6c37104600f500b9769181a3256f48855b617b34c4a",
+      "original_download_sha256": "e0c503e7814382634a63714681ea90c36a5e6963039e082450be86186253d445",
+      "canonicalization": "main_element_utf8"
+    },
+    {
+      "file": "resource-stations.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/sigen/sigenstation.html",
+      "sha256": "b3a199a587faecfd6dadac10466051738ef4a85ea500f4620af58c3c9bdf02c4",
+      "original_download_sha256": "7385d21b7d044947fd0cdc218ba32a22d2019acb83b94862d667defdb611059a",
+      "canonicalization": "main_element_utf8"
+    },
+    {
+      "file": "small-appliances.html",
+      "url": "https://www.city.imabari.ehime.jp/recycle/kateigomi/kogatakaden.html",
+      "sha256": "fa9362ba99f99bdf2e0e404102f8d76a189fe77ad034cf8f24573d432f5194aa",
+      "original_download_sha256": "168c5383790cdff710d11033a3cd68ed443c3e0b99165a6cd11c130182677cd2",
+      "canonicalization": "main_element_utf8"
+    }
+  ]
+}
