@@ -1,0 +1,420 @@
+{
+  "schema_version": 1,
+  "areas": [
+    {
+      "id": "38386-01",
+      "name": "久万",
+      "display_name": "久万：久万",
+      "calendar_id": "kk-01",
+      "rule_profile_id": "citywide",
+      "region": "久万",
+      "pdf_page": 1,
+      "burnable_weekdays": [
+        1,
+        3,
+        5
+      ],
+      "resource_row": 1,
+      "ics_file": "linked-01.ics",
+      "official_calendar_url": "https://calendar.google.com/calendar/embed?src=5794d617cb2a2935ace7ef45f6eb9f6069a528ce959a10233287f5079c2e895f%40group.calendar.google.com&ctz=Asia%2FTokyo",
+      "non_burnable_weekdays": [
+        5
+      ]
+    },
+    {
+      "id": "38386-02",
+      "name": "入野（駄馬一、駄馬二、アラマ、春日台、新春日台1～3）",
+      "display_name": "久万：入野（駄馬一、駄馬二、アラマ、春日台、新春日台1～3）",
+      "calendar_id": "kk-02",
+      "rule_profile_id": "citywide",
+      "region": "久万",
+      "pdf_page": 1,
+      "burnable_weekdays": [
+        1,
+        3,
+        5
+      ],
+      "resource_row": 0,
+      "ics_file": "linked-02.ics",
+      "official_calendar_url": "https://calendar.google.com/calendar/embed?src=29afc7e880cc7ed383d3bfe6c92bf7ab1437242efc3da8a9f4a211734440166d%40group.calendar.google.com&ctz=Asia%2FTokyo",
+      "non_burnable_weekdays": [
+        5
+      ]
+    },
+    {
+      "id": "38386-03",
+      "name": "入野（新開、梶山、影、日ノ地）、明神、菅生（高野を除く槻ノ沢）",
+      "display_name": "久万：入野（新開、梶山、影、日ノ地）、明神、菅生（高野を除く槻ノ沢）",
+      "calendar_id": "kk-03",
+      "rule_profile_id": "citywide",
+      "region": "久万",
+      "pdf_page": 1,
+      "burnable_weekdays": [
+        1,
+        4
+      ],
+      "resource_row": 0,
+      "ics_file": "linked-03.ics",
+      "official_calendar_url": "https://calendar.google.com/calendar/embed?src=daee3414faba9e2f1708222387a6749aab35566e4c544abd4e7f58ee38e72840%40group.calendar.google.com&ctz=Asia%2FTokyo",
+      "non_burnable_weekdays": [
+        3
+      ]
+    },
+    {
+      "id": "38386-04",
+      "name": "菅生（中ノ村、槇谷、槻ノ沢を除く）、野尻",
+      "display_name": "久万：菅生（中ノ村、槇谷、槻ノ沢を除く）、野尻",
+      "calendar_id": "kk-04",
+      "rule_profile_id": "citywide",
+      "region": "久万",
+      "pdf_page": 1,
+      "burnable_weekdays": [
+        1,
+        3,
+        5
+      ],
+      "resource_row": 2,
+      "ics_file": "linked-04.ics",
+      "official_calendar_url": "https://calendar.google.com/calendar/embed?src=8998a82e01a2ea7aed0709932abefd05f0800c689bb4fd80f565d89e74bbdc44%40group.calendar.google.com&ctz=Asia%2FTokyo",
+      "non_burnable_weekdays": [
+        5
+      ]
+    },
+    {
+      "id": "38386-05",
+      "name": "菅生（中ノ村、槇谷）",
+      "display_name": "久万：菅生（中ノ村、槇谷）",
+      "calendar_id": "kk-05",
+      "rule_profile_id": "citywide",
+      "region": "久万",
+      "pdf_page": 1,
+      "burnable_weekdays": [
+        1,
+        4
+      ],
+      "resource_row": 2,
+      "ics_file": "linked-05.ics",
+      "official_calendar_url": "https://calendar.google.com/calendar/embed?src=f8a8d01b43a850870bdd903712482f294ff9ad213065cf9700e6c0e0b009e649%40group.calendar.google.com&ctz=Asia%2FTokyo",
+      "non_burnable_weekdays": [
+        4
+      ]
+    },
+    {
+      "id": "38386-06",
+      "name": "菅生（高野）、畑野川、直瀬",
+      "display_name": "久万：菅生（高野）、畑野川、直瀬",
+      "calendar_id": "kk-06",
+      "rule_profile_id": "citywide",
+      "region": "久万",
+      "pdf_page": 1,
+      "burnable_weekdays": [
+        1,
+        4
+      ],
+      "resource_row": 3,
+      "ics_file": "linked-06.ics",
+      "official_calendar_url": "https://calendar.google.com/calendar/embed?src=a545eafd8942aaedf2103a6473f23369a059d2a12ba0dfecd6482ffa9566baef%40group.calendar.google.com&ctz=Asia%2FTokyo",
+      "non_burnable_weekdays": [
+        4
+      ]
+    },
+    {
+      "id": "38386-07",
+      "name": "露峰、二名、父野川",
+      "display_name": "久万：露峰、二名、父野川",
+      "calendar_id": "kk-07",
+      "rule_profile_id": "citywide",
+      "region": "久万",
+      "pdf_page": 1,
+      "burnable_weekdays": [
+        2,
+        5
+      ],
+      "resource_row": 4,
+      "ics_file": "linked-07.ics",
+      "official_calendar_url": "https://calendar.google.com/calendar/embed?src=9e5b2fb2754d67158f52041f05652b1f4ee36b7c449127553f219b3fd20cada9%40group.calendar.google.com&ctz=Asia%2FTokyo",
+      "non_burnable_weekdays": [
+        2
+      ]
+    },
+    {
+      "id": "38386-08",
+      "name": "上黒岩、中黒岩、日野浦（大谷、本組）、大川、有枝（程野を除く）",
+      "display_name": "美川：上黒岩、中黒岩、日野浦（大谷、本組）、大川、有枝（程野を除く）",
+      "calendar_id": "kk-08",
+      "rule_profile_id": "citywide",
+      "region": "美川",
+      "pdf_page": 2,
+      "burnable_weekdays": [
+        2,
+        5
+      ],
+      "resource_row": 1,
+      "ics_file": "linked-08.ics",
+      "official_calendar_url": "https://calendar.google.com/calendar/embed?src=5df375d3a95fbfbdb991df367f513196165548483236806c39cc80f5728ba405%40group.calendar.google.com&ctz=Asia%2FTokyo",
+      "non_burnable_row": 0
+    },
+    {
+      "id": "38386-09",
+      "name": "日野浦（大谷、本組を除く）、沢渡（先場）",
+      "display_name": "美川：日野浦（大谷、本組を除く）、沢渡（先場）",
+      "calendar_id": "kk-09",
+      "rule_profile_id": "citywide",
+      "region": "美川",
+      "pdf_page": 2,
+      "burnable_weekdays": [
+        2,
+        5
+      ],
+      "resource_row": 0,
+      "ics_file": "linked-09.ics",
+      "official_calendar_url": "https://calendar.google.com/calendar/embed?src=358a4ea953d66c2d3023ae766fb3c31ea1911a78a4feec67de518e8423ed2fa0%40group.calendar.google.com&ctz=Asia%2FTokyo",
+      "non_burnable_row": 0
+    },
+    {
+      "id": "38386-10",
+      "name": "有枝（程野）、沢渡（本村）",
+      "display_name": "美川：有枝（程野）、沢渡（本村）",
+      "calendar_id": "kk-10",
+      "rule_profile_id": "citywide",
+      "region": "美川",
+      "pdf_page": 2,
+      "burnable_weekdays": [
+        2,
+        5
+      ],
+      "resource_row": 2,
+      "ics_file": "linked-10.ics",
+      "official_calendar_url": "https://calendar.google.com/calendar/embed?src=8e3b7cb4ee550ff437742d2174fa6dd33d12ee7df484654d06cd964af42b2ffa%40group.calendar.google.com&ctz=Asia%2FTokyo",
+      "non_burnable_row": 0
+    },
+    {
+      "id": "38386-11",
+      "name": "七鳥（長瀬、竹谷を除く）、東川、仕出",
+      "display_name": "美川：七鳥（長瀬、竹谷を除く）、東川、仕出",
+      "calendar_id": "kk-11",
+      "rule_profile_id": "citywide",
+      "region": "美川",
+      "pdf_page": 2,
+      "burnable_weekdays": [
+        2,
+        5
+      ],
+      "resource_row": 2,
+      "ics_file": "linked-11.ics",
+      "official_calendar_url": "https://calendar.google.com/calendar/embed?src=7e8aaf7b7bfd77c0a22013f8a07e5373cba21b006dde5b04776f820f90139f7a%40group.calendar.google.com&ctz=Asia%2FTokyo",
+      "non_burnable_row": 1
+    },
+    {
+      "id": "38386-12",
+      "name": "七鳥（長瀬、竹谷）",
+      "display_name": "美川：七鳥（長瀬、竹谷）",
+      "calendar_id": "kk-12",
+      "rule_profile_id": "citywide",
+      "region": "美川",
+      "pdf_page": 2,
+      "burnable_weekdays": [
+        1,
+        4
+      ],
+      "resource_row": 2,
+      "ics_file": "linked-12.ics",
+      "official_calendar_url": "https://calendar.google.com/calendar/embed?src=0f79a98f2743196b7079054c1b9691e813d6bc54bca91e63aa6baaad1cfaa3cd%40group.calendar.google.com&ctz=Asia%2FTokyo",
+      "non_burnable_row": 1
+    },
+    {
+      "id": "38386-13",
+      "name": "黒藤川",
+      "display_name": "美川：黒藤川",
+      "calendar_id": "kk-13",
+      "rule_profile_id": "citywide",
+      "region": "美川",
+      "pdf_page": 2,
+      "burnable_weekdays": [
+        1,
+        4
+      ],
+      "resource_row": 0,
+      "ics_file": "linked-13.ics",
+      "official_calendar_url": "https://calendar.google.com/calendar/embed?src=479ffa8528a654f51712039ee9878c3d7d669777162a0f500fd83c4173a97a7d%40group.calendar.google.com&ctz=Asia%2FTokyo",
+      "non_burnable_row": 0
+    },
+    {
+      "id": "38386-14",
+      "name": "渋草、大成、笠方、前組、相の峰",
+      "display_name": "面河：渋草、大成、笠方、前組、相の峰",
+      "calendar_id": "kk-14",
+      "rule_profile_id": "citywide",
+      "region": "面河",
+      "pdf_page": 3,
+      "burnable_weekdays": [
+        1,
+        4
+      ],
+      "resource_row": 1,
+      "ics_file": "linked-14.ics",
+      "official_calendar_url": "https://calendar.google.com/calendar/embed?src=fd16eccb468abccbe10bea8af45b6fd1d7aab6cad0880132336b5dc59fff0d1c%40group.calendar.google.com&ctz=Asia%2FTokyo",
+      "non_burnable_weekdays": [
+        4
+      ]
+    },
+    {
+      "id": "38386-15",
+      "name": "本組、中組、河の子、相の木、若山",
+      "display_name": "面河：本組、中組、河の子、相の木、若山",
+      "calendar_id": "kk-15",
+      "rule_profile_id": "citywide",
+      "region": "面河",
+      "pdf_page": 3,
+      "burnable_weekdays": [
+        1,
+        4
+      ],
+      "resource_row": 0,
+      "ics_file": "linked-15.ics",
+      "official_calendar_url": "https://calendar.google.com/calendar/embed?src=5fc37daeff55c79a349b08ec22b2fcb876ef53f5bd3da061eec3815f3318b064%40group.calendar.google.com&ctz=Asia%2FTokyo",
+      "non_burnable_weekdays": [
+        4
+      ]
+    },
+    {
+      "id": "38386-16",
+      "name": "柳井川（落出、川前（国道沿線）、永野）",
+      "display_name": "柳谷：柳井川（落出、川前（国道沿線）、永野）",
+      "calendar_id": "kk-16",
+      "rule_profile_id": "citywide",
+      "region": "柳谷",
+      "pdf_page": 4,
+      "burnable_weekdays": [
+        2,
+        5
+      ],
+      "resource_row": 0,
+      "ics_file": "linked-16.ics",
+      "official_calendar_url": "https://calendar.google.com/calendar/embed?src=dde3ae3c799bcaad0483864d67c063bc72f12994efbedcc4200c4555d147ed69%40group.calendar.google.com&ctz=Asia%2FTokyo",
+      "non_burnable_row": 0
+    },
+    {
+      "id": "38386-17",
+      "name": "柳井川（立野、松木、大窪谷、川前（国道沿線以外）、高地、百ヶ市、奈良籔）",
+      "display_name": "柳谷：柳井川（立野、松木、大窪谷、川前（国道沿線以外）、高地、百ヶ市、奈良籔）",
+      "calendar_id": "kk-17",
+      "rule_profile_id": "citywide",
+      "region": "柳谷",
+      "pdf_page": 4,
+      "burnable_weekdays": [
+        1,
+        4
+      ],
+      "resource_row": 0,
+      "ics_file": "linked-17.ics",
+      "official_calendar_url": "https://calendar.google.com/calendar/embed?src=9526f3cd0aec23bb32565bfe5c9961e0e9e6da32a6f02a3384f8398213bc9158%40group.calendar.google.com&ctz=Asia%2FTokyo",
+      "non_burnable_row": 0
+    },
+    {
+      "id": "38386-18",
+      "name": "柳井川（稲村、鉢）",
+      "display_name": "柳谷：柳井川（稲村、鉢）",
+      "calendar_id": "kk-18",
+      "rule_profile_id": "citywide",
+      "region": "柳谷",
+      "pdf_page": 4,
+      "burnable_weekdays": [
+        1,
+        4
+      ],
+      "resource_row": 2,
+      "ics_file": "linked-18.ics",
+      "official_calendar_url": "https://calendar.google.com/calendar/embed?src=b30dcc0901cfc41d3801e9f3554eb99a9daffb82620d93b525c050fc4828c24b%40group.calendar.google.com&ctz=Asia%2FTokyo",
+      "non_burnable_row": 0
+    },
+    {
+      "id": "38386-19",
+      "name": "柳井川（磯ヶ成）",
+      "display_name": "柳谷：柳井川（磯ヶ成）",
+      "calendar_id": "kk-19",
+      "rule_profile_id": "citywide",
+      "region": "柳谷",
+      "pdf_page": 4,
+      "burnable_weekdays": [
+        2,
+        5
+      ],
+      "resource_row": 2,
+      "ics_file": "linked-19.ics",
+      "official_calendar_url": "https://calendar.google.com/calendar/embed?src=007b5c8a9a5a778489f0e02c4a3d8f9bf4f0949164737821d401e23d647c4a6b%40group.calendar.google.com&ctz=Asia%2FTokyo",
+      "non_burnable_row": 0
+    },
+    {
+      "id": "38386-20",
+      "name": "西谷（小村、大成、古味、名荷上、名荷下）",
+      "display_name": "柳谷：西谷（小村、大成、古味、名荷上、名荷下）",
+      "calendar_id": "kk-20",
+      "rule_profile_id": "citywide",
+      "region": "柳谷",
+      "pdf_page": 4,
+      "burnable_weekdays": [
+        2,
+        5
+      ],
+      "resource_row": 1,
+      "ics_file": "linked-20.ics",
+      "official_calendar_url": "https://calendar.google.com/calendar/embed?src=5932903870c7db72ec78e275ed38cb4086c305aa26095de7eb60b85fdfcd8276%40group.calendar.google.com&ctz=Asia%2FTokyo",
+      "non_burnable_row": 1
+    },
+    {
+      "id": "38386-21",
+      "name": "西谷（菅行、中久保、横野、高野、猪伏）",
+      "display_name": "柳谷：西谷（菅行、中久保、横野、高野、猪伏）",
+      "calendar_id": "kk-21",
+      "rule_profile_id": "citywide",
+      "region": "柳谷",
+      "pdf_page": 4,
+      "burnable_weekdays": [
+        1,
+        4
+      ],
+      "resource_row": 1,
+      "ics_file": "linked-21.ics",
+      "official_calendar_url": "https://calendar.google.com/calendar/embed?src=b087647d4c22f36560f071b4265c38bede33e2439c6e50bb4fffb39325d00f01%40group.calendar.google.com&ctz=Asia%2FTokyo",
+      "non_burnable_row": 1
+    },
+    {
+      "id": "38386-22",
+      "name": "西谷（郷角、本谷）",
+      "display_name": "柳谷：西谷（郷角、本谷）",
+      "calendar_id": "kk-22",
+      "rule_profile_id": "citywide",
+      "region": "柳谷",
+      "pdf_page": 4,
+      "burnable_weekdays": [
+        2,
+        5
+      ],
+      "resource_row": 0,
+      "ics_file": "linked-22.ics",
+      "official_calendar_url": "https://calendar.google.com/calendar/embed?src=8b6df44d9069168a0e61ae950f1ba201d2168082f6e1a3c93d72e80cffff2f88%40group.calendar.google.com&ctz=Asia%2FTokyo",
+      "non_burnable_row": 1
+    },
+    {
+      "id": "38386-23",
+      "name": "中津",
+      "display_name": "柳谷：中津",
+      "calendar_id": "kk-19",
+      "rule_profile_id": "citywide",
+      "region": "柳谷",
+      "pdf_page": 4,
+      "burnable_weekdays": [
+        2,
+        5
+      ],
+      "resource_row": 2,
+      "ics_file": "linked-23.ics",
+      "official_calendar_url": "https://calendar.google.com/calendar/embed?src=31bb258206d48a13af7a5c5cf746080454a75181bb611045ab122cbf1ab817a8%40group.calendar.google.com&ctz=Asia%2FTokyo",
+      "non_burnable_row": 0
+    }
+  ],
+  "scope_note": "2026年度の標準地区日程。日程表の例外ステーションの場所・日付は非掲載のため自治会へ確認。住所・GPSだけで自動確定しない。",
+  "area_link_page_date": "2023-04-25",
+  "area_link_calendars_updated_in_2026": true
+}

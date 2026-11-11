@@ -1,0 +1,370 @@
+{
+  "timetable_pages": 4,
+  "monthly_date_cells": 360,
+  "areas": [
+    {
+      "area_id": "38386-01",
+      "days": 365,
+      "collection_days": 179,
+      "weekly_exclusions": [
+        {
+          "date": "2026-12-30",
+          "stream": "burnable"
+        },
+        {
+          "date": "2027-01-01",
+          "stream": "burnable"
+        },
+        {
+          "date": "2027-01-01",
+          "stream": "non_burnable"
+        }
+      ],
+      "public_calendar_differences": {},
+      "days_sha256": "8011970ce7aad6cd85ec59e442b141a901b98765687a3d397891df9ef014c33e"
+    },
+    {
+      "area_id": "38386-02",
+      "days": 365,
+      "collection_days": 179,
+      "weekly_exclusions": [
+        {
+          "date": "2026-12-30",
+          "stream": "burnable"
+        },
+        {
+          "date": "2027-01-01",
+          "stream": "burnable"
+        },
+        {
+          "date": "2027-01-01",
+          "stream": "non_burnable"
+        }
+      ],
+      "public_calendar_differences": {},
+      "days_sha256": "ac2fbff1eca1a3945f1b115c0d47e35a784bbb1bb956759e67ffa5fd2723b7d5"
+    },
+    {
+      "area_id": "38386-03",
+      "days": 365,
+      "collection_days": 179,
+      "weekly_exclusions": [
+        {
+          "date": "2026-12-30",
+          "stream": "non_burnable"
+        },
+        {
+          "date": "2026-12-31",
+          "stream": "burnable"
+        }
+      ],
+      "public_calendar_differences": {},
+      "days_sha256": "79e7e4c5cdf5c8c18b65a1a7eafcd8496143002ae478b1e3002ffb9c61bd3f9c"
+    },
+    {
+      "area_id": "38386-04",
+      "days": 365,
+      "collection_days": 179,
+      "weekly_exclusions": [
+        {
+          "date": "2026-12-30",
+          "stream": "burnable"
+        },
+        {
+          "date": "2027-01-01",
+          "stream": "burnable"
+        },
+        {
+          "date": "2027-01-01",
+          "stream": "non_burnable"
+        }
+      ],
+      "public_calendar_differences": {},
+      "days_sha256": "295f9b814284165d6284b615d54a2ec0ddaaa52a0f41cdb890d1997a96ff9c0d"
+    },
+    {
+      "area_id": "38386-05",
+      "days": 365,
+      "collection_days": 127,
+      "weekly_exclusions": [
+        {
+          "date": "2026-12-31",
+          "stream": "burnable"
+        },
+        {
+          "date": "2026-12-31",
+          "stream": "non_burnable"
+        }
+      ],
+      "public_calendar_differences": {},
+      "days_sha256": "e9476fdd282d963118ef21dd9f02729cb53cdccde34c97afdfcb18fb0954ac08"
+    },
+    {
+      "area_id": "38386-06",
+      "days": 365,
+      "collection_days": 127,
+      "weekly_exclusions": [
+        {
+          "date": "2026-12-31",
+          "stream": "burnable"
+        },
+        {
+          "date": "2026-12-31",
+          "stream": "non_burnable"
+        }
+      ],
+      "public_calendar_differences": {},
+      "days_sha256": "5b4fe272d331cad362eb8f475cf992102a5c41fdbb04777a8d18cd2003fa6531"
+    },
+    {
+      "area_id": "38386-07",
+      "days": 365,
+      "collection_days": 127,
+      "weekly_exclusions": [
+        {
+          "date": "2027-01-01",
+          "stream": "burnable"
+        }
+      ],
+      "public_calendar_differences": {
+        "all_resources": {
+          "pdf_only": [
+            "2026-06-24",
+            "2026-07-22"
+          ],
+          "linked_only": [
+            "2026-06-17",
+            "2026-07-15"
+          ]
+        },
+        "plastic_cans": {
+          "pdf_only": [
+            "2026-06-10",
+            "2026-07-08"
+          ],
+          "linked_only": [
+            "2026-06-03",
+            "2026-07-01"
+          ]
+        }
+      },
+      "days_sha256": "788f0d59dcb291d4c485ed910120e5863347a3697062395957100a77b1631864"
+    },
+    {
+      "area_id": "38386-08",
+      "days": 365,
+      "collection_days": 139,
+      "weekly_exclusions": [
+        {
+          "date": "2027-01-01",
+          "stream": "burnable"
+        }
+      ],
+      "public_calendar_differences": {},
+      "days_sha256": "3cb2545d7aabcc5113272ebd64569f4ec29fee596164cc86a8e80d1c4f2c6caa"
+    },
+    {
+      "area_id": "38386-09",
+      "days": 365,
+      "collection_days": 139,
+      "weekly_exclusions": [
+        {
+          "date": "2027-01-01",
+          "stream": "burnable"
+        }
+      ],
+      "public_calendar_differences": {},
+      "days_sha256": "feb437acb0f60c7ce1b996617992da7a35d04fd5615449f4ec4b88a7979b58e9"
+    },
+    {
+      "area_id": "38386-10",
+      "days": 365,
+      "collection_days": 139,
+      "weekly_exclusions": [
+        {
+          "date": "2027-01-01",
+          "stream": "burnable"
+        }
+      ],
+      "public_calendar_differences": {},
+      "days_sha256": "d5ec61f48ba496edd8a93fa5f44c60e6442e6194ae7e837596745e9c0bc0005d"
+    },
+    {
+      "area_id": "38386-11",
+      "days": 365,
+      "collection_days": 139,
+      "weekly_exclusions": [
+        {
+          "date": "2027-01-01",
+          "stream": "burnable"
+        }
+      ],
+      "public_calendar_differences": {},
+      "days_sha256": "f7d6444a735ef43eded23749f5c5ef85a17160d3ecdfed07673b29adf5b9beea"
+    },
+    {
+      "area_id": "38386-12",
+      "days": 365,
+      "collection_days": 115,
+      "weekly_exclusions": [
+        {
+          "date": "2026-12-31",
+          "stream": "burnable"
+        }
+      ],
+      "public_calendar_differences": {},
+      "days_sha256": "f1a1892d72cfc8e3e4e89dd9d0a8dd8d35ead48077f375d88b5e4de14422991e"
+    },
+    {
+      "area_id": "38386-13",
+      "days": 365,
+      "collection_days": 115,
+      "weekly_exclusions": [
+        {
+          "date": "2026-12-31",
+          "stream": "burnable"
+        }
+      ],
+      "public_calendar_differences": {},
+      "days_sha256": "21633c287650381aed97329e3a488879b6dd56147f2c45d1d2b13b71b23ee191"
+    },
+    {
+      "area_id": "38386-14",
+      "days": 365,
+      "collection_days": 127,
+      "weekly_exclusions": [
+        {
+          "date": "2026-12-31",
+          "stream": "burnable"
+        },
+        {
+          "date": "2026-12-31",
+          "stream": "non_burnable"
+        }
+      ],
+      "public_calendar_differences": {},
+      "days_sha256": "50b3986aedffe8f5c9927e3ea30c9e4a70a5d57b00837d8f422e3317057fd496"
+    },
+    {
+      "area_id": "38386-15",
+      "days": 365,
+      "collection_days": 127,
+      "weekly_exclusions": [
+        {
+          "date": "2026-12-31",
+          "stream": "burnable"
+        },
+        {
+          "date": "2026-12-31",
+          "stream": "non_burnable"
+        }
+      ],
+      "public_calendar_differences": {},
+      "days_sha256": "8b9648ecde61e65322edd2bdd58975b936b91fcc9e067a66faa3ef6fea8b5e4a"
+    },
+    {
+      "area_id": "38386-16",
+      "days": 365,
+      "collection_days": 115,
+      "weekly_exclusions": [
+        {
+          "date": "2027-01-01",
+          "stream": "burnable"
+        }
+      ],
+      "public_calendar_differences": {},
+      "days_sha256": "b6a64d2871b60a8a569456a46c99d71d2a8917631c9f68cfc94d5920123aaaa5"
+    },
+    {
+      "area_id": "38386-17",
+      "days": 365,
+      "collection_days": 139,
+      "weekly_exclusions": [
+        {
+          "date": "2026-12-31",
+          "stream": "burnable"
+        }
+      ],
+      "public_calendar_differences": {},
+      "days_sha256": "200f9bc7d95cd6c130a71965c8b6da55636a56c209b529dc2f2f968fc8daac5a"
+    },
+    {
+      "area_id": "38386-18",
+      "days": 365,
+      "collection_days": 139,
+      "weekly_exclusions": [
+        {
+          "date": "2026-12-31",
+          "stream": "burnable"
+        }
+      ],
+      "public_calendar_differences": {},
+      "days_sha256": "40f113fe82e27608f2081a7c1546a44857729ab56e382f7c8f9237f120846035"
+    },
+    {
+      "area_id": "38386-19",
+      "days": 365,
+      "collection_days": 115,
+      "weekly_exclusions": [
+        {
+          "date": "2027-01-01",
+          "stream": "burnable"
+        }
+      ],
+      "public_calendar_differences": {},
+      "days_sha256": "8f535eb7e934434da953c6f4d8251426869a365a3171da9f6226c11554680618"
+    },
+    {
+      "area_id": "38386-20",
+      "days": 365,
+      "collection_days": 115,
+      "weekly_exclusions": [
+        {
+          "date": "2027-01-01",
+          "stream": "burnable"
+        }
+      ],
+      "public_calendar_differences": {},
+      "days_sha256": "cb5a11f9adda5544db044c5d0f9ee265ad7ff4cba7ac59274f9236900cdf99bd"
+    },
+    {
+      "area_id": "38386-21",
+      "days": 365,
+      "collection_days": 139,
+      "weekly_exclusions": [
+        {
+          "date": "2026-12-31",
+          "stream": "burnable"
+        }
+      ],
+      "public_calendar_differences": {},
+      "days_sha256": "822c299888bd739a1bb11f160f8872b2a5c5f94d61c7dd9b76263c5cbc7e0d82"
+    },
+    {
+      "area_id": "38386-22",
+      "days": 365,
+      "collection_days": 115,
+      "weekly_exclusions": [
+        {
+          "date": "2027-01-01",
+          "stream": "burnable"
+        }
+      ],
+      "public_calendar_differences": {},
+      "days_sha256": "b97112fa9ef858d9c4795007a1d497750c77acc0c87f707a6803170fb0b2db24"
+    },
+    {
+      "area_id": "38386-23",
+      "days": 365,
+      "collection_days": 115,
+      "weekly_exclusions": [
+        {
+          "date": "2027-01-01",
+          "stream": "burnable"
+        }
+      ],
+      "public_calendar_differences": {},
+      "days_sha256": "8f535eb7e934434da953c6f4d8251426869a365a3171da9f6226c11554680618"
+    }
+  ]
+}

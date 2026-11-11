@@ -1,0 +1,103 @@
+# 久万高原町の2026年度データ
+
+久万高原町（`38386`、版 `kumakogen-2026.1`）の標準収集地区を扱います。適用期間は **2026-04-01～2027-03-31**。分別判断は取得時点の現行案内を使い、2026年10月14日更新のリチウムイオン電池案内を旧辞典より優先します。AWSへの反映・スマートフォンへの配布は別作業です。
+
+## 公式資料と対象地区
+
+取得・照合日は2026-11-11です。`data/regions/kumakogen/sources.json` に公式HTML7件・PDF3件・公式ページからリンクされた公開iCalendar23件のURLとSHA-256を記録します。
+
+- [2026年度ごみ収集日程表](https://www.kumakogen.jp/soshiki/4/25850.html)：1 PDF・5ページ。久万・美川・面河・柳谷の4ページが日程表、最後は注意事項です。通常の曜日指定と月別の実日付を併用しています。
+- [家庭ごみ分別辞典・ポスター](https://www.kumakogen.jp/soshiki/4/6870.html)：辞典のPDF16～45ページ（印刷15～44ページ）から2,002行を抽出します。同名の材質別行は統合しません。木のフローチャート参照13行を独立した相談区分として保持し、条件を満たせば燃えるごみへ分類します。公式説明例16行を加え、検索行は2,018行です。
+- [地域別カレンダー案内](https://www.kumakogen.jp/soshiki/4/19120.html)：案内ページは2023年ですが、リンク先23公開カレンダーは2026年に更新され、2026・2027年の個別例外を含むことを確認しました。過年度の除外日を今年にずらしていません。
+- [リチウムイオン電池](https://www.kumakogen.jp/soshiki/4/27263.html)：取り外した正常な電池は資源ごみ。取り外せない機器、破損・変形・膨張した電池は環境衛生センターへ直接持込。モバイルバッテリーも正常というだけで一律に資源とせず、取り外し可否・状態を確認します。
+- [家電リサイクル](https://www.kumakogen.jp/soshiki/4/7834.html)：販売店への依頼、リサイクル券などの手続と通常収集を分けます。古い料金表を最新価格として登録しません。
+
+地区は久万7・美川6・面河2・柳谷8の **23選択地区**。柳谷の磯ヶ成と中津は同一の日程を共有するため **22実日付カレンダー** に対応付けます。地域名と集落・除外範囲を地区表示へ残し、内部カレンダーID・PDF名は表示しません。菅生の槇谷／槙谷、柳井川の磯ヶ成／磯ケ成等は出典の表記差です。選択名は公式地区案内を基準にし、2026年度PDFの区域記述との対応を `areas.json` に保持します。
+
+日程表末尾は「例外的な日程で収集しているステーション」があるとしていますが、対象ステーションと日付の一覧はありません。アプリは公表された標準地区の日程を扱い、個別ステーションの独自日程を生成しません。搬出時間の説明から自治会への確認を案内します。GPSや住所だけで例外の有無を判定しません。検証済みの住所境界表がないため、久万高原町のGPSによる地区確定は行わず手動選択を使います。
+
+## 日付と分別・出し方
+
+- 定期収集は燃える・燃えないと、資源11区分（紙・ビン・カン・PET・金属・古着・プラ・蛍光灯・電池・廃食用油・小型家電）です。「資源すべて」と「プラ・カンのみ」の日を区別します。スプレー缶は金属類でありカン類とは収集日が異なります。
+- 2026年度PDFに明記された月別日付を原本とします。美川の6月欄「7月2日」、9月欄「10月1日」、面河の6月欄「7月1日」、柳谷の4月欄「5月1日」等は、欄の月ではなく印字の月を使います。
+- 曜日指定は既存の `collection_recurrence.py` で年度内の実日付へ展開します。年末年始の除外は、公式リンク先カレンダーに明記された当該年度のEXDATEだけを使います。施設の休業日を収集休止日へ流用しません。祝日を独自に休みへ変更しません。
+- **二名・露峰・父野川の6・7月の資源日**は、公開カレンダーの繰り返し規則と年度PDFに不一致があります。PDFの全資源6/24・7/22、プラカン6/10・7/8を採用します。不一致の両方の日付を `calendar_reviews.json` に記録し、公開カレンダーの月別規則でPDFを上書きしません。
+- 全定期区分の搬出期限は公式日程表の **当日朝8時**。検索・通知・iCal・カレンダーは同じ実日付原本と定義を使います。年度外の予定を外挿しません。
+- 粗大ごみは45L指定袋に入らないもの。原則として環境衛生センターへの直接持込を案内します。直接持込が困難な方の戸別収集は広報で募集されるため、現在の対象・申込方法・受付期間を窓口で確認する案内に留めます。過去の広報の期限・5点制限等を現行募集へ無条件に適用しません。
+- 持込・粗大・町で処理できないもの・相談区分に定期収集のIDを付けません。架空の次回収集日・通知・iCal予定は生成しません。町による申込受付や申込状況との連携はありません。
+- スプレー缶は使い切り・安全な場所でガス抜き。公式資料に確認できない穴あけを追加しません。PET本体とキャップ・ラベル、食料缶と金属類、プラ製品とプラ容器包装を区別します。
+
+## 照合の範囲
+
+`scripts/kumakogen_pdf.py` は表示glyph、罫線・塗り矩形とセル位置から辞典と月別表を抽出します。通常の表認識で取れない柳谷の小さい不燃表は、ハッシュ固定したPDFの実際の描画罫線に対応する座標で読みます。
+
+- **全360月別日付セル**：326セルを独立したローカルOCRで一致確認、25セルをOCR確認済みの同一数字の描画画像と比較、残り9セルを原PDFの切り抜きで目視確認しました。文字だけの生成結果同士の比較ではありません。
+- **全2,002分類欄**：1,865行はOCR、123行はOCR確認済みラベルとの描画比較、木のフローチャート参照13行は行全体OCR、1行は切り抜き目視で確認しました。品目名・注意書き全文を別担当者が独立転記したという意味ではありません。描画された分類アイコン1,989個から行へ逆照合し、最下段55行の初期抽出漏れを修正しました。
+- 公開カレンダー23件の当該年度の曜日・個別例外を年度PDFと比較します。前記月別不一致を明示し、それ以外の整合性もレビュー要約へ固定します。
+- 23地区×365日＝**8,395地区日付**（22カレンダー×365日＝8,030日付）をバックエンド・Flutterの読み込み、年度・期限・同日複数区分について別途検査します。この検査だけを公式PDF全日付の独立監査とは呼びません。
+
+`item_reviews.json`・`calendar_reviews.json`・`image_reviews.json` と、目視例外 `manual_image_reviews.json` はレビュー後の固定要約です。`inspect` は候補だけを作り、自動承認しません。原本・件数・照合結果が変われば停止します。
+
+## Git内外と新規cloneからの再現
+
+| 管理 | 内容 |
+| --- | --- |
+| Git内 | 出典、地区対応、ルール・説明例、台帳、照合・目視要約、索引manifest、検索ケース・評価要約、スクリプト、テスト、Flutter台帳・カタログ |
+| Git管理外・無償取得 | `source/` の公式HTML・PDF・公式リンク先iCalendar |
+| Git管理外・無償生成 | `knowledge/items.csv`、`generated/calendar-2026.json`、FlutterのカレンダーJSON、OCR画像・JSON、検証中間出力 |
+| Git管理外・共有又は承認後に有償生成 | `knowledge/item_embeddings.npz`（久万高原町専用Titan V2、1,024次元） |
+| Git管理外・実行時不要 | Titanチェックポイント、有料評価のAPI生応答・取得根拠・呼出し記録・実行manifest |
+
+資料の利用・加工・公開・再配布条件は未確認として記録しています。Git内の地区名・ルール・説明例も自治体資料からの加工情報です。NPZと、必要時のOCR検証バンドルの固定共有先は未設定です。メンバー間でmanifestとSHA-256を照合して共有し、AWS認証情報やAPIの生ログは含めないでください。
+
+### 無料の取得・生成
+
+Python3.12、PyMuPDF2.0.0、numpy、Pillow、python-dateutil、OCR生成用のmacOS/Swift/Apple Visionを使います。OCRはローカル処理です。他OSでは同じ原本・画像ハッシュの `generated/ocr/` バンドルを共有して `build` から続けられます。
+
+```bash
+# 新規環境だけ。既存の仮想環境を上書きする必要はありません
+python3 -m venv backend/.venv
+backend/.venv/bin/python -m pip install -r backend/requirements.txt 'pymupdf==2.0.0' Pillow python-dateutil
+backend/.venv/bin/python scripts/kumakogen_data.py fetch
+backend/.venv/bin/python scripts/kumakogen_data.py audit-images
+backend/.venv/bin/python scripts/kumakogen_data.py build
+backend/.venv/bin/python scripts/kumakogen_data.py verify --without-index
+```
+
+公開iCalendarはダウンロードごとにDTSTAMPとイベント順が変わります。行継続を展開し、DTSTAMPだけを除外し、イベント・属性を安定順へ並べた内容をハッシュ検証します。日付・規則・例外・更新情報は取り除きません。実際の予定が変われば再レビューが必要です。
+
+### 索引の配置・アプリへの接続
+
+共有NPZを `data/regions/kumakogen/knowledge/item_embeddings.npz` に配置し、Git内manifestのSHA-256と一致させます。自力で生成する場合のみ、別途費用承認とAWSログインの後に実行します。既存自治体は対象に含めません。
+
+```bash
+# 有料。必ず事前承認を得る
+backend/.venv/bin/python scripts/build_regional_embeddings.py \
+  --source data/regions/kumakogen/knowledge/items.csv \
+  --output data/regions/kumakogen/knowledge/item_embeddings.npz \
+  --municipality 38386 --profile citywide \
+  --checkpoint data/regions/kumakogen/generated/titan-checkpoint.jsonl \
+  --max-calls 2100 --budget-usd 0.40
+
+# 共有配置ならここから（課金なし）
+backend/.venv/bin/python scripts/kumakogen_data.py verify
+backend/.venv/bin/python scripts/generate_frontend_data.py --municipality-id 38386 --merge-existing
+backend/.venv/bin/python -m pytest backend/official_tests/verify_kumakogen_runtime.py -q
+cd frontend
+flutter pub get
+flutter test tool/verify_kumakogen_data_test.dart tool/verify_kumakogen_ui_test.dart
+```
+
+索引を再生成した場合はモデル・件数・ID順・次元・CSV/NPZハッシュを確認して新manifestを管理します。共有索引なら再生成・再課金は不要です。`activate` は検証済みデータを初めて自治体カタログに登録する際だけ使うゲートです。
+
+バックエンドは `backend/` で `USE_BEDROCK_KNOWLEDGE_BASE=false LEXICAL_SEARCH_ENABLED=false .venv/bin/python -m uvicorn app.main:app --host 127.0.0.1 --port 8000`、Flutterは `frontend/` で `flutter run -d chrome --dart-define=API_BASE_URL=http://127.0.0.1:8000` で起動できます。画面からの実検索はBedrock料金が発生します。
+
+他自治体も利用する場合は各自治体のCSV・NPZ・カレンダーを別途配置してください。一部自治体のデータが欠けた環境で全自治体の生成・Lambdaパッケージングを成功扱いにはしません。他自治体のデータをダミーで補いません。
+
+## 検索評価と実行結果
+
+`search_cases.json` は久万高原町28例と既存6自治体各1例（伊予市PET本体を含む）の34例です。入力・公式根拠・期待分類又は確認事項を記録します。`scripts/kumakogen_evaluate.py` は明示的な `--confirm-paid` を必要とし、索引生成との合計推定US$1・最大76ケース・250モデル呼出しで停止します。索引は最大2,100呼出しで別に制限します。初回・最大8追試・最終34例を区別し、ログを上書きしません。
+
+モデルと検索は従来どおりNova Lite、Titan Text Embeddings V2、自前意味検索上位8、類似度0.15、確信度0.75、KB=false、語彙検索=falseです。最新mainの同一自治体CSVの完全品目名補完、伊予市PET修正は維持します。既存自治体のデータ・索引を再生成しません。
+
+実API評価・回帰テスト・再現検証の最終結果は、作業完了時に追記します。AWSでの実行、ブラウザでの人手による全画面操作、スマートフォンの通知・位置情報・共有シート実機検証は今回の自動テストでは保証しません。
