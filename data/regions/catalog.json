@@ -64,6 +64,10 @@
     {
       "id": "38214",
       "registry_path": "seiyo/registry.json"
+    },
+    {
+      "id": "38386",
+      "registry_path": "kumakogen/registry.json"
     }
   ]
 }

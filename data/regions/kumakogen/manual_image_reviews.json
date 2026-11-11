@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "reviewed_at": "2026-11-11",
+  "method": "Visually inspected original rendered crops after OCR/raster comparison failed; no data inferred.",
+  "source_sha256": {
+    "dictionary.pdf": "920782f87da6f9ba0bdbab9986a6135ee59060194ba508c684cf1bde9666ab8c",
+    "calendar-2026.pdf": "fdffe2ebaf4b0956117e6afbbab66602b36ac6610804cb48fda8c63a27d89859"
+  },
+  "calendar_cells": {
+    "cell-p1-plastic_cans-4-08": "5",
+    "cell-p1-plastic_cans-4-03": "3",
+    "cell-p2-non_burnable-0-08": "5",
+    "cell-p2-non_burnable-0-03": "3",
+    "cell-p2-non_burnable-1-09": "9",
+    "cell-p2-non_burnable-1-12": "9",
+    "cell-p2-all_resources-0-03": "4",
+    "cell-p3-all_resources-0-04": "8",
+    "cell-p4-plastic_cans-2-03": "5"
+  },
+  "dictionary_rows": {
+    "kk-p18-2-14": "廃食用油"
+  }
+}

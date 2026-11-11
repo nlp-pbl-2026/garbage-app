@@ -1,0 +1,307 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38386",
+  "version": "kumakogen-2026.1",
+  "sources": [
+    {
+      "file": "schedule.html",
+      "url": "https://www.kumakogen.jp/soshiki/4/25850.html",
+      "sha256": "fc8d378c09772b503b783d07a45341ea6e8dfa1f6be00b20e7bf13cf0862235b",
+      "retrieved_at": "2026-11-11",
+      "license_status": "unconfirmed"
+    },
+    {
+      "file": "guide.html",
+      "url": "https://www.kumakogen.jp/soshiki/4/6870.html",
+      "sha256": "6eb24bff89ea4701c848ef23f9f3a5fc701ad77f90e8eaa69e89e41fd64ad427",
+      "retrieved_at": "2026-11-11",
+      "license_status": "unconfirmed"
+    },
+    {
+      "file": "areas.html",
+      "url": "https://www.kumakogen.jp/soshiki/4/19120.html",
+      "sha256": "3bb2c7fdaeb28cd20d62c81c6be73fccb869c29de2aa7655fef96ce6860bf20f",
+      "retrieved_at": "2026-11-11",
+      "license_status": "unconfirmed"
+    },
+    {
+      "file": "environment.html",
+      "url": "https://www.kumakogen.jp/life/1/1/17/",
+      "sha256": "f93358fb853b26619db38dd7aee0234085d3a0261f6fcf4a0c8b1aae39780e62",
+      "retrieved_at": "2026-11-11",
+      "license_status": "unconfirmed"
+    },
+    {
+      "file": "battery.html",
+      "url": "https://www.kumakogen.jp/soshiki/4/27263.html",
+      "sha256": "3d674f3d3e47fadb0309c22f34af3100134d18f540c3a8381c66d492ec1f7a44",
+      "retrieved_at": "2026-11-11",
+      "license_status": "unconfirmed"
+    },
+    {
+      "file": "recycling.html",
+      "url": "https://www.kumakogen.jp/soshiki/4/7834.html",
+      "sha256": "bc633597e4b3e49f7f76446b7485d26aed62fdbd40d5a2ae84a1d9f12ce151de",
+      "retrieved_at": "2026-11-11",
+      "license_status": "unconfirmed"
+    },
+    {
+      "file": "guide-revision.html",
+      "url": "https://www.kumakogen.jp/soshiki/4/6951.html",
+      "sha256": "02592f7d5cf3fc47bba3749d588167988d7bb89340639c576ae2ec39cf667dc5",
+      "retrieved_at": "2026-11-11",
+      "license_status": "unconfirmed"
+    },
+    {
+      "file": "dictionary.pdf",
+      "url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf",
+      "sha256": "920782f87da6f9ba0bdbab9986a6135ee59060194ba508c684cf1bde9666ab8c",
+      "retrieved_at": "2026-11-11",
+      "license_status": "unconfirmed"
+    },
+    {
+      "file": "calendar-2026.pdf",
+      "url": "https://www.kumakogen.jp/uploaded/attachment/14587.pdf",
+      "sha256": "fdffe2ebaf4b0956117e6afbbab66602b36ac6610804cb48fda8c63a27d89859",
+      "retrieved_at": "2026-11-11",
+      "license_status": "unconfirmed"
+    },
+    {
+      "file": "poster.pdf",
+      "url": "https://www.kumakogen.jp/uploaded/attachment/6684.pdf",
+      "sha256": "92ae2af932c0e3f88db18b28b4d2907b4b91d718da94d125645de4d694ce5611",
+      "retrieved_at": "2026-11-11",
+      "license_status": "unconfirmed"
+    },
+    {
+      "file": "linked-01.ics",
+      "url": "https://calendar.google.com/calendar/ical/5794d617cb2a2935ace7ef45f6eb9f6069a528ce959a10233287f5079c2e895f%40group.calendar.google.com/public/basic.ics",
+      "sha256": "d13875777853057751b8f675bc50d453cd894b3e13d809579c92a3fe50eb73e6",
+      "retrieved_at": "2026-11-11",
+      "license_status": "unconfirmed",
+      "canonicalization": "icalendar_unfold_sort_events_without_dtstamp_lf",
+      "official_link_page": "https://www.kumakogen.jp/soshiki/4/19120.html",
+      "purpose": "weekly exceptions and independent comparison; monthly dates prefer FY2026 PDF"
+    },
+    {
+      "file": "linked-02.ics",
+      "url": "https://calendar.google.com/calendar/ical/29afc7e880cc7ed383d3bfe6c92bf7ab1437242efc3da8a9f4a211734440166d%40group.calendar.google.com/public/basic.ics",
+      "sha256": "dacd976e46b8e30c2980051c7b9fa66e924f42d8235dd1ee3266adc2b0424c5d",
+      "retrieved_at": "2026-11-11",
+      "license_status": "unconfirmed",
+      "canonicalization": "icalendar_unfold_sort_events_without_dtstamp_lf",
+      "official_link_page": "https://www.kumakogen.jp/soshiki/4/19120.html",
+      "purpose": "weekly exceptions and independent comparison; monthly dates prefer FY2026 PDF"
+    },
+    {
+      "file": "linked-03.ics",
+      "url": "https://calendar.google.com/calendar/ical/daee3414faba9e2f1708222387a6749aab35566e4c544abd4e7f58ee38e72840%40group.calendar.google.com/public/basic.ics",
+      "sha256": "14a631fdb268530dca54d3442f73c3f9ddb9936afb65e3c6ba50b7132bfee440",
+      "retrieved_at": "2026-11-11",
+      "license_status": "unconfirmed",
+      "canonicalization": "icalendar_unfold_sort_events_without_dtstamp_lf",
+      "official_link_page": "https://www.kumakogen.jp/soshiki/4/19120.html",
+      "purpose": "weekly exceptions and independent comparison; monthly dates prefer FY2026 PDF"
+    },
+    {
+      "file": "linked-04.ics",
+      "url": "https://calendar.google.com/calendar/ical/8998a82e01a2ea7aed0709932abefd05f0800c689bb4fd80f565d89e74bbdc44%40group.calendar.google.com/public/basic.ics",
+      "sha256": "7357fa36e2211335a9529b9c6b7cafe532547e0a185360945234f2e6889a0214",
+      "retrieved_at": "2026-11-11",
+      "license_status": "unconfirmed",
+      "canonicalization": "icalendar_unfold_sort_events_without_dtstamp_lf",
+      "official_link_page": "https://www.kumakogen.jp/soshiki/4/19120.html",
+      "purpose": "weekly exceptions and independent comparison; monthly dates prefer FY2026 PDF"
+    },
+    {
+      "file": "linked-05.ics",
+      "url": "https://calendar.google.com/calendar/ical/f8a8d01b43a850870bdd903712482f294ff9ad213065cf9700e6c0e0b009e649%40group.calendar.google.com/public/basic.ics",
+      "sha256": "13a7fa87fa6385c6c9587232ed0b585c31bf27457cdebea471a4cae6fb2afdb9",
+      "retrieved_at": "2026-11-11",
+      "license_status": "unconfirmed",
+      "canonicalization": "icalendar_unfold_sort_events_without_dtstamp_lf",
+      "official_link_page": "https://www.kumakogen.jp/soshiki/4/19120.html",
+      "purpose": "weekly exceptions and independent comparison; monthly dates prefer FY2026 PDF"
+    },
+    {
+      "file": "linked-06.ics",
+      "url": "https://calendar.google.com/calendar/ical/a545eafd8942aaedf2103a6473f23369a059d2a12ba0dfecd6482ffa9566baef%40group.calendar.google.com/public/basic.ics",
+      "sha256": "3f66c7424d527e16773162703376796ec3e621bc03586f791fbdf3e2d3f9e150",
+      "retrieved_at": "2026-11-11",
+      "license_status": "unconfirmed",
+      "canonicalization": "icalendar_unfold_sort_events_without_dtstamp_lf",
+      "official_link_page": "https://www.kumakogen.jp/soshiki/4/19120.html",
+      "purpose": "weekly exceptions and independent comparison; monthly dates prefer FY2026 PDF"
+    },
+    {
+      "file": "linked-07.ics",
+      "url": "https://calendar.google.com/calendar/ical/9e5b2fb2754d67158f52041f05652b1f4ee36b7c449127553f219b3fd20cada9%40group.calendar.google.com/public/basic.ics",
+      "sha256": "e66c7246ee1bc113a29a8448bb20cc2906ab33ded93a101f749320f5c9f3eba0",
+      "retrieved_at": "2026-11-11",
+      "license_status": "unconfirmed",
+      "canonicalization": "icalendar_unfold_sort_events_without_dtstamp_lf",
+      "official_link_page": "https://www.kumakogen.jp/soshiki/4/19120.html",
+      "purpose": "weekly exceptions and independent comparison; monthly dates prefer FY2026 PDF"
+    },
+    {
+      "file": "linked-08.ics",
+      "url": "https://calendar.google.com/calendar/ical/5df375d3a95fbfbdb991df367f513196165548483236806c39cc80f5728ba405%40group.calendar.google.com/public/basic.ics",
+      "sha256": "d1eeb03ddcf877fe1d174064d8cede0c621cae6cdeeab3bb912f031234689fe4",
+      "retrieved_at": "2026-11-11",
+      "license_status": "unconfirmed",
+      "canonicalization": "icalendar_unfold_sort_events_without_dtstamp_lf",
+      "official_link_page": "https://www.kumakogen.jp/soshiki/4/19120.html",
+      "purpose": "weekly exceptions and independent comparison; monthly dates prefer FY2026 PDF"
+    },
+    {
+      "file": "linked-09.ics",
+      "url": "https://calendar.google.com/calendar/ical/358a4ea953d66c2d3023ae766fb3c31ea1911a78a4feec67de518e8423ed2fa0%40group.calendar.google.com/public/basic.ics",
+      "sha256": "b36decd36145abf5c7d4d659ab3a2682ded17a49c09b4c382b45f2ce8a5e73f5",
+      "retrieved_at": "2026-11-11",
+      "license_status": "unconfirmed",
+      "canonicalization": "icalendar_unfold_sort_events_without_dtstamp_lf",
+      "official_link_page": "https://www.kumakogen.jp/soshiki/4/19120.html",
+      "purpose": "weekly exceptions and independent comparison; monthly dates prefer FY2026 PDF"
+    },
+    {
+      "file": "linked-10.ics",
+      "url": "https://calendar.google.com/calendar/ical/8e3b7cb4ee550ff437742d2174fa6dd33d12ee7df484654d06cd964af42b2ffa%40group.calendar.google.com/public/basic.ics",
+      "sha256": "e93e2d2e5dcd22f7883b380af90fdac72f5e842952d17216ef1b0f221294bd9a",
+      "retrieved_at": "2026-11-11",
+      "license_status": "unconfirmed",
+      "canonicalization": "icalendar_unfold_sort_events_without_dtstamp_lf",
+      "official_link_page": "https://www.kumakogen.jp/soshiki/4/19120.html",
+      "purpose": "weekly exceptions and independent comparison; monthly dates prefer FY2026 PDF"
+    },
+    {
+      "file": "linked-11.ics",
+      "url": "https://calendar.google.com/calendar/ical/7e8aaf7b7bfd77c0a22013f8a07e5373cba21b006dde5b04776f820f90139f7a%40group.calendar.google.com/public/basic.ics",
+      "sha256": "99ac9ece5e47eb64f0708f9f063639461485abff60d8a9b198aae89f9be52bb4",
+      "retrieved_at": "2026-11-11",
+      "license_status": "unconfirmed",
+      "canonicalization": "icalendar_unfold_sort_events_without_dtstamp_lf",
+      "official_link_page": "https://www.kumakogen.jp/soshiki/4/19120.html",
+      "purpose": "weekly exceptions and independent comparison; monthly dates prefer FY2026 PDF"
+    },
+    {
+      "file": "linked-12.ics",
+      "url": "https://calendar.google.com/calendar/ical/0f79a98f2743196b7079054c1b9691e813d6bc54bca91e63aa6baaad1cfaa3cd%40group.calendar.google.com/public/basic.ics",
+      "sha256": "015a71368a416aeac67510afa2f90e1a1786896fbae17539c9d8e5f1347b0238",
+      "retrieved_at": "2026-11-11",
+      "license_status": "unconfirmed",
+      "canonicalization": "icalendar_unfold_sort_events_without_dtstamp_lf",
+      "official_link_page": "https://www.kumakogen.jp/soshiki/4/19120.html",
+      "purpose": "weekly exceptions and independent comparison; monthly dates prefer FY2026 PDF"
+    },
+    {
+      "file": "linked-13.ics",
+      "url": "https://calendar.google.com/calendar/ical/479ffa8528a654f51712039ee9878c3d7d669777162a0f500fd83c4173a97a7d%40group.calendar.google.com/public/basic.ics",
+      "sha256": "7a7db7279a897cd7297a03aa60430af1f66959d8b1a3da09849383ed50494275",
+      "retrieved_at": "2026-11-11",
+      "license_status": "unconfirmed",
+      "canonicalization": "icalendar_unfold_sort_events_without_dtstamp_lf",
+      "official_link_page": "https://www.kumakogen.jp/soshiki/4/19120.html",
+      "purpose": "weekly exceptions and independent comparison; monthly dates prefer FY2026 PDF"
+    },
+    {
+      "file": "linked-14.ics",
+      "url": "https://calendar.google.com/calendar/ical/fd16eccb468abccbe10bea8af45b6fd1d7aab6cad0880132336b5dc59fff0d1c%40group.calendar.google.com/public/basic.ics",
+      "sha256": "e2e9676b780a1bfc54679874d96c64c7e4a9167d569bbb2c30e962e08102638e",
+      "retrieved_at": "2026-11-11",
+      "license_status": "unconfirmed",
+      "canonicalization": "icalendar_unfold_sort_events_without_dtstamp_lf",
+      "official_link_page": "https://www.kumakogen.jp/soshiki/4/19120.html",
+      "purpose": "weekly exceptions and independent comparison; monthly dates prefer FY2026 PDF"
+    },
+    {
+      "file": "linked-15.ics",
+      "url": "https://calendar.google.com/calendar/ical/5fc37daeff55c79a349b08ec22b2fcb876ef53f5bd3da061eec3815f3318b064%40group.calendar.google.com/public/basic.ics",
+      "sha256": "6334c2a01616d65c3177100c5ed633dc41c2ae001739ae207e746f2e6db0d669",
+      "retrieved_at": "2026-11-11",
+      "license_status": "unconfirmed",
+      "canonicalization": "icalendar_unfold_sort_events_without_dtstamp_lf",
+      "official_link_page": "https://www.kumakogen.jp/soshiki/4/19120.html",
+      "purpose": "weekly exceptions and independent comparison; monthly dates prefer FY2026 PDF"
+    },
+    {
+      "file": "linked-16.ics",
+      "url": "https://calendar.google.com/calendar/ical/dde3ae3c799bcaad0483864d67c063bc72f12994efbedcc4200c4555d147ed69%40group.calendar.google.com/public/basic.ics",
+      "sha256": "f4b6f1e72ad990ee2c31b35f99559aa9c0713fb67ed37085779f9eb41e95c374",
+      "retrieved_at": "2026-11-11",
+      "license_status": "unconfirmed",
+      "canonicalization": "icalendar_unfold_sort_events_without_dtstamp_lf",
+      "official_link_page": "https://www.kumakogen.jp/soshiki/4/19120.html",
+      "purpose": "weekly exceptions and independent comparison; monthly dates prefer FY2026 PDF"
+    },
+    {
+      "file": "linked-17.ics",
+      "url": "https://calendar.google.com/calendar/ical/9526f3cd0aec23bb32565bfe5c9961e0e9e6da32a6f02a3384f8398213bc9158%40group.calendar.google.com/public/basic.ics",
+      "sha256": "9fa8ec4dec7b8e4b912ecd910d16346db45fc3727fc45229efeddd1ef004307c",
+      "retrieved_at": "2026-11-11",
+      "license_status": "unconfirmed",
+      "canonicalization": "icalendar_unfold_sort_events_without_dtstamp_lf",
+      "official_link_page": "https://www.kumakogen.jp/soshiki/4/19120.html",
+      "purpose": "weekly exceptions and independent comparison; monthly dates prefer FY2026 PDF"
+    },
+    {
+      "file": "linked-18.ics",
+      "url": "https://calendar.google.com/calendar/ical/b30dcc0901cfc41d3801e9f3554eb99a9daffb82620d93b525c050fc4828c24b%40group.calendar.google.com/public/basic.ics",
+      "sha256": "791fd67a9ca30fbc7babd4b6497b063c8092163361602233162dbf3fe01554a6",
+      "retrieved_at": "2026-11-11",
+      "license_status": "unconfirmed",
+      "canonicalization": "icalendar_unfold_sort_events_without_dtstamp_lf",
+      "official_link_page": "https://www.kumakogen.jp/soshiki/4/19120.html",
+      "purpose": "weekly exceptions and independent comparison; monthly dates prefer FY2026 PDF"
+    },
+    {
+      "file": "linked-19.ics",
+      "url": "https://calendar.google.com/calendar/ical/007b5c8a9a5a778489f0e02c4a3d8f9bf4f0949164737821d401e23d647c4a6b%40group.calendar.google.com/public/basic.ics",
+      "sha256": "7ba73ab83f686391392ae564c37773fe7d9a8108e9b8670f62aef9c782a54bba",
+      "retrieved_at": "2026-11-11",
+      "license_status": "unconfirmed",
+      "canonicalization": "icalendar_unfold_sort_events_without_dtstamp_lf",
+      "official_link_page": "https://www.kumakogen.jp/soshiki/4/19120.html",
+      "purpose": "weekly exceptions and independent comparison; monthly dates prefer FY2026 PDF"
+    },
+    {
+      "file": "linked-20.ics",
+      "url": "https://calendar.google.com/calendar/ical/5932903870c7db72ec78e275ed38cb4086c305aa26095de7eb60b85fdfcd8276%40group.calendar.google.com/public/basic.ics",
+      "sha256": "ce6c9a11f1cbda4c25e3b21afb91f6046346f4d1a4a8561401a9b528627317ad",
+      "retrieved_at": "2026-11-11",
+      "license_status": "unconfirmed",
+      "canonicalization": "icalendar_unfold_sort_events_without_dtstamp_lf",
+      "official_link_page": "https://www.kumakogen.jp/soshiki/4/19120.html",
+      "purpose": "weekly exceptions and independent comparison; monthly dates prefer FY2026 PDF"
+    },
+    {
+      "file": "linked-21.ics",
+      "url": "https://calendar.google.com/calendar/ical/b087647d4c22f36560f071b4265c38bede33e2439c6e50bb4fffb39325d00f01%40group.calendar.google.com/public/basic.ics",
+      "sha256": "7b29630b6004a4ce0ca6ede593ec9108f12224dc02eb611f268eaa1a229351f6",
+      "retrieved_at": "2026-11-11",
+      "license_status": "unconfirmed",
+      "canonicalization": "icalendar_unfold_sort_events_without_dtstamp_lf",
+      "official_link_page": "https://www.kumakogen.jp/soshiki/4/19120.html",
+      "purpose": "weekly exceptions and independent comparison; monthly dates prefer FY2026 PDF"
+    },
+    {
+      "file": "linked-22.ics",
+      "url": "https://calendar.google.com/calendar/ical/8b6df44d9069168a0e61ae950f1ba201d2168082f6e1a3c93d72e80cffff2f88%40group.calendar.google.com/public/basic.ics",
+      "sha256": "f0fedc65b7eabc489a006fbd0c865a88c8e2a40d7359a771d2adb833c05e94ba",
+      "retrieved_at": "2026-11-11",
+      "license_status": "unconfirmed",
+      "canonicalization": "icalendar_unfold_sort_events_without_dtstamp_lf",
+      "official_link_page": "https://www.kumakogen.jp/soshiki/4/19120.html",
+      "purpose": "weekly exceptions and independent comparison; monthly dates prefer FY2026 PDF"
+    },
+    {
+      "file": "linked-23.ics",
+      "url": "https://calendar.google.com/calendar/ical/31bb258206d48a13af7a5c5cf746080454a75181bb611045ab122cbf1ab817a8%40group.calendar.google.com/public/basic.ics",
+      "sha256": "2823bb36d093d5a2b9f23b6c6effd70547336ed1f72ec5814f4f61f120ec8a1a",
+      "retrieved_at": "2026-11-11",
+      "license_status": "unconfirmed",
+      "canonicalization": "icalendar_unfold_sort_events_without_dtstamp_lf",
+      "official_link_page": "https://www.kumakogen.jp/soshiki/4/19120.html",
+      "purpose": "weekly exceptions and independent comparison; monthly dates prefer FY2026 PDF"
+    }
+  ]
+}

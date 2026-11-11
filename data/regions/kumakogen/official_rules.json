@@ -1,0 +1,341 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38386",
+  "version": "kumakogen-2026.1",
+  "license_status": "unconfirmed",
+  "classification_rules": "久万高原町の家庭ごみ分別辞典、2026年度日程表と後日の現行案内だけを根拠とする。他市町の分類・袋・料金・収集方法を使わない。品目固有の条件を共通の出し方より優先。分類と収集方法を分け、直接持込・粗大・禁止を定期カレンダーに含めない。\nプラマーク付きの容器包装のみplastic_packaging。マークなし、ストロー・ハンガー・バケツ等のプラ製品、洗えないもの・汚れが取れないものはburnable。PETマーク付き本体はpet_bottles。外したキャップ・ラベルのプラ分類を本体に適用しない。キャップ・ラベルを外して水洗いしたPET本体と明示済みなら不要な再質問をしない。汚れの落ちないPETはburnable。\n食料・飲料缶はcans、スプレー缶・カセットボンベはmetals。使い切り、安全な場所でガス抜き。公式資料で確認できない穴あけを指示しない。汚れた食用缶はnon_burnable。食料飲料・化粧品のびんはbottlesだが乳白色や汚れの取れないもの、ガラス食器等はnon_burnable。\n紙パックは500ml以上・内側がアルミでなくきれいなものがpaper。500ml未満・内側アルミ・汚れた紙はburnable。洗って着られる衣類はclothes、破れ・汚れ・タオル類はburnable。素材・サイズによる辞典の個別注記を保持する。45L袋に入るものを無条件に粗大とせず、材質でburnable又はnon_burnable。木は直径・厚さ15cm以内で長さ50cm程度にできれば燃える。それ以外はconsult。\n2026年10月14日の公式電池案内を優先。取り外した正常なリチウムイオン電池はbatteries、破損・変形・膨張した電池と電池を取り外せない機器はdirect_delivery。通常の可燃・不燃に混ぜない。モバイルバッテリー等の機器について、単に正常というだけで資源にせず、電池の取り外し可否と破損・膨張等を確認する。取り外せない機器はdirect_delivery。電動自転車・車バイク用バッテリーの個別禁止指定を普通の家庭用電池へ拡張しない。スマホ・電話・カメラ等は電池を外した16品目のみsmall_appliancesとして資源日又は回収ボックスへ。\n粗大ごみは45L袋に入らない家具・布団・自転車等でbulky。原則環境衛生センターへ直接持込。持込困難者の戸別収集は現行の広報と窓口で対象・申込期限・収集日を確認する。過去の広報の期限を現在の募集としない。直接搬入時間はガイドでは月〜土8:30〜16:30、日曜・年末年始休み。料金・臨時休業は最新案内を確認する。家電リサイクル4品目は定期収集ではなくリサイクル券を準備する専用手続でdirect_delivery等を案内。パソコンは辞典の直接持込を保持。禁止品はサイズで粗大にしない。\n不足条件は追加質問又は保留。画像や言い換えからの推測を利用者の回答と混同しない。「はい」「いいえ」は直前の質問と結び付け、利用者が確認済みの条件は保持する。紙・缶・プラの共通説明の別品目を本体の根拠にしない。2026年度の確認済み日付のみ案内。全資源日とプラ・カンのみの日を区別する。朝8時まで。地域の例外ステーションの境界や日程は自動判定せず自治会へ確認。\n条件が入力済みの木：直径10cm・長さ50cmなど公式の15cm以内/50cm程度を満たす剪定枝はburnableでありconsultへ戻さない。モバイルバッテリーの電池取り外し可否・破損状態が未回答なら、まず取り外せるかを質問し、推測でdirect_deliveryに固定しない。",
+  "categories": {
+    "burnable": {
+      "name": "燃えるごみ",
+      "color": "#EF3333",
+      "collection_type_id": "burnable",
+      "cutoff": "08:00",
+      "time_note": "収集日の朝8時までに出してください。例外日程のステーションについては自治会へ確認してください。",
+      "instructions": "指定袋（20・30・45L）に入れ口をしばる。生ごみは水切り。金属を混ぜない。",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=3"
+    },
+    "non_burnable": {
+      "name": "燃えないごみ",
+      "color": "#555555",
+      "collection_type_id": "non_burnable",
+      "cutoff": "08:00",
+      "time_note": "収集日の朝8時までに出してください。例外日程のステーションについては自治会へ確認してください。",
+      "instructions": "指定袋（20・30・45L）を使用。割れ物は紙などに包んで危なくないようにする。電池を外す。",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=4"
+    },
+    "paper": {
+      "name": "紙類",
+      "color": "#39A65A",
+      "collection_type_id": "paper",
+      "cutoff": "08:00",
+      "time_note": "収集日の朝8時までに出してください。例外日程のステーションについては自治会へ確認してください。",
+      "instructions": "新聞・雑誌雑紙・段ボール・紙パックを種類別にひもで十字にしばる。シュレッダー紙は透明袋。500ml未満・内側アルミ・汚れた紙は燃えるごみ。",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=5",
+      "resource_day": true
+    },
+    "bottles": {
+      "name": "ビン類",
+      "color": "#39A65A",
+      "collection_type_id": "bottles",
+      "cutoff": "08:00",
+      "time_note": "収集日の朝8時までに出してください。例外日程のステーションについては自治会へ確認してください。",
+      "instructions": "食料・飲料・化粧品のビン。乳白色は燃えない。ふたを外し、軽く水洗いして指定資源袋へ。汚れが取れないビンは燃えない。",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=6",
+      "resource_day": true
+    },
+    "cans": {
+      "name": "カン類",
+      "color": "#39A65A",
+      "collection_type_id": "cans",
+      "cutoff": "08:00",
+      "time_note": "収集日の朝8時までに出してください。例外日程のステーションについては自治会へ確認してください。",
+      "instructions": "食料・飲料のカン。ふたを外し、軽く水洗いして指定資源袋へ。汚れの取れないカンは燃えない。",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=6",
+      "resource_day": true
+    },
+    "pet_bottles": {
+      "name": "ペットボトル",
+      "color": "#39A65A",
+      "collection_type_id": "pet_bottles",
+      "cutoff": "08:00",
+      "time_note": "収集日の朝8時までに出してください。例外日程のステーションについては自治会へ確認してください。",
+      "instructions": "PETマーク付きのボトル本体。中身を空にしてすすぎ、キャップ・ラベルを外し、指定資源袋へ。汚れの取れない本体は燃える。外したキャップ・ラベルはプラ。",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=7",
+      "resource_day": true
+    },
+    "metals": {
+      "name": "金属類",
+      "color": "#39A65A",
+      "collection_type_id": "metals",
+      "cutoff": "08:00",
+      "time_note": "収集日の朝8時までに出してください。例外日程のステーションについては自治会へ確認してください。",
+      "instructions": "鍋・やかん・包丁・スプレー缶等。指定資源袋へ。刃物は紙等に包む。スプレー缶・カセットボンベは必ず使い切る。穴あけを独自に指示しない。",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=8",
+      "resource_day": true
+    },
+    "clothes": {
+      "name": "古着類",
+      "color": "#39A65A",
+      "collection_type_id": "clothes",
+      "cutoff": "08:00",
+      "time_note": "収集日の朝8時までに出してください。例外日程のステーションについては自治会へ確認してください。",
+      "instructions": "衣類として再利用できるものはできるだけ洗濯し指定資源袋へ。汚れ・破れ・タオル類は燃えるごみ。",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=8",
+      "resource_day": true
+    },
+    "plastic_packaging": {
+      "name": "プラスチック類",
+      "color": "#39A65A",
+      "collection_type_id": "plastic_packaging",
+      "cutoff": "08:00",
+      "time_note": "収集日の朝8時までに出してください。例外日程のステーションについては自治会へ確認してください。",
+      "instructions": "プラマーク付きの容器包装。汚れを落とし指定資源袋へ。プラ製品そのものや、マークがない・汚れが取れない・洗えないものは燃える。PET本体とは分ける。",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=9",
+      "resource_day": true
+    },
+    "fluorescent": {
+      "name": "蛍光灯",
+      "color": "#39A65A",
+      "collection_type_id": "fluorescent",
+      "cutoff": "08:00",
+      "time_note": "収集日の朝8時までに出してください。例外日程のステーションについては自治会へ確認してください。",
+      "instructions": "蛍光灯は購入時の袋・箱などを使用し割れないように出す。割れたもの・LED・白熱球は燃えないごみ。",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=10",
+      "resource_day": true
+    },
+    "batteries": {
+      "name": "乾電池・電池類",
+      "color": "#39A65A",
+      "collection_type_id": "batteries",
+      "cutoff": "08:00",
+      "time_note": "収集日の朝8時までに出してください。例外日程のステーションについては自治会へ確認してください。",
+      "instructions": "中身が確認できる透明袋等で資源ごみの日へ。リチウムイオン電池は2026年10月14日の案内を優先し、取り外した正常品のみ。破損・変形・膨張、機器から取り外せない場合は環境衛生センターへ直接持込。",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=10",
+      "resource_day": true
+    },
+    "cooking_oil": {
+      "name": "廃食用油",
+      "color": "#39A65A",
+      "collection_type_id": "cooking_oil",
+      "cutoff": "08:00",
+      "time_note": "収集日の朝8時までに出してください。例外日程のステーションについては自治会へ確認してください。",
+      "instructions": "植物性の液状食用油。不純物を取り除き、ペットボトルに入れてふたをしっかり閉める。鉱物油・動物脂・固形油は対象外。",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=10",
+      "resource_day": true
+    },
+    "small_appliances": {
+      "name": "小型家電",
+      "color": "#39A65A",
+      "collection_type_id": "small_appliances",
+      "cutoff": "08:00",
+      "time_note": "収集日の朝8時までに出してください。例外日程のステーションについては自治会へ確認してください。",
+      "instructions": "公式の16品目のみ。電池・バッテリーを外し電池カバーも外して、資源袋で資源ごみの日又は回収ボックスへ。取り外せないリチウムイオン電池内蔵機器は環境衛生センターへ直接持込。個人情報を消去。",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=11",
+      "resource_day": true
+    },
+    "bulky": {
+      "name": "粗大ごみ",
+      "color": "#734191",
+      "instructions": "45L指定袋に入らない家具・寝具等。環境衛生センターへ直接持込。直接持込が困難な方の戸別収集は広報の現行募集を確認し、住民課衛生係・センターへ相談。古い募集期限・日付は使わない。",
+      "answer_note": "45L指定袋に入らない家具・寝具等。環境衛生センターへ直接持込。直接持込が困難な方の戸別収集は広報の現行募集を確認し、住民課衛生係・センターへ相談。古い募集期限・日付は使わない。",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=12"
+    },
+    "direct_delivery": {
+      "name": "直接持ち込み",
+      "color": "#2144A6",
+      "instructions": "環境衛生センターへ。品目別条件・料金・受付日を確認する。家電リサイクルはリサイクル券など専用手続が必要。受付時間は集積場のごみ出し時刻ではない。",
+      "answer_note": "環境衛生センターへ。品目別条件・料金・受付日を確認する。家電リサイクルはリサイクル券など専用手続が必要。受付時間は集積場のごみ出し時刻ではない。",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=13"
+    },
+    "not_collected": {
+      "name": "処理できないごみ",
+      "color": "#955600",
+      "instructions": "町で処理できない品目。販売店・専門業者に相談する。定期収集や町のセンターへの持込へ振り替えない。",
+      "answer_note": "町で処理できない品目。販売店・専門業者に相談する。定期収集や町のセンターへの持込へ振り替えない。",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=13"
+    },
+    "consult": {
+      "name": "環境衛生センターに相談",
+      "color": "#777777",
+      "instructions": "木の大きさなど品目固有条件を確認し環境衛生センターへ相談。処理方法・持込可能性を推測しない。",
+      "answer_note": "木の大きさなど品目固有条件を確認し環境衛生センターへ相談。処理方法・持込可能性を推測しない。",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=13"
+    }
+  },
+  "examples": [
+    {
+      "id": "kk-rule-pet-body",
+      "item": "PETマーク付き飲料用ペットボトル本体（キャップ・ラベルを外して水洗い済み）",
+      "category": "pet_bottles",
+      "note": "きれいなPETマーク付き本体はペット。外したプラ製キャップ・ラベルの分類とは区別。洗えない・汚れが落ちないものは燃える。",
+      "category_options": [
+        "burnable"
+      ],
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=7"
+    },
+    {
+      "id": "kk-rule-pet-cap",
+      "item": "PETボトルから取り外したプラスチック製のキャップ・ラベル",
+      "category": "plastic_packaging",
+      "note": "外したプラ製キャップとラベルはプラ類。本体のPETボトルとは別に出す。汚れが落ちないものは燃える。",
+      "category_options": [
+        "burnable"
+      ],
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=7"
+    },
+    {
+      "id": "kk-rule-pet-dirty",
+      "item": "汚れの落ちない飲料用ペットボトル本体",
+      "category": "burnable",
+      "note": "水洗いしても汚れの取れないPETボトルは燃えるごみ。",
+      "category_options": [],
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=7"
+    },
+    {
+      "id": "kk-rule-can-clean",
+      "item": "水洗いした飲料・食料の空き缶",
+      "category": "cans",
+      "note": "食べ物や飲み物の入っていた空き缶はカン。汚れの取れないものは燃えない。スプレー缶は別の金属類。",
+      "category_options": [
+        "non_burnable"
+      ],
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=6"
+    },
+    {
+      "id": "kk-rule-bottle-milky",
+      "item": "乳白色の化粧品ガラスびん",
+      "category": "non_burnable",
+      "note": "乳白色びんは燃えないごみ。通常の化粧品びんとは区別する。",
+      "category_options": [],
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=6"
+    },
+    {
+      "id": "kk-rule-pack-aluminum",
+      "item": "内側がアルミコーティングされた紙パック",
+      "category": "burnable",
+      "note": "酒パック等の金属箔付きは燃える。",
+      "category_options": [],
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=5"
+    },
+    {
+      "id": "kk-rule-straw",
+      "item": "普通のプラスチック製ストロー",
+      "category": "burnable",
+      "note": "ストローなどのプラ製品は燃えるごみ。プラマーク付き容器包装とは違う。",
+      "category_options": [],
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=9"
+    },
+    {
+      "id": "kk-rule-bucket",
+      "item": "プラスチック製バケツ",
+      "category": "burnable",
+      "note": "45L指定袋に入るものは「燃えるごみ」。袋に入らないものは「粗大ごみ」。袋に入る大きさか不明なら確認する。",
+      "category_options": [
+        "bulky"
+      ],
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=9"
+    },
+    {
+      "id": "kk-rule-wood-chair",
+      "item": "直径15cm以下で長さ50cm程度に切った木の枝",
+      "category": "burnable",
+      "note": "直径又は厚さが15cm以内で長さ50cm程度（板は各辺50cm程度）なら燃えるごみ。それ以外の木は環境衛生センターに相談。",
+      "category_options": [
+        "consult"
+      ],
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=2"
+    },
+    {
+      "id": "kk-rule-spray-empty",
+      "item": "中身を使い切ってガス抜きしたスプレー缶",
+      "category": "metals",
+      "note": "必ず使い切る。食料・飲料缶ではなく金属類。穴あけを他自治体の規則から追加しない。",
+      "category_options": [],
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=8"
+    },
+    {
+      "id": "kk-rule-lithium-normal",
+      "item": "機器から取り外した正常なリチウムイオン電池",
+      "category": "batteries",
+      "note": "取り外した電池は資源日。破損・変形・膨張したものは環境衛生センターへ直接持込。",
+      "category_options": [
+        "direct_delivery"
+      ],
+      "source_url": "https://www.kumakogen.jp/soshiki/4/27263.html"
+    },
+    {
+      "id": "kk-rule-mobile-battery",
+      "item": "モバイルバッテリー",
+      "category": "direct_delivery",
+      "note": "モバイルバッテリー等の機器から電池を取り外せない場合や破損・変形・膨張した場合は環境衛生センターへ直接持込。機器から取り外した正常な電池だけは資源ごみ。取り外し可否や状態が不明なら確認する。",
+      "category_options": [
+        "batteries"
+      ],
+      "source_url": "https://www.kumakogen.jp/soshiki/4/27263.html"
+    },
+    {
+      "id": "kk-rule-lithium-swollen",
+      "item": "膨張・破損・変形したリチウムイオン電池・モバイルバッテリー",
+      "category": "direct_delivery",
+      "note": "ごみステーションに出さず環境衛生センターへ直接持ち込む。",
+      "category_options": [],
+      "source_url": "https://www.kumakogen.jp/soshiki/4/27263.html"
+    },
+    {
+      "id": "kk-rule-device-battery",
+      "item": "リチウムイオン電池を取り外せないスマートフォン・小型家電",
+      "category": "direct_delivery",
+      "note": "電池の取り外しができない場合は環境衛生センターへ直接持込。無理に分解しない。",
+      "category_options": [],
+      "source_url": "https://www.kumakogen.jp/soshiki/4/27263.html"
+    },
+    {
+      "id": "kk-rule-phone-removed",
+      "item": "携帯電話（電池・バッテリーを取り外した本体）",
+      "category": "small_appliances",
+      "note": "電池を外した携帯電話は指定資源袋で資源ごみの日又は町の小型家電回収ボックス。個人情報を消去。",
+      "category_options": [],
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=11"
+    },
+    {
+      "id": "kk-rule-clothes-dirty",
+      "item": "破れ・汚れの落ちない衣類",
+      "category": "burnable",
+      "note": "汚れや傷みのある衣類、タオル等は燃える。",
+      "category_options": [],
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=8"
+    }
+  ],
+  "bulky_config": {
+    "municipality_id": "38386",
+    "municipality_name": "久万高原町",
+    "application_method": "guide_only",
+    "phone_number": "0892-21-0195",
+    "source_urls": [
+      "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=12",
+      "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=13"
+    ],
+    "collection_frequency": "広報で案内される戸別収集（要確認）又は直接持込",
+    "reception_hours": "環境衛生センター：月〜土8:30〜16:30（日曜・年末年始休み、臨時変更は窓口で確認）",
+    "collection_rules": "45L指定袋に入らない家具・布団等は環境衛生センターへ直接持ち込んでください。持ち込みが困難な方の戸別収集は、現行の広報・町の窓口で対象条件と受付期間を確認してください。",
+    "information_url": "https://www.kumakogen.jp/soshiki/4/6870.html",
+    "fee_structure_type": "fixed",
+    "steps": [
+      {
+        "step_number": 1,
+        "title": "大きさと対象を確認",
+        "description": "45L指定袋に入らない家具・寝具等が粗大ごみです。町で処理できない物や家電リサイクル品は別の手続が必要です。"
+      },
+      {
+        "step_number": 2,
+        "title": "直接持ち込む場合",
+        "description": "環境衛生センターへ分別して持ち込みます。ガイドの受付は月〜土8:30〜16:30（日曜・年末年始休み）です。臨時休業・料金・品目条件は事前に確認してください。"
+      },
+      {
+        "step_number": 3,
+        "title": "持ち込みが難しい場合",
+        "description": "戸別収集は広報で案内されます。住民課衛生係（0892-21-1111）又は環境衛生センターへ、対象条件・現在の受付期間・申込方法を確認してください。過去の募集期限は適用しません。"
+      }
+    ]
+  }
+}
