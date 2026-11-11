@@ -8,7 +8,8 @@
     "Yawatahama case30 initially only said empty can; final clarifies rinsed can. This is an evaluation-input correction, not a change to Yawatahama data.",
     "Eight retry cases passed after final processing fixes in offline saved-response replay; that replay is not an additional live Bedrock run.",
     "Real-image perception is not evaluated by these text/clarification cases.",
-    "Final live batch:33/34; case4 straw was incorrectly overwritten by a parenthetical-name truncation. That processing bug was then fixed and all34 saved model responses replayed successfully offline. Latest retrieval ranking has not yet been re-evaluated for all34 cases."
+    "Final live batch:33/34; case4 straw was incorrectly overwritten by a parenthetical-name truncation. That processing bug was then fixed and all34 saved model responses replayed successfully offline. After separate approval, fresh retrieval and inference passed for cases4,15,31,34; all34 cases were not rerun after this final fix.",
+    "Separately approved suffix-fix run adds exactly4 cases and12 calls without regenerating embeddings; original final33/34 result is retained."
   ],
   "corrections": [
     "Bottom-row extraction: 55 rows recovered; reverse check covers 1989 painted classification icons and13 flowchart references.",
@@ -1808,22 +1809,164 @@
         }
       ],
       "estimated_upper_usd": 0.151704
+    },
+    "suffix-fix": {
+      "manifest": {
+        "case_sha256": "b7b931557ac44a8aa4a0469ecc098f70c8164fd173c74ddd35d04206d28d01c2",
+        "model_settings": [
+          "amazon.nova-lite-v1:0",
+          "amazon.titan-embed-text-v2:0",
+          8,
+          0.15,
+          0.75,
+          false,
+          false
+        ],
+        "evaluation_time": "2026-11-11T07:00:00+09:00",
+        "budget_usd": 1.0,
+        "max_calls": 250,
+        "max_cases": 80,
+        "case_ids": [
+          4,
+          15,
+          31,
+          34
+        ],
+        "dataset_sha256": {
+          "registry.json": "45997b59016de7818bf066dc1375566de4b2352ec872333e7b82c2ebaa580c14",
+          "knowledge/items.csv": "a1fb2a9e2101b4ede99d42bb92ed7296681dd9ccb997416767051e56e914e6ac",
+          "knowledge/item_embeddings.npz": "5ec6ff4700099c26daf5b07f908fff9fb398805162e290ffd8744054c799a399"
+        },
+        "implementation_sha256": {
+          "backend/app/services/waste_guide_service.py": "ac17f9a846843b92c7fe16bd7c0bad9f596e735a2d86f4829ad1e72c0f5f2b30",
+          "backend/app/services/embedding_search_service.py": "b68a0b6753ed747c36a7d68ff0fe699fd509e59b70c05ed44cfdeb2104dd1be5",
+          "backend/app/services/calendar_service.py": "c6757756f29164ac2305fc6a4cec09b2f27e686b7479e5aa45f0880db81a23fe"
+        }
+      },
+      "case_count": 4,
+      "passes": 4,
+      "model_calls": {
+        "nova": 8,
+        "titan": 4
+      },
+      "estimated_upper_usd": 0.0182574,
+      "cases": [
+        {
+          "case": 4,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-16",
+            "query": "プラスチック製ストロー",
+            "clarifications": []
+          },
+          "expected": "burnable",
+          "check_type": "classification",
+          "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=9",
+          "actual_status": "answered",
+          "actual_category": "burnable",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-11-13",
+            "display_date": "2026年11月13日（金）",
+            "collection_type": "燃えるごみ"
+          },
+          "http": 200,
+          "pass": true
+        },
+        {
+          "case": 15,
+          "input": {
+            "municipality_id": "38386",
+            "district_id": "38386-14",
+            "query": "電池とバッテリーを取り外した携帯電話",
+            "clarifications": []
+          },
+          "expected": "small_appliances",
+          "check_type": "classification",
+          "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=11",
+          "actual_status": "answered",
+          "actual_category": "small_appliances",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-11-11",
+            "display_date": "2026年11月11日（水）",
+            "collection_type": "小型家電"
+          },
+          "http": 200,
+          "pass": true
+        },
+        {
+          "case": 31,
+          "input": {
+            "municipality_id": "38210",
+            "district_id": "38210-iyo-south",
+            "query": "キャップ・ラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体。プラマークはありません",
+            "clarifications": []
+          },
+          "expected": "pet_bottles",
+          "check_type": "classification",
+          "source_url": "https://www.city.iyo.lg.jp/kankyohozen/bunbetu.html",
+          "actual_status": "answered",
+          "actual_category": "pet_bottles",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-11-17",
+            "display_date": "2026年11月17日（火）",
+            "collection_type": "ペットボトル"
+          },
+          "http": 200,
+          "pass": true
+        },
+        {
+          "case": 34,
+          "input": {
+            "municipality_id": "38215",
+            "district_id": "38215-01",
+            "query": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+            "clarifications": []
+          },
+          "expected": "pet_bottles",
+          "check_type": "classification",
+          "source_url": "https://www.city.toon.ehime.jp/uploaded/attachment/22090.pdf#page=8",
+          "actual_status": "answered",
+          "actual_category": "pet_bottles",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-11-22",
+            "display_date": "2026年11月22日（日）",
+            "collection_type": "ペットボトル"
+          },
+          "http": 200,
+          "pass": true
+        }
+      ]
     }
   },
   "budget": {
     "approved_max_index_calls": 2100,
-    "approved_max_cases": 76,
+    "approved_max_cases": 80,
     "approved_max_evaluation_calls": 250,
     "approved_estimated_upper_usd": 1,
     "index_calls": 2079,
     "index_initial_calls": 2017,
     "index_delta_calls": 62,
-    "evaluated_cases": 76,
-    "evaluation_calls": 228,
+    "evaluated_cases": 80,
+    "evaluation_calls": 240,
     "index_conservative_usd": 0.07051840000000001,
-    "evaluation_conservative_usd": 0.336069,
-    "total_conservative_usd": 0.40658740000000004,
-    "not_an_aws_billing_guarantee": true
+    "evaluation_conservative_usd": 0.3543264,
+    "total_conservative_usd": 0.4248448,
+    "not_an_aws_billing_guarantee": true,
+    "additional_four_case_approval": {
+      "cases": [
+        4,
+        15,
+        31,
+        34
+      ],
+      "max_model_calls": 12,
+      "max_estimated_total_usd": 1,
+      "index_regenerated": false
+    }
   },
   "offline_replay_after_suffix_fix": {
     "cases": 34,

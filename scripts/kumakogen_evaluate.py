@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Explicit PAID Kumakogen API evaluation, only after budget approval.
 
-No deployment/resource operations. Journals bound all runs to 76 cases,
-250 inference calls, and a combined conservative USD1 index/evaluation reserve.
+No deployment/resource operations. Journals bound normal runs to 76 cases
+(80 only with separately approved four-case suffix-fix), 250 inference calls,
+and a combined conservative USD1 index/evaluation reserve.
 """
 
 from __future__ import annotations
