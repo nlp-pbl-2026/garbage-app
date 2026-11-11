@@ -1,0 +1,134 @@
+"""Synthetic regressions for conditions exposed by the Saijo live evaluation."""
+
+from pathlib import Path
+import sys
+from types import SimpleNamespace
+import pytest
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from app.services.waste_guide_service import (
+    WasteGuideService as Service,
+    RetrievedDocument,
+)
+
+
+def region():
+    names = {
+        "burnable": "もえるごみ",
+        "non_burnable": "もえないごみ",
+        "pet_bottles": "ペットボトル",
+        "bulky": "粗大ごみ",
+        "not_collected": "市では収集しない",
+    }
+    return SimpleNamespace(
+        municipality_id="99999",
+        category_codes=list(names),
+        category_names=names,
+        rules=SimpleNamespace(size_threshold_cm=None, size_question="袋に入りますか？"),
+    )
+
+
+def doc(item, code, note="", options="[]"):
+    return RetrievedDocument(
+        text=f"品目: {item}\n分類コード: {code}\n条件付き分類コード: {options}\n出し方・注意: {note}",
+        score=0.9,
+        uri="regional://99999/citywide/test/item",
+    )
+
+
+def test_cap_evidence_cannot_authorize_pet_body_category_in_its_note():
+    d = doc(
+        "ペットボトルから取り外したプラスチック製キャップ",
+        "burnable",
+        "ペットボトルから外したプラ製キャップだけはもえるごみ。本体は別。",
+    )
+    result = Service._resolve_exact_structured_decision(
+        query="ペットボトルから取り外したプラスチック製キャップだけ",
+        clarifications=[],
+        documents=[d],
+        region=region(),
+    )
+    assert result.category_code == "burnable"
+
+
+def test_danball_spelling_selects_cardboard_before_bowl():
+    docs = [
+        doc("ボール（調理用）", "non_burnable"),
+        doc("ダンボール", "burnable", "汚れが落ちないものはもえるごみ"),
+    ]
+    matches = Service._matching_structured_documents(
+        query="汚れが取れない段ボール", documents=docs
+    )
+    assert matches[0][2] == "ダンボール"
+
+
+def test_numeric_qualifiers_do_not_default_to_first_unevaluated_range():
+    docs = [doc("木（3cm以上5cm未満）", "bulky"), doc("木（5cm以上）", "not_collected")]
+    assert (
+        Service._resolve_exact_structured_decision(
+            query="直径6cmの木", clarifications=[], documents=docs, region=region()
+        )
+        is None
+    )
+
+
+def test_short_material_branch_requires_missing_material_but_keeps_answer():
+    d = doc("アクセサリー", "burnable", "金属製はもえないごみへ", '["non_burnable"]')
+    assert Service._conditional_evidence_question(
+        query="アクセサリー", clarifications=[], documents=[d], region=region()
+    )
+    assert (
+        Service._conditional_evidence_question(
+            query="アクセサリー",
+            clarifications=[{"question": "何製ですか？", "answer": "金属です"}],
+            documents=[d],
+            region=region(),
+        )
+        is None
+    )
+
+
+@pytest.mark.parametrize(
+    "query,clarifications,question",
+    [
+        ("プラスチック製おもちゃ", [], True),
+        ("ティッシュ箱より小さいプラスチック製おもちゃ", [], False),
+        ("ティッシュ箱より大きいプラスチック製おもちゃ", [], False),
+        (
+            "プラスチック製おもちゃ",
+            [{"question": "ティッシュ箱より小さいですか？", "answer": "はい"}],
+            False,
+        ),
+        (
+            "プラスチック製おもちゃ",
+            [{"question": "ティッシュ箱より小さいですか？", "answer": "いいえ"}],
+            False,
+        ),
+    ],
+)
+def test_comparative_size_is_required_only_when_unanswered(
+    query, clarifications, question
+):
+    d = doc(
+        "おもちゃ（プラスチック製）",
+        "non_burnable",
+        "ティッシュペーパーの箱（縦26cm×横11cm×高さ6cm）より小さいものはもえるごみへ",
+        '["burnable"]',
+    )
+    result = Service._conditional_evidence_question(
+        query=query, clarifications=clarifications, documents=[d], region=region()
+    )
+    assert bool(result) == question
+
+
+@pytest.mark.parametrize(
+    "text,expected",
+    [
+        ("洗ってラベルとキャップを外した飲料PET本体", True),
+        ("水洗いしたPET本体", True),
+        ("洗っていないPET本体", False),
+        ("洗ってくださいと言われたPET本体", False),
+    ],
+)
+def test_cleaning_completion_is_not_lost_in_connected_sentence(text, expected):
+    assert Service._cleaning_is_confirmed(text) == expected
