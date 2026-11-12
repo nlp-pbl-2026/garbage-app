@@ -97,6 +97,95 @@ def fingerprint(config):
     return hashlib.sha256(json.dumps(stable, sort_keys=True).encode()).hexdigest()
 
 
+def runtime_management(aws, plan):
+    result = aws.call(
+        "lambda", "get-runtime-management-config", "--function-name", plan["function"]
+    )
+    arn = (
+        f"arn:aws:lambda:{plan['region']}:{plan['account']}:function:{plan['function']}"
+    )
+    require(
+        result.get("FunctionArn") in (arn, arn + ":$LATEST"),
+        "Unexpected runtime management target",
+    )
+    require(
+        result.get("UpdateRuntimeOn") in {"Auto", "FunctionUpdate", "Manual"},
+        "Unknown runtime update mode",
+    )
+    # Auto/FunctionUpdate do not return the currently running patch ARN here.
+    return {
+        "UpdateRuntimeOn": result["UpdateRuntimeOn"],
+        "RuntimeVersionArn": result.get("RuntimeVersionArn"),
+    }
+
+
+def same_configuration_after_update(config, baseline, management):
+    """Permit only an AWS-managed patch ARN change, never Runtime/role/env drift.
+
+    fingerprint() itself stays strict for old plans and all pre-update checks.
+    RuntimeVersionConfig.Error and unknown/new fields are not ignored.
+    """
+    before = baseline.get("RuntimeVersionConfig") or {}
+    after = config.get("RuntimeVersionConfig") or {}
+    require(not after.get("Error"), "Lambda reports a runtime version error")
+    if before != after:
+        require(
+            management["UpdateRuntimeOn"] in {"Auto", "FunctionUpdate"},
+            "Runtime patch changed in Manual mode; stop for review",
+        )
+        for value in (before, after):
+            arn = value.get("RuntimeVersionArn")
+            require(
+                isinstance(arn, str)
+                and re.fullmatch(
+                    r"arn:aws:lambda:"
+                    + re.escape(config["FunctionArn"].split(":")[3])
+                    + r"::runtime:[A-Za-z0-9]+",
+                    arn,
+                ),
+                "Missing or invalid managed runtime version ARN",
+            )
+        require(
+            {k: v for k, v in before.items() if k != "RuntimeVersionArn"}
+            == {k: v for k, v in after.items() if k != "RuntimeVersionArn"},
+            "Runtime version metadata changed; stop for review",
+        )
+    comparable = dict(config)
+    if "RuntimeVersionConfig" in baseline:
+        comparable["RuntimeVersionConfig"] = baseline["RuntimeVersionConfig"]
+    else:
+        comparable.pop("RuntimeVersionConfig", None)
+    require(
+        fingerprint(comparable) == fingerprint(baseline),
+        "Lambda configuration changed beyond the managed runtime patch; stop for review",
+    )
+
+
+def saved_baseline(directory, plan):
+    baseline = json.loads((directory / "configuration-before.json").read_text())
+    same_function(baseline, plan["previous"])
+    return baseline
+
+
+def same_deployment(config, expected, baseline, management, *, permit_failed=False):
+    require(
+        config.get("State") == "Active"
+        and config.get("LastUpdateStatus") != "InProgress"
+        and (permit_failed or config.get("LastUpdateStatus") == "Successful"),
+        "Lambda update is not complete; wait and verify again",
+    )
+    require(
+        config["RevisionId"] == expected["revision_id"]
+        and config["CodeSha256"] == expected["code_sha256"],
+        "Lambda code or revision changed; stop for review",
+    )
+    require(
+        expected["config_sha256"] == fingerprint(baseline),
+        "Receipt configuration baseline mismatch",
+    )
+    same_configuration_after_update(config, baseline, management)
+
+
 def save(path, value):
     path = Path(path)
     temporary = path.with_suffix(path.suffix + ".tmp")
@@ -243,6 +332,17 @@ def preflight(aws, plan, *, permit_failed=False):
     require(identity["Account"] == plan["account"], "Unexpected AWS account")
     result = aws.call("lambda", "get-function", "--function-name", plan["function"])
     config = result["Configuration"]
+    require(
+        not (config.get("RuntimeVersionConfig") or {}).get("Error"),
+        "Lambda reports a runtime version error",
+    )
+    management = runtime_management(aws, plan)
+    if "runtime_management" in plan:
+        require(
+            management == plan["runtime_management"],
+            "Runtime management mode changed; stop for review",
+        )
+    result["RuntimeManagement"] = management
     arn = (
         f"arn:aws:lambda:{plan['region']}:{plan['account']}:function:{plan['function']}"
     )
@@ -375,7 +475,9 @@ def preflight(aws, plan, *, permit_failed=False):
 
 def same_function(config, expected):
     require(
-        config["RevisionId"] == expected["revision_id"]
+        config.get("State") == "Active"
+        and config.get("LastUpdateStatus") != "InProgress"
+        and config["RevisionId"] == expected["revision_id"]
         and config["CodeSha256"] == expected["code_sha256"]
         and fingerprint(config) == expected["config_sha256"],
         "Lambda code, revision or configuration changed; stop and prepare again",
@@ -462,6 +564,11 @@ def prepare(args):
             zip_sha256=sha(directory / "previous.zip"),
         ),
         created_at=datetime.now(timezone.utc).isoformat(),
+        runtime_management=result["RuntimeManagement"],
+    )
+    require(
+        runtime_management(aws, plan) == plan["runtime_management"],
+        "Runtime management mode changed during prepare",
     )
     save(directory / "plan.json", plan)
     print(
@@ -521,12 +628,16 @@ def upload(aws, plan, path, key):
     return dict(key=key, version=head["VersionId"])
 
 
-def update(aws, plan, obj, expected, desired_sha, directory):
+def update(aws, plan, obj, expected, desired_sha, directory, baseline, management):
     same_function(
         aws.call("lambda", "get-function", "--function-name", plan["function"])[
             "Configuration"
         ],
         expected,
+    )
+    require(
+        runtime_management(aws, plan) == management,
+        "Runtime management mode changed before code update",
     )
     response = aws.call(
         "lambda",
@@ -546,7 +657,8 @@ def update(aws, plan, obj, expected, desired_sha, directory):
     receipt = dict(
         revision_id=response["RevisionId"],
         code_sha256=desired_sha,
-        config_sha256=expected["config_sha256"],
+        config_sha256=fingerprint(baseline),
+        runtime_management=management,
         object=obj,
         status="update_requested",
     )
@@ -555,11 +667,17 @@ def update(aws, plan, obj, expected, desired_sha, directory):
     config = aws.call("lambda", "get-function", "--function-name", plan["function"])[
         "Configuration"
     ]
-    same_function(config, receipt)
+    require(
+        runtime_management(aws, plan) == management,
+        "Runtime management mode changed during code update",
+    )
+    same_deployment(config, receipt, baseline, management)
     require(
         config.get("LastUpdateStatus") == "Successful", "Lambda update did not succeed"
     )
     receipt["status"] = "updated"
+    receipt["post_config_sha256"] = fingerprint(config)
+    receipt["runtime_version"] = config.get("RuntimeVersionConfig")
     save(directory / "receipt.json", receipt)
     return receipt
 
@@ -607,32 +725,86 @@ def run_plan(args):
     aws = Aws(plan["region"], plan.get("profile"))
     result = preflight(aws, plan, permit_failed=args.command == "rollback")
     config = result["Configuration"]
+    management = result["RuntimeManagement"]
+    baseline = saved_baseline(directory, plan)
     require(
-        fingerprint(config) == plan["previous"]["config_sha256"],
-        "Lambda configuration changed; stop for review",
+        sha(directory / "previous.zip") == plan["previous"]["zip_sha256"],
+        "Backup ZIP changed",
     )
     if args.command == "verify":
         require(
             config["CodeSha256"] == plan["candidate"]["code_sha256"],
             "Candidate code is not installed; API verification would test a different release",
         )
+        require(
+            validate_zip(directory / "candidate.zip") == plan["candidate"],
+            "Candidate ZIP/data changed",
+        )
+        require(
+            (directory / "receipt.json").is_file(),
+            "Receipt is missing; inspect update ownership before verification",
+        )
+        receipt = json.loads((directory / "receipt.json").read_text())
+        require(
+            receipt["code_sha256"] == plan["candidate"]["code_sha256"],
+            "Receipt does not describe this deployment",
+        )
+        if "runtime_management" in receipt:
+            require(
+                management == receipt["runtime_management"],
+                "Runtime management mode changed since update",
+            )
+        expected = dict(receipt)
+        pinned_revision = getattr(args, "expected_revision_id", None)
+        if pinned_revision:
+            # Read-only acknowledgement, never used by deploy/rollback/CAS writes.
+            expected["revision_id"] = pinned_revision
+        same_deployment(config, expected, baseline, management)
         checks = verify_api(plan)
+        final_config = aws.call(
+            "lambda", "get-function", "--function-name", plan["function"]
+        )["Configuration"]
         same_function(
-            aws.call("lambda", "get-function", "--function-name", plan["function"])[
-                "Configuration"
-            ],
+            final_config,
             dict(
                 revision_id=config["RevisionId"],
                 code_sha256=config["CodeSha256"],
                 config_sha256=fingerprint(config),
             ),
         )
-        print(json.dumps(dict(read_only_api_checks=checks, bedrock_calls=0)))
+        require(
+            final_config.get("LastUpdateStatus") == "Successful",
+            "Lambda update did not succeed",
+        )
+        require(
+            runtime_management(aws, plan) == management,
+            "Runtime management mode changed during verification",
+        )
+        report = dict(
+            status="verified",
+            target=target_token(plan),
+            code_sha256=config["CodeSha256"],
+            revision_id=config["RevisionId"],
+            receipt_revision_id=receipt["revision_id"],
+            revision_explicitly_pinned=bool(pinned_revision),
+            runtime_management=management,
+            runtime_management_baseline_recorded="runtime_management" in plan
+            or "runtime_management" in receipt,
+            runtime_version_before=baseline.get("RuntimeVersionConfig"),
+            runtime_version_after=config.get("RuntimeVersionConfig"),
+            read_only_api_checks=checks,
+            bedrock_calls=0,
+            aws_writes=0,
+        )
+        report_path = getattr(args, "report", None)
+        if report_path:
+            # A new report only. Never rewrite the original plan/receipt/backups.
+            fd = os.open(Path(report_path), os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
+            with os.fdopen(fd, "w") as stream:
+                json.dump(report, stream, indent=2)
+                stream.write("\n")
+        print(json.dumps(report, indent=2))
         return
-    require(
-        sha(directory / "previous.zip") == plan["previous"]["zip_sha256"],
-        "Backup ZIP changed",
-    )
     if args.command == "deploy":
         require(
             validate_zip(directory / "candidate.zip") == plan["candidate"],
@@ -642,6 +814,7 @@ def run_plan(args):
         source, desired = directory / "candidate.zip", plan["candidate"]["code_sha256"]
         expected = plan["previous"]
     else:
+        same_configuration_after_update(config, baseline, management)
         if config["CodeSha256"] == plan["previous"]["code_sha256"]:
             print("Original code is already installed; no AWS writes")
             return
@@ -651,7 +824,14 @@ def run_plan(args):
             "Update outcome is unknown; inspect Lambda before manual recovery",
         )
         expected = json.loads(receipt_path.read_text())
-        same_function(config, expected)
+        if "runtime_management" in expected:
+            require(
+                management == expected["runtime_management"],
+                "Runtime management mode changed since update",
+            )
+        same_deployment(config, expected, baseline, management, permit_failed=True)
+        # The write still uses a strict snapshot and exact RevisionId.
+        expected = {**expected, "config_sha256": fingerprint(config)}
         source, desired = directory / "previous.zip", plan["previous"]["code_sha256"]
     if not args.execute:
         print(
@@ -686,15 +866,24 @@ def run_plan(args):
             aws, plan, source, prefix + plan["candidate"]["zip_sha256"] + ".zip"
         )
     )
-    receipt = update(aws, plan, obj, expected, desired, directory)
+    receipt = update(aws, plan, obj, expected, desired, directory, baseline, management)
     if args.command == "deploy":
         try:
             receipt["api_checks"] = verify_api(plan)
+            final_config = aws.call(
+                "lambda", "get-function", "--function-name", plan["function"]
+            )["Configuration"]
             same_function(
-                aws.call("lambda", "get-function", "--function-name", plan["function"])[
-                    "Configuration"
-                ],
-                receipt,
+                final_config,
+                {**receipt, "config_sha256": receipt["post_config_sha256"]},
+            )
+            require(
+                final_config.get("LastUpdateStatus") == "Successful",
+                "Lambda update did not succeed",
+            )
+            require(
+                runtime_management(aws, plan) == management,
+                "Runtime management mode changed during API verification",
             )
             receipt["status"] = "verified"
         except Exception:
@@ -720,8 +909,19 @@ def main():
     for command in ("deploy", "rollback", "verify"):
         child = sub.add_parser(command)
         child.add_argument("--plan", type=Path, required=True)
-        child.add_argument("--execute", action="store_true")
-        child.add_argument("--confirm-target")
+        if command == "verify":
+            child.add_argument(
+                "--expected-revision-id",
+                help="Pin a reviewed current revision for read-only verification; never enables writes",
+            )
+            child.add_argument(
+                "--report",
+                type=Path,
+                help="Create a NEW verification report without altering existing records",
+            )
+        else:
+            child.add_argument("--execute", action="store_true")
+            child.add_argument("--confirm-target")
     args = parser.parse_args()
     try:
         prepare(args) if args.command == "prepare" else run_plan(args)
