@@ -24,7 +24,9 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
-# CORS設定（開発時は全許可）
+# CORS設定
+# CORSMiddlewareはスタックの一番外側（最初）に追加することで、
+# 500エラー時にも確実にAccess-Control-Allow-Originヘッダーが付く。
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
