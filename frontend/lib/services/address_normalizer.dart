@@ -28,6 +28,10 @@ class AddressNormalizer {
     // Step 4: 全角数字を半角数字に変換
     result = _convertFullWidthDigits(result);
 
+    // Step 5: 漢数字（一〜十）を半角数字に変換
+    // Nominatimが「二番町四丁目」のように漢数字で返す場合に対応
+    result = _convertKanjiDigits(result);
+
     return result;
   }
 
@@ -83,5 +87,31 @@ class AddressNormalizer {
       }
     }
     return buffer.toString();
+  }
+
+  /// 漢数字（一〜十）を半角数字（1〜10）に変換する。
+  ///
+  /// Nominatimの逆ジオコーディング結果が「二番町四丁目」のように
+  /// 漢数字で返す場合に対応するため、町名内の漢数字を半角に変換する。
+  /// 対応範囲: 一(1)〜九(9)および十(10)の単純な変換のみ。
+  /// 「二十一」のような複合漢数字は変換しない（松山市の町名では不要）。
+  String _convertKanjiDigits(String input) {
+    const kanjiMap = {
+      '一': '1',
+      '二': '2',
+      '三': '3',
+      '四': '4',
+      '五': '5',
+      '六': '6',
+      '七': '7',
+      '八': '8',
+      '九': '9',
+      '十': '10',
+    };
+    var result = input;
+    for (final entry in kanjiMap.entries) {
+      result = result.replaceAll(entry.key, entry.value);
+    }
+    return result;
   }
 }
