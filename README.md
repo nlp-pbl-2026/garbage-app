@@ -130,7 +130,7 @@ flutter run -d chrome \
 ./scripts/aws-down.sh
 ```
 
-`aws-up.sh` はTerraformの適用と比較実験用Knowledge Baseの同期も行います。更新前にLambdaパッケージとTerraform planを確認してください。
+`aws-up.sh` はTerraformの適用と比較実験用Knowledge Baseの同期も行います。更新前にLambdaパッケージとTerraform planを確認してください。既存Lambdaのコードだけを更新する場合は、全20市町のZIPが直接アップロード制限を超えるため、[S3経由の更新・バックアップ・復旧手順](docs/lambda-s3-deploy.md)を使用してください。
 
 AWS構成、費用、権限、ローカルBackendの起動方法は [`infra/README.md`](infra/README.md) を参照してください。
 

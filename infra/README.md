@@ -63,6 +63,7 @@ S3は公開アクセスをすべて遮断し、バージョニングとSSE-S3（
 | `terraform/outputs.tf` | バックエンドに必要なID |
 | `scripts/sync_knowledge_base.sh` | 取り込み開始と完了待機 |
 | `../scripts/package_backend.sh` | Lambda向けLinux/ARM64 zipの生成 |
+| `../scripts/deploy_lambda_s3.py` | 既存S3経由のLambdaコード更新・バックアップ・復旧（Terraformなし） |
 | `../scripts/aws-up.sh` | package、Terraform apply、RAG取り込みをまとめて実行 |
 | `../scripts/aws-down.sh` | 全リソースを確認付きでdestroy |
 | `operator-policy.example.json` | Terraform操作者に必要な最小権限例 |
@@ -77,6 +78,8 @@ Terraform変数とリソース名をその環境に合わせてください。�
 必要権限の例は[`operator-policy.example.json`](operator-policy.example.json)を参照してください。
 
 ## ルートから構築・削除
+
+**既存環境のコードだけを更新する場合は、[S3経由のLambda更新手順](../docs/lambda-s3-deploy.md)を使用してください。** 全20市町のZIPは約88.5 MiBで直接アップロード制限を超えます。`deploy_lambda_s3.py`は既存バケットと関数を確認し、`--execute`と対象確認文字列がある場合だけS3アップロード・コード更新を行います。以下の`aws-up.sh`はTerraformやKnowledge Baseも操作するため、コードだけの更新には使いません。
 
 以下のスクリプトを実行するとAWS環境が変更されます。更新前にデータ検証・Lambdaパッケージの内容・Terraform planを確認してください。
 
@@ -139,9 +142,9 @@ TerraformがS3オブジェクトのETag差分を検出してアップロード�
 
 全地区の2026年度収集カレンダー `data/regions/matsuyama/generated/calendar-2026.json` はLambdaパッケージに同梱するため、S3・Knowledge Baseには登録しません。Flutterには同じ原本から生成した `frontend/assets/data/municipality_calendar.json` を同梱します。
 
-### 伊予市追加時のローカル準備
+### 全自治体のローカル準備
 
-標準カタログは18自治体を参照します。Lambda用データのステージングは、各自治体のCSV・索引・マニフェスト・カレンダーの整合性を検査し、不足時に停止します。各データガイドに従ってGit管理外の原本・CSV・索引を配置し、共通カレンダーを生成してください。東温市、上島町、担当7自治体のローカル接続ではAWS設定・リソースを変更しておらず、公開APIへの反映は別途必要です。
+標準カタログは20自治体を参照します。Lambda用データのステージングは、各自治体のCSV・索引・マニフェスト・カレンダーの整合性を検査し、不足時に停止します。各データガイドに従ってGit管理外の原本・CSV・索引を配置してください。[全20市町の統合検証](../docs/municipality-data-integration.md)と[S3経由のコード更新](../docs/lambda-s3-deploy.md)を参照してください。公開APIへの反映は別途必要です。
 
 ## バックエンド設定
 
