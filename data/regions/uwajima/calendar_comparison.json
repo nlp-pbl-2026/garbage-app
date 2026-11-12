@@ -1,0 +1,819 @@
+{
+  "status": "pending_resolution",
+  "method": "independent official HTML weekday rule expansion versus raster icon extraction; PDF individual dates retained as candidates, not yet published",
+  "compared_cells": 12045,
+  "pdf_count": 33,
+  "differences": [
+    {
+      "file": "calendar-uwajima-65710.pdf",
+      "area": "伊吹町北通の一部（サントノーレ伊吹弐番館あたりの川沿い）",
+      "source_sha256": "bdfce02968cabfc1c74daf4229c12239dbf6c51ab2e62012469156ad32b20e6d",
+      "differences": [
+        {
+          "date": "2026-09-30",
+          "html": [
+            "burnable"
+          ],
+          "pdf": []
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-69373.pdf",
+      "area": "北宇和島町",
+      "source_sha256": "f9abc45eb6f4a04152a6ade63d8138d5d9a36ea1719a21573817859373afc682",
+      "differences": [
+        {
+          "date": "2026-09-30",
+          "html": [
+            "burnable"
+          ],
+          "pdf": []
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65756.pdf",
+      "area": "蒋淵（大島）",
+      "source_sha256": "6b3d9f2345dd9737b9712437f5f79260b468dab50c4252024117f27861bafd36",
+      "differences": [
+        {
+          "date": "2027-01-04",
+          "html": [],
+          "pdf": [
+            "bottles_cans",
+            "burnable",
+            "non_burnable",
+            "pet"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65792.pdf",
+      "area": "高光（平駄場）",
+      "source_sha256": "dbf221d579ab6ffe03f735dc56cc4da2ec8469942494342abe562b4302b2e48c",
+      "differences": [
+        {
+          "date": "2026-04-09",
+          "html": [
+            "bottles_cans",
+            "non_burnable",
+            "pet"
+          ],
+          "pdf": [
+            "bottles_cans",
+            "non_burnable"
+          ]
+        },
+        {
+          "date": "2026-04-10",
+          "html": [
+            "burnable"
+          ],
+          "pdf": [
+            "burnable",
+            "pet"
+          ]
+        },
+        {
+          "date": "2026-04-23",
+          "html": [
+            "bottles_cans",
+            "non_burnable",
+            "pet"
+          ],
+          "pdf": [
+            "bottles_cans",
+            "non_burnable"
+          ]
+        },
+        {
+          "date": "2026-04-24",
+          "html": [
+            "burnable"
+          ],
+          "pdf": [
+            "burnable",
+            "pet"
+          ]
+        },
+        {
+          "date": "2026-05-08",
+          "html": [
+            "burnable"
+          ],
+          "pdf": [
+            "burnable",
+            "pet"
+          ]
+        },
+        {
+          "date": "2026-05-14",
+          "html": [
+            "bottles_cans",
+            "non_burnable",
+            "pet"
+          ],
+          "pdf": [
+            "bottles_cans",
+            "non_burnable"
+          ]
+        },
+        {
+          "date": "2026-05-22",
+          "html": [
+            "burnable"
+          ],
+          "pdf": [
+            "burnable",
+            "pet"
+          ]
+        },
+        {
+          "date": "2026-05-28",
+          "html": [
+            "bottles_cans",
+            "non_burnable",
+            "pet"
+          ],
+          "pdf": [
+            "bottles_cans",
+            "non_burnable"
+          ]
+        },
+        {
+          "date": "2026-06-11",
+          "html": [
+            "bottles_cans",
+            "non_burnable",
+            "pet"
+          ],
+          "pdf": [
+            "bottles_cans",
+            "non_burnable"
+          ]
+        },
+        {
+          "date": "2026-06-12",
+          "html": [
+            "burnable"
+          ],
+          "pdf": [
+            "burnable",
+            "pet"
+          ]
+        },
+        {
+          "date": "2026-06-25",
+          "html": [
+            "bottles_cans",
+            "non_burnable",
+            "pet"
+          ],
+          "pdf": [
+            "bottles_cans",
+            "non_burnable"
+          ]
+        },
+        {
+          "date": "2026-06-26",
+          "html": [
+            "burnable"
+          ],
+          "pdf": [
+            "burnable",
+            "pet"
+          ]
+        },
+        {
+          "date": "2026-07-09",
+          "html": [
+            "bottles_cans",
+            "non_burnable",
+            "pet"
+          ],
+          "pdf": [
+            "bottles_cans",
+            "non_burnable"
+          ]
+        },
+        {
+          "date": "2026-07-10",
+          "html": [
+            "burnable"
+          ],
+          "pdf": [
+            "burnable",
+            "pet"
+          ]
+        },
+        {
+          "date": "2026-07-23",
+          "html": [
+            "bottles_cans",
+            "non_burnable",
+            "pet"
+          ],
+          "pdf": [
+            "bottles_cans",
+            "non_burnable"
+          ]
+        },
+        {
+          "date": "2026-07-24",
+          "html": [
+            "burnable"
+          ],
+          "pdf": [
+            "burnable",
+            "pet"
+          ]
+        },
+        {
+          "date": "2026-08-13",
+          "html": [
+            "bottles_cans",
+            "non_burnable",
+            "pet"
+          ],
+          "pdf": [
+            "bottles_cans",
+            "non_burnable"
+          ]
+        },
+        {
+          "date": "2026-08-14",
+          "html": [
+            "burnable"
+          ],
+          "pdf": [
+            "burnable",
+            "pet"
+          ]
+        },
+        {
+          "date": "2026-08-27",
+          "html": [
+            "bottles_cans",
+            "non_burnable",
+            "pet"
+          ],
+          "pdf": [
+            "bottles_cans",
+            "non_burnable"
+          ]
+        },
+        {
+          "date": "2026-08-28",
+          "html": [
+            "burnable"
+          ],
+          "pdf": [
+            "burnable",
+            "pet"
+          ]
+        },
+        {
+          "date": "2026-09-10",
+          "html": [
+            "bottles_cans",
+            "non_burnable",
+            "pet"
+          ],
+          "pdf": [
+            "bottles_cans",
+            "non_burnable"
+          ]
+        },
+        {
+          "date": "2026-09-11",
+          "html": [
+            "burnable"
+          ],
+          "pdf": [
+            "burnable",
+            "pet"
+          ]
+        },
+        {
+          "date": "2026-09-24",
+          "html": [
+            "bottles_cans",
+            "non_burnable",
+            "pet"
+          ],
+          "pdf": [
+            "bottles_cans",
+            "non_burnable"
+          ]
+        },
+        {
+          "date": "2026-09-25",
+          "html": [
+            "burnable"
+          ],
+          "pdf": [
+            "burnable",
+            "pet"
+          ]
+        },
+        {
+          "date": "2026-10-08",
+          "html": [
+            "bottles_cans",
+            "non_burnable",
+            "pet"
+          ],
+          "pdf": [
+            "bottles_cans",
+            "non_burnable"
+          ]
+        },
+        {
+          "date": "2026-10-09",
+          "html": [
+            "burnable"
+          ],
+          "pdf": [
+            "burnable",
+            "pet"
+          ]
+        },
+        {
+          "date": "2026-10-22",
+          "html": [
+            "bottles_cans",
+            "non_burnable",
+            "pet"
+          ],
+          "pdf": [
+            "bottles_cans",
+            "non_burnable"
+          ]
+        },
+        {
+          "date": "2026-10-23",
+          "html": [
+            "burnable"
+          ],
+          "pdf": [
+            "burnable",
+            "pet"
+          ]
+        },
+        {
+          "date": "2026-11-12",
+          "html": [
+            "bottles_cans",
+            "non_burnable",
+            "pet"
+          ],
+          "pdf": [
+            "bottles_cans",
+            "non_burnable"
+          ]
+        },
+        {
+          "date": "2026-11-13",
+          "html": [
+            "burnable"
+          ],
+          "pdf": [
+            "burnable",
+            "pet"
+          ]
+        },
+        {
+          "date": "2026-11-26",
+          "html": [
+            "bottles_cans",
+            "non_burnable",
+            "pet"
+          ],
+          "pdf": [
+            "bottles_cans",
+            "non_burnable"
+          ]
+        },
+        {
+          "date": "2026-11-27",
+          "html": [
+            "burnable"
+          ],
+          "pdf": [
+            "burnable",
+            "pet"
+          ]
+        },
+        {
+          "date": "2026-12-10",
+          "html": [
+            "bottles_cans",
+            "non_burnable",
+            "pet"
+          ],
+          "pdf": [
+            "bottles_cans",
+            "non_burnable"
+          ]
+        },
+        {
+          "date": "2026-12-11",
+          "html": [
+            "burnable"
+          ],
+          "pdf": [
+            "burnable",
+            "pet"
+          ]
+        },
+        {
+          "date": "2026-12-24",
+          "html": [
+            "bottles_cans",
+            "non_burnable",
+            "pet"
+          ],
+          "pdf": [
+            "bottles_cans",
+            "non_burnable"
+          ]
+        },
+        {
+          "date": "2026-12-25",
+          "html": [
+            "burnable"
+          ],
+          "pdf": [
+            "burnable",
+            "pet"
+          ]
+        },
+        {
+          "date": "2027-01-08",
+          "html": [
+            "burnable"
+          ],
+          "pdf": [
+            "burnable",
+            "pet"
+          ]
+        },
+        {
+          "date": "2027-01-14",
+          "html": [
+            "bottles_cans",
+            "non_burnable",
+            "pet"
+          ],
+          "pdf": [
+            "bottles_cans",
+            "non_burnable"
+          ]
+        },
+        {
+          "date": "2027-01-22",
+          "html": [
+            "burnable"
+          ],
+          "pdf": [
+            "burnable",
+            "pet"
+          ]
+        },
+        {
+          "date": "2027-01-28",
+          "html": [
+            "bottles_cans",
+            "non_burnable",
+            "pet"
+          ],
+          "pdf": [
+            "bottles_cans",
+            "non_burnable"
+          ]
+        },
+        {
+          "date": "2027-02-11",
+          "html": [
+            "bottles_cans",
+            "non_burnable",
+            "pet"
+          ],
+          "pdf": [
+            "bottles_cans",
+            "non_burnable"
+          ]
+        },
+        {
+          "date": "2027-02-12",
+          "html": [
+            "burnable"
+          ],
+          "pdf": [
+            "burnable",
+            "pet"
+          ]
+        },
+        {
+          "date": "2027-02-25",
+          "html": [
+            "bottles_cans",
+            "non_burnable",
+            "pet"
+          ],
+          "pdf": [
+            "bottles_cans",
+            "non_burnable"
+          ]
+        },
+        {
+          "date": "2027-02-26",
+          "html": [
+            "burnable"
+          ],
+          "pdf": [
+            "burnable",
+            "pet"
+          ]
+        },
+        {
+          "date": "2027-03-11",
+          "html": [
+            "bottles_cans",
+            "non_burnable",
+            "pet"
+          ],
+          "pdf": [
+            "bottles_cans",
+            "non_burnable"
+          ]
+        },
+        {
+          "date": "2027-03-12",
+          "html": [
+            "burnable"
+          ],
+          "pdf": [
+            "burnable",
+            "pet"
+          ]
+        },
+        {
+          "date": "2027-03-25",
+          "html": [
+            "bottles_cans",
+            "non_burnable",
+            "pet"
+          ],
+          "pdf": [
+            "bottles_cans",
+            "non_burnable"
+          ]
+        },
+        {
+          "date": "2027-03-26",
+          "html": [
+            "burnable"
+          ],
+          "pdf": [
+            "burnable",
+            "pet"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65839.pdf",
+      "area": "三浦西（尾崎）",
+      "source_sha256": "7722df221c40d301b78eabbe3748f667af2c6099b35dd84facc3b9a3ba40c5ea",
+      "differences": [
+        {
+          "date": "2026-05-29",
+          "html": [],
+          "pdf": [
+            "bottles_cans",
+            "burnable",
+            "non_burnable",
+            "pet"
+          ]
+        },
+        {
+          "date": "2026-07-31",
+          "html": [],
+          "pdf": [
+            "bottles_cans",
+            "burnable",
+            "non_burnable",
+            "pet"
+          ]
+        },
+        {
+          "date": "2026-10-30",
+          "html": [],
+          "pdf": [
+            "bottles_cans",
+            "burnable",
+            "non_burnable",
+            "pet"
+          ]
+        },
+        {
+          "date": "2027-01-04",
+          "html": [],
+          "pdf": [
+            "bottles_cans",
+            "burnable",
+            "non_burnable",
+            "pet"
+          ]
+        },
+        {
+          "date": "2027-01-29",
+          "html": [],
+          "pdf": [
+            "bottles_cans",
+            "burnable",
+            "non_burnable",
+            "pet"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "calendar-yoshida-65913.pdf",
+      "area": "吉田地区（橋上）",
+      "source_sha256": "3c55f579f0953d3ef5bbc789767bd6101d7251d3f721e2bf6937504db9899142",
+      "differences": [
+        {
+          "date": "2027-02-11",
+          "html": [
+            "burnable",
+            "paper"
+          ],
+          "pdf": [
+            "burnable"
+          ]
+        },
+        {
+          "date": "2027-02-18",
+          "html": [
+            "burnable"
+          ],
+          "pdf": [
+            "burnable",
+            "paper"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "calendar-tsushima-65937.pdf",
+      "area": "岩松地区",
+      "source_sha256": "4ad1c3f717b8a850af098e1bd7ae0e32fcc400fc6d93f65ca8bcfd971f453abe",
+      "differences": [
+        {
+          "date": "2026-08-11",
+          "html": [
+            "paper"
+          ],
+          "pdf": []
+        },
+        {
+          "date": "2026-08-14",
+          "html": [],
+          "pdf": [
+            "paper"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "calendar-tsushima-65939.pdf",
+      "area": "御槙地区",
+      "source_sha256": "e59cdb1e6986f0157b0b4ca3cb993e16a58944f49a3b29de96d70944cbd8ad3b",
+      "differences": [
+        {
+          "date": "2026-09-22",
+          "html": [
+            "paper"
+          ],
+          "pdf": []
+        },
+        {
+          "date": "2026-09-25",
+          "html": [],
+          "pdf": [
+            "paper"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "calendar-tsushima-65941.pdf",
+      "area": "畑地地区",
+      "source_sha256": "dbb2e473bde2c4bee5e6917163b632744d782a3c4869f766c9dbe96a5cfd6579",
+      "differences": [
+        {
+          "date": "2026-10-12",
+          "html": [
+            "paper"
+          ],
+          "pdf": []
+        },
+        {
+          "date": "2026-10-15",
+          "html": [],
+          "pdf": [
+            "paper"
+          ]
+        },
+        {
+          "date": "2027-01-11",
+          "html": [
+            "paper"
+          ],
+          "pdf": []
+        },
+        {
+          "date": "2027-01-14",
+          "html": [],
+          "pdf": [
+            "paper"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "calendar-tsushima-65943.pdf",
+      "area": "下灘地区",
+      "source_sha256": "086d0e42b4dd280416b6e0a0e7556ffe49a9bac452f531c7d9d1719841f5d667",
+      "differences": [
+        {
+          "date": "2026-07-20",
+          "html": [
+            "paper"
+          ],
+          "pdf": []
+        },
+        {
+          "date": "2026-07-23",
+          "html": [],
+          "pdf": [
+            "paper"
+          ]
+        },
+        {
+          "date": "2026-09-21",
+          "html": [
+            "paper"
+          ],
+          "pdf": []
+        },
+        {
+          "date": "2026-09-24",
+          "html": [],
+          "pdf": [
+            "paper"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "calendar-tsushima-65944.pdf",
+      "area": "北灘地区",
+      "source_sha256": "9b1dcc7e04830d1df772cd4d7cb9a1c4afbcf1fd3c30539c9bd90277a3f6ab37",
+      "differences": [
+        {
+          "date": "2026-11-23",
+          "html": [
+            "paper"
+          ],
+          "pdf": []
+        },
+        {
+          "date": "2026-11-26",
+          "html": [],
+          "pdf": [
+            "paper"
+          ]
+        },
+        {
+          "date": "2027-03-22",
+          "html": [
+            "paper"
+          ],
+          "pdf": []
+        },
+        {
+          "date": "2027-03-25",
+          "html": [],
+          "pdf": [
+            "paper"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,667 @@
+{
+  "schema_version": 1,
+  "status": "prepared_not_executed",
+  "evaluation_time": "2026-04-01T05:00:00+09:00",
+  "cases": [
+    {
+      "case": 1,
+      "input": {
+        "municipality_id": "38203",
+        "district_id": "38203-a001",
+        "query": "水を切った野菜くず",
+        "clarifications": []
+      },
+      "expected": "burnable",
+      "check_type": "classification",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-sutekata.html",
+      "official_reason": "生ごみは可燃。"
+    },
+    {
+      "case": 2,
+      "input": {
+        "municipality_id": "38203",
+        "district_id": "38203-a001",
+        "query": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+        "clarifications": []
+      },
+      "expected": "pet",
+      "check_type": "classification",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-sutekata.html",
+      "official_reason": "洗浄したPET飲食用本体はペットボトル。付属品は別。"
+    },
+    {
+      "case": 3,
+      "input": {
+        "municipality_id": "38203",
+        "district_id": "38203-a001",
+        "query": "洗っても汚れが落ちない飲料用ペットボトル本体",
+        "clarifications": []
+      },
+      "expected": "burnable",
+      "check_type": "classification",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-sutekata.html",
+      "official_reason": "汚れのひどいPET本体は可燃。"
+    },
+    {
+      "case": 4,
+      "input": {
+        "municipality_id": "38203",
+        "district_id": "38203-a001",
+        "query": "ペットボトルから取り外して水洗いし乾かしたプラスチック製キャップだけ",
+        "clarifications": []
+      },
+      "expected": [
+        "burnable",
+        "clean_plastics"
+      ],
+      "check_type": "classification",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/plastic-jissyou.html",
+      "official_reason": "取り外した部品は可燃又はきれいなプラスチックの拠点。PET本体ではない。"
+    },
+    {
+      "case": 5,
+      "input": {
+        "municipality_id": "38203",
+        "district_id": "38203-a001",
+        "query": "ペットボトルから取り外して洗い乾かしたプラスチック製ラベルだけ",
+        "clarifications": []
+      },
+      "expected": [
+        "burnable",
+        "clean_plastics"
+      ],
+      "check_type": "classification",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/plastic-jissyou.html",
+      "official_reason": "取り外した部品は可燃又は容器包装の拠点。"
+    },
+    {
+      "case": 6,
+      "input": {
+        "municipality_id": "38203",
+        "district_id": "38203-a001",
+        "query": "洗って汚れを落として乾燥させた20cmの食品トレーを資源拠点へ持ち込みたい",
+        "clarifications": []
+      },
+      "expected": "clean_plastics",
+      "check_type": "classification",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/plastic-jissyou.html",
+      "official_reason": "洗浄乾燥済みの50cm未満容器包装は拠点回収。"
+    },
+    {
+      "case": 7,
+      "input": {
+        "municipality_id": "38203",
+        "district_id": "38203-a001",
+        "query": "汚れが落ちないプラスチック製の食品トレー、指定袋に入ります",
+        "clarifications": []
+      },
+      "expected": "burnable",
+      "check_type": "classification",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/plastic-jissyou.html",
+      "official_reason": "汚れたプラは拠点の対象外、通常可燃。"
+    },
+    {
+      "case": 8,
+      "input": {
+        "municipality_id": "38203",
+        "district_id": "38203-a001",
+        "query": "金属もゴムもないプラスチック100%の49cmバケツを洗浄・乾燥して資源拠点へ持ち込みたい",
+        "clarifications": []
+      },
+      "expected": "clean_plastics",
+      "check_type": "classification",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/plastic-jissyou.html",
+      "official_reason": "100%プラ・50cm未満・洗浄乾燥・異素材なしは拠点対象。"
+    },
+    {
+      "case": 9,
+      "input": {
+        "municipality_id": "38203",
+        "district_id": "38203-a001",
+        "query": "最大の辺が50cmちょうどのプラスチック100%のバケツです。洗って乾燥済みで指定袋に入り口を結べます",
+        "clarifications": []
+      },
+      "expected": "burnable",
+      "check_type": "classification",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/plastic-jissyou.html",
+      "official_reason": "50cm以上は拠点対象外。袋に入るものは通常可燃。"
+    },
+    {
+      "case": 10,
+      "input": {
+        "municipality_id": "38203",
+        "district_id": "38203-a001",
+        "query": "最大の辺が51cmのプラスチック100%のバケツです。洗って乾かしたが指定袋には入りません",
+        "clarifications": []
+      },
+      "expected": "bulky",
+      "check_type": "classification",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/plastic-jissyou.html",
+      "official_reason": "50cm以上は拠点不可。指定袋にも入らないものは粗大（直接搬入等）。"
+    },
+    {
+      "case": 11,
+      "input": {
+        "municipality_id": "38203",
+        "district_id": "38203-a001",
+        "query": "金属製バケツ、指定ごみ袋に入ります",
+        "clarifications": []
+      },
+      "expected": "non_burnable",
+      "check_type": "classification",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-sutekata.html",
+      "official_reason": "金属製バケツは不燃。"
+    },
+    {
+      "case": 12,
+      "input": {
+        "municipality_id": "38203",
+        "district_id": "38203-a001",
+        "query": "バケツを捨てたい",
+        "clarifications": []
+      },
+      "expected": "needs_clarification",
+      "check_type": "clarification",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-sutekata.html",
+      "official_reason": "公式辞典は材質・指定袋に入る大きさで分岐。"
+    },
+    {
+      "case": 13,
+      "input": {
+        "municipality_id": "38203",
+        "district_id": "38203-a001",
+        "query": "バケツを捨てたい",
+        "clarifications": [
+          {
+            "question": "材質と指定袋に入る大きさかを教えてください",
+            "answer": "金属製です。指定ごみ袋に入ります"
+          }
+        ]
+      },
+      "expected": "non_burnable",
+      "check_type": "classification",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-sutekata.html",
+      "official_reason": "確認済みの金属製・袋に入る条件は再質問しない。"
+    },
+    {
+      "case": 14,
+      "input": {
+        "municipality_id": "38203",
+        "district_id": "38203-a001",
+        "query": "中をすすいだジャムのガラスびん",
+        "clarifications": []
+      },
+      "expected": "bottles_cans",
+      "check_type": "classification",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-sutekata.html",
+      "official_reason": "びん・缶。金属やプラのふたとは別。"
+    },
+    {
+      "case": 15,
+      "input": {
+        "municipality_id": "38203",
+        "district_id": "38203-a001",
+        "query": "割れた飲料のガラスびん",
+        "clarifications": []
+      },
+      "expected": "bottles_cans",
+      "check_type": "classification",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-sutekata.html",
+      "official_reason": "割れたびんもびん・缶、紙で包みキケン表示。"
+    },
+    {
+      "case": 16,
+      "input": {
+        "municipality_id": "38203",
+        "district_id": "38203-a001",
+        "query": "割れた耐熱ガラスの皿、指定袋に入ります",
+        "clarifications": []
+      },
+      "expected": "non_burnable",
+      "check_type": "classification",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-sutekata.html",
+      "official_reason": "ガラス食器・耐熱ガラスは不燃。"
+    },
+    {
+      "case": 17,
+      "input": {
+        "municipality_id": "38203",
+        "district_id": "38203-a001",
+        "query": "使い切って安全な屋外で穴を開けたスプレー缶",
+        "clarifications": []
+      },
+      "expected": "bottles_cans",
+      "check_type": "classification",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-sutekata.html",
+      "official_reason": "使い切り穴開けが必要。びん・缶へ。"
+    },
+    {
+      "case": 18,
+      "input": {
+        "municipality_id": "38203",
+        "district_id": "38203-a001",
+        "query": "ガスを完全に使い切った使い捨てライター",
+        "clarifications": []
+      },
+      "expected": "burnable",
+      "check_type": "classification",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-sutekata.html",
+      "official_reason": "早見表：使い捨てライターは可燃、必ず使い切る。"
+    },
+    {
+      "case": 19,
+      "input": {
+        "municipality_id": "38203",
+        "district_id": "38203-a001",
+        "query": "使い終わったモバイルバッテリー",
+        "clarifications": []
+      },
+      "expected": "batteries",
+      "check_type": "classification",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/lithium-battery01.html",
+      "official_reason": "充電池は拠点回収、通常可燃・不燃でない。"
+    },
+    {
+      "case": 20,
+      "input": {
+        "municipality_id": "38203",
+        "district_id": "38203-a001",
+        "query": "充電池が取り外せないハンディファン",
+        "clarifications": []
+      },
+      "expected": "batteries",
+      "check_type": "classification",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/denti.html",
+      "official_reason": "無理に分解せず本体ごと充電池回収へ。"
+    },
+    {
+      "case": 21,
+      "input": {
+        "municipality_id": "38203",
+        "district_id": "38203-a001",
+        "query": "充電池を取り外した携帯電話本体、指定袋に入ります",
+        "clarifications": []
+      },
+      "expected": "non_burnable",
+      "check_type": "classification",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/kogatakaden.html",
+      "official_reason": "電池を外した電話は指定袋の不燃、個人情報を消去。"
+    },
+    {
+      "case": 22,
+      "input": {
+        "municipality_id": "38203",
+        "district_id": "38203-a001",
+        "query": "使用済みのアルカリ乾電池",
+        "clarifications": []
+      },
+      "expected": "batteries",
+      "check_type": "classification",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/kandenchi-recycle.html",
+      "official_reason": "乾電池は指定拠点へ。"
+    },
+    {
+      "case": 23,
+      "input": {
+        "municipality_id": "38203",
+        "district_id": "38203-a001",
+        "query": "割れていない蛍光管",
+        "clarifications": []
+      },
+      "expected": "dropoff",
+      "check_type": "classification",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/keikoukan.html",
+      "official_reason": "割らずに拠点回収。"
+    },
+    {
+      "case": 24,
+      "input": {
+        "municipality_id": "38203",
+        "district_id": "38203-a001",
+        "query": "割れた蛍光管",
+        "clarifications": []
+      },
+      "expected": "non_burnable",
+      "check_type": "classification",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/keikoukan.html",
+      "official_reason": "割れた蛍光管は包みキケン表示して不燃。"
+    },
+    {
+      "case": 25,
+      "input": {
+        "municipality_id": "38203",
+        "district_id": "38203-a001",
+        "query": "割れた水銀体温計",
+        "clarifications": []
+      },
+      "expected": "dropoff",
+      "check_type": "classification",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/keikoukan.html",
+      "official_reason": "割れた水銀体温計も密封して拠点へ。"
+    },
+    {
+      "case": 26,
+      "input": {
+        "municipality_id": "38203",
+        "district_id": "38203-a001",
+        "query": "家庭用の冷蔵庫",
+        "clarifications": []
+      },
+      "expected": "not_collected",
+      "check_type": "classification",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-sutekata.html",
+      "official_reason": "家電リサイクル、市では処理不可。"
+    },
+    {
+      "case": 27,
+      "input": {
+        "municipality_id": "38203",
+        "district_id": "38203-a001",
+        "query": "スプリング入りマットレス",
+        "clarifications": []
+      },
+      "expected": "not_collected",
+      "check_type": "classification",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-sutekata.html",
+      "official_reason": "市・環境センターで処理できない。"
+    },
+    {
+      "case": 28,
+      "input": {
+        "municipality_id": "38203",
+        "district_id": "38203-a001",
+        "query": "指定ごみ袋に入らない大きな壊れた木製のたんす",
+        "clarifications": []
+      },
+      "expected": "bulky",
+      "check_type": "classification",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-sutekata.html",
+      "official_reason": "指定袋外の家具は直接搬入・許可業者。予約収集日を付けない。"
+    },
+    {
+      "case": 29,
+      "input": {
+        "municipality_id": "38203",
+        "district_id": "38203-a001",
+        "query": "新聞紙",
+        "clarifications": []
+      },
+      "expected": "paper",
+      "check_type": "classification",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-u-shigen.html",
+      "official_reason": "宇和島地区の古紙は自治会別で通常町域だけでは一意に確定しない。",
+      "expected_collection_status": "unverified",
+      "expected_collection_date": null
+    },
+    {
+      "case": 30,
+      "input": {
+        "municipality_id": "38203",
+        "district_id": "38203-a109",
+        "query": "新聞紙",
+        "clarifications": []
+      },
+      "expected": "paper",
+      "check_type": "classification",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-m2026.html",
+      "official_reason": "三間は通常収集と別の集会所回収日。",
+      "expected_collection_date": "2026-04-01"
+    },
+    {
+      "case": 31,
+      "input": {
+        "municipality_id": "38203",
+        "district_id": "38203-a103",
+        "query": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+        "clarifications": []
+      },
+      "expected": "pet",
+      "check_type": "classification",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-y2026.html",
+      "official_reason": "吉田の公式PDFのPET日。",
+      "expected_collection_date": "2026-04-08"
+    },
+    {
+      "case": 32,
+      "input": {
+        "municipality_id": "38203",
+        "district_id": "38203-a115",
+        "query": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+        "clarifications": []
+      },
+      "expected": "pet",
+      "check_type": "classification",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-t2026.html",
+      "official_reason": "津島の公式PDFのPET日。",
+      "expected_collection_date": "2026-04-01"
+    },
+    {
+      "case": 33,
+      "input": {
+        "municipality_id": "38203",
+        "district_id": "38203-a109",
+        "query": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+        "clarifications": []
+      },
+      "expected": "pet",
+      "check_type": "classification",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-m2026.html",
+      "official_reason": "三間の公式PDFのPET日。",
+      "expected_collection_date": "2026-04-03"
+    },
+    {
+      "case": 34,
+      "input": {
+        "municipality_id": "38203",
+        "district_id": "38203-a001",
+        "query": "水を切った生ごみ",
+        "clarifications": []
+      },
+      "expected": "burnable",
+      "check_type": "classification",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-u-shushubi2026.html",
+      "official_reason": "宇和島の通常収集日。",
+      "expected_collection_date": "2026-04-01"
+    },
+    {
+      "case": 35,
+      "input": {
+        "municipality_id": "38203",
+        "district_id": "38203-a058",
+        "query": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+        "clarifications": []
+      },
+      "expected": "pet",
+      "check_type": "classification",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-u-shushubi2026.html",
+      "official_reason": "戸島のPET月末は具体的な日付未確認。",
+      "expected_collection_status": "unverified",
+      "expected_collection_date": null
+    },
+    {
+      "case": 36,
+      "input": {
+        "municipality_id": "38203",
+        "district_id": "38203-a067",
+        "query": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+        "clarifications": []
+      },
+      "expected": "pet",
+      "check_type": "classification",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-u-shushubi2026.html",
+      "official_reason": "日振島のPET月末は具体的な日付未確認。",
+      "expected_collection_status": "unverified",
+      "expected_collection_date": null
+    },
+    {
+      "case": 37,
+      "input": {
+        "municipality_id": "38203",
+        "district_id": "38203-a123",
+        "query": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+        "clarifications": []
+      },
+      "expected": "pet",
+      "check_type": "classification",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-t2026.html",
+      "official_reason": "竹ヶ島は第1金曜、雨天第2金曜・船便条件あり。",
+      "expected_collection_date": "2026-04-03"
+    },
+    {
+      "case": 38,
+      "input": {
+        "municipality_id": "38203",
+        "district_id": "38203-a001",
+        "query": "新聞紙",
+        "clarifications": []
+      },
+      "expected": "paper",
+      "check_type": "classification",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-u-shigen.html",
+      "official_reason": "11月の資源回収振替は対象自治会だけ。広い町域に一律適用しない。",
+      "expected_collection_status": "unverified",
+      "expected_collection_date": null,
+      "evaluation_time": "2026-11-02T05:00:00+09:00"
+    },
+    {
+      "case": 39,
+      "input": {
+        "municipality_id": "38203",
+        "district_id": "38203-a001",
+        "query": "新聞紙",
+        "clarifications": []
+      },
+      "expected": "paper",
+      "check_type": "classification",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-u-shigen.html",
+      "official_reason": "10月振替URLは現在404。検索キャッシュを確認済み日程にしない。",
+      "expected_collection_status": "unverified",
+      "expected_collection_date": null,
+      "evaluation_time": "2026-10-11T05:00:00+09:00"
+    },
+    {
+      "case": 40,
+      "input": {
+        "municipality_id": "38201",
+        "district_id": "38201-08",
+        "query": "キャップとラベルを外して水洗いした飲料用ペットボトル本体",
+        "clarifications": []
+      },
+      "expected": "ペット",
+      "check_type": "classification",
+      "source_url": "https://www.city.matsuyama.ehime.jp/kurashi/gomi/dashikata/kateigomi_matsuyama.html",
+      "official_reason": "既存自治体の確認済み回帰例。",
+      "image": false
+    },
+    {
+      "case": 41,
+      "input": {
+        "municipality_id": "38204",
+        "district_id": "38204-01",
+        "query": "中身を空にして水洗いした飲料用アルミ缶",
+        "clarifications": []
+      },
+      "expected": "cans",
+      "check_type": "classification",
+      "source_url": "https://www.city.yawatahama.ehime.jp/doc/2021022400010/file_contents/2023-04.pdf",
+      "official_reason": "飲料缶はカン。初回の「空の」だけの入力では汚れの条件が不足していたため、回帰用入力に洗浄済みと明記。初回入力と結果は評価記録に保持。",
+      "image": false
+    },
+    {
+      "case": 42,
+      "input": {
+        "municipality_id": "38210",
+        "district_id": "38210-iyo-south",
+        "query": "キャップ・ラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体。プラマークはありません",
+        "clarifications": []
+      },
+      "expected": "pet_bottles",
+      "check_type": "classification",
+      "source_url": "https://www.city.iyo.lg.jp/kankyohozen/bunbetu.html",
+      "official_reason": "既存自治体の確認済み回帰例。",
+      "image": false
+    },
+    {
+      "case": 43,
+      "input": {
+        "municipality_id": "38442",
+        "district_id": "38442-01",
+        "query": "使い終わったアルカリ乾電池",
+        "clarifications": []
+      },
+      "expected": "hazardous",
+      "check_type": "classification",
+      "source_url": "https://www.town.ikata.ehime.jp/soshiki/32/11452.html",
+      "official_reason": "既存自治体の確認済み回帰例。",
+      "image": false
+    },
+    {
+      "case": 44,
+      "input": {
+        "municipality_id": "38205",
+        "district_id": "38205-01",
+        "query": "使い終わったモバイルバッテリー",
+        "clarifications": []
+      },
+      "expected": "hazardous",
+      "check_type": "classification",
+      "source_url": "https://www.city.niihama.lg.jp/soshiki/haiki/pamphlet.html",
+      "official_reason": "既存自治体の確認済み回帰例。",
+      "image": false
+    },
+    {
+      "case": 45,
+      "input": {
+        "municipality_id": "38215",
+        "district_id": "38215-01",
+        "query": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+        "clarifications": []
+      },
+      "expected": "pet_bottles",
+      "check_type": "classification",
+      "source_url": "https://www.city.toon.ehime.jp/uploaded/attachment/22090.pdf#page=8",
+      "official_reason": "PET本体と外した付属品は別区分。",
+      "image": false
+    },
+    {
+      "case": 46,
+      "input": {
+        "municipality_id": "38386",
+        "district_id": "38386-01",
+        "query": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+        "clarifications": []
+      },
+      "expected": "pet_bottles",
+      "check_type": "classification",
+      "source_url": "https://www.kumakogen.jp/uploaded/attachment/7553.pdf#page=7",
+      "official_reason": "PET本体はペット。外した部品とは別。"
+    },
+    {
+      "case": 47,
+      "input": {
+        "municipality_id": "38206",
+        "district_id": "38206-01",
+        "query": "幹の太さ直径4cm、長さ2mちょうどの剪定木",
+        "clarifications": []
+      },
+      "expected": null,
+      "check_type": "hold",
+      "source_url": "https://www.city.saijo.ehime.jp/uploaded/attachment/61346.pdf#page=13",
+      "official_reason": "同じ分別表で粗大の2m以下と収集しない長辺2m以上が重なる。境界は市へ確認し、分類・予定を推測しない。"
+    },
+    {
+      "case": 48,
+      "input": {
+        "municipality_id": "38202",
+        "district_id": "38202-a052",
+        "query": "水洗いして汚れを落とした白色の食品トレイ",
+        "clarifications": []
+      },
+      "expected": "resources",
+      "check_type": "classification",
+      "source_url": "https://www.city.imabari.ehime.jp/recycle/calendar/R08/dasikata.pdf",
+      "official_reason": "白色トレイは資源。"
+    }
+  ],
+  "notes": "Resource-transfer cases currently assert unverified scope, not a verified transfer date. Update after source/area decisions. No real API calls performed."
+}

@@ -1,0 +1,15 @@
+{
+  "checked_at": "2026-11-12",
+  "method": "Downloaded all 148 pinned official sources into an empty isolated directory, using only tracked metadata/scripts; regenerated extraction candidates",
+  "sources": 148,
+  "source_hashes_checked": 148,
+  "candidates_byte_identical": {
+    "item-review-candidate.json": true,
+    "calendar-review-candidate.json": true
+  },
+  "csv_calendar_runtime_generated": false,
+  "indices_shared_or_generated": false,
+  "activation": false,
+  "paid_api_calls": 0,
+  "notes": "Source interpretation and API approvals pending; this does not yet establish end-to-end application reproducibility."
+}
