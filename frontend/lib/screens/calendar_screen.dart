@@ -1186,11 +1186,7 @@ class CalendarScreen extends ConsumerWidget {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (_) => RegionSelectionScreen(
-          onRegionSelected: () {
-            Navigator.of(context).pop();
-          },
-        ),
+        builder: (_) => const RegionSelectionScreen(),
       ),
     );
   }

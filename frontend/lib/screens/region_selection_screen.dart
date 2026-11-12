@@ -6,6 +6,7 @@ import '../models/gps_detection.dart';
 import '../models/region.dart';
 import '../providers/gps_detection_provider.dart';
 import '../providers/multi_region_provider.dart';
+import '../providers/navigation_provider.dart';
 import '../providers/region_provider.dart';
 import '../providers/settings_provider.dart';
 import '../widgets/candidate_bottom_sheet.dart';
@@ -66,6 +67,16 @@ class _RegionSelectionScreenState extends ConsumerState<RegionSelectionScreen> {
   ) async {
     if (_isSaving) return;
     setState(() => _isSaving = true);
+    // Saving the first region can replace this home widget. Keep service
+    // references before awaiting, rather than reading a disposed WidgetRef.
+    final regionSettings = ref.read(regionSettingProvider.notifier);
+    final savedRegions = ref.read(multiRegionServiceProvider);
+    final notifications = ref.read(notificationServiceProvider);
+    final messenger = ScaffoldMessenger.of(context);
+    final navigator = Navigator.of(context);
+    final isHome = ModalRoute.of(context)?.isFirst == true;
+    final selectedTab = ref.read(selectedTabProvider.notifier);
+    messenger.hideCurrentSnackBar();
 
     try {
       final setting = RegionSetting(
@@ -76,36 +87,45 @@ class _RegionSelectionScreenState extends ConsumerState<RegionSelectionScreen> {
         districtId: district.id,
         districtName: district.name,
       );
-      await ref.read(regionSettingProvider.notifier).saveSetting(setting);
-      var notificationUpdated = false;
+      await regionSettings.saveSetting(setting);
       if (widget.updateActiveSavedRegion) {
-        final active =
-            await ref.read(multiRegionServiceProvider).getActiveRegion();
+        final active = await savedRegions.getActiveRegion();
         if (active != null) {
-          await ref
-              .read(multiRegionProvider.notifier)
-              .replaceRegionSetting(active.id, setting);
-          notificationUpdated = true;
+          // Persist the saved slot without coupling success to OS notifications.
+          final updated =
+              await savedRegions.replaceRegionSetting(active.id, setting);
+          if (updated == null) {
+            throw StateError('保存済み地域を更新できませんでした。');
+          }
         }
+        if (mounted) ref.invalidate(multiRegionProvider);
       }
+      var notificationFailed = false;
       try {
-        if (!notificationUpdated) {
-          await ref
-              .read(notificationServiceProvider)
-              .updateDistrict(district.id, municipalityId: municipality.id);
-        }
+        await notifications.updateDistrict(district.id,
+            municipalityId: municipality.id);
       } catch (_) {
-        if (mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-                content: Text(
-                    '地域は保存しましたが、通知を再設定できませんでした。通知設定を確認してください。')),
-          );
-        }
+        notificationFailed = true;
       }
 
-      if (!mounted) return;
-      widget.onRegionSelected?.call();
+      if (widget.onRegionSelected != null) {
+        // Add/replace flows keep their caller-owned result handling.
+        if (mounted) widget.onRegionSelected!();
+      } else if (mounted || (isHome && navigator.mounted)) {
+        selectedTab.state = MainTab.search;
+        if (mounted && navigator.canPop()) navigator.pop(true);
+      }
+      if (notificationFailed && messenger.mounted) {
+        messenger.showSnackBar(const SnackBar(
+          content: Text('地域は保存しましたが、通知を再設定できませんでした。通知設定を確認してください。'),
+        ));
+      }
+    } catch (_) {
+      if (mounted) {
+        messenger.showSnackBar(const SnackBar(
+          content: Text('地域を保存できませんでした。もう一度お試しください。'),
+        ));
+      }
     } finally {
       // 画面が unmounted になった場合でも _isSaving を必ずリセットする
       if (mounted) setState(() => _isSaving = false);
