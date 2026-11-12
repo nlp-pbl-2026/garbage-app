@@ -1,0 +1,467 @@
+{
+  "official_rows": 1124,
+  "examples": 20,
+  "page_counts": [
+    {
+      "page": 2,
+      "rows": 52
+    },
+    {
+      "page": 3,
+      "rows": 51
+    },
+    {
+      "page": 4,
+      "rows": 48
+    },
+    {
+      "page": 5,
+      "rows": 50
+    },
+    {
+      "page": 6,
+      "rows": 55
+    },
+    {
+      "page": 7,
+      "rows": 51
+    },
+    {
+      "page": 8,
+      "rows": 51
+    },
+    {
+      "page": 9,
+      "rows": 51
+    },
+    {
+      "page": 10,
+      "rows": 52
+    },
+    {
+      "page": 11,
+      "rows": 52
+    },
+    {
+      "page": 12,
+      "rows": 50
+    },
+    {
+      "page": 13,
+      "rows": 49
+    },
+    {
+      "page": 14,
+      "rows": 51
+    },
+    {
+      "page": 15,
+      "rows": 58
+    },
+    {
+      "page": 16,
+      "rows": 54
+    },
+    {
+      "page": 17,
+      "rows": 53
+    },
+    {
+      "page": 18,
+      "rows": 49
+    },
+    {
+      "page": 19,
+      "rows": 56
+    },
+    {
+      "page": 20,
+      "rows": 59
+    },
+    {
+      "page": 21,
+      "rows": 54
+    },
+    {
+      "page": 22,
+      "rows": 50
+    },
+    {
+      "page": 23,
+      "rows": 28
+    }
+  ],
+  "raw_sha256": "faa04abbd5022d6e799b9b73f8fe5e8b966752ada96c9274b158b7d3d8deddc4",
+  "rows_sha256": "10f56ccd3c63e689eb89eb745f19119c4002569fbaad54b5783200e07d5f3c50",
+  "category_counts": {
+    "bulky": 144,
+    "burnable": 390,
+    "non_burnable": 327,
+    "not_collected": 95,
+    "paper": 113,
+    "dropoff": 10,
+    "bottles_cans": 49,
+    "pet": 4,
+    "batteries": 10,
+    "clean_plastics": 2
+  },
+  "current_updates": [
+    {
+      "item_id": "38203-0074",
+      "item": "MD・LDプレイヤー",
+      "old_category": "non_burnable",
+      "new_category": "non_burnable",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/55088.pdf#page=3"
+    },
+    {
+      "item_id": "38203-0106",
+      "item": "置時計(電池式）",
+      "old_category": "non_burnable",
+      "new_category": "non_burnable",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/55088.pdf#page=4"
+    },
+    {
+      "item_id": "38203-0130",
+      "item": "温度計・湿度計（デジタル式）",
+      "old_category": "non_burnable",
+      "new_category": "non_burnable",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/55088.pdf#page=4"
+    },
+    {
+      "item_id": "38203-0144",
+      "item": "懐中電灯",
+      "old_category": "non_burnable",
+      "new_category": "non_burnable",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/55088.pdf#page=4"
+    },
+    {
+      "item_id": "38203-0152",
+      "item": "掛け時計（電池式）",
+      "old_category": "non_burnable",
+      "new_category": "non_burnable",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/55088.pdf#page=5"
+    },
+    {
+      "item_id": "38203-0163",
+      "item": "ガスストーブ（家庭用）",
+      "old_category": "non_burnable",
+      "new_category": "non_burnable",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/55088.pdf#page=5"
+    },
+    {
+      "item_id": "38203-0167",
+      "item": "ガス湯沸かし器",
+      "old_category": "bulky",
+      "new_category": "bulky",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/55088.pdf#page=5"
+    },
+    {
+      "item_id": "38203-0241",
+      "item": "給油ポンプ（電動式）",
+      "old_category": "non_burnable",
+      "new_category": "non_burnable",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/55088.pdf#page=6"
+    },
+    {
+      "item_id": "38203-0271",
+      "item": "クッキングタイマー(電池式）",
+      "old_category": "non_burnable",
+      "new_category": "non_burnable",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/55088.pdf#page=7"
+    },
+    {
+      "item_id": "38203-0301",
+      "item": "計算機（卓上電卓）",
+      "old_category": "non_burnable",
+      "new_category": "non_burnable",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/55088.pdf#page=7"
+    },
+    {
+      "item_id": "38203-0302",
+      "item": "携帯電話",
+      "old_category": "non_burnable",
+      "new_category": "non_burnable",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/55088.pdf#page=7"
+    },
+    {
+      "item_id": "38203-0306",
+      "item": "計量器（はかり）",
+      "old_category": "non_burnable",
+      "new_category": "non_burnable",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/55088.pdf#page=7"
+    },
+    {
+      "item_id": "38203-0319",
+      "item": "血圧計（電池式）",
+      "old_category": "non_burnable",
+      "new_category": "non_burnable",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/55088.pdf#page=8"
+    },
+    {
+      "item_id": "38203-0373",
+      "item": "コンロ（ガスコンロサイズ）",
+      "old_category": "non_burnable",
+      "new_category": "non_burnable",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/55088.pdf#page=9"
+    },
+    {
+      "item_id": "38203-0439",
+      "item": "ジュースのペットボトル",
+      "old_category": "pet",
+      "new_category": "pet",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-sutekata.html"
+    },
+    {
+      "item_id": "38203-0447",
+      "item": "瞬間湯沸かし器（台所用）",
+      "old_category": "bulky",
+      "new_category": "bulky",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/55088.pdf#page=10"
+    },
+    {
+      "item_id": "38203-0463",
+      "item": "しょう油のボトル・容器（ペットボトル）",
+      "old_category": "pet",
+      "new_category": "pet",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-sutekata.html"
+    },
+    {
+      "item_id": "38203-0465",
+      "item": "食品トレー",
+      "old_category": "burnable",
+      "new_category": "burnable",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/plastic-jissyou.html"
+    },
+    {
+      "item_id": "38203-0481",
+      "item": "水温計（デジタル式）",
+      "old_category": "non_burnable",
+      "new_category": "non_burnable",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/55088.pdf#page=11"
+    },
+    {
+      "item_id": "38203-0535",
+      "item": "石油ストーブ・石油ファンヒーター",
+      "old_category": "bulky",
+      "new_category": "bulky",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/55088.pdf#page=12"
+    },
+    {
+      "item_id": "38203-0564",
+      "item": "体温計（デジタル式）",
+      "old_category": "non_burnable",
+      "new_category": "non_burnable",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/55088.pdf#page=13"
+    },
+    {
+      "item_id": "38203-0566",
+      "item": "体重計・ヘルスメーター・体脂肪計",
+      "old_category": "non_burnable",
+      "new_category": "non_burnable",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/55088.pdf#page=13"
+    },
+    {
+      "item_id": "38203-0569",
+      "item": "タイマー（電池式）",
+      "old_category": "non_burnable",
+      "new_category": "non_burnable",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/55088.pdf#page=13"
+    },
+    {
+      "item_id": "38203-0651",
+      "item": "デジタルオーディオプレーヤー",
+      "old_category": "non_burnable",
+      "new_category": "non_burnable",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/55088.pdf#page=14"
+    },
+    {
+      "item_id": "38203-0652",
+      "item": "デジタルカメラ・ビデオ",
+      "old_category": "non_burnable",
+      "new_category": "non_burnable",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/55088.pdf#page=14"
+    },
+    {
+      "item_id": "38203-0687",
+      "item": "電卓",
+      "old_category": "non_burnable",
+      "new_category": "non_burnable",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/55088.pdf#page=15"
+    },
+    {
+      "item_id": "38203-0688",
+      "item": "電池（乾電池、アルカリ・マンガン）",
+      "old_category": "dropoff",
+      "new_category": "batteries",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/kandenchi-recycle.html"
+    },
+    {
+      "item_id": "38203-0689",
+      "item": "電池（ボタン型）",
+      "old_category": "dropoff",
+      "new_category": "batteries",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/kandenchi-recycle.html"
+    },
+    {
+      "item_id": "38203-0690",
+      "item": "電池（充電式）",
+      "old_category": "dropoff",
+      "new_category": "batteries",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/denti.html"
+    },
+    {
+      "item_id": "38203-0691",
+      "item": "電池（ニカド電池）",
+      "old_category": "dropoff",
+      "new_category": "batteries",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/denti.html"
+    },
+    {
+      "item_id": "38203-0692",
+      "item": "電池（ニッケル水素電池）",
+      "old_category": "dropoff",
+      "new_category": "batteries",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/denti.html"
+    },
+    {
+      "item_id": "38203-0693",
+      "item": "電池（リチウムイオン電池）",
+      "old_category": "dropoff",
+      "new_category": "batteries",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/denti.html"
+    },
+    {
+      "item_id": "38203-0697",
+      "item": "電動歯ブラシ",
+      "old_category": "non_burnable",
+      "new_category": "non_burnable",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/55088.pdf#page=15"
+    },
+    {
+      "item_id": "38203-0713",
+      "item": "灯油ポンプ（電動式）",
+      "old_category": "non_burnable",
+      "new_category": "non_burnable",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/55088.pdf#page=15"
+    },
+    {
+      "item_id": "38203-0717",
+      "item": "時計",
+      "old_category": "non_burnable",
+      "new_category": "non_burnable",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/55088.pdf#page=15"
+    },
+    {
+      "item_id": "38203-0725",
+      "item": "トランシーバー",
+      "old_category": "non_burnable",
+      "new_category": "non_burnable",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/55088.pdf#page=16"
+    },
+    {
+      "item_id": "38203-0730",
+      "item": "トレー（食品用・プラ製）",
+      "old_category": "burnable",
+      "new_category": "burnable",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/plastic-jissyou.html"
+    },
+    {
+      "item_id": "38203-0774",
+      "item": "ノートパソコン",
+      "old_category": "non_burnable",
+      "new_category": "non_burnable",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/55088.pdf#page=16"
+    },
+    {
+      "item_id": "38203-0789",
+      "item": "はかり（デジタル式）",
+      "old_category": "non_burnable",
+      "new_category": "non_burnable",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/55088.pdf#page=17"
+    },
+    {
+      "item_id": "38203-0808",
+      "item": "バッテリー（小型充電式電池）",
+      "old_category": "dropoff",
+      "new_category": "batteries",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/denti.html"
+    },
+    {
+      "item_id": "38203-0834",
+      "item": "PHS（携帯電話）",
+      "old_category": "non_burnable",
+      "new_category": "non_burnable",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/55088.pdf#page=18"
+    },
+    {
+      "item_id": "38203-0912",
+      "item": "噴霧器（電動式・手動式）",
+      "old_category": "bulky",
+      "new_category": "bulky",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/55088.pdf#page=19"
+    },
+    {
+      "item_id": "38203-0926",
+      "item": "ペットボトル",
+      "old_category": "pet",
+      "new_category": "pet",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-sutekata.html"
+    },
+    {
+      "item_id": "38203-0927",
+      "item": "ペットボトルのキャップ・ラベル",
+      "old_category": "burnable",
+      "new_category": "burnable",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/plastic-jissyou.html"
+    },
+    {
+      "item_id": "38203-0985",
+      "item": "補聴器（電池式）",
+      "old_category": "non_burnable",
+      "new_category": "non_burnable",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/55088.pdf#page=20"
+    },
+    {
+      "item_id": "38203-1028",
+      "item": "万歩計",
+      "old_category": "non_burnable",
+      "new_category": "non_burnable",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/55088.pdf#page=21"
+    },
+    {
+      "item_id": "38203-1047",
+      "item": "目覚し時計",
+      "old_category": "non_burnable",
+      "new_category": "non_burnable",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/55088.pdf#page=22"
+    },
+    {
+      "item_id": "38203-1062",
+      "item": "湯沸し器",
+      "old_category": "bulky",
+      "new_category": "bulky",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/55088.pdf#page=22"
+    },
+    {
+      "item_id": "38203-1069",
+      "item": "ラジオ・ラジカセ",
+      "old_category": "non_burnable",
+      "new_category": "non_burnable",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/55088.pdf#page=22"
+    },
+    {
+      "item_id": "38203-1070",
+      "item": "ラジコン",
+      "old_category": "non_burnable",
+      "new_category": "non_burnable",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/55088.pdf#page=22"
+    },
+    {
+      "item_id": "38203-1078",
+      "item": "リモコン",
+      "old_category": "non_burnable",
+      "new_category": "non_burnable",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/55088.pdf#page=22"
+    }
+  ]
+}

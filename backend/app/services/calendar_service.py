@@ -44,6 +44,8 @@ class CalendarService:
         self._valid_to = date.fromisoformat(self.region.valid_to)
         self._dates: dict[str, list[CollectionDate]] = {}
         self._verification: dict[str, dict] = {}
+        self._unverified_dates: dict[str, dict[date, dict]] = {}
+        self._pending_verification: dict[str, dict] = {}
         # Explicit CSV injection remains available for legacy integrations/tests.
         if calendar_path is not None and calendar_path.suffix == ".csv":
             self._calendar_path = calendar_path
@@ -84,6 +86,24 @@ class CalendarService:
                 self.availability = "partially_available"
         if not isinstance(record.get("days"), dict):
             raise ValueError("Invalid calendar days")
+        unknown_dates = record.get("unverified_dates", {})
+        if not isinstance(unknown_dates, dict) or set(unknown_dates) - streams:
+            raise ValueError("Invalid unverified calendar dates")
+        for stream, entries in unknown_dates.items():
+            if not isinstance(entries, dict):
+                raise ValueError("Invalid unverified calendar dates")
+            for raw, info in entries.items():
+                if not isinstance(raw, str):
+                    raise ValueError("Invalid unverified calendar date")
+                parsed = date.fromisoformat(raw)
+                if (raw != parsed.isoformat() or not self._valid_from <= parsed <= self._valid_to
+                        or not isinstance(info, dict)
+                        or any(not isinstance(info.get(k), str) or not info[k].strip()
+                               for k in ("message", "source_url"))):
+                    raise ValueError("Invalid unverified calendar date evidence")
+                self._unverified_dates.setdefault(stream, {})[parsed] = info
+        if self._unverified_dates:
+            self.availability = "partially_available"
         for raw_date, categories in record["days"].items():
             if not isinstance(categories, list) or any(not isinstance(value, str) for value in categories):
                 raise ValueError("Invalid calendar collection types")
@@ -91,6 +111,8 @@ class CalendarService:
             if not self._valid_from <= parsed <= self._valid_to:
                 raise ValueError("Calendar date outside its official validity")
             for category_id in categories:
+                if parsed in self._unverified_dates.get(category_id, {}):
+                    raise ValueError("Unverified date must not contain a scheduled collection")
                 if self._verification.get(category_id, {}).get("status") == "unverified":
                     raise ValueError("Unverified collection type must not contain scheduled dates")
                 label = next((definition.name for definition in self.region.rules.categories.values()
@@ -133,6 +155,7 @@ class CalendarService:
     ) -> CollectionDate | None:
         definition = self.region.rules.categories.get(category_code)
         collection_type_id = definition.collection_type_id if definition else None
+        self._pending_verification.pop(collection_type_id, None)
         if (collection_type_id is None or self.availability not in {"available", "partially_available"}
                 or self._verification.get(collection_type_id, {}).get("status") == "unverified"):
             return None
@@ -160,6 +183,11 @@ class CalendarService:
             ),
             None,
         )
+        unknown = sorted(d for d in self._unverified_dates.get(collection_type_id, {})
+                         if d >= target_date and (result is None or d <= result.date))
+        if unknown:
+            self._pending_verification[collection_type_id] = self._unverified_dates[collection_type_id][unknown[0]]
+            return None
         return CollectionDate(result.date, definition.name) if result else None
 
     def collection_status(self, category_code: str, next_collection: CollectionDate | None = None) -> CollectionStatus:
@@ -169,6 +197,9 @@ class CalendarService:
         if self.availability not in {"available", "partially_available"}:
             return CollectionStatus(self.availability)
         info = self._verification.get(definition.collection_type_id, {})
+        pending = self._pending_verification.get(definition.collection_type_id)
+        if pending:
+            return CollectionStatus("unverified", pending["message"], pending["source_url"])
         if info.get("status") == "unverified":
             return CollectionStatus("unverified", info["message"], info["source_url"])
         return CollectionStatus("scheduled" if next_collection else "no_upcoming_collection")

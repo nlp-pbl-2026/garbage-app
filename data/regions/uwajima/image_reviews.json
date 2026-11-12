@@ -1,0 +1,550 @@
+{
+  "method": "rendered exact icon colours plus independent Apple Vision date labels; HTML recurrences are a separate comparison",
+  "status": "checked",
+  "counts": {
+    "printed_date_labels": 10936,
+    "calendar_cells": 12045,
+    "collection_marks": 6034,
+    "printed_date_template": 1001,
+    "printed_date_visual_review": 108
+  },
+  "dictionary": {
+    "source_sha256": "e0a71a61d1afa659d13dd7e7d7e5aeded80bae9f7e37ac22c6d59b9a4299279a",
+    "rendered_rows": 1124,
+    "method": "visible glyph positions, independent filled row rectangles and rendered background colours",
+    "page_counts": [
+      {
+        "page": 2,
+        "rows": 52
+      },
+      {
+        "page": 3,
+        "rows": 51
+      },
+      {
+        "page": 4,
+        "rows": 48
+      },
+      {
+        "page": 5,
+        "rows": 50
+      },
+      {
+        "page": 6,
+        "rows": 55
+      },
+      {
+        "page": 7,
+        "rows": 51
+      },
+      {
+        "page": 8,
+        "rows": 51
+      },
+      {
+        "page": 9,
+        "rows": 51
+      },
+      {
+        "page": 10,
+        "rows": 52
+      },
+      {
+        "page": 11,
+        "rows": 52
+      },
+      {
+        "page": 12,
+        "rows": 50
+      },
+      {
+        "page": 13,
+        "rows": 49
+      },
+      {
+        "page": 14,
+        "rows": 51
+      },
+      {
+        "page": 15,
+        "rows": 58
+      },
+      {
+        "page": 16,
+        "rows": 54
+      },
+      {
+        "page": 17,
+        "rows": 53
+      },
+      {
+        "page": 18,
+        "rows": 49
+      },
+      {
+        "page": 19,
+        "rows": 56
+      },
+      {
+        "page": 20,
+        "rows": 59
+      },
+      {
+        "page": 21,
+        "rows": 54
+      },
+      {
+        "page": 22,
+        "rows": 50
+      },
+      {
+        "page": 23,
+        "rows": 28
+      }
+    ],
+    "unresolved": []
+  },
+  "pdfs": [
+    {
+      "file": "calendar-uwajima-65699.pdf",
+      "source_sha256": "814671f05563d2869bc15c8c1a7e7837e99432dff7aa35886bed0cdfbb66484a",
+      "cells": 365,
+      "events": 178,
+      "categories": {
+        "burnable": 104,
+        "non_burnable": 23,
+        "pet": 23,
+        "bottles_cans": 28
+      },
+      "days_sha256": "01e8b5914be053efc5916b41e0a006368b6d8b0c1a00440e6cb7be00d8b21ba5"
+    },
+    {
+      "file": "calendar-uwajima-65701.pdf",
+      "source_sha256": "3abbfa2658561c7d8ead9e8d7dd2fd211dd67091e5168fec32386e2daf55bab5",
+      "cells": 365,
+      "events": 180,
+      "categories": {
+        "burnable": 104,
+        "non_burnable": 24,
+        "pet": 24,
+        "bottles_cans": 28
+      },
+      "days_sha256": "e2d7b358021dff37bf1ba8ec2bde2ca58fcd9a549bee003127cb23815c1ece10"
+    },
+    {
+      "file": "calendar-uwajima-65700.pdf",
+      "source_sha256": "7678218abbcd98e4fd40a04d2ca794cd32c2e02f7f8c2a93ceec757e02bfb859",
+      "cells": 365,
+      "events": 180,
+      "categories": {
+        "burnable": 104,
+        "non_burnable": 24,
+        "pet": 24,
+        "bottles_cans": 28
+      },
+      "days_sha256": "d1cdff19ec96d9530b2ae4eb621a0c00fd2c9a8006db558bd730f14b330543bf"
+    },
+    {
+      "file": "calendar-uwajima-65702.pdf",
+      "source_sha256": "50aa0b35740a6e5a69b843bd68849a0f8bbd1201244a93f8944b4e4d02370187",
+      "cells": 365,
+      "events": 179,
+      "categories": {
+        "burnable": 103,
+        "non_burnable": 24,
+        "pet": 24,
+        "bottles_cans": 28
+      },
+      "days_sha256": "8290b91ef48744970cf19affd3f5ae274741850d6a05f601ee96f45d6d19cfa9"
+    },
+    {
+      "file": "calendar-uwajima-65705.pdf",
+      "source_sha256": "481ad6f837f29f870d4e0dbb8c69cead8bc37310e1db9fc47a91f8026a854df7",
+      "cells": 365,
+      "events": 180,
+      "categories": {
+        "burnable": 104,
+        "non_burnable": 24,
+        "pet": 24,
+        "bottles_cans": 28
+      },
+      "days_sha256": "cbdc1d1990bc6afd27a5b9cf0dcf36bd16f1fc5b9d8ff52f7156c7398e37df51"
+    },
+    {
+      "file": "calendar-uwajima-65709.pdf",
+      "source_sha256": "f0d9eb7e71e999fc1988b66aeaecb241402b4c7d7eba0a0ce0cc5a7e64cc0e4f",
+      "cells": 365,
+      "events": 180,
+      "categories": {
+        "non_burnable": 24,
+        "pet": 24,
+        "burnable": 103,
+        "bottles_cans": 29
+      },
+      "days_sha256": "a033c181aca9a02d2f75f277bb5db9e165cefb6bbeebfa8c721ddc51b772a7c6"
+    },
+    {
+      "file": "calendar-uwajima-65710.pdf",
+      "source_sha256": "bdfce02968cabfc1c74daf4229c12239dbf6c51ab2e62012469156ad32b20e6d",
+      "cells": 365,
+      "events": 179,
+      "categories": {
+        "burnable": 103,
+        "non_burnable": 24,
+        "pet": 24,
+        "bottles_cans": 28
+      },
+      "days_sha256": "a07252dd8a4d13fab77cfe017cb4a0e89380dc4c55ad33d327671109f47f37db"
+    },
+    {
+      "file": "calendar-uwajima-65716.pdf",
+      "source_sha256": "86ec93e4aa8503566a1482cf316e541cdb92768d70bd308b997ac13ab8b33d47",
+      "cells": 365,
+      "events": 178,
+      "categories": {
+        "burnable": 104,
+        "non_burnable": 23,
+        "pet": 23,
+        "bottles_cans": 28
+      },
+      "days_sha256": "1ddacb8fcf54b0390f05d3d08f1a5b29b97a6d1a8dc997a08ca30256736cf9a7"
+    },
+    {
+      "file": "calendar-uwajima-65720.pdf",
+      "source_sha256": "d9bb87d4be48aa713a2b0507f565e3da9af3d49567ac9b0825eb3c7788e82323",
+      "cells": 365,
+      "events": 177,
+      "categories": {
+        "burnable": 103,
+        "non_burnable": 23,
+        "pet": 23,
+        "bottles_cans": 28
+      },
+      "days_sha256": "a91ee12d25f3e5d0eb7e8eb18a19b3796452015a2ede3ad9591ed952e1de73b2"
+    },
+    {
+      "file": "calendar-uwajima-65731.pdf",
+      "source_sha256": "c5096d0ac9d86b0ac9e770733dd57ddc0bb5eb4fb94291b961a44eaacc045441",
+      "cells": 365,
+      "events": 178,
+      "categories": {
+        "burnable": 104,
+        "non_burnable": 23,
+        "pet": 23,
+        "bottles_cans": 28
+      },
+      "days_sha256": "e427484159545fa23670363ff275655090828edb9bfbd43c6f95e1b3a5cf5786"
+    },
+    {
+      "file": "calendar-uwajima-69373.pdf",
+      "source_sha256": "f9abc45eb6f4a04152a6ade63d8138d5d9a36ea1719a21573817859373afc682",
+      "cells": 365,
+      "events": 179,
+      "categories": {
+        "burnable": 103,
+        "non_burnable": 24,
+        "pet": 24,
+        "bottles_cans": 28
+      },
+      "days_sha256": "a07252dd8a4d13fab77cfe017cb4a0e89380dc4c55ad33d327671109f47f37db"
+    },
+    {
+      "file": "calendar-uwajima-65756.pdf",
+      "source_sha256": "6b3d9f2345dd9737b9712437f5f79260b468dab50c4252024117f27861bafd36",
+      "cells": 365,
+      "events": 136,
+      "categories": {
+        "bottles_cans": 28,
+        "burnable": 52,
+        "non_burnable": 28,
+        "pet": 28
+      },
+      "days_sha256": "e5d514d4d6cd3992a4249142446db83f2232b7ec78a8ab4d73f14223f41e1a7c"
+    },
+    {
+      "file": "calendar-uwajima-65772.pdf",
+      "source_sha256": "36a6906c79ee5e95bc76e87f2150583fc592f2cc76d6b83e902d050206b45d72",
+      "cells": 365,
+      "events": 179,
+      "categories": {
+        "non_burnable": 24,
+        "pet": 24,
+        "burnable": 103,
+        "bottles_cans": 28
+      },
+      "days_sha256": "0205264d939ba460fe0cac3f11d08e704bd28380ec23cb0488909cd7bf46b13a"
+    },
+    {
+      "file": "calendar-uwajima-65773.pdf",
+      "source_sha256": "0c840f9f483ff77e06ac7f6a82064d7bfbde18137b7e3d1b6e6084d8419284e6",
+      "cells": 365,
+      "events": 59,
+      "categories": {
+        "burnable": 23,
+        "bottles_cans": 12,
+        "non_burnable": 12,
+        "pet": 12
+      },
+      "days_sha256": "8542627c4ef7ef11195750223bee376f6d7fab3af42500bc4f5055b19fda96a5"
+    },
+    {
+      "file": "calendar-uwajima-65775.pdf",
+      "source_sha256": "ddc10539e8849b7bcdf8c13cb40c31fe04f175f5ceba31934eb9b1a1085271bf",
+      "cells": 365,
+      "events": 181,
+      "categories": {
+        "non_burnable": 24,
+        "pet": 24,
+        "burnable": 104,
+        "bottles_cans": 29
+      },
+      "days_sha256": "8e5d83f6c2999b6534bbd259659bc34704d66a93710f36376b023e51eed27201"
+    },
+    {
+      "file": "calendar-uwajima-65792.pdf",
+      "source_sha256": "dbf221d579ab6ffe03f735dc56cc4da2ec8469942494342abe562b4302b2e48c",
+      "cells": 365,
+      "events": 175,
+      "categories": {
+        "burnable": 103,
+        "bottles_cans": 24,
+        "non_burnable": 24,
+        "pet": 24
+      },
+      "days_sha256": "ab035b1e4c53b12b0d5fb855befd45b04b09ada9506b95499262ac090fe73efe"
+    },
+    {
+      "file": "calendar-uwajima-65839.pdf",
+      "source_sha256": "7722df221c40d301b78eabbe3748f667af2c6099b35dd84facc3b9a3ba40c5ea",
+      "cells": 365,
+      "events": 112,
+      "categories": {
+        "bottles_cans": 28,
+        "burnable": 28,
+        "non_burnable": 28,
+        "pet": 28
+      },
+      "days_sha256": "ecbdde4739f3417e3750700e27e6ddbcafb4a87435d64a4867360c0719200573"
+    },
+    {
+      "file": "calendar-yoshida-65913.pdf",
+      "source_sha256": "3c55f579f0953d3ef5bbc789767bd6101d7251d3f721e2bf6937504db9899142",
+      "cells": 365,
+      "events": 193,
+      "categories": {
+        "bottles_cans": 29,
+        "burnable": 104,
+        "non_burnable": 24,
+        "pet": 24,
+        "paper": 12
+      },
+      "days_sha256": "a32fe67181a31283391487dee152f82aaafcbd810ae7db48558e94751c2a9b0f"
+    },
+    {
+      "file": "calendar-yoshida-65914.pdf",
+      "source_sha256": "983541343a24fd39081c3c7907f7d0c1951103f3ca1feb48102d3683ef6411e1",
+      "cells": 365,
+      "events": 192,
+      "categories": {
+        "bottles_cans": 29,
+        "burnable": 103,
+        "non_burnable": 24,
+        "pet": 24,
+        "paper": 12
+      },
+      "days_sha256": "d1e557563f8be465477193a2504dddf405cfa0906d6758194b75b10b5a45a0cb"
+    },
+    {
+      "file": "calendar-yoshida-65915.pdf",
+      "source_sha256": "a07253d83024e16dbcc38ec5b40d65a9e1aef6f3c6f73eb163f62b1b39012298",
+      "cells": 365,
+      "events": 193,
+      "categories": {
+        "bottles_cans": 29,
+        "burnable": 104,
+        "paper": 12,
+        "non_burnable": 24,
+        "pet": 24
+      },
+      "days_sha256": "e5279e02ba11298c39148fc903dedb4e423e4f21270caa1e27adac6b7dfd516c"
+    },
+    {
+      "file": "calendar-yoshida-65916.pdf",
+      "source_sha256": "065771a7359ab54af46a3e7f0ed3cc3d7c26f141ad4cdd47cf173e107a8cc5c9",
+      "cells": 365,
+      "events": 193,
+      "categories": {
+        "bottles_cans": 29,
+        "burnable": 104,
+        "paper": 12,
+        "non_burnable": 24,
+        "pet": 24
+      },
+      "days_sha256": "e5279e02ba11298c39148fc903dedb4e423e4f21270caa1e27adac6b7dfd516c"
+    },
+    {
+      "file": "calendar-yoshida-65917.pdf",
+      "source_sha256": "01fc8f9092c76e9138a6b8a51bd348c0ea3066d2ffb48502817dd3a9d325f436",
+      "cells": 365,
+      "events": 192,
+      "categories": {
+        "bottles_cans": 29,
+        "burnable": 103,
+        "non_burnable": 24,
+        "pet": 24,
+        "paper": 12
+      },
+      "days_sha256": "bb53c6e3a0cb573a20ddef0fe2a7686a695ad74308c440d24bcc11af930cde69"
+    },
+    {
+      "file": "calendar-yoshida-65923.pdf",
+      "source_sha256": "efe30e455b8e4b0594f6d4d09c40772c477677260ab4974e9b8c7b02c803dfdb",
+      "cells": 365,
+      "events": 180,
+      "categories": {
+        "bottles_cans": 29,
+        "burnable": 103,
+        "non_burnable": 24,
+        "pet": 24
+      },
+      "days_sha256": "3df0d7f403589d65c3762311d014b58393c493d993810271d0a88e5330ae2701"
+    },
+    {
+      "file": "calendar-mima-65933.pdf",
+      "source_sha256": "6438eb33799831bd4da39cb5802c2bcbb21702b9137fa763c218a5d27e23dc38",
+      "cells": 365,
+      "events": 231,
+      "categories": {
+        "burnable": 104,
+        "pet": 23,
+        "bottles_cans": 52,
+        "non_burnable": 52
+      },
+      "days_sha256": "c8349ec61a9a8fd06e91de3f3e94fb0f3765c736b32709b2a2d27e4babd8c275"
+    },
+    {
+      "file": "calendar-mima-65934.pdf",
+      "source_sha256": "3254b1aaf4cc7aece058d72e1b23f049ac85d2106f4281198b4b0f0113b98923",
+      "cells": 365,
+      "events": 231,
+      "categories": {
+        "burnable": 104,
+        "pet": 23,
+        "bottles_cans": 52,
+        "non_burnable": 52
+      },
+      "days_sha256": "c9c200ffe2feda7e1d8cfec018aa23f3e96fad9fb644ff2653cd3f854c1aeb1a"
+    },
+    {
+      "file": "calendar-mima-65935.pdf",
+      "source_sha256": "3fb51d1458c6cd53063551791e756687837fe71f1f380d48bb22a5d333c85f1a",
+      "cells": 365,
+      "events": 233,
+      "categories": {
+        "bottles_cans": 53,
+        "non_burnable": 53,
+        "burnable": 103,
+        "pet": 24
+      },
+      "days_sha256": "12430fe1c5e2c89200a08af707024b485740dd5c41968afede54dfd3cb467e86"
+    },
+    {
+      "file": "calendar-mima-65936.pdf",
+      "source_sha256": "ae050bc1c72f1c3dc24dc04db366ff34e9f4e912e8e9c6fce1785a8038bb85f0",
+      "cells": 365,
+      "events": 231,
+      "categories": {
+        "bottles_cans": 52,
+        "non_burnable": 52,
+        "burnable": 103,
+        "pet": 24
+      },
+      "days_sha256": "5278155a228fbb97d035b0097275c3bb46e59236026421ddb7ae26e11352761f"
+    },
+    {
+      "file": "calendar-tsushima-65937.pdf",
+      "source_sha256": "4ad1c3f717b8a850af098e1bd7ae0e32fcc400fc6d93f65ca8bcfd971f453abe",
+      "cells": 365,
+      "events": 193,
+      "categories": {
+        "bottles_cans": 29,
+        "pet": 24,
+        "burnable": 104,
+        "non_burnable": 24,
+        "paper": 12
+      },
+      "days_sha256": "013450ea69c38ab494c6ade6b06e88b38d6a493a83c28b26ca7b60b4a4359554"
+    },
+    {
+      "file": "calendar-tsushima-65938.pdf",
+      "source_sha256": "da6a7497532cdb72bf06b3202b642d19d99a471e02fed6b6e60f24af374e79be",
+      "cells": 365,
+      "events": 193,
+      "categories": {
+        "bottles_cans": 29,
+        "pet": 24,
+        "burnable": 104,
+        "non_burnable": 24,
+        "paper": 12
+      },
+      "days_sha256": "9869ca0b7dc728485154d76713ce5e4fc355c8af152db1ee982ef8e570a0caeb"
+    },
+    {
+      "file": "calendar-tsushima-65939.pdf",
+      "source_sha256": "e59cdb1e6986f0157b0b4ca3cb993e16a58944f49a3b29de96d70944cbd8ad3b",
+      "cells": 365,
+      "events": 193,
+      "categories": {
+        "bottles_cans": 29,
+        "pet": 24,
+        "burnable": 104,
+        "non_burnable": 24,
+        "paper": 12
+      },
+      "days_sha256": "8b6c9860d9681799db2654f6903cd545e8e54a1941a5b07b35d488e97217088e"
+    },
+    {
+      "file": "calendar-tsushima-65941.pdf",
+      "source_sha256": "dbb2e473bde2c4bee5e6917163b632744d782a3c4869f766c9dbe96a5cfd6579",
+      "cells": 365,
+      "events": 192,
+      "categories": {
+        "bottles_cans": 29,
+        "burnable": 103,
+        "non_burnable": 24,
+        "pet": 24,
+        "paper": 12
+      },
+      "days_sha256": "aebed3b96efa48a7e530e64bb499ab707c4c2bc9cd9c00a5234fe6f200ce4b7c"
+    },
+    {
+      "file": "calendar-tsushima-65943.pdf",
+      "source_sha256": "086d0e42b4dd280416b6e0a0e7556ffe49a9bac452f531c7d9d1719841f5d667",
+      "cells": 365,
+      "events": 192,
+      "categories": {
+        "bottles_cans": 29,
+        "burnable": 103,
+        "non_burnable": 24,
+        "pet": 24,
+        "paper": 12
+      },
+      "days_sha256": "dca2d0ba266122aaa9d015584d9f3b07f6049df5ea3885860d2e5526005907df"
+    },
+    {
+      "file": "calendar-tsushima-65944.pdf",
+      "source_sha256": "9b1dcc7e04830d1df772cd4d7cb9a1c4afbcf1fd3c30539c9bd90277a3f6ab37",
+      "cells": 365,
+      "events": 192,
+      "categories": {
+        "bottles_cans": 29,
+        "burnable": 103,
+        "non_burnable": 24,
+        "pet": 24,
+        "paper": 12
+      },
+      "days_sha256": "91feae8b8d79a09352bcd5c5017943ea460ffb75f9a81d4103ee779814addeb0"
+    }
+  ],
+  "unresolved": []
+}

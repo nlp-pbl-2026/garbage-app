@@ -99,6 +99,10 @@ class CalendarScreen extends ConsumerWidget {
                   // 色凡例
                   _buildColorLegend(ref),
 
+                  ...((ref.watch(monthlyCollectionStatusesProvider).asData?.value ?? {})
+                      .values.where((status) => status.isUnverified)
+                      .map((status) => CollectionStatusNotice(status: status))),
+
                   const Divider(height: 1),
 
                   // 選択日の収集予定表示
@@ -873,7 +877,7 @@ class CalendarScreen extends ConsumerWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8.0),
                   child: Text(
-                    (ref.watch(collectionStatusesProvider).asData?.value.values.any((status) => status.isUnverified) ?? false)
+                    (ref.watch(dailyCollectionStatusesProvider).asData?.value.values.any((status) => status.isUnverified) ?? false)
                         ? '確認済みの収集予定はありません。収集日が未確認の区分があります。' : AppStrings.noSchedule,
                     style: const TextStyle(
                       fontSize: 14,

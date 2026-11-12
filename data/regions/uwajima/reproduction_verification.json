@@ -1,0 +1,30 @@
+{
+  "checked_at": "2026-11-12",
+  "snapshot_commit": "b37691be41c7a6b9a61ed938aa6609f346412f27",
+  "method": "git archive of committed HEAD into an isolated empty directory; all official sources re-downloaded; independent OCR and generation re-executed; only the real dedicated NPZ shared without API calls",
+  "sources": 149,
+  "source_hashes_checked": 149,
+  "independent_calendar_cells": 12045,
+  "dictionary_classification_rows": 1124,
+  "independent_image_review_reproduced": true,
+  "runtime_byte_identical": {
+    "registry.json": true,
+    "knowledge/items.csv": true,
+    "knowledge/item_embeddings.npz": true,
+    "knowledge/index_manifest.json": true,
+    "generated/calendar-2026.json": true
+  },
+  "frontend_byte_identical": {
+    "municipality_catalog.json": true,
+    "municipality_38203_registry.json": true,
+    "municipality_38203_0_calendar.json": true
+  },
+  "backend_tests_passed": 27,
+  "paid_api_calls": 0,
+  "embedding_source": "shared existing Uwajima NPZ; hash-checked against committed manifest",
+  "other_municipalities_generated": false,
+  "flutter_tests_passed": 9,
+  "calendar_entries": 56,
+  "distinct_date_patterns": 54,
+  "distinct_date_and_verification_patterns": 55
+}

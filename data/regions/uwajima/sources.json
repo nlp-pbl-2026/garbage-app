@@ -1,0 +1,1676 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38203",
+  "retrieved_at": "2026-11-12",
+  "license_status": "unconfirmed",
+  "sources": [
+    {
+      "file": "classification.html",
+      "url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-sutekata.html",
+      "sha256": "729c85d586cfa1b1ec199201419cfb31ac28c862db8e26d5eb64017ed308359d",
+      "canonicalization": "main_body_utf8"
+    },
+    {
+      "file": "plastic.html",
+      "url": "https://www.city.uwajima.ehime.jp/soshiki/15/plastic-jissyou.html",
+      "sha256": "fbcb1cce2d09d59adb5ed001a29ee4747a113cabf1c8157e1de10fd648e2dd04",
+      "canonicalization": "main_body_utf8"
+    },
+    {
+      "file": "resources.html",
+      "url": "https://www.city.uwajima.ehime.jp/life/10/68/292/",
+      "sha256": "0a450df651b8c57fec51a6138fb637c95a53375a29734b80194e693b44f7f9dd",
+      "canonicalization": "main_body_utf8"
+    },
+    {
+      "file": "appliances.html",
+      "url": "https://www.city.uwajima.ehime.jp/soshiki/15/kogatakaden.html",
+      "sha256": "ba219551af5a4e47652da0f444acc9e4c6cfad2c6ccf69fd3571b2ea61c8c476",
+      "canonicalization": "main_body_utf8"
+    },
+    {
+      "file": "calendar-uwajima.html",
+      "url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-u-shushubi2026.html",
+      "sha256": "ace04952b1b866aa465a76a9e1e9aa15c4f8923ed1b182ba79e91db2a5303511",
+      "canonicalization": "main_body_utf8"
+    },
+    {
+      "file": "calendar-yoshida.html",
+      "url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-y2026.html",
+      "sha256": "20e830267aed676b59204564671144a613e2ef4a96efb991aa63795239f58883",
+      "canonicalization": "main_body_utf8"
+    },
+    {
+      "file": "calendar-mima.html",
+      "url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-m2026.html",
+      "sha256": "3aa6acbb7ca0507a976055b8e478b7cb9e71066e5f62370307f0d5b0f4fd0b45",
+      "canonicalization": "main_body_utf8"
+    },
+    {
+      "file": "calendar-tsushima.html",
+      "url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-t2026.html",
+      "sha256": "ad07362450b593a894609b7c6aa87723afe814ecda1c681ab135a10f653d6b1f",
+      "canonicalization": "main_body_utf8"
+    },
+    {
+      "file": "transfer-11.html",
+      "url": "https://www.city.uwajima.ehime.jp/info/shigen-furikae11.html",
+      "sha256": "3ad8dd2b2f7971a6a414e5e106442d1efce42f942f1413832ca76127b373f9ec",
+      "canonicalization": "main_body_utf8"
+    },
+    {
+      "file": "resource-collection.html",
+      "url": "https://www.city.uwajima.ehime.jp/soshiki/15/recycling.html",
+      "sha256": "6f838d7cf357868989605eb511091868b24e8f366a791853ebaaf2bf27827f7e",
+      "canonicalization": "main_body_utf8"
+    },
+    {
+      "file": "battery.html",
+      "url": "https://www.city.uwajima.ehime.jp/soshiki/15/denti.html",
+      "sha256": "fdff260eca338f75e54fc32aec24ef9893c4882e8773e98c336ca195f0fe8025",
+      "canonicalization": "main_body_utf8"
+    },
+    {
+      "file": "dry-battery.html",
+      "url": "https://www.city.uwajima.ehime.jp/soshiki/15/kandenchi-recycle.html",
+      "sha256": "87256c490c49c8cb097d27a7d4eca71bac04aae64c8f5233b409c62589e44960",
+      "canonicalization": "main_body_utf8"
+    },
+    {
+      "file": "fluorescent.html",
+      "url": "https://www.city.uwajima.ehime.jp/soshiki/15/keikoukan.html",
+      "sha256": "fa4a8469eadbab2bd42c011ba3274c1be313f4823f4a219474f2a1874c2b704a",
+      "canonicalization": "main_body_utf8"
+    },
+    {
+      "file": "paper-dropoff.html",
+      "url": "https://www.city.uwajima.ehime.jp/soshiki/15/koshikaisyu.html",
+      "sha256": "06abb1cfbac5310489ebfef5a03a502731f71c948602dd85a891f57f058f23b3",
+      "canonicalization": "main_body_utf8"
+    },
+    {
+      "file": "paper-pack.html",
+      "url": "https://www.city.uwajima.ehime.jp/soshiki/15/kamipack.html",
+      "sha256": "b65ba7a66ca014b6ce146bc55db909f896ac4c6ac293654b4a1941f8d85663c7",
+      "canonicalization": "main_body_utf8"
+    },
+    {
+      "file": "document-65676.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65676.pdf",
+      "sha256": "d768be9ebfc6d3df5510a667d03b76a44a31687c7616d4fbf5086c37d35c3fe0",
+      "references": [
+        {
+          "page": "classification.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65676.pdf",
+          "label": "宇和島地区 [PDFファイル／510KB]"
+        }
+      ]
+    },
+    {
+      "file": "document-65678.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65678.pdf",
+      "sha256": "f96542731af7ead1ab1d25d736eb7c0a36807b8a07d409cf5215610d4264592d",
+      "references": [
+        {
+          "page": "classification.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65678.pdf",
+          "label": "吉田地区 [PDFファイル／512KB]"
+        }
+      ]
+    },
+    {
+      "file": "document-65681.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65681.pdf",
+      "sha256": "a16619e799974639b4c55bf4d95175f3937df690286785dcfd40214782b8cb4f",
+      "references": [
+        {
+          "page": "classification.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65681.pdf",
+          "label": "三間地区 [PDFファイル／1.26MB]"
+        }
+      ]
+    },
+    {
+      "file": "document-65682.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65682.pdf",
+      "sha256": "98a2c2aa022f84ba0a7b6df88ff938ffebd59ca19a164beb46f71b38e88cde88",
+      "references": [
+        {
+          "page": "classification.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65682.pdf",
+          "label": "津島地区 [PDFファイル／1.21MB]"
+        }
+      ]
+    },
+    {
+      "file": "document-55088.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/55088.pdf",
+      "sha256": "e0a71a61d1afa659d13dd7e7d7e5aeded80bae9f7e37ac22c6d59b9a4299279a",
+      "references": [
+        {
+          "page": "classification.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/55088.pdf",
+          "label": "家庭ごみの分別早見表 [PDFファイル／621KB]"
+        }
+      ]
+    },
+    {
+      "file": "document-53937.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/53937.pdf",
+      "sha256": "d7744eba6c355f8bf82adbd9058756769a6376e11e2d6930e04be323cb698d78",
+      "references": [
+        {
+          "page": "classification.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/53937.pdf",
+          "label": "環境センターにごみを搬入される方へ [PDFファイル／252KB]"
+        },
+        {
+          "page": "classification.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/53937.pdf",
+          "label": "環境センターにごみを搬入される方へ [PDFファイル／252KB]"
+        }
+      ]
+    },
+    {
+      "file": "document-67144.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/67144.pdf",
+      "sha256": "4b01d88e8810d689599172fb9d5115856f7f5ea29c2b79c5b92c53dbc8a2506a",
+      "references": [
+        {
+          "page": "classification.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/67144.pdf",
+          "label": "宇和島市一般廃棄物収集運搬許可業者一覧 [PDFファイル／88KB]"
+        }
+      ]
+    },
+    {
+      "file": "document-67145.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/67145.pdf",
+      "sha256": "4b01d88e8810d689599172fb9d5115856f7f5ea29c2b79c5b92c53dbc8a2506a",
+      "references": [
+        {
+          "page": "classification.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/67145.pdf",
+          "label": "宇和島市一般廃棄物収集運搬許可業者一覧 [PDFファイル／88KB]"
+        }
+      ]
+    },
+    {
+      "file": "document-55500.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/55500.pdf",
+      "sha256": "c2d4d14fb79a9a7076c3f777d06573c2782cbeb67dadee37d1e19ee4974b412b",
+      "references": [
+        {
+          "page": "appliances.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/55500.pdf",
+          "label": "宇和島市一般廃棄物収集運搬許可業者一覧 [PDFファイル／45KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65699.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65699.pdf",
+      "sha256": "814671f05563d2869bc15c8c1a7e7837e99432dff7aa35886bed0cdfbb66484a",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65699.pdf",
+          "label": "青葉台 [PDFファイル／341KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65701.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65701.pdf",
+      "sha256": "3abbfa2658561c7d8ead9e8d7dd2fd211dd67091e5168fec32386e2daf55bab5",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65701.pdf",
+          "label": "赤松 [PDFファイル／335KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65700.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65700.pdf",
+      "sha256": "7678218abbcd98e4fd40a04d2ca794cd32c2e02f7f8c2a93ceec757e02bfb859",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65700.pdf",
+          "label": "朝日町 [PDFファイル／344KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65702.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65702.pdf",
+      "sha256": "50aa0b35740a6e5a69b843bd68849a0f8bbd1201244a93f8944b4e4d02370187",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65702.pdf",
+          "label": "愛宕町 [PDFファイル／335KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65703.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65703.pdf",
+      "sha256": "7678218abbcd98e4fd40a04d2ca794cd32c2e02f7f8c2a93ceec757e02bfb859",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65703.pdf",
+          "label": "泉町 [PDFファイル／344KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65705.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65705.pdf",
+      "sha256": "481ad6f837f29f870d4e0dbb8c69cead8bc37310e1db9fc47a91f8026a854df7",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65705.pdf",
+          "label": "祝森（上・中・下） [PDFファイル／362KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65709.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65709.pdf",
+      "sha256": "f0d9eb7e71e999fc1988b66aeaecb241402b4c7d7eba0a0ce0cc5a7e64cc0e4f",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65709.pdf",
+          "label": "伊吹町北通 [PDFファイル／371KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65710.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65710.pdf",
+      "sha256": "bdfce02968cabfc1c74daf4229c12239dbf6c51ab2e62012469156ad32b20e6d",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65710.pdf",
+          "label": "※伊吹町北通の一部（サントノーレ伊吹弐番館あたりの川沿い） [PDFファイル／373KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65711.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65711.pdf",
+      "sha256": "50aa0b35740a6e5a69b843bd68849a0f8bbd1201244a93f8944b4e4d02370187",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65711.pdf",
+          "label": "伊吹町西通 [PDFファイル／335KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65712.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65712.pdf",
+      "sha256": "50aa0b35740a6e5a69b843bd68849a0f8bbd1201244a93f8944b4e4d02370187",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65712.pdf",
+          "label": "伊吹町東通 [PDFファイル／335KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65713.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65713.pdf",
+      "sha256": "50aa0b35740a6e5a69b843bd68849a0f8bbd1201244a93f8944b4e4d02370187",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65713.pdf",
+          "label": "宇和津町 [PDFファイル／335KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65714.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65714.pdf",
+      "sha256": "50aa0b35740a6e5a69b843bd68849a0f8bbd1201244a93f8944b4e4d02370187",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65714.pdf",
+          "label": "恵美須町1 [PDFファイル／335KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65716.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65716.pdf",
+      "sha256": "86ec93e4aa8503566a1482cf316e541cdb92768d70bd308b997ac13ab8b33d47",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65716.pdf",
+          "label": "恵美須町2 [PDFファイル／530KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65720.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65720.pdf",
+      "sha256": "d9bb87d4be48aa713a2b0507f565e3da9af3d49567ac9b0825eb3c7788e82323",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65720.pdf",
+          "label": "戎山 [PDFファイル／361KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65721.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65721.pdf",
+      "sha256": "814671f05563d2869bc15c8c1a7e7837e99432dff7aa35886bed0cdfbb66484a",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65721.pdf",
+          "label": "大浦1～2 [PDFファイル／341KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65722.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65722.pdf",
+      "sha256": "3abbfa2658561c7d8ead9e8d7dd2fd211dd67091e5168fec32386e2daf55bab5",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65722.pdf",
+          "label": "大浦3 [PDFファイル／335KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65723.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65723.pdf",
+      "sha256": "481ad6f837f29f870d4e0dbb8c69cead8bc37310e1db9fc47a91f8026a854df7",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65723.pdf",
+          "label": "大小浜 [PDFファイル／362KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65724.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65724.pdf",
+      "sha256": "86ec93e4aa8503566a1482cf316e541cdb92768d70bd308b997ac13ab8b33d47",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65724.pdf",
+          "label": "大宮町 [PDFファイル／530KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65725.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65725.pdf",
+      "sha256": "7678218abbcd98e4fd40a04d2ca794cd32c2e02f7f8c2a93ceec757e02bfb859",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65725.pdf",
+          "label": "御徒町 [PDFファイル／344KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65726.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65726.pdf",
+      "sha256": "d9bb87d4be48aa713a2b0507f565e3da9af3d49567ac9b0825eb3c7788e82323",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65726.pdf",
+          "label": "大福浦 [PDFファイル／361KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65727.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65727.pdf",
+      "sha256": "86ec93e4aa8503566a1482cf316e541cdb92768d70bd308b997ac13ab8b33d47",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65727.pdf",
+          "label": "柿原1 [PDFファイル／530KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65731.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65731.pdf",
+      "sha256": "c5096d0ac9d86b0ac9e770733dd57ddc0bb5eb4fb94291b961a44eaacc045441",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65731.pdf",
+          "label": "柿原2～3 [PDFファイル／569KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65733.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65733.pdf",
+      "sha256": "814671f05563d2869bc15c8c1a7e7837e99432dff7aa35886bed0cdfbb66484a",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65733.pdf",
+          "label": "川内 [PDFファイル／341KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65734.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65734.pdf",
+      "sha256": "86ec93e4aa8503566a1482cf316e541cdb92768d70bd308b997ac13ab8b33d47",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65734.pdf",
+          "label": "※川内の一部（ガスト～すき家の間のR56沿い） [PDFファイル／530KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65735.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65735.pdf",
+      "sha256": "f0d9eb7e71e999fc1988b66aeaecb241402b4c7d7eba0a0ce0cc5a7e64cc0e4f",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65735.pdf",
+          "label": "賀古町 [PDFファイル／371KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-69373.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/69373.pdf",
+      "sha256": "f9abc45eb6f4a04152a6ade63d8138d5d9a36ea1719a21573817859373afc682",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/69373.pdf",
+          "label": "北宇和島町 [PDFファイル／670KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65737.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65737.pdf",
+      "sha256": "f0d9eb7e71e999fc1988b66aeaecb241402b4c7d7eba0a0ce0cc5a7e64cc0e4f",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65737.pdf",
+          "label": "京町 [PDFファイル／371KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65738.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65738.pdf",
+      "sha256": "86ec93e4aa8503566a1482cf316e541cdb92768d70bd308b997ac13ab8b33d47",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65738.pdf",
+          "label": "九島 [PDFファイル／530KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65739.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65739.pdf",
+      "sha256": "7678218abbcd98e4fd40a04d2ca794cd32c2e02f7f8c2a93ceec757e02bfb859",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65739.pdf",
+          "label": "御殿町 [PDFファイル／344KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65742.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65742.pdf",
+      "sha256": "481ad6f837f29f870d4e0dbb8c69cead8bc37310e1db9fc47a91f8026a854df7",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65742.pdf",
+          "label": "寿町 [PDFファイル／362KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65748.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65748.pdf",
+      "sha256": "481ad6f837f29f870d4e0dbb8c69cead8bc37310e1db9fc47a91f8026a854df7",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65748.pdf",
+          "label": "石応 [PDFファイル／362KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65749.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65749.pdf",
+      "sha256": "481ad6f837f29f870d4e0dbb8c69cead8bc37310e1db9fc47a91f8026a854df7",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65749.pdf",
+          "label": "小池 [PDFファイル／362KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65750.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65750.pdf",
+      "sha256": "481ad6f837f29f870d4e0dbb8c69cead8bc37310e1db9fc47a91f8026a854df7",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65750.pdf",
+          "label": "小浜 [PDFファイル／362KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-69375.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/69375.pdf",
+      "sha256": "f9abc45eb6f4a04152a6ade63d8138d5d9a36ea1719a21573817859373afc682",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/69375.pdf",
+          "label": "蒋淵（大島除く） [PDFファイル／670KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65756.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65756.pdf",
+      "sha256": "6b3d9f2345dd9737b9712437f5f79260b468dab50c4252024117f27861bafd36",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65756.pdf",
+          "label": "蒋淵（大島） [PDFファイル／589KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65757.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65757.pdf",
+      "sha256": "c5096d0ac9d86b0ac9e770733dd57ddc0bb5eb4fb94291b961a44eaacc045441",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65757.pdf",
+          "label": "佐伯町 [PDFファイル／569KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65762.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65762.pdf",
+      "sha256": "d9bb87d4be48aa713a2b0507f565e3da9af3d49567ac9b0825eb3c7788e82323",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65762.pdf",
+          "label": "栄町湊 [PDFファイル／361KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65763.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65763.pdf",
+      "sha256": "d9bb87d4be48aa713a2b0507f565e3da9af3d49567ac9b0825eb3c7788e82323",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65763.pdf",
+          "label": "坂下津 [PDFファイル／361KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65768.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65768.pdf",
+      "sha256": "7678218abbcd98e4fd40a04d2ca794cd32c2e02f7f8c2a93ceec757e02bfb859",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65768.pdf",
+          "label": "桜町 [PDFファイル／344KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65769.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65769.pdf",
+      "sha256": "d9bb87d4be48aa713a2b0507f565e3da9af3d49567ac9b0825eb3c7788e82323",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65769.pdf",
+          "label": "笹町 [PDFファイル／361KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65770.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65770.pdf",
+      "sha256": "7678218abbcd98e4fd40a04d2ca794cd32c2e02f7f8c2a93ceec757e02bfb859",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65770.pdf",
+          "label": "下波（柿之浦・神崎・大池除く） [PDFファイル／344KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65772.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65772.pdf",
+      "sha256": "36a6906c79ee5e95bc76e87f2150583fc592f2cc76d6b83e902d050206b45d72",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65772.pdf",
+          "label": "下波（柿之浦・神崎） [PDFファイル／572KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65773.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65773.pdf",
+      "sha256": "0c840f9f483ff77e06ac7f6a82064d7bfbde18137b7e3d1b6e6084d8419284e6",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65773.pdf",
+          "label": "下波（大池） [PDFファイル／578KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65774.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65774.pdf",
+      "sha256": "481ad6f837f29f870d4e0dbb8c69cead8bc37310e1db9fc47a91f8026a854df7",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65774.pdf",
+          "label": "白浜 [PDFファイル／362KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65775.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65775.pdf",
+      "sha256": "ddc10539e8849b7bcdf8c13cb40c31fe04f175f5ceba31934eb9b1a1085271bf",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65775.pdf",
+          "label": "神田川原 [PDFファイル／332KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65776.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65776.pdf",
+      "sha256": "86ec93e4aa8503566a1482cf316e541cdb92768d70bd308b997ac13ab8b33d47",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65776.pdf",
+          "label": "新田町 [PDFファイル／530KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65777.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65777.pdf",
+      "sha256": "d9bb87d4be48aa713a2b0507f565e3da9af3d49567ac9b0825eb3c7788e82323",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65777.pdf",
+          "label": "新町 [PDFファイル／361KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65778.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65778.pdf",
+      "sha256": "814671f05563d2869bc15c8c1a7e7837e99432dff7aa35886bed0cdfbb66484a",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65778.pdf",
+          "label": "須賀通 [PDFファイル／341KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65779.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65779.pdf",
+      "sha256": "c5096d0ac9d86b0ac9e770733dd57ddc0bb5eb4fb94291b961a44eaacc045441",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65779.pdf",
+          "label": "住吉町 [PDFファイル／569KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65784.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65784.pdf",
+      "sha256": "481ad6f837f29f870d4e0dbb8c69cead8bc37310e1db9fc47a91f8026a854df7",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65784.pdf",
+          "label": "大超寺奥 [PDFファイル／362KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65788.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65788.pdf",
+      "sha256": "3abbfa2658561c7d8ead9e8d7dd2fd211dd67091e5168fec32386e2daf55bab5",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65788.pdf",
+          "label": "高光（平駄場除く） [PDFファイル／335KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65792.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65792.pdf",
+      "sha256": "dbf221d579ab6ffe03f735dc56cc4da2ec8469942494342abe562b4302b2e48c",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65792.pdf",
+          "label": "高光（平駄場） [PDFファイル／596KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65793.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65793.pdf",
+      "sha256": "86ec93e4aa8503566a1482cf316e541cdb92768d70bd308b997ac13ab8b33d47",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65793.pdf",
+          "label": "中央町 [PDFファイル／530KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65794.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65794.pdf",
+      "sha256": "814671f05563d2869bc15c8c1a7e7837e99432dff7aa35886bed0cdfbb66484a",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65794.pdf",
+          "label": "中央町（銀天街） [PDFファイル／341KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65795.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65795.pdf",
+      "sha256": "7678218abbcd98e4fd40a04d2ca794cd32c2e02f7f8c2a93ceec757e02bfb859",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65795.pdf",
+          "label": "鶴島町 [PDFファイル／344KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65796.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65796.pdf",
+      "sha256": "814671f05563d2869bc15c8c1a7e7837e99432dff7aa35886bed0cdfbb66484a",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65796.pdf",
+          "label": "築地町 [PDFファイル／341KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65797.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65797.pdf",
+      "sha256": "d9bb87d4be48aa713a2b0507f565e3da9af3d49567ac9b0825eb3c7788e82323",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65797.pdf",
+          "label": "天神町 [PDFファイル／361KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-69376.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/69376.pdf",
+      "sha256": "f9abc45eb6f4a04152a6ade63d8138d5d9a36ea1719a21573817859373afc682",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/69376.pdf",
+          "label": "長堀 [PDFファイル／670KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65807.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65807.pdf",
+      "sha256": "36a6906c79ee5e95bc76e87f2150583fc592f2cc76d6b83e902d050206b45d72",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65807.pdf",
+          "label": "中沢町1 [PDFファイル／572KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65808.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65808.pdf",
+      "sha256": "f0d9eb7e71e999fc1988b66aeaecb241402b4c7d7eba0a0ce0cc5a7e64cc0e4f",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65808.pdf",
+          "label": "夏目ヶ市 [PDFファイル／371KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65809.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65809.pdf",
+      "sha256": "f0d9eb7e71e999fc1988b66aeaecb241402b4c7d7eba0a0ce0cc5a7e64cc0e4f",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65809.pdf",
+          "label": "夏目町 [PDFファイル／371KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65810.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65810.pdf",
+      "sha256": "36a6906c79ee5e95bc76e87f2150583fc592f2cc76d6b83e902d050206b45d72",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65810.pdf",
+          "label": "並松1 [PDFファイル／572KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-69377.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/69377.pdf",
+      "sha256": "f9abc45eb6f4a04152a6ade63d8138d5d9a36ea1719a21573817859373afc682",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/69377.pdf",
+          "label": "並松（中沢町2・並松2） [PDFファイル／670KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65812.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65812.pdf",
+      "sha256": "36a6906c79ee5e95bc76e87f2150583fc592f2cc76d6b83e902d050206b45d72",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65812.pdf",
+          "label": "錦町 [PDFファイル／572KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65813.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65813.pdf",
+      "sha256": "d9bb87d4be48aa713a2b0507f565e3da9af3d49567ac9b0825eb3c7788e82323",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65813.pdf",
+          "label": "野川 [PDFファイル／361KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65814.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65814.pdf",
+      "sha256": "481ad6f837f29f870d4e0dbb8c69cead8bc37310e1db9fc47a91f8026a854df7",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65814.pdf",
+          "label": "平浦 [PDFファイル／362KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65816.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65816.pdf",
+      "sha256": "814671f05563d2869bc15c8c1a7e7837e99432dff7aa35886bed0cdfbb66484a",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65816.pdf",
+          "label": "広小路 [PDFファイル／341KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65817.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65817.pdf",
+      "sha256": "814671f05563d2869bc15c8c1a7e7837e99432dff7aa35886bed0cdfbb66484a",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65817.pdf",
+          "label": "藤江 [PDFファイル／341KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65819.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65819.pdf",
+      "sha256": "50aa0b35740a6e5a69b843bd68849a0f8bbd1201244a93f8944b4e4d02370187",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65819.pdf",
+          "label": "別当 [PDFファイル／335KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65820.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65820.pdf",
+      "sha256": "814671f05563d2869bc15c8c1a7e7837e99432dff7aa35886bed0cdfbb66484a",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65820.pdf",
+          "label": "弁天町 [PDFファイル／341KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65821.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65821.pdf",
+      "sha256": "814671f05563d2869bc15c8c1a7e7837e99432dff7aa35886bed0cdfbb66484a",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65821.pdf",
+          "label": "保手1 [PDFファイル／341KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65822.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65822.pdf",
+      "sha256": "3abbfa2658561c7d8ead9e8d7dd2fd211dd67091e5168fec32386e2daf55bab5",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65822.pdf",
+          "label": "※保手1の一部（(株)はなみずきから内平橋のあたり） [PDFファイル／335KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65823.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65823.pdf",
+      "sha256": "3abbfa2658561c7d8ead9e8d7dd2fd211dd67091e5168fec32386e2daf55bab5",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65823.pdf",
+          "label": "保手2～5 [PDFファイル／335KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65828.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65828.pdf",
+      "sha256": "f0d9eb7e71e999fc1988b66aeaecb241402b4c7d7eba0a0ce0cc5a7e64cc0e4f",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65828.pdf",
+          "label": "堀端町 [PDFファイル／371KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65829.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65829.pdf",
+      "sha256": "3abbfa2658561c7d8ead9e8d7dd2fd211dd67091e5168fec32386e2daf55bab5",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65829.pdf",
+          "label": "本川内 [PDFファイル／335KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65830.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65830.pdf",
+      "sha256": "ddc10539e8849b7bcdf8c13cb40c31fe04f175f5ceba31934eb9b1a1085271bf",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65830.pdf",
+          "label": "本町追手 [PDFファイル／332KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65831.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65831.pdf",
+      "sha256": "3abbfa2658561c7d8ead9e8d7dd2fd211dd67091e5168fec32386e2daf55bab5",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65831.pdf",
+          "label": "桝形町 [PDFファイル／335KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-69378.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/69378.pdf",
+      "sha256": "f9abc45eb6f4a04152a6ade63d8138d5d9a36ea1719a21573817859373afc682",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/69378.pdf",
+          "label": "丸之内 [PDFファイル／670KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65833.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65833.pdf",
+      "sha256": "f0d9eb7e71e999fc1988b66aeaecb241402b4c7d7eba0a0ce0cc5a7e64cc0e4f",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65833.pdf",
+          "label": "丸穂町 [PDFファイル／371KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65837.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65837.pdf",
+      "sha256": "ddc10539e8849b7bcdf8c13cb40c31fe04f175f5ceba31934eb9b1a1085271bf",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65837.pdf",
+          "label": "三浦西（豊浦・大内・安米） [PDFファイル／332KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65839.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65839.pdf",
+      "sha256": "7722df221c40d301b78eabbe3748f667af2c6099b35dd84facc3b9a3ba40c5ea",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65839.pdf",
+          "label": "三浦西（尾崎） [PDFファイル／587KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65840.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65840.pdf",
+      "sha256": "f0d9eb7e71e999fc1988b66aeaecb241402b4c7d7eba0a0ce0cc5a7e64cc0e4f",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65840.pdf",
+          "label": "三浦東（天満・船隠） [PDFファイル／371KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65841.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65841.pdf",
+      "sha256": "7678218abbcd98e4fd40a04d2ca794cd32c2e02f7f8c2a93ceec757e02bfb859",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65841.pdf",
+          "label": "御幸町 [PDFファイル／344KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65842.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65842.pdf",
+      "sha256": "ddc10539e8849b7bcdf8c13cb40c31fe04f175f5ceba31934eb9b1a1085271bf",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65842.pdf",
+          "label": "宮下 [PDFファイル／332KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65846.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65846.pdf",
+      "sha256": "86ec93e4aa8503566a1482cf316e541cdb92768d70bd308b997ac13ab8b33d47",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65846.pdf",
+          "label": "※宮下の一部(山内産婦人科あたり) [PDFファイル／530KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65848.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65848.pdf",
+      "sha256": "7678218abbcd98e4fd40a04d2ca794cd32c2e02f7f8c2a93ceec757e02bfb859",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65848.pdf",
+          "label": "妙典寺前 [PDFファイル／344KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65849.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65849.pdf",
+      "sha256": "3abbfa2658561c7d8ead9e8d7dd2fd211dd67091e5168fec32386e2daf55bab5",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65849.pdf",
+          "label": "明倫町 [PDFファイル／335KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65850.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65850.pdf",
+      "sha256": "c5096d0ac9d86b0ac9e770733dd57ddc0bb5eb4fb94291b961a44eaacc045441",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65850.pdf",
+          "label": "元結掛 [PDFファイル／569KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65851.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65851.pdf",
+      "sha256": "7678218abbcd98e4fd40a04d2ca794cd32c2e02f7f8c2a93ceec757e02bfb859",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65851.pdf",
+          "label": "薬師谷・薬師谷団地 [PDFファイル／344KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65852.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65852.pdf",
+      "sha256": "d9bb87d4be48aa713a2b0507f565e3da9af3d49567ac9b0825eb3c7788e82323",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65852.pdf",
+          "label": "保田 [PDFファイル／361KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65853.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65853.pdf",
+      "sha256": "f0d9eb7e71e999fc1988b66aeaecb241402b4c7d7eba0a0ce0cc5a7e64cc0e4f",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65853.pdf",
+          "label": "山際 [PDFファイル／371KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65854.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65854.pdf",
+      "sha256": "36a6906c79ee5e95bc76e87f2150583fc592f2cc76d6b83e902d050206b45d72",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65854.pdf",
+          "label": "遊子（津の浦除く） [PDFファイル／572KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-69379.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/69379.pdf",
+      "sha256": "f9abc45eb6f4a04152a6ade63d8138d5d9a36ea1719a21573817859373afc682",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/69379.pdf",
+          "label": "遊子（津の浦） [PDFファイル／670KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65856.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65856.pdf",
+      "sha256": "86ec93e4aa8503566a1482cf316e541cdb92768d70bd308b997ac13ab8b33d47",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65856.pdf",
+          "label": "寄松 [PDFファイル／530KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-69380.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/69380.pdf",
+      "sha256": "f9abc45eb6f4a04152a6ade63d8138d5d9a36ea1719a21573817859373afc682",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/69380.pdf",
+          "label": "和霊町北通 [PDFファイル／670KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-69381.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/69381.pdf",
+      "sha256": "f9abc45eb6f4a04152a6ade63d8138d5d9a36ea1719a21573817859373afc682",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/69381.pdf",
+          "label": "和霊町西通 [PDFファイル／670KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65859.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65859.pdf",
+      "sha256": "50aa0b35740a6e5a69b843bd68849a0f8bbd1201244a93f8944b4e4d02370187",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65859.pdf",
+          "label": "和霊中町 [PDFファイル／335KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65860.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65860.pdf",
+      "sha256": "50aa0b35740a6e5a69b843bd68849a0f8bbd1201244a93f8944b4e4d02370187",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65860.pdf",
+          "label": "和霊東町 [PDFファイル／335KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65861.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65861.pdf",
+      "sha256": "c5096d0ac9d86b0ac9e770733dd57ddc0bb5eb4fb94291b961a44eaacc045441",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65861.pdf",
+          "label": "和霊元町 [PDFファイル／569KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-uwajima-65862.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65862.pdf",
+      "sha256": "481ad6f837f29f870d4e0dbb8c69cead8bc37310e1db9fc47a91f8026a854df7",
+      "references": [
+        {
+          "page": "calendar-uwajima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65862.pdf",
+          "label": "蕨 [PDFファイル／362KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-yoshida-65913.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65913.pdf",
+      "sha256": "3c55f579f0953d3ef5bbc789767bd6101d7251d3f721e2bf6937504db9899142",
+      "references": [
+        {
+          "page": "calendar-yoshida.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65913.pdf",
+          "label": "吉田地区（橋上） [PDFファイル／633KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-yoshida-65914.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65914.pdf",
+      "sha256": "983541343a24fd39081c3c7907f7d0c1951103f3ca1feb48102d3683ef6411e1",
+      "references": [
+        {
+          "page": "calendar-yoshida.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65914.pdf",
+          "label": "吉田地区（橋下） [PDFファイル／633KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-yoshida-65915.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65915.pdf",
+      "sha256": "a07253d83024e16dbcc38ec5b40d65a9e1aef6f3c6f73eb163f62b1b39012298",
+      "references": [
+        {
+          "page": "calendar-yoshida.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65915.pdf",
+          "label": "立間地区 [PDFファイル／641KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-yoshida-65916.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65916.pdf",
+      "sha256": "065771a7359ab54af46a3e7f0ed3cc3d7c26f141ad4cdd47cf173e107a8cc5c9",
+      "references": [
+        {
+          "page": "calendar-yoshida.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65916.pdf",
+          "label": "玉津地区 [PDFファイル／639KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-yoshida-65917.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65917.pdf",
+      "sha256": "01fc8f9092c76e9138a6b8a51bd348c0ea3066d2ffb48502817dd3a9d325f436",
+      "references": [
+        {
+          "page": "calendar-yoshida.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65917.pdf",
+          "label": "奥南地区 [PDFファイル／627KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-yoshida-65923.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65923.pdf",
+      "sha256": "efe30e455b8e4b0594f6d4d09c40772c477677260ab4974e9b8c7b02c803dfdb",
+      "references": [
+        {
+          "page": "calendar-yoshida.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65923.pdf",
+          "label": "喜佐方地区 [PDFファイル／605KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-mima-65933.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65933.pdf",
+      "sha256": "6438eb33799831bd4da39cb5802c2bcbb21702b9137fa763c218a5d27e23dc38",
+      "references": [
+        {
+          "page": "calendar-mima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65933.pdf",
+          "label": "是能、コスモスタウン、曽根、成家、則、大藤 [PDFファイル／272KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-mima-65934.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65934.pdf",
+      "sha256": "3254b1aaf4cc7aece058d72e1b23f049ac85d2106f4281198b4b0f0113b98923",
+      "references": [
+        {
+          "page": "calendar-mima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65934.pdf",
+          "label": "黒井地、戸雁、宮野下町、宮野下村、北増穂 [PDFファイル／279KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-mima-65935.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65935.pdf",
+      "sha256": "3fb51d1458c6cd53063551791e756687837fe71f1f380d48bb22a5d333c85f1a",
+      "references": [
+        {
+          "page": "calendar-mima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65935.pdf",
+          "label": "小沢川、川之内、元宗、中野中、波岡、田川、金銅、古藤田、大内 [PDFファイル／275KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-mima-65936.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65936.pdf",
+      "sha256": "ae050bc1c72f1c3dc24dc04db366ff34e9f4e912e8e9c6fce1785a8038bb85f0",
+      "references": [
+        {
+          "page": "calendar-mima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65936.pdf",
+          "label": "増田、土居中、迫目、務田、土居垣内、是延、兼近、三間中間、黒川、音地 [PDFファイル／275KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-tsushima-65937.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65937.pdf",
+      "sha256": "4ad1c3f717b8a850af098e1bd7ae0e32fcc400fc6d93f65ca8bcfd971f453abe",
+      "references": [
+        {
+          "page": "calendar-tsushima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65937.pdf",
+          "label": "岩松地区 [PDFファイル／684KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-tsushima-65938.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65938.pdf",
+      "sha256": "da6a7497532cdb72bf06b3202b642d19d99a471e02fed6b6e60f24af374e79be",
+      "references": [
+        {
+          "page": "calendar-tsushima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65938.pdf",
+          "label": "清満地区 [PDFファイル／690KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-tsushima-65939.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65939.pdf",
+      "sha256": "e59cdb1e6986f0157b0b4ca3cb993e16a58944f49a3b29de96d70944cbd8ad3b",
+      "references": [
+        {
+          "page": "calendar-tsushima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65939.pdf",
+          "label": "御槙地区 [PDFファイル／686KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-tsushima-65940.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65940.pdf",
+      "sha256": "e59cdb1e6986f0157b0b4ca3cb993e16a58944f49a3b29de96d70944cbd8ad3b",
+      "references": [
+        {
+          "page": "calendar-tsushima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65940.pdf",
+          "label": "上槙地区 [PDFファイル／686KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-tsushima-65941.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65941.pdf",
+      "sha256": "dbb2e473bde2c4bee5e6917163b632744d782a3c4869f766c9dbe96a5cfd6579",
+      "references": [
+        {
+          "page": "calendar-tsushima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65941.pdf",
+          "label": "畑地地区 [PDFファイル／683KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-tsushima-65943.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65943.pdf",
+      "sha256": "086d0e42b4dd280416b6e0a0e7556ffe49a9bac452f531c7d9d1719841f5d667",
+      "references": [
+        {
+          "page": "calendar-tsushima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65943.pdf",
+          "label": "下灘地区 [PDFファイル／686KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-tsushima-65944.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65944.pdf",
+      "sha256": "9b1dcc7e04830d1df772cd4d7cb9a1c4afbcf1fd3c30539c9bd90277a3f6ab37",
+      "references": [
+        {
+          "page": "calendar-tsushima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65944.pdf",
+          "label": "北灘地区 [PDFファイル／685KB]"
+        }
+      ]
+    },
+    {
+      "file": "calendar-tsushima-65945.pdf",
+      "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65945.pdf",
+      "sha256": "086d0e42b4dd280416b6e0a0e7556ffe49a9bac452f531c7d9d1719841f5d667",
+      "references": [
+        {
+          "page": "calendar-tsushima.html",
+          "url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65945.pdf",
+          "label": "南部地区 [PDFファイル／686KB]"
+        }
+      ]
+    },
+    {
+      "file": "resources-uwajima.html",
+      "url": "https://www.city.uwajima.ehime.jp/soshiki/15/shigenbutu-uwajima.html",
+      "sha256": "3fee9a4dd9f99d5608b9bea3b205872113fa1868bc058b513df14cdc8644ce74",
+      "canonicalization": "main_body_utf8"
+    },
+    {
+      "file": "resources-yoshida.html",
+      "url": "https://www.city.uwajima.ehime.jp/soshiki/15/shigenbutu-yoshida.html",
+      "sha256": "f9a16193d28ba1ceb32123134a9eceb71d5610d8f245eabec4a20ea46acab275",
+      "canonicalization": "main_body_utf8"
+    },
+    {
+      "file": "resources-mima.html",
+      "url": "https://www.city.uwajima.ehime.jp/soshiki/15/shigenbutu-mima.html",
+      "sha256": "b1653e7bdfdd8a36a7cd928b80590294a65d496726b48eb8e5451ecf03164a57",
+      "canonicalization": "main_body_utf8"
+    },
+    {
+      "file": "resources-tsushima.html",
+      "url": "https://www.city.uwajima.ehime.jp/soshiki/15/shigenbutu-tsushima.html",
+      "sha256": "51cae6b2545a12fb3dc40c115a385e297e9a001c089fbee7c6f503c1f815bd15",
+      "canonicalization": "main_body_utf8"
+    },
+    {
+      "file": "lithium-current.html",
+      "url": "https://www.city.uwajima.ehime.jp/soshiki/15/lithium-battery01.html",
+      "sha256": "2452bdd18704d7dbe3725fabc98e7238b778156c81def3fa88d0394792334ee2",
+      "canonicalization": "main_body_utf8"
+    },
+    {
+      "file": "resource-schedule-uwajima.html",
+      "url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-u-shigen.html",
+      "sha256": "89532fbd96e818f66c9c46786d55f006688922effae4a7a938305835437126b2",
+      "canonicalization": "main_body_utf8"
+    },
+    {
+      "file": "national-holidays.csv",
+      "url": "https://www8.cao.go.jp/chosei/shukujitsu/syukujitsu.csv",
+      "sha256": "cec37a743c96995cdb9cb52b685c9003634682a9b0e1a640a6b9b96881fe964a"
+    }
+  ],
+  "unavailable_sources": [
+    {
+      "url": "https://www.city.uwajima.ehime.jp/info/shigen-furikae10.html",
+      "status": 404,
+      "checked_at": "2026-11-12",
+      "note": "Live HTTP 404. Search results expose an FY2026 article but opening the same URL may show an FY2025 cache. Neither cache is accepted as a reproducible FY2026 source."
+    }
+  ]
+}

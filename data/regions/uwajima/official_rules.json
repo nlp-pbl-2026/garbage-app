@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38203",
+  "version": "uwajima-2026.1",
+  "license_status": "unconfirmed",
+  "categories": {
+    "burnable": {
+      "name": "燃えるごみ",
+      "color": "#F68C28",
+      "instructions": "市指定の燃えるごみ袋。生ごみは水切り。通常収集に出すプラスチックも燃えるごみ。指定袋に入り口を結べる範囲。",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-sutekata.html",
+      "collection_type_id": "burnable"
+    },
+    "non_burnable": {
+      "name": "燃えないごみ",
+      "color": "#0068B3",
+      "instructions": "指定の燃えないごみ袋。刃物・割れ物は紙等で包み「キケン」と表示。電池は外す。外せない充電池内蔵製品は無理に分解せず充電池回収拠点へ。",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-sutekata.html",
+      "collection_type_id": "non_burnable"
+    },
+    "bottles_cans": {
+      "name": "びん・缶",
+      "color": "#984043",
+      "instructions": "中をすすいで指定袋へ。金属製ふたは不燃、プラスチック製ふたは可燃又は条件を満たす資源拠点へ。割れたびんも包み「キケン」と表示してびん・缶。スプレー缶・カセットボンベは中身を使い切り、風通しの良い安全な場所で穴を開ける。使い切れない場合は市へ相談。",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-sutekata.html",
+      "collection_type_id": "bottles_cans"
+    },
+    "pet": {
+      "name": "ペットボトル",
+      "color": "#5BAA4A",
+      "instructions": "PETマークのある飲料・食品用ボトル本体。キャップとラベルを外し中をすすいで指定袋へ。外したプラスチック製キャップ・ラベルは燃えるごみ又はきれいなプラスチックの拠点回収。本体と付属品の分類を混同しない。汚れのひどいものは燃えるごみ。",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-sutekata.html",
+      "collection_type_id": "pet"
+    },
+    "paper": {
+      "name": "古紙類",
+      "color": "#9F78B4",
+      "instructions": "新聞、ダンボール、雑誌・雑がみ、飲料用紙パックを種類別に十文字にしばる。回収場所はごみステーションと異なる場合があるため自治会で確認。紙パックは洗い開いて乾燥。内側アルミは対象外。古紙の拠点回収も利用可能。",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/koshikaisyu.html",
+      "collection_type_id": "paper"
+    },
+    "bulky": {
+      "name": "粗大ごみ（直接搬入・許可業者）",
+      "color": "#888888",
+      "instructions": "市の定期収集・戸別収集はありません。指定袋に入らないものは環境センターへ直接搬入、又は一般廃棄物収集運搬許可業者へ依頼。家庭ごみは10kg50円、月～土13:00～16:30、祝日・年末年始休み。搬入不可の品目は販売店等へ。収集予定は自動生成しない。",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-sutekata.html"
+    },
+    "dropoff": {
+      "name": "資源の拠点回収",
+      "color": "#008577",
+      "instructions": "品目ごとに回収可能な市役所・支所等へ持ち込む。拠点により対象・受付時間が異なる。定期ごみ収集日を付けない。",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/recycling.html"
+    },
+    "clean_plastics": {
+      "name": "きれいなプラスチック（拠点回収）",
+      "color": "#32A2A0",
+      "instructions": "洗って汚れを落とし乾燥させ、一辺50cm未満のもの。容器包装と製品は別のかごへ。製品は100％プラスチックに限り、金属・木・ゴム等の異素材入り、事業系、汚れたものは対象外。通常収集の燃えるごみも利用できる。市民サービスセンター9:45～18:30・商工会議所8:30～17:00は容器包装のみ。製品は本庁・各支所・住吉/石応/清満/下灘公民館などの対象拠点へ。随時持込の受付を定期収集日にしない。",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/plastic-jissyou.html"
+    },
+    "batteries": {
+      "name": "電池類の拠点回収",
+      "color": "#B29B35",
+      "instructions": "一次電池と小型充電式電池は指定の拠点へ。ボタン・リチウム電池、充電池は端子を絶縁。充電池は使い切り透明な袋に入れる。取り外せない充電池内蔵製品は分解せず本体ごと市役所・支所の充電池回収へ。自動車・バイク・船舶用等の大型電池・鉛蓄電池は回収対象外。三間の乾電池は7月・1月第3水曜回収予定だが、確定日程の確認前は予定を作らず拠点を案内。",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/denti.html"
+    },
+    "not_collected": {
+      "name": "市・環境センターで処理できない",
+      "color": "#666666",
+      "instructions": "販売店・専門業者等へ相談。テレビ、エアコン、冷蔵庫・冷凍庫、洗濯機・衣類乾燥機は家電リサイクル。産業廃棄物、危険物、土砂、スプリング入りマットレスなどは市で処理できない。通常収集日を付けない。",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-sutekata.html"
+    },
+    "consult": {
+      "name": "市へ確認",
+      "color": "#777777",
+      "instructions": "公式資料で分類条件を確認できない場合は生活環境課等へ確認。推測で分類や日付を確定しない。",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-sutekata.html"
+    }
+  },
+  "classification_rules": "宇和島市の2026年度の公式根拠だけで判定する。可燃・不燃・びん缶・PET・古紙と、粗大ごみ/拠点/市で処理できないものを区別する。指定袋に入らないものは原則粗大（直接搬入又は許可業者）で、定期収集日を付けない。入力済みの材質・サイズ・洗浄乾燥状態・電池の有無・対象部位を保持する。本体の分類に外した部品の区分を適用しない。条件分岐が公式根拠にあり未回答の場合だけ追加質問する。PET本体のキャップ/ラベル除去・すすぎが入力済みなら再質問しない。きれいなプラスチックの拠点回収は通常可燃の代替手段で、通常収集を希望する人に拠点利用条件を必須質問しない。プラ製品の拠点を希望する場合は100%プラ・50cm未満・汚れを落として乾燥・異素材なしの条件を確認する。50cm以上は拠点不可（指定袋に入れば可燃、入らなければ粗大）。電池を外せない充電池内蔵機器は不燃にせず本体ごと充電池拠点。普通の家電・PCは袋に入れば不燃だが電池を外す。割れたびんもびん缶、食器/耐熱ガラスは不燃。スプレー缶は使い切って安全な屋外で穴を開けびん缶。過年度辞典と現行案内が異なる場合は現行案内を優先し、矛盾を解決できなければ市に確認する。 一辺50cmちょうどは50cm未満に含まれずプラスチック拠点回収の対象外。通常の袋に入るなら燃えるごみ、入らなければ粗大ごみ。",
+  "bulky_config": {
+    "municipality_id": "38203",
+    "municipality_name": "宇和島市",
+    "collection_frequency": "環境センターへ直接搬入又は許可業者へ依頼",
+    "reception_hours": "月～土13:00～16:30（祝日・年末年始を除く）",
+    "collection_rules": "市の定期収集・戸別収集はありません。指定袋に入らないものは環境センターへ直接搬入、又は一般廃棄物収集運搬許可業者へ依頼。家庭ごみは10kg50円、月～土13:00～16:30、祝日・年末年始休み。搬入不可の品目は販売店等へ。収集予定は自動生成しない。",
+    "fee_structure_type": "weight_based",
+    "application_method": "guide_only",
+    "information_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-sutekata.html",
+    "phone_number": "0895-49-5040",
+    "steps": [
+      {
+        "step_number": 1,
+        "title": "搬入できる品目を確認",
+        "description": "市指定袋に入らないものは通常のごみステーションに出せません。家電リサイクル対象やスプリング入りマットレスなど、搬入できない品目もあります。"
+      },
+      {
+        "step_number": 2,
+        "title": "直接搬入又は許可業者へ依頼",
+        "description": "環境センターは月～土13:00～16:30（祝日・年末年始休み）、家庭ごみ10kg50円。運べない場合は市の許可業者へ個別に相談してください。アプリからの申込みや予約は行いません。"
+      }
+    ]
+  }
+}

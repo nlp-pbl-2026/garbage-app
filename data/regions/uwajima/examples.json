@@ -1,0 +1,153 @@
+[
+  {
+    "item": "洗って乾燥させた食品トレー",
+    "category": "clean_plastics",
+    "note": "容器包装プラスチック。汚れを落として乾燥、一辺50cm未満の対象品は拠点へ。通常収集なら燃えるごみも利用可能。",
+    "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/plastic-jissyou.html",
+    "category_options": []
+  },
+  {
+    "item": "汚れが落ちないプラスチック食品トレー",
+    "category": "burnable",
+    "note": "汚れたプラスチックはきれいなプラスチックの拠点回収対象外。指定袋に入れば燃えるごみ。",
+    "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/plastic-jissyou.html",
+    "category_options": []
+  },
+  {
+    "item": "洗って乾燥させたプラスチック100％のバケツ",
+    "category": "clean_plastics",
+    "note": "プラ製品の拠点回収は100%プラスチック・異素材なし・洗浄乾燥・一辺50cm未満。50cm以上は対象外、袋に入れば燃えるごみ、入らなければ粗大ごみ（直接搬入）。",
+    "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/plastic-jissyou.html",
+    "category_options": [
+      "burnable",
+      "bulky"
+    ]
+  },
+  {
+    "item": "一辺50cm以上のプラスチック製品",
+    "category": "burnable",
+    "note": "50cm以上はきれいなプラスチック拠点回収対象外。指定袋に入り口を結べれば燃えるごみ。入らなければ粗大ごみとして直接搬入又は許可業者。",
+    "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/plastic-jissyou.html",
+    "category_options": [
+      "bulky"
+    ]
+  },
+  {
+    "item": "PETマーク付き飲料用ペットボトル本体",
+    "category": "pet",
+    "note": "PET本体。外したキャップとラベルの区分を本体へ適用しない。キャップ・ラベルを外し水洗いして指定袋へ。汚れがひどい本体は燃えるごみ。",
+    "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-sutekata.html",
+    "category_options": [
+      "burnable"
+    ]
+  },
+  {
+    "item": "ペットボトルから外したプラスチック製キャップ",
+    "category": "burnable",
+    "note": "外したプラスチック製キャップは燃えるごみ。洗浄して乾燥させれば容器包装プラスチックの拠点回収も利用できる。本体PETとは別。",
+    "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/plastic-jissyou.html",
+    "category_options": [
+      "clean_plastics"
+    ]
+  },
+  {
+    "item": "ペットボトルから外したプラスチック製ラベル",
+    "category": "burnable",
+    "note": "外したプラスチック製ラベルは燃えるごみ。洗って乾燥させれば容器包装プラスチックの拠点回収も利用できる。",
+    "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/plastic-jissyou.html",
+    "category_options": [
+      "clean_plastics"
+    ]
+  },
+  {
+    "item": "モバイルバッテリー",
+    "category": "batteries",
+    "note": "リチウムイオン電池は端子をテープで絶縁、使い切って透明な袋に入れ、市役所・支所等の充電池回収容器へ。可燃・不燃には入れない。",
+    "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/lithium-battery01.html",
+    "category_options": []
+  },
+  {
+    "item": "充電池が取り外せないハンディファン",
+    "category": "batteries",
+    "note": "充電池を取り外せないハンディファンは、無理に分解せず本体ごと市役所・支所の小型充電池回収へ。通常の可燃・不燃収集には出さない。",
+    "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/denti.html",
+    "category_options": []
+  },
+  {
+    "item": "充電池を外した携帯電話本体",
+    "category": "non_burnable",
+    "note": "充電池を取り外した携帯電話は個人情報を消去し指定袋に入れて燃えないごみ。外した充電池は別に拠点回収へ。",
+    "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/kogatakaden.html",
+    "category_options": []
+  },
+  {
+    "item": "中身を使い切ったスプレー缶",
+    "category": "bottles_cans",
+    "note": "中身を使い切り、風通しの良い安全な場所で穴を開け、びん・缶の指定袋。安全に使い切れない場合は市に相談。",
+    "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-sutekata.html",
+    "category_options": []
+  },
+  {
+    "item": "割れた飲料のガラスびん",
+    "category": "bottles_cans",
+    "note": "割れたびんもびん・缶。紙などに包み「キケン」と表示。ガラスの食器や耐熱ガラス・哺乳びんとは異なる。",
+    "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-sutekata.html",
+    "category_options": []
+  },
+  {
+    "item": "耐熱ガラスの食器",
+    "category": "non_burnable",
+    "note": "耐熱ガラス・ガラス食器・哺乳びんはびん・缶ではなく燃えないごみ。割れ物は包みキケン表示。",
+    "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-sutekata.html",
+    "category_options": []
+  },
+  {
+    "item": "指定袋に入らない大型の家具",
+    "category": "bulky",
+    "note": "指定袋に入らない家具は粗大ごみ。市の定期収集・戸別収集はなく、環境センターへ直接搬入又は許可業者。",
+    "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-sutekata.html",
+    "category_options": []
+  },
+  {
+    "item": "スプリング入りマットレス",
+    "category": "not_collected",
+    "note": "市・環境センターでは処理できません。販売店等へ相談。",
+    "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-sutekata.html",
+    "category_options": []
+  },
+  {
+    "item": "アルカリ乾電池",
+    "category": "batteries",
+    "note": "指定の回収拠点へ。三間の集会所での乾電池回収は7月・1月第3水曜に予定されているが、確定日程は市に確認。拠点は随時利用できる。",
+    "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/kandenchi-recycle.html",
+    "category_options": []
+  },
+  {
+    "item": "割れた蛍光管",
+    "category": "non_burnable",
+    "note": "割れた蛍光管は紙などで包みキケンと表示し燃えないごみ。割れていない蛍光管は拠点回収。水銀体温計は割れても密封して拠点回収。",
+    "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/keikoukan.html",
+    "category_options": []
+  },
+  {
+    "item": "割れていない蛍光管",
+    "category": "dropoff",
+    "note": "割らずに市役所・支所等の蛍光管回収拠点へ。割れた蛍光管は紙等で包みキケン表示して不燃へ。",
+    "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/keikoukan.html",
+    "category_options": []
+  },
+  {
+    "item": "冷蔵庫",
+    "category": "not_collected",
+    "note": "家電リサイクル法対象で市・環境センターでは処理できません。購入店・販売店等へ相談。",
+    "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-sutekata.html",
+    "category_options": []
+  },
+  {
+    "item": "新聞紙",
+    "category": "paper",
+    "note": "種類ごとにひもで十文字にしばって自治会等の指定回収場所へ。地区別の日程が未確認なら市の古紙拠点も利用可能。ごみステーションと集会所・拠点を混同しない。",
+    "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/koshikaisyu.html",
+    "category_options": []
+  }
+]

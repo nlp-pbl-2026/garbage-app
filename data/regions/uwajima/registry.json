@@ -1,0 +1,1945 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38203",
+  "municipality_name": "宇和島市",
+  "prefecture_id": "38",
+  "prefecture_name": "愛媛県",
+  "version": "uwajima-2026.1",
+  "valid_from": "2026-04-01",
+  "valid_to": "2027-03-31",
+  "collection_areas": [
+    {
+      "id": "38203-a001",
+      "name": "宇和島地区 → 青葉台",
+      "display_name": "宇和島地区 → 青葉台",
+      "calendar_id": "uw-4c1d1cffd125",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65699.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a002",
+      "name": "宇和島地区 → 赤松",
+      "display_name": "宇和島地区 → 赤松",
+      "calendar_id": "uw-543758294775",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65701.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a003",
+      "name": "宇和島地区 → 朝日町",
+      "display_name": "宇和島地区 → 朝日町",
+      "calendar_id": "uw-59fb3ce85799",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65700.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a004",
+      "name": "宇和島地区 → 愛宕町",
+      "display_name": "宇和島地区 → 愛宕町",
+      "calendar_id": "uw-914b3c599af7",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65702.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a005",
+      "name": "宇和島地区 → 泉町",
+      "display_name": "宇和島地区 → 泉町",
+      "calendar_id": "uw-59fb3ce85799",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65703.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a006",
+      "name": "宇和島地区 → 祝森（上・中・下）",
+      "display_name": "宇和島地区 → 祝森（上・中・下）",
+      "calendar_id": "uw-58b3fe6feeb7",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65705.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a007",
+      "name": "宇和島地区 → 伊吹町北通",
+      "display_name": "宇和島地区 → 伊吹町北通",
+      "calendar_id": "uw-3901afe00c55",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65709.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a008",
+      "name": "宇和島地区 → 伊吹町北通の一部（サントノーレ伊吹弐番館あたりの川沿い）",
+      "display_name": "宇和島地区 → 伊吹町北通の一部（サントノーレ伊吹弐番館あたりの川沿い）",
+      "calendar_id": "uw-611cac250316",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65710.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a009",
+      "name": "宇和島地区 → 伊吹町西通",
+      "display_name": "宇和島地区 → 伊吹町西通",
+      "calendar_id": "uw-914b3c599af7",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65711.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a010",
+      "name": "宇和島地区 → 伊吹町東通",
+      "display_name": "宇和島地区 → 伊吹町東通",
+      "calendar_id": "uw-914b3c599af7",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65712.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a011",
+      "name": "宇和島地区 → 宇和津町",
+      "display_name": "宇和島地区 → 宇和津町",
+      "calendar_id": "uw-914b3c599af7",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65713.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a012",
+      "name": "宇和島地区 → 恵美須町1",
+      "display_name": "宇和島地区 → 恵美須町1",
+      "calendar_id": "uw-914b3c599af7",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65714.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a013",
+      "name": "宇和島地区 → 恵美須町2",
+      "display_name": "宇和島地区 → 恵美須町2",
+      "calendar_id": "uw-bdfa489daf1b",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65716.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a014",
+      "name": "宇和島地区 → 戎山",
+      "display_name": "宇和島地区 → 戎山",
+      "calendar_id": "uw-53440f05fa92",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65720.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a015",
+      "name": "宇和島地区 → 大浦1～2",
+      "display_name": "宇和島地区 → 大浦1～2",
+      "calendar_id": "uw-4c1d1cffd125",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65721.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a016",
+      "name": "宇和島地区 → 大浦3",
+      "display_name": "宇和島地区 → 大浦3",
+      "calendar_id": "uw-1d492cc1ef68",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65722.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a017",
+      "name": "宇和島地区 → 大小浜",
+      "display_name": "宇和島地区 → 大小浜",
+      "calendar_id": "uw-39aa70bee6dc",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65723.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a018",
+      "name": "宇和島地区 → 大宮町",
+      "display_name": "宇和島地区 → 大宮町",
+      "calendar_id": "uw-bdfa489daf1b",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65724.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a019",
+      "name": "宇和島地区 → 御徒町",
+      "display_name": "宇和島地区 → 御徒町",
+      "calendar_id": "uw-95768029c567",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65725.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a020",
+      "name": "宇和島地区 → 大福浦",
+      "display_name": "宇和島地区 → 大福浦",
+      "calendar_id": "uw-98cea6f96f54",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65726.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a021",
+      "name": "宇和島地区 → 柿原1",
+      "display_name": "宇和島地区 → 柿原1",
+      "calendar_id": "uw-bdfa489daf1b",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65727.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a022",
+      "name": "宇和島地区 → 柿原2～3",
+      "display_name": "宇和島地区 → 柿原2～3",
+      "calendar_id": "uw-4b3f3f79cbb9",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65731.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a023",
+      "name": "宇和島地区 → 川内",
+      "display_name": "宇和島地区 → 川内",
+      "calendar_id": "uw-4c1d1cffd125",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65733.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a024",
+      "name": "宇和島地区 → 川内の一部（ガスト～すき家の間のR56沿い）",
+      "display_name": "宇和島地区 → 川内の一部（ガスト～すき家の間のR56沿い）",
+      "calendar_id": "uw-bdfa489daf1b",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65734.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a025",
+      "name": "宇和島地区 → 賀古町",
+      "display_name": "宇和島地区 → 賀古町",
+      "calendar_id": "uw-3901afe00c55",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65735.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a026",
+      "name": "宇和島地区 → 北宇和島町",
+      "display_name": "宇和島地区 → 北宇和島町",
+      "calendar_id": "uw-d67624584d1f",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/69373.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a027",
+      "name": "宇和島地区 → 京町",
+      "display_name": "宇和島地区 → 京町",
+      "calendar_id": "uw-54d45f3e888d",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65737.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a028",
+      "name": "宇和島地区 → 九島",
+      "display_name": "宇和島地区 → 九島",
+      "calendar_id": "uw-bdfa489daf1b",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65738.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a029",
+      "name": "宇和島地区 → 御殿町",
+      "display_name": "宇和島地区 → 御殿町",
+      "calendar_id": "uw-9cb77f9b65c8",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65739.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a030",
+      "name": "宇和島地区 → 寿町",
+      "display_name": "宇和島地区 → 寿町",
+      "calendar_id": "uw-58b3fe6feeb7",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65742.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a031",
+      "name": "宇和島地区 → 石応",
+      "display_name": "宇和島地区 → 石応",
+      "calendar_id": "uw-49d3c1e2c22a",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65748.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a032",
+      "name": "宇和島地区 → 小池",
+      "display_name": "宇和島地区 → 小池",
+      "calendar_id": "uw-58b3fe6feeb7",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65749.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a033",
+      "name": "宇和島地区 → 小浜",
+      "display_name": "宇和島地区 → 小浜",
+      "calendar_id": "uw-58b3fe6feeb7",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65750.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a034",
+      "name": "宇和島地区 → 蒋淵（大島除く）",
+      "display_name": "宇和島地区 → 蒋淵（大島除く）",
+      "calendar_id": "uw-e0b95b17d2c0",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/69375.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a035",
+      "name": "宇和島地区 → 蒋淵（大島）",
+      "display_name": "宇和島地区 → 蒋淵（大島）",
+      "calendar_id": "uw-1bb62516a119",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65756.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a036",
+      "name": "宇和島地区 → 佐伯町",
+      "display_name": "宇和島地区 → 佐伯町",
+      "calendar_id": "uw-4b3f3f79cbb9",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65757.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a037",
+      "name": "宇和島地区 → 栄町湊",
+      "display_name": "宇和島地区 → 栄町湊",
+      "calendar_id": "uw-98cea6f96f54",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65762.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a038",
+      "name": "宇和島地区 → 坂下津",
+      "display_name": "宇和島地区 → 坂下津",
+      "calendar_id": "uw-98cea6f96f54",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65763.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a039",
+      "name": "宇和島地区 → 桜町",
+      "display_name": "宇和島地区 → 桜町",
+      "calendar_id": "uw-b3bd87997bcd",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65768.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a040",
+      "name": "宇和島地区 → 笹町",
+      "display_name": "宇和島地区 → 笹町",
+      "calendar_id": "uw-98cea6f96f54",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65769.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a041",
+      "name": "宇和島地区 → 下波（柿之浦・神崎・大池除く）",
+      "display_name": "宇和島地区 → 下波（柿之浦・神崎・大池除く）",
+      "calendar_id": "uw-59fb3ce85799",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65770.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a042",
+      "name": "宇和島地区 → 下波（柿之浦・神崎）",
+      "display_name": "宇和島地区 → 下波（柿之浦・神崎）",
+      "calendar_id": "uw-8d9aa2433953",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65772.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a043",
+      "name": "宇和島地区 → 下波（大池）",
+      "display_name": "宇和島地区 → 下波（大池）",
+      "calendar_id": "uw-d1611f966f8d",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65773.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a044",
+      "name": "宇和島地区 → 白浜",
+      "display_name": "宇和島地区 → 白浜",
+      "calendar_id": "uw-58b3fe6feeb7",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65774.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a045",
+      "name": "宇和島地区 → 神田川原",
+      "display_name": "宇和島地区 → 神田川原",
+      "calendar_id": "uw-9903b147218a",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65775.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a046",
+      "name": "宇和島地区 → 新田町",
+      "display_name": "宇和島地区 → 新田町",
+      "calendar_id": "uw-bdfa489daf1b",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65776.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a047",
+      "name": "宇和島地区 → 新町",
+      "display_name": "宇和島地区 → 新町",
+      "calendar_id": "uw-98cea6f96f54",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65777.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a048",
+      "name": "宇和島地区 → 須賀通",
+      "display_name": "宇和島地区 → 須賀通",
+      "calendar_id": "uw-b16fc3405fb5",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65778.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a049",
+      "name": "宇和島地区 → 住吉町",
+      "display_name": "宇和島地区 → 住吉町",
+      "calendar_id": "uw-4b3f3f79cbb9",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65779.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a050",
+      "name": "宇和島地区 → 大超寺奥",
+      "display_name": "宇和島地区 → 大超寺奥",
+      "calendar_id": "uw-58b3fe6feeb7",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65784.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a051",
+      "name": "宇和島地区 → 高光（平駄場除く）",
+      "display_name": "宇和島地区 → 高光（平駄場除く）",
+      "calendar_id": "uw-1d492cc1ef68",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65788.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a052",
+      "name": "宇和島地区 → 高光（平駄場）",
+      "display_name": "宇和島地区 → 高光（平駄場）",
+      "calendar_id": "uw-cb999d5bea17",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65792.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a053",
+      "name": "宇和島地区 → 中央町",
+      "display_name": "宇和島地区 → 中央町",
+      "calendar_id": "uw-bdfa489daf1b",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65793.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a054",
+      "name": "宇和島地区 → 中央町（銀天街）",
+      "display_name": "宇和島地区 → 中央町（銀天街）",
+      "calendar_id": "uw-4c1d1cffd125",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65794.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a055",
+      "name": "宇和島地区 → 鶴島町",
+      "display_name": "宇和島地区 → 鶴島町",
+      "calendar_id": "uw-59fb3ce85799",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65795.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a056",
+      "name": "宇和島地区 → 築地町",
+      "display_name": "宇和島地区 → 築地町",
+      "calendar_id": "uw-4c1d1cffd125",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65796.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a057",
+      "name": "宇和島地区 → 天神町",
+      "display_name": "宇和島地区 → 天神町",
+      "calendar_id": "uw-98cea6f96f54",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65797.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a058",
+      "name": "宇和島地区 → 戸島（本浦・美砂子・小内浦・嘉島）",
+      "display_name": "宇和島地区 → 戸島（本浦・美砂子・小内浦・嘉島）",
+      "calendar_id": "uw-6b590cfcb038",
+      "rule_profile_id": "uwajima_islands",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-u-shushubi2026.html",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a059",
+      "name": "宇和島地区 → 長堀",
+      "display_name": "宇和島地区 → 長堀",
+      "calendar_id": "uw-e0b95b17d2c0",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/69376.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a060",
+      "name": "宇和島地区 → 中沢町1",
+      "display_name": "宇和島地区 → 中沢町1",
+      "calendar_id": "uw-8d9aa2433953",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65807.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a061",
+      "name": "宇和島地区 → 夏目ヶ市",
+      "display_name": "宇和島地区 → 夏目ヶ市",
+      "calendar_id": "uw-3901afe00c55",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65808.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a062",
+      "name": "宇和島地区 → 夏目町",
+      "display_name": "宇和島地区 → 夏目町",
+      "calendar_id": "uw-3901afe00c55",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65809.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a063",
+      "name": "宇和島地区 → 並松1",
+      "display_name": "宇和島地区 → 並松1",
+      "calendar_id": "uw-8d9aa2433953",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65810.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a064",
+      "name": "宇和島地区 → 並松（中沢町2・並松2）",
+      "display_name": "宇和島地区 → 並松（中沢町2・並松2）",
+      "calendar_id": "uw-e0b95b17d2c0",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/69377.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a065",
+      "name": "宇和島地区 → 錦町",
+      "display_name": "宇和島地区 → 錦町",
+      "calendar_id": "uw-bc8ebe4597ca",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65812.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a066",
+      "name": "宇和島地区 → 野川",
+      "display_name": "宇和島地区 → 野川",
+      "calendar_id": "uw-98cea6f96f54",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65813.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a067",
+      "name": "宇和島地区 → 日振島（喜路・明海・能登）",
+      "display_name": "宇和島地区 → 日振島（喜路・明海・能登）",
+      "calendar_id": "uw-fd5944828db1",
+      "rule_profile_id": "uwajima_islands",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-u-shushubi2026.html",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a068",
+      "name": "宇和島地区 → 平浦",
+      "display_name": "宇和島地区 → 平浦",
+      "calendar_id": "uw-dccfa88d2eab",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65814.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a069",
+      "name": "宇和島地区 → 広小路",
+      "display_name": "宇和島地区 → 広小路",
+      "calendar_id": "uw-024a5716dc03",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65816.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a070",
+      "name": "宇和島地区 → 藤江",
+      "display_name": "宇和島地区 → 藤江",
+      "calendar_id": "uw-4c1d1cffd125",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65817.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a071",
+      "name": "宇和島地区 → 別当",
+      "display_name": "宇和島地区 → 別当",
+      "calendar_id": "uw-914b3c599af7",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65819.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a072",
+      "name": "宇和島地区 → 弁天町",
+      "display_name": "宇和島地区 → 弁天町",
+      "calendar_id": "uw-4c1d1cffd125",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65820.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a073",
+      "name": "宇和島地区 → 保手1",
+      "display_name": "宇和島地区 → 保手1",
+      "calendar_id": "uw-4c1d1cffd125",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65821.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a074",
+      "name": "宇和島地区 → 保手1の一部（(株)はなみずきから内平橋のあたり）",
+      "display_name": "宇和島地区 → 保手1の一部（(株)はなみずきから内平橋のあたり）",
+      "calendar_id": "uw-1d492cc1ef68",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65822.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a075",
+      "name": "宇和島地区 → 保手2～5",
+      "display_name": "宇和島地区 → 保手2～5",
+      "calendar_id": "uw-1d492cc1ef68",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65823.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a076",
+      "name": "宇和島地区 → 堀端町",
+      "display_name": "宇和島地区 → 堀端町",
+      "calendar_id": "uw-d0e287caa202",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65828.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a077",
+      "name": "宇和島地区 → 本川内",
+      "display_name": "宇和島地区 → 本川内",
+      "calendar_id": "uw-3dc513a219b3",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65829.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a078",
+      "name": "宇和島地区 → 本町追手",
+      "display_name": "宇和島地区 → 本町追手",
+      "calendar_id": "uw-9903b147218a",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65830.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a079",
+      "name": "宇和島地区 → 桝形町",
+      "display_name": "宇和島地区 → 桝形町",
+      "calendar_id": "uw-1d492cc1ef68",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65831.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a080",
+      "name": "宇和島地区 → 丸之内",
+      "display_name": "宇和島地区 → 丸之内",
+      "calendar_id": "uw-e0b95b17d2c0",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/69378.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a081",
+      "name": "宇和島地区 → 丸穂町",
+      "display_name": "宇和島地区 → 丸穂町",
+      "calendar_id": "uw-3901afe00c55",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65833.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a082",
+      "name": "宇和島地区 → 三浦西（豊浦・大内・安米）",
+      "display_name": "宇和島地区 → 三浦西（豊浦・大内・安米）",
+      "calendar_id": "uw-9903b147218a",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65837.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a083",
+      "name": "宇和島地区 → 三浦西（尾崎）",
+      "display_name": "宇和島地区 → 三浦西（尾崎）",
+      "calendar_id": "uw-7a787a465d19",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65839.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a084",
+      "name": "宇和島地区 → 三浦東（天満・船隠）",
+      "display_name": "宇和島地区 → 三浦東（天満・船隠）",
+      "calendar_id": "uw-3901afe00c55",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65840.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a085",
+      "name": "宇和島地区 → 御幸町",
+      "display_name": "宇和島地区 → 御幸町",
+      "calendar_id": "uw-59fb3ce85799",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65841.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a086",
+      "name": "宇和島地区 → 宮下",
+      "display_name": "宇和島地区 → 宮下",
+      "calendar_id": "uw-c47974bc9c86",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65842.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a087",
+      "name": "宇和島地区 → 宮下の一部(山内産婦人科あたり)",
+      "display_name": "宇和島地区 → 宮下の一部(山内産婦人科あたり)",
+      "calendar_id": "uw-bdfa489daf1b",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65846.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a088",
+      "name": "宇和島地区 → 妙典寺前",
+      "display_name": "宇和島地区 → 妙典寺前",
+      "calendar_id": "uw-59fb3ce85799",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65848.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a089",
+      "name": "宇和島地区 → 明倫町",
+      "display_name": "宇和島地区 → 明倫町",
+      "calendar_id": "uw-1d492cc1ef68",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65849.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a090",
+      "name": "宇和島地区 → 元結掛",
+      "display_name": "宇和島地区 → 元結掛",
+      "calendar_id": "uw-4b3f3f79cbb9",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65850.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a091",
+      "name": "宇和島地区 → 薬師谷・薬師谷団地",
+      "display_name": "宇和島地区 → 薬師谷・薬師谷団地",
+      "calendar_id": "uw-59fb3ce85799",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65851.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a092",
+      "name": "宇和島地区 → 保田",
+      "display_name": "宇和島地区 → 保田",
+      "calendar_id": "uw-89f6a6e28da4",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65852.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a093",
+      "name": "宇和島地区 → 山際",
+      "display_name": "宇和島地区 → 山際",
+      "calendar_id": "uw-3901afe00c55",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65853.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a094",
+      "name": "宇和島地区 → 遊子（津の浦除く）",
+      "display_name": "宇和島地区 → 遊子（津の浦除く）",
+      "calendar_id": "uw-8d9aa2433953",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65854.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a095",
+      "name": "宇和島地区 → 遊子（津の浦）",
+      "display_name": "宇和島地区 → 遊子（津の浦）",
+      "calendar_id": "uw-e0b95b17d2c0",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/69379.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a096",
+      "name": "宇和島地区 → 寄松",
+      "display_name": "宇和島地区 → 寄松",
+      "calendar_id": "uw-bdfa489daf1b",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65856.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a097",
+      "name": "宇和島地区 → 和霊町北通",
+      "display_name": "宇和島地区 → 和霊町北通",
+      "calendar_id": "uw-e0b95b17d2c0",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/69380.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a098",
+      "name": "宇和島地区 → 和霊町西通",
+      "display_name": "宇和島地区 → 和霊町西通",
+      "calendar_id": "uw-e0b95b17d2c0",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/69381.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a099",
+      "name": "宇和島地区 → 和霊中町",
+      "display_name": "宇和島地区 → 和霊中町",
+      "calendar_id": "uw-914b3c599af7",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65859.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a100",
+      "name": "宇和島地区 → 和霊東町",
+      "display_name": "宇和島地区 → 和霊東町",
+      "calendar_id": "uw-914b3c599af7",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65860.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a101",
+      "name": "宇和島地区 → 和霊元町",
+      "display_name": "宇和島地区 → 和霊元町",
+      "calendar_id": "uw-4b3f3f79cbb9",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65861.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a102",
+      "name": "宇和島地区 → 蕨",
+      "display_name": "宇和島地区 → 蕨",
+      "calendar_id": "uw-c7174c298d27",
+      "rule_profile_id": "uwajima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65862.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a103",
+      "name": "吉田地区 → 吉田地区（橋上）",
+      "display_name": "吉田地区 → 吉田地区（橋上）",
+      "calendar_id": "uw-4a2872bd036f",
+      "rule_profile_id": "yoshida",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65913.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a104",
+      "name": "吉田地区 → 吉田地区（橋下）",
+      "display_name": "吉田地区 → 吉田地区（橋下）",
+      "calendar_id": "uw-7d5f4a1e4197",
+      "rule_profile_id": "yoshida",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65914.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a105",
+      "name": "吉田地区 → 立間地区",
+      "display_name": "吉田地区 → 立間地区",
+      "calendar_id": "uw-230367c51d91",
+      "rule_profile_id": "yoshida",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65915.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a106",
+      "name": "吉田地区 → 玉津地区",
+      "display_name": "吉田地区 → 玉津地区",
+      "calendar_id": "uw-4fa041cc0414",
+      "rule_profile_id": "yoshida",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65916.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a107",
+      "name": "吉田地区 → 奥南地区",
+      "display_name": "吉田地区 → 奥南地区",
+      "calendar_id": "uw-83bce854313d",
+      "rule_profile_id": "yoshida",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65917.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a108",
+      "name": "吉田地区 → 喜佐方地区",
+      "display_name": "吉田地区 → 喜佐方地区",
+      "calendar_id": "uw-5f80bcfa6347",
+      "rule_profile_id": "yoshida",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65923.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a109",
+      "name": "三間地区 → 是能、コスモスタウン、曽根、成家、則、大藤",
+      "display_name": "三間地区 → 是能、コスモスタウン、曽根、成家、則、大藤",
+      "calendar_id": "uw-f092c0b9f006",
+      "rule_profile_id": "mima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65933.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a110",
+      "name": "三間地区 → 黒井地、戸雁、宮野下町、宮野下村、北増穂",
+      "display_name": "三間地区 → 黒井地、戸雁、宮野下町、宮野下村、北増穂",
+      "calendar_id": "uw-9b7e0731a13e",
+      "rule_profile_id": "mima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65934.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a111",
+      "name": "三間地区 → 小沢川、川之内、元宗",
+      "display_name": "三間地区 → 小沢川、川之内、元宗",
+      "calendar_id": "uw-6061e2371486",
+      "rule_profile_id": "mima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65935.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a112",
+      "name": "三間地区 → 中野中、波岡、田川、金銅、古藤田、大内",
+      "display_name": "三間地区 → 中野中、波岡、田川、金銅、古藤田、大内",
+      "calendar_id": "uw-76374e912a04",
+      "rule_profile_id": "mima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65935.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a113",
+      "name": "三間地区 → 迫目、務田、増田、土居中",
+      "display_name": "三間地区 → 迫目、務田、増田、土居中",
+      "calendar_id": "uw-1ebd062d2252",
+      "rule_profile_id": "mima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65936.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a114",
+      "name": "三間地区 → 土居垣内、是延、兼近、三間中間、黒川、音地",
+      "display_name": "三間地区 → 土居垣内、是延、兼近、三間中間、黒川、音地",
+      "calendar_id": "uw-bff7cbb03cbe",
+      "rule_profile_id": "mima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65936.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a115",
+      "name": "津島地区 → 岩松地区",
+      "display_name": "津島地区 → 岩松地区",
+      "calendar_id": "uw-c2bf0aac2d5c",
+      "rule_profile_id": "tsushima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65937.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a116",
+      "name": "津島地区 → 清満地区",
+      "display_name": "津島地区 → 清満地区",
+      "calendar_id": "uw-e0ae0aa14f67",
+      "rule_profile_id": "tsushima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65938.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a117",
+      "name": "津島地区 → 御槙地区",
+      "display_name": "津島地区 → 御槙地区",
+      "calendar_id": "uw-8318c70633e2",
+      "rule_profile_id": "tsushima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65939.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a118",
+      "name": "津島地区 → 上槙地区",
+      "display_name": "津島地区 → 上槙地区",
+      "calendar_id": "uw-8318c70633e2",
+      "rule_profile_id": "tsushima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65940.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a119",
+      "name": "津島地区 → 畑地地区",
+      "display_name": "津島地区 → 畑地地区",
+      "calendar_id": "uw-5386bb4ba01e",
+      "rule_profile_id": "tsushima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65941.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a120",
+      "name": "津島地区 → 下灘地区",
+      "display_name": "津島地区 → 下灘地区",
+      "calendar_id": "uw-a38b554aaa6d",
+      "rule_profile_id": "tsushima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65943.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a121",
+      "name": "津島地区 → 北灘地区",
+      "display_name": "津島地区 → 北灘地区",
+      "calendar_id": "uw-006afbe5a906",
+      "rule_profile_id": "tsushima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65944.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a122",
+      "name": "津島地区 → 南部地区",
+      "display_name": "津島地区 → 南部地区",
+      "calendar_id": "uw-a38b554aaa6d",
+      "rule_profile_id": "tsushima",
+      "source_url": "https://www.city.uwajima.ehime.jp/uploaded/attachment/65945.pdf",
+      "needs_local_confirmation": true
+    },
+    {
+      "id": "38203-a123",
+      "name": "津島地区 → 竹ヶ島",
+      "display_name": "津島地区 → 竹ヶ島",
+      "calendar_id": "uw-adf79fafaa8d",
+      "rule_profile_id": "tsushima_islands",
+      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-t2026.html",
+      "needs_local_confirmation": true
+    }
+  ],
+  "rule_profiles": {
+    "mima": {
+      "items_path": "knowledge/items.csv",
+      "embedding_index_path": "knowledge/item_embeddings.npz",
+      "index_profile_id": "common",
+      "calendar_path": "generated/calendar-2026.json",
+      "categories": {
+        "burnable": {
+          "name": "燃えるごみ",
+          "color": "#F68C28",
+          "collection_type_id": "burnable",
+          "cutoff": "08:30",
+          "time_note": "収集日の午前8時30分までに、地区で決められた場所へ。",
+          "start_time": "06:00"
+        },
+        "non_burnable": {
+          "name": "燃えないごみ",
+          "color": "#0068B3",
+          "collection_type_id": "non_burnable",
+          "cutoff": "08:30",
+          "time_note": "収集日の午前8時30分までに、地区で決められた場所へ。",
+          "start_time": "06:00"
+        },
+        "bottles_cans": {
+          "name": "びん・缶",
+          "color": "#984043",
+          "collection_type_id": "bottles_cans",
+          "cutoff": "08:30",
+          "time_note": "収集日の午前8時30分までに、地区で決められた場所へ。",
+          "start_time": "06:00"
+        },
+        "pet": {
+          "name": "ペットボトル",
+          "color": "#5BAA4A",
+          "collection_type_id": "pet",
+          "cutoff": "08:30",
+          "time_note": "収集日の午前8時30分までに、地区で決められた場所へ。",
+          "start_time": "06:00"
+        },
+        "paper": {
+          "name": "古紙類",
+          "color": "#9F78B4",
+          "collection_type_id": "paper",
+          "cutoff": "08:30",
+          "time_note": "収集日の午前8時30分までに、地区で決められた場所へ。",
+          "answer_note": "古紙の回収場所はごみステーションと異なる場合があります。自治会の指定場所へ。"
+        },
+        "bulky": {
+          "name": "粗大ごみ（直接搬入・許可業者）",
+          "color": "#888888"
+        },
+        "dropoff": {
+          "name": "資源の拠点回収",
+          "color": "#008577"
+        },
+        "clean_plastics": {
+          "name": "きれいなプラスチック（拠点回収）",
+          "color": "#32A2A0"
+        },
+        "batteries": {
+          "name": "電池類の拠点回収",
+          "color": "#B29B35"
+        },
+        "not_collected": {
+          "name": "市・環境センターで処理できない",
+          "color": "#666666"
+        },
+        "consult": {
+          "name": "市へ確認",
+          "color": "#777777"
+        }
+      },
+      "classification_rules": "宇和島市の2026年度の公式根拠だけで判定する。可燃・不燃・びん缶・PET・古紙と、粗大ごみ/拠点/市で処理できないものを区別する。指定袋に入らないものは原則粗大（直接搬入又は許可業者）で、定期収集日を付けない。入力済みの材質・サイズ・洗浄乾燥状態・電池の有無・対象部位を保持する。本体の分類に外した部品の区分を適用しない。条件分岐が公式根拠にあり未回答の場合だけ追加質問する。PET本体のキャップ/ラベル除去・すすぎが入力済みなら再質問しない。きれいなプラスチックの拠点回収は通常可燃の代替手段で、通常収集を希望する人に拠点利用条件を必須質問しない。プラ製品の拠点を希望する場合は100%プラ・50cm未満・汚れを落として乾燥・異素材なしの条件を確認する。50cm以上は拠点不可（指定袋に入れば可燃、入らなければ粗大）。電池を外せない充電池内蔵機器は不燃にせず本体ごと充電池拠点。普通の家電・PCは袋に入れば不燃だが電池を外す。割れたびんもびん缶、食器/耐熱ガラスは不燃。スプレー缶は使い切って安全な屋外で穴を開けびん缶。過年度辞典と現行案内が異なる場合は現行案内を優先し、矛盾を解決できなければ市に確認する。 一辺50cmちょうどは50cm未満に含まれずプラスチック拠点回収の対象外。通常の袋に入るなら燃えるごみ、入らなければ粗大ごみ。",
+      "knowledge_title": "宇和島市家庭ごみ分別早見表・現行公式案内",
+      "size_question": "市の指定ごみ袋に入れて口を結べる大きさですか？",
+      "bulky_waste": {
+        "category_code": "bulky",
+        "config": {
+          "municipality_id": "38203",
+          "municipality_name": "宇和島市",
+          "collection_frequency": "環境センターへ直接搬入又は許可業者へ依頼",
+          "reception_hours": "月～土13:00～16:30（祝日・年末年始を除く）",
+          "collection_rules": "市の定期収集・戸別収集はありません。指定袋に入らないものは環境センターへ直接搬入、又は一般廃棄物収集運搬許可業者へ依頼。家庭ごみは10kg50円、月～土13:00～16:30、祝日・年末年始休み。搬入不可の品目は販売店等へ。収集予定は自動生成しない。",
+          "fee_structure_type": "weight_based",
+          "application_method": "guide_only",
+          "information_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-sutekata.html",
+          "phone_number": "0895-49-5040",
+          "steps": [
+            {
+              "step_number": 1,
+              "title": "搬入できる品目を確認",
+              "description": "市指定袋に入らないものは通常のごみステーションに出せません。家電リサイクル対象やスプリング入りマットレスなど、搬入できない品目もあります。"
+            },
+            {
+              "step_number": 2,
+              "title": "直接搬入又は許可業者へ依頼",
+              "description": "環境センターは月～土13:00～16:30（祝日・年末年始休み）、家庭ごみ10kg50円。運べない場合は市の許可業者へ個別に相談してください。アプリからの申込みや予約は行いません。"
+            }
+          ]
+        }
+      }
+    },
+    "tsushima": {
+      "items_path": "knowledge/items.csv",
+      "embedding_index_path": "knowledge/item_embeddings.npz",
+      "index_profile_id": "common",
+      "calendar_path": "generated/calendar-2026.json",
+      "categories": {
+        "burnable": {
+          "name": "燃えるごみ",
+          "color": "#F68C28",
+          "collection_type_id": "burnable",
+          "cutoff": "08:30",
+          "time_note": "収集日の午前8時30分までに、地区で決められた場所へ。",
+          "start_time": "06:00"
+        },
+        "non_burnable": {
+          "name": "燃えないごみ",
+          "color": "#0068B3",
+          "collection_type_id": "non_burnable",
+          "cutoff": "08:30",
+          "time_note": "収集日の午前8時30分までに、地区で決められた場所へ。",
+          "start_time": "06:00"
+        },
+        "bottles_cans": {
+          "name": "びん・缶",
+          "color": "#984043",
+          "collection_type_id": "bottles_cans",
+          "cutoff": "08:30",
+          "time_note": "収集日の午前8時30分までに、地区で決められた場所へ。",
+          "start_time": "06:00"
+        },
+        "pet": {
+          "name": "ペットボトル",
+          "color": "#5BAA4A",
+          "collection_type_id": "pet",
+          "cutoff": "08:30",
+          "time_note": "収集日の午前8時30分までに、地区で決められた場所へ。",
+          "start_time": "06:00"
+        },
+        "paper": {
+          "name": "古紙類",
+          "color": "#9F78B4",
+          "collection_type_id": "paper",
+          "cutoff": "08:30",
+          "time_note": "収集日の午前8時30分までに、地区で決められた場所へ。雨・祝日は月曜地区は木曜、火曜地区は金曜に延期。延期日も雨・祝日なら翌月。船便は荒天で変更の場合があります。",
+          "answer_note": "古紙の回収場所はごみステーションと異なる場合があります。自治会の指定場所へ。"
+        },
+        "bulky": {
+          "name": "粗大ごみ（直接搬入・許可業者）",
+          "color": "#888888"
+        },
+        "dropoff": {
+          "name": "資源の拠点回収",
+          "color": "#008577"
+        },
+        "clean_plastics": {
+          "name": "きれいなプラスチック（拠点回収）",
+          "color": "#32A2A0"
+        },
+        "batteries": {
+          "name": "電池類の拠点回収",
+          "color": "#B29B35"
+        },
+        "not_collected": {
+          "name": "市・環境センターで処理できない",
+          "color": "#666666"
+        },
+        "consult": {
+          "name": "市へ確認",
+          "color": "#777777"
+        }
+      },
+      "classification_rules": "宇和島市の2026年度の公式根拠だけで判定する。可燃・不燃・びん缶・PET・古紙と、粗大ごみ/拠点/市で処理できないものを区別する。指定袋に入らないものは原則粗大（直接搬入又は許可業者）で、定期収集日を付けない。入力済みの材質・サイズ・洗浄乾燥状態・電池の有無・対象部位を保持する。本体の分類に外した部品の区分を適用しない。条件分岐が公式根拠にあり未回答の場合だけ追加質問する。PET本体のキャップ/ラベル除去・すすぎが入力済みなら再質問しない。きれいなプラスチックの拠点回収は通常可燃の代替手段で、通常収集を希望する人に拠点利用条件を必須質問しない。プラ製品の拠点を希望する場合は100%プラ・50cm未満・汚れを落として乾燥・異素材なしの条件を確認する。50cm以上は拠点不可（指定袋に入れば可燃、入らなければ粗大）。電池を外せない充電池内蔵機器は不燃にせず本体ごと充電池拠点。普通の家電・PCは袋に入れば不燃だが電池を外す。割れたびんもびん缶、食器/耐熱ガラスは不燃。スプレー缶は使い切って安全な屋外で穴を開けびん缶。過年度辞典と現行案内が異なる場合は現行案内を優先し、矛盾を解決できなければ市に確認する。 一辺50cmちょうどは50cm未満に含まれずプラスチック拠点回収の対象外。通常の袋に入るなら燃えるごみ、入らなければ粗大ごみ。",
+      "knowledge_title": "宇和島市家庭ごみ分別早見表・現行公式案内",
+      "size_question": "市の指定ごみ袋に入れて口を結べる大きさですか？",
+      "bulky_waste": {
+        "category_code": "bulky",
+        "config": {
+          "municipality_id": "38203",
+          "municipality_name": "宇和島市",
+          "collection_frequency": "環境センターへ直接搬入又は許可業者へ依頼",
+          "reception_hours": "月～土13:00～16:30（祝日・年末年始を除く）",
+          "collection_rules": "市の定期収集・戸別収集はありません。指定袋に入らないものは環境センターへ直接搬入、又は一般廃棄物収集運搬許可業者へ依頼。家庭ごみは10kg50円、月～土13:00～16:30、祝日・年末年始休み。搬入不可の品目は販売店等へ。収集予定は自動生成しない。",
+          "fee_structure_type": "weight_based",
+          "application_method": "guide_only",
+          "information_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-sutekata.html",
+          "phone_number": "0895-49-5040",
+          "steps": [
+            {
+              "step_number": 1,
+              "title": "搬入できる品目を確認",
+              "description": "市指定袋に入らないものは通常のごみステーションに出せません。家電リサイクル対象やスプリング入りマットレスなど、搬入できない品目もあります。"
+            },
+            {
+              "step_number": 2,
+              "title": "直接搬入又は許可業者へ依頼",
+              "description": "環境センターは月～土13:00～16:30（祝日・年末年始休み）、家庭ごみ10kg50円。運べない場合は市の許可業者へ個別に相談してください。アプリからの申込みや予約は行いません。"
+            }
+          ]
+        }
+      }
+    },
+    "tsushima_islands": {
+      "items_path": "knowledge/items.csv",
+      "embedding_index_path": "knowledge/item_embeddings.npz",
+      "index_profile_id": "common",
+      "calendar_path": "generated/calendar-2026.json",
+      "categories": {
+        "burnable": {
+          "name": "燃えるごみ",
+          "color": "#F68C28",
+          "collection_type_id": "burnable",
+          "cutoff_status": "unverified",
+          "time_note": "離島の搬出場所・船便・時刻は自治会又は市に確認してください。"
+        },
+        "non_burnable": {
+          "name": "燃えないごみ",
+          "color": "#0068B3",
+          "collection_type_id": "non_burnable",
+          "cutoff_status": "unverified",
+          "time_note": "離島の搬出場所・船便・時刻は自治会又は市に確認してください。"
+        },
+        "bottles_cans": {
+          "name": "びん・缶",
+          "color": "#984043",
+          "collection_type_id": "bottles_cans",
+          "cutoff_status": "unverified",
+          "time_note": "離島の搬出場所・船便・時刻は自治会又は市に確認してください。"
+        },
+        "pet": {
+          "name": "ペットボトル",
+          "color": "#5BAA4A",
+          "collection_type_id": "pet",
+          "cutoff_status": "unverified",
+          "time_note": "離島の搬出場所・船便・時刻は自治会又は市に確認してください。"
+        },
+        "paper": {
+          "name": "古紙類",
+          "color": "#9F78B4",
+          "collection_type_id": "paper",
+          "cutoff_status": "unverified",
+          "time_note": "離島の搬出場所・船便・時刻は自治会又は市に確認してください。雨・祝日は月曜地区は木曜、火曜地区は金曜に延期。延期日も雨・祝日なら翌月。船便は荒天で変更の場合があります。",
+          "answer_note": "古紙の回収場所はごみステーションと異なる場合があります。自治会の指定場所へ。"
+        },
+        "bulky": {
+          "name": "粗大ごみ（直接搬入・許可業者）",
+          "color": "#888888"
+        },
+        "dropoff": {
+          "name": "資源の拠点回収",
+          "color": "#008577"
+        },
+        "clean_plastics": {
+          "name": "きれいなプラスチック（拠点回収）",
+          "color": "#32A2A0"
+        },
+        "batteries": {
+          "name": "電池類の拠点回収",
+          "color": "#B29B35"
+        },
+        "not_collected": {
+          "name": "市・環境センターで処理できない",
+          "color": "#666666"
+        },
+        "consult": {
+          "name": "市へ確認",
+          "color": "#777777"
+        }
+      },
+      "classification_rules": "宇和島市の2026年度の公式根拠だけで判定する。可燃・不燃・びん缶・PET・古紙と、粗大ごみ/拠点/市で処理できないものを区別する。指定袋に入らないものは原則粗大（直接搬入又は許可業者）で、定期収集日を付けない。入力済みの材質・サイズ・洗浄乾燥状態・電池の有無・対象部位を保持する。本体の分類に外した部品の区分を適用しない。条件分岐が公式根拠にあり未回答の場合だけ追加質問する。PET本体のキャップ/ラベル除去・すすぎが入力済みなら再質問しない。きれいなプラスチックの拠点回収は通常可燃の代替手段で、通常収集を希望する人に拠点利用条件を必須質問しない。プラ製品の拠点を希望する場合は100%プラ・50cm未満・汚れを落として乾燥・異素材なしの条件を確認する。50cm以上は拠点不可（指定袋に入れば可燃、入らなければ粗大）。電池を外せない充電池内蔵機器は不燃にせず本体ごと充電池拠点。普通の家電・PCは袋に入れば不燃だが電池を外す。割れたびんもびん缶、食器/耐熱ガラスは不燃。スプレー缶は使い切って安全な屋外で穴を開けびん缶。過年度辞典と現行案内が異なる場合は現行案内を優先し、矛盾を解決できなければ市に確認する。 一辺50cmちょうどは50cm未満に含まれずプラスチック拠点回収の対象外。通常の袋に入るなら燃えるごみ、入らなければ粗大ごみ。",
+      "knowledge_title": "宇和島市家庭ごみ分別早見表・現行公式案内",
+      "size_question": "市の指定ごみ袋に入れて口を結べる大きさですか？",
+      "bulky_waste": {
+        "category_code": "bulky",
+        "config": {
+          "municipality_id": "38203",
+          "municipality_name": "宇和島市",
+          "collection_frequency": "環境センターへ直接搬入又は許可業者へ依頼",
+          "reception_hours": "月～土13:00～16:30（祝日・年末年始を除く）",
+          "collection_rules": "市の定期収集・戸別収集はありません。指定袋に入らないものは環境センターへ直接搬入、又は一般廃棄物収集運搬許可業者へ依頼。家庭ごみは10kg50円、月～土13:00～16:30、祝日・年末年始休み。搬入不可の品目は販売店等へ。収集予定は自動生成しない。",
+          "fee_structure_type": "weight_based",
+          "application_method": "guide_only",
+          "information_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-sutekata.html",
+          "phone_number": "0895-49-5040",
+          "steps": [
+            {
+              "step_number": 1,
+              "title": "搬入できる品目を確認",
+              "description": "市指定袋に入らないものは通常のごみステーションに出せません。家電リサイクル対象やスプリング入りマットレスなど、搬入できない品目もあります。"
+            },
+            {
+              "step_number": 2,
+              "title": "直接搬入又は許可業者へ依頼",
+              "description": "環境センターは月～土13:00～16:30（祝日・年末年始休み）、家庭ごみ10kg50円。運べない場合は市の許可業者へ個別に相談してください。アプリからの申込みや予約は行いません。"
+            }
+          ]
+        }
+      }
+    },
+    "uwajima": {
+      "items_path": "knowledge/items.csv",
+      "embedding_index_path": "knowledge/item_embeddings.npz",
+      "index_profile_id": "common",
+      "calendar_path": "generated/calendar-2026.json",
+      "categories": {
+        "burnable": {
+          "name": "燃えるごみ",
+          "color": "#F68C28",
+          "collection_type_id": "burnable",
+          "cutoff": "08:30",
+          "time_note": "収集日の午前8時30分までに、地区で決められた場所へ。",
+          "start_time": "06:00"
+        },
+        "non_burnable": {
+          "name": "燃えないごみ",
+          "color": "#0068B3",
+          "collection_type_id": "non_burnable",
+          "cutoff": "08:30",
+          "time_note": "収集日の午前8時30分までに、地区で決められた場所へ。",
+          "start_time": "06:00"
+        },
+        "bottles_cans": {
+          "name": "びん・缶",
+          "color": "#984043",
+          "collection_type_id": "bottles_cans",
+          "cutoff": "08:30",
+          "time_note": "収集日の午前8時30分までに、地区で決められた場所へ。",
+          "start_time": "06:00"
+        },
+        "pet": {
+          "name": "ペットボトル",
+          "color": "#5BAA4A",
+          "collection_type_id": "pet",
+          "cutoff": "08:30",
+          "time_note": "収集日の午前8時30分までに、地区で決められた場所へ。",
+          "start_time": "06:00"
+        },
+        "paper": {
+          "name": "古紙類",
+          "color": "#9F78B4",
+          "collection_type_id": "paper",
+          "cutoff": "08:30",
+          "time_note": "収集日の午前8時30分までに、地区で決められた場所へ。",
+          "answer_note": "古紙の回収場所はごみステーションと異なる場合があります。自治会の指定場所へ。"
+        },
+        "bulky": {
+          "name": "粗大ごみ（直接搬入・許可業者）",
+          "color": "#888888"
+        },
+        "dropoff": {
+          "name": "資源の拠点回収",
+          "color": "#008577"
+        },
+        "clean_plastics": {
+          "name": "きれいなプラスチック（拠点回収）",
+          "color": "#32A2A0"
+        },
+        "batteries": {
+          "name": "電池類の拠点回収",
+          "color": "#B29B35"
+        },
+        "not_collected": {
+          "name": "市・環境センターで処理できない",
+          "color": "#666666"
+        },
+        "consult": {
+          "name": "市へ確認",
+          "color": "#777777"
+        }
+      },
+      "classification_rules": "宇和島市の2026年度の公式根拠だけで判定する。可燃・不燃・びん缶・PET・古紙と、粗大ごみ/拠点/市で処理できないものを区別する。指定袋に入らないものは原則粗大（直接搬入又は許可業者）で、定期収集日を付けない。入力済みの材質・サイズ・洗浄乾燥状態・電池の有無・対象部位を保持する。本体の分類に外した部品の区分を適用しない。条件分岐が公式根拠にあり未回答の場合だけ追加質問する。PET本体のキャップ/ラベル除去・すすぎが入力済みなら再質問しない。きれいなプラスチックの拠点回収は通常可燃の代替手段で、通常収集を希望する人に拠点利用条件を必須質問しない。プラ製品の拠点を希望する場合は100%プラ・50cm未満・汚れを落として乾燥・異素材なしの条件を確認する。50cm以上は拠点不可（指定袋に入れば可燃、入らなければ粗大）。電池を外せない充電池内蔵機器は不燃にせず本体ごと充電池拠点。普通の家電・PCは袋に入れば不燃だが電池を外す。割れたびんもびん缶、食器/耐熱ガラスは不燃。スプレー缶は使い切って安全な屋外で穴を開けびん缶。過年度辞典と現行案内が異なる場合は現行案内を優先し、矛盾を解決できなければ市に確認する。 一辺50cmちょうどは50cm未満に含まれずプラスチック拠点回収の対象外。通常の袋に入るなら燃えるごみ、入らなければ粗大ごみ。",
+      "knowledge_title": "宇和島市家庭ごみ分別早見表・現行公式案内",
+      "size_question": "市の指定ごみ袋に入れて口を結べる大きさですか？",
+      "bulky_waste": {
+        "category_code": "bulky",
+        "config": {
+          "municipality_id": "38203",
+          "municipality_name": "宇和島市",
+          "collection_frequency": "環境センターへ直接搬入又は許可業者へ依頼",
+          "reception_hours": "月～土13:00～16:30（祝日・年末年始を除く）",
+          "collection_rules": "市の定期収集・戸別収集はありません。指定袋に入らないものは環境センターへ直接搬入、又は一般廃棄物収集運搬許可業者へ依頼。家庭ごみは10kg50円、月～土13:00～16:30、祝日・年末年始休み。搬入不可の品目は販売店等へ。収集予定は自動生成しない。",
+          "fee_structure_type": "weight_based",
+          "application_method": "guide_only",
+          "information_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-sutekata.html",
+          "phone_number": "0895-49-5040",
+          "steps": [
+            {
+              "step_number": 1,
+              "title": "搬入できる品目を確認",
+              "description": "市指定袋に入らないものは通常のごみステーションに出せません。家電リサイクル対象やスプリング入りマットレスなど、搬入できない品目もあります。"
+            },
+            {
+              "step_number": 2,
+              "title": "直接搬入又は許可業者へ依頼",
+              "description": "環境センターは月～土13:00～16:30（祝日・年末年始休み）、家庭ごみ10kg50円。運べない場合は市の許可業者へ個別に相談してください。アプリからの申込みや予約は行いません。"
+            }
+          ]
+        }
+      }
+    },
+    "uwajima_islands": {
+      "items_path": "knowledge/items.csv",
+      "embedding_index_path": "knowledge/item_embeddings.npz",
+      "index_profile_id": "common",
+      "calendar_path": "generated/calendar-2026.json",
+      "categories": {
+        "burnable": {
+          "name": "燃えるごみ",
+          "color": "#F68C28",
+          "collection_type_id": "burnable",
+          "cutoff_status": "unverified",
+          "time_note": "離島の搬出場所・船便・時刻は自治会又は市に確認してください。"
+        },
+        "non_burnable": {
+          "name": "燃えないごみ",
+          "color": "#0068B3",
+          "collection_type_id": "non_burnable",
+          "cutoff_status": "unverified",
+          "time_note": "離島の搬出場所・船便・時刻は自治会又は市に確認してください。"
+        },
+        "bottles_cans": {
+          "name": "びん・缶",
+          "color": "#984043",
+          "collection_type_id": "bottles_cans",
+          "cutoff_status": "unverified",
+          "time_note": "離島の搬出場所・船便・時刻は自治会又は市に確認してください。"
+        },
+        "pet": {
+          "name": "ペットボトル",
+          "color": "#5BAA4A",
+          "collection_type_id": "pet",
+          "cutoff_status": "unverified",
+          "time_note": "離島の搬出場所・船便・時刻は自治会又は市に確認してください。"
+        },
+        "paper": {
+          "name": "古紙類",
+          "color": "#9F78B4",
+          "collection_type_id": "paper",
+          "cutoff_status": "unverified",
+          "time_note": "離島の搬出場所・船便・時刻は自治会又は市に確認してください。",
+          "answer_note": "古紙の回収場所はごみステーションと異なる場合があります。自治会の指定場所へ。"
+        },
+        "bulky": {
+          "name": "粗大ごみ（直接搬入・許可業者）",
+          "color": "#888888"
+        },
+        "dropoff": {
+          "name": "資源の拠点回収",
+          "color": "#008577"
+        },
+        "clean_plastics": {
+          "name": "きれいなプラスチック（拠点回収）",
+          "color": "#32A2A0"
+        },
+        "batteries": {
+          "name": "電池類の拠点回収",
+          "color": "#B29B35"
+        },
+        "not_collected": {
+          "name": "市・環境センターで処理できない",
+          "color": "#666666"
+        },
+        "consult": {
+          "name": "市へ確認",
+          "color": "#777777"
+        }
+      },
+      "classification_rules": "宇和島市の2026年度の公式根拠だけで判定する。可燃・不燃・びん缶・PET・古紙と、粗大ごみ/拠点/市で処理できないものを区別する。指定袋に入らないものは原則粗大（直接搬入又は許可業者）で、定期収集日を付けない。入力済みの材質・サイズ・洗浄乾燥状態・電池の有無・対象部位を保持する。本体の分類に外した部品の区分を適用しない。条件分岐が公式根拠にあり未回答の場合だけ追加質問する。PET本体のキャップ/ラベル除去・すすぎが入力済みなら再質問しない。きれいなプラスチックの拠点回収は通常可燃の代替手段で、通常収集を希望する人に拠点利用条件を必須質問しない。プラ製品の拠点を希望する場合は100%プラ・50cm未満・汚れを落として乾燥・異素材なしの条件を確認する。50cm以上は拠点不可（指定袋に入れば可燃、入らなければ粗大）。電池を外せない充電池内蔵機器は不燃にせず本体ごと充電池拠点。普通の家電・PCは袋に入れば不燃だが電池を外す。割れたびんもびん缶、食器/耐熱ガラスは不燃。スプレー缶は使い切って安全な屋外で穴を開けびん缶。過年度辞典と現行案内が異なる場合は現行案内を優先し、矛盾を解決できなければ市に確認する。 一辺50cmちょうどは50cm未満に含まれずプラスチック拠点回収の対象外。通常の袋に入るなら燃えるごみ、入らなければ粗大ごみ。",
+      "knowledge_title": "宇和島市家庭ごみ分別早見表・現行公式案内",
+      "size_question": "市の指定ごみ袋に入れて口を結べる大きさですか？",
+      "bulky_waste": {
+        "category_code": "bulky",
+        "config": {
+          "municipality_id": "38203",
+          "municipality_name": "宇和島市",
+          "collection_frequency": "環境センターへ直接搬入又は許可業者へ依頼",
+          "reception_hours": "月～土13:00～16:30（祝日・年末年始を除く）",
+          "collection_rules": "市の定期収集・戸別収集はありません。指定袋に入らないものは環境センターへ直接搬入、又は一般廃棄物収集運搬許可業者へ依頼。家庭ごみは10kg50円、月～土13:00～16:30、祝日・年末年始休み。搬入不可の品目は販売店等へ。収集予定は自動生成しない。",
+          "fee_structure_type": "weight_based",
+          "application_method": "guide_only",
+          "information_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-sutekata.html",
+          "phone_number": "0895-49-5040",
+          "steps": [
+            {
+              "step_number": 1,
+              "title": "搬入できる品目を確認",
+              "description": "市指定袋に入らないものは通常のごみステーションに出せません。家電リサイクル対象やスプリング入りマットレスなど、搬入できない品目もあります。"
+            },
+            {
+              "step_number": 2,
+              "title": "直接搬入又は許可業者へ依頼",
+              "description": "環境センターは月～土13:00～16:30（祝日・年末年始休み）、家庭ごみ10kg50円。運べない場合は市の許可業者へ個別に相談してください。アプリからの申込みや予約は行いません。"
+            }
+          ]
+        }
+      }
+    },
+    "yoshida": {
+      "items_path": "knowledge/items.csv",
+      "embedding_index_path": "knowledge/item_embeddings.npz",
+      "index_profile_id": "common",
+      "calendar_path": "generated/calendar-2026.json",
+      "categories": {
+        "burnable": {
+          "name": "燃えるごみ",
+          "color": "#F68C28",
+          "collection_type_id": "burnable",
+          "cutoff": "08:30",
+          "time_note": "収集日の午前8時30分までに、地区で決められた場所へ。",
+          "start_time": "06:00"
+        },
+        "non_burnable": {
+          "name": "燃えないごみ",
+          "color": "#0068B3",
+          "collection_type_id": "non_burnable",
+          "cutoff": "08:30",
+          "time_note": "収集日の午前8時30分までに、地区で決められた場所へ。",
+          "start_time": "06:00"
+        },
+        "bottles_cans": {
+          "name": "びん・缶",
+          "color": "#984043",
+          "collection_type_id": "bottles_cans",
+          "cutoff": "08:30",
+          "time_note": "収集日の午前8時30分までに、地区で決められた場所へ。",
+          "start_time": "06:00"
+        },
+        "pet": {
+          "name": "ペットボトル",
+          "color": "#5BAA4A",
+          "collection_type_id": "pet",
+          "cutoff": "08:30",
+          "time_note": "収集日の午前8時30分までに、地区で決められた場所へ。",
+          "start_time": "06:00"
+        },
+        "paper": {
+          "name": "古紙類",
+          "color": "#9F78B4",
+          "collection_type_id": "paper",
+          "cutoff": "08:30",
+          "time_note": "収集日の午前8時30分までに、地区で決められた場所へ。雨天は中止。祝日の変更は公式カレンダーを確認してください。",
+          "answer_note": "古紙の回収場所はごみステーションと異なる場合があります。自治会の指定場所へ。"
+        },
+        "bulky": {
+          "name": "粗大ごみ（直接搬入・許可業者）",
+          "color": "#888888"
+        },
+        "dropoff": {
+          "name": "資源の拠点回収",
+          "color": "#008577"
+        },
+        "clean_plastics": {
+          "name": "きれいなプラスチック（拠点回収）",
+          "color": "#32A2A0"
+        },
+        "batteries": {
+          "name": "電池類の拠点回収",
+          "color": "#B29B35"
+        },
+        "not_collected": {
+          "name": "市・環境センターで処理できない",
+          "color": "#666666"
+        },
+        "consult": {
+          "name": "市へ確認",
+          "color": "#777777"
+        }
+      },
+      "classification_rules": "宇和島市の2026年度の公式根拠だけで判定する。可燃・不燃・びん缶・PET・古紙と、粗大ごみ/拠点/市で処理できないものを区別する。指定袋に入らないものは原則粗大（直接搬入又は許可業者）で、定期収集日を付けない。入力済みの材質・サイズ・洗浄乾燥状態・電池の有無・対象部位を保持する。本体の分類に外した部品の区分を適用しない。条件分岐が公式根拠にあり未回答の場合だけ追加質問する。PET本体のキャップ/ラベル除去・すすぎが入力済みなら再質問しない。きれいなプラスチックの拠点回収は通常可燃の代替手段で、通常収集を希望する人に拠点利用条件を必須質問しない。プラ製品の拠点を希望する場合は100%プラ・50cm未満・汚れを落として乾燥・異素材なしの条件を確認する。50cm以上は拠点不可（指定袋に入れば可燃、入らなければ粗大）。電池を外せない充電池内蔵機器は不燃にせず本体ごと充電池拠点。普通の家電・PCは袋に入れば不燃だが電池を外す。割れたびんもびん缶、食器/耐熱ガラスは不燃。スプレー缶は使い切って安全な屋外で穴を開けびん缶。過年度辞典と現行案内が異なる場合は現行案内を優先し、矛盾を解決できなければ市に確認する。 一辺50cmちょうどは50cm未満に含まれずプラスチック拠点回収の対象外。通常の袋に入るなら燃えるごみ、入らなければ粗大ごみ。",
+      "knowledge_title": "宇和島市家庭ごみ分別早見表・現行公式案内",
+      "size_question": "市の指定ごみ袋に入れて口を結べる大きさですか？",
+      "bulky_waste": {
+        "category_code": "bulky",
+        "config": {
+          "municipality_id": "38203",
+          "municipality_name": "宇和島市",
+          "collection_frequency": "環境センターへ直接搬入又は許可業者へ依頼",
+          "reception_hours": "月～土13:00～16:30（祝日・年末年始を除く）",
+          "collection_rules": "市の定期収集・戸別収集はありません。指定袋に入らないものは環境センターへ直接搬入、又は一般廃棄物収集運搬許可業者へ依頼。家庭ごみは10kg50円、月～土13:00～16:30、祝日・年末年始休み。搬入不可の品目は販売店等へ。収集予定は自動生成しない。",
+          "fee_structure_type": "weight_based",
+          "application_method": "guide_only",
+          "information_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-sutekata.html",
+          "phone_number": "0895-49-5040",
+          "steps": [
+            {
+              "step_number": 1,
+              "title": "搬入できる品目を確認",
+              "description": "市指定袋に入らないものは通常のごみステーションに出せません。家電リサイクル対象やスプリング入りマットレスなど、搬入できない品目もあります。"
+            },
+            {
+              "step_number": 2,
+              "title": "直接搬入又は許可業者へ依頼",
+              "description": "環境センターは月～土13:00～16:30（祝日・年末年始休み）、家庭ごみ10kg50円。運べない場合は市の許可業者へ個別に相談してください。アプリからの申込みや予約は行いません。"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "calendars": [
+    {
+      "id": "uw-4c1d1cffd125",
+      "rule_profile_id": "uwajima"
+    },
+    {
+      "id": "uw-543758294775",
+      "rule_profile_id": "uwajima"
+    },
+    {
+      "id": "uw-59fb3ce85799",
+      "rule_profile_id": "uwajima"
+    },
+    {
+      "id": "uw-914b3c599af7",
+      "rule_profile_id": "uwajima"
+    },
+    {
+      "id": "uw-58b3fe6feeb7",
+      "rule_profile_id": "uwajima"
+    },
+    {
+      "id": "uw-3901afe00c55",
+      "rule_profile_id": "uwajima"
+    },
+    {
+      "id": "uw-611cac250316",
+      "rule_profile_id": "uwajima"
+    },
+    {
+      "id": "uw-bdfa489daf1b",
+      "rule_profile_id": "uwajima"
+    },
+    {
+      "id": "uw-53440f05fa92",
+      "rule_profile_id": "uwajima"
+    },
+    {
+      "id": "uw-1d492cc1ef68",
+      "rule_profile_id": "uwajima"
+    },
+    {
+      "id": "uw-39aa70bee6dc",
+      "rule_profile_id": "uwajima"
+    },
+    {
+      "id": "uw-95768029c567",
+      "rule_profile_id": "uwajima"
+    },
+    {
+      "id": "uw-98cea6f96f54",
+      "rule_profile_id": "uwajima"
+    },
+    {
+      "id": "uw-4b3f3f79cbb9",
+      "rule_profile_id": "uwajima"
+    },
+    {
+      "id": "uw-d67624584d1f",
+      "rule_profile_id": "uwajima"
+    },
+    {
+      "id": "uw-54d45f3e888d",
+      "rule_profile_id": "uwajima"
+    },
+    {
+      "id": "uw-9cb77f9b65c8",
+      "rule_profile_id": "uwajima"
+    },
+    {
+      "id": "uw-49d3c1e2c22a",
+      "rule_profile_id": "uwajima"
+    },
+    {
+      "id": "uw-e0b95b17d2c0",
+      "rule_profile_id": "uwajima"
+    },
+    {
+      "id": "uw-1bb62516a119",
+      "rule_profile_id": "uwajima"
+    },
+    {
+      "id": "uw-b3bd87997bcd",
+      "rule_profile_id": "uwajima"
+    },
+    {
+      "id": "uw-8d9aa2433953",
+      "rule_profile_id": "uwajima"
+    },
+    {
+      "id": "uw-d1611f966f8d",
+      "rule_profile_id": "uwajima"
+    },
+    {
+      "id": "uw-9903b147218a",
+      "rule_profile_id": "uwajima"
+    },
+    {
+      "id": "uw-b16fc3405fb5",
+      "rule_profile_id": "uwajima"
+    },
+    {
+      "id": "uw-cb999d5bea17",
+      "rule_profile_id": "uwajima"
+    },
+    {
+      "id": "uw-6b590cfcb038",
+      "rule_profile_id": "uwajima_islands"
+    },
+    {
+      "id": "uw-bc8ebe4597ca",
+      "rule_profile_id": "uwajima"
+    },
+    {
+      "id": "uw-fd5944828db1",
+      "rule_profile_id": "uwajima_islands"
+    },
+    {
+      "id": "uw-dccfa88d2eab",
+      "rule_profile_id": "uwajima"
+    },
+    {
+      "id": "uw-024a5716dc03",
+      "rule_profile_id": "uwajima"
+    },
+    {
+      "id": "uw-d0e287caa202",
+      "rule_profile_id": "uwajima"
+    },
+    {
+      "id": "uw-3dc513a219b3",
+      "rule_profile_id": "uwajima"
+    },
+    {
+      "id": "uw-7a787a465d19",
+      "rule_profile_id": "uwajima"
+    },
+    {
+      "id": "uw-c47974bc9c86",
+      "rule_profile_id": "uwajima"
+    },
+    {
+      "id": "uw-89f6a6e28da4",
+      "rule_profile_id": "uwajima"
+    },
+    {
+      "id": "uw-c7174c298d27",
+      "rule_profile_id": "uwajima"
+    },
+    {
+      "id": "uw-4a2872bd036f",
+      "rule_profile_id": "yoshida"
+    },
+    {
+      "id": "uw-7d5f4a1e4197",
+      "rule_profile_id": "yoshida"
+    },
+    {
+      "id": "uw-230367c51d91",
+      "rule_profile_id": "yoshida"
+    },
+    {
+      "id": "uw-4fa041cc0414",
+      "rule_profile_id": "yoshida"
+    },
+    {
+      "id": "uw-83bce854313d",
+      "rule_profile_id": "yoshida"
+    },
+    {
+      "id": "uw-5f80bcfa6347",
+      "rule_profile_id": "yoshida"
+    },
+    {
+      "id": "uw-f092c0b9f006",
+      "rule_profile_id": "mima"
+    },
+    {
+      "id": "uw-9b7e0731a13e",
+      "rule_profile_id": "mima"
+    },
+    {
+      "id": "uw-6061e2371486",
+      "rule_profile_id": "mima"
+    },
+    {
+      "id": "uw-76374e912a04",
+      "rule_profile_id": "mima"
+    },
+    {
+      "id": "uw-1ebd062d2252",
+      "rule_profile_id": "mima"
+    },
+    {
+      "id": "uw-bff7cbb03cbe",
+      "rule_profile_id": "mima"
+    },
+    {
+      "id": "uw-c2bf0aac2d5c",
+      "rule_profile_id": "tsushima"
+    },
+    {
+      "id": "uw-e0ae0aa14f67",
+      "rule_profile_id": "tsushima"
+    },
+    {
+      "id": "uw-8318c70633e2",
+      "rule_profile_id": "tsushima"
+    },
+    {
+      "id": "uw-5386bb4ba01e",
+      "rule_profile_id": "tsushima"
+    },
+    {
+      "id": "uw-a38b554aaa6d",
+      "rule_profile_id": "tsushima"
+    },
+    {
+      "id": "uw-006afbe5a906",
+      "rule_profile_id": "tsushima"
+    },
+    {
+      "id": "uw-adf79fafaa8d",
+      "rule_profile_id": "tsushima_islands"
+    }
+  ]
+}
