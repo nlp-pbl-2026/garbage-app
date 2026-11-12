@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/foundation.dart' show FlutterError;
 import 'package:flutter/services.dart' show AssetBundle, rootBundle;
 import '../models/garbage_item.dart';
 import '../models/collection_status.dart';
@@ -10,6 +11,22 @@ class MunicipalityDataService {
       : _bundle = bundle ?? rootBundle;
   final AssetBundle _bundle;
   final Map<String, Future<Map<String, dynamic>>> _files = {};
+
+  Future<String?> snapshotVersion() async {
+    Map<String, dynamic> manifest;
+    try {
+      manifest = await _load('assets/data/frontend_data_manifest.json');
+    } on FlutterError {
+      return null; // Compatibility for older bundled apps without a manifest.
+    }
+    final version = manifest['dataset_version'];
+    if (manifest['schema_version'] != 1 ||
+        version is! String ||
+        !RegExp(r'^[0-9a-f]{64}$').hasMatch(version)) {
+      throw const FormatException('Invalid UI dataset manifest');
+    }
+    return version;
+  }
 
   Future<Map<String, dynamic>> _load(String path) => _files.putIfAbsent(
       path,

@@ -2,8 +2,9 @@
 set -euo pipefail
 
 PROJECT_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
-BUILD_DIR="${PROJECT_ROOT}/backend/dist/lambda-build"
-ZIP_PATH="${PROJECT_ROOT}/backend/dist/backend-lambda.zip"
+DIST_DIR="${BACKEND_PACKAGE_DIST_DIR:-${PROJECT_ROOT}/backend/dist}"
+BUILD_DIR="${DIST_DIR}/lambda-build"
+ZIP_PATH="${DIST_DIR}/backend-lambda.zip"
 
 # Both clients must ship the same reviewed dates, even if assets were edited
 # after the last data build. The full official-source gate is documented in
@@ -27,6 +28,7 @@ cp "${PROJECT_ROOT}/backend/app/schemas.py" "${BUILD_DIR}/app/"
 cp "${PROJECT_ROOT}/backend/app/lambda_main.py" "${BUILD_DIR}/app/"
 cp "${PROJECT_ROOT}/backend/app/routers/__init__.py" "${BUILD_DIR}/app/routers/"
 cp "${PROJECT_ROOT}/backend/app/routers/search_router.py" "${BUILD_DIR}/app/routers/"
+cp "${PROJECT_ROOT}/backend/app/routers/frontend_data_router.py" "${BUILD_DIR}/app/routers/"
 cp "${PROJECT_ROOT}/backend/app/services/__init__.py" "${BUILD_DIR}/app/services/"
 cp "${PROJECT_ROOT}/backend/app/services/calendar_service.py" "${BUILD_DIR}/app/services/"
 cp "${PROJECT_ROOT}/backend/app/services/search_log_service.py" "${BUILD_DIR}/app/services/"
@@ -37,6 +39,8 @@ cp "${PROJECT_ROOT}/backend/app/services/nakajima_search_service.py" "${BUILD_DI
 cp "${PROJECT_ROOT}/backend/app/services/nakajima_rule_service.py" "${BUILD_DIR}/app/services/"
 cp "${PROJECT_ROOT}/backend/app/services/matsuyama_prompt_rules.py" "${BUILD_DIR}/app/services/"
 cp "${PROJECT_ROOT}/backend/app/services/waste_guide_service.py" "${BUILD_DIR}/app/services/"
+cp "${PROJECT_ROOT}/backend/app/services/frontend_data_service.py" "${BUILD_DIR}/app/services/"
+cp "${PROJECT_ROOT}/backend/app/services/frontend_data_contract.py" "${BUILD_DIR}/app/services/"
 
 PYTHONDONTWRITEBYTECODE=1 python3 "${PROJECT_ROOT}/scripts/package_backend_data.py" "${BUILD_DIR}"
 

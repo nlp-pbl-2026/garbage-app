@@ -15,6 +15,7 @@ sys.path.insert(0, str(ROOT / "backend"))
 
 from app.services.calendar_service import CalendarService
 from app.services.region_registry_service import MunicipalityCatalog, RegionRegistry
+from app.services.frontend_data_service import declared_addresses, policy_path, build_snapshot
 
 
 def runtime_files(catalog_path: Path) -> set[Path]:
@@ -30,6 +31,9 @@ def runtime_files(catalog_path: Path) -> set[Path]:
         if registry.data["municipality_id"] != municipality_id:
             raise ValueError("Catalog/registry municipality mismatch")
         files.add(path)
+        addresses = declared_addresses(catalog, municipality_id)
+        if addresses is not None:
+            files.add(addresses)
         for profile_id, profile in registry.profiles.items():
             manifest_path = profile.items_path.parent / "index_manifest.json"
             manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
@@ -62,6 +66,11 @@ def runtime_files(catalog_path: Path) -> set[Path]:
                 raise ValueError(f"Calendar is not verified: {municipality_id}/{area['id']}")
         if municipality_id == "38201" and "nakajima" in registry.profiles:
             files.add(path.parent / "generated/nakajima_items.csv")
+    if "frontend_export_policy_path" in json.loads(catalog_path.read_text()):
+        files.add(policy_path(catalog_path))
+        # Check the UI contract, including all declared official address tables.
+        # This does not approve redistribution or enable the public API.
+        build_snapshot(catalog_path)
     for source in files:
         if not source.is_file() or not source.resolve().is_relative_to(catalog_path.parent.resolve()):
             raise ValueError(f"Missing or out-of-directory runtime data: {source}")

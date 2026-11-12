@@ -24,6 +24,7 @@ from ..schemas import (
     WasteGuideResponse,
 )
 from ..services.item_search_service import ItemSearchService
+from ..services.frontend_data_service import build_snapshot, default_catalog_path
 from ..services.nakajima_search_service import NakajimaSearchService
 from ..services.region_registry_service import (
     RegionResolutionError, RegionalDataError, UnsupportedMunicipalityError, get_registry,
@@ -40,6 +41,18 @@ from ..services.waste_guide_service import (
 
 logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/api/search", tags=["search"])
+
+
+async def _check_ui_version(request):
+    # Optional for legacy clients. Check before any chargeable model operation.
+    if request.ui_dataset_version is None:
+        return
+    try:
+        manifest, _ = await asyncio.to_thread(build_snapshot, default_catalog_path())
+    except (OSError, ValueError, KeyError, TypeError):
+        raise HTTPException(status_code=503, detail="画面用データの版を確認できません。") from None
+    if request.ui_dataset_version != manifest["dataset_version"]:
+        raise HTTPException(status_code=409, detail="地域の情報が更新されています。アプリを最新版に更新してからお試しください。")
 
 
 def _image_input(request: WasteGuideRequest) -> ImageInput | None:
@@ -76,6 +89,7 @@ async def _run_step(operation):
 async def rewrite_search_query(request: WasteGuideRequest) -> SearchRewriteResponse:
     """Nova Liteで曖昧な質問を地域資料向けの検索文へ言い換える。"""
 
+    await _check_ui_version(request)
     clarifications = [item.model_dump() for item in request.clarifications]
     rewritten = await _run_step(
         lambda: WasteGuideService().rewrite(
@@ -95,6 +109,7 @@ async def retrieve_regional_documents(
 ) -> SearchRetrieveResponse:
     """選択した自治体・分別設定の根拠を取得する。"""
 
+    await _check_ui_version(request)
     documents = await _run_step(
         lambda: WasteGuideService().retrieve(
             rewritten_query=request.rewritten_query,
@@ -119,6 +134,7 @@ async def retrieve_regional_documents(
 async def decide_waste(request: SearchDecisionRequest) -> WasteGuideResponse:
     """Nova Liteで分類し、カレンダーを照合して検索ログを保存する。"""
 
+    await _check_ui_version(request)
     service = WasteGuideService()
     started_at = monotonic()
     clarification_items = [item.model_dump() for item in request.clarifications]
@@ -154,6 +170,7 @@ async def decide_waste(request: SearchDecisionRequest) -> WasteGuideResponse:
 async def classify_waste(request: WasteGuideRequest) -> WasteGuideResponse:
     """一件の質問を分類し、回答または一つの追加質問を返す。"""
 
+    await _check_ui_version(request)
     service = WasteGuideService()
     started_at = monotonic()
     clarification_items = [item.model_dump() for item in request.clarifications]

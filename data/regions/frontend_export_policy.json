@@ -1,0 +1,126 @@
+{
+  "schema_version": 1,
+  "scope": "flutter_ui_json_redistribution",
+  "municipalities": {
+    "38201": {
+      "status": "pending",
+      "evidence_url": null,
+      "reviewed_by": null,
+      "reviewed_on": null
+    },
+    "38204": {
+      "status": "pending",
+      "evidence_url": null,
+      "reviewed_by": null,
+      "reviewed_on": null
+    },
+    "38210": {
+      "status": "pending",
+      "evidence_url": null,
+      "reviewed_by": null,
+      "reviewed_on": null
+    },
+    "38442": {
+      "status": "pending",
+      "evidence_url": null,
+      "reviewed_by": null,
+      "reviewed_on": null
+    },
+    "38205": {
+      "status": "pending",
+      "evidence_url": null,
+      "reviewed_by": null,
+      "reviewed_on": null
+    },
+    "38207": {
+      "status": "pending",
+      "evidence_url": null,
+      "reviewed_by": null,
+      "reviewed_on": null
+    },
+    "38402": {
+      "status": "pending",
+      "evidence_url": null,
+      "reviewed_by": null,
+      "reviewed_on": null
+    },
+    "38506": {
+      "status": "pending",
+      "evidence_url": null,
+      "reviewed_by": null,
+      "reviewed_on": null
+    },
+    "38488": {
+      "status": "pending",
+      "evidence_url": null,
+      "reviewed_by": null,
+      "reviewed_on": null
+    },
+    "38484": {
+      "status": "pending",
+      "evidence_url": null,
+      "reviewed_by": null,
+      "reviewed_on": null
+    },
+    "38422": {
+      "status": "pending",
+      "evidence_url": null,
+      "reviewed_by": null,
+      "reviewed_on": null
+    },
+    "38401": {
+      "status": "pending",
+      "evidence_url": null,
+      "reviewed_by": null,
+      "reviewed_on": null
+    },
+    "38215": {
+      "status": "pending",
+      "evidence_url": null,
+      "reviewed_by": null,
+      "reviewed_on": null
+    },
+    "38356": {
+      "status": "pending",
+      "evidence_url": null,
+      "reviewed_by": null,
+      "reviewed_on": null
+    },
+    "38213": {
+      "status": "pending",
+      "evidence_url": null,
+      "reviewed_by": null,
+      "reviewed_on": null
+    },
+    "38214": {
+      "status": "pending",
+      "evidence_url": null,
+      "reviewed_by": null,
+      "reviewed_on": null
+    },
+    "38386": {
+      "status": "pending",
+      "evidence_url": null,
+      "reviewed_by": null,
+      "reviewed_on": null
+    },
+    "38206": {
+      "status": "pending",
+      "evidence_url": null,
+      "reviewed_by": null,
+      "reviewed_on": null
+    },
+    "38202": {
+      "status": "pending",
+      "evidence_url": null,
+      "reviewed_by": null,
+      "reviewed_on": null
+    },
+    "38203": {
+      "status": "pending",
+      "evidence_url": null,
+      "reviewed_by": null,
+      "reviewed_on": null
+    }
+  }
+}

@@ -162,6 +162,7 @@ class WasteGuideRequest(BaseModel):
     """ごみ分別検索リクエスト。会話履歴は保持せず、必要な補足だけを渡す。"""
 
     query: str = Field(default="", max_length=500)
+    ui_dataset_version: str | None = Field(default=None, pattern=r"^[0-9a-f]{64}$")
     image: SearchImage | None = None
     municipality_id: str = "38201"
     municipality_name: str = "松山市"
@@ -242,6 +243,7 @@ class SearchRetrieveRequest(BaseModel):
     """地域資料検索の入力。"""
 
     rewritten_query: str = Field(min_length=1, max_length=500)
+    ui_dataset_version: str | None = Field(default=None, pattern=r"^[0-9a-f]{64}$")
     municipality_id: str = "38201"
     district_id: str = "38201-08"
 
