@@ -67,40 +67,49 @@ class _RegionSelectionScreenState extends ConsumerState<RegionSelectionScreen> {
     if (_isSaving) return;
     setState(() => _isSaving = true);
 
-    final setting = RegionSetting(
-            prefectureId: prefecture.id,
-            prefectureName: prefecture.name,
-            municipalityId: municipality.id,
-            municipalityName: municipality.name,
-            districtId: district.id,
-            districtName: district.name,
-          );
-    await ref.read(regionSettingProvider.notifier).saveSetting(setting);
-    var notificationUpdated = false;
-    if (widget.updateActiveSavedRegion) {
-      final active = await ref.read(multiRegionServiceProvider).getActiveRegion();
-      if (active != null) {
-        await ref.read(multiRegionProvider.notifier).replaceRegionSetting(active.id, setting);
-        notificationUpdated = true;
-      }
-    }
     try {
-      if (!notificationUpdated) {
-        await ref
-            .read(notificationServiceProvider)
-            .updateDistrict(district.id, municipalityId: municipality.id);
+      final setting = RegionSetting(
+        prefectureId: prefecture.id,
+        prefectureName: prefecture.name,
+        municipalityId: municipality.id,
+        municipalityName: municipality.name,
+        districtId: district.id,
+        districtName: district.name,
+      );
+      await ref.read(regionSettingProvider.notifier).saveSetting(setting);
+      var notificationUpdated = false;
+      if (widget.updateActiveSavedRegion) {
+        final active =
+            await ref.read(multiRegionServiceProvider).getActiveRegion();
+        if (active != null) {
+          await ref
+              .read(multiRegionProvider.notifier)
+              .replaceRegionSetting(active.id, setting);
+          notificationUpdated = true;
+        }
       }
-    } catch (_) {
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('地域は保存しましたが、通知を再設定できませんでした。通知設定を確認してください。')),
-        );
+      try {
+        if (!notificationUpdated) {
+          await ref
+              .read(notificationServiceProvider)
+              .updateDistrict(district.id, municipalityId: municipality.id);
+        }
+      } catch (_) {
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+                content: Text(
+                    '地域は保存しましたが、通知を再設定できませんでした。通知設定を確認してください。')),
+          );
+        }
       }
-    }
 
-    if (!mounted) return;
-    setState(() => _isSaving = false);
-    widget.onRegionSelected?.call();
+      if (!mounted) return;
+      widget.onRegionSelected?.call();
+    } finally {
+      // 画面が unmounted になった場合でも _isSaving を必ずリセットする
+      if (mounted) setState(() => _isSaving = false);
+    }
   }
 
   Future<void> _useRecommendedRegion() =>
