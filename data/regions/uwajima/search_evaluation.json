@@ -92,7 +92,1350 @@
           "backend/app/services/embedding_search_service.py": "b68a0b6753ed747c36a7d68ff0fe699fd509e59b70c05ed44cfdeb2104dd1be5",
           "backend/app/services/calendar_service.py": "17bf8a76dfbe927ebe80e2095e1abb7f1e82c3af0e5ba30a8f31470190cee0db"
         }
-      }
+      },
+      "case_results": [
+        {
+          "case": 1,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "水を切った野菜くず",
+            "category_code": "burnable",
+            "category_name": "燃えるごみ",
+            "disposal_instructions": "根拠に基づく出し方と注意点: 市指定の燃えるごみ袋。生ごみは水切り。通常収集に出すプラスチックも燃えるごみ。指定袋に入り口を結べる範囲。",
+            "confidence": 0.95
+          },
+          "answer": "水を切った野菜くずは「燃えるごみ」です。\n根拠に基づく出し方と注意点: 市指定の燃えるごみ袋。生ごみは水切り。通常収集に出すプラスチックも燃えるごみ。指定袋に入り口を結べる範囲。\n宇和島地区 → 青葉台地区の次回収集日は2026年4月1日（水）です。\n収集日の午前8時30分までに、地区で決められた場所へ。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-04-01",
+            "display_date": "2026年4月1日（水）",
+            "collection_type": "燃えるごみ"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0744",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0814",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0469"
+          ]
+        },
+        {
+          "case": 2,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+            "category_code": "pet",
+            "category_name": "ペットボトル",
+            "disposal_instructions": "PETマークのある飲料・食品用ボトル本体。キャップとラベルを外し中をすすいで指定袋へ。外したプラスチック製キャップ・ラベルは燃えるごみ又はきれいなプラスチックの拠点回収。本体と付属品の分類を混同しない。汚れのひどいものは燃えるごみ。",
+            "confidence": 0.95
+          },
+          "answer": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体は「ペットボトル」です。\nPETマークのある飲料・食品用ボトル本体。キャップとラベルを外し中をすすいで指定袋へ。外したプラスチック製キャップ・ラベルは燃えるごみ又はきれいなプラスチックの拠点回収。本体と付属品の分類を混同しない。汚れのひどいものは燃えるごみ。\n宇和島地区 → 青葉台地区の次回収集日は2026年4月3日（金）です。\n収集日の午前8時30分までに、地区で決められた場所へ。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-04-03",
+            "display_date": "2026年4月3日（金）",
+            "collection_type": "ペットボトル"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0926",
+            "regional://38203/uwajima/uwajima-2026.1/items/uw-example-005",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0439"
+          ]
+        },
+        {
+          "case": 3,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "洗っても汚れが落ちない飲料用ペットボトル本体",
+            "category_code": "burnable",
+            "category_name": "燃えるごみ",
+            "disposal_instructions": "PETマークのある飲料・食品用ボトル本体。キャップとラベルを外し中をすすいで指定袋へ。外したプラスチック製キャップ・ラベルは燃えるごみ又はきれいなプラスチックの拠点回収。本体と付属品の分類を混同しない。汚れのひどいものは燃えるごみ。",
+            "confidence": 0.95
+          },
+          "answer": "洗っても汚れが落ちない飲料用ペットボトル本体は「燃えるごみ」です。\nPETマークのある飲料・食品用ボトル本体。キャップとラベルを外し中をすすいで指定袋へ。外したプラスチック製キャップ・ラベルは燃えるごみ又はきれいなプラスチックの拠点回収。本体と付属品の分類を混同しない。汚れのひどいものは燃えるごみ。\n宇和島地区 → 青葉台地区の次回収集日は2026年4月1日（水）です。\n収集日の午前8時30分までに、地区で決められた場所へ。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-04-01",
+            "display_date": "2026年4月1日（水）",
+            "collection_type": "燃えるごみ"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0926",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0439",
+            "regional://38203/uwajima/uwajima-2026.1/items/uw-example-005"
+          ]
+        },
+        {
+          "case": 4,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "ペットボトルから取り外して水洗いし乾かしたプラスチック製キャップ",
+            "category_code": "burnable",
+            "category_name": "燃えるごみ",
+            "disposal_instructions": "市指定の燃えるごみ袋。生ごみは水切り。通常収集に出すプラスチックも燃えるごみ。指定袋に入り口を結べる範囲。",
+            "confidence": 0.95
+          },
+          "answer": "ペットボトルから取り外して水洗いし乾かしたプラスチック製キャップは「燃えるごみ」です。\n市指定の燃えるごみ袋。生ごみは水切り。通常収集に出すプラスチックも燃えるごみ。指定袋に入り口を結べる範囲。\n宇和島地区 → 青葉台地区の次回収集日は2026年4月1日（水）です。\n収集日の午前8時30分までに、地区で決められた場所へ。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-04-01",
+            "display_date": "2026年4月1日（水）",
+            "collection_type": "燃えるごみ"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/uw-example-006",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0235",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0236"
+          ]
+        },
+        {
+          "case": 5,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "ペットボトルから取り外して洗い乾かしたプラスチック製ラベル",
+            "category_code": "burnable",
+            "category_name": "燃えるごみ",
+            "disposal_instructions": "外したプラスチック製ラベルは燃えるごみ。洗って乾燥させれば容器包装プラスチックの拠点回収も利用できる。",
+            "confidence": 0.95
+          },
+          "answer": "ペットボトルから取り外して洗い乾かしたプラスチック製ラベルは「燃えるごみ」です。\n外したプラスチック製ラベルは燃えるごみ。洗って乾燥させれば容器包装プラスチックの拠点回収も利用できる。\n宇和島地区 → 青葉台地区の次回収集日は2026年4月1日（水）です。\n収集日の午前8時30分までに、地区で決められた場所へ。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-04-01",
+            "display_date": "2026年4月1日（水）",
+            "collection_type": "燃えるごみ"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/uw-example-007",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0927",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0439"
+          ]
+        },
+        {
+          "case": 6,
+          "passed": false,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "洗って汚れを落として乾燥させた20cmの食品トレーを資源拠点へ持ち込みたい",
+            "category_code": "burnable",
+            "category_name": "燃えるごみ",
+            "disposal_instructions": "市指定の燃えるごみ袋。生ごみは水切り。通常収集に出すプラスチックも燃えるごみ。指定袋に入り口を結べる範囲。",
+            "confidence": 0.9
+          },
+          "answer": "洗って汚れを落として乾燥させた20cmの食品トレーを資源拠点へ持ち込みたいは「燃えるごみ」です。\n市指定の燃えるごみ袋。生ごみは水切り。通常収集に出すプラスチックも燃えるごみ。指定袋に入り口を結べる範囲。\n宇和島地区 → 青葉台地区の次回収集日は2026年4月1日（水）です。\n収集日の午前8時30分までに、地区で決められた場所へ。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-04-01",
+            "display_date": "2026年4月1日（水）",
+            "collection_type": "燃えるごみ"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0465",
+            "regional://38203/uwajima/uwajima-2026.1/items/uw-example-001",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0730"
+          ]
+        },
+        {
+          "case": 7,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "汚れが落ちないプラスチック製の食品トレー、指定袋に入ります",
+            "category_code": "burnable",
+            "category_name": "燃えるごみ",
+            "disposal_instructions": "市指定の燃えるごみ袋。生ごみは水切り。通常収集に出すプラスチックも燃えるごみ。指定袋に入り口を結べる範囲。",
+            "confidence": 0.9
+          },
+          "answer": "汚れが落ちないプラスチック製の食品トレー、指定袋に入りますは「燃えるごみ」です。\n市指定の燃えるごみ袋。生ごみは水切り。通常収集に出すプラスチックも燃えるごみ。指定袋に入り口を結べる範囲。\n宇和島地区 → 青葉台地区の次回収集日は2026年4月1日（水）です。\n収集日の午前8時30分までに、地区で決められた場所へ。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-04-01",
+            "display_date": "2026年4月1日（水）",
+            "collection_type": "燃えるごみ"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0730",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0465",
+            "regional://38203/uwajima/uwajima-2026.1/items/uw-example-002"
+          ]
+        },
+        {
+          "case": 8,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "プラスチック100%のバケツ",
+            "category_code": "clean_plastics",
+            "category_name": "きれいなプラスチック（拠点回収）",
+            "disposal_instructions": "洗って汚れを落とし乾燥させ、一辺50cm未満のもの。容器包装と製品は別のかごへ。製品は100％プラスチックに限り、金属・木・ゴム等の異素材入り、事業系、汚れたものは対象外。通常収集の燃えるごみも利用できる。市民サービスセンター9:45～18:30・商工会議所8:30～17:00は容器包装のみ。製品は本庁・各支所・住吉/石応/清満/下灘公民館などの対象拠点へ。随時持込の受付を定期収集日にしない。",
+            "confidence": 0.95
+          },
+          "answer": "プラスチック100%のバケツは「きれいなプラスチック（拠点回収）」です。\n洗って汚れを落とし乾燥させ、一辺50cm未満のもの。容器包装と製品は別のかごへ。製品は100％プラスチックに限り、金属・木・ゴム等の異素材入り、事業系、汚れたものは対象外。通常収集の燃えるごみも利用できる。市民サービスセンター9:45～18:30・商工会議所8:30～17:00は容器包装のみ。製品は本庁・各支所・住吉/石応/清満/下灘公民館などの対象拠点へ。随時持込の受付を定期収集日にしない。\n洗って汚れを落とし乾燥させ、一辺50cm未満のもの。容器包装と製品は別のかごへ。製品は100％プラスチックに限り、金属・木・ゴム等の異素材入り、事業系、汚れたものは対象外。通常収集の燃えるごみも利用できる。市民サービスセンター9:45～18:30・商工会議所8:30～17:00は容器包装のみ。製品は本庁・各支所・住吉/石応/清満/下灘公民館などの対象拠点へ。随時持込の受付を定期収集日にしない。",
+          "follow_up_question": null,
+          "next_collection": null,
+          "collection_status": {
+            "status": "not_scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/uw-example-003",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0793",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0995"
+          ]
+        },
+        {
+          "case": 9,
+          "passed": false,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "プラスチック100%のバケツ",
+            "category_code": "clean_plastics",
+            "category_name": "きれいなプラスチック（拠点回収）",
+            "disposal_instructions": "洗って汚れを落とし乾燥させ、一辺50cm未満のもの。容器包装と製品は別のかごへ。製品は100％プラスチックに限り、金属・木・ゴム等の異素材入り、事業系、汚れたものは対象外。通常収集の燃えるごみも利用できる。市民サービスセンター9:45～18:30・商工会議所8:30～17:00は容器包装のみ。製品は本庁・各支所・住吉/石応/清満/下灘公民館などの対象拠点へ。随時持込の受付を定期収集日にしない。",
+            "confidence": 0.95
+          },
+          "answer": "プラスチック100%のバケツは「きれいなプラスチック（拠点回収）」です。\n洗って汚れを落とし乾燥させ、一辺50cm未満のもの。容器包装と製品は別のかごへ。製品は100％プラスチックに限り、金属・木・ゴム等の異素材入り、事業系、汚れたものは対象外。通常収集の燃えるごみも利用できる。市民サービスセンター9:45～18:30・商工会議所8:30～17:00は容器包装のみ。製品は本庁・各支所・住吉/石応/清満/下灘公民館などの対象拠点へ。随時持込の受付を定期収集日にしない。\n洗って汚れを落とし乾燥させ、一辺50cm未満のもの。容器包装と製品は別のかごへ。製品は100％プラスチックに限り、金属・木・ゴム等の異素材入り、事業系、汚れたものは対象外。通常収集の燃えるごみも利用できる。市民サービスセンター9:45～18:30・商工会議所8:30～17:00は容器包装のみ。製品は本庁・各支所・住吉/石応/清満/下灘公民館などの対象拠点へ。随時持込の受付を定期収集日にしない。",
+          "follow_up_question": null,
+          "next_collection": null,
+          "collection_status": {
+            "status": "not_scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/uw-example-003",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0793",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0404"
+          ]
+        },
+        {
+          "case": 10,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "プラスチック100%のバケツ",
+            "category_code": "bulky",
+            "category_name": "粗大ごみ（直接搬入・許可業者）",
+            "disposal_instructions": "洗って汚れを落とし乾燥させ、一辺50cm未満のもの。容器包装と製品は別のかごへ。製品は100％プラスチックに限り、金属・木・ゴム等の異素材入り、事業系、汚れたものは対象外。通常収集の燃えるごみも利用できる。市民サービスセンター9:45～18:30・商工会議所8:30～17:00は容器包装のみ。製品は本庁・各支所・住吉/石応/清満/下灘公民館などの対象拠点へ。随時持込の受付を定期収集日にしない。",
+            "confidence": 0.95
+          },
+          "answer": "プラスチック100%のバケツは「粗大ごみ（直接搬入・許可業者）」です。\n洗って汚れを落とし乾燥させ、一辺50cm未満のもの。容器包装と製品は別のかごへ。製品は100％プラスチックに限り、金属・木・ゴム等の異素材入り、事業系、汚れたものは対象外。通常収集の燃えるごみも利用できる。市民サービスセンター9:45～18:30・商工会議所8:30～17:00は容器包装のみ。製品は本庁・各支所・住吉/石応/清満/下灘公民館などの対象拠点へ。随時持込の受付を定期収集日にしない。\n市の定期収集・戸別収集はありません。指定袋に入らないものは環境センターへ直接搬入、又は一般廃棄物収集運搬許可業者へ依頼。家庭ごみは10kg50円、月～土13:00～16:30、祝日・年末年始休み。搬入不可の品目は販売店等へ。収集予定は自動生成しない。",
+          "follow_up_question": null,
+          "next_collection": null,
+          "collection_status": {
+            "status": "not_scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/uw-example-003",
+            "regional://38203/uwajima/uwajima-2026.1/items/uw-example-004",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0793"
+          ]
+        },
+        {
+          "case": 11,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "金属製バケツ",
+            "category_code": "non_burnable",
+            "category_name": "燃えないごみ",
+            "disposal_instructions": "指定の燃えないごみ袋。刃物・割れ物は紙等で包み「キケン」と表示。電池は外す。外せない充電池内蔵製品は無理に分解せず充電池回収拠点へ。",
+            "confidence": 0.95
+          },
+          "answer": "金属製バケツは「燃えないごみ」です。\n指定の燃えないごみ袋。刃物・割れ物は紙等で包み「キケン」と表示。電池は外す。外せない充電池内蔵製品は無理に分解せず充電池回収拠点へ。\n宇和島地区 → 青葉台地区の次回収集日は2026年4月3日（金）です。\n収集日の午前8時30分までに、地区で決められた場所へ。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-04-03",
+            "display_date": "2026年4月3日（金）",
+            "collection_type": "燃えないごみ"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0249",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0793",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0043"
+          ]
+        },
+        {
+          "case": 12,
+          "passed": true,
+          "http": 200,
+          "actual_status": "needs_clarification",
+          "classification": null,
+          "answer": null,
+          "follow_up_question": "バケツは何製ですか？（木・プラスチック・金属など）",
+          "next_collection": null,
+          "collection_status": null,
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0793",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0995",
+            "regional://38203/uwajima/uwajima-2026.1/items/uw-example-003"
+          ]
+        },
+        {
+          "case": 13,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "バケツ",
+            "category_code": "non_burnable",
+            "category_name": "燃えないごみ",
+            "disposal_instructions": "金属製は不燃へ指定袋に入らなければ粗大へ",
+            "confidence": 0.95
+          },
+          "answer": "バケツは「燃えないごみ」です。\n金属製は不燃へ指定袋に入らなければ粗大へ\n宇和島地区 → 青葉台地区の次回収集日は2026年4月3日（金）です。\n収集日の午前8時30分までに、地区で決められた場所へ。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-04-03",
+            "display_date": "2026年4月3日（金）",
+            "collection_type": "燃えないごみ"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0793",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0348",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0349"
+          ]
+        },
+        {
+          "case": 14,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "中をすすいだジャムのガラスびん",
+            "category_code": "bottles_cans",
+            "category_name": "びん・缶",
+            "disposal_instructions": "中をすすいで指定袋へ。金属製ふたは不燃、プラスチック製ふたは可燃又は条件を満たす資源拠点へ。割れたびんも包み「キケン」と表示してびん・缶。スプレー缶・カセットボンベは中身を使い切り、風通しの良い安全な場所で穴を開ける。使い切れない場合は市へ相談。",
+            "confidence": 0.95
+          },
+          "answer": "中をすすいだジャムのガラスびんは「びん・缶」です。\n中をすすいで指定袋へ。金属製ふたは不燃、プラスチック製ふたは可燃又は条件を満たす資源拠点へ。割れたびんも包み「キケン」と表示してびん・缶。スプレー缶・カセットボンベは中身を使い切り、風通しの良い安全な場所で穴を開ける。使い切れない場合は市へ相談。\n宇和島地区 → 青葉台地区の次回収集日は2026年4月10日（金）です。\n収集日の午前8時30分までに、地区で決められた場所へ。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-04-10",
+            "display_date": "2026年4月10日（金）",
+            "collection_type": "びん・缶"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0430",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0858",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0437"
+          ]
+        },
+        {
+          "case": 15,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "割れた飲料のガラスびん",
+            "category_code": "bottles_cans",
+            "category_name": "びん・缶",
+            "disposal_instructions": "割れたびんもびん・缶。紙などに包み「キケン」と表示。ガラスの食器や耐熱ガラス・哺乳びんとは異なる。\n中をすすいで指定袋へ。金属製ふたは不燃、プラスチック製ふたは可燃又は条件を満たす資源拠点へ。割れたびんも包み「キケン」と表示してびん・缶。スプレー缶・カセットボンベは中身を使い切り、風通しの良い安全な場所で穴を開ける。使い切れない場合は市へ相談。",
+            "confidence": 1.0
+          },
+          "answer": "割れた飲料のガラスびんは「びん・缶」です。\n割れたびんもびん・缶。紙などに包み「キケン」と表示。ガラスの食器や耐熱ガラス・哺乳びんとは異なる。\n中をすすいで指定袋へ。金属製ふたは不燃、プラスチック製ふたは可燃又は条件を満たす資源拠点へ。割れたびんも包み「キケン」と表示してびん・缶。スプレー缶・カセットボンベは中身を使い切り、風通しの良い安全な場所で穴を開ける。使い切れない場合は市へ相談。\n宇和島地区 → 青葉台地区の次回収集日は2026年4月10日（金）です。\n収集日の午前8時30分までに、地区で決められた場所へ。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-04-10",
+            "display_date": "2026年4月10日（金）",
+            "collection_type": "びん・缶"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/uw-example-012",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0751",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0159"
+          ]
+        },
+        {
+          "case": 16,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "割れた耐熱ガラスの皿、指定袋に入ります",
+            "category_code": "non_burnable",
+            "category_name": "燃えないごみ",
+            "disposal_instructions": "指定の燃えないごみ袋。刃物・割れ物は紙等で包み「キケン」と表示。電池は外す。外せない充電池内蔵製品は無理に分解せず充電池回収拠点へ。",
+            "confidence": 0.9
+          },
+          "answer": "割れた耐熱ガラスの皿、指定袋に入りますは「燃えないごみ」です。\n指定の燃えないごみ袋。刃物・割れ物は紙等で包み「キケン」と表示。電池は外す。外せない充電池内蔵製品は無理に分解せず充電池回収拠点へ。\n宇和島地区 → 青葉台地区の次回収集日は2026年4月3日（金）です。\n収集日の午前8時30分までに、地区で決められた場所へ。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-04-03",
+            "display_date": "2026年4月3日（金）",
+            "collection_type": "燃えないごみ"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0568",
+            "regional://38203/uwajima/uwajima-2026.1/items/uw-example-013",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0206"
+          ]
+        },
+        {
+          "case": 17,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "使い切って安全な屋外で穴を開けたスプレー缶",
+            "category_code": "bottles_cans",
+            "category_name": "びん・缶",
+            "disposal_instructions": "中をすすいで指定袋へ。スプレー缶・カセットボンベは中身を使い切り、風通しの良い安全な場所で穴を開ける。使い切れない場合は市へ相談。",
+            "confidence": 0.95
+          },
+          "answer": "使い切って安全な屋外で穴を開けたスプレー缶は「びん・缶」です。\n中をすすいで指定袋へ。スプレー缶・カセットボンベは中身を使い切り、風通しの良い安全な場所で穴を開ける。使い切れない場合は市へ相談。\n宇和島地区 → 青葉台地区の次回収集日は2026年4月10日（金）です。\n収集日の午前8時30分までに、地区で決められた場所へ。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-04-10",
+            "display_date": "2026年4月10日（金）",
+            "collection_type": "びん・缶"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0522",
+            "regional://38203/uwajima/uwajima-2026.1/items/uw-example-011",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0456"
+          ]
+        },
+        {
+          "case": 18,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "ガスを完全に使い切った使い",
+            "category_code": "burnable",
+            "category_name": "燃えるごみ",
+            "disposal_instructions": "必ず使いきって出す\n市指定の燃えるごみ袋。生ごみは水切り。通常収集に出すプラスチックも燃えるごみ。指定袋に入り口を結べる範囲。",
+            "confidence": 0.9
+          },
+          "answer": "ガスを完全に使い切った使いは「燃えるごみ」です。\n必ず使いきって出す\n市指定の燃えるごみ袋。生ごみは水切り。通常収集に出すプラスチックも燃えるごみ。指定袋に入り口を結べる範囲。\n宇和島地区 → 青葉台地区の次回収集日は2026年4月1日（水）です。\n収集日の午前8時30分までに、地区で決められた場所へ。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-04-01",
+            "display_date": "2026年4月1日（水）",
+            "collection_type": "燃えるごみ"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0627",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-1067",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-1066"
+          ]
+        },
+        {
+          "case": 19,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "使い終わったモバイルバッテリー",
+            "category_code": "batteries",
+            "category_name": "電池類の拠点回収",
+            "disposal_instructions": "リチウムイオン電池は端子をテープで絶縁、使い切って透明な袋に入れ、市役所・支所等の充電池回収容器へ。可燃・不燃には入れない。",
+            "confidence": 0.95
+          },
+          "answer": "使い終わったモバイルバッテリーは「電池類の拠点回収」です。\nリチウムイオン電池は端子をテープで絶縁、使い切って透明な袋に入れ、市役所・支所等の充電池回収容器へ。可燃・不燃には入れない。\n一次電池と小型充電式電池は指定の拠点へ。ボタン・リチウム電池、充電池は端子を絶縁。充電池は使い切り透明な袋に入れる。取り外せない充電池内蔵製品は分解せず本体ごと市役所・支所の充電池回収へ。自動車・バイク・船舶用等の大型電池・鉛蓄電池は回収対象外。三間の乾電池は7月・1月第3水曜回収予定だが、確定日程の確認前は予定を作らず拠点を案内。",
+          "follow_up_question": null,
+          "next_collection": null,
+          "collection_status": {
+            "status": "not_scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/uw-example-008",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0808",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0809"
+          ]
+        },
+        {
+          "case": 20,
+          "passed": false,
+          "http": 200,
+          "actual_status": "needs_clarification",
+          "classification": null,
+          "answer": null,
+          "follow_up_question": "市の指定ごみ袋に入れて口を結べる大きさですか？",
+          "next_collection": null,
+          "collection_status": null,
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/uw-example-009",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0688",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0693"
+          ]
+        },
+        {
+          "case": 21,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "携帯電話本体",
+            "category_code": "non_burnable",
+            "category_name": "燃えないごみ",
+            "disposal_instructions": "充電池を取り外した携帯電話は個人情報を消去し指定袋に入れて燃えないごみ。外した充電池は別に拠点回収へ。",
+            "confidence": 0.95
+          },
+          "answer": "携帯電話本体は「燃えないごみ」です。\n充電池を取り外した携帯電話は個人情報を消去し指定袋に入れて燃えないごみ。外した充電池は別に拠点回収へ。\n宇和島地区 → 青葉台地区の次回収集日は2026年4月3日（金）です。\n収集日の午前8時30分までに、地区で決められた場所へ。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-04-03",
+            "display_date": "2026年4月3日（金）",
+            "collection_type": "燃えないごみ"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0302",
+            "regional://38203/uwajima/uwajima-2026.1/items/uw-example-010",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0687"
+          ]
+        },
+        {
+          "case": 22,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "使用済みのアルカリ乾電池",
+            "category_code": "batteries",
+            "category_name": "電池類の拠点回収",
+            "disposal_instructions": "指定の回収拠点へ。三間の集会所での乾電池回収は7月・1月第3水曜に予定されているが、確定日程は市に確認。拠点は随時利用できる。\n一次電池と小型充電式電池は指定の拠点へ。ボタン・リチウム電池、充電池は端子を絶縁。充電池は使い切り透明な袋に入れる。取り外せない充電池内蔵製品は分解せず本体ごと市役所・支所の充電池回収へ。自動車・バイク・船舶用等の大型電池・鉛蓄電池は回収対象外。三間の乾電池は7月・1月第3水曜回収予定だが、確定日程の確認前は予定を作らず拠点を案内。",
+            "confidence": 1.0
+          },
+          "answer": "使用済みのアルカリ乾電池は「電池類の拠点回収」です。\n指定の回収拠点へ。三間の集会所での乾電池回収は7月・1月第3水曜に予定されているが、確定日程は市に確認。拠点は随時利用できる。\n一次電池と小型充電式電池は指定の拠点へ。ボタン・リチウム電池、充電池は端子を絶縁。充電池は使い切り透明な袋に入れる。取り外せない充電池内蔵製品は分解せず本体ごと市役所・支所の充電池回収へ。自動車・バイク・船舶用等の大型電池・鉛蓄電池は回収対象外。三間の乾電池は7月・1月第3水曜回収予定だが、確定日程の確認前は予定を作らず拠点を案内。\n一次電池と小型充電式電池は指定の拠点へ。ボタン・リチウム電池、充電池は端子を絶縁。充電池は使い切り透明な袋に入れる。取り外せない充電池内蔵製品は分解せず本体ごと市役所・支所の充電池回収へ。自動車・バイク・船舶用等の大型電池・鉛蓄電池は回収対象外。三間の乾電池は7月・1月第3水曜回収予定だが、確定日程の確認前は予定を作らず拠点を案内。",
+          "follow_up_question": null,
+          "next_collection": null,
+          "collection_status": {
+            "status": "not_scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/uw-example-016",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0688",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0689"
+          ]
+        },
+        {
+          "case": 23,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "割れていない蛍光管",
+            "category_code": "dropoff",
+            "category_name": "資源の拠点回収",
+            "disposal_instructions": "割らずに市役所・支所等の蛍光管回収拠点へ。割れた蛍光管は紙等で包みキケン表示して不燃へ。\n品目ごとに回収可能な市役所・支所等へ持ち込む。拠点により対象・受付時間が異なる。定期ごみ収集日を付けない。",
+            "confidence": 1.0
+          },
+          "answer": "割れていない蛍光管は「資源の拠点回収」です。\n割らずに市役所・支所等の蛍光管回収拠点へ。割れた蛍光管は紙等で包みキケン表示して不燃へ。\n品目ごとに回収可能な市役所・支所等へ持ち込む。拠点により対象・受付時間が異なる。定期ごみ収集日を付けない。\n品目ごとに回収可能な市役所・支所等へ持ち込む。拠点により対象・受付時間が異なる。定期ごみ収集日を付けない。",
+          "follow_up_question": null,
+          "next_collection": null,
+          "collection_status": {
+            "status": "not_scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/uw-example-018",
+            "regional://38203/uwajima/uwajima-2026.1/items/uw-example-017",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0696"
+          ]
+        },
+        {
+          "case": 24,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "割れた蛍光管",
+            "category_code": "non_burnable",
+            "category_name": "燃えないごみ",
+            "disposal_instructions": "割れた蛍光管は紙などで包みキケンと表示し燃えないごみ。割れていない蛍光管は拠点回収。水銀体温計は割れても密封して拠点回収。\n指定の燃えないごみ袋。刃物・割れ物は紙等で包み「キケン」と表示。電池は外す。外せない充電池内蔵製品は無理に分解せず充電池回収拠点へ。",
+            "confidence": 1.0
+          },
+          "answer": "割れた蛍光管は「燃えないごみ」です。\n割れた蛍光管は紙などで包みキケンと表示し燃えないごみ。割れていない蛍光管は拠点回収。水銀体温計は割れても密封して拠点回収。\n指定の燃えないごみ袋。刃物・割れ物は紙等で包み「キケン」と表示。電池は外す。外せない充電池内蔵製品は無理に分解せず充電池回収拠点へ。\n宇和島地区 → 青葉台地区の次回収集日は2026年4月3日（金）です。\n収集日の午前8時30分までに、地区で決められた場所へ。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-04-03",
+            "display_date": "2026年4月3日（金）",
+            "collection_type": "燃えないごみ"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/uw-example-017",
+            "regional://38203/uwajima/uwajima-2026.1/items/uw-example-018",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0696"
+          ]
+        },
+        {
+          "case": 25,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "割れた水銀体温計",
+            "category_code": "dropoff",
+            "category_name": "資源の拠点回収",
+            "disposal_instructions": "市の回収場所へ出す出せない場合は不燃へ割れたものは紙等に包んで「キケン」と表示\n品目ごとに回収可能な市役所・支所等へ持ち込む。拠点により対象・受付時間が異なる。定期ごみ収集日を付けない。",
+            "confidence": 0.9
+          },
+          "answer": "割れた水銀体温計は「資源の拠点回収」です。\n市の回収場所へ出す出せない場合は不燃へ割れたものは紙等に包んで「キケン」と表示\n品目ごとに回収可能な市役所・支所等へ持ち込む。拠点により対象・受付時間が異なる。定期ごみ収集日を付けない。\n品目ごとに回収可能な市役所・支所等へ持ち込む。拠点により対象・受付時間が異なる。定期ごみ収集日を付けない。",
+          "follow_up_question": null,
+          "next_collection": null,
+          "collection_status": {
+            "status": "not_scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0565",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0564",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0482"
+          ]
+        },
+        {
+          "case": 26,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "家庭用の冷蔵庫",
+            "category_code": "not_collected",
+            "category_name": "市・環境センターで処理できない",
+            "disposal_instructions": "家電リサイクル法対象で市・環境センターでは処理できません。購入店・販売店等へ相談。\n販売店・専門業者等へ相談。テレビ、エアコン、冷蔵庫・冷凍庫、洗濯機・衣類乾燥機は家電リサイクル。産業廃棄物、危険物、土砂、スプリング入りマットレスなどは市で処理できない。通常収集日を付けない。",
+            "confidence": 0.9
+          },
+          "answer": "家庭用の冷蔵庫は「市・環境センターで処理できない」です。\n家電リサイクル法対象で市・環境センターでは処理できません。購入店・販売店等へ相談。\n販売店・専門業者等へ相談。テレビ、エアコン、冷蔵庫・冷凍庫、洗濯機・衣類乾燥機は家電リサイクル。産業廃棄物、危険物、土砂、スプリング入りマットレスなどは市で処理できない。通常収集日を付けない。\n販売店・専門業者等へ相談。テレビ、エアコン、冷蔵庫・冷凍庫、洗濯機・衣類乾燥機は家電リサイクル。産業廃棄物、危険物、土砂、スプリング入りマットレスなどは市で処理できない。通常収集日を付けない。",
+          "follow_up_question": null,
+          "next_collection": null,
+          "collection_status": {
+            "status": "not_scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/uw-example-019",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-1089",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-1088"
+          ]
+        },
+        {
+          "case": 27,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "スプリング入りマットレス",
+            "category_code": "not_collected",
+            "category_name": "市・環境センターで処理できない",
+            "disposal_instructions": "市・環境センターでは処理できません。販売店等へ相談。\n販売店・専門業者等へ相談。テレビ、エアコン、冷蔵庫・冷凍庫、洗濯機・衣類乾燥機は家電リサイクル。産業廃棄物、危険物、土砂、スプリング入りマットレスなどは市で処理できない。通常収集日を付けない。",
+            "confidence": 1.0
+          },
+          "answer": "スプリング入りマットレスは「市・環境センターで処理できない」です。\n市・環境センターでは処理できません。販売店等へ相談。\n販売店・専門業者等へ相談。テレビ、エアコン、冷蔵庫・冷凍庫、洗濯機・衣類乾燥機は家電リサイクル。産業廃棄物、危険物、土砂、スプリング入りマットレスなどは市で処理できない。通常収集日を付けない。\n販売店・専門業者等へ相談。テレビ、エアコン、冷蔵庫・冷凍庫、洗濯機・衣類乾燥機は家電リサイクル。産業廃棄物、危険物、土砂、スプリング入りマットレスなどは市で処理できない。通常収集日を付けない。",
+          "follow_up_question": null,
+          "next_collection": null,
+          "collection_status": {
+            "status": "not_scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/uw-example-015",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-1019",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-1020"
+          ]
+        },
+        {
+          "case": 28,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "指定ごみ袋に入らない大きな壊れた木製のたんす",
+            "category_code": "bulky",
+            "category_name": "粗大ごみ（直接搬入・許可業者）",
+            "disposal_instructions": "市の定期収集・戸別収集はありません。指定袋に入らないものは環境センターへ直接搬入、又は一般廃棄物収集運搬許可業者へ依頼。家庭ごみは10kg50円、月～土13:00～16:30、祝日・年末年始休み。搬入不可の品目は販売店等へ。収集予定は自動生成しない。",
+            "confidence": 0.9
+          },
+          "answer": "指定ごみ袋に入らない大きな壊れた木製のたんすは「粗大ごみ（直接搬入・許可業者）」です。\n市の定期収集・戸別収集はありません。指定袋に入らないものは環境センターへ直接搬入、又は一般廃棄物収集運搬許可業者へ依頼。家庭ごみは10kg50円、月～土13:00～16:30、祝日・年末年始休み。搬入不可の品目は販売店等へ。収集予定は自動生成しない。\n市の定期収集・戸別収集はありません。指定袋に入らないものは環境センターへ直接搬入、又は一般廃棄物収集運搬許可業者へ依頼。家庭ごみは10kg50円、月～土13:00～16:30、祝日・年末年始休み。搬入不可の品目は販売店等へ。収集予定は自動生成しない。",
+          "follow_up_question": null,
+          "next_collection": null,
+          "collection_status": {
+            "status": "not_scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0598",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0229",
+            "regional://38203/uwajima/uwajima-2026.1/items/uw-example-014"
+          ]
+        },
+        {
+          "case": 29,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "新聞紙",
+            "category_code": "paper",
+            "category_name": "古紙類",
+            "disposal_instructions": "ひもで縛る\n新聞、ダンボール、雑誌・雑がみ、飲料用紙パックを種類別に十文字にしばる。回収場所はごみステーションと異なる場合があるため自治会で確認。紙パックは洗い開いて乾燥。内側アルミは対象外。古紙の拠点回収も利用可能。",
+            "confidence": 1.0
+          },
+          "answer": "新聞紙は「古紙類」です。\nひもで縛る\n新聞、ダンボール、雑誌・雑がみ、飲料用紙パックを種類別に十文字にしばる。回収場所はごみステーションと異なる場合があるため自治会で確認。紙パックは洗い開いて乾燥。内側アルミは対象外。古紙の拠点回収も利用可能。\n古紙の回収区域・日程をこの収集地区だけでは確定できません。自治会又は市で確認し、古紙の拠点回収もご利用ください。\n収集日の午前8時30分までに、地区で決められた場所へ。",
+          "follow_up_question": null,
+          "next_collection": null,
+          "collection_status": {
+            "status": "unverified",
+            "message": "古紙の回収区域・日程をこの収集地区だけでは確定できません。自治会又は市で確認し、古紙の拠点回収もご利用ください。",
+            "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-u-shigen.html"
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0480",
+            "regional://38203/uwajima/uwajima-2026.1/items/uw-example-020",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0057"
+          ]
+        },
+        {
+          "case": 30,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "新聞紙",
+            "category_code": "paper",
+            "category_name": "古紙類",
+            "disposal_instructions": "ひもで縛る\n新聞、ダンボール、雑誌・雑がみ、飲料用紙パックを種類別に十文字にしばる。回収場所はごみステーションと異なる場合があるため自治会で確認。紙パックは洗い開いて乾燥。内側アルミは対象外。古紙の拠点回収も利用可能。",
+            "confidence": 1.0
+          },
+          "answer": "新聞紙は「古紙類」です。\nひもで縛る\n新聞、ダンボール、雑誌・雑がみ、飲料用紙パックを種類別に十文字にしばる。回収場所はごみステーションと異なる場合があるため自治会で確認。紙パックは洗い開いて乾燥。内側アルミは対象外。古紙の拠点回収も利用可能。\n三間地区 → 是能、コスモスタウン、曽根、成家、則、大藤地区の次回収集日は2026年4月1日（水）です。\n収集日の午前8時30分までに、地区で決められた場所へ。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-04-01",
+            "display_date": "2026年4月1日（水）",
+            "collection_type": "古紙類"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/mima/uwajima-2026.1/items/38203-0480",
+            "regional://38203/mima/uwajima-2026.1/items/uw-example-020",
+            "regional://38203/mima/uwajima-2026.1/items/38203-0057"
+          ]
+        },
+        {
+          "case": 31,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+            "category_code": "pet",
+            "category_name": "ペットボトル",
+            "disposal_instructions": "PETマークのある飲料・食品用ボトル本体。キャップとラベルを外し中をすすいで指定袋へ。外したプラスチック製キャップ・ラベルは燃えるごみ又はきれいなプラスチックの拠点回収。本体と付属品の分類を混同しない。汚れのひどいものは燃えるごみ。",
+            "confidence": 0.95
+          },
+          "answer": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体は「ペットボトル」です。\nPETマークのある飲料・食品用ボトル本体。キャップとラベルを外し中をすすいで指定袋へ。外したプラスチック製キャップ・ラベルは燃えるごみ又はきれいなプラスチックの拠点回収。本体と付属品の分類を混同しない。汚れのひどいものは燃えるごみ。\n吉田地区 → 吉田地区（橋上）地区の次回収集日は2026年4月8日（水）です。\n収集日の午前8時30分までに、地区で決められた場所へ。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-04-08",
+            "display_date": "2026年4月8日（水）",
+            "collection_type": "ペットボトル"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/yoshida/uwajima-2026.1/items/38203-0926",
+            "regional://38203/yoshida/uwajima-2026.1/items/uw-example-005",
+            "regional://38203/yoshida/uwajima-2026.1/items/38203-0439"
+          ]
+        },
+        {
+          "case": 32,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+            "category_code": "pet",
+            "category_name": "ペットボトル",
+            "disposal_instructions": "PETマークのある飲料・食品用ボトル本体。キャップとラベルを外し中をすすいで指定袋へ。外したプラスチック製キャップ・ラベルは燃えるごみ又はきれいなプラスチックの拠点回収。本体と付属品の分類を混同しない。汚れのひどいものは燃えるごみ。",
+            "confidence": 0.95
+          },
+          "answer": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体は「ペットボトル」です。\nPETマークのある飲料・食品用ボトル本体。キャップとラベルを外し中をすすいで指定袋へ。外したプラスチック製キャップ・ラベルは燃えるごみ又はきれいなプラスチックの拠点回収。本体と付属品の分類を混同しない。汚れのひどいものは燃えるごみ。\n津島地区 → 岩松地区の次回収集日は2026年4月1日（水）です。\n収集日の午前8時30分までに、地区で決められた場所へ。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-04-01",
+            "display_date": "2026年4月1日（水）",
+            "collection_type": "ペットボトル"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/tsushima/uwajima-2026.1/items/38203-0926",
+            "regional://38203/tsushima/uwajima-2026.1/items/uw-example-005",
+            "regional://38203/tsushima/uwajima-2026.1/items/38203-0439"
+          ]
+        },
+        {
+          "case": 33,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+            "category_code": "pet",
+            "category_name": "ペットボトル",
+            "disposal_instructions": "PETマークのある飲料・食品用ボトル本体。キャップとラベルを外し中をすすいで指定袋へ。外したプラスチック製キャップ・ラベルは燃えるごみ又はきれいなプラスチックの拠点回収。本体と付属品の分類を混同しない。汚れのひどいものは燃えるごみ。",
+            "confidence": 0.95
+          },
+          "answer": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体は「ペットボトル」です。\nPETマークのある飲料・食品用ボトル本体。キャップとラベルを外し中をすすいで指定袋へ。外したプラスチック製キャップ・ラベルは燃えるごみ又はきれいなプラスチックの拠点回収。本体と付属品の分類を混同しない。汚れのひどいものは燃えるごみ。\n三間地区 → 是能、コスモスタウン、曽根、成家、則、大藤地区の次回収集日は2026年4月3日（金）です。\n収集日の午前8時30分までに、地区で決められた場所へ。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-04-03",
+            "display_date": "2026年4月3日（金）",
+            "collection_type": "ペットボトル"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/mima/uwajima-2026.1/items/38203-0926",
+            "regional://38203/mima/uwajima-2026.1/items/uw-example-005",
+            "regional://38203/mima/uwajima-2026.1/items/38203-0439"
+          ]
+        },
+        {
+          "case": 34,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "水を切った生ごみ",
+            "category_code": "burnable",
+            "category_name": "燃えるごみ",
+            "disposal_instructions": "水分をきって\n市指定の燃えるごみ袋。生ごみは水切り。通常収集に出すプラスチックも燃えるごみ。指定袋に入り口を結べる範囲。",
+            "confidence": 0.9
+          },
+          "answer": "水を切った生ごみは「燃えるごみ」です。\n水分をきって\n市指定の燃えるごみ袋。生ごみは水切り。通常収集に出すプラスチックも燃えるごみ。指定袋に入り口を結べる範囲。\n宇和島地区 → 青葉台地区の次回収集日は2026年4月1日（水）です。\n収集日の午前8時30分までに、地区で決められた場所へ。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-04-01",
+            "display_date": "2026年4月1日（水）",
+            "collection_type": "燃えるごみ"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0744",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0745",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0746"
+          ]
+        },
+        {
+          "case": 35,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+            "category_code": "pet",
+            "category_name": "ペットボトル",
+            "disposal_instructions": "PETマークのある飲料・食品用ボトル本体。キャップとラベルを外し中をすすいで指定袋へ。外したプラスチック製キャップ・ラベルは燃えるごみ又はきれいなプラスチックの拠点回収。本体と付属品の分類を混同しない。汚れのひどいものは燃えるごみ。",
+            "confidence": 0.95
+          },
+          "answer": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体は「ペットボトル」です。\nPETマークのある飲料・食品用ボトル本体。キャップとラベルを外し中をすすいで指定袋へ。外したプラスチック製キャップ・ラベルは燃えるごみ又はきれいなプラスチックの拠点回収。本体と付属品の分類を混同しない。汚れのひどいものは燃えるごみ。\nペットボトルは「月末」と案内されていますが、具体的な日付は未確認です。自治会又は市へ確認してください。\n離島の搬出場所・船便・時刻は自治会又は市に確認してください。",
+          "follow_up_question": null,
+          "next_collection": null,
+          "collection_status": {
+            "status": "unverified",
+            "message": "ペットボトルは「月末」と案内されていますが、具体的な日付は未確認です。自治会又は市へ確認してください。",
+            "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-u-shushubi2026.html"
+          },
+          "source_uris": [
+            "regional://38203/uwajima_islands/uwajima-2026.1/items/uw-example-005",
+            "regional://38203/uwajima_islands/uwajima-2026.1/items/38203-0926"
+          ]
+        },
+        {
+          "case": 36,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+            "category_code": "pet",
+            "category_name": "ペットボトル",
+            "disposal_instructions": "PETマークのある飲料・食品用ボトル本体。キャップとラベルを外し中をすすいで指定袋へ。外したプラスチック製キャップ・ラベルは燃えるごみ又はきれいなプラスチックの拠点回収。本体と付属品の分類を混同しない。汚れのひどいものは燃えるごみ。",
+            "confidence": 0.95
+          },
+          "answer": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体は「ペットボトル」です。\nPETマークのある飲料・食品用ボトル本体。キャップとラベルを外し中をすすいで指定袋へ。外したプラスチック製キャップ・ラベルは燃えるごみ又はきれいなプラスチックの拠点回収。本体と付属品の分類を混同しない。汚れのひどいものは燃えるごみ。\nペットボトルは「月末」と案内されていますが、具体的な日付は未確認です。自治会又は市へ確認してください。\n離島の搬出場所・船便・時刻は自治会又は市に確認してください。",
+          "follow_up_question": null,
+          "next_collection": null,
+          "collection_status": {
+            "status": "unverified",
+            "message": "ペットボトルは「月末」と案内されていますが、具体的な日付は未確認です。自治会又は市へ確認してください。",
+            "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-u-shushubi2026.html"
+          },
+          "source_uris": [
+            "regional://38203/uwajima_islands/uwajima-2026.1/items/38203-0926",
+            "regional://38203/uwajima_islands/uwajima-2026.1/items/uw-example-005",
+            "regional://38203/uwajima_islands/uwajima-2026.1/items/38203-0439"
+          ]
+        },
+        {
+          "case": 37,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+            "category_code": "pet",
+            "category_name": "ペットボトル",
+            "disposal_instructions": "PETマークのある飲料・食品用ボトル本体。キャップとラベルを外し中をすすいで指定袋へ。外したプラスチック製キャップ・ラベルは燃えるごみ又はきれいなプラスチックの拠点回収。本体と付属品の分類を混同しない。汚れのひどいものは燃えるごみ。",
+            "confidence": 0.95
+          },
+          "answer": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体は「ペットボトル」です。\nPETマークのある飲料・食品用ボトル本体。キャップとラベルを外し中をすすいで指定袋へ。外したプラスチック製キャップ・ラベルは燃えるごみ又はきれいなプラスチックの拠点回収。本体と付属品の分類を混同しない。汚れのひどいものは燃えるごみ。\n津島地区 → 竹ヶ島地区の次回収集日は2026年4月3日（金）です。\n離島の搬出場所・船便・時刻は自治会又は市に確認してください。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-04-03",
+            "display_date": "2026年4月3日（金）",
+            "collection_type": "ペットボトル"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/tsushima_islands/uwajima-2026.1/items/38203-0926",
+            "regional://38203/tsushima_islands/uwajima-2026.1/items/uw-example-005",
+            "regional://38203/tsushima_islands/uwajima-2026.1/items/38203-0439"
+          ]
+        },
+        {
+          "case": 38,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "新聞紙",
+            "category_code": "paper",
+            "category_name": "古紙類",
+            "disposal_instructions": "ひもで縛る\n新聞、ダンボール、雑誌・雑がみ、飲料用紙パックを種類別に十文字にしばる。回収場所はごみステーションと異なる場合があるため自治会で確認。紙パックは洗い開いて乾燥。内側アルミは対象外。古紙の拠点回収も利用可能。",
+            "confidence": 1.0
+          },
+          "answer": "新聞紙は「古紙類」です。\nひもで縛る\n新聞、ダンボール、雑誌・雑がみ、飲料用紙パックを種類別に十文字にしばる。回収場所はごみステーションと異なる場合があるため自治会で確認。紙パックは洗い開いて乾燥。内側アルミは対象外。古紙の拠点回収も利用可能。\n宇和島地区 → 堀端町地区の次回収集日は2026年11月19日（木）です。\n収集日の午前8時30分までに、地区で決められた場所へ。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-11-19",
+            "display_date": "2026年11月19日（木）",
+            "collection_type": "古紙類"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0480",
+            "regional://38203/uwajima/uwajima-2026.1/items/uw-example-020",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0057"
+          ]
+        },
+        {
+          "case": 39,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "新聞紙",
+            "category_code": "paper",
+            "category_name": "古紙類",
+            "disposal_instructions": "ひもで縛る\n新聞、ダンボール、雑誌・雑がみ、飲料用紙パックを種類別に十文字にしばる。回収場所はごみステーションと異なる場合があるため自治会で確認。紙パックは洗い開いて乾燥。内側アルミは対象外。古紙の拠点回収も利用可能。",
+            "confidence": 1.0
+          },
+          "answer": "新聞紙は「古紙類」です。\nひもで縛る\n新聞、ダンボール、雑誌・雑がみ、飲料用紙パックを種類別に十文字にしばる。回収場所はごみステーションと異なる場合があるため自治会で確認。紙パックは洗い開いて乾燥。内側アルミは対象外。古紙の拠点回収も利用可能。\n古紙の回収区域・日程をこの収集地区だけでは確定できません。自治会又は市で確認し、古紙の拠点回収もご利用ください。\n収集日の午前8時30分までに、地区で決められた場所へ。",
+          "follow_up_question": null,
+          "next_collection": null,
+          "collection_status": {
+            "status": "unverified",
+            "message": "古紙の回収区域・日程をこの収集地区だけでは確定できません。自治会又は市で確認し、古紙の拠点回収もご利用ください。",
+            "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-u-shigen.html"
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0480",
+            "regional://38203/uwajima/uwajima-2026.1/items/uw-example-020",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0057"
+          ]
+        },
+        {
+          "case": 40,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "飲料用ペットボトル本体",
+            "category_code": "ペット",
+            "category_name": "ペットボトル",
+            "disposal_instructions": "根拠に基づく出し方と注意点: キャップははずして「プラ」 ボトルはすすいで出す",
+            "confidence": 0.95
+          },
+          "answer": "飲料用ペットボトル本体は「ペットボトル」です。\n根拠に基づく出し方と注意点: キャップははずして「プラ」 ボトルはすすいで出す\n清水地区の次回収集日は2026年4月1日（水）です。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-04-01",
+            "display_date": "2026年4月1日（水）",
+            "collection_type": "ペットボトル"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "local://items/item_1679",
+            "local://items/item_1402",
+            "local://items/item_1359"
+          ]
+        },
+        {
+          "case": 41,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "中身を空にして水洗いした飲料用アルミ缶",
+            "category_code": "cans",
+            "category_name": "かん類",
+            "disposal_instructions": "中を洗って。汚れが落ちないものは不燃ごみ\n飲料・食品のかんは中を洗い、無色透明の袋またはコンテナに入れる。汚れが落ちないものは燃やさないごみ。家庭から出たものに限り、収集日の午前8時までに地域の指定場所へ出す。一度に出せる量は3袋まで",
+            "confidence": 0.9
+          },
+          "answer": "中身を空にして水洗いした飲料用アルミ缶は「かん類」です。\n中を洗って。汚れが落ちないものは不燃ごみ\n飲料・食品のかんは中を洗い、無色透明の袋またはコンテナに入れる。汚れが落ちないものは燃やさないごみ。家庭から出たものに限り、収集日の午前8時までに地域の指定場所へ出す。一度に出せる量は3袋まで\n愛宕、大平（愛宕山道路沿い）、片山町、幸町（愛宕山道路沿い）、清水町花小路、大正町、大門、（花小路）、浜田町、東新川、松蔭町、松本町（愛宕山道路沿い）、矢野町2～4地区の次回収集日は2026年4月22日（水）です。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-04-22",
+            "display_date": "2026年4月22日（水）",
+            "collection_type": "かん類"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38204/standard/yawatahama-2026.2/items/yh-0018",
+            "regional://38204/standard/yawatahama-2026.2/items/yh-0318",
+            "regional://38204/standard/yawatahama-2026.2/items/yh-0287"
+          ]
+        },
+        {
+          "case": 42,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "キャップ・ラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体。プラマークはありません",
+            "category_code": "pet_bottles",
+            "category_name": "ペットボトル",
+            "disposal_instructions": "すすいでから出す\nPETマーク付きの食品・飲料容器。さっと水洗いし、キャップとラベルは外してプラスチック製容器包装へ。本体と分ける。収集日の午前8時30分までに地域の所定の場所へ。一度に45リットル以下の袋3つまで。",
+            "confidence": 0.9
+          },
+          "answer": "キャップ・ラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体。プラマークはありませんは「ペットボトル」です。\nすすいでから出す\nPETマーク付きの食品・飲料容器。さっと水洗いし、キャップとラベルは外してプラスチック製容器包装へ。本体と分ける。収集日の午前8時30分までに地域の所定の場所へ。一度に45リットル以下の袋3つまで。\n南山崎（上唐川・下唐川・大平上・大平下、平岡・鵜崎を除く）、鳥ノ木地区の次回収集日は2026年4月21日（火）です。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-04-21",
+            "display_date": "2026年4月21日（火）",
+            "collection_type": "ペットボトル"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38210/iyo/iyo-2026.1/items/iy-1363",
+            "regional://38210/iyo/iyo-2026.1/items/iy-1246",
+            "regional://38210/iyo/iyo-2026.1/items/iy-1432"
+          ]
+        },
+        {
+          "case": 43,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "使い終わったアルカリ乾電池",
+            "category_code": "hazardous",
+            "category_name": "有害ごみ",
+            "disposal_instructions": "蛍光管・乾電池（アルカリ・マンガン）・白熱電球・水銀体温計等。45リットルの市販の無色透明袋へ。乾電池は割れ防止のため別の小さな無色透明袋に入れる。長い蛍光管は両側から袋をかぶせる。収集日当日の午前8時までに地域のごみステーションへ。前夜には出さない。",
+            "confidence": 0.9
+          },
+          "answer": "使い終わったアルカリ乾電池は「有害ごみ」です。\n蛍光管・乾電池（アルカリ・マンガン）・白熱電球・水銀体温計等。45リットルの市販の無色透明袋へ。乾電池は割れ防止のため別の小さな無色透明袋に入れる。長い蛍光管は両側から袋をかぶせる。収集日当日の午前8時までに地域のごみステーションへ。前夜には出さない。\n伊方地域：河内、湊浦、小中浦、中浦、川永田、豊之浦地区の次回収集日は2026年4月22日（水）です。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-04-22",
+            "display_date": "2026年4月22日（水）",
+            "collection_type": "有害ごみ"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38442/ikata/ikata-2026.1/items/ik-p27-35",
+            "regional://38442/ikata/ikata-2026.1/items/ik-p37-32",
+            "regional://38442/ikata/ikata-2026.1/items/ik-rule-battery-rechargeable"
+          ]
+        },
+        {
+          "case": 44,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "使い終わったモバイルバッテリー",
+            "category_code": "hazardous",
+            "category_name": "有害ごみ",
+            "disposal_instructions": "2026年1月から有害ごみ。端子を絶縁し透明袋で有害ごみコンテナへ（現行ガイド13ページ）。\n蛍光灯・乾電池・水銀式体温計・モバイルバッテリー。種類別の透明袋でコンテナへ。電池の端子を絶縁する。",
+            "confidence": 1.0
+          },
+          "answer": "使い終わったモバイルバッテリーは「有害ごみ」です。\n2026年1月から有害ごみ。端子を絶縁し透明袋で有害ごみコンテナへ（現行ガイド13ページ）。\n蛍光灯・乾電池・水銀式体温計・モバイルバッテリー。種類別の透明袋でコンテナへ。電池の端子を絶縁する。\n大生院、大永山、萩生（国道11号線より南）地区の次回収集日は2026年6月29日（月）です。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-06-29",
+            "display_date": "2026年6月29日（月）",
+            "collection_type": "有害ごみ"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38205/mainland/niihama-2026.1/items/nh-p45-2-05",
+            "regional://38205/mainland/niihama-2026.1/items/nh-p41-2-10",
+            "regional://38205/mainland/niihama-2026.1/items/nh-p41-2-09"
+          ]
+        },
+        {
+          "case": 45,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+            "category_code": "pet_bottles",
+            "category_name": "ペットボトル",
+            "disposal_instructions": "PET本体はキャップ・ラベルを外し水洗いし軽くつぶしてネットへ。外したプラ製の部品はプラスチック類。",
+            "confidence": 0.9
+          },
+          "answer": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体は「ペットボトル」です。\nPET本体はキャップ・ラベルを外し水洗いし軽くつぶしてネットへ。外したプラ製の部品はプラスチック類。\n重信：山之内地区の次回収集日は2026年4月12日（日）です。\n搬出時刻は地域で確認してください。期限未確認の区分は、検索の次回収集日を翌日以降で案内します。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-04-12",
+            "display_date": "2026年4月12日（日）",
+            "collection_type": "ペットボトル"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38215/shigenobu/toon-2026.1/items/tn-p48-1-1-02",
+            "regional://38215/shigenobu/toon-2026.1/items/tn-rule-pet",
+            "regional://38215/shigenobu/toon-2026.1/items/tn-p42-2-1-01"
+          ]
+        },
+        {
+          "case": 46,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+            "category_code": "pet_bottles",
+            "category_name": "ペットボトル",
+            "disposal_instructions": "きれいなPETマーク付き本体はペット。外したプラ製キャップ・ラベルの分類とは区別。洗えない・汚れが落ちないものは燃える。",
+            "confidence": 1.0
+          },
+          "answer": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体は「ペットボトル」です。\nきれいなPETマーク付き本体はペット。外したプラ製キャップ・ラベルの分類とは区別。洗えない・汚れが落ちないものは燃える。\n久万：久万地区の次回収集日は2026年4月14日（火）です。\n収集日の朝8時までに出してください。例外日程のステーションについては自治会へ確認してください。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-04-14",
+            "display_date": "2026年4月14日（火）",
+            "collection_type": "ペットボトル"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38386/citywide/kumakogen-2026.1/items/kk-rule-pet-body",
+            "regional://38386/citywide/kumakogen-2026.1/items/kk-p39-1-27",
+            "regional://38386/citywide/kumakogen-2026.1/items/kk-p39-1-29"
+          ]
+        },
+        {
+          "case": 47,
+          "passed": true,
+          "http": 200,
+          "actual_status": "unable_to_determine",
+          "classification": null,
+          "answer": "西条市の公開資料では、この長さちょうどの区分が重なっています。分類・収集方法を市町のごみ担当窓口へ確認してください。",
+          "follow_up_question": null,
+          "next_collection": null,
+          "collection_status": null,
+          "source_uris": [
+            "regional://38206/citywide/saijo-2026.1/items/sj-25-037",
+            "regional://38206/citywide/saijo-2026.1/items/sj-25-036",
+            "regional://38206/citywide/saijo-2026.1/items/sj-18-029"
+          ]
+        },
+        {
+          "case": 48,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "水洗いして汚れを落とした白色の食品トレイ",
+            "category_code": "resources",
+            "category_name": "資源（びん・缶・紙・布・PET・白色トレイ）",
+            "disposal_instructions": "汚れが落ちないもの➡　 可燃ごみへ\n飲食用びん・缶・PET本体・白色トレイは中身を出して水洗い。PET本体のキャップ・ラベルは外してプラへ。紙・布は種類別に十文字に縛る。乳白色・割れたびんは燃やせないごみ。汚れが落ちない紙・布・PET・トレイは燃やせるごみ。",
+            "confidence": 0.9
+          },
+          "answer": "水洗いして汚れを落とした白色の食品トレイは「資源（びん・缶・紙・布・PET・白色トレイ）」です。\n汚れが落ちないもの➡　 可燃ごみへ\n飲食用びん・缶・PET本体・白色トレイは中身を出して水洗い。PET本体のキャップ・ラベルは外してプラへ。紙・布は種類別に十文字に縛る。乳白色・割れたびんは燃やせないごみ。汚れが落ちない紙・布・PET・トレイは燃やせるごみ。\n北浜町地区の次回収集日は2026年4月6日（月）です。\n地域で決めた時間内に資源集積所へ。時間は自治会等で確認してください。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-04-06",
+            "display_date": "2026年4月6日（月）",
+            "collection_type": "資源（びん・缶・紙・布・PET・白色トレイ）"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38202/mainland/imabari-2026.1/items/im-m-11-049",
+            "regional://38202/mainland/imabari-2026.1/items/im-m-11-050",
+            "regional://38202/mainland/imabari-2026.1/items/im-m-example-010"
+          ]
+        }
+      ]
     },
     {
       "phase": "retry-1",
@@ -139,7 +1482,233 @@
           "backend/app/services/embedding_search_service.py": "b68a0b6753ed747c36a7d68ff0fe699fd509e59b70c05ed44cfdeb2104dd1be5",
           "backend/app/services/calendar_service.py": "c6176ddd315a3a0b89b9b804ef0e876d400135cb1bcb5a0fbc8d680bc914e56a"
         }
-      }
+      },
+      "case_results": [
+        {
+          "case": 6,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "洗って汚れを落として乾燥させた20cmの食品トレー",
+            "category_code": "clean_plastics",
+            "category_name": "きれいなプラスチック（拠点回収）",
+            "disposal_instructions": "洗って汚れを落とし乾燥させ、一辺50cm未満のもの。容器包装と製品は別のかごへ。製品は100％プラスチックに限り、金属・木・ゴム等の異素材入り、事業系、汚れたものは対象外。通常収集の燃えるごみも利用できる。市民サービスセンター9:45～18:30・商工会議所8:30～17:00は容器包装のみ。製品は本庁・各支所・住吉/石応/清満/下灘公民館などの対象拠点へ。随時持込の受付を定期収集日にしない。",
+            "confidence": 0.95
+          },
+          "answer": "洗って汚れを落として乾燥させた20cmの食品トレーは「きれいなプラスチック（拠点回収）」です。\n洗って汚れを落とし乾燥させ、一辺50cm未満のもの。容器包装と製品は別のかごへ。製品は100％プラスチックに限り、金属・木・ゴム等の異素材入り、事業系、汚れたものは対象外。通常収集の燃えるごみも利用できる。市民サービスセンター9:45～18:30・商工会議所8:30～17:00は容器包装のみ。製品は本庁・各支所・住吉/石応/清満/下灘公民館などの対象拠点へ。随時持込の受付を定期収集日にしない。\n公開済みカレンダーの範囲では次回収集日を確認できません。",
+          "follow_up_question": null,
+          "next_collection": null,
+          "collection_status": {
+            "status": "not_scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0465",
+            "regional://38203/uwajima/uwajima-2026.1/items/uw-example-001",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0730"
+          ]
+        },
+        {
+          "case": 8,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "プラスチック100%の49cmバケツ",
+            "category_code": "clean_plastics",
+            "category_name": "きれいなプラスチック（拠点回収）",
+            "disposal_instructions": "洗って汚れを落とし乾燥させ、一辺50cm未満のもの。容器包装と製品は別のかごへ。製品は100％プラスチックに限り、金属・木・ゴム等の異素材入り、事業系、汚れたものは対象外。通常収集の燃えるごみも利用できる。市民サービスセンター9:45～18:30・商工会議所8:30～17:00は容器包装のみ。製品は本庁・各支所・住吉/石応/清満/下灘公民館などの対象拠点へ。随時持込の受付を定期収集日にしない。",
+            "confidence": 0.95
+          },
+          "answer": "プラスチック100%の49cmバケツは「きれいなプラスチック（拠点回収）」です。\n洗って汚れを落とし乾燥させ、一辺50cm未満のもの。容器包装と製品は別のかごへ。製品は100％プラスチックに限り、金属・木・ゴム等の異素材入り、事業系、汚れたものは対象外。通常収集の燃えるごみも利用できる。市民サービスセンター9:45～18:30・商工会議所8:30～17:00は容器包装のみ。製品は本庁・各支所・住吉/石応/清満/下灘公民館などの対象拠点へ。随時持込の受付を定期収集日にしない。\n公開済みカレンダーの範囲では次回収集日を確認できません。",
+          "follow_up_question": null,
+          "next_collection": null,
+          "collection_status": {
+            "status": "not_scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/uw-example-003",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0793",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0995"
+          ]
+        },
+        {
+          "case": 9,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "洗って乾燥させたプラスチック100％のバケツ",
+            "category_code": "burnable",
+            "category_name": "燃えるごみ",
+            "disposal_instructions": "一辺50cm以上はプラスチックの拠点回収対象外です。",
+            "confidence": 0.99
+          },
+          "answer": "洗って乾燥させたプラスチック100％のバケツは「燃えるごみ」です。\n一辺50cm以上はプラスチックの拠点回収対象外です。\n宇和島地区 → 青葉台地区の次回収集日は2026年4月1日（水）です。\n収集日の午前8時30分までに、地区で決められた場所へ。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-04-01",
+            "display_date": "2026年4月1日（水）",
+            "collection_type": "燃えるごみ"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/uw-example-003",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0793",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0404"
+          ]
+        },
+        {
+          "case": 10,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "洗って乾燥させたプラスチック100％のバケツ",
+            "category_code": "bulky",
+            "category_name": "粗大ごみ（直接搬入・許可業者）",
+            "disposal_instructions": "一辺50cm以上はプラスチックの拠点回収対象外です。",
+            "confidence": 0.99
+          },
+          "answer": "洗って乾燥させたプラスチック100％のバケツは「粗大ごみ（直接搬入・許可業者）」です。\n一辺50cm以上はプラスチックの拠点回収対象外です。\n公開済みカレンダーの範囲では次回収集日を確認できません。",
+          "follow_up_question": null,
+          "next_collection": null,
+          "collection_status": {
+            "status": "not_scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/uw-example-003",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0793",
+            "regional://38203/uwajima/uwajima-2026.1/items/uw-example-004"
+          ]
+        },
+        {
+          "case": 20,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "充電池が取り外せないハンディファン",
+            "category_code": "batteries",
+            "category_name": "電池類の拠点回収",
+            "disposal_instructions": "充電池を取り外せないハンディファンは、無理に分解せず本体ごと市役所・支所の小型充電池回収へ。通常の可燃・不燃収集には出さない。\n一次電池と小型充電式電池は指定の拠点へ。ボタン・リチウム電池、充電池は端子を絶縁。充電池は使い切り透明な袋に入れる。取り外せない充電池内蔵製品は分解せず本体ごと市役所・支所の充電池回収へ。自動車・バイク・船舶用等の大型電池・鉛蓄電池は回収対象外。三間の乾電池は7月・1月第3水曜回収予定だが、確定日程の確認前は予定を作らず拠点を案内。",
+            "confidence": 1.0
+          },
+          "answer": "充電池が取り外せないハンディファンは「電池類の拠点回収」です。\n充電池を取り外せないハンディファンは、無理に分解せず本体ごと市役所・支所の小型充電池回収へ。通常の可燃・不燃収集には出さない。\n一次電池と小型充電式電池は指定の拠点へ。ボタン・リチウム電池、充電池は端子を絶縁。充電池は使い切り透明な袋に入れる。取り外せない充電池内蔵製品は分解せず本体ごと市役所・支所の充電池回収へ。自動車・バイク・船舶用等の大型電池・鉛蓄電池は回収対象外。三間の乾電池は7月・1月第3水曜回収予定だが、確定日程の確認前は予定を作らず拠点を案内。\n公開済みカレンダーの範囲では次回収集日を確認できません。",
+          "follow_up_question": null,
+          "next_collection": null,
+          "collection_status": {
+            "status": "not_scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/uw-example-009",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0167",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0106"
+          ]
+        },
+        {
+          "case": 21,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "充電池を取り外した携帯電話本体",
+            "category_code": "non_burnable",
+            "category_name": "燃えないごみ",
+            "disposal_instructions": "充電池を取り外した携帯電話は個人情報を消去し指定袋に入れて燃えないごみ。外した充電池は別に拠点回収へ。",
+            "confidence": 0.95
+          },
+          "answer": "充電池を取り外した携帯電話本体は「燃えないごみ」です。\n充電池を取り外した携帯電話は個人情報を消去し指定袋に入れて燃えないごみ。外した充電池は別に拠点回収へ。\n宇和島地区 → 青葉台地区の次回収集日は2026年4月3日（金）です。\n収集日の午前8時30分までに、地区で決められた場所へ。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-04-03",
+            "display_date": "2026年4月3日（金）",
+            "collection_type": "燃えないごみ"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0302",
+            "regional://38203/uwajima/uwajima-2026.1/items/uw-example-010",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0687"
+          ]
+        },
+        {
+          "case": 42,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "キャップ・ラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体。プラマークはありません",
+            "category_code": "pet_bottles",
+            "category_name": "ペットボトル",
+            "disposal_instructions": "すすいでから出す\nPETマーク付きの食品・飲料容器。さっと水洗いし、キャップとラベルは外してプラスチック製容器包装へ。本体と分ける。収集日の午前8時30分までに地域の所定の場所へ。一度に45リットル以下の袋3つまで。",
+            "confidence": 0.9
+          },
+          "answer": "キャップ・ラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体。プラマークはありませんは「ペットボトル」です。\nすすいでから出す\nPETマーク付きの食品・飲料容器。さっと水洗いし、キャップとラベルは外してプラスチック製容器包装へ。本体と分ける。収集日の午前8時30分までに地域の所定の場所へ。一度に45リットル以下の袋3つまで。\n南山崎（上唐川・下唐川・大平上・大平下、平岡・鵜崎を除く）、鳥ノ木地区の次回収集日は2026年4月21日（火）です。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-04-21",
+            "display_date": "2026年4月21日（火）",
+            "collection_type": "ペットボトル"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38210/iyo/iyo-2026.1/items/iy-1363",
+            "regional://38210/iyo/iyo-2026.1/items/iy-0774",
+            "regional://38210/iyo/iyo-2026.1/items/iy-1156"
+          ]
+        },
+        {
+          "case": 48,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "水洗いして汚れを落とした白色の食品トレイ",
+            "category_code": "resources",
+            "category_name": "資源（びん・缶・紙・布・PET・白色トレイ）",
+            "disposal_instructions": "汚れが落ちないもの➡　 可燃ごみへ\n飲食用びん・缶・PET本体・白色トレイは中身を出して水洗い。PET本体のキャップ・ラベルは外してプラへ。紙・布は種類別に十文字に縛る。乳白色・割れたびんは燃やせないごみ。汚れが落ちない紙・布・PET・トレイは燃やせるごみ。",
+            "confidence": 0.9
+          },
+          "answer": "水洗いして汚れを落とした白色の食品トレイは「資源（びん・缶・紙・布・PET・白色トレイ）」です。\n汚れが落ちないもの➡　 可燃ごみへ\n飲食用びん・缶・PET本体・白色トレイは中身を出して水洗い。PET本体のキャップ・ラベルは外してプラへ。紙・布は種類別に十文字に縛る。乳白色・割れたびんは燃やせないごみ。汚れが落ちない紙・布・PET・トレイは燃やせるごみ。\n北浜町地区の次回収集日は2026年4月6日（月）です。\n地域で決めた時間内に資源集積所へ。時間は自治会等で確認してください。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-04-06",
+            "display_date": "2026年4月6日（月）",
+            "collection_type": "資源（びん・缶・紙・布・PET・白色トレイ）"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38202/mainland/imabari-2026.1/items/im-m-11-049",
+            "regional://38202/mainland/imabari-2026.1/items/im-m-11-050",
+            "regional://38202/mainland/imabari-2026.1/items/im-m-example-010"
+          ]
+        }
+      ]
     },
     {
       "phase": "final-1",
@@ -226,7 +1795,1361 @@
           "backend/app/services/embedding_search_service.py": "b68a0b6753ed747c36a7d68ff0fe699fd509e59b70c05ed44cfdeb2104dd1be5",
           "backend/app/services/calendar_service.py": "c6176ddd315a3a0b89b9b804ef0e876d400135cb1bcb5a0fbc8d680bc914e56a"
         }
-      }
+      },
+      "case_results": [
+        {
+          "case": 1,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "水を切った野菜くず",
+            "category_code": "burnable",
+            "category_name": "燃えるごみ",
+            "disposal_instructions": "根拠に基づく出し方と注意点: 水分をきって市指定の燃えるごみ袋に入れて、通常収集に出す。プラスチックも燃えるごみ。指定袋に入り口を結べる範囲。",
+            "confidence": 0.95
+          },
+          "answer": "水を切った野菜くずは「燃えるごみ」です。\n根拠に基づく出し方と注意点: 水分をきって市指定の燃えるごみ袋に入れて、通常収集に出す。プラスチックも燃えるごみ。指定袋に入り口を結べる範囲。\n宇和島地区 → 青葉台地区の次回収集日は2026年4月1日（水）です。\n収集日の午前8時30分までに、地区で決められた場所へ。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-04-01",
+            "display_date": "2026年4月1日（水）",
+            "collection_type": "燃えるごみ"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0744",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0814",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0469"
+          ]
+        },
+        {
+          "case": 2,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+            "category_code": "pet",
+            "category_name": "ペットボトル",
+            "disposal_instructions": "PETマークのある飲料・食品用ボトル本体。キャップとラベルを外し中をすすいで指定袋へ。外したプラスチック製キャップ・ラベルは燃えるごみ又はきれいなプラスチックの拠点回収。本体と付属品の分類を混同しない。汚れのひどいものは燃えるごみ。",
+            "confidence": 0.95
+          },
+          "answer": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体は「ペットボトル」です。\nPETマークのある飲料・食品用ボトル本体。キャップとラベルを外し中をすすいで指定袋へ。外したプラスチック製キャップ・ラベルは燃えるごみ又はきれいなプラスチックの拠点回収。本体と付属品の分類を混同しない。汚れのひどいものは燃えるごみ。\n宇和島地区 → 青葉台地区の次回収集日は2026年4月3日（金）です。\n収集日の午前8時30分までに、地区で決められた場所へ。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-04-03",
+            "display_date": "2026年4月3日（金）",
+            "collection_type": "ペットボトル"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0926",
+            "regional://38203/uwajima/uwajima-2026.1/items/uw-example-005",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0439"
+          ]
+        },
+        {
+          "case": 3,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "洗っても汚れが落ちない飲料用ペットボトル本体",
+            "category_code": "burnable",
+            "category_name": "燃えるごみ",
+            "disposal_instructions": "PETマークのある飲料・食品用ボトル本体。キャップとラベルを外し中をすすいで指定袋へ。外したプラスチック製キャップ・ラベルは燃えるごみ又はきれいなプラスチックの拠点回収。本体と付属品の分類を混同しない。汚れのひどいものは燃えるごみ。",
+            "confidence": 0.95
+          },
+          "answer": "洗っても汚れが落ちない飲料用ペットボトル本体は「燃えるごみ」です。\nPETマークのある飲料・食品用ボトル本体。キャップとラベルを外し中をすすいで指定袋へ。外したプラスチック製キャップ・ラベルは燃えるごみ又はきれいなプラスチックの拠点回収。本体と付属品の分類を混同しない。汚れのひどいものは燃えるごみ。\n宇和島地区 → 青葉台地区の次回収集日は2026年4月1日（水）です。\n収集日の午前8時30分までに、地区で決められた場所へ。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-04-01",
+            "display_date": "2026年4月1日（水）",
+            "collection_type": "燃えるごみ"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0926",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0439",
+            "regional://38203/uwajima/uwajima-2026.1/items/uw-example-005"
+          ]
+        },
+        {
+          "case": 4,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "ペットボトルから取り外して水洗いし乾かしたプラスチック製キャップ",
+            "category_code": "burnable",
+            "category_name": "燃えるごみ",
+            "disposal_instructions": "市指定の燃えるごみ袋。生ごみは水切り。通常収集に出すプラスチックも燃えるごみ。指定袋に入り口を結べる範囲。",
+            "confidence": 0.95
+          },
+          "answer": "ペットボトルから取り外して水洗いし乾かしたプラスチック製キャップは「燃えるごみ」です。\n市指定の燃えるごみ袋。生ごみは水切り。通常収集に出すプラスチックも燃えるごみ。指定袋に入り口を結べる範囲。\n宇和島地区 → 青葉台地区の次回収集日は2026年4月1日（水）です。\n収集日の午前8時30分までに、地区で決められた場所へ。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-04-01",
+            "display_date": "2026年4月1日（水）",
+            "collection_type": "燃えるごみ"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/uw-example-006",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0235",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0236"
+          ]
+        },
+        {
+          "case": 5,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "ペットボトルから取り外して洗い乾かしたプラスチック製ラベル",
+            "category_code": "burnable",
+            "category_name": "燃えるごみ",
+            "disposal_instructions": "外したプラスチック製ラベルは燃えるごみ。洗って乾燥させれば容器包装プラスチックの拠点回収も利用できる。",
+            "confidence": 0.95
+          },
+          "answer": "ペットボトルから取り外して洗い乾かしたプラスチック製ラベルは「燃えるごみ」です。\n外したプラスチック製ラベルは燃えるごみ。洗って乾燥させれば容器包装プラスチックの拠点回収も利用できる。\n宇和島地区 → 青葉台地区の次回収集日は2026年4月1日（水）です。\n収集日の午前8時30分までに、地区で決められた場所へ。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-04-01",
+            "display_date": "2026年4月1日（水）",
+            "collection_type": "燃えるごみ"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/uw-example-007",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0927",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0439"
+          ]
+        },
+        {
+          "case": 6,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "洗って汚れを落として乾燥させた20cmの食品トレー",
+            "category_code": "clean_plastics",
+            "category_name": "きれいなプラスチック（拠点回収）",
+            "disposal_instructions": "通常収集は燃えるごみ。資源拠点を利用する場合は、洗って汚れを落とし乾燥させた、一辺50cm未満の容器包装プラスチックとして回収できる。拠点によって容器包装のみを受け付ける場合があるので、持込先の対象品目を確認する。",
+            "confidence": 0.95
+          },
+          "answer": "洗って汚れを落として乾燥させた20cmの食品トレーは「きれいなプラスチック（拠点回収）」です。\n通常収集は燃えるごみ。資源拠点を利用する場合は、洗って汚れを落とし乾燥させた、一辺50cm未満の容器包装プラスチックとして回収できる。拠点によって容器包装のみを受け付ける場合があるので、持込先の対象品目を確認する。\n公開済みカレンダーの範囲では次回収集日を確認できません。",
+          "follow_up_question": null,
+          "next_collection": null,
+          "collection_status": {
+            "status": "not_scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0465",
+            "regional://38203/uwajima/uwajima-2026.1/items/uw-example-001",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0730"
+          ]
+        },
+        {
+          "case": 7,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "汚れが落ちないプラスチック製の食品トレー",
+            "category_code": "burnable",
+            "category_name": "燃えるごみ",
+            "disposal_instructions": "市指定の燃えるごみ袋。生ごみは水切り。通常収集に出すプラスチックも燃えるごみ。指定袋に入り口を結べる範囲。",
+            "confidence": 0.95
+          },
+          "answer": "汚れが落ちないプラスチック製の食品トレーは「燃えるごみ」です。\n市指定の燃えるごみ袋。生ごみは水切り。通常収集に出すプラスチックも燃えるごみ。指定袋に入り口を結べる範囲。\n宇和島地区 → 青葉台地区の次回収集日は2026年4月1日（水）です。\n収集日の午前8時30分までに、地区で決められた場所へ。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-04-01",
+            "display_date": "2026年4月1日（水）",
+            "collection_type": "燃えるごみ"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0465",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0730",
+            "regional://38203/uwajima/uwajima-2026.1/items/uw-example-002"
+          ]
+        },
+        {
+          "case": 8,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "プラスチック100%の49cmバケツ",
+            "category_code": "clean_plastics",
+            "category_name": "きれいなプラスチック（拠点回収）",
+            "disposal_instructions": "洗って汚れを落とし乾燥させ、一辺50cm未満のもの。容器包装と製品は別のかごへ。製品は100％プラスチックに限り、金属・木・ゴム等の異素材入り、事業系、汚れたものは対象外。通常収集の燃えるごみも利用できる。市民サービスセンター9:45～18:30・商工会議所8:30～17:00は容器包装のみ。製品は本庁・各支所・住吉/石応/清満/下灘公民館などの対象拠点へ。随時持込の受付を定期収集日にしない。",
+            "confidence": 0.95
+          },
+          "answer": "プラスチック100%の49cmバケツは「きれいなプラスチック（拠点回収）」です。\n洗って汚れを落とし乾燥させ、一辺50cm未満のもの。容器包装と製品は別のかごへ。製品は100％プラスチックに限り、金属・木・ゴム等の異素材入り、事業系、汚れたものは対象外。通常収集の燃えるごみも利用できる。市民サービスセンター9:45～18:30・商工会議所8:30～17:00は容器包装のみ。製品は本庁・各支所・住吉/石応/清満/下灘公民館などの対象拠点へ。随時持込の受付を定期収集日にしない。\n公開済みカレンダーの範囲では次回収集日を確認できません。",
+          "follow_up_question": null,
+          "next_collection": null,
+          "collection_status": {
+            "status": "not_scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/uw-example-003",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0793",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0995"
+          ]
+        },
+        {
+          "case": 9,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "洗って乾燥させたプラスチック100％のバケツ",
+            "category_code": "burnable",
+            "category_name": "燃えるごみ",
+            "disposal_instructions": "一辺50cm以上はプラスチックの拠点回収対象外です。",
+            "confidence": 0.99
+          },
+          "answer": "洗って乾燥させたプラスチック100％のバケツは「燃えるごみ」です。\n一辺50cm以上はプラスチックの拠点回収対象外です。\n宇和島地区 → 青葉台地区の次回収集日は2026年4月1日（水）です。\n収集日の午前8時30分までに、地区で決められた場所へ。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-04-01",
+            "display_date": "2026年4月1日（水）",
+            "collection_type": "燃えるごみ"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/uw-example-003",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0793",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0995"
+          ]
+        },
+        {
+          "case": 10,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "洗って乾燥させたプラスチック100％のバケツ",
+            "category_code": "bulky",
+            "category_name": "粗大ごみ（直接搬入・許可業者）",
+            "disposal_instructions": "一辺50cm以上はプラスチックの拠点回収対象外です。",
+            "confidence": 0.99
+          },
+          "answer": "洗って乾燥させたプラスチック100％のバケツは「粗大ごみ（直接搬入・許可業者）」です。\n一辺50cm以上はプラスチックの拠点回収対象外です。\n公開済みカレンダーの範囲では次回収集日を確認できません。",
+          "follow_up_question": null,
+          "next_collection": null,
+          "collection_status": {
+            "status": "not_scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/uw-example-003",
+            "regional://38203/uwajima/uwajima-2026.1/items/uw-example-004",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0793"
+          ]
+        },
+        {
+          "case": 11,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "金属製バケツ",
+            "category_code": "non_burnable",
+            "category_name": "燃えないごみ",
+            "disposal_instructions": "指定の燃えないごみ袋。刃物・割れ物は紙等で包み「キケン」と表示。電池は外す。外せない充電池内蔵製品は無理に分解せず充電池回収拠点へ。",
+            "confidence": 0.95
+          },
+          "answer": "金属製バケツは「燃えないごみ」です。\n指定の燃えないごみ袋。刃物・割れ物は紙等で包み「キケン」と表示。電池は外す。外せない充電池内蔵製品は無理に分解せず充電池回収拠点へ。\n宇和島地区 → 青葉台地区の次回収集日は2026年4月3日（金）です。\n収集日の午前8時30分までに、地区で決められた場所へ。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-04-03",
+            "display_date": "2026年4月3日（金）",
+            "collection_type": "燃えないごみ"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0249",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0793",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0043"
+          ]
+        },
+        {
+          "case": 12,
+          "passed": true,
+          "http": 200,
+          "actual_status": "needs_clarification",
+          "classification": null,
+          "answer": null,
+          "follow_up_question": "バケツは何製ですか？（木・プラスチック・金属など）",
+          "next_collection": null,
+          "collection_status": null,
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0793",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0995",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0807"
+          ]
+        },
+        {
+          "case": 13,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "バケツ",
+            "category_code": "non_burnable",
+            "category_name": "燃えないごみ",
+            "disposal_instructions": "金属製は不燃へ指定袋に入らなければ粗大へ",
+            "confidence": 0.95
+          },
+          "answer": "バケツは「燃えないごみ」です。\n金属製は不燃へ指定袋に入らなければ粗大へ\n宇和島地区 → 青葉台地区の次回収集日は2026年4月3日（金）です。\n収集日の午前8時30分までに、地区で決められた場所へ。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-04-03",
+            "display_date": "2026年4月3日（金）",
+            "collection_type": "燃えないごみ"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0793",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0348",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0349"
+          ]
+        },
+        {
+          "case": 14,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "中をすすいだジャムのガラスびん",
+            "category_code": "bottles_cans",
+            "category_name": "びん・缶",
+            "disposal_instructions": "中をすすいで指定袋へ。金属製ふたは不燃、プラスチック製ふたは可燃又は条件を満たす資源拠点へ。割れたびんも包み「キケン」と表示してびん・缶。スプレー缶・カセットボンベは中身を使い切り、風通しの良い安全な場所で穴を開ける。使い切れない場合は市へ相談。",
+            "confidence": 0.95
+          },
+          "answer": "中をすすいだジャムのガラスびんは「びん・缶」です。\n中をすすいで指定袋へ。金属製ふたは不燃、プラスチック製ふたは可燃又は条件を満たす資源拠点へ。割れたびんも包み「キケン」と表示してびん・缶。スプレー缶・カセットボンベは中身を使い切り、風通しの良い安全な場所で穴を開ける。使い切れない場合は市へ相談。\n宇和島地区 → 青葉台地区の次回収集日は2026年4月10日（金）です。\n収集日の午前8時30分までに、地区で決められた場所へ。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-04-10",
+            "display_date": "2026年4月10日（金）",
+            "collection_type": "びん・缶"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0430",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0858",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0437"
+          ]
+        },
+        {
+          "case": 15,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "割れた飲料のガラスびん",
+            "category_code": "bottles_cans",
+            "category_name": "びん・缶",
+            "disposal_instructions": "割れたびんもびん・缶。紙などに包み「キケン」と表示。ガラスの食器や耐熱ガラス・哺乳びんとは異なる。\n中をすすいで指定袋へ。金属製ふたは不燃、プラスチック製ふたは可燃又は条件を満たす資源拠点へ。割れたびんも包み「キケン」と表示してびん・缶。スプレー缶・カセットボンベは中身を使い切り、風通しの良い安全な場所で穴を開ける。使い切れない場合は市へ相談。",
+            "confidence": 1.0
+          },
+          "answer": "割れた飲料のガラスびんは「びん・缶」です。\n割れたびんもびん・缶。紙などに包み「キケン」と表示。ガラスの食器や耐熱ガラス・哺乳びんとは異なる。\n中をすすいで指定袋へ。金属製ふたは不燃、プラスチック製ふたは可燃又は条件を満たす資源拠点へ。割れたびんも包み「キケン」と表示してびん・缶。スプレー缶・カセットボンベは中身を使い切り、風通しの良い安全な場所で穴を開ける。使い切れない場合は市へ相談。\n宇和島地区 → 青葉台地区の次回収集日は2026年4月10日（金）です。\n収集日の午前8時30分までに、地区で決められた場所へ。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-04-10",
+            "display_date": "2026年4月10日（金）",
+            "collection_type": "びん・缶"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/uw-example-012",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0751",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0159"
+          ]
+        },
+        {
+          "case": 16,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "割れた耐熱ガラスの皿、指定袋に入ります",
+            "category_code": "non_burnable",
+            "category_name": "燃えないごみ",
+            "disposal_instructions": "指定の燃えないごみ袋。刃物・割れ物は紙等で包み「キケン」と表示。電池は外す。外せない充電池内蔵製品は無理に分解せず充電池回収拠点へ。",
+            "confidence": 0.9
+          },
+          "answer": "割れた耐熱ガラスの皿、指定袋に入りますは「燃えないごみ」です。\n指定の燃えないごみ袋。刃物・割れ物は紙等で包み「キケン」と表示。電池は外す。外せない充電池内蔵製品は無理に分解せず充電池回収拠点へ。\n宇和島地区 → 青葉台地区の次回収集日は2026年4月3日（金）です。\n収集日の午前8時30分までに、地区で決められた場所へ。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-04-03",
+            "display_date": "2026年4月3日（金）",
+            "collection_type": "燃えないごみ"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0568",
+            "regional://38203/uwajima/uwajima-2026.1/items/uw-example-013",
+            "regional://38203/uwajima/uwajima-2026.1/items/uw-example-012"
+          ]
+        },
+        {
+          "case": 17,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "使い切って安全な屋外で穴を開けたスプレー缶",
+            "category_code": "bottles_cans",
+            "category_name": "びん・缶",
+            "disposal_instructions": "中をすすぎ、指定袋に入れてびん・缶の収集日に出す。金属製ふたは不燃、プラスチック製ふたは可燃又は条件を満たす資源拠点へ。",
+            "confidence": 0.95
+          },
+          "answer": "使い切って安全な屋外で穴を開けたスプレー缶は「びん・缶」です。\n中をすすぎ、指定袋に入れてびん・缶の収集日に出す。金属製ふたは不燃、プラスチック製ふたは可燃又は条件を満たす資源拠点へ。\n宇和島地区 → 青葉台地区の次回収集日は2026年4月10日（金）です。\n収集日の午前8時30分までに、地区で決められた場所へ。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-04-10",
+            "display_date": "2026年4月10日（金）",
+            "collection_type": "びん・缶"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0522",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0314",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0943"
+          ]
+        },
+        {
+          "case": 18,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "ガスを完全に使い切った使い",
+            "category_code": "burnable",
+            "category_name": "燃えるごみ",
+            "disposal_instructions": "必ず使いきって出す\n市指定の燃えるごみ袋。生ごみは水切り。通常収集に出すプラスチックも燃えるごみ。指定袋に入り口を結べる範囲。",
+            "confidence": 0.9
+          },
+          "answer": "ガスを完全に使い切った使いは「燃えるごみ」です。\n必ず使いきって出す\n市指定の燃えるごみ袋。生ごみは水切り。通常収集に出すプラスチックも燃えるごみ。指定袋に入り口を結べる範囲。\n宇和島地区 → 青葉台地区の次回収集日は2026年4月1日（水）です。\n収集日の午前8時30分までに、地区で決められた場所へ。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-04-01",
+            "display_date": "2026年4月1日（水）",
+            "collection_type": "燃えるごみ"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0627",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-1067",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-1066"
+          ]
+        },
+        {
+          "case": 19,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "使い終わったモバイルバッテリー",
+            "category_code": "batteries",
+            "category_name": "電池類の拠点回収",
+            "disposal_instructions": "リチウムイオン電池は端子をテープで絶縁、使い切って透明な袋に入れ、市役所・支所等の充電池回収容器へ。可燃・不燃には入れない。",
+            "confidence": 0.95
+          },
+          "answer": "使い終わったモバイルバッテリーは「電池類の拠点回収」です。\nリチウムイオン電池は端子をテープで絶縁、使い切って透明な袋に入れ、市役所・支所等の充電池回収容器へ。可燃・不燃には入れない。\n公開済みカレンダーの範囲では次回収集日を確認できません。",
+          "follow_up_question": null,
+          "next_collection": null,
+          "collection_status": {
+            "status": "not_scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/uw-example-008",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0808",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0809"
+          ]
+        },
+        {
+          "case": 20,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "充電池が取り外せないハンディファン",
+            "category_code": "batteries",
+            "category_name": "電池類の拠点回収",
+            "disposal_instructions": "充電池を取り外せないハンディファンは、無理に分解せず本体ごと市役所・支所の小型充電池回収へ。通常の可燃・不燃収集には出さない。\n一次電池と小型充電式電池は指定の拠点へ。ボタン・リチウム電池、充電池は端子を絶縁。充電池は使い切り透明な袋に入れる。取り外せない充電池内蔵製品は分解せず本体ごと市役所・支所の充電池回収へ。自動車・バイク・船舶用等の大型電池・鉛蓄電池は回収対象外。三間の乾電池は7月・1月第3水曜回収予定だが、確定日程の確認前は予定を作らず拠点を案内。",
+            "confidence": 1.0
+          },
+          "answer": "充電池が取り外せないハンディファンは「電池類の拠点回収」です。\n充電池を取り外せないハンディファンは、無理に分解せず本体ごと市役所・支所の小型充電池回収へ。通常の可燃・不燃収集には出さない。\n一次電池と小型充電式電池は指定の拠点へ。ボタン・リチウム電池、充電池は端子を絶縁。充電池は使い切り透明な袋に入れる。取り外せない充電池内蔵製品は分解せず本体ごと市役所・支所の充電池回収へ。自動車・バイク・船舶用等の大型電池・鉛蓄電池は回収対象外。三間の乾電池は7月・1月第3水曜回収予定だが、確定日程の確認前は予定を作らず拠点を案内。\n公開済みカレンダーの範囲では次回収集日を確認できません。",
+          "follow_up_question": null,
+          "next_collection": null,
+          "collection_status": {
+            "status": "not_scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/uw-example-009",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0241",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0106"
+          ]
+        },
+        {
+          "case": 21,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "充電池を取り外した携帯電話本体",
+            "category_code": "non_burnable",
+            "category_name": "燃えないごみ",
+            "disposal_instructions": "充電池を取り外した携帯電話は個人情報を消去し指定袋に入れて燃えないごみ。外した充電池は別に拠点回収へ。",
+            "confidence": 0.95
+          },
+          "answer": "充電池を取り外した携帯電話本体は「燃えないごみ」です。\n充電池を取り外した携帯電話は個人情報を消去し指定袋に入れて燃えないごみ。外した充電池は別に拠点回収へ。\n宇和島地区 → 青葉台地区の次回収集日は2026年4月3日（金）です。\n収集日の午前8時30分までに、地区で決められた場所へ。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-04-03",
+            "display_date": "2026年4月3日（金）",
+            "collection_type": "燃えないごみ"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/uw-example-010",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0302",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0687"
+          ]
+        },
+        {
+          "case": 22,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "使用済みのアルカリ乾電池",
+            "category_code": "batteries",
+            "category_name": "電池類の拠点回収",
+            "disposal_instructions": "指定の回収拠点へ。三間の集会所での乾電池回収は7月・1月第3水曜に予定されているが、確定日程は市に確認。拠点は随時利用できる。\n一次電池と小型充電式電池は指定の拠点へ。ボタン・リチウム電池、充電池は端子を絶縁。充電池は使い切り透明な袋に入れる。取り外せない充電池内蔵製品は分解せず本体ごと市役所・支所の充電池回収へ。自動車・バイク・船舶用等の大型電池・鉛蓄電池は回収対象外。三間の乾電池は7月・1月第3水曜回収予定だが、確定日程の確認前は予定を作らず拠点を案内。",
+            "confidence": 1.0
+          },
+          "answer": "使用済みのアルカリ乾電池は「電池類の拠点回収」です。\n指定の回収拠点へ。三間の集会所での乾電池回収は7月・1月第3水曜に予定されているが、確定日程は市に確認。拠点は随時利用できる。\n一次電池と小型充電式電池は指定の拠点へ。ボタン・リチウム電池、充電池は端子を絶縁。充電池は使い切り透明な袋に入れる。取り外せない充電池内蔵製品は分解せず本体ごと市役所・支所の充電池回収へ。自動車・バイク・船舶用等の大型電池・鉛蓄電池は回収対象外。三間の乾電池は7月・1月第3水曜回収予定だが、確定日程の確認前は予定を作らず拠点を案内。\n公開済みカレンダーの範囲では次回収集日を確認できません。",
+          "follow_up_question": null,
+          "next_collection": null,
+          "collection_status": {
+            "status": "not_scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/uw-example-016",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0688",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0689"
+          ]
+        },
+        {
+          "case": 23,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "割れていない蛍光管",
+            "category_code": "dropoff",
+            "category_name": "資源の拠点回収",
+            "disposal_instructions": "割らずに市役所・支所等の蛍光管回収拠点へ。割れた蛍光管は紙等で包みキケン表示して不燃へ。\n品目ごとに回収可能な市役所・支所等へ持ち込む。拠点により対象・受付時間が異なる。定期ごみ収集日を付けない。",
+            "confidence": 1.0
+          },
+          "answer": "割れていない蛍光管は「資源の拠点回収」です。\n割らずに市役所・支所等の蛍光管回収拠点へ。割れた蛍光管は紙等で包みキケン表示して不燃へ。\n品目ごとに回収可能な市役所・支所等へ持ち込む。拠点により対象・受付時間が異なる。定期ごみ収集日を付けない。\n公開済みカレンダーの範囲では次回収集日を確認できません。",
+          "follow_up_question": null,
+          "next_collection": null,
+          "collection_status": {
+            "status": "not_scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/uw-example-018",
+            "regional://38203/uwajima/uwajima-2026.1/items/uw-example-017",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0696"
+          ]
+        },
+        {
+          "case": 24,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "割れた蛍光管",
+            "category_code": "non_burnable",
+            "category_name": "燃えないごみ",
+            "disposal_instructions": "割れた蛍光管は紙などで包みキケンと表示し燃えないごみ。割れていない蛍光管は拠点回収。水銀体温計は割れても密封して拠点回収。\n指定の燃えないごみ袋。刃物・割れ物は紙等で包み「キケン」と表示。電池は外す。外せない充電池内蔵製品は無理に分解せず充電池回収拠点へ。",
+            "confidence": 1.0
+          },
+          "answer": "割れた蛍光管は「燃えないごみ」です。\n割れた蛍光管は紙などで包みキケンと表示し燃えないごみ。割れていない蛍光管は拠点回収。水銀体温計は割れても密封して拠点回収。\n指定の燃えないごみ袋。刃物・割れ物は紙等で包み「キケン」と表示。電池は外す。外せない充電池内蔵製品は無理に分解せず充電池回収拠点へ。\n宇和島地区 → 青葉台地区の次回収集日は2026年4月3日（金）です。\n収集日の午前8時30分までに、地区で決められた場所へ。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-04-03",
+            "display_date": "2026年4月3日（金）",
+            "collection_type": "燃えないごみ"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/uw-example-017",
+            "regional://38203/uwajima/uwajima-2026.1/items/uw-example-018",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0696"
+          ]
+        },
+        {
+          "case": 25,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "割れた水銀体温計",
+            "category_code": "dropoff",
+            "category_name": "資源の拠点回収",
+            "disposal_instructions": "市の回収場所へ出す出せない場合は不燃へ割れたものは紙等に包んで「キケン」と表示\n品目ごとに回収可能な市役所・支所等へ持ち込む。拠点により対象・受付時間が異なる。定期ごみ収集日を付けない。",
+            "confidence": 0.9
+          },
+          "answer": "割れた水銀体温計は「資源の拠点回収」です。\n市の回収場所へ出す出せない場合は不燃へ割れたものは紙等に包んで「キケン」と表示\n品目ごとに回収可能な市役所・支所等へ持ち込む。拠点により対象・受付時間が異なる。定期ごみ収集日を付けない。\n公開済みカレンダーの範囲では次回収集日を確認できません。",
+          "follow_up_question": null,
+          "next_collection": null,
+          "collection_status": {
+            "status": "not_scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0565",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0564",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0482"
+          ]
+        },
+        {
+          "case": 26,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "家庭用の冷蔵庫",
+            "category_code": "not_collected",
+            "category_name": "市・環境センターで処理できない",
+            "disposal_instructions": "家電リサイクル法対象で市・環境センターでは処理できません。購入店・販売店等へ相談。\n販売店・専門業者等へ相談。テレビ、エアコン、冷蔵庫・冷凍庫、洗濯機・衣類乾燥機は家電リサイクル。産業廃棄物、危険物、土砂、スプリング入りマットレスなどは市で処理できない。通常収集日を付けない。",
+            "confidence": 0.9
+          },
+          "answer": "家庭用の冷蔵庫は「市・環境センターで処理できない」です。\n家電リサイクル法対象で市・環境センターでは処理できません。購入店・販売店等へ相談。\n販売店・専門業者等へ相談。テレビ、エアコン、冷蔵庫・冷凍庫、洗濯機・衣類乾燥機は家電リサイクル。産業廃棄物、危険物、土砂、スプリング入りマットレスなどは市で処理できない。通常収集日を付けない。\n公開済みカレンダーの範囲では次回収集日を確認できません。",
+          "follow_up_question": null,
+          "next_collection": null,
+          "collection_status": {
+            "status": "not_scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/uw-example-019",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-1089",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-1088"
+          ]
+        },
+        {
+          "case": 27,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "スプリング入りマットレス",
+            "category_code": "not_collected",
+            "category_name": "市・環境センターで処理できない",
+            "disposal_instructions": "市・環境センターでは処理できません。販売店等へ相談。\n販売店・専門業者等へ相談。テレビ、エアコン、冷蔵庫・冷凍庫、洗濯機・衣類乾燥機は家電リサイクル。産業廃棄物、危険物、土砂、スプリング入りマットレスなどは市で処理できない。通常収集日を付けない。",
+            "confidence": 1.0
+          },
+          "answer": "スプリング入りマットレスは「市・環境センターで処理できない」です。\n市・環境センターでは処理できません。販売店等へ相談。\n販売店・専門業者等へ相談。テレビ、エアコン、冷蔵庫・冷凍庫、洗濯機・衣類乾燥機は家電リサイクル。産業廃棄物、危険物、土砂、スプリング入りマットレスなどは市で処理できない。通常収集日を付けない。\n公開済みカレンダーの範囲では次回収集日を確認できません。",
+          "follow_up_question": null,
+          "next_collection": null,
+          "collection_status": {
+            "status": "not_scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/uw-example-015",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-1019",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-1020"
+          ]
+        },
+        {
+          "case": 28,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "指定ごみ袋に入らない大きな壊れた木製のたんす",
+            "category_code": "bulky",
+            "category_name": "粗大ごみ（直接搬入・許可業者）",
+            "disposal_instructions": "市の定期収集・戸別収集はありません。指定袋に入らないものは環境センターへ直接搬入、又は一般廃棄物収集運搬許可業者へ依頼。家庭ごみは10kg50円、月～土13:00～16:30、祝日・年末年始休み。搬入不可の品目は販売店等へ。収集予定は自動生成しない。",
+            "confidence": 0.9
+          },
+          "answer": "指定ごみ袋に入らない大きな壊れた木製のたんすは「粗大ごみ（直接搬入・許可業者）」です。\n市の定期収集・戸別収集はありません。指定袋に入らないものは環境センターへ直接搬入、又は一般廃棄物収集運搬許可業者へ依頼。家庭ごみは10kg50円、月～土13:00～16:30、祝日・年末年始休み。搬入不可の品目は販売店等へ。収集予定は自動生成しない。\n公開済みカレンダーの範囲では次回収集日を確認できません。",
+          "follow_up_question": null,
+          "next_collection": null,
+          "collection_status": {
+            "status": "not_scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0598",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0229",
+            "regional://38203/uwajima/uwajima-2026.1/items/uw-example-014"
+          ]
+        },
+        {
+          "case": 29,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "新聞紙",
+            "category_code": "paper",
+            "category_name": "古紙類",
+            "disposal_instructions": "ひもで縛る\n新聞、ダンボール、雑誌・雑がみ、飲料用紙パックを種類別に十文字にしばる。回収場所はごみステーションと異なる場合があるため自治会で確認。紙パックは洗い開いて乾燥。内側アルミは対象外。古紙の拠点回収も利用可能。",
+            "confidence": 1.0
+          },
+          "answer": "新聞紙は「古紙類」です。\nひもで縛る\n新聞、ダンボール、雑誌・雑がみ、飲料用紙パックを種類別に十文字にしばる。回収場所はごみステーションと異なる場合があるため自治会で確認。紙パックは洗い開いて乾燥。内側アルミは対象外。古紙の拠点回収も利用可能。\n古紙の回収区域・日程をこの収集地区だけでは確定できません。自治会又は市で確認し、古紙の拠点回収もご利用ください。\n収集日の午前8時30分までに、地区で決められた場所へ。",
+          "follow_up_question": null,
+          "next_collection": null,
+          "collection_status": {
+            "status": "unverified",
+            "message": "古紙の回収区域・日程をこの収集地区だけでは確定できません。自治会又は市で確認し、古紙の拠点回収もご利用ください。",
+            "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-u-shigen.html"
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0480",
+            "regional://38203/uwajima/uwajima-2026.1/items/uw-example-020",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0057"
+          ]
+        },
+        {
+          "case": 30,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "新聞紙",
+            "category_code": "paper",
+            "category_name": "古紙類",
+            "disposal_instructions": "ひもで縛る\n新聞、ダンボール、雑誌・雑がみ、飲料用紙パックを種類別に十文字にしばる。回収場所はごみステーションと異なる場合があるため自治会で確認。紙パックは洗い開いて乾燥。内側アルミは対象外。古紙の拠点回収も利用可能。",
+            "confidence": 1.0
+          },
+          "answer": "新聞紙は「古紙類」です。\nひもで縛る\n新聞、ダンボール、雑誌・雑がみ、飲料用紙パックを種類別に十文字にしばる。回収場所はごみステーションと異なる場合があるため自治会で確認。紙パックは洗い開いて乾燥。内側アルミは対象外。古紙の拠点回収も利用可能。\n三間地区 → 是能、コスモスタウン、曽根、成家、則、大藤地区の次回収集日は2026年4月1日（水）です。\n収集日の午前8時30分までに、地区で決められた場所へ。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-04-01",
+            "display_date": "2026年4月1日（水）",
+            "collection_type": "古紙類"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/mima/uwajima-2026.1/items/38203-0480",
+            "regional://38203/mima/uwajima-2026.1/items/uw-example-020",
+            "regional://38203/mima/uwajima-2026.1/items/38203-0057"
+          ]
+        },
+        {
+          "case": 31,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+            "category_code": "pet",
+            "category_name": "ペットボトル",
+            "disposal_instructions": "PETマークのある飲料・食品用ボトル本体。キャップとラベルを外し中をすすいで指定袋へ。外したプラスチック製キャップ・ラベルは燃えるごみ又はきれいなプラスチックの拠点回収。本体と付属品の分類を混同しない。汚れのひどいものは燃えるごみ。",
+            "confidence": 0.95
+          },
+          "answer": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体は「ペットボトル」です。\nPETマークのある飲料・食品用ボトル本体。キャップとラベルを外し中をすすいで指定袋へ。外したプラスチック製キャップ・ラベルは燃えるごみ又はきれいなプラスチックの拠点回収。本体と付属品の分類を混同しない。汚れのひどいものは燃えるごみ。\n吉田地区 → 吉田地区（橋上）地区の次回収集日は2026年4月8日（水）です。\n収集日の午前8時30分までに、地区で決められた場所へ。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-04-08",
+            "display_date": "2026年4月8日（水）",
+            "collection_type": "ペットボトル"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/yoshida/uwajima-2026.1/items/38203-0926",
+            "regional://38203/yoshida/uwajima-2026.1/items/uw-example-005",
+            "regional://38203/yoshida/uwajima-2026.1/items/38203-0439"
+          ]
+        },
+        {
+          "case": 32,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+            "category_code": "pet",
+            "category_name": "ペットボトル",
+            "disposal_instructions": "PETマークのある飲料・食品用ボトル本体。キャップとラベルを外し中をすすいで指定袋へ。外したプラスチック製キャップ・ラベルは燃えるごみ又はきれいなプラスチックの拠点回収。本体と付属品の分類を混同しない。汚れのひどいものは燃えるごみ。",
+            "confidence": 0.95
+          },
+          "answer": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体は「ペットボトル」です。\nPETマークのある飲料・食品用ボトル本体。キャップとラベルを外し中をすすいで指定袋へ。外したプラスチック製キャップ・ラベルは燃えるごみ又はきれいなプラスチックの拠点回収。本体と付属品の分類を混同しない。汚れのひどいものは燃えるごみ。\n津島地区 → 岩松地区の次回収集日は2026年4月1日（水）です。\n収集日の午前8時30分までに、地区で決められた場所へ。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-04-01",
+            "display_date": "2026年4月1日（水）",
+            "collection_type": "ペットボトル"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/tsushima/uwajima-2026.1/items/38203-0926",
+            "regional://38203/tsushima/uwajima-2026.1/items/uw-example-005",
+            "regional://38203/tsushima/uwajima-2026.1/items/38203-0439"
+          ]
+        },
+        {
+          "case": 33,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+            "category_code": "pet",
+            "category_name": "ペットボトル",
+            "disposal_instructions": "PETマークのある飲料・食品用ボトル本体。キャップとラベルを外し中をすすいで指定袋へ。外したプラスチック製キャップ・ラベルは燃えるごみ又はきれいなプラスチックの拠点回収。本体と付属品の分類を混同しない。汚れのひどいものは燃えるごみ。",
+            "confidence": 0.95
+          },
+          "answer": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体は「ペットボトル」です。\nPETマークのある飲料・食品用ボトル本体。キャップとラベルを外し中をすすいで指定袋へ。外したプラスチック製キャップ・ラベルは燃えるごみ又はきれいなプラスチックの拠点回収。本体と付属品の分類を混同しない。汚れのひどいものは燃えるごみ。\n三間地区 → 是能、コスモスタウン、曽根、成家、則、大藤地区の次回収集日は2026年4月3日（金）です。\n収集日の午前8時30分までに、地区で決められた場所へ。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-04-03",
+            "display_date": "2026年4月3日（金）",
+            "collection_type": "ペットボトル"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/mima/uwajima-2026.1/items/38203-0926",
+            "regional://38203/mima/uwajima-2026.1/items/uw-example-005",
+            "regional://38203/mima/uwajima-2026.1/items/38203-0439"
+          ]
+        },
+        {
+          "case": 34,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "水を切った生ごみ",
+            "category_code": "burnable",
+            "category_name": "燃えるごみ",
+            "disposal_instructions": "水分をきって\n市指定の燃えるごみ袋。生ごみは水切り。通常収集に出すプラスチックも燃えるごみ。指定袋に入り口を結べる範囲。",
+            "confidence": 0.9
+          },
+          "answer": "水を切った生ごみは「燃えるごみ」です。\n水分をきって\n市指定の燃えるごみ袋。生ごみは水切り。通常収集に出すプラスチックも燃えるごみ。指定袋に入り口を結べる範囲。\n宇和島地区 → 青葉台地区の次回収集日は2026年4月1日（水）です。\n収集日の午前8時30分までに、地区で決められた場所へ。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-04-01",
+            "display_date": "2026年4月1日（水）",
+            "collection_type": "燃えるごみ"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0744",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0745",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0746"
+          ]
+        },
+        {
+          "case": 35,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+            "category_code": "pet",
+            "category_name": "ペットボトル",
+            "disposal_instructions": "PETマークのある飲料・食品用ボトル本体。キャップとラベルを外し中をすすいで指定袋へ。外したプラスチック製キャップ・ラベルは燃えるごみ又はきれいなプラスチックの拠点回収。本体と付属品の分類を混同しない。汚れのひどいものは燃えるごみ。",
+            "confidence": 0.95
+          },
+          "answer": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体は「ペットボトル」です。\nPETマークのある飲料・食品用ボトル本体。キャップとラベルを外し中をすすいで指定袋へ。外したプラスチック製キャップ・ラベルは燃えるごみ又はきれいなプラスチックの拠点回収。本体と付属品の分類を混同しない。汚れのひどいものは燃えるごみ。\nペットボトルは「月末」と案内されていますが、具体的な日付は未確認です。自治会又は市へ確認してください。\n離島の搬出場所・船便・時刻は自治会又は市に確認してください。",
+          "follow_up_question": null,
+          "next_collection": null,
+          "collection_status": {
+            "status": "unverified",
+            "message": "ペットボトルは「月末」と案内されていますが、具体的な日付は未確認です。自治会又は市へ確認してください。",
+            "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-u-shushubi2026.html"
+          },
+          "source_uris": [
+            "regional://38203/uwajima_islands/uwajima-2026.1/items/38203-0926",
+            "regional://38203/uwajima_islands/uwajima-2026.1/items/uw-example-005",
+            "regional://38203/uwajima_islands/uwajima-2026.1/items/38203-0439"
+          ]
+        },
+        {
+          "case": 36,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+            "category_code": "pet",
+            "category_name": "ペットボトル",
+            "disposal_instructions": "PETマークのある飲料・食品用ボトル本体。キャップとラベルを外し中をすすいで指定袋へ。外したプラスチック製キャップ・ラベルは燃えるごみ又はきれいなプラスチックの拠点回収。本体と付属品の分類を混同しない。汚れのひどいものは燃えるごみ。",
+            "confidence": 0.95
+          },
+          "answer": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体は「ペットボトル」です。\nPETマークのある飲料・食品用ボトル本体。キャップとラベルを外し中をすすいで指定袋へ。外したプラスチック製キャップ・ラベルは燃えるごみ又はきれいなプラスチックの拠点回収。本体と付属品の分類を混同しない。汚れのひどいものは燃えるごみ。\nペットボトルは「月末」と案内されていますが、具体的な日付は未確認です。自治会又は市へ確認してください。\n離島の搬出場所・船便・時刻は自治会又は市に確認してください。",
+          "follow_up_question": null,
+          "next_collection": null,
+          "collection_status": {
+            "status": "unverified",
+            "message": "ペットボトルは「月末」と案内されていますが、具体的な日付は未確認です。自治会又は市へ確認してください。",
+            "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-u-shushubi2026.html"
+          },
+          "source_uris": [
+            "regional://38203/uwajima_islands/uwajima-2026.1/items/38203-0926",
+            "regional://38203/uwajima_islands/uwajima-2026.1/items/uw-example-005",
+            "regional://38203/uwajima_islands/uwajima-2026.1/items/38203-0439"
+          ]
+        },
+        {
+          "case": 37,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+            "category_code": "pet",
+            "category_name": "ペットボトル",
+            "disposal_instructions": "PETマークのある飲料・食品用ボトル本体。キャップとラベルを外し中をすすいで指定袋へ。外したプラスチック製キャップ・ラベルは燃えるごみ又はきれいなプラスチックの拠点回収。本体と付属品の分類を混同しない。汚れのひどいものは燃えるごみ。",
+            "confidence": 0.95
+          },
+          "answer": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体は「ペットボトル」です。\nPETマークのある飲料・食品用ボトル本体。キャップとラベルを外し中をすすいで指定袋へ。外したプラスチック製キャップ・ラベルは燃えるごみ又はきれいなプラスチックの拠点回収。本体と付属品の分類を混同しない。汚れのひどいものは燃えるごみ。\n津島地区 → 竹ヶ島地区の次回収集日は2026年4月3日（金）です。\n離島の搬出場所・船便・時刻は自治会又は市に確認してください。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-04-03",
+            "display_date": "2026年4月3日（金）",
+            "collection_type": "ペットボトル"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/tsushima_islands/uwajima-2026.1/items/38203-0926",
+            "regional://38203/tsushima_islands/uwajima-2026.1/items/uw-example-005",
+            "regional://38203/tsushima_islands/uwajima-2026.1/items/38203-0439"
+          ]
+        },
+        {
+          "case": 38,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "新聞紙",
+            "category_code": "paper",
+            "category_name": "古紙類",
+            "disposal_instructions": "ひもで縛る\n新聞、ダンボール、雑誌・雑がみ、飲料用紙パックを種類別に十文字にしばる。回収場所はごみステーションと異なる場合があるため自治会で確認。紙パックは洗い開いて乾燥。内側アルミは対象外。古紙の拠点回収も利用可能。",
+            "confidence": 1.0
+          },
+          "answer": "新聞紙は「古紙類」です。\nひもで縛る\n新聞、ダンボール、雑誌・雑がみ、飲料用紙パックを種類別に十文字にしばる。回収場所はごみステーションと異なる場合があるため自治会で確認。紙パックは洗い開いて乾燥。内側アルミは対象外。古紙の拠点回収も利用可能。\n宇和島地区 → 堀端町地区の次回収集日は2026年11月19日（木）です。\n収集日の午前8時30分までに、地区で決められた場所へ。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-11-19",
+            "display_date": "2026年11月19日（木）",
+            "collection_type": "古紙類"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0480",
+            "regional://38203/uwajima/uwajima-2026.1/items/uw-example-020",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0057"
+          ]
+        },
+        {
+          "case": 39,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "新聞紙",
+            "category_code": "paper",
+            "category_name": "古紙類",
+            "disposal_instructions": "ひもで縛る\n新聞、ダンボール、雑誌・雑がみ、飲料用紙パックを種類別に十文字にしばる。回収場所はごみステーションと異なる場合があるため自治会で確認。紙パックは洗い開いて乾燥。内側アルミは対象外。古紙の拠点回収も利用可能。",
+            "confidence": 1.0
+          },
+          "answer": "新聞紙は「古紙類」です。\nひもで縛る\n新聞、ダンボール、雑誌・雑がみ、飲料用紙パックを種類別に十文字にしばる。回収場所はごみステーションと異なる場合があるため自治会で確認。紙パックは洗い開いて乾燥。内側アルミは対象外。古紙の拠点回収も利用可能。\n古紙の回収区域・日程をこの収集地区だけでは確定できません。自治会又は市で確認し、古紙の拠点回収もご利用ください。\n収集日の午前8時30分までに、地区で決められた場所へ。",
+          "follow_up_question": null,
+          "next_collection": null,
+          "collection_status": {
+            "status": "unverified",
+            "message": "古紙の回収区域・日程をこの収集地区だけでは確定できません。自治会又は市で確認し、古紙の拠点回収もご利用ください。",
+            "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-u-shigen.html"
+          },
+          "source_uris": [
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0480",
+            "regional://38203/uwajima/uwajima-2026.1/items/uw-example-020",
+            "regional://38203/uwajima/uwajima-2026.1/items/38203-0057"
+          ]
+        },
+        {
+          "case": 40,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "飲料用ペットボトル本体",
+            "category_code": "ペット",
+            "category_name": "ペットボトル",
+            "disposal_instructions": "根拠2, 根拠4, 根拠5に基づき、キャップとラベルを外し、すすいでから出してください。",
+            "confidence": 0.95
+          },
+          "answer": "飲料用ペットボトル本体は「ペットボトル」です。\n根拠2, 根拠4, 根拠5に基づき、キャップとラベルを外し、すすいでから出してください。\n清水地区の次回収集日は2026年4月1日（水）です。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-04-01",
+            "display_date": "2026年4月1日（水）",
+            "collection_type": "ペットボトル"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "local://items/item_1679",
+            "local://items/item_1402",
+            "local://items/item_1556"
+          ]
+        },
+        {
+          "case": 41,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "中身を空にして水洗いした飲料用アルミ缶",
+            "category_code": "cans",
+            "category_name": "かん類",
+            "disposal_instructions": "中を洗って。汚れが落ちないものは不燃ごみ\n飲料・食品のかんは中を洗い、無色透明の袋またはコンテナに入れる。汚れが落ちないものは燃やさないごみ。家庭から出たものに限り、収集日の午前8時までに地域の指定場所へ出す。一度に出せる量は3袋まで",
+            "confidence": 0.9
+          },
+          "answer": "中身を空にして水洗いした飲料用アルミ缶は「かん類」です。\n中を洗って。汚れが落ちないものは不燃ごみ\n飲料・食品のかんは中を洗い、無色透明の袋またはコンテナに入れる。汚れが落ちないものは燃やさないごみ。家庭から出たものに限り、収集日の午前8時までに地域の指定場所へ出す。一度に出せる量は3袋まで\n愛宕、大平（愛宕山道路沿い）、片山町、幸町（愛宕山道路沿い）、清水町花小路、大正町、大門、（花小路）、浜田町、東新川、松蔭町、松本町（愛宕山道路沿い）、矢野町2～4地区の次回収集日は2026年4月22日（水）です。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-04-22",
+            "display_date": "2026年4月22日（水）",
+            "collection_type": "かん類"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38204/standard/yawatahama-2026.2/items/yh-0018",
+            "regional://38204/standard/yawatahama-2026.2/items/yh-0318",
+            "regional://38204/standard/yawatahama-2026.2/items/yh-0287"
+          ]
+        },
+        {
+          "case": 42,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "キャップ・ラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体。プラマークはありません",
+            "category_code": "pet_bottles",
+            "category_name": "ペットボトル",
+            "disposal_instructions": "すすいでから出す\nPETマーク付きの食品・飲料容器。さっと水洗いし、キャップとラベルは外してプラスチック製容器包装へ。本体と分ける。収集日の午前8時30分までに地域の所定の場所へ。一度に45リットル以下の袋3つまで。",
+            "confidence": 0.9
+          },
+          "answer": "キャップ・ラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体。プラマークはありませんは「ペットボトル」です。\nすすいでから出す\nPETマーク付きの食品・飲料容器。さっと水洗いし、キャップとラベルは外してプラスチック製容器包装へ。本体と分ける。収集日の午前8時30分までに地域の所定の場所へ。一度に45リットル以下の袋3つまで。\n南山崎（上唐川・下唐川・大平上・大平下、平岡・鵜崎を除く）、鳥ノ木地区の次回収集日は2026年4月21日（火）です。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-04-21",
+            "display_date": "2026年4月21日（火）",
+            "collection_type": "ペットボトル"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38210/iyo/iyo-2026.1/items/iy-1363",
+            "regional://38210/iyo/iyo-2026.1/items/iy-1246",
+            "regional://38210/iyo/iyo-2026.1/items/iy-1432"
+          ]
+        },
+        {
+          "case": 43,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "使い終わったアルカリ乾電池",
+            "category_code": "hazardous",
+            "category_name": "有害ごみ",
+            "disposal_instructions": "蛍光管・乾電池（アルカリ・マンガン）・白熱電球・水銀体温計等。45リットルの市販の無色透明袋へ。乾電池は割れ防止のため別の小さな無色透明袋に入れる。長い蛍光管は両側から袋をかぶせる。収集日当日の午前8時までに地域のごみステーションへ。前夜には出さない。",
+            "confidence": 0.9
+          },
+          "answer": "使い終わったアルカリ乾電池は「有害ごみ」です。\n蛍光管・乾電池（アルカリ・マンガン）・白熱電球・水銀体温計等。45リットルの市販の無色透明袋へ。乾電池は割れ防止のため別の小さな無色透明袋に入れる。長い蛍光管は両側から袋をかぶせる。収集日当日の午前8時までに地域のごみステーションへ。前夜には出さない。\n伊方地域：河内、湊浦、小中浦、中浦、川永田、豊之浦地区の次回収集日は2026年4月22日（水）です。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-04-22",
+            "display_date": "2026年4月22日（水）",
+            "collection_type": "有害ごみ"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38442/ikata/ikata-2026.1/items/ik-p27-35",
+            "regional://38442/ikata/ikata-2026.1/items/ik-p37-32",
+            "regional://38442/ikata/ikata-2026.1/items/ik-rule-battery-rechargeable"
+          ]
+        },
+        {
+          "case": 44,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "使い終わったモバイルバッテリー",
+            "category_code": "hazardous",
+            "category_name": "有害ごみ",
+            "disposal_instructions": "2026年1月から有害ごみ。端子を絶縁し透明袋で有害ごみコンテナへ（現行ガイド13ページ）。\n蛍光灯・乾電池・水銀式体温計・モバイルバッテリー。種類別の透明袋でコンテナへ。電池の端子を絶縁する。",
+            "confidence": 1.0
+          },
+          "answer": "使い終わったモバイルバッテリーは「有害ごみ」です。\n2026年1月から有害ごみ。端子を絶縁し透明袋で有害ごみコンテナへ（現行ガイド13ページ）。\n蛍光灯・乾電池・水銀式体温計・モバイルバッテリー。種類別の透明袋でコンテナへ。電池の端子を絶縁する。\n大生院、大永山、萩生（国道11号線より南）地区の次回収集日は2026年6月29日（月）です。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-06-29",
+            "display_date": "2026年6月29日（月）",
+            "collection_type": "有害ごみ"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38205/mainland/niihama-2026.1/items/nh-p45-2-05",
+            "regional://38205/mainland/niihama-2026.1/items/nh-p41-2-10",
+            "regional://38205/mainland/niihama-2026.1/items/nh-p41-2-09"
+          ]
+        },
+        {
+          "case": 45,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+            "category_code": "pet_bottles",
+            "category_name": "ペットボトル",
+            "disposal_instructions": "PET本体はキャップ・ラベルを外し水洗いし軽くつぶしてネットへ。外したプラ製の部品はプラスチック類。",
+            "confidence": 0.9
+          },
+          "answer": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体は「ペットボトル」です。\nPET本体はキャップ・ラベルを外し水洗いし軽くつぶしてネットへ。外したプラ製の部品はプラスチック類。\n重信：山之内地区の次回収集日は2026年4月12日（日）です。\n搬出時刻は地域で確認してください。期限未確認の区分は、検索の次回収集日を翌日以降で案内します。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-04-12",
+            "display_date": "2026年4月12日（日）",
+            "collection_type": "ペットボトル"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38215/shigenobu/toon-2026.1/items/tn-p48-1-1-02",
+            "regional://38215/shigenobu/toon-2026.1/items/tn-rule-pet",
+            "regional://38215/shigenobu/toon-2026.1/items/tn-p42-2-1-01"
+          ]
+        },
+        {
+          "case": 46,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体",
+            "category_code": "pet_bottles",
+            "category_name": "ペットボトル",
+            "disposal_instructions": "きれいなPETマーク付き本体はペット。外したプラ製キャップ・ラベルの分類とは区別。洗えない・汚れが落ちないものは燃える。",
+            "confidence": 1.0
+          },
+          "answer": "キャップとラベルを外して水洗いしたPETマーク付き飲料用ペットボトル本体は「ペットボトル」です。\nきれいなPETマーク付き本体はペット。外したプラ製キャップ・ラベルの分類とは区別。洗えない・汚れが落ちないものは燃える。\n久万：久万地区の次回収集日は2026年4月14日（火）です。\n収集日の朝8時までに出してください。例外日程のステーションについては自治会へ確認してください。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-04-14",
+            "display_date": "2026年4月14日（火）",
+            "collection_type": "ペットボトル"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38386/citywide/kumakogen-2026.1/items/kk-rule-pet-body",
+            "regional://38386/citywide/kumakogen-2026.1/items/kk-p39-1-27",
+            "regional://38386/citywide/kumakogen-2026.1/items/kk-p39-1-29"
+          ]
+        },
+        {
+          "case": 47,
+          "passed": true,
+          "http": 200,
+          "actual_status": "unable_to_determine",
+          "classification": null,
+          "answer": "西条市の公開資料では、この長さちょうどの区分が重なっています。分類・収集方法を市町のごみ担当窓口へ確認してください。",
+          "follow_up_question": null,
+          "next_collection": null,
+          "collection_status": null,
+          "source_uris": [
+            "regional://38206/citywide/saijo-2026.1/items/sj-25-037",
+            "regional://38206/citywide/saijo-2026.1/items/sj-25-036",
+            "regional://38206/citywide/saijo-2026.1/items/sj-18-029"
+          ]
+        },
+        {
+          "case": 48,
+          "passed": true,
+          "http": 200,
+          "actual_status": "answered",
+          "classification": {
+            "item_name": "水洗いして汚れを落とした白色の食品トレイ",
+            "category_code": "resources",
+            "category_name": "資源（びん・缶・紙・布・PET・白色トレイ）",
+            "disposal_instructions": "汚れが落ちないもの➡　 可燃ごみへ\n飲食用びん・缶・PET本体・白色トレイは中身を出して水洗い。PET本体のキャップ・ラベルは外してプラへ。紙・布は種類別に十文字に縛る。乳白色・割れたびんは燃やせないごみ。汚れが落ちない紙・布・PET・トレイは燃やせるごみ。",
+            "confidence": 0.9
+          },
+          "answer": "水洗いして汚れを落とした白色の食品トレイは「資源（びん・缶・紙・布・PET・白色トレイ）」です。\n汚れが落ちないもの➡　 可燃ごみへ\n飲食用びん・缶・PET本体・白色トレイは中身を出して水洗い。PET本体のキャップ・ラベルは外してプラへ。紙・布は種類別に十文字に縛る。乳白色・割れたびんは燃やせないごみ。汚れが落ちない紙・布・PET・トレイは燃やせるごみ。\n北浜町地区の次回収集日は2026年4月6日（月）です。\n地域で決めた時間内に資源集積所へ。時間は自治会等で確認してください。",
+          "follow_up_question": null,
+          "next_collection": {
+            "date": "2026-04-06",
+            "display_date": "2026年4月6日（月）",
+            "collection_type": "資源（びん・缶・紙・布・PET・白色トレイ）"
+          },
+          "collection_status": {
+            "status": "scheduled",
+            "message": null,
+            "source_url": null
+          },
+          "source_uris": [
+            "regional://38202/mainland/imabari-2026.1/items/im-m-11-049",
+            "regional://38202/mainland/imabari-2026.1/items/im-m-11-050",
+            "regional://38202/mainland/imabari-2026.1/items/im-m-example-010"
+          ]
+        }
+      ]
     }
   ],
   "final_code_all_48_real_api": true,
