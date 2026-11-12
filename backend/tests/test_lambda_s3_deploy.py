@@ -54,6 +54,8 @@ class FakeAws:
         self.fail_update = False
         self.fail_wait = False
         self.bad_checksum = False
+        self.management = {"UpdateRuntimeOn": "Auto", "RuntimeVersionArn": None}
+        self.patch_after_update = False
 
     def call(self, service, operation, *args):
         args = list(map(str, args))
@@ -61,6 +63,8 @@ class FakeAws:
         if service == "sts":
             return {"Account": self.account}
         if service == "lambda":
+            if operation == "get-runtime-management-config":
+                return {"FunctionArn": ARN, **self.management}
             if operation == "get-function":
                 return {
                     "Configuration": copy.deepcopy(self.config),
@@ -88,6 +92,10 @@ class FakeAws:
             if operation == "wait":
                 if self.fail_wait:
                     raise deploy.AwsError(operation, "WaiterFailure")
+                if self.patch_after_update:
+                    self.config["RuntimeVersionConfig"] = {
+                        "RuntimeVersionArn": f"arn:aws:lambda:{REGION}::runtime:bbbb"
+                    }
                 return {}
         if service == "apigatewayv2":
             return {
@@ -205,6 +213,7 @@ def context(tmp_path, monkeypatch):
     )
     plan_path = tmp_path / "plan.json"
     plan_path.write_text(json.dumps(plan))
+    (tmp_path / "configuration-before.json").write_text(json.dumps(aws.config))
     args = SimpleNamespace(
         command="deploy", plan=plan_path, execute=False, confirm_target=None
     )
@@ -562,3 +571,252 @@ def test_archive_review_rejects_incomplete_stale_or_unsafe_payload(
     else:
         result = deploy.validate_zip(path)
         assert result["runtime_files"] == 2 and result["municipalities"] == 20
+
+
+def runtime_baseline(ctx, mode="Auto"):
+    ctx.aws.config["RuntimeVersionConfig"] = {
+        "RuntimeVersionArn": f"arn:aws:lambda:{REGION}::runtime:aaaa"
+    }
+    ctx.aws.management["UpdateRuntimeOn"] = mode
+    if mode == "Manual":
+        ctx.aws.management["RuntimeVersionArn"] = ctx.aws.config[
+            "RuntimeVersionConfig"
+        ]["RuntimeVersionArn"]
+    ctx.plan["previous"]["config_sha256"] = deploy.fingerprint(ctx.aws.config)
+    ctx.path.write_text(json.dumps(ctx.plan))
+    (ctx.directory / "configuration-before.json").write_text(json.dumps(ctx.aws.config))
+
+
+def pending_legacy_deployment(ctx):
+    runtime_baseline(ctx)
+    receipt = dict(
+        revision_id="installed",
+        code_sha256=ctx.plan["candidate"]["code_sha256"],
+        config_sha256=ctx.plan["previous"]["config_sha256"],
+        status="update_requested",
+    )
+    (ctx.directory / "receipt.json").write_text(json.dumps(receipt))
+    ctx.aws.config.update(
+        RevisionId="installed",
+        CodeSha256=receipt["code_sha256"],
+        RuntimeVersionConfig={
+            "RuntimeVersionArn": f"arn:aws:lambda:{REGION}::runtime:bbbb"
+        },
+    )
+    ctx.args.command = "verify"
+    return receipt
+
+
+@pytest.mark.parametrize("mode", ["Auto", "FunctionUpdate"])
+def test_managed_patch_during_own_update_succeeds_and_rolls_back_without_env_changes(
+    context, mode
+):
+    runtime_baseline(context, mode)
+    context.plan["runtime_management"] = dict(context.aws.management)
+    context.path.write_text(json.dumps(context.plan))
+    before = copy.deepcopy(context.aws.config["Environment"])
+    context.aws.patch_after_update = True
+    execute(context)
+    receipt = json.loads((context.directory / "receipt.json").read_text())
+    assert receipt["status"] == "verified"
+    assert receipt["config_sha256"] == context.plan["previous"]["config_sha256"]
+    assert receipt["post_config_sha256"] == deploy.fingerprint(context.aws.config)
+    execute(context, "rollback")
+    assert context.aws.config["CodeSha256"] == context.plan["previous"]["code_sha256"]
+    assert context.aws.config["Environment"] == before
+
+
+def test_runtime_patch_drift_before_update_is_still_rejected(context):
+    runtime_baseline(context)
+    context.aws.config["RuntimeVersionConfig"][
+        "RuntimeVersionArn"
+    ] = f"arn:aws:lambda:{REGION}::runtime:bbbb"
+    with pytest.raises(deploy.DeployError, match="changed"):
+        execute(context)
+    assert not context.aws.writes
+
+
+def test_manual_patch_change_during_update_is_not_accepted(context):
+    runtime_baseline(context, "Manual")
+    context.aws.patch_after_update = True
+    with pytest.raises(deploy.DeployError, match="Manual"):
+        execute(context)
+    assert (
+        json.loads((context.directory / "receipt.json").read_text())["status"]
+        == "update_requested"
+    )
+
+
+@pytest.mark.parametrize(
+    "field,value",
+    [
+        ("Runtime", "python3.13"),
+        ("Handler", "other.handler"),
+        ("Architectures", ["x86_64"]),
+        ("Environment", {"Variables": {"SECRET": "different"}}),
+        ("Role", "other-role"),
+        ("Layers", [{"Arn": "other-layer"}]),
+        ("MemorySize", 1024),
+        ("Timeout", 90),
+        ("RuntimeVersionConfig", {"RuntimeVersionArn": None}),
+        (
+            "RuntimeVersionConfig",
+            {"RuntimeVersionArn": "arn:aws:lambda:us-east-1::runtime:bbbb"},
+        ),
+        (
+            "RuntimeVersionConfig",
+            {
+                "RuntimeVersionArn": f"arn:aws:lambda:{REGION}::runtime:bbbb",
+                "Error": {"ErrorCode": "Error", "Message": "do-not-print"},
+            },
+        ),
+        (
+            "RuntimeVersionConfig",
+            {
+                "RuntimeVersionArn": f"arn:aws:lambda:{REGION}::runtime:bbbb",
+                "FutureField": True,
+            },
+        ),
+    ],
+)
+def test_resume_rejects_unexpected_configuration_even_with_explicit_revision(
+    context, field, value
+):
+    pending_legacy_deployment(context)
+    context.aws.config[field] = value
+    context.args.expected_revision_id = "installed"
+    with pytest.raises(deploy.DeployError):
+        deploy.run_plan(context.args)
+    assert not context.aws.writes
+
+
+def test_read_only_resume_uses_old_plan_and_never_rewrites_original_records(
+    context, capsys
+):
+    pending_legacy_deployment(context)
+    protected = {p: p.read_bytes() for p in context.directory.iterdir() if p.is_file()}
+    context.args.report = context.directory / "verification-new.json"
+    deploy.run_plan(context.args)
+    report = json.loads(capsys.readouterr().out)
+    assert report["status"] == "verified" and report["read_only_api_checks"] == 44
+    assert not report["runtime_management_baseline_recorded"]
+    assert context.args.report.stat().st_mode & 0o777 == 0o600
+    assert all(p.read_bytes() == body for p, body in protected.items())
+    assert not context.aws.writes
+    context.args.report = context.directory / "receipt.json"
+    with pytest.raises(FileExistsError):
+        deploy.run_plan(context.args)
+    assert all(p.read_bytes() == body for p, body in protected.items())
+
+
+def test_new_plans_detect_runtime_management_mode_changes(context):
+    pending_legacy_deployment(context)
+    context.plan["runtime_management"] = dict(context.aws.management)
+    context.path.write_text(json.dumps(context.plan))
+    context.aws.management["UpdateRuntimeOn"] = "FunctionUpdate"
+    with pytest.raises(deploy.DeployError, match="mode changed"):
+        deploy.run_plan(context.args)
+    assert not context.aws.writes
+
+
+def test_revision_override_is_explicit_read_only_and_still_detects_further_changes(
+    context,
+):
+    pending_legacy_deployment(context)
+    context.aws.config["RevisionId"] = "reviewed-revision"
+    with pytest.raises(deploy.DeployError, match="revision changed"):
+        deploy.run_plan(context.args)
+    context.args.expected_revision_id = "reviewed-revision"
+    deploy.run_plan(context.args)
+    assert not context.aws.writes
+
+    def race(_):
+        context.aws.config["RevisionId"] = "someone-else"
+        return 44
+
+    context.monkeypatch.setattr(deploy, "verify_api", race)
+    with pytest.raises(deploy.DeployError, match="changed"):
+        deploy.run_plan(context.args)
+    context.args.command = "rollback"
+    with pytest.raises(deploy.DeployError, match="revision changed"):
+        deploy.run_plan(context.args)
+    assert not context.aws.writes
+
+
+@pytest.mark.parametrize("status", ["InProgress", "Failed"])
+def test_resume_requires_completed_update(context, status):
+    pending_legacy_deployment(context)
+    context.aws.config["LastUpdateStatus"] = status
+    with pytest.raises(deploy.DeployError):
+        deploy.run_plan(context.args)
+    assert not context.aws.writes
+
+
+def test_runtime_management_read_access_denied_fails_closed(context):
+    call = context.aws.call
+
+    def denied(service, op, *args):
+        if op == "get-runtime-management-config":
+            raise deploy.AwsError(op, "AccessDeniedException")
+        return call(service, op, *args)
+
+    context.monkeypatch.setattr(context.aws, "call", denied)
+    with pytest.raises(deploy.AwsError):
+        execute(context)
+    assert not context.aws.writes
+
+
+def test_unchanged_manual_runtime_is_supported(context):
+    runtime_baseline(context, "Manual")
+    execute(context)
+    assert (
+        json.loads((context.directory / "receipt.json").read_text())["status"]
+        == "verified"
+    )
+
+
+def test_mode_change_during_read_only_verification_is_detected(context):
+    pending_legacy_deployment(context)
+
+    def changed_mode(_):
+        context.aws.management["UpdateRuntimeOn"] = "Manual"
+        return 44
+
+    context.monkeypatch.setattr(deploy, "verify_api", changed_mode)
+    with pytest.raises(deploy.DeployError, match="mode changed during verification"):
+        deploy.run_plan(context.args)
+    assert not context.aws.writes
+
+
+def test_failed_read_only_api_verification_leaves_old_receipt_intact(context):
+    pending_legacy_deployment(context)
+    before = (context.directory / "receipt.json").read_bytes()
+
+    def failed(_):
+        raise deploy.DeployError("API verification failed")
+
+    context.monkeypatch.setattr(deploy, "verify_api", failed)
+    with pytest.raises(deploy.DeployError, match="API verification failed"):
+        deploy.run_plan(context.args)
+    assert (context.directory / "receipt.json").read_bytes() == before
+    assert not context.aws.writes
+
+
+@pytest.mark.parametrize("command", ["deploy", "rollback"])
+def test_revision_pin_cannot_be_used_for_aws_writes(context, command):
+    context.monkeypatch.setattr(
+        sys,
+        "argv",
+        [
+            "deploy_lambda_s3.py",
+            command,
+            "--plan",
+            str(context.path),
+            "--expected-revision-id",
+            "changed",
+        ],
+    )
+    with pytest.raises(SystemExit) as error:
+        deploy.main()
+    assert error.value.code == 2
+    assert not context.aws.writes
