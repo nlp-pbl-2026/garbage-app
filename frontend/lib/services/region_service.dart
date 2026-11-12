@@ -67,7 +67,9 @@ class RegionService {
   Future<void> saveRegionSetting(RegionSetting setting) async {
     final prefs = await SharedPreferences.getInstance();
     final jsonString = json.encode(setting.toJson());
-    await prefs.setString(_regionSettingKey, jsonString);
+    if (!await prefs.setString(_regionSettingKey, jsonString)) {
+      throw StateError('地域設定を保存できませんでした。');
+    }
   }
 
   Future<void> clearRegionSetting() async {

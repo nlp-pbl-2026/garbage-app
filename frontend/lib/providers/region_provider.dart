@@ -67,14 +67,18 @@ class RegionSettingNotifier extends StateNotifier<AsyncValue<RegionSetting?>> {
     }
   }
 
-  /// 地域設定を保存し、状態を更新する
+  /// 地域設定を保存し、状態を更新する。失敗時は直前の状態を保ち、例外を通知する。
   Future<void> saveSetting(RegionSetting setting) async {
+    final previous = state;
     final epoch = ++_changeEpoch;
     try {
       await _service.saveRegionSetting(setting);
       if (mounted && epoch == _changeEpoch) state = AsyncValue.data(setting);
-    } catch (e, st) {
-      if (mounted && epoch == _changeEpoch) state = AsyncValue.error(e, st);
+    } catch (_) {
+      // A failed edit must not replace the app's current screen/region with
+      // an AsyncError home. Let the caller show the save error and retry.
+      if (mounted && epoch == _changeEpoch) state = previous;
+      rethrow;
     }
   }
 

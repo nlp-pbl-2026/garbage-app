@@ -14,7 +14,6 @@ import '../providers/region_provider.dart';
 import '../providers/settings_provider.dart';
 import '../providers/theme_provider.dart';
 import '../services/notification_service.dart';
-import '../services/municipality_data_service.dart';
 import '../widgets/notification_customization_widget.dart';
 import '../widgets/region_header.dart';
 import 'faq_screen.dart';
@@ -422,16 +421,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
     Navigator.push<void>(
       context,
       MaterialPageRoute(
-        builder: (_) => RegionSelectionScreen(
-          autoDetect: true,
-          onRegionSelected: () {
-            // rootNavigator: true で MaterialApp レベルの Navigator を使い
-            // IndexedStack の設定タブごとスタックを pop してホームへ戻る
-            Navigator.of(context, rootNavigator: true).pop();
-            // 検索タブへ切り替え
-            ref.read(selectedTabProvider.notifier).state = MainTab.search;
-          },
-        ),
+        builder: (_) => const RegionSelectionScreen(autoDetect: true),
       ),
     );
   }
@@ -787,7 +777,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
           ),
         ),
         subtitle: FutureBuilder<Map<String, dynamic>?>(
-          future: MunicipalityDataService().area(region.setting.districtId,
+          future: ref.read(municipalityDataProvider).area(region.setting.districtId,
               municipalityId: region.setting.municipalityId),
           builder: (context, snapshot) => Text(
             '${region.setting.municipalityName} ${region.setting.districtName}'
@@ -822,7 +812,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
           ],
         ),
         onTap: () async {
-          final area = await MunicipalityDataService().area(
+          final area = await ref.read(municipalityDataProvider).area(
               region.setting.districtId,
               municipalityId: region.setting.municipalityId);
           if (area == null) {
@@ -1001,26 +991,48 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             ElevatedButton(
               onPressed: () async {
                 final setting = region;
-                await ref
-                    .read(regionSettingProvider.notifier)
-                    .saveSetting(setting);
-                await ref.read(notificationServiceProvider).updateDistrict(
-                    setting.districtId,
-                    municipalityId: setting.municipalityId);
+                final savedRegions = ref.read(multiRegionServiceProvider);
+                try {
+                  await ref.read(regionSettingProvider.notifier).saveSetting(setting);
+                  final active = await savedRegions.getActiveRegion();
+                  if (active != null) {
+                    final updated = await savedRegions.replaceRegionSetting(active.id, setting);
+                    if (updated == null) throw StateError('保存済み地域を更新できませんでした。');
+                  }
+                  if (context.mounted) ref.invalidate(multiRegionProvider);
+                } catch (_) {
+                  if (dialogContext.mounted) {
+                    ScaffoldMessenger.of(dialogContext).showSnackBar(const SnackBar(
+                      content: Text('地域を保存できませんでした。もう一度お試しください。'),
+                    ));
+                  }
+                  return;
+                }
+                if (!context.mounted) return;
+                var notificationFailed = false;
+                try {
+                  await ref.read(notificationServiceProvider).updateDistrict(
+                      setting.districtId, municipalityId: setting.municipalityId);
+                } catch (_) {
+                  notificationFailed = true;
+                }
                 if (dialogContext.mounted) {
                   Navigator.of(dialogContext).pop();
                 }
                 // 成功フィードバック表示
                 if (context.mounted) {
                   ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text(AppStrings.regionSaved),
-                      duration: Duration(seconds: 2),
+                    SnackBar(
+                      content: Text(notificationFailed
+                          ? '地域は保存しましたが、通知を再設定できませんでした。通知設定を確認してください。'
+                          : AppStrings.regionSaved),
+                      duration: const Duration(seconds: 2),
                       behavior: SnackBarBehavior.floating,
                     ),
                   );
+                  ref.read(selectedTabProvider.notifier).state = MainTab.search;
+                  ref.read(gpsDetectionProvider.notifier).reset();
                 }
-                ref.read(gpsDetectionProvider.notifier).reset();
               },
               child: const Text('この地域で設定'),
             ),
@@ -1030,20 +1042,12 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
     );
   }
 
-  /// 地域選択画面へ遷移し、戻ってきた時にフィードバックを表示する
+  /// 地域選択画面へ遷移する。保存後の検索画面への復帰は選択画面が扱う。
   void _navigateToRegionSelection(BuildContext context, WidgetRef ref) {
     Navigator.push<void>(
       context,
       MaterialPageRoute(
-        builder: (_) => RegionSelectionScreen(
-          onRegionSelected: () {
-            // rootNavigator: true で MaterialApp レベルの Navigator を使い
-            // IndexedStack の設定タブごとスタックを pop してホームへ戻る
-            Navigator.of(context, rootNavigator: true).pop();
-            // 検索タブへ切り替え
-            ref.read(selectedTabProvider.notifier).state = MainTab.search;
-          },
-        ),
+        builder: (_) => const RegionSelectionScreen(),
       ),
     );
   }
@@ -1072,7 +1076,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
           final added = await ref.read(multiRegionProvider.notifier).addRegion(label, newSetting);
           if (added == null) return;
           if (previousActive != null) {
-            final previousArea = await MunicipalityDataService().area(
+            final previousArea = await ref.read(municipalityDataProvider).area(
                 previousActive.setting.districtId,
                 municipalityId: previousActive.setting.municipalityId);
             await ref.read(multiRegionProvider.notifier).setActiveRegion(
@@ -1099,17 +1103,23 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
         Navigator.of(context).pop(true);
       }),
     )).then((selected) async {
-      if (selected != true) return;
+      if (selected != true || !context.mounted) return;
       final setting = ref.read(regionSettingProvider).valueOrNull;
       if (setting != null) {
         await ref.read(multiRegionProvider.notifier).replaceRegionSetting(saved.id, setting);
         if (previousActive != null && previousActive.id != saved.id) {
-          final previousArea = await MunicipalityDataService().area(
+          final previousArea = await ref.read(municipalityDataProvider).area(
               previousActive.setting.districtId,
               municipalityId: previousActive.setting.municipalityId);
           await ref.read(multiRegionProvider.notifier).setActiveRegion(
               previousArea == null ? saved.id : previousActive.id);
         }
+      }
+    }).catchError((Object error, StackTrace stack) {
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text('保存済み地域を更新できませんでした。もう一度お試しください。'),
+        ));
       }
     });
   }

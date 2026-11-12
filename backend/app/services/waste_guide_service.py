@@ -1669,7 +1669,17 @@ class WasteGuideService:
 
         if dirty_condition:
             if any(marker in context for marker in ("汚れが落ちない", "汚れを落とせない", "汚れが取れない")):
-                category = category_in(after_first(("汚れが落ちない",))) or category
+                # A CSV row may state the alternative in its own note without
+                # listing category_options. Use only this explicit clause, not
+                # the shared instructions or another retrieved item's rule.
+                clause = re.split(r"[。\n]", after_first(("汚れが落ちない",)), maxsplit=1)[0]
+                mentioned = {
+                    code for code, label in region.category_names.items()
+                    if label in clause
+                }
+                if len(mentioned) != 1:
+                    return None
+                category = mentioned.pop()
             elif not cls._cleaning_is_confirmed(context):
                 return None
 

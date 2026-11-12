@@ -32,7 +32,12 @@ def official_documents(municipality_id: str, district_id: str, query: str):
             "38402",
             "38402-asou",
             "衣装ケースを捨てたい",
-            [{"question": "砥部町の指定袋に入る大きさですか？", "answer": "いいえ、入りません"}],
+            [
+                {
+                    "question": "砥部町の指定袋に入る大きさですか？",
+                    "answer": "いいえ、入りません",
+                }
+            ],
             "facility_dropoff",
         ),
         ("38402", "38402-asou", "汚れが落ちない油のプラスチック容器", [], "burnable"),
@@ -43,7 +48,12 @@ def official_documents(municipality_id: str, district_id: str, query: str):
             "38401",
             "38401-masaki-school",
             "IHクッキングヒーターを捨てたい",
-            [{"question": "45リットルの袋に入る大きさですか？", "answer": "いいえ、入りません"}],
+            [
+                {
+                    "question": "45リットルの袋に入る大きさですか？",
+                    "answer": "いいえ、入りません",
+                }
+            ],
             "bulky",
         ),
         ("38401", "38401-masaki-school", "汚れを取り除いた食品用トレイ", [], "plastic"),
@@ -128,3 +138,43 @@ def test_item_search_normalizes_isho_spelling_variant():
     )
 
     assert search.search("衣装ケース", limit=1)[0].item == "衣裳ケース"
+
+
+@pytest.mark.parametrize(
+    "query,expected",
+    [
+        ("汚れが落ちない油のプラスチック容器", "burnable"),
+        ("水洗いして汚れを落とした油のプラスチック容器", "plastic_packaging"),
+        ("油のプラスチック容器", None),
+    ],
+)
+def test_tobe_oil_container_uses_only_its_explicit_cleaning_branch(query, expected):
+    region, documents = official_documents("38402", "38402-asou", query)
+    decision = WasteGuideService._resolve_exact_structured_decision(
+        query=query, clarifications=[], documents=documents, region=region
+    )
+    assert (decision.category_code if decision else None) == expected
+
+
+def test_tobe_dirty_rule_is_not_borrowed_from_another_item_or_shared_guidance():
+    region, documents = official_documents(
+        "38402", "38402-asou", "汚れが落ちない油のプラスチック容器"
+    )
+    documents = [
+        RetrievedDocument(
+            text=(
+                "品目: 油容器(プラ製)\n分類コード: plastic_packaging\n"
+                "分類: プラスチック製容器包装\n出し方・注意: すすいで出す\n"
+                "区分共通の出し方（上記の品目固有条件を優先）: 汚れが落ちないものは可燃ごみ"
+            ),
+            score=1,
+        ),
+        *documents,
+    ]
+    decision = WasteGuideService._resolve_exact_structured_decision(
+        query="汚れが落ちない油のプラスチック容器",
+        clarifications=[],
+        documents=documents,
+        region=region,
+    )
+    assert decision is None or decision.category_code == "plastic_packaging"

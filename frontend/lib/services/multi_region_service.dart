@@ -179,7 +179,9 @@ class MultiRegionService {
   ) async {
     final jsonList = regions.map((r) => r.toJson()).toList();
     final jsonString = json.encode(jsonList);
-    await prefs.setString(_savedRegionsKey, jsonString);
+    if (!await prefs.setString(_savedRegionsKey, jsonString)) {
+      throw StateError('保存済み地域を更新できませんでした。');
+    }
   }
 
   /// ユニークIDを生成する
