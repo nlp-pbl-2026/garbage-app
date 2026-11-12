@@ -68,7 +68,7 @@ def read_json(url):
         except HTTPError as error:
             if error.code not in {429, 502, 503, 504} or attempt == 2:
                 raise ValueError(
-                    f"UI data API returned HTTP {error.code}; check endpoint, data and redistribution approval"
+                    f"UI data API returned HTTP {error.code}; check endpoint, data and publication settings"
                 ) from None
             time.sleep(0.5 * 2**attempt)
     raise ValueError("UI data API unavailable")
@@ -92,14 +92,17 @@ def fetch(
     manifest = get(manifest_url)
     require(manifest["schema_version"] == 1, "Unsupported export manifest")
     status = manifest["redistribution_status"]
+    publication = manifest.get("publication_status")
     require(
-        status == "approved"
+        (publication == "enabled" and status in {"approved", "pending"})
+        or (publication is None and status == "approved")
         or (
             status == "unreviewed_local_only"
+            and publication in {None, "local_only"}
             and allow_unreviewed_local
             and local_url(base_url)
         ),
-        "Redistribution is not approved; local-only testing requires explicit opt-in",
+        "Redistribution/publication is not enabled; local-only testing requires explicit opt-in",
     )
     catalog = manifest["catalog"]
     require(

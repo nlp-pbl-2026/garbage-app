@@ -70,7 +70,9 @@ def prepare_workspace(base_url, destination, *, allow_unreviewed_local=False):
             shutil.copyfile(path, target / "assets/data" / path.name)
     (destination / "README.txt").write_text(
         f"Generated isolated frontend workspace.\nUI dataset: {manifest['dataset_version']}\n"
-        f"Redistribution: {manifest['redistribution_status']}\nDo not publish unreviewed_local_only assets.\n"
+        f"Publication: {manifest.get('publication_status', 'legacy')}\n"
+        f"Source-license review: {manifest['redistribution_status']}\n"
+        "Do not publish unreviewed_local_only assets.\n"
     )
     return target, manifest
 

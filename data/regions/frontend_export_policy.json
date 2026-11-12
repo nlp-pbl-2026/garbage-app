@@ -1,6 +1,12 @@
 {
   "schema_version": 1,
   "scope": "flutter_ui_json_redistribution",
+  "publication": {
+    "enabled": true,
+    "authorized_by": "project_owner",
+    "authorized_on": "2026-11-13",
+    "decision": "プロジェクト管理者の依頼により、全20市町のUI用データを公開APIで配信する。自治体による利用・再配布許諾の確認済み記録とは区別する。"
+  },
   "municipalities": {
     "38201": {
       "status": "pending",

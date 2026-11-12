@@ -144,6 +144,19 @@ def local_client():
     return TestClient(app, base_url="http://127.0.0.1", client=("127.0.0.1", 1234))
 
 
+def enable_publication(catalog):
+    path = catalog.parent / "policy.json"
+    policy = json.loads(path.read_text())
+    policy["publication"] = {
+        "enabled": True,
+        "authorized_by": "Synthetic project owner",
+        "authorized_on": "2026-11-13",
+        "decision": "Synthetic public UI delivery decision, not a license review",
+    }
+    write(path, policy)
+    return policy
+
+
 def test_ui_only_snapshot_is_independent_of_csv_npz_and_backend_prompts(source):
     manifest, files = build_snapshot(source)
     assert len(files) == 6  # catalog + two registries/calendars + one address table
@@ -198,6 +211,69 @@ def test_approved_policy_allows_export_without_local_switch(source, monkeypatch)
     )
     assert response.status_code == 200
     assert response.json()["redistribution_status"] == "approved"
+    assert response.json()["publication_status"] == "enabled"
+
+
+@pytest.mark.parametrize("lambda_environment", [False, True])
+def test_publication_decision_allows_public_download_without_claiming_license_review(
+    source, tmp_path, monkeypatch, lambda_environment
+):
+    policy = enable_publication(source)
+    monkeypatch.delenv("FRONTEND_DATA_ALLOW_UNREVIEWED_LOCAL")
+    if lambda_environment:
+        monkeypatch.setenv("AWS_LAMBDA_FUNCTION_NAME", "test-function")
+        monkeypatch.setenv("AWS_LAMBDA_RUNTIME_API", "127.0.0.1:9001")
+    client = TestClient(
+        app, base_url="https://example.test", client=("198.51.100.1", 1)
+    )
+    client.headers["X-Forwarded-For"] = "198.51.100.1"
+    result = fetcher.fetch(
+        "https://example.test",
+        tmp_path / "public-download",
+        expected_ids={"90001", "90002"},
+        get=bridge(client),
+    )
+    assert result["publication_status"] == "enabled"
+    assert result["redistribution_status"] == "pending"
+    assert json.loads((source.parent / "policy.json").read_text()) == policy
+    assert all(r["status"] == "pending" for r in policy["municipalities"].values())
+    assert "publication" not in result  # Operator decision details stay private.
+
+
+@pytest.mark.parametrize(
+    "case", ["disabled", "bad-type", "no-author", "no-date", "no-decision"]
+)
+def test_disabled_or_incomplete_publication_decision_still_blocks_public_api(
+    source, monkeypatch, case
+):
+    policy = enable_publication(source)
+    publication = policy["publication"]
+    if case == "disabled":
+        publication["enabled"] = False
+        # Explicit disabling must win even after every source license is reviewed.
+        for review in policy["municipalities"].values():
+            review.update(
+                status="approved",
+                evidence_url="https://example.test/license",
+                reviewed_by="Synthetic fixture",
+                reviewed_on="2026-11-13",
+            )
+    elif case == "bad-type":
+        publication["enabled"] = "true"
+    elif case == "no-author":
+        publication["authorized_by"] = ""
+    elif case == "no-date":
+        publication.pop("authorized_on")
+    else:
+        publication["decision"] = ""
+    write(source.parent / "policy.json", policy)
+    monkeypatch.delenv("FRONTEND_DATA_ALLOW_UNREVIEWED_LOCAL")
+    assert (
+        TestClient(app, base_url="https://example.test")
+        .get("/api/frontend-data/manifest")
+        .status_code
+        == 503
+    )
 
 
 @pytest.mark.parametrize(
@@ -212,7 +288,10 @@ def test_approved_policy_allows_export_without_local_switch(source, monkeypatch)
         "bad-approval",
     ],
 )
-def test_incomplete_or_inconsistent_data_stops_export(source, case):
+@pytest.mark.parametrize("public", [False, True])
+def test_incomplete_or_inconsistent_data_stops_export(source, case, public):
+    if public:
+        enable_publication(source)
     root = source.parent
     if case == "missing-calendar":
         (root / "90001/calendar.json").unlink()
@@ -285,7 +364,15 @@ def test_fetch_preserves_partial_streams_and_unknown_dates(source, tmp_path):
 
 @pytest.mark.parametrize(
     "case",
-    ["hash", "version", "identity", "unsafe-path", "manifest-race", "missing-city"],
+    [
+        "hash",
+        "version",
+        "identity",
+        "unsafe-path",
+        "manifest-race",
+        "publication-race",
+        "missing-city",
+    ],
 )
 def test_fetch_rejects_tampered_or_mixed_responses_without_installing(
     source, tmp_path, case
@@ -311,6 +398,8 @@ def test_fetch_rejects_tampered_or_mixed_responses_without_installing(
             result["catalog"]["municipalities"].pop()
         elif case == "manifest-race" and len(calls) > 1:
             result["dataset_version"] = "0" * 64
+        elif case == "publication-race" and len(calls) > 1:
+            result["publication_status"] = "disabled"
         return result
 
     output = tmp_path / "downloaded"
@@ -375,6 +464,33 @@ def test_remote_unreviewed_data_and_non_https_urls_are_rejected(source, tmp_path
             expected_ids={"90001", "90002"},
             get=bridge(local_client()),
         )
+
+
+@pytest.mark.parametrize("publication", [None, "disabled"])
+def test_pending_review_without_enabled_publication_is_not_downloadable(
+    source, tmp_path, publication
+):
+    enable_publication(source)
+    actual = bridge(TestClient(app, base_url="https://example.test"))
+
+    def get(url):
+        result = actual(url)
+        assert "/municipalities/" not in url
+        if publication is None:
+            result.pop("publication_status")
+        else:
+            result["publication_status"] = publication
+        return result
+
+    output = tmp_path / "not-installed"
+    with pytest.raises(ValueError, match="publication"):
+        fetcher.fetch(
+            "https://example.test",
+            output,
+            expected_ids={"90001", "90002"},
+            get=get,
+        )
+    assert not output.exists()
 
 
 def test_wrapper_preserves_original_frontend_and_uses_downloaded_data(

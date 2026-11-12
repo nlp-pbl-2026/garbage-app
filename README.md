@@ -47,7 +47,7 @@
 
 ## 使い方
 
-対応済みのAPIへ接続する場合、Flutter側にはAWS認証やローカルBackendの起動は不要です。[APIからFlutter用データを取得する新規clone・Vercel手順](docs/frontend-data-setup.md)を整備しています。**新APIのAWS反映と全20市町の加工JSONの再配布条件確認は未完了です。現時点では公開URLだけでの新規セットアップはまだ利用できず、ローカルAPIで検証できます。** 新方式は元のfrontendを変更せず、隔離コピーで取得・起動・ビルドします。従来の原本生成が必要な場合は[データセットアップ手順](docs/yawatahama-data.md#新規cloneからの取得再生成)を参照してください。
+対応済みのAPIへ接続する場合、Flutter側にはAWS認証やローカルBackendの起動は不要です。[APIからFlutter用データを取得する新規clone・Vercel手順](docs/frontend-data-setup.md)を整備しています。**全20市町のUI用JSONを公開APIで配信する設定です。新APIはAWS未反映のため、公開URLだけでのセットアップはデプロイ後に利用できます。** 資料の利用・再配布条件は未確認のまま別途記録しています。新方式は元のfrontendを変更せず、隔離コピーで取得・起動・ビルドします。従来の原本生成が必要な場合は[データセットアップ手順](docs/yawatahama-data.md#新規cloneからの取得再生成)を参照してください。
 
 以下の従来コマンドは、必要なFlutterアセットを配置済みの環境向けです。新規cloneでは上記の取得手順を使ってください。
 

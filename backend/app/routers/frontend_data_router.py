@@ -1,4 +1,4 @@
-"""UI-only export. Unreviewed redistribution is blocked outside loopback tests."""
+"""UI-only export with separate publication and source-license review records."""
 
 import os
 
@@ -45,8 +45,30 @@ def export_status(request, catalog):
             "Missing redistribution evidence",
         )
         day(review["reviewed_on"])
-    if approved:
-        return "approved"
+    publication = policy.get("publication")
+    if publication is None:
+        # Compatibility with the original policy format.
+        enabled = approved
+    else:
+        require(
+            isinstance(publication, dict) and type(publication.get("enabled")) is bool,
+            "Invalid publication setting",
+        )
+        enabled = publication["enabled"]
+        if enabled:
+            require(
+                all(
+                    isinstance(publication.get(key), str) and publication[key].strip()
+                    for key in ("authorized_by", "decision")
+                ),
+                "Missing publication decision",
+            )
+            day(publication["authorized_on"])
+    if enabled:
+        return {
+            "publication_status": "enabled",
+            "redistribution_status": "approved" if approved else "pending",
+        }
     local = (
         os.getenv("FRONTEND_DATA_ALLOW_UNREVIEWED_LOCAL") == "1"
         and not os.getenv("AWS_LAMBDA_FUNCTION_NAME")
@@ -60,10 +82,13 @@ def export_status(request, catalog):
         )
     )
     if local:
-        return "unreviewed_local_only"
+        return {
+            "publication_status": "local_only",
+            "redistribution_status": "unreviewed_local_only",
+        }
     raise HTTPException(
         status_code=503,
-        detail="Flutter用データの利用・再配布条件を確認中です。公開配信は有効になっていません。",
+        detail="Flutter用データの公開配信は有効になっていません。",
     )
 
 
@@ -72,7 +97,7 @@ def snapshot(request):
         path = catalog_path()
         status = export_status(request, path)
         manifest, files = build_snapshot(path)
-        manifest["redistribution_status"] = status
+        manifest.update(status)
         return manifest, files
     except HTTPException:
         raise
