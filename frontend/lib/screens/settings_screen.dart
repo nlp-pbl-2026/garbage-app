@@ -9,6 +9,7 @@ import '../models/region.dart';
 import '../providers/auth_provider.dart';
 import '../providers/gps_detection_provider.dart';
 import '../providers/multi_region_provider.dart';
+import '../providers/navigation_provider.dart';
 import '../providers/region_provider.dart';
 import '../providers/settings_provider.dart';
 import '../providers/theme_provider.dart';
@@ -418,27 +419,21 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
   /// GPS自動検出付きで地域選択画面へ遷移する
   void _navigateToRegionSelectionWithAutoDetect(
       BuildContext context, WidgetRef ref) {
-    Navigator.push<bool>(
+    Navigator.push<void>(
       context,
       MaterialPageRoute(
         builder: (_) => RegionSelectionScreen(
           autoDetect: true,
           onRegionSelected: () {
-            Navigator.of(context).pop(true);
+            // rootNavigator: true で MaterialApp レベルの Navigator を使い
+            // IndexedStack の設定タブごとスタックを pop してホームへ戻る
+            Navigator.of(context, rootNavigator: true).pop();
+            // 検索タブへ切り替え
+            ref.read(selectedTabProvider.notifier).state = MainTab.search;
           },
         ),
       ),
-    ).then((result) {
-      if (result == true && context.mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('地域設定を更新しました'),
-            duration: Duration(seconds: 2),
-            behavior: SnackBarBehavior.floating,
-          ),
-        );
-      }
-    });
+    );
   }
 
   /// リマインダーON/OFFトグルのハンドラ
@@ -1037,48 +1032,20 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
 
   /// 地域選択画面へ遷移し、戻ってきた時にフィードバックを表示する
   void _navigateToRegionSelection(BuildContext context, WidgetRef ref) {
-    // 遷移前の地域設定を保持（保存失敗時のロールバック用）
-    final previousSetting = ref.read(regionSettingProvider).valueOrNull;
-
-    Navigator.push<bool>(
+    Navigator.push<void>(
       context,
       MaterialPageRoute(
         builder: (_) => RegionSelectionScreen(
           onRegionSelected: () {
-            Navigator.of(context).pop(true);
+            // rootNavigator: true で MaterialApp レベルの Navigator を使い
+            // IndexedStack の設定タブごとスタックを pop してホームへ戻る
+            Navigator.of(context, rootNavigator: true).pop();
+            // 検索タブへ切り替え
+            ref.read(selectedTabProvider.notifier).state = MainTab.search;
           },
         ),
       ),
-    ).then((result) {
-      if (result == true && context.mounted) {
-        // 地域変更成功時のフィードバック表示（2秒間）
-        final currentSetting = ref.read(regionSettingProvider).valueOrNull;
-        if (currentSetting != null && currentSetting != previousSetting) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text(AppStrings.regionSaved),
-              duration: Duration(seconds: 2),
-              behavior: SnackBarBehavior.floating,
-            ),
-          );
-        }
-      } else if (result != true && context.mounted) {
-        // 保存失敗時：変更前データを保持（regionSettingProviderがエラー状態の場合）
-        final currentState = ref.read(regionSettingProvider);
-        if (currentState.hasError && previousSetting != null) {
-          // エラー状態の場合は変更前データを復元
-          ref.read(regionSettingProvider.notifier).saveSetting(previousSetting);
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text(AppStrings.saveError),
-              duration: Duration(seconds: 3),
-              behavior: SnackBarBehavior.floating,
-              backgroundColor: AppColors.error,
-            ),
-          );
-        }
-      }
-    });
+    );
   }
 
   /// 新しい地区を追加するための地域選択画面に遷移する
