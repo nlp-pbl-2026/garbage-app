@@ -32,14 +32,16 @@ void main() {
       'version': 'test-v1',
       'entries': [
         {'town': '清水町', 'lookup_town': '清水町', 'area_id': '38201-08'},
+        {'town': '2番町4丁目', 'lookup_town': '2番町4丁目', 'area_id': '38201-08'},
         {'town': '分割町(1)', 'lookup_town': '分割町', 'area_id': '38201-08'},
         {'town': '分割町(2)', 'lookup_town': '分割町', 'area_id': '38201-ca-test'},
       ],
     }),
   })));
 
-  GeocodedAddress address(String town, {String city = '松山市'}) => GeocodedAddress(
-    prefecture: '愛媛県', city: city, town: town, fullAddress: '$city$town');
+  GeocodedAddress address(String town, {String city = '松山市'}) =>
+      GeocodedAddress(
+          prefecture: '愛媛県', city: city, town: town, fullAddress: '$city$town');
 
   test('uses an exact official town with confirmation-ready area ID', () async {
     final matcher = OfficialCollectionMatcher(data: data);
@@ -51,15 +53,30 @@ void main() {
   test('split town remains multiple candidates', () async {
     final matcher = OfficialCollectionMatcher(data: data);
     await matcher.loadChoumeiData();
-    expect(() => matcher.matchDistrict(address('分割町')), throwsA(isA<DistrictNotFoundException>()));
-    expect(matcher.matchDistrictCandidates(address('分割町'))
-        .map((item) => item.collectionAreaId).toSet(), {'38201-08', '38201-ca-test'});
+    expect(() => matcher.matchDistrict(address('分割町')),
+        throwsA(isA<DistrictNotFoundException>()));
+    expect(
+        matcher
+            .matchDistrictCandidates(address('分割町'))
+            .map((item) => item.collectionAreaId)
+            .toSet(),
+        {'38201-08', '38201-ca-test'});
+  });
+
+  test('GPS kanji numerals match the official table without guessing an area',
+      () async {
+    final matcher = OfficialCollectionMatcher(data: data);
+    await matcher.loadChoumeiData();
+    final result = matcher.matchDistrict(address('二番町四丁目'));
+    expect(result.collectionAreaId, '38201-08');
+    expect(result.region?.municipalityId, '38201');
   });
 
   test('unknown town and city are not guessed', () async {
     final matcher = OfficialCollectionMatcher(data: data);
     await matcher.loadChoumeiData();
-    expect(() => matcher.matchDistrict(address('未知町')), throwsA(isA<DistrictNotFoundException>()));
+    expect(() => matcher.matchDistrict(address('未知町')),
+        throwsA(isA<DistrictNotFoundException>()));
     expect(() => matcher.matchDistrict(address('清水町', city: '今治市')),
         throwsA(isA<OutOfAreaException>()));
   });

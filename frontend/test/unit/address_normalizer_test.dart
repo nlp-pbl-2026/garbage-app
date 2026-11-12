@@ -81,6 +81,19 @@ void main() {
       });
     });
 
+    group('GPSで取得した漢数字の住所', () {
+      test('番町と丁目の漢数字を既存の算用数字表記に合わせる', () {
+        expect(normalizer.normalize('二番町四丁目'), equals('2番町4丁目'));
+        expect(normalizer.normalize('三番町十丁目'), equals('3番町10丁目'));
+      });
+
+      test('大字・空白・全角数字と組み合わせても再正規化で変化しない', () {
+        final result = normalizer.normalize('大字二番町\u3000４丁目');
+        expect(result, equals('2番町4丁目'));
+        expect(normalizer.normalize(result), equals(result));
+      });
+    });
+
     group('パイプライン（複合テスト）', () {
       test('全ステップを正しい順序で適用する', () {
         // 「大字字　北条　１丁目」
