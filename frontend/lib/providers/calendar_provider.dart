@@ -95,3 +95,20 @@ final collectionStatusesProvider = FutureProvider<Map<String, CollectionStatus>>
   if (region == null) return {};
   return ref.watch(scheduleServiceProvider).collectionStatuses(region.districtId);
 });
+
+final monthlyCollectionStatusesProvider = FutureProvider<Map<String, CollectionStatus>>((ref) async {
+  final region = ref.watch(regionSettingProvider).valueOrNull;
+  final month = ref.watch(focusedMonthProvider);
+  if (region == null) return {};
+  return ref.watch(scheduleServiceProvider).collectionStatuses(region.districtId,
+      fromDate: DateTime(month.year, month.month), toDate: DateTime(month.year, month.month + 1, 0),
+      onlyDateWarnings: true);
+});
+
+final dailyCollectionStatusesProvider = FutureProvider<Map<String, CollectionStatus>>((ref) async {
+  final region = ref.watch(regionSettingProvider).valueOrNull;
+  final day = ref.watch(selectedDayProvider);
+  if (region == null || day == null) return {};
+  final date = DateTime(day.year, day.month, day.day);
+  return ref.watch(scheduleServiceProvider).collectionStatuses(region.districtId, fromDate: date, toDate: date);
+});

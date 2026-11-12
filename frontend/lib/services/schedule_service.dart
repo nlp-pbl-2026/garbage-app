@@ -40,6 +40,8 @@ class ScheduleService {
       for (final code in (day.value as List).cast<String>()) {
         final verification = record['collection_type_verification'] as Map<String, dynamic>?;
         if ((verification?[code] as Map<String, dynamic>?)?['status'] == 'unverified') continue;
+        final unknown = record['unverified_dates'] as Map<String, dynamic>?;
+        if ((unknown?[code] as Map<String, dynamic>?)?.containsKey(day.key) ?? false) continue;
         final matches = categories.where((category) =>
             category.toJsonString() == code ||
             (municipalityId == '38201' && _category(code) == category));
@@ -55,8 +57,41 @@ class ScheduleService {
     return result;
   }
 
-  Future<Map<String, CollectionStatus>> collectionStatuses(String districtId) =>
-      _data.collectionStatuses(districtId, municipalityId: municipalityId);
+  Future<Map<String, CollectionStatus>> collectionStatuses(String districtId,
+      {DateTime? fromDate, DateTime? toDate, bool onlyDateWarnings = false}) async {
+    final statuses = await _data.collectionStatuses(districtId,
+        municipalityId: municipalityId, fromDate: fromDate, toDate: toDate,
+        onlyDateWarnings: onlyDateWarnings);
+    if (fromDate != null || toDate != null) return statuses;
+    final entries = await _upcoming(districtId);
+    for (final category in await _data.categories(districtId, municipalityId: municipalityId)) {
+      if (statuses[category.id]?.isUnverified ?? false) continue;
+      final next = entries.where((entry) => entry.category == category).firstOrNull;
+      final unknown = await _unknownBefore(districtId, category, next?.date);
+      if (unknown != null) statuses[category.id] = unknown;
+    }
+    return statuses;
+  }
+
+  Future<CollectionStatus?> _unknownBefore(String districtId,
+      GarbageCategory category, DateTime? next) async {
+    final record = await _data.verifiedCalendar(districtId, municipalityId: municipalityId);
+    final streams = record?['unverified_dates'] as Map<String, dynamic>? ?? {};
+    final unknown = streams[category.id] as Map<String, dynamic>? ?? {};
+    final now = _clock();
+    var start = DateTime(now.year, now.month, now.day);
+    if (category.cutoffMinutes == null || now.hour * 60 + now.minute >= category.cutoffMinutes!) {
+      start = start.add(const Duration(days: 1));
+    }
+    final pending = unknown.entries.where((entry) {
+      final date = DateTime.parse(entry.key);
+      return !date.isBefore(start) && (next == null || !date.isAfter(next));
+    }).toList()..sort((a, b) => a.key.compareTo(b.key));
+    if (pending.isEmpty) return null;
+    final info = pending.first.value as Map<String, dynamic>;
+    return CollectionStatus('unverified', message: '${pending.first.key}：${info['message']}',
+        sourceUrl: info['source_url'] as String);
+  }
 
   Future<List<ScheduleEntry>> getScheduleForDate(String districtId, DateTime date) async {
     final month = await getMonthlySchedule(districtId, date.year, date.month);
@@ -102,7 +137,10 @@ class ScheduleService {
     final category = await _resolveCategory(districtId, categoryId);
     if (category == null) return null;
     for (final entry in await _upcoming(districtId)) {
-      if (entry.category == category) return entry.date;
+      if (entry.category == category) {
+        if (await _unknownBefore(districtId, category, entry.date) != null) return null;
+        return entry.date;
+      }
     }
     return null;
   }
@@ -115,6 +153,7 @@ class ScheduleService {
     final dates = <DateTime>[];
     for (final entry in await _upcoming(districtId)) {
       if (entry.category == category && !dates.contains(entry.date)) {
+        if (await _unknownBefore(districtId, category, entry.date) != null) break;
         dates.add(entry.date);
         if (dates.length >= count) break;
       }

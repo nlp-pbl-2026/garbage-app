@@ -204,17 +204,60 @@ class MunicipalityDataService {
           unknown.any((info) => info['message'] is! String || info['source_url'] is! String ||
               (info['message'] as String).isEmpty || (info['source_url'] as String).isEmpty)) { return null; }
     }
+    final unknownDates = record['unverified_dates'];
+    if (record.containsKey('unverified_dates')) {
+      final types = await categories(districtId, municipalityId: municipalityId);
+      final streams = types.map((c) => c.toJsonString()).toSet();
+      if (unknownDates is! Map<String, dynamic> ||
+          unknownDates.keys.any((key) => !streams.contains(key))) {
+        return null;
+      }
+      for (final stream in unknownDates.entries) {
+        if (stream.value is! Map<String, dynamic>) return null;
+        for (final entry in (stream.value as Map<String, dynamic>).entries) {
+          final date = DateTime.tryParse(entry.key);
+          final info = entry.value;
+          if (date == null || date.toIso8601String().substring(0, 10) != entry.key ||
+              date.isBefore(DateTime.parse(registry['valid_from'] as String)) ||
+              date.isAfter(DateTime.parse(registry['valid_to'] as String)) ||
+              info is! Map<String, dynamic> ||
+              ['message', 'source_url'].any((key) => info[key] is! String || (info[key] as String).trim().isEmpty) ||
+              ((record['days'] as Map<String, dynamic>)[entry.key] as List?)?.contains(stream.key) == true) {
+            return null;
+          }
+        }
+      }
+    }
     return record;
   }
 
   Future<Map<String, CollectionStatus>> collectionStatuses(String districtId,
-      {String municipalityId = '38201'}) async {
+      {String municipalityId = '38201', DateTime? fromDate, DateTime? toDate,
+      bool onlyDateWarnings = false}) async {
     final record = await verifiedCalendar(districtId, municipalityId: municipalityId);
     final types = await categories(districtId, municipalityId: municipalityId);
     final verification = record?['collection_type_verification'] as Map<String, dynamic>?;
-    return {for (final type in types) type.id:
+    final result = <String, CollectionStatus>{if (!onlyDateWarnings) for (final type in types) type.id:
       record == null ? const CollectionStatus('unverified_data') :
         verification?[type.id] == null ? const CollectionStatus('checked') :
           CollectionStatus.fromJson(verification![type.id] as Map<String, dynamic>)};
+    if (fromDate != null && toDate != null && record != null) {
+      final unknown = record['unverified_dates'] as Map<String, dynamic>? ?? {};
+      for (final type in types) {
+        if (result[type.id]?.isUnverified ?? false) continue;
+        final entries = unknown[type.id] as Map<String, dynamic>? ?? {};
+        final inRange = entries.entries.where((entry) {
+          final date = DateTime.parse(entry.key);
+          return !date.isBefore(fromDate) && !date.isAfter(toDate);
+        }).toList()..sort((a, b) => a.key.compareTo(b.key));
+        if (inRange.isNotEmpty) {
+          final info = inRange.first.value as Map<String, dynamic>;
+          result[type.id] = CollectionStatus('unverified',
+              message: '${type.displayName ?? type.id}（${inRange.map((e) => e.key).join('、')}）：${info['message']}',
+              sourceUrl: info['source_url'] as String);
+        }
+      }
+    }
+    return result;
   }
 }
