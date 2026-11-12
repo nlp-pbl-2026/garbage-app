@@ -1,0 +1,296 @@
+{
+  "schema_version": 1,
+  "municipality_id": "38203",
+  "status": "final_all_passed",
+  "phases": [
+    {
+      "phase": "initial",
+      "cases": 48,
+      "passed": 45,
+      "failed_cases": [
+        6,
+        9,
+        20
+      ],
+      "model_calls": {
+        "nova": 95,
+        "titan": 48
+      },
+      "estimated_upper_usd": 0.1960496,
+      "inputs": {
+        "case_sha256": "7e62e4099b2c9c017231084afe55f5acb548641b32233d2b763fcf90ac9eddbf",
+        "model_settings": [
+          "amazon.nova-lite-v1:0",
+          "amazon.titan-embed-text-v2:0",
+          8,
+          0.15,
+          0.75,
+          false,
+          false
+        ],
+        "evaluation_time": "2026-04-01T05:00:00+09:00",
+        "budget_usd": 1.0,
+        "max_calls": 350,
+        "max_cases": 112,
+        "case_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48
+        ],
+        "dataset_sha256": {
+          "registry.json": "7bdf7b092305ed1c4b99a9c69cce3d6835e649eb3e3e134ff3b37b48d412313a",
+          "knowledge/items.csv": "aad3c9f1401eebc2bd86cbb2a1da6d6994c9ae0f5aeb35bfb53791000d3f88fb",
+          "knowledge/item_embeddings.npz": "e46b7df8a1f15218bbaa75061f1eb404fe80a627781ddac815cdf386014a4fa8"
+        },
+        "implementation_sha256": {
+          "backend/app/services/waste_guide_service.py": "fcf5249f9b1ff42881bc219fbd248779ef01d80591595ed0c26f6cd79b911adb",
+          "backend/app/services/embedding_search_service.py": "b68a0b6753ed747c36a7d68ff0fe699fd509e59b70c05ed44cfdeb2104dd1be5",
+          "backend/app/services/calendar_service.py": "17bf8a76dfbe927ebe80e2095e1abb7f1e82c3af0e5ba30a8f31470190cee0db"
+        }
+      }
+    },
+    {
+      "phase": "retry-1",
+      "cases": 8,
+      "passed": 8,
+      "failed_cases": [],
+      "model_calls": {
+        "nova": 16,
+        "titan": 8
+      },
+      "estimated_upper_usd": 0.0354164,
+      "inputs": {
+        "case_sha256": "7e62e4099b2c9c017231084afe55f5acb548641b32233d2b763fcf90ac9eddbf",
+        "model_settings": [
+          "amazon.nova-lite-v1:0",
+          "amazon.titan-embed-text-v2:0",
+          8,
+          0.15,
+          0.75,
+          false,
+          false
+        ],
+        "evaluation_time": "2026-04-01T05:00:00+09:00",
+        "budget_usd": 1.0,
+        "max_calls": 350,
+        "max_cases": 112,
+        "case_ids": [
+          6,
+          8,
+          9,
+          10,
+          20,
+          21,
+          42,
+          48
+        ],
+        "dataset_sha256": {
+          "registry.json": "b8f80d3ed415143560037b9bd1e441faada5280dc9103d3413a368d62d7410ca",
+          "knowledge/items.csv": "7218b49b21be84501129c29dce32d617a72c5f547f64d57ac85ac170e0629ab6",
+          "knowledge/item_embeddings.npz": "eddbbf33ac581533db5130a2f8747bb2b41c8f65e44ccab2734a28c27e4f1fd5"
+        },
+        "implementation_sha256": {
+          "backend/app/services/waste_guide_service.py": "159529573bf17faad7e0f445df5539bb4ba5c36377335d1f006c30672f07f5c5",
+          "backend/app/services/embedding_search_service.py": "b68a0b6753ed747c36a7d68ff0fe699fd509e59b70c05ed44cfdeb2104dd1be5",
+          "backend/app/services/calendar_service.py": "c6176ddd315a3a0b89b9b804ef0e876d400135cb1bcb5a0fbc8d680bc914e56a"
+        }
+      }
+    },
+    {
+      "phase": "final-1",
+      "cases": 48,
+      "passed": 48,
+      "failed_cases": [],
+      "model_calls": {
+        "nova": 95,
+        "titan": 48
+      },
+      "estimated_upper_usd": 0.1998658,
+      "inputs": {
+        "case_sha256": "7e62e4099b2c9c017231084afe55f5acb548641b32233d2b763fcf90ac9eddbf",
+        "model_settings": [
+          "amazon.nova-lite-v1:0",
+          "amazon.titan-embed-text-v2:0",
+          8,
+          0.15,
+          0.75,
+          false,
+          false
+        ],
+        "evaluation_time": "2026-04-01T05:00:00+09:00",
+        "budget_usd": 1.0,
+        "max_calls": 350,
+        "max_cases": 112,
+        "case_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48
+        ],
+        "dataset_sha256": {
+          "registry.json": "b8f80d3ed415143560037b9bd1e441faada5280dc9103d3413a368d62d7410ca",
+          "knowledge/items.csv": "7218b49b21be84501129c29dce32d617a72c5f547f64d57ac85ac170e0629ab6",
+          "knowledge/item_embeddings.npz": "eddbbf33ac581533db5130a2f8747bb2b41c8f65e44ccab2734a28c27e4f1fd5"
+        },
+        "implementation_sha256": {
+          "backend/app/services/waste_guide_service.py": "159529573bf17faad7e0f445df5539bb4ba5c36377335d1f006c30672f07f5c5",
+          "backend/app/services/embedding_search_service.py": "b68a0b6753ed747c36a7d68ff0fe699fd509e59b70c05ed44cfdeb2104dd1be5",
+          "backend/app/services/calendar_service.py": "c6176ddd315a3a0b89b9b804ef0e876d400135cb1bcb5a0fbc8d680bc914e56a"
+        }
+      }
+    }
+  ],
+  "final_code_all_48_real_api": true,
+  "replay_results_not_used_as_live": true,
+  "final_cases": 48,
+  "final_passed": 48,
+  "index": {
+    "rows": 1144,
+    "successful_responses": 1147,
+    "attempts_including_local_auth_failures": 1156,
+    "local_auth_failures": 9,
+    "differential_embeddings": 3,
+    "estimated_upper_usd": 0.044647400000000004
+  },
+  "evaluation": {
+    "cases": 104,
+    "model_calls": {
+      "nova": 206,
+      "titan": 104
+    },
+    "nova_usage": {
+      "inputTokens": 408451,
+      "outputTokens": 19171,
+      "totalTokens": 427622
+    },
+    "estimated_upper_usd": {
+      "titan": 0.0037098000000000005,
+      "nova": 0.427622
+    }
+  },
+  "combined_estimated_upper_usd": 0.4759792,
+  "budget_usd": 1,
+  "limits": {
+    "index_attempts": 1250,
+    "evaluation_cases": 112,
+    "evaluation_calls": 350
+  },
+  "initial_failures": [
+    {
+      "case": 6,
+      "issue": "Exact old combustible row overrode the optional current recycling route",
+      "fix": "Keep source-backed recycling option on both tray rows"
+    },
+    {
+      "case": 9,
+      "issue": "50cm boundary was treated as below 50cm",
+      "fix": "Enforce source-specific maximum-edge exclusion while preserving ordinary bag-based bulky rule"
+    },
+    {
+      "case": 20,
+      "issue": "Opposite battery-removal state introduced a bag-size question",
+      "fix": "A fixed nonremovable-appliance example contains only the applicable disposal condition"
+    }
+  ],
+  "transient_errors": [
+    {
+      "phase": "initial",
+      "case": 35,
+      "event": "Titan query embedding ServiceUnavailable; official exact evidence fallback still answered correctly. Final real API rerun passed."
+    }
+  ],
+  "not_evaluated": [
+    "Real image-input Bedrock cases in this run",
+    "All 1,144 rows as real API searches",
+    "Ten existing municipalities missing local runtime assets"
+  ]
+}

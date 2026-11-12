@@ -4343,6 +4343,572 @@
           }
         }
       }
+    },
+    {
+      "id": "38203",
+      "version": "uwajima-2026.1",
+      "name": "宇和島市",
+      "prefecture_id": "38",
+      "prefecture_name": "愛媛県",
+      "registry_asset": "assets/data/municipality_38203_registry.json",
+      "profiles": {
+        "mima": {
+          "calendar_asset": "assets/data/municipality_38203_0_calendar.json",
+          "categories": {
+            "burnable": {
+              "name": "燃えるごみ",
+              "collection_type_id": "burnable",
+              "cutoff": "08:30",
+              "start_time": "06:00",
+              "time_note": "収集日の午前8時30分までに、地区で決められた場所へ。",
+              "color": "#F68C28"
+            },
+            "non_burnable": {
+              "name": "燃えないごみ",
+              "collection_type_id": "non_burnable",
+              "cutoff": "08:30",
+              "start_time": "06:00",
+              "time_note": "収集日の午前8時30分までに、地区で決められた場所へ。",
+              "color": "#0068B3"
+            },
+            "bottles_cans": {
+              "name": "びん・缶",
+              "collection_type_id": "bottles_cans",
+              "cutoff": "08:30",
+              "start_time": "06:00",
+              "time_note": "収集日の午前8時30分までに、地区で決められた場所へ。",
+              "color": "#984043"
+            },
+            "pet": {
+              "name": "ペットボトル",
+              "collection_type_id": "pet",
+              "cutoff": "08:30",
+              "start_time": "06:00",
+              "time_note": "収集日の午前8時30分までに、地区で決められた場所へ。",
+              "color": "#5BAA4A"
+            },
+            "paper": {
+              "name": "古紙類",
+              "collection_type_id": "paper",
+              "cutoff": "08:30",
+              "time_note": "収集日の午前8時30分までに、地区で決められた場所へ。",
+              "color": "#9F78B4"
+            },
+            "bulky": {
+              "name": "粗大ごみ（直接搬入・許可業者）",
+              "color": "#888888"
+            },
+            "dropoff": {
+              "name": "資源の拠点回収",
+              "color": "#008577"
+            },
+            "clean_plastics": {
+              "name": "きれいなプラスチック（拠点回収）",
+              "color": "#32A2A0"
+            },
+            "batteries": {
+              "name": "電池類の拠点回収",
+              "color": "#B29B35"
+            },
+            "not_collected": {
+              "name": "市・環境センターで処理できない",
+              "color": "#666666"
+            },
+            "consult": {
+              "name": "市へ確認",
+              "color": "#777777"
+            }
+          },
+          "bulky_waste": {
+            "category_code": "bulky",
+            "config": {
+              "municipality_id": "38203",
+              "municipality_name": "宇和島市",
+              "collection_frequency": "環境センターへ直接搬入又は許可業者へ依頼",
+              "reception_hours": "月～土13:00～16:30（祝日・年末年始を除く）",
+              "collection_rules": "市の定期収集・戸別収集はありません。指定袋に入らないものは環境センターへ直接搬入、又は一般廃棄物収集運搬許可業者へ依頼。家庭ごみは10kg50円、月～土13:00～16:30、祝日・年末年始休み。搬入不可の品目は販売店等へ。収集予定は自動生成しない。",
+              "fee_structure_type": "weight_based",
+              "application_method": "guide_only",
+              "information_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-sutekata.html",
+              "phone_number": "0895-49-5040",
+              "steps": [
+                {
+                  "step_number": 1,
+                  "title": "搬入できる品目を確認",
+                  "description": "市指定袋に入らないものは通常のごみステーションに出せません。家電リサイクル対象やスプリング入りマットレスなど、搬入できない品目もあります。"
+                },
+                {
+                  "step_number": 2,
+                  "title": "直接搬入又は許可業者へ依頼",
+                  "description": "環境センターは月～土13:00～16:30（祝日・年末年始休み）、家庭ごみ10kg50円。運べない場合は市の許可業者へ個別に相談してください。アプリからの申込みや予約は行いません。"
+                }
+              ]
+            }
+          }
+        },
+        "tsushima": {
+          "calendar_asset": "assets/data/municipality_38203_0_calendar.json",
+          "categories": {
+            "burnable": {
+              "name": "燃えるごみ",
+              "collection_type_id": "burnable",
+              "cutoff": "08:30",
+              "start_time": "06:00",
+              "time_note": "収集日の午前8時30分までに、地区で決められた場所へ。",
+              "color": "#F68C28"
+            },
+            "non_burnable": {
+              "name": "燃えないごみ",
+              "collection_type_id": "non_burnable",
+              "cutoff": "08:30",
+              "start_time": "06:00",
+              "time_note": "収集日の午前8時30分までに、地区で決められた場所へ。",
+              "color": "#0068B3"
+            },
+            "bottles_cans": {
+              "name": "びん・缶",
+              "collection_type_id": "bottles_cans",
+              "cutoff": "08:30",
+              "start_time": "06:00",
+              "time_note": "収集日の午前8時30分までに、地区で決められた場所へ。",
+              "color": "#984043"
+            },
+            "pet": {
+              "name": "ペットボトル",
+              "collection_type_id": "pet",
+              "cutoff": "08:30",
+              "start_time": "06:00",
+              "time_note": "収集日の午前8時30分までに、地区で決められた場所へ。",
+              "color": "#5BAA4A"
+            },
+            "paper": {
+              "name": "古紙類",
+              "collection_type_id": "paper",
+              "cutoff": "08:30",
+              "time_note": "収集日の午前8時30分までに、地区で決められた場所へ。雨・祝日は月曜地区は木曜、火曜地区は金曜に延期。延期日も雨・祝日なら翌月。船便は荒天で変更の場合があります。",
+              "color": "#9F78B4"
+            },
+            "bulky": {
+              "name": "粗大ごみ（直接搬入・許可業者）",
+              "color": "#888888"
+            },
+            "dropoff": {
+              "name": "資源の拠点回収",
+              "color": "#008577"
+            },
+            "clean_plastics": {
+              "name": "きれいなプラスチック（拠点回収）",
+              "color": "#32A2A0"
+            },
+            "batteries": {
+              "name": "電池類の拠点回収",
+              "color": "#B29B35"
+            },
+            "not_collected": {
+              "name": "市・環境センターで処理できない",
+              "color": "#666666"
+            },
+            "consult": {
+              "name": "市へ確認",
+              "color": "#777777"
+            }
+          },
+          "bulky_waste": {
+            "category_code": "bulky",
+            "config": {
+              "municipality_id": "38203",
+              "municipality_name": "宇和島市",
+              "collection_frequency": "環境センターへ直接搬入又は許可業者へ依頼",
+              "reception_hours": "月～土13:00～16:30（祝日・年末年始を除く）",
+              "collection_rules": "市の定期収集・戸別収集はありません。指定袋に入らないものは環境センターへ直接搬入、又は一般廃棄物収集運搬許可業者へ依頼。家庭ごみは10kg50円、月～土13:00～16:30、祝日・年末年始休み。搬入不可の品目は販売店等へ。収集予定は自動生成しない。",
+              "fee_structure_type": "weight_based",
+              "application_method": "guide_only",
+              "information_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-sutekata.html",
+              "phone_number": "0895-49-5040",
+              "steps": [
+                {
+                  "step_number": 1,
+                  "title": "搬入できる品目を確認",
+                  "description": "市指定袋に入らないものは通常のごみステーションに出せません。家電リサイクル対象やスプリング入りマットレスなど、搬入できない品目もあります。"
+                },
+                {
+                  "step_number": 2,
+                  "title": "直接搬入又は許可業者へ依頼",
+                  "description": "環境センターは月～土13:00～16:30（祝日・年末年始休み）、家庭ごみ10kg50円。運べない場合は市の許可業者へ個別に相談してください。アプリからの申込みや予約は行いません。"
+                }
+              ]
+            }
+          }
+        },
+        "tsushima_islands": {
+          "calendar_asset": "assets/data/municipality_38203_0_calendar.json",
+          "categories": {
+            "burnable": {
+              "name": "燃えるごみ",
+              "collection_type_id": "burnable",
+              "cutoff_status": "unverified",
+              "time_note": "離島の搬出場所・船便・時刻は自治会又は市に確認してください。",
+              "color": "#F68C28"
+            },
+            "non_burnable": {
+              "name": "燃えないごみ",
+              "collection_type_id": "non_burnable",
+              "cutoff_status": "unverified",
+              "time_note": "離島の搬出場所・船便・時刻は自治会又は市に確認してください。",
+              "color": "#0068B3"
+            },
+            "bottles_cans": {
+              "name": "びん・缶",
+              "collection_type_id": "bottles_cans",
+              "cutoff_status": "unverified",
+              "time_note": "離島の搬出場所・船便・時刻は自治会又は市に確認してください。",
+              "color": "#984043"
+            },
+            "pet": {
+              "name": "ペットボトル",
+              "collection_type_id": "pet",
+              "cutoff_status": "unverified",
+              "time_note": "離島の搬出場所・船便・時刻は自治会又は市に確認してください。",
+              "color": "#5BAA4A"
+            },
+            "paper": {
+              "name": "古紙類",
+              "collection_type_id": "paper",
+              "cutoff_status": "unverified",
+              "time_note": "離島の搬出場所・船便・時刻は自治会又は市に確認してください。雨・祝日は月曜地区は木曜、火曜地区は金曜に延期。延期日も雨・祝日なら翌月。船便は荒天で変更の場合があります。",
+              "color": "#9F78B4"
+            },
+            "bulky": {
+              "name": "粗大ごみ（直接搬入・許可業者）",
+              "color": "#888888"
+            },
+            "dropoff": {
+              "name": "資源の拠点回収",
+              "color": "#008577"
+            },
+            "clean_plastics": {
+              "name": "きれいなプラスチック（拠点回収）",
+              "color": "#32A2A0"
+            },
+            "batteries": {
+              "name": "電池類の拠点回収",
+              "color": "#B29B35"
+            },
+            "not_collected": {
+              "name": "市・環境センターで処理できない",
+              "color": "#666666"
+            },
+            "consult": {
+              "name": "市へ確認",
+              "color": "#777777"
+            }
+          },
+          "bulky_waste": {
+            "category_code": "bulky",
+            "config": {
+              "municipality_id": "38203",
+              "municipality_name": "宇和島市",
+              "collection_frequency": "環境センターへ直接搬入又は許可業者へ依頼",
+              "reception_hours": "月～土13:00～16:30（祝日・年末年始を除く）",
+              "collection_rules": "市の定期収集・戸別収集はありません。指定袋に入らないものは環境センターへ直接搬入、又は一般廃棄物収集運搬許可業者へ依頼。家庭ごみは10kg50円、月～土13:00～16:30、祝日・年末年始休み。搬入不可の品目は販売店等へ。収集予定は自動生成しない。",
+              "fee_structure_type": "weight_based",
+              "application_method": "guide_only",
+              "information_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-sutekata.html",
+              "phone_number": "0895-49-5040",
+              "steps": [
+                {
+                  "step_number": 1,
+                  "title": "搬入できる品目を確認",
+                  "description": "市指定袋に入らないものは通常のごみステーションに出せません。家電リサイクル対象やスプリング入りマットレスなど、搬入できない品目もあります。"
+                },
+                {
+                  "step_number": 2,
+                  "title": "直接搬入又は許可業者へ依頼",
+                  "description": "環境センターは月～土13:00～16:30（祝日・年末年始休み）、家庭ごみ10kg50円。運べない場合は市の許可業者へ個別に相談してください。アプリからの申込みや予約は行いません。"
+                }
+              ]
+            }
+          }
+        },
+        "uwajima": {
+          "calendar_asset": "assets/data/municipality_38203_0_calendar.json",
+          "categories": {
+            "burnable": {
+              "name": "燃えるごみ",
+              "collection_type_id": "burnable",
+              "cutoff": "08:30",
+              "start_time": "06:00",
+              "time_note": "収集日の午前8時30分までに、地区で決められた場所へ。",
+              "color": "#F68C28"
+            },
+            "non_burnable": {
+              "name": "燃えないごみ",
+              "collection_type_id": "non_burnable",
+              "cutoff": "08:30",
+              "start_time": "06:00",
+              "time_note": "収集日の午前8時30分までに、地区で決められた場所へ。",
+              "color": "#0068B3"
+            },
+            "bottles_cans": {
+              "name": "びん・缶",
+              "collection_type_id": "bottles_cans",
+              "cutoff": "08:30",
+              "start_time": "06:00",
+              "time_note": "収集日の午前8時30分までに、地区で決められた場所へ。",
+              "color": "#984043"
+            },
+            "pet": {
+              "name": "ペットボトル",
+              "collection_type_id": "pet",
+              "cutoff": "08:30",
+              "start_time": "06:00",
+              "time_note": "収集日の午前8時30分までに、地区で決められた場所へ。",
+              "color": "#5BAA4A"
+            },
+            "paper": {
+              "name": "古紙類",
+              "collection_type_id": "paper",
+              "cutoff": "08:30",
+              "time_note": "収集日の午前8時30分までに、地区で決められた場所へ。",
+              "color": "#9F78B4"
+            },
+            "bulky": {
+              "name": "粗大ごみ（直接搬入・許可業者）",
+              "color": "#888888"
+            },
+            "dropoff": {
+              "name": "資源の拠点回収",
+              "color": "#008577"
+            },
+            "clean_plastics": {
+              "name": "きれいなプラスチック（拠点回収）",
+              "color": "#32A2A0"
+            },
+            "batteries": {
+              "name": "電池類の拠点回収",
+              "color": "#B29B35"
+            },
+            "not_collected": {
+              "name": "市・環境センターで処理できない",
+              "color": "#666666"
+            },
+            "consult": {
+              "name": "市へ確認",
+              "color": "#777777"
+            }
+          },
+          "bulky_waste": {
+            "category_code": "bulky",
+            "config": {
+              "municipality_id": "38203",
+              "municipality_name": "宇和島市",
+              "collection_frequency": "環境センターへ直接搬入又は許可業者へ依頼",
+              "reception_hours": "月～土13:00～16:30（祝日・年末年始を除く）",
+              "collection_rules": "市の定期収集・戸別収集はありません。指定袋に入らないものは環境センターへ直接搬入、又は一般廃棄物収集運搬許可業者へ依頼。家庭ごみは10kg50円、月～土13:00～16:30、祝日・年末年始休み。搬入不可の品目は販売店等へ。収集予定は自動生成しない。",
+              "fee_structure_type": "weight_based",
+              "application_method": "guide_only",
+              "information_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-sutekata.html",
+              "phone_number": "0895-49-5040",
+              "steps": [
+                {
+                  "step_number": 1,
+                  "title": "搬入できる品目を確認",
+                  "description": "市指定袋に入らないものは通常のごみステーションに出せません。家電リサイクル対象やスプリング入りマットレスなど、搬入できない品目もあります。"
+                },
+                {
+                  "step_number": 2,
+                  "title": "直接搬入又は許可業者へ依頼",
+                  "description": "環境センターは月～土13:00～16:30（祝日・年末年始休み）、家庭ごみ10kg50円。運べない場合は市の許可業者へ個別に相談してください。アプリからの申込みや予約は行いません。"
+                }
+              ]
+            }
+          }
+        },
+        "uwajima_islands": {
+          "calendar_asset": "assets/data/municipality_38203_0_calendar.json",
+          "categories": {
+            "burnable": {
+              "name": "燃えるごみ",
+              "collection_type_id": "burnable",
+              "cutoff_status": "unverified",
+              "time_note": "離島の搬出場所・船便・時刻は自治会又は市に確認してください。",
+              "color": "#F68C28"
+            },
+            "non_burnable": {
+              "name": "燃えないごみ",
+              "collection_type_id": "non_burnable",
+              "cutoff_status": "unverified",
+              "time_note": "離島の搬出場所・船便・時刻は自治会又は市に確認してください。",
+              "color": "#0068B3"
+            },
+            "bottles_cans": {
+              "name": "びん・缶",
+              "collection_type_id": "bottles_cans",
+              "cutoff_status": "unverified",
+              "time_note": "離島の搬出場所・船便・時刻は自治会又は市に確認してください。",
+              "color": "#984043"
+            },
+            "pet": {
+              "name": "ペットボトル",
+              "collection_type_id": "pet",
+              "cutoff_status": "unverified",
+              "time_note": "離島の搬出場所・船便・時刻は自治会又は市に確認してください。",
+              "color": "#5BAA4A"
+            },
+            "paper": {
+              "name": "古紙類",
+              "collection_type_id": "paper",
+              "cutoff_status": "unverified",
+              "time_note": "離島の搬出場所・船便・時刻は自治会又は市に確認してください。",
+              "color": "#9F78B4"
+            },
+            "bulky": {
+              "name": "粗大ごみ（直接搬入・許可業者）",
+              "color": "#888888"
+            },
+            "dropoff": {
+              "name": "資源の拠点回収",
+              "color": "#008577"
+            },
+            "clean_plastics": {
+              "name": "きれいなプラスチック（拠点回収）",
+              "color": "#32A2A0"
+            },
+            "batteries": {
+              "name": "電池類の拠点回収",
+              "color": "#B29B35"
+            },
+            "not_collected": {
+              "name": "市・環境センターで処理できない",
+              "color": "#666666"
+            },
+            "consult": {
+              "name": "市へ確認",
+              "color": "#777777"
+            }
+          },
+          "bulky_waste": {
+            "category_code": "bulky",
+            "config": {
+              "municipality_id": "38203",
+              "municipality_name": "宇和島市",
+              "collection_frequency": "環境センターへ直接搬入又は許可業者へ依頼",
+              "reception_hours": "月～土13:00～16:30（祝日・年末年始を除く）",
+              "collection_rules": "市の定期収集・戸別収集はありません。指定袋に入らないものは環境センターへ直接搬入、又は一般廃棄物収集運搬許可業者へ依頼。家庭ごみは10kg50円、月～土13:00～16:30、祝日・年末年始休み。搬入不可の品目は販売店等へ。収集予定は自動生成しない。",
+              "fee_structure_type": "weight_based",
+              "application_method": "guide_only",
+              "information_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-sutekata.html",
+              "phone_number": "0895-49-5040",
+              "steps": [
+                {
+                  "step_number": 1,
+                  "title": "搬入できる品目を確認",
+                  "description": "市指定袋に入らないものは通常のごみステーションに出せません。家電リサイクル対象やスプリング入りマットレスなど、搬入できない品目もあります。"
+                },
+                {
+                  "step_number": 2,
+                  "title": "直接搬入又は許可業者へ依頼",
+                  "description": "環境センターは月～土13:00～16:30（祝日・年末年始休み）、家庭ごみ10kg50円。運べない場合は市の許可業者へ個別に相談してください。アプリからの申込みや予約は行いません。"
+                }
+              ]
+            }
+          }
+        },
+        "yoshida": {
+          "calendar_asset": "assets/data/municipality_38203_0_calendar.json",
+          "categories": {
+            "burnable": {
+              "name": "燃えるごみ",
+              "collection_type_id": "burnable",
+              "cutoff": "08:30",
+              "start_time": "06:00",
+              "time_note": "収集日の午前8時30分までに、地区で決められた場所へ。",
+              "color": "#F68C28"
+            },
+            "non_burnable": {
+              "name": "燃えないごみ",
+              "collection_type_id": "non_burnable",
+              "cutoff": "08:30",
+              "start_time": "06:00",
+              "time_note": "収集日の午前8時30分までに、地区で決められた場所へ。",
+              "color": "#0068B3"
+            },
+            "bottles_cans": {
+              "name": "びん・缶",
+              "collection_type_id": "bottles_cans",
+              "cutoff": "08:30",
+              "start_time": "06:00",
+              "time_note": "収集日の午前8時30分までに、地区で決められた場所へ。",
+              "color": "#984043"
+            },
+            "pet": {
+              "name": "ペットボトル",
+              "collection_type_id": "pet",
+              "cutoff": "08:30",
+              "start_time": "06:00",
+              "time_note": "収集日の午前8時30分までに、地区で決められた場所へ。",
+              "color": "#5BAA4A"
+            },
+            "paper": {
+              "name": "古紙類",
+              "collection_type_id": "paper",
+              "cutoff": "08:30",
+              "time_note": "収集日の午前8時30分までに、地区で決められた場所へ。雨天は中止。祝日の変更は公式カレンダーを確認してください。",
+              "color": "#9F78B4"
+            },
+            "bulky": {
+              "name": "粗大ごみ（直接搬入・許可業者）",
+              "color": "#888888"
+            },
+            "dropoff": {
+              "name": "資源の拠点回収",
+              "color": "#008577"
+            },
+            "clean_plastics": {
+              "name": "きれいなプラスチック（拠点回収）",
+              "color": "#32A2A0"
+            },
+            "batteries": {
+              "name": "電池類の拠点回収",
+              "color": "#B29B35"
+            },
+            "not_collected": {
+              "name": "市・環境センターで処理できない",
+              "color": "#666666"
+            },
+            "consult": {
+              "name": "市へ確認",
+              "color": "#777777"
+            }
+          },
+          "bulky_waste": {
+            "category_code": "bulky",
+            "config": {
+              "municipality_id": "38203",
+              "municipality_name": "宇和島市",
+              "collection_frequency": "環境センターへ直接搬入又は許可業者へ依頼",
+              "reception_hours": "月～土13:00～16:30（祝日・年末年始を除く）",
+              "collection_rules": "市の定期収集・戸別収集はありません。指定袋に入らないものは環境センターへ直接搬入、又は一般廃棄物収集運搬許可業者へ依頼。家庭ごみは10kg50円、月～土13:00～16:30、祝日・年末年始休み。搬入不可の品目は販売店等へ。収集予定は自動生成しない。",
+              "fee_structure_type": "weight_based",
+              "application_method": "guide_only",
+              "information_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-sutekata.html",
+              "phone_number": "0895-49-5040",
+              "steps": [
+                {
+                  "step_number": 1,
+                  "title": "搬入できる品目を確認",
+                  "description": "市指定袋に入らないものは通常のごみステーションに出せません。家電リサイクル対象やスプリング入りマットレスなど、搬入できない品目もあります。"
+                },
+                {
+                  "step_number": 2,
+                  "title": "直接搬入又は許可業者へ依頼",
+                  "description": "環境センターは月～土13:00～16:30（祝日・年末年始休み）、家庭ごみ10kg50円。運べない場合は市の許可業者へ個別に相談してください。アプリからの申込みや予約は行いません。"
+                }
+              ]
+            }
+          }
+        }
+      }
     }
   ]
 }

@@ -39,7 +39,7 @@ def compact(text):
     return re.sub(r"\s+", "", text or "")
 
 
-def cell_text(page, rect):
+def cell_text(page, rect, *, trace=None):
     """Order visible glyphs by baseline then x; preserve displaced long vowels.
 
     MuPDF's table text places small/rotated glyphs (ー、) after the whole line.
@@ -48,7 +48,7 @@ def cell_text(page, rect):
     if rect is None:
         return ""
     selected = {}
-    for span in page.get_texttrace():
+    for span in page.get_texttrace() if trace is None else trace:
         if span["type"] == 3 or not span["opacity"]:
             continue
         for code, _, origin, box in span["chars"]:
@@ -80,8 +80,11 @@ def dictionary(path):
         if len(tables) != 1:
             raise ValueError(f"Dictionary table changed: page {page_index + 1}")
         count = 0
+        trace = page.get_texttrace()
         for row in tables[0].rows:
-            item, category, note = [cell_text(page, rect) for rect in row.cells]
+            item, category, note = [
+                cell_text(page, rect, trace=trace) for rect in row.cells
+            ]
             if not category or compact(category) == "分類":
                 continue  # kana section heading or the repeated column header
             code = CATEGORIES[compact(category)]

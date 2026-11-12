@@ -1658,6 +1658,11 @@
       "url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-u-shigen.html",
       "sha256": "89532fbd96e818f66c9c46786d55f006688922effae4a7a938305835437126b2",
       "canonicalization": "main_body_utf8"
+    },
+    {
+      "file": "national-holidays.csv",
+      "url": "https://www8.cao.go.jp/chosei/shukujitsu/syukujitsu.csv",
+      "sha256": "cec37a743c96995cdb9cb52b685c9003634682a9b0e1a640a6b9b96881fe964a"
     }
   ],
   "unavailable_sources": [

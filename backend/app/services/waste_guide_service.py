@@ -1085,6 +1085,11 @@ class WasteGuideService:
                     query,
                 )
                 decision = exact_decision
+        size_exclusion = self._resolve_recycling_size_exclusion(
+            query=query, clarifications=clarification_items, documents=documents, region=region
+        )
+        if size_exclusion is not None:
+            decision = size_exclusion
         detail_query = " ".join(
             part for part in (query, rewritten_query) if part.strip()
         )
@@ -1280,6 +1285,44 @@ class WasteGuideService:
                     bounds.append((cls._normalize_item_key(base),code,op))
         return any(base==other_base and code!=other_code and {op,other_op}=={"以上","以下"}
                    for base,code,op in bounds for other_base,other_code,other_op in bounds)
+
+    @classmethod
+    def _resolve_recycling_size_exclusion(cls, *, query, clarifications, documents, region):
+        """Enforce an explicit maximum-edge exclusion from this city's evidence.
+
+        This opt-in route is distinct from a city's general bulky-size limit.
+        It cannot infer an object's dimensions from the size of its bag/box.
+        """
+        if "clean_plastics" not in region.category_codes:
+            return None
+        context = unicodedata.normalize("NFKC", " ".join([query] + [v.get("answer", "") for v in clarifications])).lower()
+        dimension = re.search(r"(?:最大の辺|一辺|長辺)(?:の長さ)?(?:が|は|約|=|:|\s)*([0-9]+(?:\.[0-9]+)?)\s*(cm|mm|m|センチ)", context)
+        if not dimension:
+            return None
+        size = float(dimension[1]) * (100 if dimension[2] == "m" else .1 if dimension[2] == "mm" else 1)
+        for index, doc in enumerate(documents, 1):
+            values = cls._structured_values(doc)
+            if values.get("分類コード") != "clean_plastics":
+                continue
+            note = unicodedata.normalize("NFKC", values.get("出し方・注意", ""))
+            limit = re.search(r"一辺\s*([0-9]+(?:\.[0-9]+)?)\s*cm未満", note)
+            if not limit or size < float(limit[1]):
+                continue
+            try:
+                options = json.loads(values.get("条件付き分類コード", "[]"))
+            except (TypeError, ValueError):
+                continue
+            if not isinstance(options, list):
+                continue
+            negative = bool(re.search(r"袋.{0,8}(?:入らない|入りません|収まらない|収まりません)", context))
+            positive = bool(re.search(r"袋.{0,8}(?:入ります|入る|入り口|口を結べ|収まります|収まる)", context))
+            category = "bulky" if negative else "burnable" if positive else ""
+            if category not in options or category not in region.category_codes:
+                return None
+            return ClassificationDecision(is_resolved=True, item_name=doc.text.splitlines()[0].removeprefix("品目:").strip(),
+                category_code=category, confidence=.99, evidence_indexes=(index,),
+                disposal_instructions=f"一辺{limit[1]}cm以上はプラスチックの拠点回収対象外です。" + region.rules.categories[category].answer_note)
+        return None
 
     @classmethod
     def _item_name_matches_query(cls, item_name: str, query: str) -> bool:

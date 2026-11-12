@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "status": "prepared_not_executed",
+  "status": "ready_for_initial_evaluation",
   "evaluation_time": "2026-04-01T05:00:00+09:00",
   "cases": [
     {
@@ -511,17 +511,17 @@
       "case": 38,
       "input": {
         "municipality_id": "38203",
-        "district_id": "38203-a001",
+        "district_id": "38203-a076",
         "query": "新聞紙",
         "clarifications": []
       },
       "expected": "paper",
       "check_type": "classification",
-      "source_url": "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-u-shigen.html",
-      "official_reason": "11月の資源回収振替は対象自治会だけ。広い町域に一律適用しない。",
-      "expected_collection_status": "unverified",
-      "expected_collection_date": null,
-      "evaluation_time": "2026-11-02T05:00:00+09:00"
+      "source_url": "https://www.city.uwajima.ehime.jp/info/shigen-furikae11.html",
+      "official_reason": "堀端町の古紙・乾電池は11月23日から11月19日に振替。通常のびん・缶収集には適用しない。",
+      "expected_collection_status": "scheduled",
+      "expected_collection_date": "2026-11-19",
+      "evaluation_time": "2026-11-18T05:00:00+09:00"
     },
     {
       "case": 39,
@@ -663,5 +663,5 @@
       "official_reason": "白色トレイは資源。"
     }
   ],
-  "notes": "Resource-transfer cases currently assert unverified scope, not a verified transfer date. Update after source/area decisions. No real API calls performed."
+  "notes": "39 Uwajima cases plus 9 existing municipalities. October cache is not a verified source; that case expects no confirmed date."
 }

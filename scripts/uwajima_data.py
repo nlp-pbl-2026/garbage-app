@@ -11,7 +11,7 @@ import argparse
 from collections import Counter
 from concurrent.futures import ThreadPoolExecutor
 import csv
-from datetime import date
+from datetime import date, timedelta
 import hashlib
 import json
 from pathlib import Path
@@ -20,7 +20,7 @@ import sys
 from urllib.parse import urlparse
 from urllib.request import urlopen
 
-from uwajima_html import content
+from uwajima_html import content, Document, expanded
 from uwajima_pdf import calendar_image, dictionary
 from uwajima_schedule import REGIONS, areas, dates, matches
 
@@ -67,7 +67,8 @@ def checked_sources():
 def fetch():
     def download(s):
         if (
-            urlparse(s["url"]).hostname != "www.city.uwajima.ehime.jp"
+            urlparse(s["url"]).hostname
+            not in {"www.city.uwajima.ehime.jp", "www8.cao.go.jp"}
             or Path(s["file"]).name != s["file"]
         ):
             raise ValueError("Unexpected source location")
@@ -132,7 +133,11 @@ def item_rows():
                 )
                 else "kandenchi-recycle.html"
             )
-            note = rules["categories"]["batteries"]["instructions"]
+            note = (
+                "使用済みマンガン・アルカリ乾電池、ボタン電池、リチウム一次電池は指定拠点へ。ボタン・リチウム一次電池は端子を絶縁。通常は袋に入れず直接容器へ、液漏れ時は袋に入れる。地域別の回収日が未確認の場合は拠点を案内。"
+                if source.endswith("kandenchi-recycle.html")
+                else "小型充電式電池は端子を絶縁し、使い切って透明な袋に入れて市役所・支所の充電池回収へ。可燃・不燃に入れない。大型・鉛蓄電池は対象外。"
+            )
         if item == "バッテリー（小型充電式電池）":
             category = "batteries"
             note = rules["categories"]["batteries"]["instructions"]
@@ -148,6 +153,10 @@ def item_rows():
             note = "取り外したプラスチック製キャップ・ラベルは可燃。洗い汚れを落として乾燥させれば、容器包装プラスチックとして拠点回収も利用可能。PET本体の区分を付けない。"
             source = base + "plastic-jissyou.html"
             options.add("clean_plastics")
+        if item in {"食品トレー", "トレー（食品用・プラ製）"}:
+            options.add("clean_plastics")
+            note = "通常収集は燃えるごみ。資源拠点を利用する場合は、洗って汚れを落とし乾燥させた、一辺50cm未満の容器包装プラスチックとして回収できる。拠点によって容器包装のみを受け付ける場合があるので、持込先の対象品目を確認する。"
+            source = base + "plastic-jissyou.html"
         options.discard(category)
         if (category, note, source) != (
             original["category"],
@@ -201,6 +210,51 @@ def item_rows():
     )
 
 
+def resource_paper_rules():
+    table = expanded(
+        Document((DATA / "source/resource-schedule-uwajima.html").read_text()).tables[0]
+    )
+    result = {}
+    for row in table[1:]:
+        for offset in [1, 5]:
+            if len(row) > offset + 3 and row[offset + 2]["text"] == "○":
+                name, rule = row[offset]["text"], row[offset + 1]["text"]
+                if name in result:
+                    raise ValueError("Duplicate resource association")
+                result[name] = rule
+    return result
+
+
+def holidays():
+    result = set()
+    with (DATA / "source/national-holidays.csv").open(
+        encoding="cp932", newline=""
+    ) as f:
+        for row in list(csv.reader(f))[1:]:
+            year, month, day = map(int, row[0].split("/"))
+            result.add(date(year, month, day).isoformat())
+    return result
+
+
+def resource_transfers():
+    table = expanded(Document((DATA / "source/transfer-11.html").read_text()).tables[0])
+    result = []
+    for row in table[1:]:
+        old = re.search(r"(\d+)月(\d+)日", row[0]["text"])
+        new = re.search(r"(\d+)月(\d+)日", row[1]["text"])
+        if old is None or new is None:
+            raise ValueError("Resource transfer table changed")
+        result.append(
+            dict(
+                original=f"2026-{int(old[1]):02}-{int(old[2]):02}",
+                replacement=f"2026-{int(new[1]):02}-{int(new[2]):02}",
+                items=row[2]["text"],
+                associations=row[3]["text"],
+            )
+        )
+    return result
+
+
 def calendar_records():
     records = areas(DATA)
     byurl = {s["url"]: s for s in sources()}
@@ -208,15 +262,31 @@ def calendar_records():
     calendars = {}
     selected = []
     review = []
+    resources = []
+    paper_rules = resource_paper_rules()
+    public_holidays = holidays()
+    transfers = resource_transfers()
+    resource_url = "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-u-shigen.html"
+    transfer_url = "https://www.city.uwajima.ehime.jp/info/shigen-furikae11.html"
     for i, r in enumerate(records, 1):
         source = byurl[r["pdf_url"]] if r["pdf_url"] else None
+        webpage = next(
+            s["url"] for s in sources() if s["file"] == f'calendar-{r["region"]}.html'
+        )
+        unknown = {}
+
+        def mark_unknown(code, day, message, url):
+            unknown.setdefault(code, {})[day] = dict(message=message, source_url=url)
+            if day in days:
+                days[day] = [c for c in days[day] if c != code]
+
         if source:
             key = source["sha256"]
             if key not in unique:
-                days, stats = calendar_image(DATA / "source" / source["file"])
-                unique[key] = (days, stats, source)
-            days, stats, _ = unique[key]
-            days = {d: list(cs) for d, cs in days.items()}
+                parsed, stats = calendar_image(DATA / "source" / source["file"])
+                unique[key] = (parsed, stats, source)
+            parsed, stats, _ = unique[key]
+            days = {d: list(cs) for d, cs in parsed.items()}
         else:
             key = r["name"]
             days = {
@@ -226,37 +296,81 @@ def calendar_records():
                     if c != "paper" and matches(d, rule)
                 )
                 for d in dates()
-                if d.isoformat() not in ["2027-01-01", "2027-01-02", "2027-01-03"]
             }
-            days = {d: cs for d, cs in days.items() if cs}
+            # Island HTML does not specify a New Year's exception. Do not carry
+            # another area's Jan 1 closure over to these collection boats.
+            for code in days.get("2027-01-01", []):
+                mark_unknown(
+                    code,
+                    "2027-01-01",
+                    "離島の年始の収集可否は公式資料から確認できません。自治会又は市へ確認してください。",
+                    webpage,
+                )
         if r["region"] == "mima":
             for d in dates():
                 if matches(d, r["rules"]["paper"]):
                     days.setdefault(d.isoformat(), []).append("paper")
-        # Calendar identity includes its resource-area intersection/profile.
+        paper_rule = paper_rules.get(r["name"]) if r["region"] == "uwajima" else None
+        if paper_rule and paper_rule != "各自":
+            resources.append(
+                dict(
+                    area=r["name"],
+                    association=r["name"],
+                    rule=paper_rule,
+                    source_url=resource_url,
+                )
+            )
+            for d in dates():
+                if ("奇数月" in paper_rule and d.month % 2 == 0) or (
+                    "偶数月" in paper_rule and d.month % 2 == 1
+                ):
+                    continue
+                if not matches(d, paper_rule):
+                    continue
+                day = d.isoformat()
+                if day in public_holidays:
+                    applicable = [
+                        t
+                        for t in transfers
+                        if t["original"] == day
+                        and r["name"] in t["associations"].split("、")
+                    ]
+                    if applicable:
+                        replacement = applicable[0]["replacement"]
+                        days.setdefault(replacement, []).append("paper")
+                    else:
+                        mark_unknown(
+                            "paper",
+                            day,
+                            "祝日の資源回収は振替日が未確認です。自治会又は市で確認してください。",
+                            resource_url,
+                        )
+                else:
+                    days.setdefault(day, []).append("paper")
+        if source and source["file"] in [
+            "calendar-uwajima-65710.pdf",
+            "calendar-uwajima-69373.pdf",
+        ]:
+            mark_unknown(
+                "burnable",
+                "2026-09-30",
+                "9月30日の燃えるごみは、PDFの空欄とHTMLの曜日案内が一致しないため未確認です。市へ確認してください。",
+                source["url"],
+            )
         pid = r["region"] + ("_islands" if not source else "")
-        cid = (
-            "uw-"
-            + hashlib.sha256(
-                (str(key) + pid + r["rules"].get("paper", "")).encode()
-            ).hexdigest()[:12]
-        )
-        webpage = next(
-            s["url"] for s in sources() if s["file"] == f'calendar-{r["region"]}.html'
-        )
         verified = {
             c: dict(status="checked")
             for c in ["burnable", "non_burnable", "bottles_cans", "pet", "paper"]
         }
-        if "paper" not in r["rules"] and not any("paper" in cs for cs in days.values()):
+        if (
+            "paper" not in r["rules"]
+            and not paper_rule
+            and not any("paper" in cs for cs in days.values())
+        ):
             verified["paper"] = dict(
                 status="unverified",
                 message="古紙の回収区域・日程をこの収集地区だけでは確定できません。自治会又は市で確認し、古紙の拠点回収もご利用ください。",
-                source_url=(
-                    "https://www.city.uwajima.ehime.jp/soshiki/15/gomi-u-shigen.html"
-                    if r["region"] == "uwajima"
-                    else webpage
-                ),
+                source_url=resource_url if r["region"] == "uwajima" else webpage,
             )
         if "月末" in r["rules"].get("pet", ""):
             verified["pet"] = dict(
@@ -264,6 +378,28 @@ def calendar_records():
                 message="ペットボトルは「月末」と案内されていますが、具体的な日付は未確認です。自治会又は市へ確認してください。",
                 source_url=webpage,
             )
+        if r["region"] == "uwajima" and r["name"] == "高光（平駄場）":
+            verified["pet"] = dict(
+                status="unverified",
+                message="ペットボトルはHTMLの第2・4木曜とPDFの第2・4金曜が一致しないため未確認です。市へ確認してください。",
+                source_url=source["url"],
+            )
+            for cs in days.values():
+                if "pet" in cs:
+                    cs.remove("pet")
+        # The ID includes the exact resource association, so a holiday transfer
+        # cannot leak into another town sharing the same station-calendar PDF.
+        cid = (
+            "uw-"
+            + hashlib.sha256(
+                (
+                    str(key)
+                    + pid
+                    + r["rules"].get("paper", "")
+                    + (r["name"] if paper_rule else "")
+                ).encode()
+            ).hexdigest()[:12]
+        )
         calendar = dict(
             verification_status=(
                 "partially_checked"
@@ -272,8 +408,12 @@ def calendar_records():
             ),
             source_url=unique[key][2]["url"] if source else webpage,
             collection_type_verification=verified,
-            days={d: sorted(set(cs)) for d, cs in sorted(days.items())},
+            days={
+                d.isoformat(): sorted(set(days.get(d.isoformat(), []))) for d in dates()
+            },
         )
+        if unknown:
+            calendar["unverified_dates"] = unknown
         if cid in calendars and calendars[cid] != calendar:
             raise ValueError("Calendar identity collision")
         calendars[cid] = calendar
@@ -300,6 +440,18 @@ def calendar_records():
             calendar_patterns=len(calendars),
             pdf_cells=sum(r["cells"] for r in review),
             pdfs=review,
+            resource_associations=resources,
+            resource_transfers=transfers,
+            unknown_dates={
+                cid: cal["unverified_dates"]
+                for cid, cal in calendars.items()
+                if "unverified_dates" in cal
+            },
+            decisions=dict(
+                mima_heading="User approved FY2026 second half based on official FY2026 page and all printed weekday/date positions; no date rewriting",
+                resource_scope="Exact official association name matches only; ambiguous crosswalks remain unverified",
+                individual_pdf_dates="Explicit printed dates take precedence over general HTML recurrence; absent/contradictory dates are unverified",
+            ),
         ),
     )
 

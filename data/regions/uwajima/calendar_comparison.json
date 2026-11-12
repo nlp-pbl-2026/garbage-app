@@ -1,5 +1,5 @@
 {
-  "status": "pending_resolution",
+  "status": "reviewed_with_unverified_scope",
   "method": "independent official HTML weekday rule expansion versus raster icon extraction; PDF individual dates retained as candidates, not yet published",
   "compared_cells": 12045,
   "pdf_count": 33,
@@ -815,5 +815,14 @@
         }
       ]
     }
-  ]
+  ],
+  "resolutions": {
+    "calendar-uwajima-65710.pdf": "2026-09-30 burnable held as unverified; no inferred icon/date",
+    "calendar-uwajima-69373.pdf": "2026-09-30 burnable held as unverified; no inferred icon/date",
+    "calendar-uwajima-65792.pdf": "PET stream held as unverified due to conflicting HTML/PDF weekdays; other streams retained",
+    "calendar-uwajima-65756.pdf": "Printed January 4 collection retained as an explicit New Year exception",
+    "calendar-uwajima-65839.pdf": "Printed fifth-Friday collections and January 4 retained; no additions from weekday recurrence",
+    "calendar-yoshida-65913.pdf": "Printed February 18 paper date instead of February 11 holiday",
+    "tsushima": "Printed holiday paper transfers match official rule (Monday to Thursday, Tuesday to Friday). Weather is not predicted."
+  }
 }
