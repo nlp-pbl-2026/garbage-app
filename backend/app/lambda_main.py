@@ -5,6 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from mangum import Mangum
 
 from .routers.search_router import router as search_router
+from .routers.frontend_data_router import router as frontend_data_router
 
 app = FastAPI(title="ごみ分別あいまい検索 API", version="1.1.0")
 app.add_middleware(
@@ -15,6 +16,7 @@ app.add_middleware(
     allow_headers=["Content-Type", "X-Analytics-Key"],
 )
 app.include_router(search_router)
+app.include_router(frontend_data_router)
 
 
 @app.get("/api/health")

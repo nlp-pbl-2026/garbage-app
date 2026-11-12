@@ -64,11 +64,14 @@ S3は公開アクセスをすべて遮断し、バージョニングとSSE-S3（
 | `scripts/sync_knowledge_base.sh` | 取り込み開始と完了待機 |
 | `../scripts/package_backend.sh` | Lambda向けLinux/ARM64 zipの生成 |
 | `../scripts/deploy_lambda_s3.py` | 既存S3経由のLambdaコード更新・バックアップ・復旧（Terraformなし） |
+| `../scripts/flutter_with_data.py` | UIデータをAPI取得・検証し、隔離コピーでFlutterを起動・ビルド |
 | `../scripts/aws-up.sh` | package、Terraform apply、RAG取り込みをまとめて実行 |
 | `../scripts/aws-down.sh` | 全リソースを確認付きでdestroy |
 | `operator-policy.example.json` | Terraform操作者に必要な最小権限例 |
 
 Terraform stateはGit管理しません。複数人で運用する場合は、別途ブートストラップしたS3 backendなどへstateを移行してください。
+
+Flutter用の新APIと住所表の同梱変更は[専用手順書](../docs/frontend-data-setup.md)を参照してください。新APIはAWS未反映ですが、ZIP内の`frontend_export_policy.json`で全20市町のUI用データを公開配信する設定です。資料の利用条件の確認状態は未確認のまま別管理し、管理者の公開判断とは区別します。既存の安全なS3コード更新で反映でき、現行の`$default`プロキシ構成では追加のIAM権限・環境変数・API Gateway変更は不要です。
 
 ## IAM制約のある環境
 

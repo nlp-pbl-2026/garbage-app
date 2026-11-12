@@ -9,6 +9,7 @@ from .database import init_db
 from .routers.auth_router import router as auth_router
 from .routers.bulky_waste_router import router as bulky_waste_router
 from .routers.search_router import router as search_router
+from .routers.frontend_data_router import router as frontend_data_router
 
 
 @asynccontextmanager
@@ -39,6 +40,7 @@ app.add_middleware(
 app.include_router(auth_router)
 app.include_router(bulky_waste_router)
 app.include_router(search_router)
+app.include_router(frontend_data_router)
 
 
 @app.get("/api/health")

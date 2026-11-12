@@ -55,7 +55,9 @@ backend/.venv/bin/python scripts/deploy_lambda_s3.py prepare \
 
 バックアップディレクトリは0700、機密ファイルは0600です。**`configuration-before.json`は秘密情報を含むため、Gitへの追加・無造作な共有・全内容表示をしないでください。** リポジトリ内では既存のGit除外先に限定します。バックアップとplanは同じディレクトリで保管します。
 
-生成済みZIPの再ビルドは不要です。コードやデータを変更した場合だけ`package_backend.sh`で再生成し、新たにprepareします。ファイル検証はLinuxでの実行の代わりにはなりません。依存関係を更新したZIPは公式Lambda Python 3.12 ARM64環境でも確認してください。今回のZIPは[全市町統合時のLinux/ARM64検証](municipality-data-integration.md)と同じハッシュです。
+コードやデータを変更していなければ、検証済みZIPの再ビルドは不要です。変更した場合は`package_backend.sh`で再生成し、新たにprepareします。Flutter用データAPI・配信設定の追加もコード／データ変更に当たるため、旧ZIPはそのまま使えません。[隔離出力先でのパッケージ生成例](frontend-data-setup.md#awsとflutterの更新順序)を参照し、prepareの`--zip`には今回生成したZIPを指定してください。
+
+ファイル検証はLinuxでの実行の代わりにはなりません。依存関係を更新したZIPは公式Lambda Python 3.12 ARM64環境でも確認してください。初期整備時のZIPは[全市町統合時のLinux/ARM64検証](municipality-data-integration.md)と同じハッシュでした。Flutter用データAPI追加後のパッケージ検証結果は[専用手順書](frontend-data-setup.md#ローカル検証結果2026-11-13)を参照してください。
 
 ## 2. 書き込みなしの直前確認
 
@@ -88,6 +90,8 @@ S3のVersionIdを固定し、LambdaのRevisionIdによる条件付き更新を�
 ## 4. 更新後の公開API確認
 
 更新成功後、ヘルス1件と43プロフィールの品目一覧を公開APIで照合します。期待するJSONは同じローカルハンドラーと実データから生成します。20市町・中島・関前などの切り替えを確認し、約2 req/s以下に抑えます。Bedrockは呼びませんがLambda/API Gateway実行料金は発生し得ます。
+
+Flutter用データAPIを追加したZIPでは、この44件照合とは別に、[Flutter用データ取得手順](frontend-data-setup.md#awsとflutterの更新順序)の`fetch_frontend_data.py`で全20市町を取得・検証します。ZIPには新APIのコード、配信設定、6市町の住所表も必要です。現在の配信設定は公開有効で、追加のAWS環境変数やS3の公開設定は不要です。旧ZIPや既存planを再利用せず、今回のコードに対応するZIPと新しいバックアップ先でprepareしてください。
 
 再確認は以下です。候補ZIPとバックアップの整合性、コードSHA、receiptのRevisionId、保存した更新前設定、ランタイム更新モード、Active/Successful状態を確認します。更新前のAPIや別のRevisionを成功扱いにはしません。既存plan・receipt・バックアップは読み取り専用で、receiptが`update_requested`のままでも検証できます。
 

@@ -35,6 +35,7 @@ RUNTIME_APP_FILES = {
     "app/lambda_main.py",
     "app/routers/__init__.py",
     "app/routers/search_router.py",
+    "app/routers/frontend_data_router.py",
     "app/services/__init__.py",
     *(
         f"app/services/{module}.py"
@@ -48,6 +49,8 @@ RUNTIME_APP_FILES = {
             "nakajima_rule_service",
             "matsuyama_prompt_rules",
             "waste_guide_service",
+            "frontend_data_service",
+            "frontend_data_contract",
         )
     ),
 }

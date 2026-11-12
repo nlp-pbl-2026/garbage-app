@@ -13,6 +13,8 @@ backend/garbage_app.db
 /garbage_app.db-wal
 /garbage_app.db-journal
 backend/dist/
+# Isolated clean frontend build output; never tracks downloaded UI datasets.
+/.frontend-build/
 
 # Evaluation datasets and reports derived from external/public source data
 backend/evaluation/artifacts/

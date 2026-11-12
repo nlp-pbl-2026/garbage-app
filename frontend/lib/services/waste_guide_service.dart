@@ -8,6 +8,7 @@ import 'package:http/http.dart' as http;
 import '../constants/app_config.dart';
 import '../models/region.dart';
 import '../models/waste_guide_result.dart';
+import 'municipality_data_service.dart';
 
 class WasteGuideException implements Exception {
   final String message;
@@ -48,10 +49,15 @@ enum SearchPipelineStage {
 class WasteGuideService {
   final http.Client _client;
   final String _baseUrl;
+  final Future<String?> Function() _dataVersion;
 
-  WasteGuideService({http.Client? client, String? baseUrl})
+  WasteGuideService(
+      {http.Client? client,
+      String? baseUrl,
+      Future<String?> Function()? dataVersion})
       : _client = client ?? http.Client(),
-        _baseUrl = baseUrl ?? AppConfig.apiBaseUrl;
+        _baseUrl = baseUrl ?? AppConfig.apiBaseUrl,
+        _dataVersion = dataVersion ?? MunicipalityDataService().snapshotVersion;
 
   Future<WasteGuideResult> classify({
     required String query,
@@ -108,13 +114,15 @@ class WasteGuideService {
     Map<String, dynamic> body,
   ) async {
     final uri = Uri.parse('$_baseUrl$path');
+    final version = await _dataVersion();
     late final http.Response response;
     try {
       response = await _client
           .post(
             uri,
             headers: {'Content-Type': 'application/json'},
-            body: jsonEncode(body),
+            body: jsonEncode(
+                {...body, if (version != null) 'ui_dataset_version': version}),
           )
           .timeout(const Duration(seconds: 70));
     } on SocketException {

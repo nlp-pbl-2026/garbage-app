@@ -3,83 +3,104 @@
   "municipalities": [
     {
       "id": "38201",
-      "registry_path": "matsuyama/registry.json"
+      "registry_path": "matsuyama/registry.json",
+      "addresses_path": "matsuyama/generated/addresses.json"
     },
     {
       "id": "38204",
-      "registry_path": "yawatahama/registry.json"
+      "registry_path": "yawatahama/registry.json",
+      "addresses_path": null
     },
     {
       "id": "38210",
-      "registry_path": "iyo/registry.json"
+      "registry_path": "iyo/registry.json",
+      "addresses_path": null
     },
     {
       "id": "38442",
-      "registry_path": "ikata/registry.json"
+      "registry_path": "ikata/registry.json",
+      "addresses_path": null
     },
     {
       "id": "38205",
-      "registry_path": "niihama/registry.json"
+      "registry_path": "niihama/registry.json",
+      "addresses_path": "niihama/generated/addresses.json"
     },
     {
       "id": "38207",
-      "registry_path": "ozu/registry.json"
+      "registry_path": "ozu/registry.json",
+      "addresses_path": null
     },
     {
       "id": "38402",
-      "registry_path": "tobe/registry.json"
+      "registry_path": "tobe/registry.json",
+      "addresses_path": null
     },
     {
       "id": "38506",
-      "registry_path": "ainan/registry.json"
+      "registry_path": "ainan/registry.json",
+      "addresses_path": null
     },
     {
       "id": "38488",
-      "registry_path": "kihoku/registry.json"
+      "registry_path": "kihoku/registry.json",
+      "addresses_path": null
     },
     {
       "id": "38484",
-      "registry_path": "matsuno/registry.json"
+      "registry_path": "matsuno/registry.json",
+      "addresses_path": null
     },
     {
       "id": "38422",
-      "registry_path": "uchiko/registry.json"
+      "registry_path": "uchiko/registry.json",
+      "addresses_path": null
     },
     {
       "id": "38401",
-      "registry_path": "masaki/registry.json"
+      "registry_path": "masaki/registry.json",
+      "addresses_path": null
     },
     {
       "id": "38215",
-      "registry_path": "toon/registry.json"
+      "registry_path": "toon/registry.json",
+      "addresses_path": "toon/generated/addresses.json"
     },
     {
       "id": "38356",
-      "registry_path": "kamijima/registry.json"
+      "registry_path": "kamijima/registry.json",
+      "addresses_path": "kamijima/generated/addresses.json"
     },
     {
       "id": "38213",
-      "registry_path": "shikokuchuo/registry.json"
+      "registry_path": "shikokuchuo/registry.json",
+      "addresses_path": "shikokuchuo/generated/addresses.json"
     },
     {
       "id": "38214",
-      "registry_path": "seiyo/registry.json"
+      "registry_path": "seiyo/registry.json",
+      "addresses_path": "seiyo/generated/addresses.json"
     },
     {
       "id": "38386",
-      "registry_path": "kumakogen/registry.json"
+      "registry_path": "kumakogen/registry.json",
+      "addresses_path": null
     },
     {
       "id": "38206",
-      "registry_path": "saijo/registry.json"
+      "registry_path": "saijo/registry.json",
+      "addresses_path": null
     },
     {
       "id": "38202",
-      "registry_path": "imabari/registry.json"
+      "registry_path": "imabari/registry.json",
+      "addresses_path": null
     },
     {
       "id": "38203",
-      "registry_path": "uwajima/registry.json"
+      "registry_path": "uwajima/registry.json",
+      "addresses_path": null
     }
-  ]
+  ],
+  "frontend_export_policy_path": "frontend_export_policy.json"
 }
