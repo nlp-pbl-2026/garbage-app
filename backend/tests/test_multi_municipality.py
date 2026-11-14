@@ -414,6 +414,15 @@ def partial_city(municipalities):
             'paper_stream': {'status': 'unverified', 'message': '紙の収集日は未確認です。',
                              'source_url': 'https://example.test/calendar.pdf'}})
     write_json(root / 'calendar.json', calendar)
+    # Staged API evidence must now exist in the synthetic municipality's source.
+    with (root / 'items.csv').open('a', encoding='utf-8', newline='') as stream:
+        csv.writer(stream).writerow(['test', '試験紙', 'paper', '試験紙', ''])
+    np.savez(root / 'items.npz', vectors=np.array([[1., 0.], [0., 1.], [1., 0.]], dtype=np.float32),
+             item_ids=np.array(['same-item', 'dropoff', 'test']), model_id='synthetic-embedding', dimensions=2)
+    manifest = json.loads((root / 'index_manifest.json').read_text())
+    manifest.update(item_count=3, source_sha256=hashlib.sha256((root / 'items.csv').read_bytes()).hexdigest(),
+                    index_sha256=hashlib.sha256((root / 'items.npz').read_bytes()).hexdigest())
+    write_json(root / 'index_manifest.json', manifest)
     return root
 
 
@@ -446,13 +455,15 @@ def test_partial_calendar_rejects_invalid_verification_or_guessed_dates(partial_
 @pytest.mark.asyncio
 async def test_api_returns_unknown_collection_status_without_a_date(partial_city):
     from unittest.mock import patch
+    from app.services.item_search_service import ItemSearchService
     region = get_registry().resolve('90001', 'same-area')
+    paper = ItemSearchService(items_path=region.asset_path('items_path'), municipality_id='90001').list_items(category='paper')[0]
     runtime = Runtime(); runtime.category = 'paper'
     with patch('app.routers.search_router.WasteGuideService', return_value=guide(runtime)), patch('app.routers.search_router.SearchLogService'):
         async with AsyncClient(transport=ASGITransport(app=app), base_url='http://test') as client:
             response = await client.post('/api/search/decide', json={
                 'query': '試験紙', 'rewritten_query': '試験紙', 'municipality_id': '90001', 'district_id': 'same-area',
-                'documents': [{'snippet': '品目: 試験紙\n分類コード: paper', 'score': .99, 'uri': region.evidence_prefix+'items/test'}]})
+                'documents': [{'snippet': paper.evidence_text, 'score': .99, 'uri': region.evidence_prefix+'items/test'}]})
     assert response.status_code == 200
     body = response.json()
     assert body['status'] == 'answered'

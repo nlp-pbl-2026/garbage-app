@@ -1,5 +1,6 @@
 import base64
 from datetime import date
+from types import SimpleNamespace
 from unittest.mock import patch
 
 import pytest
@@ -61,7 +62,10 @@ async def test_classify_endpoint_returns_answer():
     assert body["sources"][0]["score"] == 0.91
     assert body["request_id"]
     event = log_class.return_value.record.call_args.args[0]
+    assert event["text_retained"] is True
     assert event["query"] == "これは何ごみ？"
+    assert event["rewritten_query"] == result.rewritten_query
+    assert event["answer"] == result.answer
     assert event["confidence"] == 0.97
     assert event["status"] == "answered"
 
@@ -76,7 +80,7 @@ async def test_classify_endpoint_returns_follow_up_question():
 
     with (
         patch("app.routers.search_router.WasteGuideService") as service_class,
-        patch("app.routers.search_router.SearchLogService"),
+        patch("app.routers.search_router.SearchLogService") as log_class,
     ):
         service_class.return_value.query.return_value = result
         async with AsyncClient(
@@ -91,6 +95,10 @@ async def test_classify_endpoint_returns_follow_up_question():
     assert body["status"] == "needs_clarification"
     assert body["answer"] is None
     assert body["follow_up_question"] == "素材は紙ですか、プラスチックですか？"
+    assert (
+        log_class.return_value.record.call_args.args[0]["follow_up_question"]
+        == body["follow_up_question"]
+    )
 
 
 @pytest.mark.asyncio
@@ -104,11 +112,12 @@ async def test_staged_endpoints_pass_actual_results_between_agents():
     )
     with (
         patch("app.routers.search_router.WasteGuideService") as service_class,
-        patch("app.routers.search_router.SearchLogService"),
+        patch("app.routers.search_router.SearchLogService") as log_class,
     ):
         service = service_class.return_value
         service.rewrite.return_value = "壊れた傘 素材 大きさ"
         service.retrieve.return_value = documents
+        service.verify_documents.return_value = documents
         service.decide.return_value = result
         async with AsyncClient(
             transport=ASGITransport(app=app), base_url="http://test"
@@ -126,6 +135,9 @@ async def test_staged_endpoints_pass_actual_results_between_agents():
                     "query": "雨の日の長いやつ",
                     "rewritten_query": rewrite.json()["rewritten_query"],
                     "documents": retrieve.json()["documents"],
+                    "clarifications": [
+                        {"question": "どんな品物ですか？", "answer": "傘です"}
+                    ],
                 },
             )
 
@@ -134,35 +146,70 @@ async def test_staged_endpoints_pass_actual_results_between_agents():
     assert decide.json()["follow_up_question"] == "傘の長さは何cmですか？"
     passed_documents = service.decide.call_args.kwargs["documents"]
     assert passed_documents[0].text == "傘は粗大ごみ"
+    event = log_class.return_value.record.call_args.args[0]
+    assert event["query"] == "雨の日の長いやつ"
+    assert event["rewritten_query"] == result.rewritten_query
+    assert event["clarifications"] == [
+        {"question": "どんな品物ですか？", "answer": "傘です"}
+    ]
+    assert event["follow_up_question"] == "傘の長さは何cmですか？"
 
 
 @pytest.mark.asyncio
-async def test_analytics_endpoint_requires_key(monkeypatch):
-    monkeypatch.setattr("app.routers.search_router.config.ANALYTICS_API_KEY", "secret")
-    async with AsyncClient(
-        transport=ASGITransport(app=app), base_url="http://test"
-    ) as client:
-        response = await client.get("/api/search/analytics")
+@pytest.mark.parametrize("entrypoint", ["main", "lambda"])
+@pytest.mark.parametrize(
+    "configured_key, supplied_key, status",
+    [("secret", None, 403), ("secret", "wrong", 403), ("", "secret", 404)],
+)
+async def test_analytics_endpoint_requires_key(
+    monkeypatch, entrypoint, configured_key, supplied_key, status
+):
+    from app.lambda_main import app as lambda_app
 
-    assert response.status_code == 403
-
-
-@pytest.mark.asyncio
-async def test_analytics_endpoint_returns_summary(monkeypatch):
-    monkeypatch.setattr("app.routers.search_router.config.ANALYTICS_API_KEY", "secret")
-    summary = {
-        "total_searches": 1,
-        "answered_count": 1,
-        "clarification_count": 0,
-        "average_confidence": 0.93,
-        "average_duration_ms": 1200.0,
-        "categories": {"可燃ごみ": 1},
-        "recent": [],
-    }
+    monkeypatch.setattr(
+        "app.routers.search_router.config.ANALYTICS_API_KEY", configured_key
+    )
     with patch("app.routers.search_router.SearchLogService") as log_class:
-        log_class.return_value.summary.return_value = summary
         async with AsyncClient(
-            transport=ASGITransport(app=app), base_url="http://test"
+            transport=ASGITransport(app=app if entrypoint == "main" else lambda_app),
+            base_url="http://test",
+        ) as client:
+            response = await client.get(
+                "/api/search/analytics",
+                headers={"X-Analytics-Key": supplied_key} if supplied_key else {},
+            )
+    assert response.status_code == status
+    log_class.assert_not_called()
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("entrypoint", ["main", "lambda"])
+async def test_analytics_endpoint_returns_summary(monkeypatch, entrypoint):
+    from app.lambda_main import app as lambda_app
+    from app.services.search_log_service import SearchLogService
+
+    monkeypatch.setattr("app.routers.search_router.config.ANALYTICS_API_KEY", "secret")
+    event = {
+        "event_type": "search",
+        "query": "洗った缶",
+        "rewritten_query": "アルミ缶",
+        "clarifications": [{"question": "素材は？", "answer": "アルミです"}],
+        "answer": "かん類です。",
+        "follow_up_question": None,
+        "status": "answered",
+        "category_name": "かん類",
+        "confidence": 0.93,
+        "duration_ms": 1200.0,
+    }
+    # Use the real storage/read filtering and aggregation behind the access check.
+    service = SearchLogService(
+        table=SimpleNamespace(scan=lambda **kwargs: {"Items": [event]})
+    )
+    with patch("app.routers.search_router.SearchLogService") as log_class:
+        log_class.return_value = service
+        async with AsyncClient(
+            transport=ASGITransport(app=app if entrypoint == "main" else lambda_app),
+            base_url="http://test",
         ) as client:
             response = await client.get(
                 "/api/search/analytics", headers={"X-Analytics-Key": "secret"}
@@ -170,6 +217,8 @@ async def test_analytics_endpoint_returns_summary(monkeypatch):
 
     assert response.status_code == 200
     assert response.json()["average_confidence"] == 0.93
+    assert response.json()["categories"] == {"かん類": 1}
+    assert response.json()["recent"] == [event]
 
 
 @pytest.mark.asyncio

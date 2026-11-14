@@ -169,7 +169,7 @@ def test_short_answer_confirms_only_the_mark_actually_asked(answer, expected):
 @pytest.mark.asyncio
 @pytest.mark.parametrize("target", ["body", "cap"])
 async def test_decide_api_keeps_selected_part_category_and_its_collection_date(
-    target, monkeypatch
+    target, monkeypatch, tmp_path
 ):
     """Exercise JSON model output -> conditions -> API -> calendar, all synthetic."""
     from dataclasses import replace
@@ -179,8 +179,41 @@ async def test_decide_api_keeps_selected_part_category_and_its_collection_date(
     from httpx import ASGITransport, AsyncClient
     from app.main import app
     from app.services.calendar_service import CalendarService
+    from app.services.item_search_service import ItemMatch
+    import csv
 
     ctx = region()
+    matches = [
+        ItemMatch(
+            "cap",
+            "キャップ",
+            "plastic_packaging",
+            "プラ",
+            "プラマークがあるか確認",
+            0.9,
+            disposal_instructions="プラマークのある容器包装が対象",
+        ),
+        ItemMatch(
+            "body", "ペットボトル本体", "pet_bottles", "PET", "すすいで出す", 0.85
+        ),
+    ]
+    items_path = tmp_path / "items.csv"
+    with items_path.open("w", encoding="utf-8", newline="") as stream:
+        writer = csv.DictWriter(
+            stream,
+            fieldnames=[
+                "item_id",
+                "item",
+                "category",
+                "category_display",
+                "note",
+                "disposal_instructions",
+            ],
+        )
+        writer.writeheader()
+        for match in matches:
+            writer.writerow({key: getattr(match, key) for key in writer.fieldnames})
+    ctx = replace(ctx, profile=replace(ctx.rules, items_path=items_path))
     calendar = CalendarService(
         region=ctx,
         bundle={
@@ -198,8 +231,10 @@ async def test_decide_api_keeps_selected_part_category_and_its_collection_date(
     )
     category = "pet_bottles" if target == "body" else "plastic_packaging"
     docs = [
-        replace(d, uri=ctx.evidence_prefix + "items/" + str(i))
-        for i, d in enumerate([CAP, PET] if target == "body" else [PET, CAP])
+        RetrievedDocument(
+            m.evidence_text, m.score, ctx.evidence_prefix + "items/" + m.item_id
+        )
+        for m in (matches if target == "body" else matches[::-1])
     ]
 
     class Runtime:

@@ -13,7 +13,7 @@ cmp "${PROJECT_ROOT}/data/regions/matsuyama/generated/calendar-2026.json" \
     "${PROJECT_ROOT}/frontend/assets/data/municipality_calendar.json"
 
 rm -rf "${BUILD_DIR}" "${ZIP_PATH}"
-mkdir -p "${BUILD_DIR}/app/routers" "${BUILD_DIR}/app/services"
+mkdir -p "${BUILD_DIR}/app/routers" "${BUILD_DIR}/app/services" "${BUILD_DIR}/app/middleware"
 
 uv pip install \
   --target "${BUILD_DIR}" \
@@ -25,7 +25,10 @@ uv pip install \
 cp "${PROJECT_ROOT}/backend/app/__init__.py" "${BUILD_DIR}/app/"
 cp "${PROJECT_ROOT}/backend/app/config.py" "${BUILD_DIR}/app/"
 cp "${PROJECT_ROOT}/backend/app/schemas.py" "${BUILD_DIR}/app/"
+cp "${PROJECT_ROOT}/backend/app/password_policy.py" "${BUILD_DIR}/app/"
 cp "${PROJECT_ROOT}/backend/app/lambda_main.py" "${BUILD_DIR}/app/"
+cp "${PROJECT_ROOT}/backend/app/middleware/__init__.py" "${BUILD_DIR}/app/middleware/"
+cp "${PROJECT_ROOT}/backend/app/middleware/request_size.py" "${BUILD_DIR}/app/middleware/"
 cp "${PROJECT_ROOT}/backend/app/routers/__init__.py" "${BUILD_DIR}/app/routers/"
 cp "${PROJECT_ROOT}/backend/app/routers/search_router.py" "${BUILD_DIR}/app/routers/"
 cp "${PROJECT_ROOT}/backend/app/routers/frontend_data_router.py" "${BUILD_DIR}/app/routers/"

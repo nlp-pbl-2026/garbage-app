@@ -4,7 +4,9 @@ import '../services/search_analytics_service.dart';
 import '../services/waste_guide_service.dart';
 
 class SearchAnalyticsScreen extends StatefulWidget {
-  const SearchAnalyticsScreen({super.key});
+  final SearchAnalyticsService? service;
+
+  const SearchAnalyticsScreen({super.key, this.service});
 
   @override
   State<SearchAnalyticsScreen> createState() => _SearchAnalyticsScreenState();
@@ -12,7 +14,7 @@ class SearchAnalyticsScreen extends StatefulWidget {
 
 class _SearchAnalyticsScreenState extends State<SearchAnalyticsScreen> {
   final _keyController = TextEditingController();
-  final _service = SearchAnalyticsService();
+  late final _service = widget.service ?? SearchAnalyticsService();
   SearchAnalytics? _analytics;
   String? _error;
   bool _loading = false;
@@ -28,6 +30,7 @@ class _SearchAnalyticsScreenState extends State<SearchAnalyticsScreen> {
     setState(() {
       _loading = true;
       _error = null;
+      _analytics = null;
     });
     try {
       final value = await _service.fetch(_keyController.text.trim());
@@ -90,7 +93,7 @@ class _SearchAnalyticsScreenState extends State<SearchAnalyticsScreen> {
                   obscureText: true,
                   onSubmitted: (_) => _load(),
                   decoration: const InputDecoration(
-                    hintText: 'terraform outputで表示したキーを入力',
+                    hintText: '管理者から受け取った分析キーを入力',
                     prefixIcon: Icon(Icons.key_rounded),
                   ),
                 ),
@@ -192,21 +195,45 @@ class _SearchAnalyticsScreenState extends State<SearchAnalyticsScreen> {
             if (data.recent.isEmpty)
               const Text('検索ログはまだありません。')
             else
-              ...data.recent.take(30).map((item) => ListTile(
-                    contentPadding: EdgeInsets.zero,
-                    title: Text(item.query),
+              ...data.recent.take(30).map((item) => Material(
+                  type: MaterialType.transparency,
+                  child: ExpansionTile(
+                    tilePadding: EdgeInsets.zero,
+                    title: Text(item.query.isEmpty ? '（画像のみの検索）' : item.query),
                     subtitle: Text(
-                      '言い換え: ${item.rewrittenQuery}\n'
                       '${item.categoryName ?? (item.status == 'unable_to_determine' ? '確定不能' : '追加質問')}・${(item.durationMs / 1000).toStringAsFixed(1)}秒',
                     ),
-                    isThreeLine: true,
-                    trailing: item.confidence == null
+                    leading: item.confidence == null
                         ? const Icon(Icons.help_outline)
                         : Text('${(item.confidence! * 100).round()}%',
                             style: TextStyle(
                                 color: Theme.of(context).colorScheme.primary,
                                 fontWeight: FontWeight.w800)),
-                  )),
+                    children: [
+                      _logText('検索原文', item.query),
+                      _logText('AIの言い換え', item.rewrittenQuery),
+                      for (final exchange in item.clarifications) ...[
+                        _logText('追加質問', exchange.question),
+                        _logText('ユーザーの回答', exchange.answer),
+                      ],
+                      if (item.followUpQuestion != null)
+                        _logText('AIからの追加質問', item.followUpQuestion!),
+                      if (item.answer != null)
+                        _logText('AIの生成回答', item.answer!),
+                      _logText('検索日時', item.createdAt),
+                    ],
+                  ))),
+          ],
+        ),
+      );
+
+  Widget _logText(String label, String value) => Padding(
+        padding: const EdgeInsets.only(bottom: 12),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text(label, style: const TextStyle(fontWeight: FontWeight.w700)),
+            SelectableText(value.isEmpty ? '（記録なし）' : value),
           ],
         ),
       );

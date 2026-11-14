@@ -7,6 +7,8 @@ from typing import Literal
 
 from pydantic import BaseModel, Field, field_validator, model_validator
 
+from .password_policy import validate_password_bytes
+
 
 class UserCreate(BaseModel):
     """ユーザー登録リクエスト"""
@@ -17,12 +19,16 @@ class UserCreate(BaseModel):
     gender: str | None = Field(default=None, pattern=r"^(male|female|other)$")
     district_id: str | None = Field(default=None, max_length=20)
 
+    _password_bytes = field_validator("password")(validate_password_bytes)
+
 
 class UserLogin(BaseModel):
     """ログインリクエスト"""
 
     username: str
     password: str
+
+    _password_bytes = field_validator("password")(validate_password_bytes)
 
 
 class TokenResponse(BaseModel):
@@ -57,6 +63,10 @@ class ChangePassword(BaseModel):
 
     current_password: str
     new_password: str = Field(min_length=6, max_length=100)
+
+    _password_bytes = field_validator("current_password", "new_password")(
+        validate_password_bytes
+    )
 
 
 # --- 粗大ごみ関連スキーマ ---
@@ -212,7 +222,9 @@ class NextCollection(BaseModel):
 
 
 class CollectionStatusResponse(BaseModel):
-    status: str = Field(pattern=r"^(scheduled|unverified|no_upcoming_collection|not_scheduled|missing_data|unverified_data)$")
+    status: str = Field(
+        pattern=r"^(scheduled|unverified|no_upcoming_collection|not_scheduled|missing_data|unverified_data)$"
+    )
     message: str | None = None
     source_url: str | None = None
 
@@ -220,9 +232,7 @@ class CollectionStatusResponse(BaseModel):
 class WasteGuideResponse(BaseModel):
     """単発の回答、または分類確定に必要な追加質問。"""
 
-    status: str = Field(
-        pattern=r"^(answered|needs_clarification|unable_to_determine)$"
-    )
+    status: str = Field(pattern=r"^(answered|needs_clarification|unable_to_determine)$")
     answer: str | None = None
     follow_up_question: str | None = None
     rewritten_query: str
@@ -254,11 +264,31 @@ class SearchRetrieveResponse(BaseModel):
     documents: list[GuideSource] = Field(default_factory=list)
 
 
+class DecisionDocument(GuideSource):
+    """Bound client-supplied evidence separately from server response sources."""
+
+    title: str | None = Field(default=None, max_length=500)
+    uri: str | None = Field(default=None, max_length=1000)
+    snippet: str | None = Field(default=None, max_length=4000)
+    score: float | None = Field(default=None, ge=0, le=1, allow_inf_nan=False)
+
+
 class SearchDecisionRequest(WasteGuideRequest):
     """分類エージェントの入力。"""
 
     rewritten_query: str = Field(min_length=1, max_length=500)
-    documents: list[GuideSource] = Field(default_factory=list, max_length=20)
+    documents: list[DecisionDocument] = Field(default_factory=list, max_length=20)
+
+    @model_validator(mode="after")
+    def evidence_size(self):
+        size = sum(
+            len((value or "").encode("utf-8"))
+            for doc in self.documents
+            for value in (doc.title, doc.uri, doc.snippet)
+        )
+        if size > 64 * 1024:
+            raise ValueError("検索根拠は合計64 KiB以内にしてください。")
+        return self
 
 
 class SearchAnalyticsSummary(BaseModel):

@@ -6,6 +6,19 @@ import 'package:http/http.dart' as http;
 import '../constants/app_config.dart';
 import 'waste_guide_service.dart';
 
+class SearchLogClarification {
+  final String question;
+  final String answer;
+
+  const SearchLogClarification({required this.question, required this.answer});
+
+  factory SearchLogClarification.fromJson(Map<String, dynamic> json) =>
+      SearchLogClarification(
+        question: json['question'] as String? ?? '',
+        answer: json['answer'] as String? ?? '',
+      );
+}
+
 class SearchLogEntry {
   final String query;
   final String rewrittenQuery;
@@ -14,6 +27,9 @@ class SearchLogEntry {
   final double? confidence;
   final double durationMs;
   final String createdAt;
+  final String? answer;
+  final String? followUpQuestion;
+  final List<SearchLogClarification> clarifications;
 
   const SearchLogEntry({
     required this.query,
@@ -23,6 +39,9 @@ class SearchLogEntry {
     required this.confidence,
     required this.durationMs,
     required this.createdAt,
+    this.answer,
+    this.followUpQuestion,
+    this.clarifications = const [],
   });
 
   factory SearchLogEntry.fromJson(Map<String, dynamic> json) => SearchLogEntry(
@@ -33,6 +52,12 @@ class SearchLogEntry {
         confidence: (json['confidence'] as num?)?.toDouble(),
         durationMs: (json['duration_ms'] as num?)?.toDouble() ?? 0,
         createdAt: json['created_at'] as String? ?? '',
+        answer: json['answer'] as String?,
+        followUpQuestion: json['follow_up_question'] as String?,
+        clarifications: (json['clarifications'] as List<dynamic>? ?? const [])
+            .map((item) =>
+                SearchLogClarification.fromJson(item as Map<String, dynamic>))
+            .toList(),
       );
 }
 

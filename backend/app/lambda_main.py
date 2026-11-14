@@ -4,10 +4,13 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from mangum import Mangum
 
+from .middleware.request_size import SearchBodyLimitMiddleware
+
 from .routers.search_router import router as search_router
 from .routers.frontend_data_router import router as frontend_data_router
 
 app = FastAPI(title="ごみ分別あいまい検索 API", version="1.1.0")
+app.add_middleware(SearchBodyLimitMiddleware)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
