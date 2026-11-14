@@ -1,0 +1,177 @@
+name: Deploy Flutter Web (manual)
+
+on:
+  workflow_dispatch:
+    inputs:
+      operation:
+        description: Deploy a new build or restore an existing release
+        type: choice
+        options: [deploy, rollback]
+        default: deploy
+        required: true
+      expected_dataset_version:
+        description: Backend UI dataset SHA-256 already verified by the operator
+        type: string
+        required: true
+      rollback_release_id:
+        description: Stored release ID to restore (rollback only)
+        type: string
+      current_release_id:
+        description: Currently active release ID confirmed by the operator (rollback only)
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: frontend-production-web
+  cancel-in-progress: false
+
+env:
+  API_BASE_URL: ${{ vars.FRONTEND_API_BASE_URL }}
+  EXPECTED_DATASET_VERSION: ${{ inputs.expected_dataset_version }}
+  FLUTTER_VERSION: 3.47.1
+  FLUTTER_REVISION: 6655482ec06e547f90abf8ae7590466f4415978d
+
+jobs:
+  build:
+    if: github.ref == 'refs/heads/main' && inputs.operation == 'deploy'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    outputs:
+      artifact_id: ${{ steps.upload.outputs.artifact-id }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.12'
+      - name: Install the verified Flutter SDK
+        run: |
+          git clone --depth 1 --branch "$FLUTTER_VERSION" https://github.com/flutter/flutter.git "$RUNNER_TEMP/flutter"
+          test "$(git -C "$RUNNER_TEMP/flutter" rev-parse HEAD)" = "$FLUTTER_REVISION"
+          echo "$RUNNER_TEMP/flutter/bin" >> "$GITHUB_PATH"
+      - name: Fetch, validate and build the verified backend snapshot
+        run: |
+          RELEASE_ID="${GITHUB_SHA:0:12}-${EXPECTED_DATASET_VERSION:0:12}-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+          python3 scripts/build_frontend_release.py \
+            --api-base-url "$API_BASE_URL" --expected-dataset-version "$EXPECTED_DATASET_VERSION" \
+            --release-id "$RELEASE_ID" --git-sha "$GITHUB_SHA" --output .frontend-releases/release
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        id: upload
+        with:
+          name: frontend-release-${{ github.run_id }}-${{ github.run_attempt }}
+          path: .frontend-releases/release/
+          if-no-files-found: error
+          retention-days: 30
+
+  deploy:
+    if: github.ref == 'refs/heads/main' && inputs.operation == 'deploy'
+    needs: build
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    environment: frontend-production
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          artifact-ids: ${{ needs.build.outputs.artifact_id }}
+          path: .frontend-releases/release
+          merge-multiple: true
+      - name: Validate the dedicated target
+        id: target
+        env:
+          TARGET_JSON: ${{ vars.FRONTEND_TARGET_JSON }}
+        run: |
+          python3 - <<'PY'
+          import os,sys
+          from pathlib import Path
+          sys.path.insert(0, 'scripts')
+          from deploy_frontend import decode,encode,validate_target,target_token
+          target=decode(os.environ['TARGET_JSON'])
+          validate_target(target)
+          Path('.frontend-releases/target.json').write_bytes(encode(target))
+          with open(os.environ['GITHUB_OUTPUT'],'a') as out:
+              out.write(f"account={target['account']}\nregion={target['region']}\nconfirm={target_token(target)}\n")
+          PY
+          test "$(git ls-remote origin refs/heads/main | cut -f1)" = "$GITHUB_SHA"
+      - uses: aws-actions/configure-aws-credentials@e1253824e5c10ff9df46874f81ed3ec929e19cfd # v6.3.0
+        with:
+          role-to-assume: ${{ vars.FRONTEND_DEPLOY_ROLE_ARN }}
+          aws-region: ${{ steps.target.outputs.region }}
+          allowed-account-ids: ${{ steps.target.outputs.account }}
+          role-session-name: frontend-${{ github.run_id }}
+      - name: Publish immutable files then conditionally switch the entry point
+        env:
+          CONFIRM_TARGET: ${{ steps.target.outputs.confirm }}
+        run: |
+          python3 scripts/deploy_frontend.py deploy --target .frontend-releases/target.json \
+            --release .frontend-releases/release --api-base-url "$API_BASE_URL" \
+            --expected-dataset-version "$EXPECTED_DATASET_VERSION" \
+            --execute --confirm-target "$CONFIRM_TARGET" --receipt .frontend-releases/receipt.json
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: frontend-deploy-receipt-${{ github.run_id }}-${{ github.run_attempt }}
+          path: .frontend-releases/receipt.json
+          if-no-files-found: ignore
+          retention-days: 30
+
+  rollback:
+    if: github.ref == 'refs/heads/main' && inputs.operation == 'rollback'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    environment: frontend-production
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Validate the dedicated target
+        id: target
+        env:
+          TARGET_JSON: ${{ vars.FRONTEND_TARGET_JSON }}
+        run: |
+          python3 - <<'PY'
+          import os,sys
+          from pathlib import Path
+          sys.path.insert(0, 'scripts')
+          from deploy_frontend import decode,encode,validate_target,target_token
+          target=decode(os.environ['TARGET_JSON'])
+          validate_target(target)
+          Path('.frontend-releases').mkdir(exist_ok=True)
+          Path('.frontend-releases/target.json').write_bytes(encode(target))
+          with open(os.environ['GITHUB_OUTPUT'],'a') as out:
+              out.write(f"account={target['account']}\nregion={target['region']}\nconfirm={target_token(target)}\n")
+          PY
+      - uses: aws-actions/configure-aws-credentials@e1253824e5c10ff9df46874f81ed3ec929e19cfd # v6.3.0
+        with:
+          role-to-assume: ${{ vars.FRONTEND_DEPLOY_ROLE_ARN }}
+          aws-region: ${{ steps.target.outputs.region }}
+          allowed-account-ids: ${{ steps.target.outputs.account }}
+          role-session-name: frontend-rollback-${{ github.run_id }}
+      - name: Restore a verified release without replacing another deployment
+        env:
+          CONFIRM_TARGET: ${{ steps.target.outputs.confirm }}
+          ROLLBACK_RELEASE: ${{ inputs.rollback_release_id }}
+          CURRENT_RELEASE: ${{ inputs.current_release_id }}
+        run: |
+          python3 scripts/deploy_frontend.py rollback --target .frontend-releases/target.json \
+            --release-id "$ROLLBACK_RELEASE" --expected-current-release-id "$CURRENT_RELEASE" \
+            --api-base-url "$API_BASE_URL" --expected-dataset-version "$EXPECTED_DATASET_VERSION" \
+            --execute --confirm-target "$CONFIRM_TARGET" --receipt .frontend-releases/receipt.json
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: frontend-rollback-receipt-${{ github.run_id }}-${{ github.run_attempt }}
+          path: .frontend-releases/receipt.json
+          if-no-files-found: ignore
+          retention-days: 30

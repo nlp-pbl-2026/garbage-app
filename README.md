@@ -122,6 +122,8 @@ flutter run -d chrome \
 
 ## AWS環境の管理
 
+Flutter WebのAWS公開は、[S3＋CloudFrontの手動公開手順](docs/aws-frontend-hosting.md)を参照してください。専用Terraformと`workflow_dispatch`の実装までで、初回AWS構築・GitHub設定・公開は別途必要です。mainへのpush・マージで自動デプロイしません。
+
 審査用APIは認証不要ですが、API Gatewayで5 req/s、burst 10に制限しています。URLは審査関係者だけに共有し、FlutterへAWS認証情報や分析キーを埋め込まないでください。
 
 ```bash
