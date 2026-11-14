@@ -23,7 +23,7 @@ Terraformで管理するリソース（実環境への今回の反映は未実�
 | Amazon S3 / Bedrock Knowledge Base | 比較実験用のRAGデータと検索経路 |
 | AWS Lambda | FastAPIのAIあいまい検索API |
 | Amazon API Gateway | Flutter向けHTTPSエンドポイント |
-| Amazon DynamoDB | 自由入力文を除いた検索状態・区分・確信度・処理時間等の分析統計 |
+| Amazon DynamoDB | 品質改善用の検索文・言い換え・追加質問と回答・AIの回答、検索状態・区分・確信度・処理時間等。閲覧は分析キーで保護 |
 | Amazon CloudWatch Logs | Backend実行ログ（30日保持） |
 
 Backend API URLとAWSリソースIDはGitに固定値を記録せず、

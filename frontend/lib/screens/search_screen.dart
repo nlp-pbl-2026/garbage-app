@@ -358,6 +358,11 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
               ),
             ),
           ],
+          const SizedBox(height: 8),
+          Text(
+            '検索文・追加のやり取り・AIの回答は品質改善のため管理者向けに保存します。個人情報は入力しないでください。',
+            style: TextStyle(color: colors.onSurfaceVariant, fontSize: 12),
+          ),
         ],
       ),
     );

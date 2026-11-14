@@ -16,20 +16,25 @@ from .. import config
 
 logger = logging.getLogger(__name__)
 _file_lock = Lock()
-OMITTED_SEARCH_TEXT = "（入力文は保存していません）"
 
 
 def analytics_event(event: dict[str, Any]) -> dict[str, Any]:
-    """Keep operational metrics, never free text, images, or precise areas.
+    """Keep research text and metrics for protected storage/admin reads only.
 
-    Also used on reads so pre-existing records are not exposed by analytics.
-    Existing records are not rewritten or deleted by this filter.
+    Image payloads, credentials and unrelated fields are never retained.
+    Existing records are not rewritten or deleted when read.
     """
     allowed = {
         "event_type",
         "request_id",
         "created_at",
         "municipality_id",
+        "district_id",
+        "query",
+        "rewritten_query",
+        "answer",
+        "follow_up_question",
+        "text_retained",
         "has_image",
         "image_media_type",
         "image_size_bytes",
@@ -43,8 +48,12 @@ def analytics_event(event: dict[str, Any]) -> dict[str, Any]:
         "expires_at",
     }
     result = {key: value for key, value in event.items() if key in allowed}
-    # Preserve the recent-entry wire shape for already deployed Flutter clients.
-    result.update(query=OMITTED_SEARCH_TEXT, rewritten_query="", text_retained=False)
+    if isinstance(event.get("clarifications"), list):
+        result["clarifications"] = [
+            {key: item[key] for key in ("question", "answer") if key in item}
+            for item in event["clarifications"]
+            if isinstance(item, dict)
+        ]
     return result
 
 
@@ -66,19 +75,23 @@ class SearchLogService:
                 datetime.now(UTC) + timedelta(days=config.SEARCH_LOG_RETENTION_DAYS)
             ).timestamp()
         )
-        logger.info("search_event=%s", json.dumps(event, ensure_ascii=False))
         try:
             if self._table is not None:
                 self._table.put_item(
                     Item=json.loads(json.dumps(event), parse_float=Decimal)
                 )
-                return
-            self._file_path.parent.mkdir(parents=True, exist_ok=True)
-            with _file_lock, self._file_path.open("a", encoding="utf-8") as stream:
-                stream.write(json.dumps(event, ensure_ascii=False) + "\n")
-        except Exception:
+            else:
+                self._file_path.parent.mkdir(parents=True, exist_ok=True)
+                with _file_lock, self._file_path.open("a", encoding="utf-8") as stream:
+                    stream.write(json.dumps(event, ensure_ascii=False) + "\n")
+            # CloudWatch is operational logging, not a second copy of research text.
+            logger.info("Search analytics event recorded")
+        except Exception as error:
             # 分析ログ障害で利用者向け検索を失敗させない。
-            logger.exception("Failed to persist search analytics event")
+            # SDK/file errors may include request text; do not log their bodies.
+            logger.error(
+                "Failed to persist search analytics event (%s)", type(error).__name__
+            )
 
     def list_recent(self, *, limit: int = 50) -> list[dict[str, Any]]:
         if self._table is not None:

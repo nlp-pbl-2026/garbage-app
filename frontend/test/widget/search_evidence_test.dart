@@ -64,6 +64,7 @@ void main() {
       ],
       child: MaterialApp(home: SearchScreen(service: _TestGuide())),
     ));
+    expect(find.textContaining('品質改善のため管理者向けに保存'), findsOneWidget);
     await tester.enterText(find.byType(TextField).first, 'アルミ缶');
     await tester.tap(find.text('調べる'));
     await tester.pump();

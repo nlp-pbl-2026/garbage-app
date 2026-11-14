@@ -124,7 +124,7 @@ flutter run -d chrome \
 
 Flutter Webは[S3＋CloudFrontで公開済み](https://d1up4ijatag29i.cloudfront.net)です。[手動更新手順](docs/aws-frontend-hosting.md)の`python3 scripts/frontend.py prepare`で最新mainの隔離ビルドとdry-runを行い、確認後に`deploy <実行フォルダ> --execute`で公開します。通常更新ではTerraformは不要です。ローカルのAWS CLI認証を使い、将来用の`workflow_dispatch`は保持しますが、mainへのpush・マージでAWSへ自動デプロイしません。
 
-公開検索APIは認証不要で、Terraform定義ではAPI Gatewayの5 req/s・burst 10を設定しています。URLは公開情報であり、スロットリングは利用者別制限や請求額上限ではありません。[濫用対策の残作業](docs/public-repository-security.md#aws側の濫用費用対策別途承認後)を確認し、FlutterへAWS認証情報や分析キーを埋め込まないでください。検索統計には自由入力文・追加回答・詳細地区を保存せず、過去の記録も分析API返却時に伏せます。
+公開検索APIは認証不要で、Terraform定義ではAPI Gatewayの5 req/s・burst 10を設定しています。URLは公開情報であり、スロットリングは利用者別制限や請求額上限ではありません。[濫用対策の残作業](docs/public-repository-security.md#aws側の濫用費用対策別途承認後)を確認し、FlutterへAWS認証情報や分析キーを埋め込まないでください。検索文・AIの言い換え・追加質問と回答・AIの生成回答は品質改善用ログへ保存し、分析キーを持つ管理者だけが閲覧できます。画像本体は保存せず、CloudWatch向けのアプリログにも本文を重複出力しません。[保存内容・期間と利用者への案内](docs/public-repository-security.md#検索統計と個人情報)を参照してください。
 
 ```bash
 # 構築・更新

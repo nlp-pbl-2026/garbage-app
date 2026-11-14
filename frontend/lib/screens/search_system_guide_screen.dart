@@ -66,7 +66,7 @@ class SearchSystemGuideScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(18),
                 ),
                 child: Text(
-                  '品質改善のため、質問・回答・確信度・検索根拠のスコア・処理時間をAWS上に記録します。管理用の分析画面は分析キーで保護されています。',
+                  '検索精度と回答品質の改善のため、検索文・AIの言い換え・追加質問と回答・AIの生成回答、選択した地域、分類・確信度・処理時間などを保存します。画像本体は検索ログに保存しません。閲覧は分析キーを持つ管理者に限定しています。個人情報は入力しないでください。',
                   style:
                       TextStyle(height: 1.6, color: colors.onPrimaryContainer),
                 ),

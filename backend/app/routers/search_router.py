@@ -345,6 +345,13 @@ async def _build_response_and_log(
             "request_id": request_id,
             "created_at": datetime.now(UTC).isoformat(),
             "municipality_id": request.municipality_id,
+            "district_id": request.district_id,
+            "query": request.query,
+            "rewritten_query": result.rewritten_query,
+            "clarifications": clarification_items,
+            "answer": result.answer,
+            "follow_up_question": result.follow_up_question,
+            "text_retained": True,
             "has_image": request.image is not None,
             "image_media_type": (
                 request.image.media_type if request.image is not None else None
