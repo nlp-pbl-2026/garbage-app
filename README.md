@@ -47,7 +47,7 @@
 
 ## 使い方
 
-対応済みのAPIへ接続する場合、Flutter側にはAWS認証やローカルBackendの起動は不要です。[APIからFlutter用データを取得する新規clone・Vercel手順](docs/frontend-data-setup.md)を整備しています。**全20市町のUI用JSONを公開APIで配信する設定です。新APIはAWS未反映のため、公開URLだけでのセットアップはデプロイ後に利用できます。** 資料の利用・再配布条件は未確認のまま別途記録しています。新方式は元のfrontendを変更せず、隔離コピーで取得・起動・ビルドします。従来の原本生成が必要な場合は[データセットアップ手順](docs/yawatahama-data.md#新規cloneからの取得再生成)を参照してください。
+対応済みのAPIへ接続する場合、Flutter側にはAWS認証やローカルBackendの起動は不要です。[APIからFlutter用データを取得する新規clone手順](docs/frontend-data-setup.md)を整備しています。**全20市町のUI用JSONはAWS公開APIへ反映済みで、Git管理外データの受領なしでセットアップできます。** 資料の利用・再配布条件は未確認のまま別途記録しています。取得方式は元のfrontendを変更せず、隔離コピーで起動・ビルドします。従来の原本生成が必要な場合は[データセットアップ手順](docs/yawatahama-data.md#新規cloneからの取得再生成)を参照してください。
 
 以下の従来コマンドは、必要なFlutterアセットを配置済みの環境向けです。新規cloneでは上記の取得手順を使ってください。
 
@@ -122,7 +122,7 @@ flutter run -d chrome \
 
 ## AWS環境の管理
 
-Flutter WebのAWS公開は、[S3＋CloudFrontの手動公開手順](docs/aws-frontend-hosting.md)を参照してください。既定はローカルのAWS CLI認証で、OIDC・GitHub用IAMは任意です。state用bootstrapは構築済みで、Web本体の構築・公開は別途必要です。将来用の`workflow_dispatch`も保持し、mainへのpush・マージで自動デプロイしません。
+Flutter Webは[S3＋CloudFrontで公開済み](https://d1up4ijatag29i.cloudfront.net)です。[手動更新手順](docs/aws-frontend-hosting.md)の`python3 scripts/frontend.py prepare`で最新mainの隔離ビルドとdry-runを行い、確認後に`deploy <実行フォルダ> --execute`で公開します。通常更新ではTerraformは不要です。ローカルのAWS CLI認証を使い、将来用の`workflow_dispatch`は保持しますが、mainへのpush・マージでAWSへ自動デプロイしません。
 
 審査用APIは認証不要ですが、API Gatewayで5 req/s、burst 10に制限しています。URLは審査関係者だけに共有し、FlutterへAWS認証情報や分析キーを埋め込まないでください。
 
