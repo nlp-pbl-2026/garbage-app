@@ -2,9 +2,9 @@
 
 ## 現在の到達点と公開設定
 
-この機能はローカル実装です。新APIはまだAWSへデプロイしていません。現在の公開API URLだけでは、このセットアップは完了しません。
+全20市町のUI用データAPIはAWSへデプロイ済みです。公開API URLだけで、新規cloneからFlutterを起動・ビルドできます。Flutter Webも[S3＋CloudFrontで公開済み](https://d1up4ijatag29i.cloudfront.net)で、通常の公開更新は[AWS手動デプロイ手順](aws-frontend-hosting.md)を使います。
 
-プロジェクト管理者の2026-11-13の指示に基づき、`data/regions/frontend_export_policy.json`の`publication.enabled`を`true`とし、全20市町のUI用データを公開APIから取得できる設定にしています。このファイルを含む最新版ZIPをAWSへ反映すると、ローカル専用の解除フラグなしで取得できます。
+プロジェクト管理者の2026-11-13の指示に基づき、`data/regions/frontend_export_policy.json`の`publication.enabled`を`true`とし、全20市町のUI用データを公開APIから取得できる設定にしています。現在はこの設定がAWSへ反映され、ローカル専用の解除フラグなしで取得できます。
 
 公開する判断と、自治体資料の利用・再配布条件の確認記録は分けています。各市町の`status`は**全20市町とも`pending`（未確認）のまま**です。管理者の公開判断を自治体の許諾や確認済みの証拠へ書き換えていません。manifestには`publication_status: enabled`と`redistribution_status: pending`を返し、取得処理は前者で公開可否を判断します。
 
@@ -49,24 +49,24 @@ python3 scripts/flutter_with_data.py \
 
 実際の自然文／画像検索は既存どおりBedrock料金が発生します。上記のデータ取得・ビルド・画面のデータ読み込み自体はBedrockを呼びません。
 
-通常はデータ保有者PC内でローカルAPI検証します。新規cloneした他メンバーがデータ受領なしで使うには、後述の新APIのAWS反映が必要です。
+ローカルAPI検証には原本が必要ですが、新規cloneしたメンバーは次のAWS公開APIを使えば原本の受領は不要です。
 
 初回画面ではログインをスキップし、自治体と地区を選んでゲスト利用できます。認証APIのクラウド対応は今回の対象に含めていません。
 
-## AWS反映後の新規clone手順
+## 新規cloneからAWS APIを使う手順
 
 Python 3.10以上と、プロジェクトで動作確認した版のFlutter SDKをインストールします。バックエンドvenvやAWS認証情報、自治体CSV・NPZ・原資料はメンバー側に不要です。
 
 ```bash
-git clone <リポジトリURL>
+git clone https://github.com/nlp-pbl-2026/garbage-app.git
 cd garbage-app
 
 python3 scripts/flutter_with_data.py \
-  --api-base-url https://<公開APIのホスト> \
+  --api-base-url https://620bktqeq9.execute-api.ap-northeast-1.amazonaws.com \
   -- run -d chrome
 
 python3 scripts/flutter_with_data.py \
-  --api-base-url https://<公開APIのホスト> \
+  --api-base-url https://620bktqeq9.execute-api.ap-northeast-1.amazonaws.com \
   --work-dir /tmp/gomisapo-release-new \
   -- build web --release
 ```
@@ -77,7 +77,7 @@ JSON取得だけなら次の標準ライブラリ専用スクリプトも使え�
 
 ```bash
 python3 scripts/fetch_frontend_data.py \
-  --api-base-url https://<公開APIのホスト> --output /tmp/gomisapo-ui-data-new
+  --api-base-url https://620bktqeq9.execute-api.ap-northeast-1.amazonaws.com --output /tmp/gomisapo-ui-data-new
 ```
 
 ## AWSとFlutterの更新順序
@@ -87,7 +87,7 @@ python3 scripts/fetch_frontend_data.py \
 3. 管理者環境で全20市町の原本と6住所表を配置する。`catalog.json`の`addresses_path`がnullなら手動選択、パスがあれば必須ファイルとして検証する。ファイル欠落を「住所対応なし」に読み替えない。
 4. 隔離した出力先でLambdaをパッケージングし、API用ルーター・共通UI変換／検証モジュール・配信確認ポリシー・住所表が含まれることを確認する。原資料や索引の再生成は不要。
 5. [既存の安全なS3コード更新手順](lambda-s3-deploy.md)でprepare・対象／Revision確認・承認後のデプロイを行う。環境変数変更やTerraformでこの確認を迂回しない。
-6. 更新後、新APIのmanifestと全市町データを公開URLから取得して検証し、既存検索APIも確認する。今回、この実AWS検証は未実施。
+6. 更新後、新APIのmanifestと全市町データを公開URLから取得して検証し、既存検索APIも確認する。初回公開時に実AWSの全20市町の取得・整合性を確認済み。以後の更新でも毎回検証する。
 7. 同じmanifest版でFlutterをビルドし、APIとアセットの版を記録してからWeb／モバイル配布する。バックエンド更新時は対応するFlutterも再ビルドし、古いアセットを最新APIと混在させない。
 
 リポジトリのAWS構成は、API Gateway HTTP APIの`$default`ルートがLambdaへプロキシし、GETを許可します。この構成であれば、追加のAPIルート、IAM権限、S3公開設定、環境変数、Terraformの変更は不要です。実環境の接続は既存の`prepare`が確認します。LambdaはZIP内のUI用データを読むだけで、S3から実行時に取得しません。
@@ -107,20 +107,20 @@ BACKEND_PACKAGE_DIST_DIR="$PACKAGE_OUTPUT" ./scripts/package_backend.sh
 
 ```bash
 python3 scripts/fetch_frontend_data.py \
-  --api-base-url https://<公開APIのホスト> --output /tmp/gomisapo-deployed-ui-new
+  --api-base-url https://620bktqeq9.execute-api.ap-northeast-1.amazonaws.com --output /tmp/gomisapo-deployed-ui-new
 ```
 
 端末はビルド時点のスナップショットを使います。新しいFlutterは検索の各POSTに任意項目`ui_dataset_version`を付け、サーバーはモデル呼び出し前に現行版と比較します。不一致は409、版を確認できない場合は503で停止します。既存の版を送らないクライアントのAPI互換性は維持します。追加のHTTPヘッダーやAPI Gateway設定変更は不要です。
 
 バックエンドだけが将来のカレンダー・地区IDを変更した場合、自動で全端末を更新する仕組みではありません。新アプリの検索は不一致を案内するため、対応するFlutterの再ビルド・更新が必要です。実行時の自動同期は今回追加しません。
 
-## Vercelでの設定案（デプロイ未実施）
+## Vercelでの設定案（現在はAWS手動公開を採用）
 
 - Framework Preset: Other
 - Root Directory: リポジトリルート
 - Build Command: `python3 scripts/flutter_with_data.py --api-base-url "$API_BASE_URL" --work-dir .frontend-build -- build web --release`
 - Output Directory: `.frontend-build/frontend/build/web`
-- Environment Variables: `API_BASE_URL`に新API反映後のHTTPS URL。Preview/Productionそれぞれ設定する。
+- Environment Variables: `API_BASE_URL`に接続するAPIのHTTPS URL。Preview/Productionそれぞれ設定する。
 - ビルド前に検証済みFlutter SDKの固定版とPythonを用意し、FlutterをPATHへ追加する。今回の確認環境はFlutter 3.47.1 / Dart 3.13.1。SDKを暗黙の最新版にしない。SDKの依存制約によりpubspec.lockを更新する場合も、作業コピー内だけに限定される。
 
 `.frontend-build/`はGit除外対象です。Vercelのクリーン環境では存在しない状態から始めます。カレンダー・住所表の前ビルドキャッシュを正しいデータの代用にしません。Vercelの環境変数はスクリプトが`--dart-define`へ渡します。AWS認証情報や秘密キーはFlutterへ渡しません。公開API無効／取得失敗／版の混在時はビルドを失敗させます。
@@ -156,4 +156,4 @@ python3 scripts/fetch_frontend_data.py \
 - 一時出力先のLambda ZIPについて全20市町・43プロフィール・21索引・112実行時データファイルの一致を検証した。ZIP全体は3,640ファイル、圧縮後92,491,549 bytes（約88.2 MiB）、展開後155,550,951 bytes（約148.3 MiB）。既存ZIPのLinux依存ライブラリを再利用し、今回のコード・データを重ねたローカル検証用パッケージであり、依存ライブラリの再インストールは実施していない。アップロードは従来どおりS3経由とする。
 - ネットワークを無効にしたPython 3.12 / Linux ARM64コンテナで、Lambdaハンドラー、全20市町の公開取得API、43プロフィールの品目API、21索引の読み込み、検索の版不一致停止を確認した。ローカル専用解除フラグは使っていない。
 
-AWS公開URLでの新API取得、Vercelへのデプロイ、実Bedrock検索、スマートフォン実機でのGPS・通知・iCalは今回未実施。資料の利用条件の確認も未完了であり、管理者の公開判断をこれらの検証・確認済みの記録とは扱わない。
+以上は2026-11-13時点のローカル検証記録。後続の初回AWS公開では、公開APIからの全20市町取得、mainからの隔離リリースビルド、S3配置・CloudFront配信、初期画面を確認した（[現在の運用](aws-frontend-hosting.md)）。実Bedrockやスマートフォン実機のGPS・通知・iCal、資料の利用条件はこの公開検証で確認済みとは扱わない。

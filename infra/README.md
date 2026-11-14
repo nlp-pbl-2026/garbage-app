@@ -1,6 +1,6 @@
 # AWS RAG・Backendインフラストラクチャ
 
-Flutter Webは独立した`infra/frontend/`で扱います。[Webの初回構築・手動公開・復旧手順](../docs/aws-frontend-hosting.md)を参照してください。既定はローカルのAWS CLI認証でS3＋CloudFrontへ公開し、GitHub用IAM/OIDCは明示的な有効化時だけ扱います。既存バックエンドのTerraformやstateは使いません。state用bootstrapは構築済みで、今回の手動方式への変更ではWeb本体の構築・公開を実行していません。
+Flutter Webは独立した`infra/frontend/`で管理し、S3＋CloudFrontの構築・初回公開は完了しています。[通常の手動更新・初回構築・復旧手順](../docs/aws-frontend-hosting.md)を参照してください。通常更新は`scripts/frontend.py`とローカルAWS CLI認証で行い、Terraform applyやbootstrapは不要です。GitHub用IAM/OIDCは将来の明示的な有効化時だけ扱います。既存バックエンドのTerraformやstateは使いません。S3 backendの例はTerraform 1.17.2に対応する`allowed_account_ids`で認証先を制限し、既存stateの保存先を維持しています。
 
 このディレクトリは、ごみ分別ガイド専用のAWSリソースをTerraformで管理します。過去に作成されたKnowledge Base、S3バケット、IAMロールはimportも参照もしていません。
 
