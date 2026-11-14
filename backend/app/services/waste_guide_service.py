@@ -753,11 +753,7 @@ class WasteGuideService:
                 matches = NakajimaSearchService().search(rewritten_query)
             except FileNotFoundError as error:
                 raise WasteGuideError("Nakajima source data is unavailable") from error
-            documents = [RetrievedDocument(
-                text=f"品目: {row['item']}\n分類: {row['category_display']} ({row['category']})\n出し方・条件: {row['note']}",
-                score=row['score'], uri=f"nakajima://items/{row['item_id']}",
-                title="中島地域 2026年度ごみカレンダー（公式）",
-            ) for row in matches]
+            documents = [self._nakajima_document(row) for row in matches]
             normalized_query = unicodedata.normalize("NFKC", rewritten_query).lower()
             documented_example = any(
                 row["item_id"].startswith("nk-item-") and row["score"] >= .9
@@ -865,6 +861,75 @@ class WasteGuideService:
                 municipality_id=region.municipality_id,
             )
         return self._regional_item_searches[key]
+
+    @staticmethod
+    def _nakajima_document(row: dict) -> RetrievedDocument:
+        return RetrievedDocument(
+            text=f"品目: {row['item']}\n分類: {row['category_display']} ({row['category']})\n出し方・条件: {row['note']}",
+            score=row.get("score"), uri=f"nakajima://items/{row['item_id']}",
+            title="中島地域 2026年度ごみカレンダー（公式）",
+        )
+
+    def verify_documents(self, documents: list[RetrievedDocument], *,
+                         municipality_id: str, district_id: str) -> list[RetrievedDocument]:
+        """Verify staged HTTP evidence against local originals without model calls.
+
+        The client cannot turn an arbitrary URI prefix or supplied body into an
+        official source. Internal query()/decide() tests retain their trusted
+        gateway contract; the untrusted HTTP /decide boundary uses this method.
+        """
+        region = self._validate_region(municipality_id, district_id)
+        if not documents:
+            return []
+        mismatch = "検索根拠が地域資料と一致しません。もう一度検索してください。"
+        try:
+            items = None
+            island_rows = ({row["item_id"]: row for row in NakajimaSearchService().rows}
+                           if region.is_nakajima else {})
+            verified, seen = [], set()
+            for document in documents:
+                uri = document.uri or ""
+                if uri in seen:
+                    raise UnsupportedRegionError(mismatch)
+                seen.add(uri)
+                if region.is_nakajima and uri.startswith("nakajima://items/"):
+                    row = island_rows.get(uri.removeprefix("nakajima://items/"))
+                    if row is None:
+                        raise UnsupportedRegionError(mismatch)
+                    canonical = self._nakajima_document(row)
+                else:
+                    prefix = ("nakajima://shared/" if region.is_nakajima else
+                              "local://items/" if municipality_id == "38201" else
+                              region.evidence_prefix + "items/")
+                    if not uri.startswith(prefix):
+                        raise UnsupportedRegionError(mismatch)
+                    if items is None:
+                        search = (ItemSearchService(items_path=region.asset_path("items_path"))
+                                  if municipality_id == "38201" else self._regional_item_search(region))
+                        items = {item.item_id: item for item in search.list_items(limit=None)}
+                    if uri[len(prefix):] not in items:
+                        raise UnsupportedRegionError(mismatch)
+                    item = items[uri[len(prefix):]]
+                    if region.is_nakajima:
+                        rule = resolve_shared_item(item)
+                        if rule.category is None:
+                            raise UnsupportedRegionError(mismatch)
+                        text = island_evidence_text(item, rule)
+                        title = "中島地域 2026年度共通分別ルール"
+                    else:
+                        text = item.evidence_text
+                        base = region.rules.knowledge_title or f"{region.municipality_label}ごみ分別辞典"
+                        titles = {base + suffix for suffix in ("（意味検索）", "（品目検索）", "（品目名一致）")}
+                        title = document.title if document.title in titles else base
+                    canonical = RetrievedDocument(text=text, uri=uri, title=title)
+                if document.text != canonical.text:
+                    raise UnsupportedRegionError(mismatch)
+                verified.append(replace(canonical, score=document.score))
+            return verified
+        except (OSError, KeyError, ValueError) as error:
+            if isinstance(error, UnsupportedRegionError):
+                raise
+            raise WasteGuideError("Regional evidence originals are unavailable") from error
 
     @classmethod
     def _exact_item_documents(
@@ -1080,10 +1145,7 @@ class WasteGuideService:
                 else None
             )
             if exact_decision is not None:
-                logger.info(
-                    "Resolved classification from exact regional evidence: %s",
-                    query,
-                )
+                logger.info("Resolved classification from exact regional evidence")
                 decision = exact_decision
         size_exclusion = self._resolve_recycling_size_exclusion(
             query=query, clarifications=clarification_items, documents=documents, region=region
@@ -1119,10 +1181,7 @@ class WasteGuideService:
         ):
             required_question = ambiguity_question
         if required_question:
-            logger.info(
-                "Applying required clarification because the query lacks a detail: %s",
-                query,
-            )
+            logger.info("Applying required clarification because the query lacks a detail")
             decision = replace(
                 decision,
                 is_resolved=False,
@@ -1139,10 +1198,7 @@ class WasteGuideService:
                 documents=documents,
             )
             if structured_decision is not None:
-                logger.info(
-                    "Resolved classification from fully answered structured evidence: %s",
-                    query,
-                )
+                logger.info("Resolved classification from fully answered structured evidence")
                 decision = structured_decision
         cited_indexes = [index - 1 for index in decision.evidence_indexes]
         source_indexes = cited_indexes + [
@@ -1155,7 +1211,7 @@ class WasteGuideService:
                 "素材、大きさ、汚れの有無など、品物の状態をもう少し教えてください。"
             )
             if not self._is_valid_follow_up_question(question):
-                logger.warning("Rejected malformed follow-up question: %r", question)
+                logger.warning("Rejected malformed follow-up question")
                 question = "品物の名前や用途、素材をもう少し具体的に教えてください。"
             previous_questions = [
                 item.get("question", "") for item in (clarifications or [])

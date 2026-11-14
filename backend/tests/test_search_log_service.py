@@ -72,6 +72,58 @@ def test_summary_reads_paginated_dynamodb_logs():
     assert summary["average_duration_ms"] == 1000
     assert summary["categories"] == {"可燃ごみ": 1}
     assert len(table.scan_calls) == 2
-    assert table.scan_calls[1]["ExclusiveStartKey"] == {
-        "request_id": "request-1"
-    }
+    assert table.scan_calls[1]["ExclusiveStartKey"] == {"request_id": "request-1"}
+
+
+def test_text_and_district_are_omitted_from_storage_and_logs(caplog):
+    import logging
+    import json
+
+    table = FakeTable()
+    with caplog.at_level(logging.INFO):
+        SearchLogService(table=table).record(
+            {
+                "event_type": "search",
+                "status": "answered",
+                "duration_ms": 10,
+                "municipality_id": "38201",
+                "district_id": "private-area",
+                "query": "private-query",
+                "rewritten_query": "private-rewrite",
+                "clarifications": [{"answer": "private-answer"}],
+                "answer": "private-generated",
+                "image": "private-image",
+                "unknown": "private-extra",
+            }
+        )
+    output = json.dumps(table.put_items, ensure_ascii=False) + caplog.text
+    assert "private-" not in output
+    assert table.put_items[0]["duration_ms"] == 10
+    assert table.put_items[0]["text_retained"] is False
+
+
+def test_legacy_logs_are_redacted_on_read_without_rewriting(tmp_path, monkeypatch):
+    import json
+
+    monkeypatch.setattr("app.config.SEARCH_LOG_TABLE", "")
+    path = tmp_path / "existing.jsonl"
+    path.write_text(
+        json.dumps(
+            {
+                "event_type": "search",
+                "query": "private-query",
+                "answer": "private-answer",
+                "district_id": "private-area",
+                "created_at": "2026-11-01T00:00:00Z",
+                "status": "answered",
+                "category_name": "可燃ごみ",
+            }
+        )
+        + "\n"
+    )
+    before = path.read_bytes()
+    summary = SearchLogService(file_path=path).summary()
+    assert "private-" not in json.dumps(summary)
+    assert summary["answered_count"] == 1
+    assert summary["categories"] == {"可燃ごみ": 1}
+    assert path.read_bytes() == before

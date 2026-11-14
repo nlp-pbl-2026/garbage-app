@@ -16,6 +16,36 @@ from .. import config
 
 logger = logging.getLogger(__name__)
 _file_lock = Lock()
+OMITTED_SEARCH_TEXT = "（入力文は保存していません）"
+
+
+def analytics_event(event: dict[str, Any]) -> dict[str, Any]:
+    """Keep operational metrics, never free text, images, or precise areas.
+
+    Also used on reads so pre-existing records are not exposed by analytics.
+    Existing records are not rewritten or deleted by this filter.
+    """
+    allowed = {
+        "event_type",
+        "request_id",
+        "created_at",
+        "municipality_id",
+        "has_image",
+        "image_media_type",
+        "image_size_bytes",
+        "status",
+        "category_code",
+        "category_name",
+        "confidence",
+        "next_collection_date",
+        "rag_scores",
+        "duration_ms",
+        "expires_at",
+    }
+    result = {key: value for key, value in event.items() if key in allowed}
+    # Preserve the recent-entry wire shape for already deployed Flutter clients.
+    result.update(query=OMITTED_SEARCH_TEXT, rewritten_query="", text_retained=False)
+    return result
 
 
 class SearchLogService:
@@ -30,11 +60,10 @@ class SearchLogService:
         self._file_path = file_path or Path(config.SEARCH_LOG_FILE)
 
     def record(self, event: dict[str, Any]) -> None:
-        event = dict(event)
+        event = analytics_event(event)
         event["expires_at"] = int(
             (
-                datetime.now(UTC)
-                + timedelta(days=config.SEARCH_LOG_RETENTION_DAYS)
+                datetime.now(UTC) + timedelta(days=config.SEARCH_LOG_RETENTION_DAYS)
             ).timestamp()
         )
         logger.info("search_event=%s", json.dumps(event, ensure_ascii=False))
@@ -71,7 +100,7 @@ class SearchLogService:
         else:
             items = []
         return sorted(
-            items,
+            [analytics_event(item) for item in items],
             key=lambda item: str(item.get("created_at", "")),
             reverse=True,
         )[:limit]
@@ -79,14 +108,10 @@ class SearchLogService:
     def summary(self, *, limit: int = 500) -> dict[str, Any]:
         items = self.list_recent(limit=limit)
         categories = Counter(
-            str(item["category_name"])
-            for item in items
-            if item.get("category_name")
+            str(item["category_name"]) for item in items if item.get("category_name")
         )
         answered = sum(item.get("status") == "answered" for item in items)
-        unable = sum(
-            item.get("status") == "unable_to_determine" for item in items
-        )
+        unable = sum(item.get("status") == "unable_to_determine" for item in items)
         confidences = [
             float(item["confidence"])
             for item in items

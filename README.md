@@ -73,7 +73,7 @@ flutter run -d chrome \
   --dart-define=API_BASE_URL="${GARBAGE_API_BASE_URL}"
 ```
 
-初期画面ではログインをスキップして利用できます。
+初期画面ではログインをスキップして利用できます。ローカル認証APIは`SECRET_KEY`（32バイト以上の十分にランダムな値）が必須で、未設定時は認証ルートだけ503になります。固定鍵へのフォールバックはありません。パスワードはUTF-8で72バイト以内です。AWS Lambdaは引き続き認証APIを公開しません。詳しくは[公開リポジトリの安全性と残作業](docs/public-repository-security.md)を参照してください。
 
 今治市は通常地域855行＋説明例12行、関前203行＋説明例11行の独立索引と、233選択地区・44カレンダーに対応します。来島・馬島・小島、鵜島、関前を通常地域と区別し、港の出航時刻が不明な地区に固定の期限を付けません。現行の関前プラスチック・充電池ルール、取得・照合・共有手順は[今治市データガイド](docs/imabari-data.md)を参照してください。AWSへの反映は別作業です。
 
@@ -124,7 +124,7 @@ flutter run -d chrome \
 
 Flutter Webは[S3＋CloudFrontで公開済み](https://d1up4ijatag29i.cloudfront.net)です。[手動更新手順](docs/aws-frontend-hosting.md)の`python3 scripts/frontend.py prepare`で最新mainの隔離ビルドとdry-runを行い、確認後に`deploy <実行フォルダ> --execute`で公開します。通常更新ではTerraformは不要です。ローカルのAWS CLI認証を使い、将来用の`workflow_dispatch`は保持しますが、mainへのpush・マージでAWSへ自動デプロイしません。
 
-審査用APIは認証不要ですが、API Gatewayで5 req/s、burst 10に制限しています。URLは審査関係者だけに共有し、FlutterへAWS認証情報や分析キーを埋め込まないでください。
+公開検索APIは認証不要で、Terraform定義ではAPI Gatewayの5 req/s・burst 10を設定しています。URLは公開情報であり、スロットリングは利用者別制限や請求額上限ではありません。[濫用対策の残作業](docs/public-repository-security.md#aws側の濫用費用対策別途承認後)を確認し、FlutterへAWS認証情報や分析キーを埋め込まないでください。検索統計には自由入力文・追加回答・詳細地区を保存せず、過去の記録も分析API返却時に伏せます。
 
 ```bash
 # 構築・更新

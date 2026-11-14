@@ -27,9 +27,12 @@ from ..services.item_search_service import ItemSearchService
 from ..services.frontend_data_service import build_snapshot, default_catalog_path
 from ..services.nakajima_search_service import NakajimaSearchService
 from ..services.region_registry_service import (
-    RegionResolutionError, RegionalDataError, UnsupportedMunicipalityError, get_registry,
+    RegionResolutionError,
+    RegionalDataError,
+    UnsupportedMunicipalityError,
+    get_registry,
 )
-from ..services.search_log_service import SearchLogService
+from ..services.search_log_service import SearchLogService, analytics_event
 from ..services.waste_guide_service import (
     CATEGORY_NAMES,
     ImageInput,
@@ -50,9 +53,14 @@ async def _check_ui_version(request):
     try:
         manifest, _ = await asyncio.to_thread(build_snapshot, default_catalog_path())
     except (OSError, ValueError, KeyError, TypeError):
-        raise HTTPException(status_code=503, detail="画面用データの版を確認できません。") from None
+        raise HTTPException(
+            status_code=503, detail="画面用データの版を確認できません。"
+        ) from None
     if request.ui_dataset_version != manifest["dataset_version"]:
-        raise HTTPException(status_code=409, detail="地域の情報が更新されています。アプリを最新版に更新してからお試しください。")
+        raise HTTPException(
+            status_code=409,
+            detail="地域の情報が更新されています。アプリを最新版に更新してからお試しください。",
+        )
 
 
 def _image_input(request: WasteGuideRequest) -> ImageInput | None:
@@ -78,7 +86,9 @@ async def _run_step(operation):
             detail="検索がタイムアウトしました。しばらくしてからお試しください。",
         ) from error
     except WasteGuideError as error:
-        logger.exception("Waste guide service failed")
+        logger.error(
+            "Waste guide service failed (%s)", type(error.__cause__ or error).__name__
+        )
         raise HTTPException(
             status_code=503,
             detail="ごみ分別サービスに接続できません。しばらくしてからお試しください。",
@@ -151,7 +161,11 @@ async def decide_waste(request: SearchDecisionRequest) -> WasteGuideResponse:
         lambda: service.decide(
             query=request.query,
             rewritten_query=request.rewritten_query,
-            documents=documents,
+            documents=service.verify_documents(
+                documents,
+                municipality_id=request.municipality_id,
+                district_id=request.district_id,
+            ),
             municipality_id=request.municipality_id,
             district_id=request.district_id,
             clarifications=clarification_items,
@@ -191,9 +205,7 @@ async def classify_waste(request: WasteGuideRequest) -> WasteGuideResponse:
     )
 
 
-@router.get(
-    "/items/{municipality_id}", response_model=BulkyWasteItemListResponse
-)
+@router.get("/items/{municipality_id}", response_model=BulkyWasteItemListResponse)
 async def list_waste_items(
     municipality_id: str,
     category: str = Query(default="粗大", max_length=20),
@@ -204,35 +216,61 @@ async def list_waste_items(
 
     try:
         region = get_registry().resolve(
-            municipality_id, district_id or ("38201-08" if municipality_id == "38201" else ""))
+            municipality_id,
+            district_id or ("38201-08" if municipality_id == "38201" else ""),
+        )
     except UnsupportedMunicipalityError as error:
         raise HTTPException(status_code=404, detail=str(error)) from error
     except RegionResolutionError as error:
         raise HTTPException(status_code=422, detail=str(error)) from error
     except RegionalDataError as error:
-        raise HTTPException(status_code=503, detail="自治体のデータを確認できません。") from error
+        raise HTTPException(
+            status_code=503, detail="自治体のデータを確認できません。"
+        ) from error
     if municipality_id != "38201" and category not in region.category_codes:
         raise HTTPException(status_code=422, detail="指定された分別区分は未対応です。")
     if region.is_nakajima:
         try:
-            rows = [row for row in NakajimaSearchService().rows
-                    if row["category"] == category and row["item_id"].startswith("nk-item-")
-                    and (not search or search in row["item"])]
+            rows = [
+                row
+                for row in NakajimaSearchService().rows
+                if row["category"] == category
+                and row["item_id"].startswith("nk-item-")
+                and (not search or search in row["item"])
+            ]
         except FileNotFoundError as error:
-            raise HTTPException(status_code=503, detail="中島地域の品目資料がありません。") from error
+            raise HTTPException(
+                status_code=503, detail="中島地域の品目資料がありません。"
+            ) from error
         return BulkyWasteItemListResponse(
-            items=[BulkyWasteItemResponse(id=index, item_name=row["item"],
-                    category=row["category_display"], fee_amount=0, notes=row["note"])
-                   for index, row in enumerate(rows, start=1)],
-            total_count=len(rows), municipality_name="松山市・中島地域",
+            items=[
+                BulkyWasteItemResponse(
+                    id=index,
+                    item_name=row["item"],
+                    category=row["category_display"],
+                    fee_amount=0,
+                    notes=row["note"],
+                )
+                for index, row in enumerate(rows, start=1)
+            ],
+            total_count=len(rows),
+            municipality_name="松山市・中島地域",
         )
 
     try:
-        item_search = (ItemSearchService() if municipality_id == "38201" else
-                       ItemSearchService(items_path=region.asset_path("items_path"), municipality_id=municipality_id))
+        item_search = (
+            ItemSearchService()
+            if municipality_id == "38201"
+            else ItemSearchService(
+                items_path=region.asset_path("items_path"),
+                municipality_id=municipality_id,
+            )
+        )
         matches = item_search.list_items(category=category, query=search, limit=None)
     except (OSError, ValueError, KeyError) as error:
-        raise HTTPException(status_code=503, detail="自治体の品目資料を確認できません。") from error
+        raise HTTPException(
+            status_code=503, detail="自治体の品目資料を確認できません。"
+        ) from error
     return BulkyWasteItemListResponse(
         items=[
             BulkyWasteItemResponse(
@@ -274,11 +312,14 @@ async def _build_response_and_log(
         classification = WasteClassification(
             item_name=result.decision.item_name,
             category_code=result.decision.category_code,
-            category_name=result.category_name or CATEGORY_NAMES[result.decision.category_code],
+            category_name=result.category_name
+            or CATEGORY_NAMES[result.decision.category_code],
             disposal_instructions=result.decision.disposal_instructions,
             confidence=result.decision.confidence,
         )
-    collection_status = vars(result.collection_status) if result.collection_status else None
+    collection_status = (
+        vars(result.collection_status) if result.collection_status else None
+    )
     next_collection = None
     if result.next_collection:
         next_collection = NextCollection(
@@ -298,38 +339,37 @@ async def _build_response_and_log(
         sources=sources,
         request_id=request_id,
     )
-    event = {
-        "event_type": "search",
-        "request_id": request_id,
-        "created_at": datetime.now(UTC).isoformat(),
-        "municipality_id": request.municipality_id,
-        "district_id": request.district_id,
-        "query": request.query,
-        "has_image": request.image is not None,
-        "image_media_type": (
-            request.image.media_type if request.image is not None else None
-        ),
-        "image_size_bytes": (
-            len(request.image.decoded_bytes()) if request.image is not None else 0
-        ),
-        "clarifications": clarification_items,
-        "rewritten_query": result.rewritten_query,
-        "status": result.status,
-        "answer": result.answer,
-        "follow_up_question": result.follow_up_question,
-        "category_code": result.decision.category_code if result.decision else None,
-        "category_name": (
-            result.category_name or CATEGORY_NAMES.get(result.decision.category_code)
-            if result.decision
-            else None
-        ),
-        "confidence": result.decision.confidence if result.decision else None,
-        "next_collection_date": (
-            result.next_collection.date.isoformat() if result.next_collection else None
-        ),
-        "rag_scores": [document.score for document in result.sources],
-        "duration_ms": round((monotonic() - started_at) * 1000, 1),
-    }
+    event = analytics_event(
+        {
+            "event_type": "search",
+            "request_id": request_id,
+            "created_at": datetime.now(UTC).isoformat(),
+            "municipality_id": request.municipality_id,
+            "has_image": request.image is not None,
+            "image_media_type": (
+                request.image.media_type if request.image is not None else None
+            ),
+            "image_size_bytes": (
+                len(request.image.decoded_bytes()) if request.image is not None else 0
+            ),
+            "status": result.status,
+            "category_code": result.decision.category_code if result.decision else None,
+            "category_name": (
+                result.category_name
+                or CATEGORY_NAMES.get(result.decision.category_code)
+                if result.decision
+                else None
+            ),
+            "confidence": result.decision.confidence if result.decision else None,
+            "next_collection_date": (
+                result.next_collection.date.isoformat()
+                if result.next_collection
+                else None
+            ),
+            "rag_scores": [document.score for document in result.sources],
+            "duration_ms": round((monotonic() - started_at) * 1000, 1),
+        }
+    )
     await asyncio.to_thread(log_service.record, event)
     return response
 

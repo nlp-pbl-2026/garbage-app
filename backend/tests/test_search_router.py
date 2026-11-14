@@ -61,7 +61,8 @@ async def test_classify_endpoint_returns_answer():
     assert body["sources"][0]["score"] == 0.91
     assert body["request_id"]
     event = log_class.return_value.record.call_args.args[0]
-    assert event["query"] == "これは何ごみ？"
+    assert event["text_retained"] is False
+    assert "これは何ごみ？" not in str(event)
     assert event["confidence"] == 0.97
     assert event["status"] == "answered"
 
@@ -109,6 +110,7 @@ async def test_staged_endpoints_pass_actual_results_between_agents():
         service = service_class.return_value
         service.rewrite.return_value = "壊れた傘 素材 大きさ"
         service.retrieve.return_value = documents
+        service.verify_documents.return_value = documents
         service.decide.return_value = result
         async with AsyncClient(
             transport=ASGITransport(app=app), base_url="http://test"

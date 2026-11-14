@@ -149,7 +149,7 @@ class EmbeddingSearchService:
             )
             vector = json.loads(response["body"].read())["embedding"]
         except (BotoCoreError, ClientError, NoCredentialsError, KeyError, ValueError) as error:
-            logger.warning("Query embedding failed: %s", error)
+            logger.warning("Query embedding failed (%s)", type(error).__name__)
             return None
         array = np.asarray(vector, dtype=np.float32)
         norm = np.linalg.norm(array)

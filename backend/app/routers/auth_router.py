@@ -4,15 +4,32 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from ..auth import hash_password, verify_password, create_access_token, get_current_user
+from ..auth import (
+    hash_password,
+    verify_password,
+    create_access_token,
+    get_current_user,
+    require_auth_config,
+)
 from ..database import get_db
 from ..models import User
-from ..schemas import UserCreate, UserLogin, TokenResponse, UserResponse, UserSettingsUpdate, ChangePassword
+from ..schemas import (
+    UserCreate,
+    UserLogin,
+    TokenResponse,
+    UserResponse,
+    UserSettingsUpdate,
+    ChangePassword,
+)
 
-router = APIRouter(prefix="/api/auth", tags=["auth"])
+router = APIRouter(
+    prefix="/api/auth", tags=["auth"], dependencies=[Depends(require_auth_config)]
+)
 
 
-@router.post("/register", response_model=TokenResponse, status_code=status.HTTP_201_CREATED)
+@router.post(
+    "/register", response_model=TokenResponse, status_code=status.HTTP_201_CREATED
+)
 async def register(body: UserCreate, db: AsyncSession = Depends(get_db)):
     """新規ユーザー登録"""
     # ユーザー名の重複チェック

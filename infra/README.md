@@ -23,7 +23,7 @@ Terraformで管理するリソース（実環境への今回の反映は未実�
 | Amazon S3 / Bedrock Knowledge Base | 比較実験用のRAGデータと検索経路 |
 | AWS Lambda | FastAPIのAIあいまい検索API |
 | Amazon API Gateway | Flutter向けHTTPSエンドポイント |
-| Amazon DynamoDB | 検索・回答・確信度・処理時間の分析ログ |
+| Amazon DynamoDB | 自由入力文を除いた検索状態・区分・確信度・処理時間等の分析統計 |
 | Amazon CloudWatch Logs | Backend実行ログ（30日保持） |
 
 Backend API URLとAWSリソースIDはGitに固定値を記録せず、
@@ -180,7 +180,7 @@ flutter run -d chrome --dart-define=API_BASE_URL="${API_BASE_URL}"
 ./scripts/run-demo.sh
 ```
 
-公開APIはAWS認証不要です。API Gatewayの既定ルートは5 req/s、burst 10に制限し、分析APIだけは別途管理キーで保護しています。公開URLは審査関係者に限定して共有してください。
+公開APIはAWS認証不要です。API Gatewayの既定ルートは5 req/s、burst 10に制限し、分析APIだけは別途管理キーで保護しています。公開URLを秘密として扱っても濫用対策にはなりません。個別の利用制限・費用監視・緊急停止とWAF導入時の制約は[セキュリティ対応と残作業](../docs/public-repository-security.md)を参照してください。今回のコード修正はAWSに未反映で、設定・stateは変更していません。
 APIの疎通だけを確認する場合は`./scripts/run-demo.sh --check`を実行します。
 
 検索分析画面へ入力する管理キーは次で表示します。この値はGitや公開Flutter buildへ含めないでください。

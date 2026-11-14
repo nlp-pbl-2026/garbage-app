@@ -6,6 +6,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from .database import init_db
+from .middleware.request_size import SearchBodyLimitMiddleware
 from .routers.auth_router import router as auth_router
 from .routers.bulky_waste_router import router as bulky_waste_router
 from .routers.search_router import router as search_router
@@ -28,6 +29,7 @@ app = FastAPI(
 # CORS設定
 # CORSMiddlewareはスタックの一番外側（最初）に追加することで、
 # 500エラー時にも確実にAccess-Control-Allow-Originヘッダーが付く。
+app.add_middleware(SearchBodyLimitMiddleware)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],

@@ -1,6 +1,16 @@
 # 自治体データの配置と検証
 
-松山市の2026年度データは `data/regions/matsuyama/` で管理します。公式PDF・加工CSV・生成カレンダーは既存のGit除外方針に従い、追跡しません。Gitには地区・カレンダーの対応表、出典URL、ハッシュ、検証記録、生成・検証スクリプトと既存のEmbedding索引を残します。公式資料と加工データの公開・再配布条件は未確認です。GitHubへの公開やアプリ・Lambdaへの同梱が認められる範囲を、公開前に確認してください。
+松山市の2026年度データは `data/regions/matsuyama/` で管理します。公式PDF・加工CSV・生成カレンダーは既存のGit除外方針に従い、追跡しません。Gitには地区・カレンダーの対応表、出典URL、ハッシュ、検証記録、生成・検証スクリプトを残します。Embedding索引は他自治体と同様にGit管理外とし、実体は共有配置します。公式資料と加工データの公開・再配布条件は未確認です。GitHubへの公開やアプリ・Lambdaへの同梱が認められる範囲を、公開前に確認してください。
+
+## 松山市索引の追跡解除と既存PCの注意
+
+セキュリティ整理で、`common/knowledge/item_embeddings.npz`の追跡だけを解除します。既存の1,756件の索引・CSV・カレンダー・manifestは再生成・変更しません。索引の利用・再配布条件は引き続き未確認です。
+
+**この変更をpull／checkoutする前に、既存のNPZをリポジトリ外の安全な場所へコピーしてください。** 他PCで削除コミットを取り込むと、以前Git管理されていたNPZが作業ツリーから消える場合があります。取り込み後は同じパスへ戻し、`knowledge/index_manifest.json`の`index_sha256`とSHA-256が一致することを確認してください。既存ファイルが異なる場合は上書きせず調査します。
+
+新規cloneでバックエンドを使うメンバーは、他自治体と同様に管理者からmanifest対応のNPZを受け取って配置します。共有先はまだ固定していません。索引を勝手に再生成したり、他自治体のNPZで代用したりしません。CSV等も従来の取得・共有手順が必要です。一方、公開APIへ接続するFlutterの起動・ビルドにはNPZは不要です（[セットアップ手順](frontend-data-setup.md)）。
+
+追跡解除は過去履歴からの削除ではありません。旧CSV・索引やブラウザプロファイルの履歴整理は、[公開リポジトリの安全性と残作業](public-repository-security.md)に従って別途判断します。
 
 ## 2026年度の構成
 
@@ -14,7 +24,7 @@
 | `generated/addresses.json` | 公式町名表から導いた住所候補。境界ポリゴンではない | 除外 |
 | `generated/nakajima_items.csv` | 中島カレンダーに記載された分別例。網羅的な品目辞典ではない | 除外 |
 | `common/knowledge/items.csv` | 松山・北条の既存1,756品目 | 除外 |
-| `common/knowledge/item_embeddings.npz` | 既存のTitan Text Embeddings V2索引 | 追跡 |
+| `common/knowledge/item_embeddings.npz` | 既存のTitan Text Embeddings V2索引 | 除外。manifest対応の実体を共有配置 |
 | `common/knowledge/index_manifest.json` | CSV・索引のハッシュと整合性確認結果 | 追跡 |
 
 `scripts/matsuyama_data.py build` は共通原本を `frontend/assets/data/municipality_calendar.json` にバイト単位で複製します。住所表も `frontend/assets/data/municipality_addresses.json` に生成します。Flutterへの組み込み前に必ず生成してください。`frontend/assets/data/municipality_registry.json` は `registry.json` の複製です。カレンダーは2026年4月1日から2027年3月31日までのみ有効で、翌年度へ繰り返しません。
@@ -58,7 +68,7 @@ backend/.venv/bin/python scripts/matsuyama_raster_audit.py
 
 ## 他自治体・年度への拡張
 
-自治体を追加する場合は、独立した地区台帳、適用期間、分別設定、カレンダー原本、出典・検証記録を用意し、対応する検索索引を分けてください。バックエンドは `data/regions/catalog.json` で自治体ごとのデータを読み分けます。標準カタログには松山市・八幡浜市・伊予市・伊方町・新居浜市・四国中央市・東温市・上島町、[担当7自治体](assigned-municipalities-completion.md)、西予市・久万高原町・西条市・今治市の計19自治体を登録しています。追加する台帳・分類・索引の形式は[複数自治体バックエンドのデータ契約](multi-municipality-backend.md)を参照してください。公式期間外の日付は繰り返し生成せず、次年度は別バージョンの公式資料を取得・検証してから公開してください。
+自治体を追加する場合は、独立した地区台帳、適用期間、分別設定、カレンダー原本、出典・検証記録を用意し、対応する検索索引を分けてください。バックエンドは `data/regions/catalog.json` で自治体ごとのデータを読み分けます。標準カタログには松山市・八幡浜市・伊予市・伊方町・新居浜市・四国中央市・東温市・上島町、[担当7自治体](assigned-municipalities-completion.md)、西予市・久万高原町・西条市・今治市・宇和島市の計20自治体を登録しています。追加する台帳・分類・索引の形式は[複数自治体バックエンドのデータ契約](multi-municipality-backend.md)を参照してください。公式期間外の日付は繰り返し生成せず、次年度は別バージョンの公式資料を取得・検証してから公開してください。
 
 八幡浜市は[専用ガイド](yawatahama-data.md)、伊予市は[伊予市データガイド](iyo-data.md)、東温市は[東温市データガイド](toon-data.md)、上島町は[上島町データガイド](kamijima-data.md)、四国中央市は[四国中央市データガイド](shikokuchuo-data.md)に従って取得・生成・検証してください。未確認の収集日や搬出時刻を、別地区のデータで補完しません。
 
