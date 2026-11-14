@@ -1,5 +1,7 @@
 # AWS RAG・Backendインフラストラクチャ
 
+Flutter Webは独立した`infra/frontend/`で扱います。[Webの初回構築・手動公開・復旧手順](../docs/aws-frontend-hosting.md)を参照してください。既存のバックエンドTerraformやstateは使わず、通常のWebデプロイは手動GitHub ActionsからS3＋CloudFrontへ行います。この追加実装ではAWS構築・公開を実行していません。
+
 このディレクトリは、ごみ分別ガイド専用のAWSリソースをTerraformで管理します。過去に作成されたKnowledge Base、S3バケット、IAMロールはimportも参照もしていません。
 
 ## 現在の構成
