@@ -336,6 +336,76 @@ def test_no_write_by_default_and_no_backend_operations(monkeypatch):
         )
 
 
+@pytest.mark.parametrize("profile", [None, "default"])
+def test_local_aws_credentials_do_not_require_oidc(monkeypatch, profile):
+    from types import SimpleNamespace
+
+    commands = []
+
+    def run(command, **kwargs):
+        commands.append(command)
+        return SimpleNamespace(
+            returncode=0, stdout=json.dumps({"Account": TARGET["account"]})
+        )
+
+    monkeypatch.setattr(deploy.subprocess, "run", run)
+    aws = deploy.AWS(TARGET["region"], profile=profile)
+    assert aws.call("sts", "get-caller-identity")["Account"] == TARGET["account"]
+    assert len(commands) == 1
+    if profile:
+        assert commands[0][commands[0].index("--profile") + 1] == profile
+    else:
+        assert "--profile" not in commands[0]
+    for service, operation in (
+        ("iam", "get-open-id-connect-provider"),
+        ("iam", "create-role"),
+        ("sts", "assume-role-with-web-identity"),
+    ):
+        with pytest.raises(ValueError, match="not permitted"):
+            aws.call(service, operation)
+    assert len(commands) == 1
+
+
+def test_local_cli_dry_run_uses_profile_without_role_or_writes(
+    runtime, release, monkeypatch, tmp_path, capsys
+):
+    target = tmp_path / "target.json"
+    target.write_bytes(encode(TARGET))
+    receipt = tmp_path / "receipt.json"
+    used = []
+
+    def client(region, **kwargs):
+        used.append((region, kwargs))
+        return runtime
+
+    monkeypatch.setattr(deploy, "AWS", client)
+    monkeypatch.setattr(
+        sys,
+        "argv",
+        [
+            "deploy_frontend.py",
+            "deploy",
+            "--target",
+            str(target),
+            "--release",
+            str(release[0]),
+            "--api-base-url",
+            release[1]["api_base_url"],
+            "--expected-dataset-version",
+            release[1]["dataset_version"],
+            "--profile",
+            "default",
+            "--receipt",
+            str(receipt),
+        ],
+    )
+    deploy.main()
+    assert used == [(TARGET["region"], {"profile": "default", "execute": False})]
+    assert json.loads(receipt.read_text())["status"] == "dry_run"
+    assert json.loads(capsys.readouterr().out)["status"] == "dry_run"
+    assert not runtime.calls
+
+
 def test_old_cli_is_rejected_without_aws_calls(monkeypatch):
     class Result:
         stdout = '{"IfNoneMatch": ""}'

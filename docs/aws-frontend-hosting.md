@@ -1,14 +1,16 @@
 # Flutter WebをS3＋CloudFrontで手動公開する
 
-実装・ローカル検証までの変更です。AWS構築、Terraform apply、GitHub設定、本番アップロード・公開はまだ行っていません。以下の変更コマンドは内容確認後に操作者が実行します。
+既定は**ローカルのAWS CLI認証による手動公開**です。OIDCやGitHub用IAMロールの作成・参照は行いません。将来Actionsへ移行する場合だけ明示的に有効化します。
+
+対象アカウントでは2026-11-14にstate用bootstrapを構築済みです。Web本体・Webアプリは未公開で、今回の手動方式への変更ではAWSへの書き込みを行っていません。以下の変更コマンドは、別途承認・内容確認後に操作者が実行します。
 
 ## 管理範囲
 
 | パス | 用途 |
 | --- | --- |
 | `infra/frontend/bootstrap/` | Web専用のstateバケットを一度だけ新設 |
-| `infra/frontend/` | Web専用S3、CloudFront、OAC、キャッシュ／ヘッダーポリシー、OIDCロール |
-| `.github/workflows/deploy-frontend.yml` | mainからの`workflow_dispatch`だけで公開・復旧 |
+| `infra/frontend/` | Web専用S3、CloudFront、OAC、キャッシュ／ヘッダーポリシー。Actions用IAMは任意 |
+| `.github/workflows/deploy-frontend.yml` | 将来用に保持。mainからの`workflow_dispatch`だけで公開・復旧 |
 | `scripts/build_frontend_release.py` | APIデータ検証、隔離コピーでのビルド、成果物ハッシュ作成 |
 | `scripts/deploy_frontend.py` | 対象確認、世代配置、条件付き入口切替、公開検証・復旧 |
 
@@ -36,46 +38,35 @@ S3は全公開ブロック、ACL無効化、SSE-S3、versioningを有効にし�
 
 Terraform 1.10以上（検証版1.17.2）、AWS CLI v2、認証済み構築用アカウントを用意します。AWS providerは既存と同じ6.60系で、各rootのlockfileを追跡します。
 
-構築には新規S3の作成・読み取り・タグ・公開ブロック・versioning・暗号化・ownership・bucket policy、CloudFront Distribution/OAC/cache policy/response headers policyの作成・読み取り・更新・タグ、専用IAMロールとinline policyの権限が必要です。OIDC新設時はその作成・タグ権限も必要。命名・Projectタグ・SCP等で拒否されたら理由を確認し、既存バックエンドのロールを書き換えて回避しないでください。
+構築にはWeb専用S3の作成・読み取り・タグ・公開ブロック・versioning・暗号化・ownership・bucket policy、CloudFront Distribution/OAC/cache policy/response headers policyの作成・読み取り・タグが必要です。通常公開にはWebオブジェクトのGet/GetVersion/Put、対象CloudFrontの参照・CreateInvalidation/GetInvalidationを使います。既存スクリプトのpreflightで必要な構成参照権限も維持してください。
 
-まずOIDCの既存登録を読み取りで確認します。
+現在の認証ではS3 bootstrap作成とCloudFront参照の実績がありますが、IAMシミュレーションがAccessDeniedのため、CloudFront作成・ファイル配置・invalidationの許可は未確定です。planの成功も作成権限の証明にはなりません。権限不足なら停止し、既存バックエンドや公開ブロックを変更して回避しません。
 
-```bash
-aws iam get-open-id-connect-provider \
-  --open-id-connect-provider-arn arn:aws:iam::088066169748:oidc-provider/token.actions.githubusercontent.com
-```
+**このアカウントではbootstrapを繰り返さないでください。** 専用バケット`garbage-guide-web-state-088066169748-ap-northeast-1`と既存bootstrap state・バックアップをそのまま使用します。bootstrapのローカルstateは初期担当者がGit管理外で保持し、別PCからの再作成やWeb用stateへの混在を避けます。別アカウントで初めて構築する場合のみ、`infra/frontend/bootstrap/`のplanをレビューして新規作成します。
 
-既存なら`create_github_oidc_provider=false`（data sourceで読むだけ）。明確にNoSuchEntityなら`true`にします。AccessDeniedを不存在と判断しません。subject例は2026年7月以降のimmutable owner/repository ID形式です。実際のsubjectと対象Environmentに一致させ、JWT全体をログへ出さないでください。
-
-bootstrapは初期担当者1人だけが実行します。既存stateを流用しません。
+以下はWeb本体の初回構築です。既存の設定ファイルがあれば上書きせず確認します。認証は既存の`default`プロファイルを使い、OIDCの権限追加は不要です。
 
 ```bash
-terraform -chdir=infra/frontend/bootstrap init
-terraform -chdir=infra/frontend/bootstrap plan \
-  -var='aws_account_id=088066169748' -out=bootstrap.tfplan
-# 新規Web stateバケット関連だけであることを確認してから実行
-terraform -chdir=infra/frontend/bootstrap apply bootstrap.tfplan
-```
-
-bootstrapのローカルstateはGitに追加せず、初期担当者が暗号化した共有保管先等へバックアップします。他メンバーはbootstrapを繰り返さず、以後は共有stateでWebインフラを管理します。
-
-**Web用IAMロールを作成する前に、下記「GitHub初期設定」のEnvironment保護を設定してください。** `frontend-production`をmain限定・required reviewer付きで作成し、保護が有効なことを確認してから、次のWeb構築へ進みます。OIDCのEnvironment subject自体にはブランチ名が含まれないため、ワークフローのmain判定だけに依存しません。未保護のEnvironmentを信頼するロールを先に作成しないでください。
-
-```bash
-cp infra/frontend/terraform.tfvars.example infra/frontend/terraform.tfvars
-cp infra/frontend/backend.hcl.example infra/frontend/backend.hcl
-# アカウント、リージョン、OIDC subjectと登録有無を編集・確認
+cp -n infra/frontend/terraform.tfvars.example infra/frontend/terraform.tfvars
+cp -n infra/frontend/backend.hcl.example infra/frontend/backend.hcl
+# アカウント、リージョン、state保存先、enable_github_actions=falseを確認
+aws --profile default sts get-caller-identity
+export AWS_PROFILE=default
 terraform -chdir=infra/frontend init -backend-config=backend.hcl
-terraform -chdir=infra/frontend plan -out=web.tfplan
-# 新規Webリソースだけで、既存リソースの更新・削除がないことを確認
-terraform -chdir=infra/frontend apply web.tfplan
-mkdir -p .frontend-releases
-terraform -chdir=infra/frontend output -json web_target > .frontend-releases/target.json
-terraform -chdir=infra/frontend output -raw deploy_role_arn
+terraform -chdir=infra/frontend validate
+terraform -chdir=infra/frontend plan -out=web-initial.tfplan
+```
+
+新規Web関連10件のみ、変更・削除0件、IAM/OIDCの参照・作成なしを確認します。既存Web stateがある場合の件数は異なるため、個々の差分を確認します。**レビューと別途承認後にのみ**、保存したplanを適用します。
+
+```bash
+terraform -chdir=infra/frontend apply web-initial.tfplan
 terraform -chdir=infra/frontend output -raw web_url
 ```
 
-Web・stateバケットは`force_destroy=false`かつ`prevent_destroy=true`。デプロイ用IAMロールはWebの指定オブジェクトのGet/Put、構成確認のGet、対象CloudFrontのinvalidationに限定します。DeleteObject・UpdateDistribution・stateアクセス・Lambda更新は許可しません。
+S3 backendのinit・planでは専用stateやロックへの書き込みが発生し得るため、読み取り専用の調査中には実行しません。planは新しい出力名を使い、既存planを上書きしません。Web・stateバケットの`force_destroy=false`と`prevent_destroy=true`は維持しています。
+
+`enable_github_actions=false`ではOIDCのdata source、OIDCリソース、GitHub用IAMロール・inline policyはすべて0件です。`github_oidc_subject`も不要で、`deploy_role_arn`はnull（outputには表示されない）です。`web_target`とビルド・公開・復旧のデータ形式は同じです。
 
 ## 2. stateの共同管理
 
@@ -85,42 +76,56 @@ Web・stateバケットは`force_destroy=false`かつ`prevent_destroy=true`。�
 
 通常のGitHubデプロイ用ロールにはstate権限を与えません。
 
-## 3. GitHub初期設定（今回未実施）
+## 3. 将来GitHub Actionsへ移行する場合（現在は保留）
 
-ワークフローをレビューしてmainへマージした後、以下を設定します。マージ自体では実行されません。
+ローカル公開だけならGitHub設定は不要です。既存workflowは手動実行のみで保持しますが、IAMロール未構築の間は実行しません。将来は同じWebリソース・state・世代データを使って移行できます。
 
 1. Actionsを利用可能にし、固定コミットの公式Actionsを許可する。
-2. Environment **frontend-production**を作成し、デプロイbranchをmainだけに制限、required reviewerを指定する。OIDCがこのEnvironmentを信頼するため、**Web用Terraform applyより先に**この保護設定を行う。可能なら自己承認と管理者による保護の迂回も無効にする。
-3. Repository Variablesに`FRONTEND_API_BASE_URL`（既存のHTTPS API URL）を登録する。
-4. Environment Variablesに`FRONTEND_TARGET_JSON`（`terraform output -json web_target`のJSON）と`FRONTEND_DEPLOY_ROLE_ARN`を登録する。
+2. Environment **frontend-production**をmainブランチのみに制限し、保護を確認してからOIDCロールを構築する。Required reviewersは任意。設定しない場合、workflowの手動起動後はビルドから公開まで承認待ちなく進む。
+3. `iam:GetOpenIDConnectProvider`で既存登録・audienceを確認する。登録済みなら`create_github_oidc_provider=false`、明確にNoSuchEntityの場合だけ`true`を検討する。AccessDeniedを不存在と判断しない。
+4. `enable_github_actions=true`と完全一致の`github_oidc_subject`を設定する。例は`terraform.tfvars.example`を参照。subjectのimmutable owner/repository IDを確認し、JWT全体はログへ出さない。
+5. 同じWeb用stateでplanし、既存Webリソースが維持され、Actions用IAMだけが追加されることを確認して別途承認後にapplyする。
+6. Repository Variablesの`FRONTEND_API_BASE_URL`、Environment Variablesの`FRONTEND_TARGET_JSON`と`FRONTEND_DEPLOY_ROLE_ARN`を登録する。後者のARNは有効化後の`terraform output -raw deploy_role_arn`から取得する。
 
-長期アクセスキーはSecretsへ登録しません。build jobはAWS認証なしでAPI取得し、Environment承認後のdeploy/rollback jobだけ`id-token: write`を持ちます。ワークフローはmainに限定し、公開直前にmainのSHAがビルド時から変わっていないことも確認します。
+既に旧版でActions用IAMを管理しているstateでは`enable_github_actions=true`を明示してください。`migrations.tf`が旧ロール・policyのアドレスをcount付きへ移し、再作成を避けます。作成済みロール・OIDCを無効化して削除する変更は`prevent_destroy`で停止します。自動削除を解除せず、必要なら別途レビューします。今回、既存stateの移行・編集はしていません。
 
-設定順序は「workflowをmainへ反映 → Environment保護 → Web用Terraformでロール等を構築 → outputsをEnvironment Variablesへ登録」です。bootstrapの専用stateバケット作成はロールを作らないため、この前に実施できます。
+長期アクセスキーはGitHubへ登録しません。build jobはAWS認証なし、deploy/rollback jobだけOIDCを使用します。main限定・公開前のmain SHA確認・共通concurrencyは維持します。
 
-## 4. 通常の手動公開
+## 4. ローカルからの手動公開
 
-1. 従来の安全な手順でバックエンドを更新・確認する。Web workflowはバックエンドを更新しない。
-2. healthとmanifestを確認し、検証した`dataset_version`を記録する。実Bedrock評価は別途費用承認を得る。
-3. Actions → **Deploy Flutter Web (manual)** → Run workflow、main、operation=`deploy`、`expected_dataset_version`に記録した64桁の値を指定する。
-4. build成果物・版を確認してEnvironmentを承認する。
-5. receiptの`status=verified`とCloudFrontの画面を確認する。地区選択・検索・追加質問・カレンダー・粗大ごみを確認し、実機確認は別途行う。
+1. 従来の安全な手順でバックエンドを更新・確認する。Webスクリプトはバックエンドを変更しない。
+2. healthとmanifestを確認し、確認した64桁の`dataset_version`を記録する。実Bedrock評価は別途費用承認を得る。
+3. 公開するコミットのclean checkoutでビルドする。未コミット変更がある作業場所は保持し、別worktree等を使う。Flutter 3.47.1を用意する。
+4. 対象アカウント・リージョン・bucket・distributionを確認し、まずdry-runする。
+5. 別途承認後に`--execute`で公開し、receiptの`status=verified`と実画面を確認する。
 
-concurrency groupは全公開・復旧で共通、実行中の処理は新要求でcancelしません。別PC等からの更新はETag／VersionIdと条件付きPUTで検出します。AWS CLIにはIf-Match/If-None-MatchとSHA-256 checksum対応が必要です（ローカル確認版2.36.28）。
+ローカル・別PC・将来のActionsからの競合はETag／VersionIdと条件付きPUTで検出します。ローカル実行ではActionsのconcurrency待ちはないため、構築用Terraform操作や他の公開と事前に調整します。AWS CLIにはIf-Match/If-None-MatchとSHA-256 checksum対応が必要です（確認版2.36.28）。
 
-ローカル実行も、まず書き込みなしで確認します。
+以下はリポジトリrootで実行します。`set -eu`で途中の失敗時に停止するシェルを使い、作業フォルダが既にあれば先へ進みません。`--profile default`は既存認証を利用し、GitHub用IAMロール・OIDCの作成・参照を必要としません。`--profile`省略時はAWS CLIの通常の認証チェーンです。
 
 ```bash
+set -eu
+FRONTEND_AWS_PROFILE=default
+API_BASE_URL='https://<公開API>'
+DATASET_VERSION='<確認した64桁の版>'
+RELEASE_ID="manual-$(date -u +%Y%m%d-%H%M%S)"
+RUN_DIR=".frontend-releases/$RELEASE_ID"
+mkdir -p .frontend-releases
+mkdir "$RUN_DIR"
+aws --profile "$FRONTEND_AWS_PROFILE" sts get-caller-identity
+AWS_PROFILE="$FRONTEND_AWS_PROFILE" terraform -chdir=infra/frontend output -json web_target > "$RUN_DIR/target.json"
 python3 scripts/build_frontend_release.py \
-  --api-base-url 'https://<公開API>' --expected-dataset-version '<確認した64桁の版>' \
-  --release-id '<一意の小文字英数字・ハイフンの世代ID>' --git-sha '<40桁のコミット>' \
-  --output .frontend-releases/new-release
-python3 scripts/deploy_frontend.py deploy --target .frontend-releases/target.json \
-  --release .frontend-releases/new-release --api-base-url 'https://<公開API>' \
-  --expected-dataset-version '<確認した64桁の版>'
+  --api-base-url "$API_BASE_URL" --expected-dataset-version "$DATASET_VERSION" \
+  --release-id "$RELEASE_ID" --git-sha "$(git rev-parse HEAD)" --output "$RUN_DIR/release"
+python3 scripts/deploy_frontend.py deploy --target "$RUN_DIR/target.json" \
+  --release "$RUN_DIR/release" --api-base-url "$API_BASE_URL" \
+  --expected-dataset-version "$DATASET_VERSION" --profile "$FRONTEND_AWS_PROFILE" \
+  --receipt "$RUN_DIR/dry-run.json"
 ```
 
-確認後のみ、deployに`--execute --confirm-target '<account>:<region>:<bucket>:<distribution_id>' --receipt .frontend-releases/<新規receipt名>.json`を追加します。既存出力・receiptは上書きしません。
+dry-runは構成・版の読み取り確認であり、PutObject／CreateInvalidationの許可を保証しません。確認・承認後のみ、同じdeployコマンドのreceiptを`"$RUN_DIR/deploy.json"`に変え、`--execute --confirm-target '<account>:<region>:<bucket>:<distribution_id>'`を追加します。既存出力・receiptを上書きせず、AccessDeniedなら停止します。デプロイ後に地区選択・検索・追加質問・カレンダー・粗大ごみを画面から確認します。
+
+スクリプトは指定WebオブジェクトのPutObjectとinvalidationだけを書き込み対象にします。ローカル認証が広い権限を持っていても、IAM・Lambda・削除操作は呼びません。新しいアクセスキーを設定する必要はありません。
 
 ## 5. 失敗・復旧
 
@@ -129,15 +134,24 @@ python3 scripts/deploy_frontend.py deploy --target .frontend-releases/target.jso
 - 競合や応答不明は、他の入口を上書きせず停止する。`needs_review`/`restore_needs_review`のreceipt、現在のS3 VersionId、CloudFront設定を確認し、同じ書き込みを盲目的に繰り返さない。
 - 復旧後も公開HTMLのハッシュ、入口VersionId／ETag、CloudFront ETagを再確認する。復旧の検証中に別の更新が入った場合は、復旧完了とは報告せず`restore_needs_review`で止め、追加の上書きをしない。
 
-過去世代へ戻す場合はRun workflowでoperation=`rollback`、戻す`rollback_release_id`、確認した現在の`current_release_id`、現バックエンドの版を指定して承認します。古いUI版と現API版が違えば停止します。必要なら従来の手順で先にバックエンドを復旧し、整合するWebを選びます。CSV/NPZ・カレンダー再生成は不要です。
+過去世代への復旧も同じローカル認証を使います。まず次のコマンドを`--execute`なしで確認します。
+
+```bash
+python3 scripts/deploy_frontend.py rollback --target "$RUN_DIR/target.json" \
+  --release-id '<戻す世代ID>' --expected-current-release-id '<確認した現世代ID>' \
+  --api-base-url "$API_BASE_URL" --expected-dataset-version "$DATASET_VERSION" \
+  --profile "$FRONTEND_AWS_PROFILE" --receipt "$RUN_DIR/rollback-dry-run.json"
+```
+
+承認後のみ新規receipt名と`--execute --confirm-target '<account>:<region>:<bucket>:<distribution_id>'`を指定します。古いUI版と現API版が違えば停止します。必要なら従来の手順で先にバックエンドを復旧し、整合するWebを選びます。CSV/NPZ・カレンダー再生成は不要です。将来のActionsではoperation=`rollback`で同じ処理を実行します。
 
 読み取りだけでの再確認:
 
 ```bash
-python3 scripts/deploy_frontend.py verify --target .frontend-releases/target.json \
+python3 scripts/deploy_frontend.py verify --target "$RUN_DIR/target.json" \
   --release-id '<確認する世代ID>' --api-base-url 'https://<公開API>' \
   --expected-dataset-version '<現APIと一致する64桁の版>' \
-  --receipt .frontend-releases/<新規verification名>.json
+  --profile "$FRONTEND_AWS_PROFILE" --receipt "$RUN_DIR/verification.json"
 ```
 
 `verify`は入口のS3 checksum・キャッシュ設定と公開ファイルを照合し、公開検証の前後でバックエンド版を確認します。途中で版や入口が変わった場合は成功扱いにせず、AWSへの書き込みもしません。初回構築と異なるパス別behavior、エッジ関数、独自エラーページ、署名付き閲覧等が追加されていた場合も、deploy／rollback／verifyの事前確認で停止します。意図した構成変更なら、先にTerraform・この検証・手順書を一緒にレビューしてください。
@@ -173,6 +187,15 @@ VercelとCloudFrontは別オリジンです。ブラウザーに保存した地�
 - Terraformは両rootのvalidateとmock plan **4件成功**で、正常構成に加え、wildcard subjectとEnvironmentなしのsubjectの拒否を検証した。actionlint・全6個のrunブロックの`bash -n`も成功した。
 - 隔離コピーでFlutterの`test`＋`tool` **334件成功**。静的解析は既存62件（warning7・info55・error0）と完全に同じで、追加指摘0件だった。元の未コミット設定は使わず、原本照合は読み取り参照で行った。
 - 前回の隔離Webビルド成果物92ファイル・52,187,645 bytesを現在の検証処理で再照合した。今回はFlutterソース・ビルド処理を変更しておらず、新しいWebビルドや実AWS公開テストは行っていない。
+
+## ローカル手動方式への対応（2026-11-14）
+
+- `enable_github_actions=false`を既定とし、OIDCの参照・作成とGitHub用IAMロールを任意化した。ビルド・公開スクリプトの動作、安全チェック、Web用リソースと共有stateの構成は維持した。
+- 実際のAWS認証で、**S3 backendを除いた新規の隔離コピー**のplanに成功した。追加10・変更0・削除0で、IAMの参照・作成はない。これはローカルbackendによる構造検証であり、本番共有stateのplanや適用用planではない。既存のstate・ロックへの書き込みは行っていない。
+- Terraform validate、Webのmock plan 8件とbootstrapのmock plan 1件に成功。手動／Actions両モード、subject・provider opt-inの制約を確認した。旧Actions実stateの移行は未実施・未検証なので、既存stateを使う際は差分を必ず確認する。
+- AWS HTTP送信を遮断したバックエンド全体は**854成功・失敗0・スキップ0**（既存warning21件）。公開・復旧テストは**58成功**で、既存認証・名前付きprofile・ローカルCLIのdry-runを追加検証した。
+- actionlintと手順書のシェル構文検査に成功。Flutterコードとビルド・デプロイスクリプトは変更していない。前回の隔離Webビルド92ファイルを再照合し、新しいFlutterビルド・全テストは再実行していない。
+- 実際のCloudFront作成、S3ファイル配置、invalidationの権限・動作は未検証。構築済みbootstrap state・バックアップ・全自治体データは保持し、今回AWSへの書き込み・有料モデル呼び出しは0回。
 
 テストの再実行例:
 
