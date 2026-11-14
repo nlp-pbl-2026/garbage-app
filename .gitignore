@@ -15,6 +15,7 @@ backend/garbage_app.db
 backend/dist/
 # Isolated clean frontend build output; never tracks downloaded UI datasets.
 /.frontend-build/
+/.frontend-releases/
 
 # Evaluation datasets and reports derived from external/public source data
 backend/evaluation/artifacts/
@@ -71,3 +72,7 @@ override.tf
 override.tf.json
 *_override.tf
 *_override.tf.json
+# Operator-specific frontend hosting configuration (examples remain tracked).
+infra/frontend/terraform.tfvars
+infra/frontend/backend.hcl
+infra/frontend/bootstrap/terraform.tfvars
