@@ -27,3 +27,21 @@ run "private_static_hosting" {
     error_message = "Reuse an existing provider without changing it; trust only the exact environment."
   }
 }
+
+run "reject_wildcard_subject" {
+  command = plan
+  variables {
+    aws_account_id      = "088066169748"
+    github_oidc_subject = "repo:nlp-pbl-2026/*:environment:frontend-production"
+  }
+  expect_failures = [var.github_oidc_subject]
+}
+
+run "reject_branch_subject_without_environment" {
+  command = plan
+  variables {
+    aws_account_id      = "088066169748"
+    github_oidc_subject = "repo:nlp-pbl-2026/garbage-app:ref:refs/heads/main"
+  }
+  expect_failures = [var.github_oidc_subject]
+}

@@ -384,6 +384,78 @@ def test_publish_uploads_immutable_files_before_root(runtime, release):
     )
 
 
+def test_read_only_verification_checks_backend_before_and_after_cdn(
+    runtime, release, monkeypatch
+):
+    publish(runtime, release)
+    runtime.calls.clear()
+    events = []
+    monkeypatch.setattr(deploy, "check_api", lambda *_: events.append("api"))
+    monkeypatch.setattr(deploy, "verify_public", lambda *_: events.append("cdn"))
+    result = deploy.verify_active(
+        runtime, TARGET, release[1], release[1]["dataset_version"]
+    )
+    assert result["status"] == "verified"
+    assert events == ["api", "cdn", "api"]
+    assert not runtime.calls
+
+
+def test_read_only_verification_rejects_backend_change_during_cdn_check(
+    runtime, release, monkeypatch
+):
+    publish(runtime, release)
+    runtime.calls.clear()
+    checked = []
+
+    def api(*_):
+        checked.append(True)
+        if len(checked) == 2:
+            raise ValueError("Backend UI data changed")
+
+    monkeypatch.setattr(deploy, "check_api", api)
+    with pytest.raises(ValueError, match="Backend UI data changed"):
+        deploy.verify_active(
+            runtime, TARGET, release[1], release[1]["dataset_version"]
+        )
+    assert not runtime.calls
+
+
+def test_read_only_verification_rejects_peer_update(runtime, release, monkeypatch):
+    publish(runtime, release)
+    runtime.calls.clear()
+    monkeypatch.setattr(
+        deploy,
+        "verify_public",
+        lambda *_: runtime.seed(
+            "index.html", b"peer", {"release-id": "peer-release"}
+        ),
+    )
+    with pytest.raises(ValueError, match="Deployment changed"):
+        deploy.verify_active(
+            runtime, TARGET, release[1], release[1]["dataset_version"]
+        )
+    assert not runtime.calls
+    assert runtime.objects["index.html"][1] == b"peer"
+
+
+def test_read_only_verification_rejects_inactive_release(runtime, release):
+    runtime.seed("index.html", b"peer", {"release-id": "peer-release"})
+    with pytest.raises(ValueError, match="not active"):
+        deploy.verify_active(
+            runtime, TARGET, release[1], release[1]["dataset_version"]
+        )
+    assert not runtime.calls
+
+
+def test_read_only_verification_rejects_stale_root_metadata(runtime, release):
+    publish(runtime, release)
+    runtime.objects["index.html"][0]["CacheControl"] = IMMUTABLE_CACHE
+    with pytest.raises(ValueError, match="metadata"):
+        deploy.verify_active(
+            runtime, TARGET, release[1], release[1]["dataset_version"]
+        )
+
+
 def test_partial_upload_does_not_change_visible_release(runtime, release):
     previous = runtime.seed(
         "index.html", b"previous", {"release-id": "previous-release"}
@@ -455,6 +527,66 @@ def test_first_failed_release_returns_maintenance_page(runtime, release, monkeyp
     assert runtime.objects["index.html"][0]["Metadata"] == {
         "deployment-status": "maintenance"
     }
+
+
+@pytest.mark.parametrize("peer_change", ["root", "distribution"])
+def test_restoration_detects_concurrent_change_before_reporting_success(
+    runtime, release, monkeypatch, peer_change
+):
+    runtime.seed("index.html", b"previous", {"release-id": "previous-release"})
+    actual = deploy.preflight
+    changed = []
+
+    def read_restored(_):
+        body = runtime.objects["index.html"][1]
+        if peer_change == "root":
+            runtime.seed("index.html", b"peer", {"release-id": "peer-release"})
+        changed.append(True)
+        return body
+
+    def preflight(*args):
+        value = actual(*args)
+        if changed and peer_change == "distribution":
+            value["distribution_etag"] = "peer-config"
+        return value
+
+    monkeypatch.setattr(
+        deploy, "verify_public", lambda *_: (_ for _ in ()).throw(ValueError("bad CDN"))
+    )
+    monkeypatch.setattr(deploy, "public_bytes", read_restored)
+    monkeypatch.setattr(deploy, "preflight", preflight)
+    with pytest.raises(deploy.DeploymentFailure) as failure:
+        publish(runtime, release)
+    assert failure.value.report["status"] == "restore_needs_review"
+    assert "changed during restoration" in failure.value.report["restoration_error"]
+    assert runtime.objects["index.html"][1] == (
+        b"peer" if peer_change == "root" else b"previous"
+    )
+    assert (
+        sum(
+            op == "put-object" and "index.html" in args
+            for _, op, args in runtime.calls
+        )
+        == 2
+    )
+
+
+def test_peer_winning_restoration_race_is_never_overwritten(
+    runtime, release, monkeypatch
+):
+    runtime.seed("index.html", b"previous", {"release-id": "previous-release"})
+
+    def fail_public(*_):
+        runtime.before_entry_put = lambda: runtime.seed(
+            "index.html", b"peer", {"release-id": "peer-release"}
+        )
+        raise ValueError("bad CDN")
+
+    monkeypatch.setattr(deploy, "verify_public", fail_public)
+    with pytest.raises(deploy.DeploymentFailure) as failure:
+        publish(runtime, release)
+    assert failure.value.report["status"] == "restore_needs_review"
+    assert runtime.objects["index.html"][1] == b"peer"
 
 
 def test_concurrent_update_after_activation_is_not_rolled_back(
@@ -661,6 +793,70 @@ def test_target_preflight_accepts_only_dedicated_private_frontend():
         deploy.preflight(ConfigAWS(), TARGET)["web_url"]
         == "https://test.cloudfront.net"
     )
+
+
+def test_preflight_accepts_empty_aws_associations():
+    aws = ConfigAWS()
+    config = aws.responses["get-distribution"]["Distribution"]["DistributionConfig"]
+    for key in ("CacheBehaviors", "CustomErrorResponses", "OriginGroups"):
+        config[key] = {"Quantity": 0}
+    for key in (
+        "FunctionAssociations",
+        "LambdaFunctionAssociations",
+        "TrustedSigners",
+        "TrustedKeyGroups",
+    ):
+        config["DefaultCacheBehavior"][key] = {"Quantity": 0}
+    config.update(Staging=False, ContinuousDeploymentPolicyId="")
+    deploy.preflight(aws, TARGET)
+
+
+@pytest.mark.parametrize(
+    "key",
+    [
+        "CacheBehaviors",
+        "CustomErrorResponses",
+        "OriginGroups",
+        "ContinuousDeploymentPolicyId",
+        "Staging",
+        "ConnectionFunctionAssociation",
+    ],
+)
+def test_preflight_rejects_unexpected_distribution_routing(key):
+    aws = ConfigAWS()
+    config = aws.responses["get-distribution"]["Distribution"]["DistributionConfig"]
+    if key == "Staging":
+        config[key] = True
+    elif key == "ContinuousDeploymentPolicyId":
+        config[key] = "unexpected-policy"
+    elif key == "ConnectionFunctionAssociation":
+        config[key] = {"Id": "unexpected-function"}
+    else:
+        config[key] = {"Quantity": 1, "Items": [{"unexpected": "override"}]}
+    with pytest.raises(ValueError, match="routing/error"):
+        deploy.preflight(aws, TARGET)
+
+
+@pytest.mark.parametrize(
+    "key",
+    [
+        "FunctionAssociations",
+        "LambdaFunctionAssociations",
+        "OriginRequestPolicyId",
+        "TrustedSigners",
+        "TrustedKeyGroups",
+    ],
+)
+def test_preflight_rejects_edge_rewrites_and_private_viewer_policies(key):
+    aws = ConfigAWS()
+    config = aws.responses["get-distribution"]["Distribution"]["DistributionConfig"]
+    config["DefaultCacheBehavior"][key] = (
+        "unexpected-policy"
+        if key == "OriginRequestPolicyId"
+        else {"Quantity": 1, "Items": [{"unexpected": "override"}]}
+    )
+    with pytest.raises(ValueError, match="rewriting or private"):
+        deploy.preflight(aws, TARGET)
 
 
 @pytest.mark.parametrize(

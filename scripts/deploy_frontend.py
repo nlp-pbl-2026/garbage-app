@@ -267,6 +267,15 @@ def preflight(aws, target):
         and config["ViewerCertificate"].get("CloudFrontDefaultCertificate") is True,
         "Unexpected distribution state/domain configuration",
     )
+    require(
+        not config.get("CacheBehaviors", {}).get("Items")
+        and not config.get("CustomErrorResponses", {}).get("Items")
+        and not config.get("OriginGroups", {}).get("Items")
+        and not config.get("ContinuousDeploymentPolicyId")
+        and not config.get("Staging")
+        and not config.get("ConnectionFunctionAssociation"),
+        "Unexpected routing/error overrides or staged distribution",
+    )
     origins = config["Origins"]["Items"]
     require(len(origins) == 1, "Expected only the frontend S3 origin")
     origin = origins[0]
@@ -295,6 +304,14 @@ def preflight(aws, target):
         and behavior["ViewerProtocolPolicy"] == "redirect-to-https"
         and set(behavior["AllowedMethods"]["Items"]) == {"GET", "HEAD"},
         "Unexpected cache behavior",
+    )
+    require(
+        not behavior.get("FunctionAssociations", {}).get("Items")
+        and not behavior.get("LambdaFunctionAssociations", {}).get("Items")
+        and not behavior.get("OriginRequestPolicyId")
+        and not behavior.get("TrustedSigners", {}).get("Items")
+        and not behavior.get("TrustedKeyGroups", {}).get("Items"),
+        "Unexpected response/request rewriting or private viewer access",
     )
     cache = aws.call(
         "cloudfront", "get-cache-policy", "--id", behavior["CachePolicyId"]
@@ -455,6 +472,25 @@ def verify_public(web_url, manifest):
             )
 
 
+def verify_active(aws, target, manifest, expected):
+    """Read-only verification, including backend stability through the CDN check."""
+    require(manifest["dataset_version"] == expected, "Release version mismatch")
+    before = preflight(aws, target)
+    require(
+        before["root"]
+        and before["root"].get("Metadata", {}).get("release-id")
+        == manifest["release_id"],
+        "This release is not active",
+    )
+    verify_object(before["root"], manifest["files"]["index.html"], ENTRY_CACHE)
+    check_api(manifest["api_base_url"], expected)
+    verify_public(before["web_url"], manifest)
+    check_api(manifest["api_base_url"], expected)
+    after = preflight(aws, target)
+    require(after == before, "Deployment changed during verification")
+    return {"status": "verified", "release_id": manifest["release_id"]}
+
+
 def publish(
     aws,
     target,
@@ -605,7 +641,7 @@ def publish(
                         if previous
                         else {"deployment-status": "maintenance"}
                     )
-                    put(
+                    restored = put(
                         aws,
                         target,
                         "index.html",
@@ -620,6 +656,14 @@ def publish(
                         digest(public_bytes(before["web_url"] + "/"))
                         == digest(old.read_bytes()),
                         "Restored entry point needs public verification",
+                    )
+                    restored_state = preflight(aws, target)
+                    require(
+                        root_identity(restored_state["root"])
+                        == root_identity(restored)
+                        and restored_state["distribution_etag"]
+                        == before["distribution_etag"],
+                        "Deployment changed during restoration verification",
                     )
                     raise DeploymentFailure(
                         "Web verification failed; previous entry point restored (first release: maintenance page)",
@@ -689,22 +733,9 @@ def main():
                 "Release API URL mismatch",
             )
             if args.command == "verify":
-                before = preflight(aws, target)
-                require(
-                    before["root"]
-                    and before["root"]["Metadata"].get("release-id")
-                    == manifest["release_id"],
-                    "This release is not active",
+                report = verify_active(
+                    aws, target, manifest, args.expected_dataset_version
                 )
-                check_api(manifest["api_base_url"], args.expected_dataset_version)
-                require(
-                    manifest["dataset_version"] == args.expected_dataset_version,
-                    "Release version mismatch",
-                )
-                verify_public(before["web_url"], manifest)
-                after = preflight(aws, target)
-                require(after == before, "Deployment changed during verification")
-                report = {"status": "verified", "release_id": manifest["release_id"]}
             else:
                 report = publish(
                     aws,

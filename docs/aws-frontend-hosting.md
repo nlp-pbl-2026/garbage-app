@@ -59,6 +59,8 @@ terraform -chdir=infra/frontend/bootstrap apply bootstrap.tfplan
 
 bootstrapのローカルstateはGitに追加せず、初期担当者が暗号化した共有保管先等へバックアップします。他メンバーはbootstrapを繰り返さず、以後は共有stateでWebインフラを管理します。
 
+**Web用IAMロールを作成する前に、下記「GitHub初期設定」のEnvironment保護を設定してください。** `frontend-production`をmain限定・required reviewer付きで作成し、保護が有効なことを確認してから、次のWeb構築へ進みます。OIDCのEnvironment subject自体にはブランチ名が含まれないため、ワークフローのmain判定だけに依存しません。未保護のEnvironmentを信頼するロールを先に作成しないでください。
+
 ```bash
 cp infra/frontend/terraform.tfvars.example infra/frontend/terraform.tfvars
 cp infra/frontend/backend.hcl.example infra/frontend/backend.hcl
@@ -88,11 +90,13 @@ Web・stateバケットは`force_destroy=false`かつ`prevent_destroy=true`。�
 ワークフローをレビューしてmainへマージした後、以下を設定します。マージ自体では実行されません。
 
 1. Actionsを利用可能にし、固定コミットの公式Actionsを許可する。
-2. Environment **frontend-production**を作成し、デプロイbranchをmainだけに制限、required reviewerを指定する。OIDCがこのEnvironmentを信頼するため、この保護設定を先に行う。
+2. Environment **frontend-production**を作成し、デプロイbranchをmainだけに制限、required reviewerを指定する。OIDCがこのEnvironmentを信頼するため、**Web用Terraform applyより先に**この保護設定を行う。可能なら自己承認と管理者による保護の迂回も無効にする。
 3. Repository Variablesに`FRONTEND_API_BASE_URL`（既存のHTTPS API URL）を登録する。
 4. Environment Variablesに`FRONTEND_TARGET_JSON`（`terraform output -json web_target`のJSON）と`FRONTEND_DEPLOY_ROLE_ARN`を登録する。
 
 長期アクセスキーはSecretsへ登録しません。build jobはAWS認証なしでAPI取得し、Environment承認後のdeploy/rollback jobだけ`id-token: write`を持ちます。ワークフローはmainに限定し、公開直前にmainのSHAがビルド時から変わっていないことも確認します。
+
+設定順序は「workflowをmainへ反映 → Environment保護 → Web用Terraformでロール等を構築 → outputsをEnvironment Variablesへ登録」です。bootstrapの専用stateバケット作成はロールを作らないため、この前に実施できます。
 
 ## 4. 通常の手動公開
 
@@ -123,6 +127,7 @@ python3 scripts/deploy_frontend.py deploy --target .frontend-releases/target.jso
 - 配置中・版確認中の失敗では入口は切り替わらない。不完全な世代ファイルは残る場合があるが、ルートから参照されない。
 - 公開検証の失敗は、自分の入口VersionId/ETagとCloudFront設定が不変な場合だけ以前の入口へ条件付きで戻す。初回で旧入口がなければ「公開準備中」へ戻す。
 - 競合や応答不明は、他の入口を上書きせず停止する。`needs_review`/`restore_needs_review`のreceipt、現在のS3 VersionId、CloudFront設定を確認し、同じ書き込みを盲目的に繰り返さない。
+- 復旧後も公開HTMLのハッシュ、入口VersionId／ETag、CloudFront ETagを再確認する。復旧の検証中に別の更新が入った場合は、復旧完了とは報告せず`restore_needs_review`で止め、追加の上書きをしない。
 
 過去世代へ戻す場合はRun workflowでoperation=`rollback`、戻す`rollback_release_id`、確認した現在の`current_release_id`、現バックエンドの版を指定して承認します。古いUI版と現API版が違えば停止します。必要なら従来の手順で先にバックエンドを復旧し、整合するWebを選びます。CSV/NPZ・カレンダー再生成は不要です。
 
@@ -134,6 +139,8 @@ python3 scripts/deploy_frontend.py verify --target .frontend-releases/target.jso
   --expected-dataset-version '<現APIと一致する64桁の版>' \
   --receipt .frontend-releases/<新規verification名>.json
 ```
+
+`verify`は入口のS3 checksum・キャッシュ設定と公開ファイルを照合し、公開検証の前後でバックエンド版を確認します。途中で版や入口が変わった場合は成功扱いにせず、AWSへの書き込みもしません。初回構築と異なるパス別behavior、エッジ関数、独自エラーページ、署名付き閲覧等が追加されていた場合も、deploy／rollback／verifyの事前確認で停止します。意図した構成変更なら、先にTerraform・この検証・手順書を一緒にレビューしてください。
 
 S3の過去version・世代は自動削除しません。掃除は稼働世代・復旧対象・開いているタブへの影響を確認して別途実施します。稼働世代を経過日数だけで消すLifecycleは設定しません。GitHub成果物とreceiptは30日保持し、実際の公開データはS3へ残ります。
 
@@ -149,7 +156,7 @@ VercelとCloudFrontは別オリジンです。ブラウザーに保存した地�
 
 実AWSの作成権限、OIDC AssumeRole、S3条件付きPUT、CloudFront配信・invalidation、実GitHub Actions実行は未検証です。ローカルの模擬成功を実環境の成功とは扱いません。
 
-## ローカル検証結果（2026-11-14）
+## 初回実装時のローカル検証結果（2026-11-14）
 
 - Terraform 1.17.2 / AWS provider 6.60.0: Web・bootstrap両rootのinit（backend無効）とvalidateに成功。mock providerのplanテスト2件成功。実AWSのplan/applyや既存state操作はしていない。
 - actionlint 1.7.12と、全6個のrunブロックの`bash -n`に成功。pushトリガーなし、main限定、Environment、OIDC権限、固定Action SHA、非cancelのconcurrencyを単体テストでも確認した。
@@ -157,6 +164,15 @@ VercelとCloudFrontは別オリジンです。ブラウザーに保存した地�
 - Git管理外CSV・カレンダーのないclone相当の隔離コピーで、公開APIから20市町を取得し、世代別パスのWebリリースビルドに成功。92ファイル・52,187,645 bytes、データ版`ef752bae576210807fedc7c2a57e190ebb80179cb058985254e01c0632475012`。元の自治体データや索引を再生成していない。
 - 隔離Flutter環境は原本なしの218テスト成功。原本照合用の読み取り参照を追加した別段階では全334テスト成功。解析は既存62件（warning7・info55・error0）から追加・解消0件。WebビルドのCupertinoIcons案内は既存のもの。
 - ルートHTML＋世代別ファイルをローカルHTTPで再現し、Headless Chromeで初期画面を視覚確認した。起動JS・Wasm・フォント等はすべて世代別URLから200で取得した。実検索・実機GPS／通知・AWS上の配信は今回未実施。有料モデル呼び出し0回。
+
+## 最終レビュー（2026-11-14）
+
+- 再確認時のバックエンド版変更を見逃す可能性、想定外のCloudFront routing／エッジ処理を受け入れる可能性、復旧検証中の競合を完了扱いにする可能性を修正した。AWSの操作許可やIAM権限は増やしていない。
+- Environmentのmain制限・reviewer設定をWeb用IAMロール作成より前に行うよう、初期構築の順序を明確にした。
+- バックエンド全体は**851成功・失敗0・スキップ0**（既存warning21件）。うち公開・復旧テストは**55成功**。AWS HTTP送信を遮断して実行した。
+- Terraformは両rootのvalidateとmock plan **4件成功**で、正常構成に加え、wildcard subjectとEnvironmentなしのsubjectの拒否を検証した。actionlint・全6個のrunブロックの`bash -n`も成功した。
+- 隔離コピーでFlutterの`test`＋`tool` **334件成功**。静的解析は既存62件（warning7・info55・error0）と完全に同じで、追加指摘0件だった。元の未コミット設定は使わず、原本照合は読み取り参照で行った。
+- 前回の隔離Webビルド成果物92ファイル・52,187,645 bytesを現在の検証処理で再照合した。今回はFlutterソース・ビルド処理を変更しておらず、新しいWebビルドや実AWS公開テストは行っていない。
 
 テストの再実行例:
 
