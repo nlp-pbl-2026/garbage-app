@@ -15,7 +15,7 @@ provider "aws" {
 locals {
   prefix      = "garbage-guide-web-${var.environment}"
   bucket_name = "${local.prefix}-${var.aws_account_id}-${var.aws_region}"
-  oidc_arn    = var.create_github_oidc_provider ? aws_iam_openid_connect_provider.github[0].arn : data.aws_iam_openid_connect_provider.github[0].arn
+  oidc_arn    = var.enable_github_actions ? (var.create_github_oidc_provider ? aws_iam_openid_connect_provider.github[0].arn : data.aws_iam_openid_connect_provider.github[0].arn) : null
 }
 
 resource "aws_s3_bucket" "web" {
@@ -154,18 +154,21 @@ resource "aws_s3_bucket_policy" "web" {
 }
 
 resource "aws_iam_openid_connect_provider" "github" {
-  count          = var.create_github_oidc_provider ? 1 : 0
+  count          = var.enable_github_actions && var.create_github_oidc_provider ? 1 : 0
   url            = "https://token.actions.githubusercontent.com"
   client_id_list = ["sts.amazonaws.com"]
+  lifecycle { prevent_destroy = true }
 }
 data "aws_iam_openid_connect_provider" "github" {
-  count = var.create_github_oidc_provider ? 0 : 1
+  count = var.enable_github_actions && !var.create_github_oidc_provider ? 1 : 0
   arn   = "arn:aws:iam::${var.aws_account_id}:oidc-provider/token.actions.githubusercontent.com"
 }
 resource "aws_iam_role" "deploy" {
+  count                = var.enable_github_actions ? 1 : 0
   name                 = var.deploy_role_name
   path                 = "/service-role/"
   max_session_duration = 3600
+  lifecycle { prevent_destroy = true }
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
     Statement = [{
@@ -180,8 +183,9 @@ resource "aws_iam_role" "deploy" {
   })
 }
 resource "aws_iam_role_policy" "deploy" {
-  role = aws_iam_role.deploy.id
-  name = "WebReleaseOnly"
+  count = var.enable_github_actions ? 1 : 0
+  role  = aws_iam_role.deploy[0].id
+  name  = "WebReleaseOnly"
   policy = jsonencode({
     Version = "2012-10-17"
     Statement = [

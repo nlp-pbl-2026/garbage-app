@@ -2,7 +2,10 @@ aws_account_id = "088066169748"
 aws_region     = "ap-northeast-1"
 environment    = "dev"
 project_tag    = "U-22"
-# Confirm the real OIDC subject before the first apply. No wildcard subjects.
-github_oidc_subject = "repo:nlp-pbl-2026@287387317/garbage-app@1304887747:environment:frontend-production"
-# Set true only after confirming that this account has no GitHub OIDC provider.
+# Local AWS CLI credentials; no IAM/OIDC resources or provider lookup.
+enable_github_actions        = false
 create_github_oidc_provider = false
+# Future Actions opt-in (confirm the subject and provider registration first):
+# enable_github_actions = true
+# github_oidc_subject = "repo:nlp-pbl-2026@287387317/garbage-app@1304887747:environment:frontend-production"
+# create_github_oidc_provider = false
